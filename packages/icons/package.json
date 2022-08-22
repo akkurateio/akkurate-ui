@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "description": "Library for Akkurate UI icons",
   "author": "Subvitamine",
-  "license": "unlicensed",
+  "license": "proprietary",
   "main": "dist/index.cjs.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akkurateio/akkurate-ui.git",
