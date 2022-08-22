@@ -1,5 +1,4 @@
-import { createIcon } from "@chakra-ui/react";
-
+import { createIcon } from "@chakra-ui/react"
 
 export const Eye = createIcon({
   displayName: "Eye",
