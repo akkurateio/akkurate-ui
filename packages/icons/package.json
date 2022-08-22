@@ -1,0 +1,30 @@
+{
+  "name": "@akkurate-ui/icons",
+  "version": "0.1.0",
+  "description": "Library for Akkurate UI icons",
+  "author": "Subvitamine",
+  "license": "unlicensed",
+  "main": "dist/index.cjs.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akkurateio/akkurate-ui.git",
+    "directory": "packages/icons"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.1",
+    "react": "^18.0.0"
+  },
+  "dependencies": {
+    "@chakra-ui/react": ">=2.0.0"
+  },
+  "scripts": {
+    "build": "JSX=1 tsup src/index.ts --dts",
+    "dev": "yarn build -- --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "JSX=1 tsup src/index.ts"
+  }
+}
