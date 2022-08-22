@@ -20,7 +20,7 @@
     "@types",
     "packages",
     "scripts",
-    "tooling",
+    "tools",
     "plopfile.ts",
     "react-shim.js"
   ],
