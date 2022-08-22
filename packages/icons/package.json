@@ -21,7 +21,7 @@
     "@chakra-ui/react": ">=2.0.0"
   },
   "scripts": {
-    "build": "JSX=1 tsup src/index.ts --dts",
+    "build": "tsup src/index.ts --dts",
     "dev": "yarn build -- --watch",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",

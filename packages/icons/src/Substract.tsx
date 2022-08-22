@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M25,17H7c-.553,0-1-.447-1-1s.447-1,1-1H25c.553,0,1,.447,1,1s-.447,1-1,1Z"/></svg>
