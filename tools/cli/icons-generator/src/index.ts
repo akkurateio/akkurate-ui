@@ -90,6 +90,7 @@ const generateListInfoIcons = (newListIcons: string[]) => {
  */
 const templateCreateIcon = (svg: string, name: string) => {
   return `
+import React from 'react';
 import { createIcon } from "@chakra-ui/icon"
 
 export const Ais${name} = createIcon({
