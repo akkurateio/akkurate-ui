@@ -37,5 +37,6 @@
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
     "build:fast": "JSX=1 tsup src/index.ts"
-  }
+  },
+  "gitHead": "5a8f54eeb138109c97fdbb98af19215a5457e6c1"
 }
