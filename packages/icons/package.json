@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/icons",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Library for Akkurate UI icons",
   "keywords": [
     "icons"
@@ -38,5 +38,5 @@
     "typecheck": "tsc --noEmit",
     "build:fast": "JSX=1 tsup src/index.ts"
   },
-  "gitHead": "9b5e1d9f8216d2852f3c7d6ece39dd23967c2b00"
+  "gitHead": "da5822dca8733a342979b1388c3bb7bd9b403e4b"
 }
