@@ -87,6 +87,7 @@ typings/
 # dotenv environment variables file
 .env
 .env.*
+.npmrc
 
 # Mac files
 .DS_Store

@@ -2,6 +2,9 @@
   "name": "@akkurate-ui/icons",
   "version": "0.1.0",
   "description": "Library for Akkurate UI icons",
+  "keywords": [
+    "icons"
+  ],
   "author": "Subvitamine",
   "license": "proprietary",
   "main": "dist/index.cjs.js",
