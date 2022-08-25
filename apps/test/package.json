@@ -16,7 +16,8 @@
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4",
     "@akkurateio/icons": "workspace:*",
-    "@akkurateio/forms": "workspace:*"
+    "@akkurateio/forms": "workspace:*",
+    "@akkurateio/components": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18",
