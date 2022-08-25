@@ -1,7 +1,7 @@
-import React from "react"
-import { Box, Container, Text } from "@chakra-ui/react"
+import { InputText } from "@akkurateio/forms"
 import { AisAdd } from "@akkurateio/icons"
-import { Paginate } from "@akkurateio/components"
+import { Box, Container, Text } from "@chakra-ui/react"
+// import { Paginate } from "@akkurateio/components"
 
 function App() {
   return (
@@ -11,12 +11,13 @@ function App() {
           Test components
         </Text>
         <AisAdd w={64} h={64} />
-        <Paginate
+        {/* <Paginate
           current={4}
           totalItems={100}
           max={200}
           handleChangePage={() => console.log("okk")}
-        />
+        /> */}
+        <InputText />
       </Box>
     </Container>
   )
