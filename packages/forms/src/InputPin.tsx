@@ -49,9 +49,13 @@ export const InputPin: FunctionComponent<InputProps> = (props) => {
   return (
     <FormControlLayout {...props}>
       <HStack>
-        <PinInput {...props} onChange={(e) => props.onPinChange(e)}>
-          {pinArray.map((pin) => (
-            <PinInputField key={pin} bg={props.bg ? props.bg : "white"} />
+        <PinInput
+          {...props}
+          onChange={(e) => props.onPinChange(e)}
+          manageFocus={true}
+        >
+          {pinArray.map((pin, idx) => (
+            <PinInputField key={idx} bg={props.bg ? props.bg : "white"} />
           ))}
         </PinInput>
       </HStack>

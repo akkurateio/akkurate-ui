@@ -6,7 +6,14 @@ import {
   InputText,
   InputTextArea,
 } from "@akkurateio/forms"
-import { Container, Flex, Heading, useTheme, VStack } from "@chakra-ui/react"
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  useTheme,
+  VStack,
+} from "@chakra-ui/react"
 import { useState } from "react"
 import ToggleColorMode from "./components/ToggleColorMode"
 // import { Paginate } from "@akkurateio/components"
@@ -14,15 +21,11 @@ import ToggleColorMode from "./components/ToggleColorMode"
 function App() {
   const theme = useTheme()
 
-  const [text, setText] = useState(
-    "trucbiduletrucbiduletrucbiduletrucbiduletrucbiduletrucbidule",
-  )
+  const [text, setText] = useState("Salut à tous")
   const [password, setPassword] = useState("trucbidule")
   const [color, setColor] = useState(theme.colors.primary[500])
 
-  const [textarea, setTextarea] = useState(
-    "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-  )
+  const [textarea, setTextarea] = useState("Lorem ipsum dolor")
 
   const [pin, setPin] = useState("1234567")
 
@@ -51,7 +54,7 @@ function App() {
           defaultValue={text}
           onTextChange={setText}
           hint={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui soluta sint voluptatibus similique alias doloremque impedit recusandae, repudiandae maiores ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"
           }
           error={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
           isInvalid={text.length < 18}
@@ -65,13 +68,14 @@ function App() {
           onPasswordChange={setPassword}
           isInvalid={password.length < 8}
         />
+
         <InputColor
           label={"Couleur"}
           hint={"Ici tu dois rentrer ta couleur préférée."}
           error={"Ah bah non c'est trop court."}
           value={color}
           onColorChange={setColor}
-          isInvalid={color.length <3}
+          isInvalid={color.length < 3}
         />
 
         <InputTextArea
@@ -79,7 +83,7 @@ function App() {
           value={textarea}
           onTextChange={setTextarea}
           hint={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui soluta sint voluptatibus similique alias doloremque impedit recusandae, repudiandae maiores ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"
+            "Lorem ipsum dolor sit amet consectetur adipisicing elitae maiores ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"
           }
           error={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
           autoResize={true}
@@ -87,7 +91,6 @@ function App() {
 
         <InputPin
           label={"Pin"}
-          type={"alphanumeric"}
           hint={"Ici tu dois rentrer ton mot de passe."}
           error={"Ah bah non c'est trop court."}
           value={pin}
@@ -95,13 +98,21 @@ function App() {
           pinNumber={7}
         />
 
-        <InputNumber
-          label={"Input Number"}
-          hint={"Ici tu dois rentrer ton mot de passe."}
-          error={"Ah bah non c'est trop court."}
-          value={number}
-          onNumberChange={setNumber}
-        />
+        <Box width={"200px"}>
+          <InputNumber
+            label={"Input Number"}
+            hint={"Ici tu dois rentrer ton mot de passe."}
+            error={"Ah bah non c'est trop court."}
+            value={number}
+            onNumberChange={setNumber}
+            isInvalid={number < 8}
+            min={-100}
+            max={100}
+            step={21}
+            // precision={2}
+            // allowMouseWheel={true}
+          />
+        </Box>
       </VStack>
     </Container>
   )

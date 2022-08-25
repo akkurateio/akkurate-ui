@@ -11,7 +11,7 @@ import {
   useNumberInput,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
+import { FunctionComponent, useEffect } from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
@@ -24,12 +24,14 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  precision?: number
+  allowMouseWheel?: boolean
 }
 
-interface InputProps
+export interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    ThemingProps<"NumberInput">,
     FormControlOptions {}
 
 export const InputNumber: FunctionComponent<InputProps> = (props) => {
@@ -48,44 +50,79 @@ export const InputNumber: FunctionComponent<InputProps> = (props) => {
     return rest
   }
 
-  const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
-    useNumberInput({
-      step: 0.01,
-      defaultValue: 1.53,
-      precision: 2,
-      allowMouseWheel: true,
-      isValidCharacter: (char) =>
-        char === "." ||
-        char === "," ||
-        char === "-" ||
-        char === "+" ||
-        char === "0" ||
-        char === "1" ||
-        char === "2" ||
-        char === "3" ||
-        char === "4" ||
-        char === "5" ||
-        char === "6" ||
-        char === "7" ||
-        char === "8" ||
-        char === "9",
-    })
+  const {
+    getInputProps,
+    getIncrementButtonProps,
+    getDecrementButtonProps,
+    valueAsNumber,
+  } = useNumberInput({
+    step: props.step ? Number(props.step) : 1,
+    defaultValue: props.value ? Number(props.value) : 0,
+    precision: props.precision ? props.precision : 0,
+    allowMouseWheel: props.allowMouseWheel ? props.allowMouseWheel : false,
+    min: props.min ? Number(props.min) : undefined,
+    max: props.max ? Number(props.max) : undefined,
+    isValidCharacter: (char) =>
+      char === "." ||
+      char === "," ||
+      char === "-" ||
+      char === "+" ||
+      char === "0" ||
+      char === "1" ||
+      char === "2" ||
+      char === "3" ||
+      char === "4" ||
+      char === "5" ||
+      char === "6" ||
+      char === "7" ||
+      char === "8" ||
+      char === "9",
+  })
 
   const inc = getIncrementButtonProps()
   const dec = getDecrementButtonProps()
   const input = getInputProps()
 
+  useEffect(() => {
+    if (valueAsNumber) {
+      props.onNumberChange(valueAsNumber)
+    }
+  }, [valueAsNumber])
+
   return (
     <FormControlLayout {...props}>
       <HStack>
-        <InputGroup>
-          <InputLeftElement>
+        <InputGroup size={props.size}>
+          <InputLeftElement
+            color={props.isInvalid ? "error.600" : "primary.500"}
+            borderRight={"1px solid"}
+            borderColor={props.isInvalid ? "error.600" : "gray.200"}
+          >
             <Button {...dec} variant={"unstyled"}>
               <AisSubstract />
             </Button>
           </InputLeftElement>
-          <Input {...input} />
-          <InputRightElement>
+          <Input
+            {...input}
+            variant={props.variant}
+            focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
+            _invalid={{
+              borderColor: "error.600",
+              bg: "error.100",
+              color: "error.600",
+            }}
+            textAlign={"center"}
+            px={props.px ? props.px : 3}
+            bg={props.bg ? props.bg : "white"}
+          />
+          <InputRightElement
+            color={props.isInvalid ? "error.600" : "primary.500"}
+            borderLeft={"1px solid"}
+            borderColor={props.isInvalid ? "error.600" : "gray.200"}
+            _focus={{
+              borderColor: "primary.700",
+            }}
+          >
             <Button {...inc} variant={"unstyled"}>
               <AisAdd />
             </Button>
