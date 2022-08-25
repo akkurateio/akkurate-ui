@@ -1,23 +1,27 @@
+import { AisEye, AisEyeClosed } from "@akkurateio/icons"
 import {
   FormControlOptions,
   HTMLChakraProps,
   Input,
   InputGroup,
+  InputRightElement,
+  ThemingProps,
 } from "@chakra-ui/react"
-import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
+import { FunctionComponent, useState } from "react"
 import FormControlLayout from "./molecules/FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 
 interface InputOptions {
-  onTextChange: (e: string) => void
+  onPasswordChange: (e: string) => void
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
   label?: string
   error?: string
   hint?: string
+  iconOpen?: JSX.Element
+  iconClose?: JSX.Element
 }
 
 interface InputProps
@@ -26,7 +30,9 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputText: FunctionComponent<InputProps> = (props) => {
+export const InputPassword: FunctionComponent<InputProps> = (props) => {
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+
   const propsForInput = () => {
     const {
       label,
@@ -46,7 +52,7 @@ export const InputText: FunctionComponent<InputProps> = (props) => {
     <FormControlLayout {...props}>
       <InputGroup size={props.size}>
         <Input
-          type={"text"}
+          type={showPassword ? "text" : "password"}
           {...propsForInput()}
           variant={props.variant}
           focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
@@ -57,8 +63,26 @@ export const InputText: FunctionComponent<InputProps> = (props) => {
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => props.onTextChange(e.target.value)}
+          onChange={(e) => props.onPasswordChange(e.target.value)}
         />
+
+        <InputRightElement
+          cursor={"pointer"}
+          onClick={() => setShowPassword(!showPassword)}
+          color={props.isInvalid ? "error.400" : "primary.400"}
+        >
+          {showPassword ? (
+            props.iconOpen ? (
+              props.iconOpen
+            ) : (
+              <AisEye w={8} h={8} />
+            )
+          ) : props.iconClose ? (
+            props.iconClose
+          ) : (
+            <AisEyeClosed w={8} h={8} />
+          )}
+        </InputRightElement>
       </InputGroup>
     </FormControlLayout>
   )

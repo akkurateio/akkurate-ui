@@ -1,11 +1,11 @@
 import {
   FormControlOptions,
   HTMLChakraProps,
-  Input,
   InputGroup,
+  Textarea,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
+import { FunctionComponent, useEffect, useRef } from "react"
 import FormControlLayout from "./molecules/FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
@@ -14,6 +14,7 @@ interface InputOptions {
   onTextChange: (e: string) => void
   focusBorderColor?: string
   errorBorderColor?: string
+  autoResize?: boolean
   htmlSize?: number
   label?: string
   error?: string
@@ -21,12 +22,12 @@ interface InputOptions {
 }
 
 interface InputProps
-  extends Omit<HTMLChakraProps<"input">, Omitted>,
+  extends Omit<HTMLChakraProps<"textarea">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    ThemingProps<"Textarea">,
     FormControlOptions {}
 
-export const InputText: FunctionComponent<InputProps> = (props) => {
+export const InputTextArea: FunctionComponent<InputProps> = (props) => {
   const propsForInput = () => {
     const {
       label,
@@ -37,15 +38,30 @@ export const InputText: FunctionComponent<InputProps> = (props) => {
       isInvalid,
       isReadOnly,
       size,
+      autoResize,
       ...rest
     } = props
     return rest
   }
 
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+
+  useEffect(() => {
+    if (props.autoResize) {
+      if (textareaRef && textareaRef.current) {
+        textareaRef.current.style.height = "0px"
+        const scrollHeight = textareaRef.current.scrollHeight
+        textareaRef.current.style.height = scrollHeight + 10 + "px"
+      }
+    }
+  }, [props.value])
+
   return (
     <FormControlLayout {...props}>
       <InputGroup size={props.size}>
-        <Input
+        <Textarea
+          ref={textareaRef}
+          onChange={(e) => props.onTextChange(e.target.value)}
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
@@ -57,7 +73,11 @@ export const InputText: FunctionComponent<InputProps> = (props) => {
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => props.onTextChange(e.target.value)}
+          rows={props.autoResize ? (props.rows ? props.rows : 2) : 1}
+          minH={props.autoResize ? (props.minH ? props.minH : 24) : "auto"}
+          resize={
+            props.autoResize ? (props.resize ? props.resize : "none") : "none"
+          }
         />
       </InputGroup>
     </FormControlLayout>

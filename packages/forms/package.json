@@ -33,7 +33,9 @@
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
-    "framer-motion": ">=7.0.0"
+    "framer-motion": ">=7.0.0",
+    "react-colorful": ">=5.0.0",
+    "@akkurateio/icons": "^0.0.10"
   },
   "scripts": {
     "build": "tsup src/index.ts --dts",
