@@ -24,6 +24,7 @@
     "eslint-config-custom": "*",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-react": "1.1.7",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.6.0",
     "eslint-plugin-prettier": "4.2.1",
@@ -50,5 +51,9 @@
     "@emotion/styled": "^11.10.0",
     "framer-motion": "^7.2.0"
   },
-  "packageManager": "yarn@1.22.18"
+  "packageManager": "yarn@1.22.18",
+  "main": "index.js",
+  "repository": "git@github.com:akkurateio/akkurate-ui.git",
+  "author": "Benjamin <benjamin.francois13@gmail.com>",
+  "license": "MIT"
 }

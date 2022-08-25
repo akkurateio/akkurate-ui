@@ -1,7 +1,6 @@
 {
-  "name": "test",
+  "name": "@akkurateio/test",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -15,9 +14,9 @@
     "react-scripts": "5.0.1",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4",
-    "@akkurateio/icons": "workspace:*",
-    "@akkurateio/forms": "workspace:*",
-    "@akkurateio/components": "workspace:*"
+    "@akkurateio/icons": "^0.0.10",
+    "@akkurateio/forms": "^0.0.1",
+    "@akkurateio/components": "^0.0.1"
   },
   "peerDependencies": {
     "react": ">=18",
