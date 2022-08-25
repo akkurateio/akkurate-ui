@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { FunctionComponent } from "react"
-import FormControlLayout from "./molecules/FormControlLayout"
+import FormControlLayout from "./FormControlLayout"
 
 interface InputOptions {
   onPinChange: (e: string) => void

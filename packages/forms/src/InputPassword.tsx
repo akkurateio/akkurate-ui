@@ -8,7 +8,7 @@ import {
   ThemingProps,
 } from "@chakra-ui/react"
 import { FunctionComponent, useState } from "react"
-import FormControlLayout from "./molecules/FormControlLayout"
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 

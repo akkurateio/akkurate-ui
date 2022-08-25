@@ -17,7 +17,7 @@ import {
 import { FunctionComponent } from "react"
 import { HexColorPicker } from "react-colorful"
 
-import FormControlLayout from "./molecules/FormControlLayout"
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 

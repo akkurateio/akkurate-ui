@@ -1,6 +1,6 @@
 import { FormControl, FormErrorMessage, FormHelperText } from '@chakra-ui/react'
 import { FunctionComponent } from 'react'
-import Label from '../atoms/Label'
+import Label from './Label'
 
 interface IProps {
 	label?: string
