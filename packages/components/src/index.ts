@@ -1,1 +1,2 @@
-export * from "./paginate/Paginate"
+export * from "./advanced"
+export * from "./base"

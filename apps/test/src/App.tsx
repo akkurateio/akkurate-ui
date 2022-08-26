@@ -1,3 +1,4 @@
+import { AcsDrawer, AcsModal } from "@akkurateio/components"
 import {
   InputColor,
   InputNumber,
@@ -8,9 +9,11 @@ import {
 } from "@akkurateio/forms"
 import {
   Box,
+  Button,
   Container,
   Flex,
   Heading,
+  Text,
   useTheme,
   VStack,
 } from "@chakra-ui/react"
@@ -30,6 +33,10 @@ function App() {
   const [pin, setPin] = useState("1234567")
 
   const [number, setNumber] = useState<string | number>(0)
+
+  const [modal, setModal] = useState(false)
+
+  const [drawer, setDrawer] = useState(false)
 
   return (
     <Container maxW={"container.xl"}>
@@ -108,9 +115,89 @@ function App() {
             isInvalid={number < 8}
             min={-100}
             max={100}
-            step={21}
+            step={2}
             // precision={2}
             // allowMouseWheel={true}
+          />
+
+          <Button onClick={() => setModal(true)}>open modal</Button>
+
+          <AcsModal
+            title={"Modal"}
+            isOpen={modal}
+            onClose={() => setModal(false)}
+            hasCloseBtn={true}
+            bg={"primary.500"}
+            children={<></>}
+            body={
+              <Box>
+                <Text>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Quisquam, perspiciatis consequatur vero itaque ducimus aliquam
+                  hic illum voluptates quas a et dignissimos quia repellat iste
+                  sequi non ipsum minima sint! Perferendis delectus nesciunt
+                  ratione sit quasi sunt consequatur error itaque, possimus
+                  architecto illo cum maiores minima quia dolor. Eaque ut ea
+                  saepe voluptates odio rem ipsam, veritatis non animi.
+                  Repellat? Voluptatem, minus aliquid sed vel neque natus omnis
+                  placeat, quo possimus repellendus voluptate aut blanditiis
+                  debitis odio enim, nulla deserunt. Beatae repellat alias
+                  quidem laborum odit dolore corporis tenetur autem.
+                  Reprehenderit consequatur nihil mollitia, vitae tenetur nulla
+                  architecto esse itaque eum? Eaque fuga similique commodi
+                  blanditiis eius animi molestiae facere quasi quibusdam saepe
+                  possimus, consequatur beatae, nam tenetur tempore ipsa! Sunt
+                  praesentium explicabo repellat, possimus tempore ut similique,
+                  quaerat necessitatibus culpa sapiente quas cupiditate optio.
+                  Asperiores, ea omnis! Cum, eaque. Ratione fugit doloribus
+                  dignissimos quisquam nihil et similique at totam! Maiores
+                  nobis quidem deserunt ipsam culpa delectus consectetur
+                  recusandae illo harum eum similique accusamus veritatis
+                  quisquam eligendi quis iste eaque dolorum est, dolores
+                  laudantium sapiente? Laudantium quae excepturi quasi sequi!
+                </Text>
+              </Box>
+            }
+            footer={
+              <Flex justifyContent={"space-between"} width={"full"}>
+                <Button onClick={() => setModal(false)}>Close</Button>
+                <Button onClick={() => console.log(false)}>Truc</Button>
+              </Flex>
+            }
+            size={"lg"}
+          />
+
+          <Button onClick={() => setDrawer(true)}>open drawer</Button>
+
+          <AcsDrawer
+            title={"Drawer"}
+            isOpen={drawer}
+            onClose={() => setDrawer(false)}
+            body={
+              <Text>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                incidunt maxime aspernatur tenetur distinctio nobis in
+                recusandae? Repellat nihil placeat possimus provident ex sint
+                fugiat, nam esse, perferendis tempora ipsam! Possimus, sint ea
+                assumenda similique esse perferendis libero sed, molestiae nobis
+                molestias veritatis beatae maxime! Autem sed impedit tempora
+                harum, quasi aspernatur hic deserunt earum sapiente, placeat a
+                error quibusdam? Accusantium, ut, quasi maxime expedita
+                quisquam, nesciunt odio maiores iste vero nulla quos at neque
+                sunt magni saepe ex hic consequuntur sapiente soluta dolorum
+                numquam a dicta iure. Repellendus, dolor! Asperiores voluptatum
+                nam laborum neque minima, eligendi molestias nulla blanditiis,
+                aspernatur explicabo hic corporis modi. Repudiandae, at tempora
+                optio aliquam quae harum voluptatum tenetur eius numquam
+                necessitatibus saepe, molestiae id.
+              </Text>
+            }
+            footer={
+              <Flex justifyContent={"space-between"} width={"full"}>
+                <Button onClick={() => setDrawer(false)}>Close</Button>
+                <Button onClick={() => console.log(false)}>Truc</Button>
+              </Flex>
+            }
           />
         </Box>
       </VStack>
