@@ -1,5 +1,10 @@
 // @ts-ignore
-import { AcsDrawer, AcsModal, AcsModalAlert } from "@akkurateio/components"
+import {
+  AcsDrawer,
+  AcsModal,
+  AcsModalAlert,
+  AcsPopover,
+} from "@akkurateio/components"
 import {
   InputColor,
   InputNumber,
@@ -39,6 +44,8 @@ function App() {
 
   const [drawer, setDrawer] = useState(false)
 
+  const [alert, setAlert] = useState(false)
+
   return (
     <Container maxW={"container.xl"}>
       <Head>
@@ -52,7 +59,7 @@ function App() {
         <ToggleColorMode />
       </Flex>
 
-      <VStack mt={10} spacing={10} p={4}>
+      <VStack mt={10} spacing={10} p={4} mb={400}>
         <InputText
           isRequired
           label={"Input Text"}
@@ -192,12 +199,39 @@ function App() {
             footer={
               <Flex justifyContent={"space-between"} width={"full"}>
                 <Button onClick={() => setDrawer(false)}>Close</Button>
-                <Button onClick={() => console.log(false)}>Truc</Button>
+                <Button onClick={() => console.log("coucou from drawer")}>
+                  Truc
+                </Button>
               </Flex>
             }
           />
 
-          <AcsModalAlert />
+          <Button onClick={() => setAlert(!alert)}>Open Alert Dialog</Button>
+
+          <AcsModalAlert
+            isOpen={alert}
+            onClose={() => setAlert(false)}
+            action={() => console.log("coucou from alert")}
+            body={
+              <Text>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Accusamus nulla nobis deserunt inventore placeat asperiores
+                nihil error dolores distinctio laudantium ipsum, assumenda iure
+                numquam. Totam dolorum id ullam eaque reiciendis.
+              </Text>
+            }
+            bg={"red.100"}
+            size={"4xl"}
+          />
+
+          <AcsPopover
+            body={<Text>Coucou</Text>}
+            triggerBtnClosed={<Button>Ouvre</Button>}
+            triggerBtnOpened={<Button>Ferme</Button>}
+            hasArrow={true}
+            placement={"bottom-start"}
+            action={() => console.log("coucou from popover")}
+          />
         </Box>
       </VStack>
     </Container>

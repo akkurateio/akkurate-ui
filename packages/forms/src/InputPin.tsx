@@ -46,8 +46,6 @@ export const InputPin: FunctionComponent<InputProps> = (props) => {
 
   const pinArray = Array.from({ length: props.pinNumber }, (v, k) => k)
 
-  console.log(props.value)
-
   return (
     <FormControlLayout {...props}>
       <HStack>

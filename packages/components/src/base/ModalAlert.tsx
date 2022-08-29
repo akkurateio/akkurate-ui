@@ -1,4 +1,5 @@
 import {
+  AlertDescriptionProps,
   AlertDialog,
   AlertDialogBody,
   AlertDialogContent,
@@ -6,40 +7,88 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  useDisclosure,
+  ThemingProps,
 } from "@chakra-ui/react"
 import { FunctionComponent, useRef } from "react"
 
-interface IProps {}
+interface ModalAlertOptions {
+  body: JSX.Element
+  isOpen: boolean
+  onClose: () => void
+  action?: () => void
+  title?: string
+  hasCloseBtn?: boolean
+  confirmText?: string
+  cancelText?: string
+  footer?: JSX.Element
+  isCentered?: boolean
+}
 
-export const AcsModalAlert: FunctionComponent<IProps> = ({}) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+interface AcsModalAlertProps
+  extends ModalAlertOptions,
+    ThemingProps<"AlertDialogContent">,
+    AlertDescriptionProps {}
+
+export const AcsModalAlert: FunctionComponent<AcsModalAlertProps> = ({
+  isOpen,
+  onClose,
+  title,
+  body,
+  action,
+  confirmText,
+  cancelText,
+  footer,
+  isCentered,
+  size,
+  ...props
+}) => {
   const cancelRef = useRef<any | null>(null)
 
   return (
     <AlertDialog
+      onClose={onClose}
       isOpen={isOpen}
       leastDestructiveRef={cancelRef}
-      onClose={onClose}
+      isCentered={isCentered}
+      closeOnOverlayClick={false}
+      size={size}
     >
       <AlertDialogOverlay>
-        <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
-            Delete Customer
-          </AlertDialogHeader>
+        <AlertDialogContent {...props}>
+          {title && (
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              {title}
+            </AlertDialogHeader>
+          )}
 
-          <AlertDialogBody>
-            Are you sure? You cant undo this action afterwards.
-          </AlertDialogBody>
+          <AlertDialogBody>{body}</AlertDialogBody>
 
-          <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="red" onClick={onClose} ml={3}>
-              Delete
-            </Button>
-          </AlertDialogFooter>
+          {footer ? (
+            <AlertDialogFooter>{footer}</AlertDialogFooter>
+          ) : (
+            <AlertDialogFooter
+              display={"flex"}
+              justifyContent={"space-between"}
+              alignItems={"center"}
+            >
+              <Button
+                colorScheme={"primary"}
+                variant={"outline"}
+                ref={cancelRef}
+                onClick={onClose}
+              >
+                {cancelText ? cancelText : "Annuler"}
+              </Button>
+              <Button
+                colorScheme={"primary"}
+                variant={"solid"}
+                onClick={action}
+                ml={3}
+              >
+                {confirmText ? confirmText : "Confirmer"}
+              </Button>
+            </AlertDialogFooter>
+          )}
         </AlertDialogContent>
       </AlertDialogOverlay>
     </AlertDialog>
