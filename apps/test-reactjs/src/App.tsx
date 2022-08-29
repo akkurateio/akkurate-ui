@@ -1,4 +1,5 @@
-import { AcsDrawer, AcsModal } from "@akkurateio/components"
+// @ts-ignore
+import { AcsDrawer, AcsModal, AcsModalAlert } from "@akkurateio/components"
 import {
   InputColor,
   InputNumber,
@@ -47,12 +48,6 @@ function App() {
 
         <ToggleColorMode />
       </Flex>
-      {/* <Paginate
-          current={4}
-          totalItems={100}
-          max={200}
-          handleChangePage={() => console.log("okk")}
-        /> */}
 
       <VStack mt={10} spacing={10} p={4}>
         <InputText
@@ -199,6 +194,8 @@ function App() {
               </Flex>
             }
           />
+
+          <AcsModalAlert />
         </Box>
       </VStack>
     </Container>
