@@ -11,7 +11,7 @@ import FormControlLayout from "./FormControlLayout"
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 
 interface InputOptions {
-  onTextChange: (e: string) => void
+  handleChange: (e: string) => void
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -26,7 +26,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputText: FunctionComponent<InputProps> = (props) => {
+export const InputText: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const propsForInput = () => {
     const {
       label,
@@ -57,7 +57,7 @@ export const InputText: FunctionComponent<InputProps> = (props) => {
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => props.onTextChange(e.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
         />
       </InputGroup>
     </FormControlLayout>

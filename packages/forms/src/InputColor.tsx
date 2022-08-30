@@ -48,7 +48,7 @@ const StyledBox = styled.div`
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 
 interface InputOptions {
-  onColorChange: (e: string) => void
+  handleChange: (e: string) => void
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -65,7 +65,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputColor: FunctionComponent<InputProps> = (props) => {
+export const InputColor: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const propsForInput = () => {
     const {
       label,
@@ -108,7 +108,7 @@ export const InputColor: FunctionComponent<InputProps> = (props) => {
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => props.onColorChange(e.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
         />
 
         <InputRightElement>
@@ -135,7 +135,7 @@ export const InputColor: FunctionComponent<InputProps> = (props) => {
                     <StyledBox>
                       <HexColorPicker
                         color={props.value as string}
-                        onChange={props.onColorChange}
+                        onChange={handleChange}
                       />
                     </StyledBox>
                   </PopoverBody>

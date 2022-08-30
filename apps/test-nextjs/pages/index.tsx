@@ -69,7 +69,7 @@ function App() {
           isRequired
           label={"Input Text"}
           defaultValue={text}
-          onTextChange={setText}
+          handleChange={setText}
           hint={
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"
           }
@@ -91,14 +91,14 @@ function App() {
           hint={"Ici tu dois rentrer ta couleur préférée."}
           error={"Ah bah non c'est trop court."}
           value={color}
-          onColorChange={setColor}
+          handleChange={setColor}
           isInvalid={color.length < 3}
         />
 
         <InputTextArea
           label={"Input Text Area"}
           value={textarea}
-          onTextChange={setTextarea}
+          handleChange={setTextarea}
           hint={
             "Lorem ipsum dolor sit amet consectetur adipisicing elitae maiores ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"
           }
@@ -111,7 +111,7 @@ function App() {
           hint={"Ici tu dois rentrer ton mot de passe."}
           error={"Ah bah non c'est trop court."}
           value={pin}
-          onPinChange={setPin}
+          handleChange={setPin}
           pinNumber={7}
         />
 
@@ -121,7 +121,7 @@ function App() {
             hint={"Ici tu dois rentrer ton mot de passe."}
             error={"Ah bah non c'est trop court."}
             value={number}
-            onNumberChange={setNumber}
+            handleChange={setNumber}
             isInvalid={number < 8}
             min={-100}
             max={100}
@@ -242,7 +242,7 @@ function App() {
             "you can type something in and you will be proposed a set of words to choose from."
           }
           value={search}
-          onTextChange={setSearch}
+          handleChange={setSearch}
           wordsArray={words}
         />
 
@@ -254,8 +254,45 @@ function App() {
             <Text key={2}>Hello 3</Text>,
           ]}
         />
-
-        <AcsCarousel />
+        <Box width={"400px"}>
+          <AcsCarousel
+            cardsArray={[
+              <Flex
+                key={0}
+                bg={"gray.100"}
+                shadow={"inner"}
+                h={"200px"}
+                w={"120px"}
+                rounded={"sm"}
+                p={2}
+              >
+                <Text>Hello 1</Text>
+              </Flex>,
+              <Flex
+                key={1}
+                bg={"gray.100"}
+                shadow={"inner"}
+                h={"200px"}
+                w={"120px"}
+                rounded={"sm"}
+                p={2}
+              >
+                <Text>Hello 2</Text>
+              </Flex>,
+              <Flex
+                key={2}
+                bg={"gray.100"}
+                shadow={"inner"}
+                h={"200px"}
+                w={"120px"}
+                rounded={"sm"}
+                p={2}
+              >
+                <Text>Hello 3</Text>
+              </Flex>,
+            ]}
+          />
+        </Box>
       </VStack>
     </Container>
   )

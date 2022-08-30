@@ -1,16 +1,20 @@
 import { AisChevronLeft, AisChevronRight } from "@akkurateio/icons"
-import { Box, Button, Flex, HStack, Text } from "@chakra-ui/react"
+import { Box, Button, Flex, HStack } from "@chakra-ui/react"
 import { FunctionComponent, useState } from "react"
 
-interface IProps {}
+interface IProps {
+  cardsArray: JSX.Element[]
+  withIndicator?: boolean
+}
 
-const numberPerPage = 2
-
-export const AcsCarousel: FunctionComponent<IProps> = ({}) => {
+export const AcsCarousel: FunctionComponent<IProps> = ({
+  cardsArray,
+  withIndicator = true,
+}) => {
   const [index, setIndex] = useState(0)
 
   const handleNext = () => {
-    if (index < 3) {
+    if (index < cardsArray.length - 1) {
       setIndex(index + 1)
     } else {
       setIndex(0)
@@ -21,104 +25,59 @@ export const AcsCarousel: FunctionComponent<IProps> = ({}) => {
     if (index > 0) {
       setIndex(index - 1)
     } else {
-      setIndex(3)
+      setIndex(cardsArray.length - 1)
     }
   }
-
-  // make a carousel using chakra ui and framer motion
   return (
-    <Box>
+    <Box width={"full"}>
       <Flex width={"full"} alignItems={"center"}>
-        <Button onClick={handlePrevious}>
+        <Button onClick={handlePrevious} variant={"ghost"}>
           <AisChevronLeft />
         </Button>
         <Box width={"100%"} overflow={"hidden"}>
           <Flex
-            bg={"success.200"}
-            width={"400%"}
+            width={`${100 * cardsArray.length}%`}
             justifyContent={"flex-start"}
             alignItems={"center"}
             transition={"all 0.4s ease-in-out"}
-            transform={`translateX(-${index * (100 / 4)}%)`}
+            transform={`translateX(-${index * (100 / cardsArray.length)}%)`}
           >
-            <Flex
-              bg={"red.400"}
-              width={`50%`}
-              justifyContent={"space-between"}
-              p={2}
-            >
-              <Text>Carousel</Text>
-              <Text>Carousel</Text>
-            </Flex>
-
-            <Flex
-              bg={"blue.400"}
-              width={`50%`}
-              justifyContent={"space-between"}
-              p={2}
-            >
-              <Text>Carousel</Text>
-              <Text>Carousel</Text>
-            </Flex>
-            <Flex
-              bg={"purple.400"}
-              width={`50%`}
-              justifyContent={"space-between"}
-              p={2}
-            >
-              <Text>Carousel</Text>
-              <Text>Carousel</Text>
-            </Flex>
-
-            <Flex
-              bg={"yellow.400"}
-              width={`50%`}
-              justifyContent={"space-between"}
-              p={2}
-            >
-              <Text>Carousel</Text>
-              <Text>Carousel</Text>
-            </Flex>
+            {cardsArray.map((card, index) => (
+              <Flex
+                key={index}
+                width={`100%`}
+                justifyContent={"center"}
+                alignItems={"center"}
+                p={2}
+              >
+                {card}
+              </Flex>
+            ))}
           </Flex>
         </Box>
 
-        <Button onClick={handleNext}>
+        <Button onClick={handleNext} variant={"ghost"}>
           <AisChevronRight />
         </Button>
       </Flex>
-
-      <HStack
-        spacing={2}
-        width={"full"}
-        alignItems={"center"}
-        justifyContent={"center"}
-        py={1}
-      >
-        <Box
-          rounded={"full"}
-          bg={index === 0 ? "primary.500" : "secondary.500"}
-          width={2}
-          height={2}
-        />
-        <Box
-          rounded={"full"}
-          bg={index === 1 ? "primary.500" : "secondary.500"}
-          width={2}
-          height={2}
-        />
-        <Box
-          rounded={"full"}
-          bg={index === 2 ? "primary.500" : "secondary.500"}
-          width={2}
-          height={2}
-        />
-        <Box
-          rounded={"full"}
-          bg={index === 3 ? "primary.500" : "secondary.500"}
-          width={2}
-          height={2}
-        />
-      </HStack>
+      {withIndicator && (
+        <HStack
+          spacing={2}
+          width={"full"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          py={2}
+        >
+          {cardsArray.map((card, idx) => (
+            <Box
+              rounded={"full"}
+              bg={idx === index ? "primary.500" : "secondary.500"}
+              width={2}
+              height={2}
+            />
+          ))}
+        </HStack>
+      )}
     </Box>
   )
 }

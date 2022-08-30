@@ -11,13 +11,13 @@ import {
   useNumberInput,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
+import { FunctionComponent, useEffect } from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "selectionStart"
 
 interface InputOptions {
-  onNumberChange: (e: string | number) => void
+  handleChange: (e: string | number) => void
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -34,7 +34,7 @@ export interface InputProps
     ThemingProps<"NumberInput">,
     FormControlOptions {}
 
-export const InputNumber: FunctionComponent<InputProps> = (props) => {
+export const InputNumber: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const propsForInput = () => {
     const {
       label,
@@ -84,6 +84,15 @@ export const InputNumber: FunctionComponent<InputProps> = (props) => {
   const inc = getIncrementButtonProps()
   const dec = getDecrementButtonProps()
   const input = getInputProps()
+
+  useEffect(() => {
+    if (!!valueAsNumber) {
+      handleChange(valueAsNumber)
+    }
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueAsNumber])
+  
 
   return (
     <FormControlLayout {...props}>

@@ -10,7 +10,7 @@ import { FunctionComponent } from "react"
 import FormControlLayout from "./FormControlLayout"
 
 interface InputOptions {
-  onPinChange: (e: string) => void
+  handleChange: (e: string) => void
   pinNumber: number
   focusBorderColor?: string
   errorBorderColor?: string
@@ -27,7 +27,7 @@ interface InputProps
     InputOptions,
     FormControlOptions {}
 
-export const InputPin: FunctionComponent<InputProps> = (props) => {
+export const InputPin: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const propsForInput = () => {
     const {
       label,
@@ -50,12 +50,12 @@ export const InputPin: FunctionComponent<InputProps> = (props) => {
     <FormControlLayout {...props}>
       <HStack>
         <PinInput
-          {...props}
-          onChange={(e) => props.onPinChange(e)}
+          {...propsForInput}
+          onChange={(e) => handleChange(e)}
           manageFocus={true}
         >
           {pinArray.map((pin, idx) => (
-            <PinInputField bg={props.bg ? props.bg : "white"} />
+            <PinInputField key={idx} bg={props.bg ? props.bg : "white"} />
           ))}
         </PinInput>
       </HStack>

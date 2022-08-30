@@ -7,13 +7,13 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent, useEffect, useState } from "react"
+import { FunctionComponent, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 
 interface InputOptions {
-  onTextChange: (e: string) => void
+  handleChange: (e: string) => void
   wordsArray: string[]
   focusBorderColor?: string
   errorBorderColor?: string
@@ -39,20 +39,21 @@ export const InputSearch: FunctionComponent<InputProps> = ({
   isReadOnly,
   size,
   wordsArray,
+  handleChange,
   ...props
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    if (props.value && String(props.value).length >= 3) {
-      setIsVisible(true)
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.value])
+  const [isVisible, setIsVisible] = useState(true)
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout
+      label={label}
+      hint={hint}
+      error={error}
+      isRequired={isRequired}
+      isDisabled={isDisabled}
+      isInvalid={isInvalid}
+      isReadOnly={isReadOnly}
+    >
       <InputGroup size={size}>
         <Input
           type={"text"}
@@ -65,7 +66,12 @@ export const InputSearch: FunctionComponent<InputProps> = ({
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => props.onTextChange(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length >= 3) {
+              setIsVisible(true)
+            }
+            handleChange(e.target.value)
+          }}
         />
       </InputGroup>
 
@@ -77,8 +83,9 @@ export const InputSearch: FunctionComponent<InputProps> = ({
             bg={"white"}
             spacing={1}
             alignItems={"flex-start"}
-            border={"1px solid"}
-            borderColor={"primary.500"}
+            borderTop={0}
+            borderBottomLeftRadius={4}
+            borderBottomRightRadius={4}
           >
             {
               // show the first 10 results of the search
@@ -97,7 +104,7 @@ export const InputSearch: FunctionComponent<InputProps> = ({
                     px={3}
                     cursor={"pointer"}
                     onClick={() => {
-                      props.onTextChange(word)
+                      handleChange(word)
                       setIsVisible(false)
                     }}
                   >

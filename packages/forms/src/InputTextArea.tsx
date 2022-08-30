@@ -11,7 +11,7 @@ import FormControlLayout from "./FormControlLayout"
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 
 interface InputOptions {
-  onTextChange: (e: string) => void
+  handleChange: (e: string) => void
   focusBorderColor?: string
   errorBorderColor?: string
   autoResize?: boolean
@@ -27,7 +27,7 @@ interface InputProps
     ThemingProps<"Textarea">,
     FormControlOptions {}
 
-export const InputTextArea: FunctionComponent<InputProps> = (props) => {
+export const InputTextArea: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const propsForInput = () => {
     const {
       label,
@@ -54,6 +54,7 @@ export const InputTextArea: FunctionComponent<InputProps> = (props) => {
         textareaRef.current.style.height = scrollHeight + 10 + "px"
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.value])
 
   return (
@@ -61,7 +62,7 @@ export const InputTextArea: FunctionComponent<InputProps> = (props) => {
       <InputGroup size={props.size}>
         <Textarea
           ref={textareaRef}
-          onChange={(e) => props.onTextChange(e.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
