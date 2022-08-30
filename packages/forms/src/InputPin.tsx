@@ -27,7 +27,10 @@ interface InputProps
     InputOptions,
     FormControlOptions {}
 
-export const InputPin: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const InputPin: FunctionComponent<InputProps> = ({
+  handleChange,
+  ...props
+}) => {
   const propsForInput = () => {
     const {
       label,

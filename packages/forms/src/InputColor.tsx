@@ -65,7 +65,10 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputColor: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const InputColor: FunctionComponent<InputProps> = ({
+  handleChange,
+  ...props
+}) => {
   const propsForInput = () => {
     const {
       label,
@@ -80,6 +83,8 @@ export const InputColor: FunctionComponent<InputProps> = ({handleChange, ...prop
     } = props
     return rest
   }
+
+  
 
   return (
     <FormControlLayout {...props}>
@@ -111,7 +116,7 @@ export const InputColor: FunctionComponent<InputProps> = ({handleChange, ...prop
           onChange={(e) => handleChange(e.target.value)}
         />
 
-        <InputRightElement>
+        <InputRightElement cursor={"pointer"}>
           <Popover placement={"bottom-end"}>
             {({ isOpen }) => (
               <>

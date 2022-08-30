@@ -70,6 +70,7 @@ export const AcsCarousel: FunctionComponent<IProps> = ({
         >
           {cardsArray.map((card, idx) => (
             <Box
+              key={idx}
               rounded={"full"}
               bg={idx === index ? "primary.500" : "secondary.500"}
               width={2}

@@ -26,9 +26,8 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import Head from "next/head"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ToggleColorMode from "../components/ToggleColorMode"
-import { words } from "../utils/helper"
 
 function App() {
   const theme = useTheme()
@@ -50,6 +49,23 @@ function App() {
   const [alert, setAlert] = useState(false)
 
   const [search, setSearch] = useState("")
+  const [searchResults, setSearchResults] = useState<string[]>([])
+
+  useEffect(() => {
+    if (search.length >= 3) {
+      fetch(
+        encodeURI(
+          `https://api-adresse.data.gouv.fr/search/?q=${search}&limit=10`,
+        ),
+      )
+        .then((res) => res.json())
+        .then((data) =>
+          setSearchResults(
+            data.features.map((feature: any) => feature.properties.label),
+          ),
+        )
+    }
+  }, [search])
 
   return (
     <Container maxW={"container.xl"}>
@@ -243,7 +259,7 @@ function App() {
           }
           value={search}
           handleChange={setSearch}
-          wordsArray={words}
+          wordsArray={searchResults}
         />
 
         <AcsTabs
