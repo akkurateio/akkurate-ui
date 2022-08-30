@@ -13,7 +13,7 @@ import FormControlLayout from "./FormControlLayout"
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 
 interface InputOptions {
-  onPasswordChange: (e: string) => void
+  handleChange: (e: string) => void
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -63,7 +63,7 @@ export const InputPassword: FunctionComponent<InputProps> = (props) => {
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => props.onPasswordChange(e.target.value)}
+          onChange={(e) => props.handleChange(e.target.value)}
         />
 
         <InputRightElement

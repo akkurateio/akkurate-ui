@@ -1,10 +1,10 @@
 import {
+  AcsCarousel,
   AcsDrawer,
   AcsModal,
   AcsModalAlert,
   AcsPopover,
   AcsTabs,
-  AcsCarousel
 } from "@akkurateio/components"
 import {
   InputColor,
@@ -82,7 +82,7 @@ function App() {
           hint={"Ici tu dois rentrer ton mot de passe."}
           error={"Ah bah non c'est trop court."}
           value={password}
-          onPasswordChange={setPassword}
+          handleChange={(pw: string) => setPassword(pw)}
           isInvalid={password.length < 8}
         />
 
@@ -125,7 +125,6 @@ function App() {
             isInvalid={number < 8}
             min={-100}
             max={100}
-            precision={2}
             allowMouseWheel={true}
           />
 
@@ -250,9 +249,9 @@ function App() {
         <AcsTabs
           tabNameArray={["Coucou", "Hola", "Hey"]}
           tabContentArray={[
-            <Text>Hello 1</Text>,
-            <Text>Hello 2</Text>,
-            <Text>Hello 3</Text>,
+            <Text key={0}>Hello 1</Text>,
+            <Text key={1}>Hello 2</Text>,
+            <Text key={2}>Hello 3</Text>,
           ]}
         />
 

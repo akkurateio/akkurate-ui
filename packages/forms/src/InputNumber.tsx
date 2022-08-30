@@ -11,10 +11,10 @@ import {
   useNumberInput,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent, useEffect } from "react"
+import { FunctionComponent } from "react"
 import FormControlLayout from "./FormControlLayout"
 
-type Omitted = "disabled" | "required" | "readOnly" | "size"
+type Omitted = "disabled" | "required" | "readOnly" | "size" | "selectionStart"
 
 interface InputOptions {
   onNumberChange: (e: string | number) => void
@@ -56,12 +56,14 @@ export const InputNumber: FunctionComponent<InputProps> = (props) => {
     getDecrementButtonProps,
     valueAsNumber,
   } = useNumberInput({
-    step: props.step ? Number(props.step) : 1,
-    defaultValue: props.value ? Number(props.value) : 0,
-    precision: props.precision ? props.precision : 0,
+    step: props.step ? Number(props.step) : undefined,
+    precision: props.precision ? props.precision : undefined,
     allowMouseWheel: props.allowMouseWheel ? props.allowMouseWheel : false,
     min: props.min ? Number(props.min) : undefined,
     max: props.max ? Number(props.max) : undefined,
+    format: (value) => {
+      return value.toString().replace(",", ".")
+    },
     isValidCharacter: (char) =>
       char === "." ||
       char === "," ||
@@ -83,12 +85,6 @@ export const InputNumber: FunctionComponent<InputProps> = (props) => {
   const dec = getDecrementButtonProps()
   const input = getInputProps()
 
-  useEffect(() => {
-    if (valueAsNumber) {
-      props.onNumberChange(valueAsNumber)
-    }
-  }, [valueAsNumber])
-
   return (
     <FormControlLayout {...props}>
       <HStack>
@@ -99,7 +95,7 @@ export const InputNumber: FunctionComponent<InputProps> = (props) => {
             borderColor={props.isInvalid ? "error.600" : "gray.200"}
           >
             <Button {...dec} variant={"unstyled"}>
-              <AisSubstract />
+              <AisSubstract boxSize={6} />
             </Button>
           </InputLeftElement>
           <Input
@@ -124,7 +120,7 @@ export const InputNumber: FunctionComponent<InputProps> = (props) => {
             }}
           >
             <Button {...inc} variant={"unstyled"}>
-              <AisAdd />
+              <AisAdd boxSize={6} />
             </Button>
           </InputRightElement>
         </InputGroup>

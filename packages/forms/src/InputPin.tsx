@@ -55,7 +55,7 @@ export const InputPin: FunctionComponent<InputProps> = (props) => {
           manageFocus={true}
         >
           {pinArray.map((pin, idx) => (
-            <PinInputField key={idx + 1} bg={props.bg ? props.bg : "white"} />
+            <PinInputField bg={props.bg ? props.bg : "white"} />
           ))}
         </PinInput>
       </HStack>
