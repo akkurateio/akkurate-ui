@@ -1,9 +1,10 @@
-// @ts-ignore
 import {
   AcsDrawer,
   AcsModal,
   AcsModalAlert,
   AcsPopover,
+  AcsTabs,
+  AcsCarousel
 } from "@akkurateio/components"
 import {
   InputColor,
@@ -245,6 +246,17 @@ function App() {
           onTextChange={setSearch}
           wordsArray={words}
         />
+
+        <AcsTabs
+          tabNameArray={["Coucou", "Hola", "Hey"]}
+          tabContentArray={[
+            <Text>Hello 1</Text>,
+            <Text>Hello 2</Text>,
+            <Text>Hello 3</Text>,
+          ]}
+        />
+
+        <AcsCarousel />
       </VStack>
     </Container>
   )

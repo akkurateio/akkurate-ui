@@ -51,8 +51,6 @@ export const InputSearch: FunctionComponent<InputProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.value])
 
-  console.log(isVisible)
-
   return (
     <FormControlLayout {...props}>
       <InputGroup size={size}>

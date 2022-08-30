@@ -13,10 +13,37 @@ import {
   PopoverTrigger,
   ThemingProps,
 } from "@chakra-ui/react"
+import styled from "@emotion/styled"
 import { FunctionComponent } from "react"
 import { HexColorPicker } from "react-colorful"
-import "../css/hexacolor.css"
 import FormControlLayout from "./FormControlLayout"
+
+const StyledBox = styled.div`
+  .react-colorful__saturation {
+    border-radius: 4px 4px 0 0;
+  }
+
+  .react-colorful {
+    width: 120px;
+    height: 120px;
+    border-radius: 0 0 4px 4px;
+  }
+  .react-colorful__hue {
+    height: 20px;
+    border-radius: 0 0 4px 4px;
+  }
+  .react-colorful__saturation-pointer {
+    width: 16px;
+    height: 16px;
+    border-radius: 99px;
+  }
+  .react-colorful__hue-pointer,
+  .react-colorful__alpha-pointer {
+    width: 12px;
+    height: 12px;
+    border-radius: 99px;
+  }
+`
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 
@@ -105,10 +132,12 @@ export const InputColor: FunctionComponent<InputProps> = (props) => {
                 </PopoverTrigger>
                 <PopoverContent width={"fit-content"}>
                   <PopoverBody p={0}>
-                    <HexColorPicker
-                      color={props.value as string}
-                      onChange={props.onColorChange}
-                    />
+                    <StyledBox>
+                      <HexColorPicker
+                        color={props.value as string}
+                        onChange={props.onColorChange}
+                      />
+                    </StyledBox>
                   </PopoverBody>
                 </PopoverContent>
               </>
