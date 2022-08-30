@@ -10,6 +10,7 @@ import {
   InputNumber,
   InputPassword,
   InputPin,
+  InputSearch,
   InputText,
   InputTextArea,
 } from "@akkurateio/forms"
@@ -26,6 +27,7 @@ import {
 import Head from "next/head"
 import { useState } from "react"
 import ToggleColorMode from "../components/ToggleColorMode"
+import { words } from "../utils/helper"
 
 function App() {
   const theme = useTheme()
@@ -45,6 +47,8 @@ function App() {
   const [drawer, setDrawer] = useState(false)
 
   const [alert, setAlert] = useState(false)
+
+  const [search, setSearch] = useState("")
 
   return (
     <Container maxW={"container.xl"}>
@@ -120,9 +124,8 @@ function App() {
             isInvalid={number < 8}
             min={-100}
             max={100}
-            step={2}
-            // precision={2}
-            // allowMouseWheel={true}
+            precision={2}
+            allowMouseWheel={true}
           />
 
           <Button onClick={() => setModal(true)}>open modal</Button>
@@ -233,6 +236,15 @@ function App() {
             action={() => console.log("coucou from popover")}
           />
         </Box>
+        <InputSearch
+          label={"Input Search"}
+          hint={
+            "you can type something in and you will be proposed a set of words to choose from."
+          }
+          value={search}
+          onTextChange={setSearch}
+          wordsArray={words}
+        />
       </VStack>
     </Container>
   )

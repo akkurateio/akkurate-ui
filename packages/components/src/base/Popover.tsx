@@ -75,7 +75,7 @@ export const AcsPopover: FunctionComponent<AcsPopoverProps> = ({
               {hasCloseBtn && <PopoverCloseButton />}
               <PopoverBody>{body}</PopoverBody>
               {footer ? (
-                footer
+                <PopoverFooter>{footer}</PopoverFooter>
               ) : (
                 <PopoverFooter
                   display={"flex"}
@@ -93,7 +93,6 @@ export const AcsPopover: FunctionComponent<AcsPopoverProps> = ({
                     colorScheme={"primary"}
                     variant={"solid"}
                     onClick={action}
-                    ml={3}
                   >
                     {confirmText ? confirmText : "Confirmer"}
                   </Button>

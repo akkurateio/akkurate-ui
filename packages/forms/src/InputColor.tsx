@@ -8,7 +8,6 @@ import {
   InputLeftElement,
   InputRightElement,
   Popover,
-  PopoverArrow,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
@@ -16,7 +15,7 @@ import {
 } from "@chakra-ui/react"
 import { FunctionComponent } from "react"
 import { HexColorPicker } from "react-colorful"
-
+import "../css/hexacolor.css"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
@@ -58,18 +57,15 @@ export const InputColor: FunctionComponent<InputProps> = (props) => {
   return (
     <FormControlLayout {...props}>
       <InputGroup size={props.size}>
-        <InputLeftElement
-          width={"80px"}
-          children={
-            <Box
-              backgroundColor={props.value as string}
-              width={"4rem"}
-              height={"1.6rem"}
-              rounded={"sm"}
-              border={"1px solid black"}
-            />
-          }
-        />
+        <InputLeftElement width={"80px"}>
+          <Box
+            backgroundColor={props.value as string}
+            width={"4rem"}
+            height={"1.6rem"}
+            rounded={"sm"}
+            border={"1px solid black"}
+          />
+        </InputLeftElement>
         <Input
           type={"text"}
           value={props.value}
@@ -89,7 +85,7 @@ export const InputColor: FunctionComponent<InputProps> = (props) => {
         />
 
         <InputRightElement>
-          <Popover>
+          <Popover placement={"bottom-end"}>
             {({ isOpen }) => (
               <>
                 <PopoverTrigger>
@@ -108,8 +104,7 @@ export const InputColor: FunctionComponent<InputProps> = (props) => {
                   </Box>
                 </PopoverTrigger>
                 <PopoverContent width={"fit-content"}>
-                  <PopoverArrow />
-                  <PopoverBody>
+                  <PopoverBody p={0}>
                     <HexColorPicker
                       color={props.value as string}
                       onChange={props.onColorChange}

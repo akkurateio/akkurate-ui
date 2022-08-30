@@ -83,7 +83,6 @@ export const AcsModalAlert: FunctionComponent<AcsModalAlertProps> = ({
                 colorScheme={"primary"}
                 variant={"solid"}
                 onClick={action}
-                ml={3}
               >
                 {confirmText ? confirmText : "Confirmer"}
               </Button>
