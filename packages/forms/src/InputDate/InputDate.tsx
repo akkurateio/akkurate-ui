@@ -5,12 +5,16 @@ import {
   InputGroup,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
+import dayjs from "dayjs"
+import { FunctionComponent, useEffect, useState } from "react"
+import { DateObject } from "../../types"
 import FormControlLayout from "../FormControlLayout"
+import PopBtn from "./PopBtn"
 
-type Omitted = "disabled" | "required" | "readOnly" | "size"
+type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
+  value: string
   handleChange: (e: string) => void
   focusBorderColor?: string
   errorBorderColor?: string
@@ -45,12 +49,39 @@ export const InputDate: FunctionComponent<InputProps> = ({
     return rest
   }
 
+  const [date, setDate] = useState<DateObject>({
+    currentDate: dayjs(new Date()),
+    selectedDate: props.value ? dayjs(props.value) : null,
+    value: props.value,
+  })
+
+  useEffect(() => {
+    if (date.selectedDate) {
+      handleChange(date.selectedDate.format("YYYY-MM-DD"))
+      setDate({ ...date, value: date.selectedDate.format("YYYY-MM-DD") })
+    } else {
+      handleChange("")
+      setDate({ ...date, value: "" })
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [date.selectedDate])
+
+  const handleManualChange = (e: string) => {
+    setDate({
+      ...date,
+      value: e,
+    })
+    handleChange(e)
+  }
+
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size}>
+      <InputGroup size={props.size} position={"relative"}>
         <Input
-          type={"text"}
+          type={"date"}
           {...propsForInput()}
+          value={props.value}
           variant={props.variant}
           focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
           _invalid={{
@@ -60,8 +91,10 @@ export const InputDate: FunctionComponent<InputProps> = ({
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => handleManualChange(e.target.value)}
         />
+
+        <PopBtn date={date} setDate={setDate} />
       </InputGroup>
     </FormControlLayout>
   )

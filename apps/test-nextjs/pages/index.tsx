@@ -8,6 +8,7 @@ import {
 } from "@akkurateio/components"
 import {
   InputColor,
+  InputDate,
   InputNumber,
   InputPassword,
   InputPin,
@@ -54,6 +55,10 @@ function App() {
 
   const [time, setTime] = useState("00:00")
 
+  const [date, setDate] = useState("10/05/2022")
+
+  console.log(date)
+
   useEffect(() => {
     if (search.length >= 3) {
       fetch(
@@ -83,7 +88,7 @@ function App() {
         <ToggleColorMode />
       </Flex>
 
-      <VStack mt={10} spacing={10} p={4} mb={400}>
+      <VStack mt={10} spacing={10} p={4} mb={4000}>
         <InputText
           isRequired
           label={"Input Text"}
@@ -323,6 +328,8 @@ function App() {
             min={"09:00"}
             max={"17:00"}
           />
+
+          <InputDate label={"Input Date"} handleChange={setDate} value={date} />
         </Box>
       </VStack>
     </Container>

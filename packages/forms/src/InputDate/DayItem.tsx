@@ -1,87 +1,72 @@
-import { Box, Text, useColorMode } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
 import dayjs, { Dayjs } from "dayjs"
-import { useRecoilState } from "recoil"
-import { dateStore } from "../store/dateStore"
+import { DateObject } from "../../types"
 
 interface IProps {
+  type: "before" | "current" | "after"
   day: Dayjs
-  dateFor: "afterDate" | "beforeDate"
+  date: DateObject
+  setDate: (e: DateObject) => void
 }
 
-const DayItem = ({ day, dateFor }: IProps) => {
-  const { colorMode, toggleColorMode } = useColorMode()
-  const [date, setDate] = useRecoilState(dateStore)
-
+const DayItem = ({ day, type, date, setDate }: IProps) => {
   const handleBackgroundColor = (day: Dayjs) => {
-    if (date.beforeDate && date.beforeDate.isSame(dayjs(day))) {
-      return colorMode === "light" ? "purple.200" : "purple.800"
+    if (date.selectedDate && date.selectedDate.isSame(dayjs(day))) {
+      return "primary.500"
     }
 
-    if (date.afterDate && date.afterDate.isSame(dayjs(day))) {
-      return colorMode === "light" ? "red.200" : "red.800"
+    if (date.value && dayjs(date.value).isSame(dayjs(day))) {
+      return "primary.500"
     }
 
-    if (date.beforeDate && date.afterDate) {
-      if (dayjs(day) < date.beforeDate && dayjs(day) > date.afterDate) {
-        return colorMode === "light" ? "green.200" : "green.800"
-      }
+    if (dayjs(day).isSame(dayjs(), "day")) {
+      if (type === "before" || type === "after") return "gray.200"
+      return "primary.200"
     }
 
-    if (dayjs(day).month() < dayjs(date.currentDate).month()) {
-      return colorMode === "light" ? "gray.100" : "gray.700"
-    }
-    if (dayjs(day).month() > dayjs(date.currentDate).month()) {
-      return colorMode === "light" ? "gray.100" : "gray.700"
+    if (type === "before" || type === "after") return "gray.100"
+    return "primary.100"
+  }
+
+  const handleColor = (day: Dayjs) => {
+    if (date.selectedDate && date.selectedDate.isSame(dayjs(day))) {
+      return "white"
     }
 
-    return colorMode === "light" ? "gray.300" : "gray.800"
+    if (date.value && dayjs(date.value).isSame(dayjs(day))) {
+      return "white"
+    }
+
+    return "primary.800"
   }
 
   const handleClick = () => {
-    if (dateFor === "beforeDate") {
-      if (date.afterDate) {
-        if (day > date.afterDate) {
-          setDate({
-            ...date,
-            beforeDate: day,
-          })
-        }
-      } else {
-        setDate({
-          ...date,
-          beforeDate: day,
-        })
-      }
-    }
-
-    if (dateFor === "afterDate") {
-      if (date.beforeDate) {
-        if (day < date.beforeDate) {
-          setDate({
-            ...date,
-            afterDate: day,
-          })
-        }
-      } else {
-        setDate({
-          ...date,
-          afterDate: day,
-        })
-      }
-    }
+    setDate({
+      ...date,
+      selectedDate: day,
+    })
   }
 
   return (
-    <Box
-      p={2}
-      m={1}
-      cursor={"pointer"}
-      rounded={"md"}
+    <Button
+      size={"sm"}
+      fontWeight={"normal"}
       bg={handleBackgroundColor(day)}
+      color={handleColor(day)}
+      _hover={{
+        bg: "primary.300",
+        color: "white",
+      }}
+      _active={{
+        bg: "primary.600",
+      }}
       onClick={handleClick}
+      width={"3rem"}
+      height={"3rem"}
+      borderRadius={"2px"}
     >
-      <Text textAlign={"center"}>{dayjs(day).format("DD")}</Text>
-    </Box>
+      {dayjs(day).format("DD")}
+    </Button>
   )
 }
 

@@ -100,7 +100,7 @@ export const InputTime: FunctionComponent<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={"lg"} position={"relative"}>
+      <InputGroup size={props.size} position={"relative"}>
         <Input
           type={"time"}
           onChange={handleManualTimeChange}
@@ -130,6 +130,8 @@ export const InputTime: FunctionComponent<InputProps> = ({
                 variant={"unstyled"}
                 color={"primary.500"}
                 bg={"white"}
+                w={"32px"}
+                h={"32px"}
                 _hover={{ color: "primary.700" }}
                 _active={{ color: "primary.700" }}
                 zIndex={1}
