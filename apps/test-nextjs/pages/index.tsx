@@ -14,6 +14,7 @@ import {
   InputSearch,
   InputText,
   InputTextArea,
+  InputTime,
 } from "@akkurateio/forms"
 import {
   Box,
@@ -50,6 +51,8 @@ function App() {
 
   const [search, setSearch] = useState("")
   const [searchResults, setSearchResults] = useState<string[]>([])
+
+  const [time, setTime] = useState("00:00")
 
   useEffect(() => {
     if (search.length >= 3) {
@@ -307,6 +310,18 @@ function App() {
                 <Text>Hello 3</Text>
               </Flex>,
             ]}
+          />
+        </Box>
+
+        <Box width={"400px"}>
+          <InputTime
+            label={"Input Time"}
+            value={time}
+            handleChange={setTime}
+            disabledHours={[1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23]}
+            minuteStep={15}
+            min={"09:00"}
+            max={"17:00"}
           />
         </Box>
       </VStack>
