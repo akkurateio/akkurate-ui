@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/forms",
-  "version": "0.0.1",
+  "version": "0.0.11",
   "description": "Library for Akkurate UI forms components",
   "keywords": [
     "icons"
@@ -30,14 +30,14 @@
     "@types/react-dom": ">=18.0.0"
   },
   "dependencies": {
+    "@akkurateio/icons": "^0.0.11",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
+    "dayjs": "1.11.5",
     "framer-motion": ">=7.0.0",
     "react-colorful": ">=5.0.0",
-    "styled-components": "5.3.5",
-    "dayjs": "1.11.5",
-    "@akkurateio/icons": "^0.0.10"
+    "styled-components": "5.3.5"
   },
   "scripts": {
     "build": "tsup src/index.ts --dts",

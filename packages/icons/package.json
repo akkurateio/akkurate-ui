@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/icons",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Library for Akkurate UI icons",
   "keywords": [
     "icons"
@@ -22,9 +22,9 @@
     "directory": "packages/icons"
   },
   "peerDependencies": {
+    "@chakra-ui/react": ">=2.0.0",
     "react": ">=18",
-    "react-dom": ">=18",
-    "@chakra-ui/react": ">=2.0.0"
+    "react-dom": ">=18"
   },
   "devDependencies": {
     "@types/react": "^18.0.1",
