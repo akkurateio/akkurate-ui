@@ -1,20 +1,21 @@
+import { AisClose, AisSearch } from "@akkurateio/icons"
 import {
-  Box,
   FormControlOptions,
   HTMLChakraProps,
+  IconButton,
   Input,
   InputGroup,
-  VStack,
+  InputLeftElement,
+  InputRightElement,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent, useState } from "react"
+import { FunctionComponent } from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size"
 
 interface InputOptions {
   handleChange: (e: string) => void
-  wordsArray: string[]
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -30,35 +31,35 @@ interface InputProps
     FormControlOptions {}
 
 export const InputSearch: FunctionComponent<InputProps> = ({
-  label,
-  hint,
-  error,
-  isRequired,
-  isDisabled,
-  isInvalid,
-  isReadOnly,
-  size,
-  wordsArray,
   handleChange,
   ...props
 }) => {
-  const [isVisible, setIsVisible] = useState(true)
+  const propsForInput = () => {
+    const {
+      label,
+      hint,
+      error,
+      isRequired,
+      isDisabled,
+      isInvalid,
+      isReadOnly,
+      size,
+      ...rest
+    } = props
+    return rest
+  }
 
   return (
-    <FormControlLayout
-      label={label}
-      hint={hint}
-      error={error}
-      isRequired={isRequired}
-      isDisabled={isDisabled}
-      isInvalid={isInvalid}
-      isReadOnly={isReadOnly}
-    >
-      <InputGroup size={size}>
+    <FormControlLayout {...props}>
+      <InputGroup size={props.size}>
+        <InputLeftElement color={"gray.400"}>
+          <AisSearch boxSize={6} />
+        </InputLeftElement>
         <Input
           type={"text"}
-          {...props}
-          focusBorderColor={isInvalid ? "error.700" : "primary.700"}
+          {...propsForInput()}
+          variant={props.variant}
+          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
           _invalid={{
             borderColor: "error.600",
             bg: "error.100",
@@ -66,54 +67,20 @@ export const InputSearch: FunctionComponent<InputProps> = ({
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => {
-            if (e.target.value.length >= 3) {
-              setIsVisible(true)
-            }
-            handleChange(e.target.value)
-          }}
+          onChange={(e) => handleChange(e.target.value)}
         />
-      </InputGroup>
-
-      {isVisible &&
-        wordsArray.length > 0 &&
-        props.value &&
-        String(props.value).length >= 3 && (
-          <VStack
-            bg={"white"}
-            spacing={1}
-            alignItems={"flex-start"}
-            borderTop={0}
-            borderBottomLeftRadius={4}
-            borderBottomRightRadius={4}
+        <InputRightElement>
+          <IconButton
+            aria-label="Close"
+            rounded={"full"}
+            size={"xs"}
+            color={"white"}
+            colorScheme={"gray"}
           >
-            {
-              // show the first 10 results of the search
-              wordsArray
-                .filter((word) =>
-                  word
-                    .toLowerCase()
-                    .includes(String(props.value).toLowerCase()),
-                )
-                .slice(0, 10)
-                .map((word, idx) => (
-                  <Box
-                    key={idx}
-                    bg={"gray.100"}
-                    width={"full"}
-                    px={3}
-                    cursor={"pointer"}
-                    onClick={() => {
-                      handleChange(word)
-                      setIsVisible(false)
-                    }}
-                  >
-                    {word}
-                  </Box>
-                ))
-            }
-          </VStack>
-        )}
+            <AisClose boxSize={5} onClick={() => handleChange("")} />
+          </IconButton>
+        </InputRightElement>
+      </InputGroup>
     </FormControlLayout>
   )
 }

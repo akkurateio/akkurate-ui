@@ -52,8 +52,8 @@ const PopHeader = ({ date, setDate }: IProps) => {
             </Text>
           </Box>
 
-          <Button variant={"unstyled"} onClick={handleReset}>
-            <AisClose boxSize={6} />
+          <Button variant={"ghost"} onClick={handleReset}>
+            <AisClose boxSize={4} />
           </Button>
         </Flex>
 
@@ -63,12 +63,12 @@ const PopHeader = ({ date, setDate }: IProps) => {
           justifyContent={"space-between"}
           color={"primary.500"}
         >
-          <Button variant={"unstyled"} onClick={handlePreviousMonth}>
-            <AisChevronLeft boxSize={8} />
+          <Button variant={"ghost"} onClick={handlePreviousMonth}>
+            <AisChevronLeft boxSize={6} />
           </Button>
-          <AisDot boxSize={8} />
-          <Button variant={"unstyled"} onClick={handleNextMonth}>
-            <AisChevronRight boxSize={8} />
+          <AisDot boxSize={6} />
+          <Button variant={"ghost"} onClick={handleNextMonth}>
+            <AisChevronRight boxSize={6} />
           </Button>
         </Flex>
       </Flex>

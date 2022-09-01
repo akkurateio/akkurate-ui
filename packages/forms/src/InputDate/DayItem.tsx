@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react"
+import { Box, Button } from "@chakra-ui/react"
 import dayjs, { Dayjs } from "dayjs"
 import { DateObject } from "../../types"
 
@@ -20,11 +20,11 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
     }
 
     if (dayjs(day).isSame(dayjs(), "day")) {
-      if (type === "before" || type === "after") return "gray.200"
-      return "primary.200"
+      if (type === "before" || type === "after") return "gray.100"
+      return "primary.100"
     }
 
-    if (type === "before" || type === "after") return "gray.100"
+    if (type === "before" || type === "after") return "transparent"
     return "primary.100"
   }
 
@@ -37,7 +37,29 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
       return "white"
     }
 
-    return "primary.800"
+    if (type === "before" || type === "after") return "gray.500"
+    return "primary.900"
+  }
+
+  const handleWeight = (day: Dayjs) => {
+    if (date.selectedDate && date.selectedDate.isSame(dayjs(day))) {
+      return "bold"
+    }
+
+    return "normal"
+  }
+
+  const disabledDays = (day: Dayjs) => {
+    if (date.disabledDays && date.disabledDays.includes(dayjs(day).day()))
+      return true
+    if (
+      date.disabledDates &&
+      date.disabledDates.includes(dayjs(day).format("YYYY-MM-DD"))
+    )
+      return true
+    if (date.minDate && dayjs(day).isBefore(dayjs(date.minDate))) return true
+    if (date.maxDate && dayjs(day).isAfter(dayjs(date.maxDate))) return true
+    return false
   }
 
   const handleClick = () => {
@@ -50,9 +72,10 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
   return (
     <Button
       size={"sm"}
-      fontWeight={"normal"}
+      fontWeight={handleWeight(day)}
       bg={handleBackgroundColor(day)}
       color={handleColor(day)}
+      isDisabled={disabledDays(day)}
       _hover={{
         bg: "primary.300",
         color: "white",
@@ -61,10 +84,22 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
         bg: "primary.600",
       }}
       onClick={handleClick}
-      width={"3rem"}
-      height={"3rem"}
+      width={"2.2rem"}
+      height={"2.2rem"}
       borderRadius={"2px"}
+      position={"relative"}
     >
+      {dayjs(day).isSame(dayjs(), "day") && (
+        <Box
+          w={1}
+          h={1}
+          bg={"red.500"}
+          rounded={"full"}
+          position={"absolute"}
+          top={1}
+          right={1}
+        />
+      )}
       {dayjs(day).format("DD")}
     </Button>
   )

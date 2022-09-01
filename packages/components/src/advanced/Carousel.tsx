@@ -72,9 +72,10 @@ export const AcsCarousel: FunctionComponent<IProps> = ({
             <Box
               key={idx}
               rounded={"full"}
-              bg={idx === index ? "primary.500" : "secondary.500"}
+              bg={idx === index ? "primary.500" : "gray.500"}
               width={2}
               height={2}
+              shadow={"inner"}
             />
           ))}
         </HStack>

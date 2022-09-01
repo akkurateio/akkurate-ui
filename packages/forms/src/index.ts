@@ -1,4 +1,5 @@
 export * from "./FormControlLayout"
+export * from "./InputAutocomplete"
 export * from "./InputColor"
 export * from "./InputDate"
 export * from "./InputNumber"

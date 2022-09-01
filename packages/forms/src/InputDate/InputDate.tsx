@@ -5,7 +5,7 @@ import {
   InputGroup,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import dayjs from "dayjs"
+import dayjs, { Dayjs } from "dayjs"
 import { FunctionComponent, useEffect, useState } from "react"
 import { DateObject } from "../../types"
 import FormControlLayout from "../FormControlLayout"
@@ -22,6 +22,11 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  // ---
+  minDate?: string | Dayjs
+  maxDate?: string | Dayjs
+  disabledDays?: number[] // 0 - 6 : 0 - Sunday, 1 - Monday, ...
+  disabledDates?: string[] // format : YYYY-MM-DD
 }
 
 interface InputProps
@@ -44,6 +49,10 @@ export const InputDate: FunctionComponent<InputProps> = ({
       isInvalid,
       isReadOnly,
       size,
+      minDate,
+      maxDate,
+      disabledDays,
+      disabledDates,
       ...rest
     } = props
     return rest
@@ -53,6 +62,10 @@ export const InputDate: FunctionComponent<InputProps> = ({
     currentDate: dayjs(new Date()),
     selectedDate: props.value ? dayjs(props.value) : null,
     value: props.value,
+    minDate: props.minDate,
+    maxDate: props.maxDate,
+    disabledDays: props.disabledDays,
+    disabledDates: props.disabledDates,
   })
 
   useEffect(() => {

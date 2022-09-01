@@ -7,6 +7,7 @@ import {
   AcsTabs,
 } from "@akkurateio/components"
 import {
+  InputAutocomplete,
   InputColor,
   InputDate,
   InputNumber,
@@ -55,7 +56,7 @@ function App() {
 
   const [time, setTime] = useState("00:00")
 
-  const [date, setDate] = useState("10/05/2022")
+  const [date, setDate] = useState("2022-09-01")
 
   console.log(date)
 
@@ -131,7 +132,6 @@ function App() {
         />
 
         <InputPin
-          label={"Pin"}
           hint={"Ici tu dois rentrer ton mot de passe."}
           error={"Ah bah non c'est trop court."}
           value={pin}
@@ -260,14 +260,14 @@ function App() {
             action={() => console.log("coucou from popover")}
           />
         </Box>
-        <InputSearch
-          label={"Input Search"}
+        <InputAutocomplete
+          label={"Input Autocomplete"}
           hint={
             "you can type something in and you will be proposed a set of words to choose from."
           }
           value={search}
           handleChange={setSearch}
-          wordsArray={searchResults}
+          resultsArray={searchResults}
         />
 
         <AcsTabs
@@ -329,7 +329,21 @@ function App() {
             max={"17:00"}
           />
 
-          <InputDate label={"Input Date"} handleChange={setDate} value={date} />
+          <InputDate
+            label={"Input Date"}
+            handleChange={setDate}
+            value={date}
+            // minDate={"2022-08-15"}
+            maxDate={"2022-10-15"}
+            disabledDays={[0, 3, 6]}
+            // disabledDates={["2022-09-05", "2022-09-15", "2022-09-22"]}
+          />
+
+          <InputSearch
+            label={"Input Search"}
+            value={search}
+            handleChange={setSearch}
+          />
         </Box>
       </VStack>
     </Container>

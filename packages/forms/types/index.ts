@@ -6,4 +6,8 @@ export type DateObject = {
   currentDate: Dayjs
   selectedDate: Dayjs | null
   value: string | null | undefined
+  minDate: string | Dayjs | undefined
+  maxDate: string | Dayjs | undefined
+  disabledDays: number[] | undefined
+  disabledDates: string[] | undefined
 }

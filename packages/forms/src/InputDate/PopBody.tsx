@@ -78,7 +78,9 @@ const PopBody = ({ date, setDate }: IProps) => {
       <SimpleGrid columns={7} spacing={1}>
         {shortDaysArray.map((day, index) => (
           <Box key={index}>
-            <Text textAlign={"center"}>{day}</Text>
+            <Text textAlign={"center"} fontSize={"xs"}>
+              {day}
+            </Text>
           </Box>
         ))}
       </SimpleGrid>
