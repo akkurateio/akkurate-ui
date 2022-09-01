@@ -1,0 +1,55 @@
+{
+  "name": "@akkurateio/ds",
+  "version": "0.0.12",
+  "description": "Library for all Akkurate UI",
+  "keywords": [
+    "icons"
+  ],
+  "author": "Subvitamine",
+  "license": "proprietary",
+  "main": "dist/index.cjs.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akkurateio/akkurate-ui.git",
+    "directory": "packages/components"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.1",
+    "@types/react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@chakra-ui/react": ">=2.0.0",
+    "@emotion/react": ">=11.0.0",
+    "@emotion/styled": ">=11.0.0",
+    "framer-motion": ">=7.0.0",
+    "@akkurateio/icons": "^0.0.12",
+    "@akkurateio/utils": "^0.0.12",
+    "@akkurateio/components": "^0.0.12",
+    "@akkurateio/forms": "^0.0.12"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts",
+    "dev": "yarn build -- --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "JSX=1 tsup src/index.ts"
+  },
+  "gitHead": "fddc92f0a9e72abc4eaf260a32f52a05b40bb18b"
+}
