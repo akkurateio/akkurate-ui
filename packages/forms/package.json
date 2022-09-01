@@ -46,5 +46,5 @@
     "typecheck": "tsc --noEmit",
     "build:fast": "JSX=1 tsup src/index.ts"
   },
-  "gitHead": "b04d8129569daa73fdbf148452501cf2c309d443"
+  "gitHead": "b972c431dcc536eec47e37997af43901066ccd8a"
 }
