@@ -6,7 +6,9 @@ import {
   AcsPopover,
   AcsTabs,
 } from "@akkurateio/components"
+import { AcsSelect } from "@akkurateio/forms"
 import {
+  AcsRadioGroup,
   InputAutocomplete,
   InputColor,
   InputDate,
@@ -255,8 +257,6 @@ function App() {
             body={<Text>Coucou</Text>}
             triggerBtnClosed={<Button>Ouvre</Button>}
             triggerBtnOpened={<Button>Ferme</Button>}
-            hasArrow={true}
-            placement={"bottom-start"}
             action={() => console.log("coucou from popover")}
           />
         </Box>
@@ -343,6 +343,32 @@ function App() {
             label={"Input Search"}
             value={search}
             handleChange={setSearch}
+          />
+
+          <AcsRadioGroup
+            label={"Input Search"}
+            value={search}
+            handleChange={setSearch}
+            valuesArray={[
+              { value: "1", label: "Hello 1" },
+              { value: "2", label: "Hello 2" },
+              { value: "3", label: "Hello 3" },
+              { value: "4", label: "Hello 4" },
+            ]}
+            direction={"horizontal"}
+          />
+
+          <AcsSelect
+            label={"Input Select"}
+            placeholder={"Select"}
+            handleChange={setSearch}
+            valuesArray={[
+              { value: "1", label: "Hello 1" },
+              { value: "2", label: "Hello 2" },
+              { value: "3", label: "Hello 3" },
+              { value: "4", label: "Hello 4" },
+            ]}
+            variant={'flushed'}
           />
         </Box>
       </VStack>

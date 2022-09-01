@@ -21,6 +21,7 @@ interface PopoverOptions {
   title?: string
   hasCloseBtn?: boolean
   hasArrow?: boolean
+  hasFooter?: boolean
   footer?: JSX.Element
   triggerBtn?: JSX.Element
   triggerBtnOpened?: JSX.Element
@@ -41,6 +42,7 @@ export const AcsPopover: FunctionComponent<AcsPopoverProps> = ({
   title,
   hasCloseBtn = false,
   hasArrow = false,
+  hasFooter = true,
   footer,
   triggerBtn,
   triggerBtnOpened,
@@ -56,7 +58,7 @@ export const AcsPopover: FunctionComponent<AcsPopoverProps> = ({
   return (
     <Popover
       closeOnBlur={closeOnBlur}
-      placement={props.placement ? props.placement : "bottom"}
+      placement={props.placement ? props.placement : "bottom-end"}
       initialFocusRef={initRef}
     >
       {({ isOpen, onClose }) => (
@@ -70,11 +72,11 @@ export const AcsPopover: FunctionComponent<AcsPopoverProps> = ({
           </PopoverTrigger>
           <Portal>
             <PopoverContent {...props}>
-              {title && <PopoverHeader>This is the header</PopoverHeader>}
+              {title && <PopoverHeader>{title}</PopoverHeader>}
               {hasArrow && <PopoverArrow />}
               {hasCloseBtn && <PopoverCloseButton />}
               <PopoverBody>{body}</PopoverBody>
-              {footer ? (
+              {hasFooter && footer ? (
                 <PopoverFooter>{footer}</PopoverFooter>
               ) : (
                 <PopoverFooter
@@ -85,6 +87,7 @@ export const AcsPopover: FunctionComponent<AcsPopoverProps> = ({
                   <Button
                     colorScheme={"primary"}
                     variant={"outline"}
+                    size={"sm"}
                     onClick={onClose}
                   >
                     {cancelText ? cancelText : "Annuler"}
@@ -92,6 +95,7 @@ export const AcsPopover: FunctionComponent<AcsPopoverProps> = ({
                   <Button
                     colorScheme={"primary"}
                     variant={"solid"}
+                    size={"sm"}
                     onClick={action}
                   >
                     {confirmText ? confirmText : "Confirmer"}
