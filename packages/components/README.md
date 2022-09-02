@@ -1,14 +1,14 @@
-# @akkurateio/forms
+# @akkurateio/components
 
 _Dependency of @akkurateio/ui_
 
-This library of forms components is developed by Subvitamine.
+This library of components is developed by Subvitamine.
 
 ## Installation
 
 ```bash
 # npm
-npm install @akkurateio/forms
+npm install @akkurateio/components
 # yarn
-yarn add @akkurateio/forms
+yarn add @akkurateio/components
 ```

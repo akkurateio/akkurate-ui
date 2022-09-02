@@ -12,10 +12,10 @@
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "@akkurateio/icons": "^0.0.10",
-    "@akkurateio/forms": "^0.0.1",
-    "@akkurateio/utils": "^0.0.1",
-    "@akkurateio/components": "^0.0.1"
+    "@akkurateio/icons": "^0.0.13",
+    "@akkurateio/forms": "^0.0.13",
+    "@akkurateio/utils": "^0.0.13",
+    "@akkurateio/components": "^0.0.13"
   },
   "devDependencies": {
     "@types/node": "18.7.13",

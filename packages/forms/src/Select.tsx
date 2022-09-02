@@ -44,7 +44,7 @@ export const AcsSelect: FunctionComponent<InputProps> = ({
         cursor={"pointer"}
       >
         {valuesArray.map((item) => (
-          <option value={item.value}>{item.label}</option>
+          <option key={item.value}  value={item.value}>{item.label}</option>
         ))}
       </Select>
     </FormControlLayout>

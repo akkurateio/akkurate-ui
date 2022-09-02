@@ -3,12 +3,13 @@ import {
   AcsDrawer,
   AcsModal,
   AcsModalAlert,
+  AcsPaginate,
   AcsPopover,
   AcsTabs,
 } from "@akkurateio/components"
-import { AcsSelect } from "@akkurateio/forms"
 import {
   AcsRadioGroup,
+  AcsSelect,
   InputAutocomplete,
   InputColor,
   InputDate,
@@ -59,6 +60,8 @@ function App() {
   const [time, setTime] = useState("00:00")
 
   const [date, setDate] = useState("2022-09-01")
+
+  const [page, setPage] = useState(1)
 
   console.log(date)
 
@@ -368,9 +371,11 @@ function App() {
               { value: "3", label: "Hello 3" },
               { value: "4", label: "Hello 4" },
             ]}
-            variant={'flushed'}
+            variant={"flushed"}
           />
         </Box>
+
+        <AcsPaginate max={12} current={page} handleChangePage={setPage} />
       </VStack>
     </Container>
   )

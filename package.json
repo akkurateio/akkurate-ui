@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "prepare": "husky install",
@@ -12,7 +13,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "generate-icons": "ts-node ./tools/cli/icons-generator/cli.ts",
-    "publish": "yarn build && lerna publish --registry=https://registry.npmjs.org/"
+    "lerna:publish": "yarn build && lerna publish --registry=https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@types/node": "^18.7.9",

@@ -1,6 +1,3 @@
-import { Button, Flex, IconButton, Text, Tooltip } from "@chakra-ui/react"
-import { AnimatePresence, motion } from "framer-motion"
-import React from "react"
 import {
   AisAdd,
   AisChevronLeft,
@@ -8,6 +5,9 @@ import {
   AisPageFirst,
   AisPageLast,
 } from "@akkurateio/icons"
+import { Button, Flex, IconButton, Text, Tooltip } from "@chakra-ui/react"
+import { AnimatePresence, motion } from "framer-motion"
+import { FunctionComponent } from "react"
 
 interface IProps {
   max: number
@@ -19,14 +19,14 @@ interface IProps {
   handlePaginate?: () => void
 }
 
-export const Paginate = ({
+export const AcsPaginate: FunctionComponent<IProps> = ({
   current,
   max,
   totalItems,
   handleChangePage,
   handleCreate,
   createBtn = true,
-}: IProps) => {
+}) => {
   const slide = {
     initial: {
       y: "64px",
