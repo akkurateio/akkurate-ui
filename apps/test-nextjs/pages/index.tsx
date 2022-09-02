@@ -4,6 +4,7 @@ import {
   AcsModal,
   AcsModalAlert,
   AcsPaginate,
+  AcsPaginateSecondary,
   AcsPopover,
   AcsTabs,
 } from "@akkurateio/components"
@@ -375,7 +376,15 @@ function App() {
           />
         </Box>
 
-        <AcsPaginate max={12} current={page} handleChangePage={setPage} />
+        <Box bg={"white"} p={10} experimental_spaceY={20}>
+          <AcsPaginate max={12} current={page} handleChangePage={setPage} />
+
+          <AcsPaginateSecondary
+            max={12}
+            current={page}
+            handleChangePage={setPage}
+          />
+        </Box>
       </VStack>
     </Container>
   )

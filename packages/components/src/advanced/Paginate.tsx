@@ -1,13 +1,13 @@
 import {
-  AisAdd,
   AisChevronLeft,
   AisChevronRight,
   AisPageFirst,
   AisPageLast,
 } from "@akkurateio/icons"
-import { Button, Flex, IconButton, Text, Tooltip } from "@chakra-ui/react"
+import { Flex, HStack, IconButton, Text } from "@chakra-ui/react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FunctionComponent } from "react"
+import PageBtn from "./PageBtn"
 
 interface IProps {
   max: number
@@ -17,6 +17,7 @@ interface IProps {
   handleCreate?: () => void
   createBtn?: boolean
   handlePaginate?: () => void
+  withPageInfos?: boolean
 }
 
 export const AcsPaginate: FunctionComponent<IProps> = ({
@@ -26,22 +27,8 @@ export const AcsPaginate: FunctionComponent<IProps> = ({
   handleChangePage,
   handleCreate,
   createBtn = true,
+  withPageInfos,
 }) => {
-  const slide = {
-    initial: {
-      y: "64px",
-      transition: { duration: 0.1 },
-    },
-    animate: {
-      y: 0,
-      transition: { duration: 0.3, ease: "easeIn" },
-    },
-    exit: {
-      y: "64px",
-      transition: { duration: 0.2, ease: "easeOut" },
-    },
-  }
-
   const fade = {
     initial: {
       opacity: 0,
@@ -66,205 +53,120 @@ export const AcsPaginate: FunctionComponent<IProps> = ({
         exit="exit"
         variants={fade}
       >
-        <Flex
-          flex={"none"}
-          alignItems={"center"}
-          justifyContent={"space-between"}
-          borderTop={"1px"}
-          borderColor={"gray.100"}
-          px={4}
-          h={16}
-        >
-          <Flex flex={"none"} alignItems={"center"}>
+        <Flex alignItems={"center"} justifyContent={"space-between"}>
+          <HStack alignItems={"center"}>
             {max > 6 && (
               <IconButton
-                variant={"neutral"}
+                variant={"ghost"}
                 disabled={current === 1}
                 size={"sm"}
-                aria-label={"Page suivante"}
-                icon={
-                  <>
-                    <Tooltip label="Aller à la première page" size={"sm"}>
-                      <AisPageFirst />
-                    </Tooltip>
-                  </>
-                }
-                ml={1}
+                aria-label={"Première page"}
                 onClick={() => handleChangePage(1)}
-              />
+              >
+                <AisPageFirst boxSize={6} />
+              </IconButton>
             )}
             <IconButton
-              variant={"neutral"}
+              variant={"ghost"}
+              boxSize={6}
               disabled={current === 1}
               size={"sm"}
               aria-label={"Page précédente"}
-              icon={
-                <>
-                  <AisChevronLeft />
-                </>
-              }
-              mr={1}
               onClick={() => handleChangePage(current - 1)}
-            />
+            >
+              <AisChevronLeft boxSize={6} />
+            </IconButton>
 
-            {current > 4 && current >= max && (
-              <Button
-                key={current - 4}
-                size={"sm"}
-                mr={"1px"}
-                variant={"solid"}
-                onClick={() => handleChangePage(current - 4)}
-              >
-                {current - 4}
-              </Button>
-            )}
+            <HStack spacing={0.5} alignItems={"center"}>
+              {current > 4 && current >= max && (
+                <PageBtn
+                  page={current - 4}
+                  action={() => handleChangePage(current - 4)}
+                />
+              )}
 
-            {current > 3 && current >= max - 1 && (
-              <Button
-                key={current - 3}
-                size={"sm"}
-                mr={"1px"}
-                variant={"solid"}
-                onClick={() => handleChangePage(current - 3)}
-              >
-                {current - 3}
-              </Button>
-            )}
+              {current > 3 && current >= max - 1 && (
+                <PageBtn
+                  page={current - 3}
+                  action={() => handleChangePage(current - 3)}
+                />
+              )}
 
-            {current > 2 && (
-              <Button
-                key={current - 2}
-                size={"sm"}
-                mr={"1px"}
-                variant={"solid"}
-                onClick={() => handleChangePage(current - 2)}
-              >
-                {current - 2}
-              </Button>
-            )}
+              {current > 2 && (
+                <PageBtn
+                  page={current - 2}
+                  action={() => handleChangePage(current - 2)}
+                />
+              )}
 
-            {current > 1 && (
-              <Button
-                key={current - 1}
-                size={"sm"}
-                mr={"1px"}
-                variant={"solid"}
-                onClick={() => handleChangePage(current - 1)}
-              >
-                {current - 1}
-              </Button>
-            )}
-            {current && (
-              <Button
-                key={current}
-                size={"sm"}
-                mr={"1px"}
-                variant={"primary"}
-                onClick={() => handleChangePage(current)}
-              >
-                {current}
-              </Button>
-            )}
-            {current <= max - 1 && (
-              <Button
-                key={current + 1}
-                size={"sm"}
-                mr={"1px"}
-                variant={"solid"}
-                onClick={() => handleChangePage(current + 1)}
-              >
-                {current + 1}
-              </Button>
-            )}
-            {current <= max - 2 && (
-              <Button
-                key={current + 2}
-                size={"sm"}
-                mr={"1px"}
-                variant={"solid"}
-                onClick={() => handleChangePage(current + 2)}
-              >
-                {current + 2}
-              </Button>
-            )}
-            {current <= 2 && current <= max - 3 && (
-              <Button
-                key={current + 3}
-                size={"sm"}
-                mr={"1px"}
-                variant={"solid"}
-                onClick={() => handleChangePage(current + 3)}
-              >
-                {current + 3}
-              </Button>
-            )}
-            {current <= 1 && current <= max - 4 && (
-              <Button
-                key={current + 4}
-                size={"sm"}
-                mr={"1px"}
-                variant={"solid"}
-                onClick={() => handleChangePage(current + 4)}
-              >
-                {current + 4}
-              </Button>
-            )}
+              {current > 1 && (
+                <PageBtn
+                  page={current - 1}
+                  action={() => handleChangePage(current - 1)}
+                />
+              )}
+              {current && (
+                <PageBtn
+                  page={current}
+                  action={() => handleChangePage(current)}
+                  color={"primary"}
+                />
+              )}
+              {current <= max - 1 && (
+                <PageBtn
+                  page={current + 1}
+                  action={() => handleChangePage(current + 1)}
+                />
+              )}
+              {current <= max - 2 && (
+                <PageBtn
+                  page={current + 2}
+                  action={() => handleChangePage(current + 2)}
+                />
+              )}
+              {current <= 2 && current <= max - 3 && (
+                <PageBtn
+                  page={current + 3}
+                  action={() => handleChangePage(current + 3)}
+                />
+              )}
+              {current <= 1 && current <= max - 4 && (
+                <PageBtn
+                  page={current + 4}
+                  action={() => handleChangePage(current + 4)}
+                />
+              )}
+            </HStack>
             <IconButton
-              variant={"neutral"}
+              variant={"ghost"}
               disabled={current === max}
               size={"sm"}
               aria-label={"Page suivante"}
-              icon={
-                <>
-                  <AisChevronRight />
-                </>
-              }
-              ml={1}
               onClick={() => handleChangePage(current + 1)}
-            />
+            >
+              <AisChevronRight boxSize={6} />
+            </IconButton>
             {max > 6 && (
               <IconButton
-                variant={"neutral"}
+                variant={"ghost"}
                 disabled={current === max}
                 size={"sm"}
-                aria-label={"Page suivante"}
-                icon={
-                  <>
-                    <Tooltip label="Aller à la dernière page" size={"sm"}>
-                      <AisPageLast />
-                    </Tooltip>
-                  </>
-                }
-                ml={1}
+                aria-label={"Dernière page"}
                 onClick={() => handleChangePage(max)}
-              />
+              >
+                <AisPageLast boxSize={6} />
+              </IconButton>
             )}
-          </Flex>
+          </HStack>
 
-          <Flex
-            flex={"none"}
-            alignItems={"center"}
-            justifyContent={"end"}
-            w={64}
-          >
-            <Text fontSize={"xs"} opacity={0.5} mr={4}>
-              Page {current}/{max} - {totalItems} entrées
-            </Text>
-
-            {createBtn && (
-              <IconButton
-                onClick={handleCreate}
-                aria-label={"Créer une alerte"}
-                icon={
-                  <>
-                    <AisAdd />
-                  </>
-                }
-                rounded={"full"}
-                variant={"primary"}
-              />
-            )}
-          </Flex>
+          {withPageInfos && (
+            <Flex alignItems={"center"} justifyContent={"end"}>
+              <Text fontSize={"xs"} opacity={0.5} mr={4}>
+                Page {current}/{max}
+                {totalItems && ` - ${totalItems} entrées`}
+              </Text>
+            </Flex>
+          )}
         </Flex>
       </motion.div>
     </AnimatePresence>

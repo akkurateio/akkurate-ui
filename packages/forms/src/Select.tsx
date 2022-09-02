@@ -32,6 +32,7 @@ interface InputProps
 
 export const AcsSelect: FunctionComponent<InputProps> = ({
   valuesArray,
+  handleChange,
   ...props
 }) => {
   return (
@@ -40,11 +41,13 @@ export const AcsSelect: FunctionComponent<InputProps> = ({
         {...props}
         placeholder={props.placeholder}
         value={props.value}
-        onChange={(e) => props.handleChange(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
         cursor={"pointer"}
       >
         {valuesArray.map((item) => (
-          <option key={item.value}  value={item.value}>{item.label}</option>
+          <option key={item.value} value={item.value}>
+            {item.label}
+          </option>
         ))}
       </Select>
     </FormControlLayout>
