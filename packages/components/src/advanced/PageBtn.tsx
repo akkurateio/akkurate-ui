@@ -16,6 +16,7 @@ const PageBtn: FunctionComponent<IProps> = ({ page, action, color }) => {
       colorScheme={color}
       onClick={action}
       width={"2rem"}
+      height={"2rem"}
     >
       {page}
     </Button>

@@ -21,7 +21,7 @@ interface IProps {
   current: number
   totalItems?: number
   handleChangePage: (val: number) => void
-  withPageInfos?: boolean
+  withBtns?: boolean
 }
 
 export const AcsPaginateSecondary: FunctionComponent<IProps> = ({
@@ -29,7 +29,7 @@ export const AcsPaginateSecondary: FunctionComponent<IProps> = ({
   max,
   totalItems,
   handleChangePage,
-  withPageInfos,
+  withBtns,
 }) => {
   const fade = {
     initial: {
@@ -65,20 +65,25 @@ export const AcsPaginateSecondary: FunctionComponent<IProps> = ({
       width={"full"}
       spacing={20}
     >
-      <Button
-        variant={"ghost"}
-        fontWeight={"normal"}
-        onClick={handlePreviousPage}
-        isDisabled={current === 1}
-      >
-        <HStack alignItems={"center"} spacing={2}>
-          <AisChevronLeft boxSize={6} />
-          <Text>Précédent</Text>
-        </HStack>
-      </Button>
+      {withBtns && (
+        <Button
+          variant={"ghost"}
+          fontWeight={"normal"}
+          onClick={handlePreviousPage}
+          isDisabled={current === 1}
+        >
+          <HStack alignItems={"center"} spacing={2}>
+            <AisChevronLeft boxSize={6} />
+            <Text>Précédent</Text>
+          </HStack>
+        </Button>
+      )}
 
       <HStack alignItems={"center"} spacing={1}>
-        <Text>Page {current}</Text>
+        <Text>Page</Text>
+        <Text minW={10} textAlign={"right"}>
+          {current}
+        </Text>
 
         <Popover placement={"bottom-end"}>
           {({ isOpen, onClose }) => (
@@ -89,8 +94,8 @@ export const AcsPaginateSecondary: FunctionComponent<IProps> = ({
                 </Button>
               </PopoverTrigger>
               <PopoverContent width={"fit-content"}>
-                <PopoverBody m={0} p={0.5}>
-                  <VStack spacing={0.5}>
+                <PopoverBody m={0} p={0.5} maxH={"240px"} overflowY={"scroll"}>
+                  <VStack spacing={0.5} mr={0.5}>
                     {[...Array(max)].map((_, i) => (
                       <PageBtn
                         key={i}
@@ -111,17 +116,19 @@ export const AcsPaginateSecondary: FunctionComponent<IProps> = ({
         <Text>sur {max}</Text>
       </HStack>
 
-      <Button
-        variant={"ghost"}
-        fontWeight={"normal"}
-        onClick={handleNextPage}
-        isDisabled={max === current}
-      >
-        <HStack alignItems={"center"} spacing={2}>
-          <Text>Suivant</Text>
-          <AisChevronRight boxSize={6} />
-        </HStack>
-      </Button>
+      {withBtns && (
+        <Button
+          variant={"ghost"}
+          fontWeight={"normal"}
+          onClick={handleNextPage}
+          isDisabled={max === current}
+        >
+          <HStack alignItems={"center"} spacing={2}>
+            <Text>Suivant</Text>
+            <AisChevronRight boxSize={6} />
+          </HStack>
+        </Button>
+      )}
     </HStack>
   )
 }
