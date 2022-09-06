@@ -4,16 +4,21 @@ import { FunctionComponent } from "react"
 interface IProps {
   page: number
   action: () => void
-  color?: string
+  current?: boolean
 }
 
-const PageBtn: FunctionComponent<IProps> = ({ page, action, color }) => {
+const PageBtn: FunctionComponent<IProps> = ({
+  page,
+  action,
+  current = false,
+}) => {
   return (
     <Button
       size={"sm"}
       borderRadius={"4px"}
       m={0}
-      colorScheme={color}
+      colorScheme={current ? "primary" : "gray"}
+      color={current ? undefined : "gray.600"}
       onClick={action}
       width={"2rem"}
       height={"2rem"}

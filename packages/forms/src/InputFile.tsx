@@ -1,4 +1,4 @@
-import { AisClose, AisSearch } from "@akkurateio/icons"
+import { AisClose, AisFile } from "@akkurateio/icons"
 import {
   FormControlOptions,
   HTMLChakraProps,
@@ -15,8 +15,8 @@ import FormControlLayout from "./FormControlLayout"
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
-  value?: string
-  handleChange: (e: string) => void
+  value?: FileList | null
+  handleChange: (e: FileList | null) => void
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -31,7 +31,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputSearch: FunctionComponent<InputProps> = ({
+export const InputFile: FunctionComponent<InputProps> = ({
   handleChange,
   ...props
 }) => {
@@ -53,12 +53,16 @@ export const InputSearch: FunctionComponent<InputProps> = ({
   return (
     <FormControlLayout {...props}>
       <InputGroup size={props.size}>
-        <InputLeftElement color={"gray.400"}>
-          <AisSearch boxSize={6} />
+        <InputLeftElement>
+          <AisFile boxSize={6} color={"gray.500"} />
         </InputLeftElement>
         <Input
+          position={"relative"}
           type={"text"}
           {...propsForInput()}
+          value={
+            props.value && props.value.length > 0 ? props.value[0].name : ""
+          }
           variant={props.variant}
           focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
           _invalid={{
@@ -68,21 +72,34 @@ export const InputSearch: FunctionComponent<InputProps> = ({
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => console.log(e)}
         />
+
         {props.value && props.value.length > 0 && (
-          <InputRightElement>
+          <InputRightElement zIndex={2}>
             <IconButton
-              aria-label="Close"
-              rounded={"full"}
+              aria-label={"delete button"}
+              onClick={() => handleChange(null)}
               size={"xs"}
-              color={"white"}
-              colorScheme={"gray"}
+              rounded={"full"}
             >
-              <AisClose boxSize={5} onClick={() => handleChange("")} />
+              <AisClose boxSize={5} color={"gray.500"} />
             </IconButton>
           </InputRightElement>
         )}
+        <Input
+          type={"file"}
+          opacity={0}
+          position={"absolute"}
+          top={0}
+          bottom={0}
+          right={0}
+          left={0}
+          zIndex={1}
+          cursor={"pointer"}
+          accept={props.accept}
+          onChange={(e) => handleChange(e.target.files)}
+        />
       </InputGroup>
     </FormControlLayout>
   )

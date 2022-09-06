@@ -1,4 +1,5 @@
 export * from "./Carousel"
+export * from "./Dropzone"
 export * from "./Paginate"
 export * from "./PaginateSecondary"
 export * from "./Tabs"

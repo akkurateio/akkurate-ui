@@ -104,7 +104,7 @@ export const AcsPaginateSecondary: FunctionComponent<IProps> = ({
                           onClose()
                         }}
                         page={i + 1}
-                        color={i + 1 === current ? "primary" : undefined}
+                        current={i + 1 === current ? true : false}
                       />
                     ))}
                   </VStack>

@@ -1,6 +1,7 @@
 import {
   AcsCarousel,
   AcsDrawer,
+  AcsDropzone,
   AcsModal,
   AcsModalAlert,
   AcsPaginate,
@@ -14,6 +15,7 @@ import {
   InputAutocomplete,
   InputColor,
   InputDate,
+  InputFile,
   InputNumber,
   InputPassword,
   InputPin,
@@ -64,7 +66,9 @@ function App() {
 
   const [page, setPage] = useState(1)
 
-  console.log(date)
+  const [file, setFile] = useState<FileList | null>(null)
+
+  file && file.length > 0 && console.log(file[0])
 
   useEffect(() => {
     if (search.length >= 3) {
@@ -377,14 +381,23 @@ function App() {
         </Box>
 
         <Box bg={"white"} p={10} experimental_spaceY={20}>
-          <AcsPaginate max={12} current={page} handleChangePage={setPage} />
+          <AcsPaginate max={150} current={page} handleChangePage={setPage} />
 
           <AcsPaginateSecondary
-            max={12}
+            max={57}
             current={page}
             handleChangePage={setPage}
           />
+
+          <InputFile
+            label={"Input File"}
+            value={file}
+            handleChange={setFile}
+            accept={"image/jpg"}
+          />
         </Box>
+
+        <AcsDropzone />
       </VStack>
     </Container>
   )
