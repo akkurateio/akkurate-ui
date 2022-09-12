@@ -30,7 +30,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputPassword: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const AcsInputPassword: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const propsForInput = () => {

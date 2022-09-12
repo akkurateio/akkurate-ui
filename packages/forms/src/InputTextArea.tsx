@@ -27,7 +27,7 @@ interface InputProps
     ThemingProps<"Textarea">,
     FormControlOptions {}
 
-export const InputTextArea: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const AcsInputTextArea: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const propsForInput = () => {
     const {
       label,

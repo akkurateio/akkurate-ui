@@ -10,21 +10,6 @@ import {
   AcsTabs,
 } from "@akkurateio/components"
 import {
-  AcsRadioGroup,
-  AcsSelect,
-  InputAutocomplete,
-  InputColor,
-  InputDate,
-  InputFile,
-  InputNumber,
-  InputPassword,
-  InputPin,
-  InputSearch,
-  InputText,
-  InputTextArea,
-  InputTime,
-} from "@akkurateio/forms"
-import {
   Box,
   Button,
   Container,
@@ -388,14 +373,8 @@ function App() {
             current={page}
             handleChangePage={setPage}
           />
-
-          <InputFile
-            label={"Input File"}
-            value={file}
-            handleChange={setFile}
-            accept={"image/jpg"}
-          />
         </Box>
+
 
         <AcsDropzone />
       </VStack>

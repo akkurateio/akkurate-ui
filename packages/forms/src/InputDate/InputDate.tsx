@@ -35,7 +35,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputDate: FunctionComponent<InputProps> = ({
+export const AcsInputDate: FunctionComponent<InputProps> = ({
   handleChange,
   ...props
 }) => {

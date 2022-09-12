@@ -34,7 +34,7 @@ export interface InputProps
     ThemingProps<"NumberInput">,
     FormControlOptions {}
 
-export const InputNumber: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const AcsInputNumber: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const propsForInput = () => {
     const {
       label,

@@ -29,7 +29,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputAutocomplete: FunctionComponent<InputProps> = ({
+export const AcsInputAutocomplete: FunctionComponent<InputProps> = ({
   label,
   hint,
   error,

@@ -26,7 +26,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputText: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const AcsInputText: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
   const propsForInput = () => {
     const {
       label,

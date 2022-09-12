@@ -46,7 +46,7 @@ const minuteArray = Array.from({ length: 60 }, (v, k) => {
   return k.toString().padStart(2, "0")
 })
 
-export const InputTime: FunctionComponent<InputProps> = ({
+export const AcsInputTime: FunctionComponent<InputProps> = ({
   handleChange,
   disabledHours,
   disabledMinutes,

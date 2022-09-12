@@ -31,7 +31,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputSearch: FunctionComponent<InputProps> = ({
+export const AcsInputSearch: FunctionComponent<InputProps> = ({
   handleChange,
   ...props
 }) => {

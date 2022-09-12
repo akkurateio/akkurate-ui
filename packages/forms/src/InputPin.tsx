@@ -27,7 +27,7 @@ interface InputProps
     InputOptions,
     FormControlOptions {}
 
-export const InputPin: FunctionComponent<InputProps> = ({
+export const AcsInputPin: FunctionComponent<InputProps> = ({
   handleChange,
   ...props
 }) => {

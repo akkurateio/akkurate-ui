@@ -65,7 +65,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const InputColor: FunctionComponent<InputProps> = ({
+export const AcsInputColor: FunctionComponent<InputProps> = ({
   handleChange,
   ...props
 }) => {
