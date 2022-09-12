@@ -10,7 +10,7 @@ import {
   AcsTabs,
 } from "@akkurateio/components"
 
-import { AcsInputDate, AcsInputText } from "@akkurateio/forms"
+import { AcsInputDate, AcsInputText, AcsInputTime } from "@akkurateio/forms"
 
 import {
   Box,
@@ -319,7 +319,7 @@ function App() {
         <AcsInputText />
 
         <Box width={"400px"}>
-          <InputTime
+          <AcsInputTime
             label={"Input Time"}
             value={time}
             handleChange={setTime}
@@ -329,7 +329,7 @@ function App() {
             max={"17:00"}
           />
 
-          <InputDate
+          <AcsInputDate
             label={"Input Date"}
             handleChange={setDate}
             value={date}
