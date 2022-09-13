@@ -8,10 +8,11 @@ import { ThemingProps } from "@chakra-ui/system"
 import { FunctionComponent, useEffect, useRef } from "react"
 import FormControlLayout from "./FormControlLayout"
 
-type Omitted = "disabled" | "required" | "readOnly" | "size"
+type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
   handleChange: (e: string) => void
+  value: string
   focusBorderColor?: string
   errorBorderColor?: string
   autoResize?: boolean
@@ -64,6 +65,7 @@ export const AcsInputTextArea: FunctionComponent<InputProps> = ({handleChange, .
           ref={textareaRef}
           onChange={(e) => handleChange(e.target.value)}
           type={"text"}
+          value={props.value}
           {...propsForInput()}
           variant={props.variant}
           focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
