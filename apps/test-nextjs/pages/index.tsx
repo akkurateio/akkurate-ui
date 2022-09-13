@@ -9,6 +9,9 @@ import {
   AcsPopover,
   AcsTabs,
 } from "@akkurateio/components"
+
+import { AcsInputDate, AcsInputText, AcsInputTime } from "@akkurateio/forms"
+
 import {
   Box,
   Button,
@@ -83,6 +86,8 @@ function App() {
 
         <ToggleColorMode />
       </Flex>
+
+
 
       <VStack mt={10} spacing={10} p={4} mb={4000}>
         <InputText
@@ -311,8 +316,10 @@ function App() {
           />
         </Box>
 
+        <AcsInputText />
+
         <Box width={"400px"}>
-          <InputTime
+          <AcsInputTime
             label={"Input Time"}
             value={time}
             handleChange={setTime}
@@ -322,7 +329,7 @@ function App() {
             max={"17:00"}
           />
 
-          <InputDate
+          <AcsInputDate
             label={"Input Date"}
             handleChange={setDate}
             value={date}
@@ -374,7 +381,6 @@ function App() {
             handleChangePage={setPage}
           />
         </Box>
-
 
         <AcsDropzone />
       </VStack>
