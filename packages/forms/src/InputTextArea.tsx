@@ -65,7 +65,6 @@ export const AcsInputTextArea: FunctionComponent<InputProps> = ({handleChange, .
           ref={textareaRef}
           onChange={(e) => handleChange(e.target.value)}
           type={"text"}
-          value={props.value}
           {...propsForInput()}
           variant={props.variant}
           focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
