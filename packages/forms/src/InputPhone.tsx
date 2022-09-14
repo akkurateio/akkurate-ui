@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, FunctionComponent } from "react"
 import {
   Box,
   Button,
@@ -9,7 +9,6 @@ import {
   FormHelperText,
   FormLabel,
   HTMLChakraProps,
-  Image,
   Input,
   InputGroup,
   InputLeftElement,
@@ -22,8 +21,6 @@ import {
 } from "@chakra-ui/react"
 import { AisChevronDown } from "@akkurateio/icons"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
-import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -36,13 +33,18 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
-  countriesArray?: any[]
+  countriesArray: {
+    name: string
+    icon: JSX.Element
+    code: string
+    prefix: string
+  }[]
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    ThemingProps<"InputPhone">,
     FormControlOptions {}
 
 export const AcsInputPhone: FunctionComponent<InputProps> = ({
@@ -71,7 +73,7 @@ export const AcsInputPhone: FunctionComponent<InputProps> = ({
     icon: JSX.Element
     code: string
     prefix: string
-  }>(countriesArray[0])
+  }>(props.countriesArray[0])
 
   const handleCountryChange = (
     currentCountry: {
@@ -110,12 +112,13 @@ export const AcsInputPhone: FunctionComponent<InputProps> = ({
 
   return (
     <FormControl
-      paddingRight={5}
-      paddingLeft={40}
-      isDisabled={false}
-      isInvalid={false}
-      isRequired={true}
-      variant="filled"
+      {...props}
+      // paddingRight={5}
+      // paddingLeft={40}
+      // isDisabled={false}
+      // isInvalid={false}
+      // isRequired={true}
+      // variant="filled"
     >
       <FormLabel>Telephone</FormLabel>
       <InputGroup>
@@ -147,7 +150,7 @@ export const AcsInputPhone: FunctionComponent<InputProps> = ({
                     <SimpleGrid columns={1} h={"full"} overflow={"hidden"}>
                       <Box h={"full"} overflowY={"auto"}>
                         <SimpleGrid spacingY={0.5}>
-                          {countriesArray.map((country, index) => (
+                          {props.countriesArray.map((country, index) => (
                             <Button
                               key={index}
                               onClick={() =>
