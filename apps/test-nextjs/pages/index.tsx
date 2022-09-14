@@ -56,7 +56,32 @@ function App() {
 
   const [file, setFile] = useState<FileList | null>(null)
 
+  const [value, setValue] = useState<string>("")
+
   file && file.length > 0 && console.log(file[0])
+
+  const Array = [
+    {
+      name: "FRANCE",
+      icon: <img src="/france.png" width={6} height={8} alt="France" />,
+      code: "FR",
+      prefix: "+33",
+    },
+    {
+      name: "BELGIQUE",
+      icon: <img src="/belgium.png" width={6} height={8} alt="Belgium" />,
+      code: "BE",
+      prefix: "+32",
+    },
+    {
+      name: "SUISSE",
+      icon: (
+        <img src="/switzerland.png" width={6} height={8} alt="Switzerland" />
+      ),
+      code: "CH",
+      prefix: "+41",
+    },
+  ]
 
   useEffect(() => {
     if (search.length >= 3) {
@@ -87,302 +112,303 @@ function App() {
         <ToggleColorMode />
       </Flex>
 
-
-
       <VStack mt={10} spacing={10} p={4} mb={4000}>
-        <InputText
-          isRequired
-          label={"Input Text"}
-          defaultValue={text}
-          handleChange={setText}
-          hint={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"
-          }
-          error={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
-          isInvalid={text.length < 18}
-        />
+        {/*<InputText*/}
+        {/*  isRequired*/}
+        {/*  label={"Input Text"}*/}
+        {/*  defaultValue={text}*/}
+        {/*  handleChange={setText}*/}
+        {/*  hint={*/}
+        {/*    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"*/}
+        {/*  }*/}
+        {/*  error={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}*/}
+        {/*  isInvalid={text.length < 18}*/}
+        {/*/>*/}
+        {/*<AcsInputPhone*/}
+        {/*  handleChange={(value) => setValue(value)}*/}
+        {/*  countriesArray={Array}*/}
+        {/*/>*/}
+        {/*<InputPassword*/}
+        {/*  label={"Mot de passe"}*/}
+        {/*  hint={"Ici tu dois rentrer ton mot de passe."}*/}
+        {/*  error={"Ah bah non c'est trop court."}*/}
+        {/*  value={password}*/}
+        {/*  handleChange={(pw: string) => setPassword(pw)}*/}
+        {/*  isInvalid={password.length < 8}*/}
+        {/*/>*/}
 
-        <InputPassword
-          label={"Mot de passe"}
-          hint={"Ici tu dois rentrer ton mot de passe."}
-          error={"Ah bah non c'est trop court."}
-          value={password}
-          handleChange={(pw: string) => setPassword(pw)}
-          isInvalid={password.length < 8}
-        />
+        {/*<InputColor*/}
+        {/*  label={"Couleur"}*/}
+        {/*  hint={"Ici tu dois rentrer ta couleur préférée."}*/}
+        {/*  error={"Ah bah non c'est trop court."}*/}
+        {/*  value={color}*/}
+        {/*  handleChange={setColor}*/}
+        {/*  isInvalid={color.length < 3}*/}
+        {/*/>*/}
 
-        <InputColor
-          label={"Couleur"}
-          hint={"Ici tu dois rentrer ta couleur préférée."}
-          error={"Ah bah non c'est trop court."}
-          value={color}
-          handleChange={setColor}
-          isInvalid={color.length < 3}
-        />
+        {/*<InputTextArea*/}
+        {/*  label={"Input Text Area"}*/}
+        {/*  value={textarea}*/}
+        {/*  handleChange={setTextarea}*/}
+        {/*  hint={*/}
+        {/*    "Lorem ipsum dolor sit amet consectetur adipisicing elitae maiores ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"*/}
+        {/*  }*/}
+        {/*  error={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}*/}
+        {/*  autoResize={true}*/}
+        {/*/>*/}
 
-        <InputTextArea
-          label={"Input Text Area"}
-          value={textarea}
-          handleChange={setTextarea}
-          hint={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elitae maiores ut sequi esse laborum ipsam dolorem aspernatur cupiditate. Earum, id!"
-          }
-          error={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
-          autoResize={true}
-        />
+        {/*<InputPin*/}
+        {/*  hint={"Ici tu dois rentrer ton mot de passe."}*/}
+        {/*  error={"Ah bah non c'est trop court."}*/}
+        {/*  value={pin}*/}
+        {/*  handleChange={setPin}*/}
+        {/*  pinNumber={7}*/}
+        {/*/>*/}
 
-        <InputPin
-          hint={"Ici tu dois rentrer ton mot de passe."}
-          error={"Ah bah non c'est trop court."}
-          value={pin}
-          handleChange={setPin}
-          pinNumber={7}
-        />
+        {/*<Box width={"200px"}>*/}
+        {/*  <InputNumber*/}
+        {/*    label={"Input Number"}*/}
+        {/*    hint={"Ici tu dois rentrer ton mot de passe."}*/}
+        {/*    error={"Ah bah non c'est trop court."}*/}
+        {/*    value={number}*/}
+        {/*    handleChange={setNumber}*/}
+        {/*    isInvalid={number < 8}*/}
+        {/*    min={-100}*/}
+        {/*    max={100}*/}
+        {/*    allowMouseWheel={true}*/}
+        {/*  />*/}
 
-        <Box width={"200px"}>
-          <InputNumber
-            label={"Input Number"}
-            hint={"Ici tu dois rentrer ton mot de passe."}
-            error={"Ah bah non c'est trop court."}
-            value={number}
-            handleChange={setNumber}
-            isInvalid={number < 8}
-            min={-100}
-            max={100}
-            allowMouseWheel={true}
-          />
+        {/*  <Button onClick={() => setModal(true)}>open modal</Button>*/}
 
-          <Button onClick={() => setModal(true)}>open modal</Button>
+        {/*  <AcsModal*/}
+        {/*    title={"Modal"}*/}
+        {/*    isOpen={modal}*/}
+        {/*    onClose={() => setModal(false)}*/}
+        {/*    hasCloseBtn={true}*/}
+        {/*    bg={"primary.500"}*/}
+        {/*    body={*/}
+        {/*      <Box>*/}
+        {/*        <Text>*/}
+        {/*          Lorem ipsum dolor sit amet consectetur, adipisicing elit.*/}
+        {/*          Quisquam, perspiciatis consequatur vero itaque ducimus aliquam*/}
+        {/*          hic illum voluptates quas a et dignissimos quia repellat iste*/}
+        {/*          sequi non ipsum minima sint! Perferendis delectus nesciunt*/}
+        {/*          ratione sit quasi sunt consequatur error itaque, possimus*/}
+        {/*          architecto illo cum maiores minima quia dolor. Eaque ut ea*/}
+        {/*          saepe voluptates odio rem ipsam, veritatis non animi.*/}
+        {/*          Repellat? Voluptatem, minus aliquid sed vel neque natus omnis*/}
+        {/*          placeat, quo possimus repellendus voluptate aut blanditiis*/}
+        {/*          debitis odio enim, nulla deserunt. Beatae repellat alias*/}
+        {/*          quidem laborum odit dolore corporis tenetur autem.*/}
+        {/*          Reprehenderit consequatur nihil mollitia, vitae tenetur nulla*/}
+        {/*          architecto esse itaque eum? Eaque fuga similique commodi*/}
+        {/*          blanditiis eius animi molestiae facere quasi quibusdam saepe*/}
+        {/*          possimus, consequatur beatae, nam tenetur tempore ipsa! Sunt*/}
+        {/*          praesentium explicabo repellat, possimus tempore ut similique,*/}
+        {/*          quaerat necessitatibus culpa sapiente quas cupiditate optio.*/}
+        {/*          Asperiores, ea omnis! Cum, eaque. Ratione fugit doloribus*/}
+        {/*          dignissimos quisquam nihil et similique at totam! Maiores*/}
+        {/*          nobis quidem deserunt ipsam culpa delectus consectetur*/}
+        {/*          recusandae illo harum eum similique accusamus veritatis*/}
+        {/*          quisquam eligendi quis iste eaque dolorum est, dolores*/}
+        {/*          laudantium sapiente? Laudantium quae excepturi quasi sequi!*/}
+        {/*        </Text>*/}
+        {/*      </Box>*/}
+        {/*    }*/}
+        {/*    footer={*/}
+        {/*      <Flex justifyContent={"space-between"} width={"full"}>*/}
+        {/*        <Button onClick={() => setModal(false)}>Close</Button>*/}
+        {/*        <Button onClick={() => console.log(false)}>Truc</Button>*/}
+        {/*      </Flex>*/}
+        {/*    }*/}
+        {/*    size={"lg"}*/}
+        {/*  />*/}
 
-          <AcsModal
-            title={"Modal"}
-            isOpen={modal}
-            onClose={() => setModal(false)}
-            hasCloseBtn={true}
-            bg={"primary.500"}
-            body={
-              <Box>
-                <Text>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Quisquam, perspiciatis consequatur vero itaque ducimus aliquam
-                  hic illum voluptates quas a et dignissimos quia repellat iste
-                  sequi non ipsum minima sint! Perferendis delectus nesciunt
-                  ratione sit quasi sunt consequatur error itaque, possimus
-                  architecto illo cum maiores minima quia dolor. Eaque ut ea
-                  saepe voluptates odio rem ipsam, veritatis non animi.
-                  Repellat? Voluptatem, minus aliquid sed vel neque natus omnis
-                  placeat, quo possimus repellendus voluptate aut blanditiis
-                  debitis odio enim, nulla deserunt. Beatae repellat alias
-                  quidem laborum odit dolore corporis tenetur autem.
-                  Reprehenderit consequatur nihil mollitia, vitae tenetur nulla
-                  architecto esse itaque eum? Eaque fuga similique commodi
-                  blanditiis eius animi molestiae facere quasi quibusdam saepe
-                  possimus, consequatur beatae, nam tenetur tempore ipsa! Sunt
-                  praesentium explicabo repellat, possimus tempore ut similique,
-                  quaerat necessitatibus culpa sapiente quas cupiditate optio.
-                  Asperiores, ea omnis! Cum, eaque. Ratione fugit doloribus
-                  dignissimos quisquam nihil et similique at totam! Maiores
-                  nobis quidem deserunt ipsam culpa delectus consectetur
-                  recusandae illo harum eum similique accusamus veritatis
-                  quisquam eligendi quis iste eaque dolorum est, dolores
-                  laudantium sapiente? Laudantium quae excepturi quasi sequi!
-                </Text>
-              </Box>
-            }
-            footer={
-              <Flex justifyContent={"space-between"} width={"full"}>
-                <Button onClick={() => setModal(false)}>Close</Button>
-                <Button onClick={() => console.log(false)}>Truc</Button>
-              </Flex>
-            }
-            size={"lg"}
-          />
+        {/*  <Button onClick={() => setDrawer(true)}>open drawer</Button>*/}
 
-          <Button onClick={() => setDrawer(true)}>open drawer</Button>
+        {/*  <AcsDrawer*/}
+        {/*    title={"Drawer"}*/}
+        {/*    isOpen={drawer}*/}
+        {/*    onClose={() => setDrawer(false)}*/}
+        {/*    body={*/}
+        {/*      <Text>*/}
+        {/*        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem*/}
+        {/*        incidunt maxime aspernatur tenetur distinctio nobis in*/}
+        {/*        recusandae? Repellat nihil placeat possimus provident ex sint*/}
+        {/*        fugiat, nam esse, perferendis tempora ipsam! Possimus, sint ea*/}
+        {/*        assumenda similique esse perferendis libero sed, molestiae nobis*/}
+        {/*        molestias veritatis beatae maxime! Autem sed impedit tempora*/}
+        {/*        harum, quasi aspernatur hic deserunt earum sapiente, placeat a*/}
+        {/*        error quibusdam? Accusantium, ut, quasi maxime expedita*/}
+        {/*        quisquam, nesciunt odio maiores iste vero nulla quos at neque*/}
+        {/*        sunt magni saepe ex hic consequuntur sapiente soluta dolorum*/}
+        {/*        numquam a dicta iure. Repellendus, dolor! Asperiores voluptatum*/}
+        {/*        nam laborum neque minima, eligendi molestias nulla blanditiis,*/}
+        {/*        aspernatur explicabo hic corporis modi. Repudiandae, at tempora*/}
+        {/*        optio aliquam quae harum voluptatum tenetur eius numquam*/}
+        {/*        necessitatibus saepe, molestiae id.*/}
+        {/*      </Text>*/}
+        {/*    }*/}
+        {/*    footer={*/}
+        {/*      <Flex justifyContent={"space-between"} width={"full"}>*/}
+        {/*        <Button onClick={() => setDrawer(false)}>Close</Button>*/}
+        {/*        <Button onClick={() => console.log("coucou from drawer")}>*/}
+        {/*          Truc*/}
+        {/*        </Button>*/}
+        {/*      </Flex>*/}
+        {/*    }*/}
+        {/*  />*/}
 
-          <AcsDrawer
-            title={"Drawer"}
-            isOpen={drawer}
-            onClose={() => setDrawer(false)}
-            body={
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                incidunt maxime aspernatur tenetur distinctio nobis in
-                recusandae? Repellat nihil placeat possimus provident ex sint
-                fugiat, nam esse, perferendis tempora ipsam! Possimus, sint ea
-                assumenda similique esse perferendis libero sed, molestiae nobis
-                molestias veritatis beatae maxime! Autem sed impedit tempora
-                harum, quasi aspernatur hic deserunt earum sapiente, placeat a
-                error quibusdam? Accusantium, ut, quasi maxime expedita
-                quisquam, nesciunt odio maiores iste vero nulla quos at neque
-                sunt magni saepe ex hic consequuntur sapiente soluta dolorum
-                numquam a dicta iure. Repellendus, dolor! Asperiores voluptatum
-                nam laborum neque minima, eligendi molestias nulla blanditiis,
-                aspernatur explicabo hic corporis modi. Repudiandae, at tempora
-                optio aliquam quae harum voluptatum tenetur eius numquam
-                necessitatibus saepe, molestiae id.
-              </Text>
-            }
-            footer={
-              <Flex justifyContent={"space-between"} width={"full"}>
-                <Button onClick={() => setDrawer(false)}>Close</Button>
-                <Button onClick={() => console.log("coucou from drawer")}>
-                  Truc
-                </Button>
-              </Flex>
-            }
-          />
+        {/*  <Button onClick={() => setAlert(!alert)}>Open Alert Dialog</Button>*/}
 
-          <Button onClick={() => setAlert(!alert)}>Open Alert Dialog</Button>
+        {/*  <AcsModalAlert*/}
+        {/*    isOpen={alert}*/}
+        {/*    onClose={() => setAlert(false)}*/}
+        {/*    action={() => console.log("coucou from alert")}*/}
+        {/*    body={*/}
+        {/*      <Text>*/}
+        {/*        Lorem ipsum dolor sit, amet consectetur adipisicing elit.*/}
+        {/*        Accusamus nulla nobis deserunt inventore placeat asperiores*/}
+        {/*        nihil error dolores distinctio laudantium ipsum, assumenda iure*/}
+        {/*        numquam. Totam dolorum id ullam eaque reiciendis.*/}
+        {/*      </Text>*/}
+        {/*    }*/}
+        {/*    bg={"red.100"}*/}
+        {/*    size={"4xl"}*/}
+        {/*  />*/}
 
-          <AcsModalAlert
-            isOpen={alert}
-            onClose={() => setAlert(false)}
-            action={() => console.log("coucou from alert")}
-            body={
-              <Text>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Accusamus nulla nobis deserunt inventore placeat asperiores
-                nihil error dolores distinctio laudantium ipsum, assumenda iure
-                numquam. Totam dolorum id ullam eaque reiciendis.
-              </Text>
-            }
-            bg={"red.100"}
-            size={"4xl"}
-          />
+        {/*  <AcsPopover*/}
+        {/*    body={<Text>Coucou</Text>}*/}
+        {/*    triggerBtnClosed={<Button>Ouvre</Button>}*/}
+        {/*    triggerBtnOpened={<Button>Ferme</Button>}*/}
+        {/*    action={() => console.log("coucou from popover")}*/}
+        {/*  />*/}
+        {/*</Box>*/}
+        {/*<InputAutocomplete*/}
+        {/*  label={"Input Autocomplete"}*/}
+        {/*  hint={*/}
+        {/*    "you can type something in and you will be proposed a set of words to choose from."*/}
+        {/*  }*/}
+        {/*  value={search}*/}
+        {/*  handleChange={setSearch}*/}
+        {/*  resultsArray={searchResults}*/}
+        {/*/>*/}
 
-          <AcsPopover
-            body={<Text>Coucou</Text>}
-            triggerBtnClosed={<Button>Ouvre</Button>}
-            triggerBtnOpened={<Button>Ferme</Button>}
-            action={() => console.log("coucou from popover")}
-          />
-        </Box>
-        <InputAutocomplete
-          label={"Input Autocomplete"}
-          hint={
-            "you can type something in and you will be proposed a set of words to choose from."
-          }
-          value={search}
-          handleChange={setSearch}
-          resultsArray={searchResults}
-        />
+        {/*<AcsTabs*/}
+        {/*  tabNameArray={["Coucou", "Hola", "Hey"]}*/}
+        {/*  tabContentArray={[*/}
+        {/*    <Text key={0}>Hello 1</Text>,*/}
+        {/*    <Text key={1}>Hello 2</Text>,*/}
+        {/*    <Text key={2}>Hello 3</Text>,*/}
+        {/*  ]}*/}
+        {/*/>*/}
+        {/*<Box width={"400px"}>*/}
+        {/*  <AcsCarousel*/}
+        {/*    cardsArray={[*/}
+        {/*      <Flex*/}
+        {/*        key={0}*/}
+        {/*        bg={"gray.100"}*/}
+        {/*        shadow={"inner"}*/}
+        {/*        h={"200px"}*/}
+        {/*        w={"120px"}*/}
+        {/*        rounded={"sm"}*/}
+        {/*        p={2}*/}
+        {/*      >*/}
+        {/*        <Text>Hello 1</Text>*/}
+        {/*      </Flex>,*/}
+        {/*      <Flex*/}
+        {/*        key={1}*/}
+        {/*        bg={"gray.100"}*/}
+        {/*        shadow={"inner"}*/}
+        {/*        h={"200px"}*/}
+        {/*        w={"120px"}*/}
+        {/*        rounded={"sm"}*/}
+        {/*        p={2}*/}
+        {/*      >*/}
+        {/*        <Text>Hello 2</Text>*/}
+        {/*      </Flex>,*/}
+        {/*      <Flex*/}
+        {/*        key={2}*/}
+        {/*        bg={"gray.100"}*/}
+        {/*        shadow={"inner"}*/}
+        {/*        h={"200px"}*/}
+        {/*        w={"120px"}*/}
+        {/*        rounded={"sm"}*/}
+        {/*        p={2}*/}
+        {/*      >*/}
+        {/*        <Text>Hello 3</Text>*/}
+        {/*      </Flex>,*/}
+        {/*    ]}*/}
+        {/*  />*/}
+        {/*</Box>*/}
 
-        <AcsTabs
-          tabNameArray={["Coucou", "Hola", "Hey"]}
-          tabContentArray={[
-            <Text key={0}>Hello 1</Text>,
-            <Text key={1}>Hello 2</Text>,
-            <Text key={2}>Hello 3</Text>,
-          ]}
-        />
-        <Box width={"400px"}>
-          <AcsCarousel
-            cardsArray={[
-              <Flex
-                key={0}
-                bg={"gray.100"}
-                shadow={"inner"}
-                h={"200px"}
-                w={"120px"}
-                rounded={"sm"}
-                p={2}
-              >
-                <Text>Hello 1</Text>
-              </Flex>,
-              <Flex
-                key={1}
-                bg={"gray.100"}
-                shadow={"inner"}
-                h={"200px"}
-                w={"120px"}
-                rounded={"sm"}
-                p={2}
-              >
-                <Text>Hello 2</Text>
-              </Flex>,
-              <Flex
-                key={2}
-                bg={"gray.100"}
-                shadow={"inner"}
-                h={"200px"}
-                w={"120px"}
-                rounded={"sm"}
-                p={2}
-              >
-                <Text>Hello 3</Text>
-              </Flex>,
-            ]}
-          />
-        </Box>
+        {/*<AcsInputText />*/}
 
-        <AcsInputText />
+        {/*<Box width={"400px"}>*/}
+        {/*  <AcsInputTime*/}
+        {/*    label={"Input Time"}*/}
+        {/*    value={time}*/}
+        {/*    handleChange={setTime}*/}
+        {/*    disabledHours={[1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23]}*/}
+        {/*    minuteStep={15}*/}
+        {/*    min={"09:00"}*/}
+        {/*    max={"17:00"}*/}
+        {/*  />*/}
 
-        <Box width={"400px"}>
-          <AcsInputTime
-            label={"Input Time"}
-            value={time}
-            handleChange={setTime}
-            disabledHours={[1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23]}
-            minuteStep={15}
-            min={"09:00"}
-            max={"17:00"}
-          />
+        {/*  <AcsInputDate*/}
+        {/*    label={"Input Date"}*/}
+        {/*    handleChange={setDate}*/}
+        {/*    value={date}*/}
+        {/*    // minDate={"2022-08-15"}*/}
+        {/*    maxDate={"2022-10-15"}*/}
+        {/*    disabledDays={[0, 3, 6]}*/}
+        {/*    // disabledDates={["2022-09-05", "2022-09-15", "2022-09-22"]}*/}
+        {/*  />*/}
 
-          <AcsInputDate
-            label={"Input Date"}
-            handleChange={setDate}
-            value={date}
-            // minDate={"2022-08-15"}
-            maxDate={"2022-10-15"}
-            disabledDays={[0, 3, 6]}
-            // disabledDates={["2022-09-05", "2022-09-15", "2022-09-22"]}
-          />
+        {/*  <InputSearch*/}
+        {/*    label={"Input Search"}*/}
+        {/*    value={search}*/}
+        {/*    handleChange={setSearch}*/}
+        {/*  />*/}
 
-          <InputSearch
-            label={"Input Search"}
-            value={search}
-            handleChange={setSearch}
-          />
+        {/*  <AcsRadioGroup*/}
+        {/*    label={"Input Search"}*/}
+        {/*    value={search}*/}
+        {/*    handleChange={setSearch}*/}
+        {/*    valuesArray={[*/}
+        {/*      { value: "1", label: "Hello 1" },*/}
+        {/*      { value: "2", label: "Hello 2" },*/}
+        {/*      { value: "3", label: "Hello 3" },*/}
+        {/*      { value: "4", label: "Hello 4" },*/}
+        {/*    ]}*/}
+        {/*    direction={"horizontal"}*/}
+        {/*  />*/}
 
-          <AcsRadioGroup
-            label={"Input Search"}
-            value={search}
-            handleChange={setSearch}
-            valuesArray={[
-              { value: "1", label: "Hello 1" },
-              { value: "2", label: "Hello 2" },
-              { value: "3", label: "Hello 3" },
-              { value: "4", label: "Hello 4" },
-            ]}
-            direction={"horizontal"}
-          />
+        {/*  <AcsSelect*/}
+        {/*    label={"Input Select"}*/}
+        {/*    placeholder={"Select"}*/}
+        {/*    handleChange={setSearch}*/}
+        {/*    valuesArray={[*/}
+        {/*      { value: "1", label: "Hello 1" },*/}
+        {/*      { value: "2", label: "Hello 2" },*/}
+        {/*      { value: "3", label: "Hello 3" },*/}
+        {/*      { value: "4", label: "Hello 4" },*/}
+        {/*    ]}*/}
+        {/*    variant={"flushed"}*/}
+        {/*  />*/}
+        {/*</Box>*/}
 
-          <AcsSelect
-            label={"Input Select"}
-            placeholder={"Select"}
-            handleChange={setSearch}
-            valuesArray={[
-              { value: "1", label: "Hello 1" },
-              { value: "2", label: "Hello 2" },
-              { value: "3", label: "Hello 3" },
-              { value: "4", label: "Hello 4" },
-            ]}
-            variant={"flushed"}
-          />
-        </Box>
+        {/*<Box bg={"white"} p={10} experimental_spaceY={20}>*/}
+        {/*  <AcsPaginate max={150} current={page} handleChangePage={setPage} />*/}
 
-        <Box bg={"white"} p={10} experimental_spaceY={20}>
-          <AcsPaginate max={150} current={page} handleChangePage={setPage} />
+        {/*  <AcsPaginateSecondary*/}
+        {/*    max={57}*/}
+        {/*    current={page}*/}
+        {/*    handleChangePage={setPage}*/}
+        {/*  />*/}
+        {/*</Box>*/}
 
-          <AcsPaginateSecondary
-            max={57}
-            current={page}
-            handleChangePage={setPage}
-          />
-        </Box>
-
-        <AcsDropzone />
+        {/*<AcsDropzone />*/}
       </VStack>
     </Container>
   )
