@@ -18,10 +18,11 @@ import { FunctionComponent, useState } from "react"
 import { MinuteStep } from "../types"
 import FormControlLayout from "./FormControlLayout"
 
-type Omitted = "disabled" | "required" | "readOnly" | "size"
+type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
   handleChange: (e: string) => void
+  value?: string
   minuteStep?: MinuteStep
   disabledHours?: number[]
   disabledMinutes?: number[]

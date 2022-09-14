@@ -8,10 +8,11 @@ import { ThemingProps } from "@chakra-ui/system"
 import { FunctionComponent } from "react"
 import FormControlLayout from "./FormControlLayout"
 
-type Omitted = "disabled" | "required" | "readOnly" | "size"
+type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
   handleChange: (e: string) => void
+  value: string
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -26,7 +27,10 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsInputText: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const AcsInputText: FunctionComponent<InputProps> = ({
+  handleChange,
+  ...props
+}) => {
   const propsForInput = () => {
     const {
       label,

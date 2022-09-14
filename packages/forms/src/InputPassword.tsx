@@ -10,10 +10,11 @@ import {
 import { FunctionComponent, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 
-type Omitted = "disabled" | "required" | "readOnly" | "size"
+type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
   handleChange: (e: string) => void
+  value: string
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -30,7 +31,10 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsInputPassword: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const AcsInputPassword: FunctionComponent<InputProps> = ({
+  handleChange,
+  ...props
+}) => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const propsForInput = () => {

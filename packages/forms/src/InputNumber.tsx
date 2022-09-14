@@ -14,10 +14,17 @@ import { ThemingProps } from "@chakra-ui/system"
 import { FunctionComponent, useEffect } from "react"
 import FormControlLayout from "./FormControlLayout"
 
-type Omitted = "disabled" | "required" | "readOnly" | "size" | "selectionStart"
+type Omitted =
+  | "disabled"
+  | "required"
+  | "readOnly"
+  | "size"
+  | "selectionStart"
+  | "value"
 
 interface InputOptions {
   handleChange: (e: string | number) => void
+  value?: string | number
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -34,7 +41,10 @@ export interface InputProps
     ThemingProps<"NumberInput">,
     FormControlOptions {}
 
-export const AcsInputNumber: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const AcsInputNumber: FunctionComponent<InputProps> = ({
+  handleChange,
+  ...props
+}) => {
   const propsForInput = () => {
     const {
       label,
@@ -89,10 +99,9 @@ export const AcsInputNumber: FunctionComponent<InputProps> = ({handleChange, ...
     if (!!valueAsNumber) {
       handleChange(valueAsNumber)
     }
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueAsNumber])
-  
 
   return (
     <FormControlLayout {...props}>

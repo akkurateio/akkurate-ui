@@ -45,10 +45,11 @@ const StyledBox = styled.div`
   }
 `
 
-type Omitted = "disabled" | "required" | "readOnly" | "size"
+type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
   handleChange: (e: string) => void
+  value?: string
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -83,8 +84,6 @@ export const AcsInputColor: FunctionComponent<InputProps> = ({
     } = props
     return rest
   }
-
-  
 
   return (
     <FormControlLayout {...props}>

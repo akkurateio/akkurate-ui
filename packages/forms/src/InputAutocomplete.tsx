@@ -10,10 +10,11 @@ import { ThemingProps } from "@chakra-ui/system"
 import { FunctionComponent, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 
-type Omitted = "disabled" | "required" | "readOnly" | "size"
+type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
   handleChange: (e: string) => void
+  value?: string
   resultsArray: string[]
   focusBorderColor?: string
   errorBorderColor?: string
