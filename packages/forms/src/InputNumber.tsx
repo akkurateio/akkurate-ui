@@ -99,9 +99,15 @@ export const AcsInputNumber: FunctionComponent<InputProps> = ({
     if (!!valueAsNumber) {
       handleChange(valueAsNumber)
     }
+    else if (valueAsNumber === 0) {
+      handleChange(Number('0'))
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueAsNumber])
+
+
+
 
   return (
     <FormControlLayout {...props}>

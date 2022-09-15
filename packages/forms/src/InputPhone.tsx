@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react"
 import { AisChevronDown } from "@akkurateio/icons"
 import { ThemingProps } from "@chakra-ui/system"
+import FormControlLayout from "./FormControlLayout";
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -111,15 +112,7 @@ export const AcsInputPhone: FunctionComponent<InputProps> = ({
   }
 
   return (
-    <FormControl
-      {...props}
-      // paddingRight={5}
-      // paddingLeft={40}
-      // isDisabled={false}
-      // isInvalid={false}
-      // isRequired={true}
-      // variant="filled"
-    >
+      <FormControlLayout {...props}>
       <FormLabel>Telephone</FormLabel>
       <InputGroup>
         <InputLeftElement
@@ -187,6 +180,7 @@ export const AcsInputPhone: FunctionComponent<InputProps> = ({
       </InputGroup>
       <FormHelperText>Need help ? </FormHelperText>
       <FormErrorMessage>rentrer du texte</FormErrorMessage>
-    </FormControl>
+      </FormControlLayout>
   )
 }
+

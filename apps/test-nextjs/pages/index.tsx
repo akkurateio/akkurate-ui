@@ -10,7 +10,7 @@ import {
   AcsTabs,
 } from "@akkurateio/components"
 
-import { AcsInputDate, AcsInputText, AcsInputTime } from "@akkurateio/forms"
+import {AcsInputDate, AcsInputNumber, AcsInputPhone, AcsInputText, AcsInputTime} from "@akkurateio/forms"
 
 import {
   Box,
@@ -56,9 +56,11 @@ function App() {
 
   const [file, setFile] = useState<FileList | null>(null)
 
-  const [value, setValue] = useState<string>("")
+  const [phone, setPhone] = useState("")
 
-  file && file.length > 0 && console.log(file[0])
+  //file && file.length > 0 && console.log(file[0])
+
+  console.log(number)
 
   const Array = [
     {
@@ -124,10 +126,10 @@ function App() {
         {/*  error={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}*/}
         {/*  isInvalid={text.length < 18}*/}
         {/*/>*/}
-        {/*<AcsInputPhone*/}
-        {/*  handleChange={(value) => setValue(value)}*/}
-        {/*  countriesArray={Array}*/}
-        {/*/>*/}
+        <AcsInputPhone
+          handleChange={(phone : any) => setPhone(phone)}
+          countriesArray={Array}
+        />
         {/*<InputPassword*/}
         {/*  label={"Mot de passe"}*/}
         {/*  hint={"Ici tu dois rentrer ton mot de passe."}*/}
@@ -166,17 +168,17 @@ function App() {
         {/*/>*/}
 
         {/*<Box width={"200px"}>*/}
-        {/*  <InputNumber*/}
-        {/*    label={"Input Number"}*/}
-        {/*    hint={"Ici tu dois rentrer ton mot de passe."}*/}
-        {/*    error={"Ah bah non c'est trop court."}*/}
-        {/*    value={number}*/}
-        {/*    handleChange={setNumber}*/}
-        {/*    isInvalid={number < 8}*/}
-        {/*    min={-100}*/}
-        {/*    max={100}*/}
-        {/*    allowMouseWheel={true}*/}
-        {/*  />*/}
+          <AcsInputNumber
+            label={"Input Number"}
+            hint={"Ici tu rentre un nombre."}
+            error={"Ce n'est pas un nombre."}
+            value={number}
+            handleChange={setNumber}
+            isInvalid={number < 8}
+            min={-100}
+            max={100}
+            allowMouseWheel={true}
+          />
 
         {/*  <Button onClick={() => setModal(true)}>open modal</Button>*/}
 
