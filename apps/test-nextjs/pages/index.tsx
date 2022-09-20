@@ -15,7 +15,7 @@ import {
   AcsInputNumber,
   AcsInputPhone,
   AcsInputText,
-  AcsInputTime,
+  AcsInputTime, AcsRangeSlider,
 } from "@akkurateio/forms"
 
 import {
@@ -39,6 +39,7 @@ function App() {
   const [text, setText] = useState("Salut à tous")
   const [password, setPassword] = useState("trucbidule")
   const [color, setColor] = useState(theme.colors.primary[500])
+  const [value, setValue] = useState([0,500])
 
   const [textarea, setTextarea] = useState("Lorem ipsum dolor")
 
@@ -101,6 +102,7 @@ function App() {
       <VStack mt={10} spacing={10} p={4} mb={4000}>
         {/*<AcsDropzone maxFiles={5} />*/}
         <AcsInputDateTime value={date} handleChange={setDate} width={"300px"} />
+        <AcsRangeSlider min={0} max={500} indicatorSteps={5} value={value} onChange={setValue} />
         {/*<AcsInputTime handleChange={setTime} value={time} width={"250px"} />*/}
         {/*<InputText*/}
         {/*  isRequired*/}
