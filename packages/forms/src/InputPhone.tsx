@@ -1,9 +1,8 @@
-import React, { useState, FunctionComponent } from "react"
+import React, { FunctionComponent, useState } from "react"
 import {
   Box,
   Button,
   Flex,
-  FormControl,
   FormControlOptions,
   FormErrorMessage,
   FormHelperText,
@@ -21,7 +20,7 @@ import {
 } from "@chakra-ui/react"
 import { AisChevronDown } from "@akkurateio/icons"
 import { ThemingProps } from "@chakra-ui/system"
-import FormControlLayout from "./FormControlLayout";
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -112,7 +111,7 @@ export const AcsInputPhone: FunctionComponent<InputProps> = ({
   }
 
   return (
-      <FormControlLayout {...props}>
+    <FormControlLayout {...props}>
       <FormLabel>Telephone</FormLabel>
       <InputGroup>
         <InputLeftElement
@@ -169,18 +168,18 @@ export const AcsInputPhone: FunctionComponent<InputProps> = ({
         <Input
           {...propsForInput()}
           variant={props.variant}
-          placeholder={"Numéro de téléphone"}
+          placeholder={props.placeholder}
           width={"auto"}
           paddingLeft={"95px"}
           maxLength={9}
           onChange={(phoneNumb) =>
             setPhoneNumber(country.prefix + phoneNumb.target.value)
           }
+          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
         />
       </InputGroup>
-      <FormHelperText>Need help ? </FormHelperText>
-      <FormErrorMessage>rentrer du texte</FormErrorMessage>
-      </FormControlLayout>
+      {/*<FormHelperText>{props.help} </FormHelperText>*/}
+      <FormErrorMessage>{props.error}</FormErrorMessage>
+    </FormControlLayout>
   )
 }
-

@@ -5,10 +5,11 @@ import {
   Divider,
   HStack,
   IconButton,
+  Image,
   Text,
   VStack,
 } from "@chakra-ui/react"
-import { FunctionComponent, useCallback, useState } from "react"
+import { FunctionComponent, useCallback, useEffect, useState } from "react"
 import { useDropzone } from "react-dropzone"
 
 interface IProps {
@@ -21,6 +22,7 @@ export const AcsDropzone: FunctionComponent<IProps> = ({
   maxFiles = 1,
 }: IProps) => {
   const [files, setFiles] = useState<File[]>([])
+  const [preview, setPreview] = useState("")
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setFiles(acceptedFiles)
@@ -32,7 +34,45 @@ export const AcsDropzone: FunctionComponent<IProps> = ({
     noClick: true,
     noKeyboard: true,
   })
+  // preview pour les images , mais a vérifier si ça fonctionne
+  const getPreview = (file: File) => {
+    if (file && file.type.includes("image")) {
+      try {
+        // make a small size preview of the file
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = (e: any) => {
+          setPreview(e.target.result)
+        }
+      } catch (error) {
+        console.log("pas très cool")
+      }
+    }
+  }
 
+  useEffect(() => {
+    if (files) {
+      getPreview(files[0])
+    }
+  }, [files])
+
+  const thumbs = files.map((file) => (
+    <Box key={file.name} w="100%" h="100%" p={2}>
+      <Box
+        w="100%"
+        h="100%"
+        bg="gray.100"
+        borderRadius="md"
+        p={2}
+        // @ts-ignore
+        d="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Text>{file.name}</Text>
+      </Box>
+    </Box>
+  ))
   return (
     <Box
       width={"full"}
@@ -74,7 +114,12 @@ export const AcsDropzone: FunctionComponent<IProps> = ({
                   width={"100%"}
                   zIndex={10}
                 >
-                  <Text>{file.name}</Text>
+                  {file.type.includes("image") && (
+                    <Image src={preview} alt={file.name} w={20} h={20} />
+                  )}
+                  <Text>
+                    {file.name} {}
+                  </Text>
                   <IconButton
                     size={"xs"}
                     rounded={"full"}

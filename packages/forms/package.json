@@ -30,6 +30,8 @@
     "@types/react-dom": ">=18.0.0"
   },
   "dependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
     "@akkurateio/icons": "^0.0.18",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
@@ -37,7 +39,8 @@
     "dayjs": "1.11.5",
     "framer-motion": ">=7.0.0",
     "react-colorful": ">=5.0.0",
-    "styled-components": "5.3.5"
+    "styled-components": "5.3.5",
+    "react-device-detect": "^2.2.2"
   },
   "scripts": {
     "build": "tsup src/index.ts --dts",

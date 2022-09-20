@@ -9,8 +9,14 @@ import {
   AcsPopover,
   AcsTabs,
 } from "@akkurateio/components"
-
-import {AcsInputDate, AcsInputNumber, AcsInputPhone, AcsInputText, AcsInputTime} from "@akkurateio/forms"
+import {
+  AcsInputDate,
+  AcsInputDateTime,
+  AcsInputNumber,
+  AcsInputPhone,
+  AcsInputText,
+  AcsInputTime,
+} from "@akkurateio/forms"
 
 import {
   Box,
@@ -25,6 +31,7 @@ import {
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import ToggleColorMode from "../components/ToggleColorMode"
+import { isMotionValue } from "framer-motion"
 
 function App() {
   const theme = useTheme()
@@ -60,30 +67,7 @@ function App() {
 
   //file && file.length > 0 && console.log(file[0])
 
-  console.log(number)
-
-  const Array = [
-    {
-      name: "FRANCE",
-      icon: <img src="/france.png" width={6} height={8} alt="France" />,
-      code: "FR",
-      prefix: "+33",
-    },
-    {
-      name: "BELGIQUE",
-      icon: <img src="/belgium.png" width={6} height={8} alt="Belgium" />,
-      code: "BE",
-      prefix: "+32",
-    },
-    {
-      name: "SUISSE",
-      icon: (
-        <img src="/switzerland.png" width={6} height={8} alt="Switzerland" />
-      ),
-      code: "CH",
-      prefix: "+41",
-    },
-  ]
+  // console.log(number)
 
   useEffect(() => {
     if (search.length >= 3) {
@@ -115,6 +99,9 @@ function App() {
       </Flex>
 
       <VStack mt={10} spacing={10} p={4} mb={4000}>
+        {/*<AcsDropzone maxFiles={5} />*/}
+        <AcsInputDateTime value={date} handleChange={setDate} width={"300px"} />
+        {/*<AcsInputTime handleChange={setTime} value={time} width={"250px"} />*/}
         {/*<InputText*/}
         {/*  isRequired*/}
         {/*  label={"Input Text"}*/}
@@ -126,10 +113,10 @@ function App() {
         {/*  error={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}*/}
         {/*  isInvalid={text.length < 18}*/}
         {/*/>*/}
-        <AcsInputPhone
-          handleChange={(phone : any) => setPhone(phone)}
-          countriesArray={Array}
-        />
+        {/*<AcsInputPhone*/}
+        {/*  handleChange={(phone : any) => setPhone(phone)}*/}
+        {/*  countriesArray={Array}*/}
+        {/*/>*/}
         {/*<InputPassword*/}
         {/*  label={"Mot de passe"}*/}
         {/*  hint={"Ici tu dois rentrer ton mot de passe."}*/}
@@ -168,17 +155,17 @@ function App() {
         {/*/>*/}
 
         {/*<Box width={"200px"}>*/}
-          <AcsInputNumber
-            label={"Input Number"}
-            hint={"Ici tu rentre un nombre."}
-            error={"Ce n'est pas un nombre."}
-            value={number}
-            handleChange={setNumber}
-            isInvalid={number < 8}
-            min={-100}
-            max={100}
-            allowMouseWheel={true}
-          />
+        {/*<AcsInputNumber*/}
+        {/*  label={"Input Number"}*/}
+        {/*  hint={"Ici tu rentre un nombre."}*/}
+        {/*  error={"Ce n'est pas un nombre."}*/}
+        {/*  value={number}*/}
+        {/*  handleChange={setNumber}*/}
+        {/*  isInvalid={number < 8}*/}
+        {/*  min={-100}*/}
+        {/*  max={100}*/}
+        {/*  allowMouseWheel={true}*/}
+        {/*/>*/}
 
         {/*  <Button onClick={() => setModal(true)}>open modal</Button>*/}
 

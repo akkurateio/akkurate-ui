@@ -41,6 +41,8 @@ export interface InputProps
     ThemingProps<"NumberInput">,
     FormControlOptions {}
 
+// @TODO: Ne fonctionne pas
+
 export const AcsInputNumber: FunctionComponent<InputProps> = ({
   handleChange,
   ...props
@@ -71,6 +73,7 @@ export const AcsInputNumber: FunctionComponent<InputProps> = ({
     allowMouseWheel: props.allowMouseWheel ? props.allowMouseWheel : false,
     min: props.min ? Number(props.min) : undefined,
     max: props.max ? Number(props.max) : undefined,
+    value: props.value ? Number(props.value) : undefined,
     format: (value) => {
       return value.toString().replace(",", ".")
     },
@@ -98,16 +101,9 @@ export const AcsInputNumber: FunctionComponent<InputProps> = ({
   useEffect(() => {
     if (!!valueAsNumber) {
       handleChange(valueAsNumber)
+    } else if (valueAsNumber === 0) {
     }
-    else if (valueAsNumber === 0) {
-      handleChange(Number('0'))
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueAsNumber])
-
-
-
 
   return (
     <FormControlLayout {...props}>

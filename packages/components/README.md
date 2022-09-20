@@ -12,3 +12,5 @@ npm install @akkurateio/components
 # yarn
 yarn add @akkurateio/components
 ```
+
+#### Work in progress !!!

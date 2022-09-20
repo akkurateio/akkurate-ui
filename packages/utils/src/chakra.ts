@@ -1,5 +1,5 @@
 import { extendTheme, ThemeConfig } from "@chakra-ui/react"
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools"
+import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools" // Custom colors
 
 // Custom colors
 const colors = {

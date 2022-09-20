@@ -7,6 +7,8 @@ import {
   HTMLChakraProps,
   Input,
   InputGroup,
+  InputRightAddon,
+  InputRightElement,
   Popover,
   PopoverBody,
   PopoverContent,
@@ -101,7 +103,7 @@ export const AcsInputTime: FunctionComponent<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size} position={"relative"}>
+      <InputGroup size={props.size} position={"relative"} width={props.width}>
         <Input
           type={"time"}
           onChange={handleManualTimeChange}
@@ -117,11 +119,11 @@ export const AcsInputTime: FunctionComponent<InputProps> = ({
           bg={props.bg ? props.bg : "white"}
         />
         <Flex
-          position={"absolute"}
           top={0}
           right={2}
           bottom={0}
           w={10}
+          position={"absolute"}
           alignItems={"center"}
           justifyItems={"center"}
         >

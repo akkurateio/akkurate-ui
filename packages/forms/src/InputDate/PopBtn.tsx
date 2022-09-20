@@ -4,6 +4,7 @@ import dayjs from "dayjs"
 import "dayjs/locale/fr"
 import { DateObject } from "../../types"
 import PopContent from "./PopContent"
+
 dayjs.locale("fr")
 
 interface IProps {
@@ -11,7 +12,7 @@ interface IProps {
   setDate: (e: DateObject) => void
 }
 
-const PopBtn = ({ date, setDate }: IProps) => {
+export const PopBtn = ({ date, setDate }: IProps) => {
   const handleClick = () => {
     setDate({
       ...date,

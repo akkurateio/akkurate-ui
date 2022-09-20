@@ -9,7 +9,7 @@ import dayjs, { Dayjs } from "dayjs"
 import { FunctionComponent, useEffect, useState } from "react"
 import { DateObject } from "../../types"
 import FormControlLayout from "../FormControlLayout"
-import PopBtn from "./PopBtn"
+import { PopBtn } from "./PopBtn"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
