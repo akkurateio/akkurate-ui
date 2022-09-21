@@ -90,7 +90,7 @@ export const AcsInputDate: FunctionComponent<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size} position={"relative"}>
+      <InputGroup size={props.size} position={"relative"} width={props.width}>
         <Input
           type={"date"}
           {...propsForInput()}

@@ -54,7 +54,7 @@ export const AcsInputPassword: FunctionComponent<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size}>
+      <InputGroup size={props.size} width={props.width}>
         <Input
           type={showPassword ? "text" : "password"}
           {...propsForInput()}
