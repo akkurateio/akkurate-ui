@@ -20,41 +20,46 @@ interface SliderRangeProps
     extends Omit<HTMLChakraProps<"div">, keyof UseRangeSliderProps>,
         ThemingProps<"Slider">,
         UseRangeSliderProps,
-        AcsSliderProps {}
+        AcsSliderProps {
+}
 
-export const AcsRangeSlider: React.FC<SliderRangeProps> = (props) => {
+export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
+    min = 0,
+    max= 100,
+    ...props
+}) => {
     // const size depending on the max number
     const box = () => {
-        if (props.max) {
-            if (props.max >= 1000) {
+        if (max) {
+            if (max >= 1000) {
                 return "50px"
             }
-            if (props.max < 1000) {
+            if (max < 1000) {
                 return "40px"
             }
-            if (props.max > 10000) {
+            if (max > 10000) {
                 return "90px"
             }
         }
     }
 
-    const { indicatorSteps, ...rangeProps } = props
+    const { indicatorSteps, ...rangeProps } = { ...props, max, min }
 
     return (
         <RangeSlider {...rangeProps}>
             {props.indicatorSteps &&
-                props.max &&
+                max &&
                 [...Array(props.indicatorSteps - 1)].map((i, idx) => (
                     <RangeSliderMark
                         key={idx}
                         value={
-                            props.max! / props.indicatorSteps! +
-                            (props.max! / props.indicatorSteps!) * idx
+                            max! / props.indicatorSteps! +
+                            (max! / props.indicatorSteps!) * idx
                         }
                     >
                         <Box color={"black"} textAlign={"center"}>
-                            {props.max! / props.indicatorSteps! +
-                                (props.max! / props.indicatorSteps!) * idx}
+                            {max! / props.indicatorSteps! +
+                                (max! / props.indicatorSteps!) * idx}
                         </Box>
                     </RangeSliderMark>
                 ))}
