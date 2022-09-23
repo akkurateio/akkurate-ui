@@ -6,10 +6,10 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import dayjs, { Dayjs } from "dayjs"
-import { FunctionComponent, useEffect, useState } from "react"
 import { DateObject } from "../../types"
 import FormControlLayout from "../FormControlLayout"
 import { PopBtn } from "./PopBtn"
+import React, { useEffect, useState } from "react"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -35,7 +35,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsInputDate: FunctionComponent<InputProps> = ({
+export const AcsInputDate: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {

@@ -7,7 +7,7 @@ import {
   TabsProps,
   ThemingProps,
 } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 
 interface TabsOptions {
   tabNameArray: string[]
@@ -21,7 +21,7 @@ interface AcsTabsProps
 
 //? Key error might be due to ChakraUI, check for updates atm in v2.3.1
 
-export const AcsTabs: FunctionComponent<AcsTabsProps> = ({
+export const AcsTabs: React.FC<AcsTabsProps> = ({
   tabNameArray,
   tabContentArray,
   ...props

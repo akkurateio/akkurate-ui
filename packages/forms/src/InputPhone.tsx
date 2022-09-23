@@ -1,11 +1,10 @@
-import React, { FunctionComponent, useState } from "react"
+import React, { useState } from "react"
 import {
   Box,
   Button,
   Flex,
   FormControlOptions,
   FormErrorMessage,
-  FormHelperText,
   FormLabel,
   HTMLChakraProps,
   Input,
@@ -47,7 +46,7 @@ interface InputProps
     ThemingProps<"InputPhone">,
     FormControlOptions {}
 
-export const AcsInputPhone: FunctionComponent<InputProps> = ({
+export const AcsInputPhone: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {

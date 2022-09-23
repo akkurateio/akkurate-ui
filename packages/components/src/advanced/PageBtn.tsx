@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 
 interface IProps {
   page: number
@@ -7,11 +7,7 @@ interface IProps {
   current?: boolean
 }
 
-const PageBtn: FunctionComponent<IProps> = ({
-  page,
-  action,
-  current = false,
-}) => {
+const PageBtn: React.FC<IProps> = ({ page, action, current = false }) => {
   return (
     <Button
       size={"sm"}

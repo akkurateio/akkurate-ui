@@ -1,5 +1,5 @@
 import { Flex, Switch, Text, useColorMode } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 
 const ToggleColorMode: FunctionComponent = () => {
   const { colorMode, toggleColorMode } = useColorMode()

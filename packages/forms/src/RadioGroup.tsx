@@ -6,7 +6,7 @@ import {
   Stack,
   ThemingProps,
 } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -33,7 +33,7 @@ interface InputProps
     ThemingProps<"RadioGroup">,
     FormControlOptions {}
 
-export const AcsRadioGroup: FunctionComponent<InputProps> = ({
+export const AcsRadioGroup: React.FC<InputProps> = ({
   handleChange,
   valuesArray,
   direction,

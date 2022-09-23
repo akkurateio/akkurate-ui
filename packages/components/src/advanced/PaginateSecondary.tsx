@@ -13,7 +13,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 import PageBtn from "./PageBtn"
 
 interface IProps {
@@ -24,7 +24,7 @@ interface IProps {
   withBtns?: boolean
 }
 
-export const AcsPaginateSecondary: FunctionComponent<IProps> = ({
+export const AcsPaginateSecondary: React.FC<IProps> = ({
   current,
   max,
   totalItems,

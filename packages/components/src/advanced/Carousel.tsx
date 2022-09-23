@@ -1,13 +1,13 @@
 import { AisChevronLeft, AisChevronRight } from "@akkurateio/icons"
 import { Box, Button, Flex, HStack } from "@chakra-ui/react"
-import { FunctionComponent, useState } from "react"
+import React, { useState } from "react"
 
 interface IProps {
   cardsArray: JSX.Element[]
   withIndicator?: boolean
 }
 
-export const AcsCarousel: FunctionComponent<IProps> = ({
+export const AcsCarousel: React.FC<IProps> = ({
   cardsArray,
   withIndicator = true,
 }) => {

@@ -21,7 +21,7 @@
 //         ThemingProps<"Switch">,
 //         FormControlOptions {}
 //
-// export const AcsSwitch: FunctionComponent<InputProps> = ({
+// export const AcsSwitch: React.FC<InputProps> = ({
 //     onChange,
 //      ...props
 //  }) => {

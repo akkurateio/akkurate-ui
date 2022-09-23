@@ -9,7 +9,7 @@ import {
   InputRightElement,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
+import React from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -31,7 +31,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsInputFile: FunctionComponent<InputProps> = ({
+export const AcsInputFile: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {

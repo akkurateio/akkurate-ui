@@ -15,11 +15,10 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import dayjs, { Dayjs } from "dayjs"
-import { FunctionComponent, useEffect, useState } from "react"
 import { DateObject, MinuteStep } from "../../types"
 import FormControlLayout from "../FormControlLayout"
-import { PopBtn } from "./PopBtn"
 import { AisTime } from "@akkurateio/icons"
+import React, { useEffect, useState } from "react"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -55,7 +54,7 @@ const minuteArray = Array.from({ length: 60 }, (v, k) => {
   return k.toString().padStart(2, "0")
 })
 
-export const AcsInputDateTime: FunctionComponent<InputProps> = ({
+export const AcsInputDateTime: React.FC<InputProps> = ({
   handleChange,
   disabledHours,
   disabledMinutes,

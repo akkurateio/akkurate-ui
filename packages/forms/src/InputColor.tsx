@@ -1,3 +1,5 @@
+import React from "react"
+
 import { AisCheckmark, AisPencil } from "@akkurateio/icons"
 import {
   Box,
@@ -14,7 +16,6 @@ import {
   ThemingProps,
 } from "@chakra-ui/react"
 import styled from "@emotion/styled"
-import { FunctionComponent } from "react"
 import { HexColorPicker } from "react-colorful"
 import FormControlLayout from "./FormControlLayout"
 
@@ -66,7 +67,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsInputColor: FunctionComponent<InputProps> = ({
+export const AcsInputColor: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {

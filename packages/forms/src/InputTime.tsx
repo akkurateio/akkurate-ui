@@ -7,8 +7,6 @@ import {
   HTMLChakraProps,
   Input,
   InputGroup,
-  InputRightAddon,
-  InputRightElement,
   Popover,
   PopoverBody,
   PopoverContent,
@@ -16,9 +14,9 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent, useState } from "react"
 import { MinuteStep } from "../types"
 import FormControlLayout from "./FormControlLayout"
+import React, { useState } from "react"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -49,7 +47,7 @@ const minuteArray = Array.from({ length: 60 }, (v, k) => {
   return k.toString().padStart(2, "0")
 })
 
-export const AcsInputTime: FunctionComponent<InputProps> = ({
+export const AcsInputTime: React.FC<InputProps> = ({
   handleChange,
   disabledHours,
   disabledMinutes,

@@ -5,7 +5,7 @@ import {
   InputGroup,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
+import React from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -27,7 +27,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsInputText: FunctionComponent<InputProps> = ({
+export const AcsInputText: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {

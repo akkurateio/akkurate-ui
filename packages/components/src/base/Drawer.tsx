@@ -9,7 +9,7 @@ import {
   DrawerOverlay,
   ThemingProps,
 } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 
 interface DrawerOptions {
   body: JSX.Element
@@ -26,7 +26,7 @@ interface AcsDrawerProps
     ThemingProps<"DrawerContent">,
     DrawerContentProps {}
 
-export const AcsDrawer: FunctionComponent<AcsDrawerProps> = ({
+export const AcsDrawer: React.FC<AcsDrawerProps> = ({
   isOpen,
   onClose,
   placement,

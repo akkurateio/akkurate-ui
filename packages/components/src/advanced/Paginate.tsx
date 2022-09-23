@@ -5,7 +5,7 @@ import {
   AisPageLast,
 } from "@akkurateio/icons"
 import { Flex, HStack, IconButton, Text } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 import PageBtn from "./PageBtn"
 
 interface IProps {
@@ -16,7 +16,7 @@ interface IProps {
   withPageInfos?: boolean
 }
 
-export const AcsPaginate: FunctionComponent<IProps> = ({
+export const AcsPaginate: React.FC<IProps> = ({
   current,
   max,
   totalItems,

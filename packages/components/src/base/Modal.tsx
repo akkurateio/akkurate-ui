@@ -9,7 +9,7 @@ import {
   ModalOverlay,
   ThemingProps,
 } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 
 interface ModalOptions {
   body: JSX.Element
@@ -25,7 +25,7 @@ interface AcsModalProps
     ThemingProps<"ModalContent">,
     ModalContentProps {}
 
-export const AcsModal: FunctionComponent<AcsModalProps> = ({
+export const AcsModal: React.FC<AcsModalProps> = ({
   title,
   hasCloseBtn,
   body,

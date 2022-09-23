@@ -23,7 +23,11 @@
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "@akkurateio/components": "^0.0.18",
+    "@akkurateio/forms": "^0.0.18",
+    "@akkurateio/icons": "^0.0.18",
+    "@akkurateio/utils": "^0.0.18"
   },
   "devDependencies": {
     "@types/react": "^18.0.1",

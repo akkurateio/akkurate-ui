@@ -4,7 +4,7 @@ import {
   Select,
   ThemingProps,
 } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -30,7 +30,7 @@ interface InputProps
     ThemingProps<"Select">,
     FormControlOptions {}
 
-export const AcsSelect: FunctionComponent<InputProps> = ({
+export const AcsSelect: React.FC<InputProps> = ({
   valuesArray,
   handleChange,
   ...props

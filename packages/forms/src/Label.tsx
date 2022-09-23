@@ -1,11 +1,11 @@
 import { FormLabel } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
+import React from "react"
 
 interface IProps {
   label: string
 }
 
-const Label: FunctionComponent<IProps> = ({ label }) => {
+const Label: React.FC<IProps> = ({ label }) => {
   return (
     <FormLabel
       fontSize={"xs"}

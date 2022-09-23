@@ -1,5 +1,6 @@
+import React from "react"
+
 import { FormControl, FormErrorMessage, FormHelperText } from "@chakra-ui/react"
-import { FunctionComponent } from "react"
 import Label from "./Label"
 
 interface IProps {
@@ -13,7 +14,7 @@ interface IProps {
   children: React.ReactNode
 }
 
-const FormControlLayout: FunctionComponent<IProps> = (props) => {
+const FormControlLayout: React.FC<IProps> = (props) => {
   return (
     <FormControl
       isRequired={props.isRequired}

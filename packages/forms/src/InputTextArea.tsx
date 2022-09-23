@@ -5,8 +5,8 @@ import {
   Textarea,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent, useEffect, useRef } from "react"
 import FormControlLayout from "./FormControlLayout"
+import React, { useEffect, useRef } from "react"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -28,7 +28,10 @@ interface InputProps
     ThemingProps<"Textarea">,
     FormControlOptions {}
 
-export const AcsInputTextArea: FunctionComponent<InputProps> = ({handleChange, ...props}) => {
+export const AcsInputTextArea: React.FC<InputProps> = ({
+  handleChange,
+  ...props
+}) => {
   const propsForInput = () => {
     const {
       label,
@@ -55,7 +58,7 @@ export const AcsInputTextArea: FunctionComponent<InputProps> = ({handleChange, .
         textareaRef.current.style.height = scrollHeight + 10 + "px"
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.value])
 
   return (

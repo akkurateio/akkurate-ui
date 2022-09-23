@@ -9,7 +9,7 @@ import {
   Button,
   ThemingProps,
 } from "@chakra-ui/react"
-import { FunctionComponent, useRef } from "react"
+import React, { useRef } from "react"
 
 interface ModalAlertOptions {
   body: JSX.Element
@@ -29,7 +29,7 @@ interface AcsModalAlertProps
     ThemingProps<"AlertDialogContent">,
     AlertDescriptionProps {}
 
-export const AcsModalAlert: FunctionComponent<AcsModalAlertProps> = ({
+export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
   isOpen,
   onClose,
   title,

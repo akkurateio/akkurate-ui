@@ -13,7 +13,7 @@ import {
   Portal,
   ThemingProps,
 } from "@chakra-ui/react"
-import { FunctionComponent, useRef } from "react"
+import React, { useRef } from "react"
 
 interface PopoverOptions {
   body: JSX.Element
@@ -37,7 +37,7 @@ interface AcsPopoverProps
     ThemingProps<"PopoverContent">,
     PopoverContentProps {}
 
-export const AcsPopover: FunctionComponent<AcsPopoverProps> = ({
+export const AcsPopover: React.FC<AcsPopoverProps> = ({
   body,
   title,
   hasCloseBtn = false,

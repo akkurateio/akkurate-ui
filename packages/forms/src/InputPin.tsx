@@ -6,7 +6,7 @@ import {
   UsePinInputProps,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent } from "react"
+import React from "react"
 import FormControlLayout from "./FormControlLayout"
 
 interface InputOptions {
@@ -27,7 +27,7 @@ interface InputProps
     InputOptions,
     FormControlOptions {}
 
-export const AcsInputPin: FunctionComponent<InputProps> = ({
+export const AcsInputPin: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {

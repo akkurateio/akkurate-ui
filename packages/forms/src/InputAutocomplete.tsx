@@ -1,3 +1,4 @@
+import React, { useState } from "react"
 import {
   Box,
   FormControlOptions,
@@ -7,7 +8,6 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -30,7 +30,7 @@ interface InputProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsInputAutocomplete: FunctionComponent<InputProps> = ({
+export const AcsInputAutocomplete: React.FC<InputProps> = ({
   label,
   hint,
   error,

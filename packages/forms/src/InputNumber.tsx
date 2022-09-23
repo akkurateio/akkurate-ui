@@ -11,8 +11,8 @@ import {
   useNumberInput,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { FunctionComponent, useEffect } from "react"
 import FormControlLayout from "./FormControlLayout"
+import React, { useEffect } from "react"
 
 type Omitted =
   | "disabled"
@@ -43,7 +43,7 @@ export interface InputProps
 
 // @TODO: Ne fonctionne pas
 
-export const AcsInputNumber: FunctionComponent<InputProps> = ({
+export const AcsInputNumber: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {
