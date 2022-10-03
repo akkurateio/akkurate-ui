@@ -12,13 +12,8 @@ import Head from "next/head"
 import { useEffect, useState } from "react"
 import ToggleColorMode from "../components/ToggleColorMode"
 import { isMotionValue } from "framer-motion"
-import {
-  AcsInputDateTime,
-  AcsInputFile,
-  AcsRangeSlider,
-  AcsSlider,
-} from "@akkurateio/forms"
 import { AcsDropzone } from "@akkurateio/components"
+import { AcsInputFile } from "@akkurateio/forms"
 
 function App() {
   const theme = useTheme()
@@ -87,8 +82,8 @@ function App() {
       </Flex>
 
       <VStack mt={10} spacing={10} p={4} mb={4000}>
-        <AcsDropzone maxFiles={10} boxSize={"150px"} />
-        <AcsInputFile handleChange={setFile} />
+        {/*<AcsDropzone maxFiles={10} />*/}
+        <AcsInputFile value={file} handleChange={setFile} multiple={true} />
         {/*<AcsInputDateTime*/}
         {/*  value={date}*/}
         {/*  handleChange={setDate}*/}

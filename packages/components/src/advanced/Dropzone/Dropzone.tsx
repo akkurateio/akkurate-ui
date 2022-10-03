@@ -74,6 +74,7 @@ export const AcsDropzone: React.FC<IProps> = ({
             <Button
               onClick={open}
               colorScheme={isDragActive ? "primary" : undefined}
+              marginLeft={24}
             >
               {files.length > 0 ? "Remplacer" : "Sélectionner"}
             </Button>
@@ -111,12 +112,17 @@ export const AcsDropzone: React.FC<IProps> = ({
             )}
           </>
         )}
-        {maxFiles > 1 && (
-          <Text right={"50px"} bottom={"100px"} position={"absolute"}>
-            {files.length} / {maxFiles}
-          </Text>
-        )}
       </Flex>
+      {maxFiles > 1 && (
+        <Text
+          bottom={"100px"}
+          position={"absolute"}
+          backgroundColor={"blue.200"}
+          right={"15%"}
+        >
+          {files.length} / {maxFiles}
+        </Text>
+      )}
     </Box>
   )
 }

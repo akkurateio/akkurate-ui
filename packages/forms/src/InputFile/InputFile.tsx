@@ -7,15 +7,18 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Text,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
-import FormControlLayout from "./FormControlLayout"
+import FormControlLayout from "../FormControlLayout"
+import ForOne from "./ForOne"
+import { formatBytes } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
-  value?: FileList | null
+  value: FileList | null
   handleChange: (e: FileList | null) => void
   focusBorderColor?: string
   errorBorderColor?: string
@@ -50,6 +53,9 @@ export const AcsInputFile: React.FC<InputProps> = ({
     return rest
   }
 
+  const [files, setFiles] = React.useState<any>([])
+
+  console.log(files)
   return (
     <FormControlLayout {...props}>
       <InputGroup size={props.size}>
@@ -60,9 +66,11 @@ export const AcsInputFile: React.FC<InputProps> = ({
           position={"relative"}
           type={"text"}
           {...propsForInput()}
-          value={
-            props.value && props.value.length > 0 ? props.value[0].name : ""
-          }
+          value={files
+            .map(
+              (file: any) => file.name + " " + formatBytes(file.size, 2) + " ",
+            )
+            .join(", ")}
           variant={props.variant}
           focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
           _invalid={{
@@ -73,6 +81,7 @@ export const AcsInputFile: React.FC<InputProps> = ({
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
           onChange={(e) => console.log(e)}
+          placeholder={"Ajouter un fichier"}
         />
 
         {props.value && props.value.length > 0 && (
@@ -98,7 +107,8 @@ export const AcsInputFile: React.FC<InputProps> = ({
           zIndex={1}
           cursor={"pointer"}
           accept={props.accept}
-          onChange={(e) => handleChange(e.target.files)}
+          onChange={(e) => setFiles(Array.from(e.target.files as FileList))}
+          multiple={props.multiple}
         />
       </InputGroup>
     </FormControlLayout>
