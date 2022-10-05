@@ -77,7 +77,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <FormLabel>{props.label}</FormLabel>
       <InputGroup size={props.size}>
         <InputLeftAddon backgroundColor={"white"}>
           <Popover>
