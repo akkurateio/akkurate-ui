@@ -12,7 +12,6 @@ import {
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
 import FormControlLayout from "../FormControlLayout"
-import ForOne from "./ForOne"
 import { formatBytes } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"

@@ -114,12 +114,7 @@ export const AcsDropzone: React.FC<IProps> = ({
         )}
       </Flex>
       {maxFiles > 1 && (
-        <Text
-          bottom={"100px"}
-          position={"absolute"}
-          backgroundColor={"blue.200"}
-          right={"15%"}
-        >
+        <Text position={"absolute"} right={"15%"}>
           {files.length} / {maxFiles}
         </Text>
       )}

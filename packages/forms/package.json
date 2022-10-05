@@ -27,7 +27,8 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.1",
-    "@types/react-dom": ">=18.0.0"
+    "@types/react-dom": ">=18.0.0",
+    "@types/react-world-flags": "^1.4.2"
   },
   "dependencies": {
     "react": ">=18",
@@ -37,6 +38,10 @@
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
     "dayjs": "1.11.5",
+    "iso-countries-languages": "^0.3.0",
+    "react-phone-input-2": "^2.15.1",
+    "react-world-flags": "^1.5.1",
+    "countries-list": "^2.6.1",
     "framer-motion": ">=7.0.0",
     "react-colorful": ">=5.0.0",
     "styled-components": "5.3.5",

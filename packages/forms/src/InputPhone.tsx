@@ -2,21 +2,23 @@ import React, { useState } from "react"
 import {
   Box,
   Button,
-  Flex,
   FormControlOptions,
-  FormErrorMessage,
   FormLabel,
   HTMLChakraProps,
-  Input,
   InputGroup,
-  InputLeftElement,
+  InputLeftAddon,
   Popover,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
   SimpleGrid,
-  Text,
+  Tooltip,
 } from "@chakra-ui/react"
+// @ts-ignore
+import isoCountriesLanguages from "iso-countries-languages"
+import { countries, Country } from "countries-list"
+import PhoneInput from "react-phone-input-2"
+import Flag from "react-world-flags"
 import { AisChevronDown } from "@akkurateio/icons"
 import { ThemingProps } from "@chakra-ui/system"
 import FormControlLayout from "./FormControlLayout"
@@ -27,12 +29,13 @@ interface InputOptions {
   value?: string
   handleChange: (e: string) => void
   focusBorderColor?: string
+  defaultCountry?: string
   errorBorderColor?: string
   htmlSize?: number
   label?: string
   error?: string
   hint?: string
-  countriesArray: {
+  countriesArray?: {
     name: string
     icon: JSX.Element
     code: string
@@ -47,6 +50,7 @@ interface InputProps
     FormControlOptions {}
 
 export const AcsInputPhone: React.FC<InputProps> = ({
+  defaultCountry = "fr",
   handleChange,
   ...props
 }) => {
@@ -65,120 +69,98 @@ export const AcsInputPhone: React.FC<InputProps> = ({
     return rest
   }
 
-  const [phoneValue, setPhoneValue] = useState("")
-  const [valid, setValid] = useState("")
-  const [country, setCountry] = useState<{
-    name: string
-    icon: JSX.Element
-    code: string
-    prefix: string
-  }>(props.countriesArray[0])
+  const [isOpen, setIsOpen] = useState(false)
+  const [country, setCountry] = useState<string>(defaultCountry)
+  const [phone, setPhone] = useState<string>("")
 
-  const handleCountryChange = (
-    currentCountry: {
-      name: string
-      icon: JSX.Element
-      code: string
-      prefix: string
-    },
-    onClose: any,
-  ) => {
-    setCountry(currentCountry)
-    onClose()
+  const changeCountry = (country: string) => {
+    setCountry(country)
+    setIsOpen(false)
   }
 
-  const setPhoneNumber = (phoneNumb: any) => {
-    setPhoneValue(phoneNumb)
-    if (isNaN(phoneNumb)) {
-      throw new Error("Not a number")
-    } else {
-      setValid("success")
-      const slicedPhoneValue =
-        phoneNumb.slice(0, 3) +
-        " " +
-        phoneNumb.slice(3, 4) +
-        " " +
-        phoneNumb.slice(4, 6) +
-        " " +
-        phoneNumb.slice(6, 8) +
-        " " +
-        phoneNumb.slice(8, 10) +
-        " " +
-        phoneNumb.slice(10, 12)
-      return slicedPhoneValue
+  const frenchCountry = isoCountriesLanguages.getCountries("fr")
+  const countryArray = Object.keys(countries).filter((key) => {
+    // @ts-ignore
+    return countries[key].continent === "EU"
+  })
+
+  const frenchCountryWithCode = countryArray.map((code, idx) => {
+    return {
+      code: code,
+      name: frenchCountry[code],
     }
-  }
+  })
 
   return (
-    <FormControlLayout {...props}>
-      <FormLabel>Telephone</FormLabel>
-      <InputGroup>
-        <InputLeftElement
-          width={"90px"}
-          display={"flex"}
-          justifyContent={"space-between"}
-        >
+    <FormControlLayout
+      // paddingRight={5}
+      // paddingLeft={40}
+      // isDisabled={false}
+      // isInvalid={false}
+      // isRequired={true}
+      // variant="filled"
+      {...props}
+    >
+      <FormLabel>{props.label}</FormLabel>
+      <InputGroup size={props.size}>
+        <InputLeftAddon>
           <Popover>
-            {({ isOpen, onClose }) => (
-              <>
-                <PopoverTrigger>
-                  <Flex alignItems={"center"}>
-                    <Button
-                      variant={"unstyled"}
-                      color={"red.500"}
-                      _hover={{ color: "red.700" }}
-                      _active={{ color: "red.700" }}
-                      marginLeft={2}
-                      marginRight={-3}
-                    >
-                      {country.icon}
-                    </Button>
-                    <AisChevronDown />
-                  </Flex>
-                </PopoverTrigger>
-                <PopoverContent overflow={"hidden"} w={20} h={72}>
-                  <PopoverBody overflow={"hidden"}>
-                    <SimpleGrid columns={1} h={"full"} overflow={"hidden"}>
-                      <Box h={"full"} overflowY={"auto"}>
-                        <SimpleGrid spacingY={0.5}>
-                          {props.countriesArray.map((country, index) => (
-                            <Button
-                              key={index}
-                              onClick={() =>
-                                handleCountryChange(country, onClose)
-                              }
-                              size={"sm"}
-                            >
-                              {country.icon}
-                            </Button>
-                          ))}
-                        </SimpleGrid>
-                      </Box>
-                    </SimpleGrid>
-                  </PopoverBody>
-                </PopoverContent>
-              </>
-            )}
+            <PopoverTrigger>
+              <Button
+                variant={"unstyled"}
+                onChange={() => setIsOpen(true)}
+                display={"flex"}
+                alignItems={"center"}
+              >
+                <Flag code={country} width={"32px"} />
+                <AisChevronDown marginLeft={2} />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent
+              overflow={"hidden"}
+              width={"90px"}
+              h={72}
+              backgroundColor={"blue.50"}
+            >
+              <PopoverBody overflow={"hidden"}>
+                <Box pr={3} h={"full"} overflowY={"auto"}>
+                  <SimpleGrid columns={1}>
+                    {frenchCountryWithCode.map((country, idx) => {
+                      return (
+                        <Tooltip key={idx} label={country.name}>
+                          <Button
+                            width={15}
+                            onClick={() => changeCountry(country.code)}
+                            variant={"unstyled"}
+                          >
+                            <Flag code={country.code} />
+                          </Button>
+                        </Tooltip>
+                      )
+                    })}
+                  </SimpleGrid>
+                </Box>
+              </PopoverBody>
+            </PopoverContent>
           </Popover>
-          <Text minWidth={"40px"} maxWidth={"40px"} paddingLeft={"10px"}>
-            {country.prefix}
-          </Text>
-        </InputLeftElement>
-        <Input
-          {...propsForInput()}
-          variant={props.variant}
-          placeholder={props.placeholder}
-          width={"auto"}
-          paddingLeft={"95px"}
-          maxLength={9}
-          onChange={(phoneNumb) =>
-            setPhoneNumber(country.prefix + phoneNumb.target.value)
-          }
-          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
+        </InputLeftAddon>
+        <PhoneInput
+          specialLabel={""}
+          country={country.toLowerCase()}
+          onChange={(phone) => setPhone("+" + phone)}
+          countryCodeEditable={false}
+          value={phone}
+          inputStyle={{
+            width: "100%",
+            height: "100%",
+            paddingLeft: "10px",
+            border: "1px solid #E2E8F0",
+            borderTopRightRadius: "5px",
+            borderBottomRightRadius: "5px",
+            backgroundColor: "#F7FAFC",
+          }}
         />
       </InputGroup>
-      {/*<FormHelperText>{props.help} </FormHelperText>*/}
-      <FormErrorMessage>{props.error}</FormErrorMessage>
     </FormControlLayout>
   )
 }

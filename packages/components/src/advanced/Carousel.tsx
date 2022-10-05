@@ -16,6 +16,8 @@ export const AcsCarousel: React.FC<IProps> = ({
   const handleNext = () => {
     if (index < cardsArray.length - 1) {
       setIndex(index + 1)
+    } else if (index === cardsArray.length - 1) {
+      setIndex(0)
     } else {
       setIndex(0)
     }
