@@ -54,21 +54,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {
-  const propsForInput = () => {
-    const {
-      label,
-      hint,
-      error,
-      isRequired,
-      isDisabled,
-      isInvalid,
-      isReadOnly,
-      size,
-      ...rest
-    } = props
-    return rest
-  }
-
   const [isOpen, setIsOpen] = useState(false)
   const [country, setCountry] = useState<string>(defaultCountry)
 
@@ -91,15 +76,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
   })
 
   return (
-    <FormControlLayout
-      // paddingRight={5}
-      // paddingLeft={40}
-      // isDisabled={false}
-      // isInvalid={false}
-      // isRequired={true}
-      // variant="filled"
-      {...props}
-    >
+    <FormControlLayout {...props}>
       <FormLabel>{props.label}</FormLabel>
       <InputGroup size={props.size}>
         <InputLeftAddon backgroundColor={"white"}>
@@ -146,7 +123,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
         <PhoneInput
           specialLabel={""}
           country={country.toLowerCase()}
-          onChange={(phoneNumber) => handleChange(phoneNumber)}
+          onChange={(phoneNumber) => handleChange("+" + phoneNumber)}
           countryCodeEditable={false}
           value={props.value}
           inputStyle={{
