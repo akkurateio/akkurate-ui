@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const ForOne: React.FC<IProps> = ({ file }) => {
-  console.log("heloo", file)
+
   return (
     <Box>
       <Text>{file.name}</Text>

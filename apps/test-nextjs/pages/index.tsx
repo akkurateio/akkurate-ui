@@ -1,4 +1,4 @@
-import { AcsInputNumber, AcsInputPhone } from "@akkurateio/forms"
+import { AcsInputFile, AcsInputNumber, AcsInputPhone } from "@akkurateio/forms"
 import {
   Container,
   Flex,
@@ -40,13 +40,9 @@ function App() {
 
   const [page, setPage] = useState(1)
 
-  const [file, setFile] = useState<FileList | null>(null)
+  const [file, setFile] = useState<FileList | File[] | null>(null)
 
   const [phone, setPhone] = useState("")
-
-  //file && file.length > 0 && console.log(file[0])
-
-  console.log(number)
 
   useEffect(() => {
     if (search.length >= 3) {
@@ -63,8 +59,8 @@ function App() {
         )
     }
   }, [search])
-  
-  console.log(phone)
+
+  console.log(file)
 
   return (
     <Container maxW={"container.xl"}>
@@ -85,6 +81,8 @@ function App() {
         <AcsInputNumber value={number} handleChange={setNumber} />
 
         <AcsInputPhone value={phone} handleChange={setPhone} />
+
+        <AcsInputFile value={file} multiple handleChange={setFile} />
       </VStack>
     </Container>
   )

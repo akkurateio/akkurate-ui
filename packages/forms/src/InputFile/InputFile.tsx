@@ -1,4 +1,5 @@
 import { AisClose, AisFile } from "@akkurateio/icons"
+import { formatBytes } from "@akkurateio/utils"
 import {
   FormControlOptions,
   HTMLChakraProps,
@@ -7,12 +8,10 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Text,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import FormControlLayout from "../FormControlLayout"
-import { formatBytes } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -52,9 +51,18 @@ export const AcsInputFile: React.FC<InputProps> = ({
     return rest
   }
 
-  const [files, setFiles] = React.useState<any>([])
+  const handleDelete = () => {
+    handleChange(null)
+    setFiles([])
+  }
 
-  console.log(files)
+  const [files, setFiles] = useState<any>([])
+
+  useEffect(() => {
+    handleChange(files)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [files])
+
   return (
     <FormControlLayout {...props}>
       <InputGroup size={props.size}>
@@ -87,7 +95,7 @@ export const AcsInputFile: React.FC<InputProps> = ({
           <InputRightElement zIndex={2}>
             <IconButton
               aria-label={"delete button"}
-              onClick={() => handleChange(null)}
+              onClick={handleDelete}
               size={"xs"}
               rounded={"full"}
             >
