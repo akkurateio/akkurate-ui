@@ -2,6 +2,7 @@ import { AisCalendar } from "@akkurateio/icons"
 import { Button, Flex, Popover, PopoverTrigger } from "@chakra-ui/react"
 import dayjs from "dayjs"
 import "dayjs/locale/fr"
+import React from "react"
 import { DateObject } from "../../types"
 import PopContent from "./PopContent"
 
