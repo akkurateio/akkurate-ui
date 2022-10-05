@@ -27,7 +27,11 @@ export const AcsTabs: React.FC<AcsTabsProps> = ({
   ...props
 }) => {
   return (
-    <Tabs {...props} width={props.width ? props.width : "full"}>
+    <Tabs
+      {...props}
+      width={props.width ? props.width : "full"}
+      colorScheme={props.colorScheme ? props.colorScheme : "primary"}
+    >
       <TabList>
         {tabNameArray.map((tabName, index) => (
           <Tab key={index}>{tabName}</Tab>
