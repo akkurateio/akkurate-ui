@@ -1,4 +1,4 @@
-import { AcsInputNumber } from "@akkurateio/forms"
+import { AcsInputNumber, AcsInputPhone } from "@akkurateio/forms"
 import {
   Container,
   Flex,
@@ -63,6 +63,8 @@ function App() {
         )
     }
   }, [search])
+  
+  console.log(phone)
 
   return (
     <Container maxW={"container.xl"}>
@@ -81,6 +83,8 @@ function App() {
         <Text>Hello you</Text>
 
         <AcsInputNumber value={number} handleChange={setNumber} />
+
+        <AcsInputPhone value={phone} handleChange={setPhone} />
       </VStack>
     </Container>
   )
