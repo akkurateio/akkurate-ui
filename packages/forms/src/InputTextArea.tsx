@@ -78,7 +78,15 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
-          rows={props.autoResize ? (props.rows ? props.rows : 2) : 1}
+          rows={
+            props.autoResize
+              ? props.rows
+                ? props.rows
+                : 4
+              : props.rows
+              ? props.rows
+              : 4
+          }
           minH={props.autoResize ? (props.minH ? props.minH : 24) : "auto"}
           resize={
             props.autoResize ? (props.resize ? props.resize : "none") : "none"
