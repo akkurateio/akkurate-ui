@@ -11,8 +11,8 @@ import {
   useNumberInput,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import FormControlLayout from "./FormControlLayout"
 import React, { useEffect } from "react"
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted =
   | "disabled"
@@ -23,8 +23,8 @@ type Omitted =
   | "value"
 
 interface InputOptions {
-  handleChange: (e: string | number) => void
-  value?: string | number
+  handleChange: (e: number) => void
+  value?: number
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -73,7 +73,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
     allowMouseWheel: props.allowMouseWheel ? props.allowMouseWheel : false,
     min: props.min ? Number(props.min) : undefined,
     max: props.max ? Number(props.max) : undefined,
-    value: props.value ? Number(props.value) : undefined,
+    defaultValue: props.value === undefined ? undefined : Number(props.value),
     format: (value) => {
       return value.toString().replace(",", ".")
     },
@@ -102,6 +102,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
     if (!!valueAsNumber) {
       handleChange(valueAsNumber)
     } else if (valueAsNumber === 0) {
+      handleChange(0)
     }
   }, [valueAsNumber])
 
