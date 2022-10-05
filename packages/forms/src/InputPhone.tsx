@@ -71,7 +71,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
 
   const [isOpen, setIsOpen] = useState(false)
   const [country, setCountry] = useState<string>(defaultCountry)
-  const [phone, setPhone] = useState<string>("")
 
   const changeCountry = (country: string) => {
     setCountry(country)
@@ -103,7 +102,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
     >
       <FormLabel>{props.label}</FormLabel>
       <InputGroup size={props.size}>
-        <InputLeftAddon>
+        <InputLeftAddon backgroundColor={"white"}>
           <Popover>
             <PopoverTrigger>
               <Button
@@ -147,9 +146,9 @@ export const AcsInputPhone: React.FC<InputProps> = ({
         <PhoneInput
           specialLabel={""}
           country={country.toLowerCase()}
-          onChange={(phone) => setPhone("+" + phone)}
+          onChange={(phoneNumber) => handleChange(phoneNumber)}
           countryCodeEditable={false}
-          value={phone}
+          value={props.value}
           inputStyle={{
             width: "100%",
             height: "100%",
@@ -157,7 +156,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
             border: "1px solid #E2E8F0",
             borderTopRightRadius: "5px",
             borderBottomRightRadius: "5px",
-            backgroundColor: "#F7FAFC",
           }}
         />
       </InputGroup>
