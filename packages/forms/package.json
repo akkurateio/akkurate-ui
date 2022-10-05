@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/forms",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Library for Akkurate UI forms components",
   "keywords": [
     "icons"
@@ -31,21 +31,21 @@
     "@types/react-world-flags": "^1.4.2"
   },
   "dependencies": {
-    "react": ">=18",
-    "react-dom": ">=18",
-    "@akkurateio/icons": "^0.0.18",
+    "@akkurateio/icons": "^0.0.19",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
+    "countries-list": "^2.6.1",
     "dayjs": "1.11.5",
+    "framer-motion": ">=7.0.0",
     "iso-countries-languages": "^0.3.0",
+    "react": ">=18",
+    "react-colorful": ">=5.0.0",
+    "react-device-detect": "^2.2.2",
+    "react-dom": ">=18",
     "react-phone-input-2": "^2.15.1",
     "react-world-flags": "^1.5.1",
-    "countries-list": "^2.6.1",
-    "framer-motion": ">=7.0.0",
-    "react-colorful": ">=5.0.0",
-    "styled-components": "5.3.5",
-    "react-device-detect": "^2.2.2"
+    "styled-components": "5.3.5"
   },
   "scripts": {
     "build": "tsup src/index.ts --dts",
