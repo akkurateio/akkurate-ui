@@ -27,8 +27,6 @@ export const AcsSlider: React.FC<SliderProps> = ({
   max = 100,
   ...props
 }) => {
-  const [value, setValue] = useState([max])
-
   const box = () => {
     if (max >= 1000) {
       return "50px"
@@ -46,18 +44,18 @@ export const AcsSlider: React.FC<SliderProps> = ({
     <FormControlLayout>
       <Slider {...sliderProps}>
         {props.indicatorSteps &&
-          value[max] &&
+          max &&
           [...Array(props.indicatorSteps - 1)].map((i, idx) => (
             <SliderMark
               key={idx}
               value={
-                value[max]! / props.indicatorSteps! +
-                (value[max]! / props.indicatorSteps!) * idx
+                max! / props.indicatorSteps! +
+                (max! / props.indicatorSteps!) * idx
               }
             >
               <Box color={"black"} textAlign={"center"}>
-                {value[max]! / props.indicatorSteps! +
-                  (value[max]! / props.indicatorSteps!) * idx}
+                {max! / props.indicatorSteps! +
+                  (max! / props.indicatorSteps!) * idx}
               </Box>
             </SliderMark>
           ))}
