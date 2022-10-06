@@ -7,7 +7,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  ThemingProps,
+  ThemingProps, UseFocusOnHideOptions,
 } from "@chakra-ui/react"
 import React from "react"
 
@@ -18,6 +18,7 @@ interface ModalOptions {
   title?: string
   hasCloseBtn?: boolean
   footer?: JSX.Element
+  closeOnOverlayClick?: boolean
 }
 
 interface AcsModalProps
@@ -33,6 +34,7 @@ export const AcsModal: React.FC<AcsModalProps> = ({
   isOpen,
   onClose,
   size,
+  closeOnOverlayClick,
   ...props
 }) => {
   return (
@@ -41,6 +43,7 @@ export const AcsModal: React.FC<AcsModalProps> = ({
       isOpen={isOpen}
       onClose={onClose}
       size={size}
+      closeOnOverlayClick={closeOnOverlayClick}
     >
       <ModalOverlay />
       <ModalContent {...props}>
