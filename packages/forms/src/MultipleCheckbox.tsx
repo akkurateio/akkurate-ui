@@ -31,7 +31,7 @@
 //   ]
 // }
 //
-// const AcsMultipleCheckbox: React.FC<AcheckboxGroupProps> = ({ ...props }) => {
+// const AcsMultipleCheckbox: React.FC<CheckboxGroupProps> = ({ ...props }) => {
 //   const [allIsChecked, setAllIsChecked] = useState(false)
 //   const [items, setItems] = useState(props.items)
 //

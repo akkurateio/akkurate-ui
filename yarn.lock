@@ -2,51 +2,6 @@
 # yarn lockfile v1
 
 
-"@akkurateio/components@0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@akkurateio/components/-/components-0.0.18.tgz#d5b57d75f2c019ed4895dbbb7c27c8cfb7f71441"
-  integrity sha512-zwbJsMrxjPeeu+YDgB60cEkSParFkPneJAliSSGXJeXX5j5j07iVbqVUlTonEPczKhwPHnyxvUVm/6fFmvOi+w==
-  dependencies:
-    "@chakra-ui/react" ">=2.0.0"
-    "@emotion/react" ">=11.0.0"
-    "@emotion/styled" ">=11.0.0"
-    framer-motion ">=7.0.0"
-    react-dropzone "^14.2.2"
-
-"@akkurateio/forms@0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@akkurateio/forms/-/forms-0.0.18.tgz#682706566fbebdd7d981e4e0bec1e77f103d2af4"
-  integrity sha512-/W+zYrDcofxF4uyBTLRj7b6XUn3d26howmAkctYp1suAKJGBGmVKbwp5+ABtfqLGtkTw+RmfOqv2wQgfS4UpFw==
-  dependencies:
-    "@akkurateio/icons" "^0.0.18"
-    "@chakra-ui/react" ">=2.0.0"
-    "@emotion/react" ">=11.0.0"
-    "@emotion/styled" ">=11.0.0"
-    dayjs "1.11.5"
-    framer-motion ">=7.0.0"
-    react-colorful ">=5.0.0"
-    styled-components "5.3.5"
-
-"@akkurateio/icons@0.0.18", "@akkurateio/icons@^0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@akkurateio/icons/-/icons-0.0.18.tgz#cb31e51c7e6f567eb700aa9a2dae4ae701b47287"
-  integrity sha512-yfWMw2TS7exE2taSqkBVFI6stGRbiR3NKYZoai47tnu20eYhTwRyl8uZDdqaJ58uDy96HoFmvLMwHDTG1oVlOg==
-  dependencies:
-    "@chakra-ui/react" ">=2.0.0"
-    "@emotion/react" ">=11.0.0"
-    "@emotion/styled" ">=11.0.0"
-    framer-motion ">=7.0.0"
-
-"@akkurateio/utils@0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@akkurateio/utils/-/utils-0.0.18.tgz#52eaa2eb689ef80feca2f5d895e71e74ade4be44"
-  integrity sha512-Ym2Nxki5NQukBJ4FGg+2S2DgkTOVVDhhN4y32+7c+29DgjS9pXLRONfkZkbrFuxC8CL3u2J+k5Avh18xTkiT3Q==
-  dependencies:
-    "@chakra-ui/react" ">=2.0.0"
-    "@emotion/react" ">=11.0.0"
-    "@emotion/styled" ">=11.0.0"
-    framer-motion ">=7.0.0"
-
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.0.tgz#56c133824780de3174aed5ab6834f3026790154d"

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import {
   Box,
   Button,
@@ -17,6 +17,7 @@ interface IProps {
   maxFiles?: number
   height?: string
   boxSize?: string
+  handleChange: (files: FileList | File[] | null) => void
 }
 
 export const AcsDropzone: React.FC<IProps> = ({
@@ -24,6 +25,7 @@ export const AcsDropzone: React.FC<IProps> = ({
   height = "250px",
   maxFiles = 1,
   boxSize = "150px",
+  handleChange,
 }: IProps) => {
   const [files, setFiles] = useState<File[]>([])
 
@@ -47,6 +49,11 @@ export const AcsDropzone: React.FC<IProps> = ({
     noClick: true,
     noKeyboard: true,
   })
+
+  useEffect(() => {
+    handleChange(files)
+
+  }, [files])
 
   return (
     <Box
@@ -88,6 +95,7 @@ export const AcsDropzone: React.FC<IProps> = ({
                 {files.map((file, idx) => (
                   <Box>
                     <ForMultiple
+                        key={idx}
                       file={file}
                       onDelete={() => setFiles(files.filter((f) => f !== file))}
                       boxSize={boxSize}
@@ -101,6 +109,7 @@ export const AcsDropzone: React.FC<IProps> = ({
                 {files.map((file, idx) => (
                   <>
                     <ForOne
+                        key={idx}
                       file={file}
                       onDelete={() => setFiles(files.filter((f) => f !== file))}
                       boxSize={boxSize}
