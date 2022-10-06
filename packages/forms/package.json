@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/forms",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Library for Akkurate UI forms components",
   "keywords": [
     "icons"
@@ -31,8 +31,8 @@
     "@types/react-world-flags": "^1.4.2"
   },
   "dependencies": {
-    "@akkurateio/icons": "^0.0.21",
-    "@akkurateio/utils": "^0.0.21",
+    "@akkurateio/icons": "^0.0.22",
+    "@akkurateio/utils": "^0.0.22",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
