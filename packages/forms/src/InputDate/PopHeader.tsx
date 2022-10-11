@@ -6,6 +6,7 @@ import {
 } from "@akkurateio/icons"
 import { Box, Button, Flex, PopoverHeader, Text } from "@chakra-ui/react"
 import dayjs from "dayjs"
+import React from "react"
 import { DateObject } from "../../types"
 
 interface IProps {

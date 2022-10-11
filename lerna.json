@@ -5,6 +5,7 @@
   "npmClient": "yarn",
   "version": "0.0.22",
   "packages": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ]
 }

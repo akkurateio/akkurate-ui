@@ -1,5 +1,6 @@
-import { AcsInputFile, AcsInputNumber, AcsInputPhone } from "@akkurateio/forms"
+import {AcsInputDate, AcsInputFile, AcsInputNumber, AcsInputPhone, AcsInputSearch} from "@akkurateio/forms"
 import {
+  Box, Button,
   Container,
   Flex,
   Heading,
@@ -10,6 +11,7 @@ import {
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import ToggleColorMode from "../components/ToggleColorMode"
+import {AcsDropzone, AcsModal} from "@akkurateio/components";
 
 function App() {
   const theme = useTheme()
@@ -60,7 +62,7 @@ function App() {
     }
   }, [search])
 
-  console.log(file)
+  console.log(search)
 
   return (
     <Container maxW={"container.xl"}>
@@ -74,16 +76,7 @@ function App() {
 
         <ToggleColorMode />
       </Flex>
-
-      <VStack mt={10} spacing={10} p={4} mb={4000}>
-        <Text>Hello you</Text>
-
-        <AcsInputNumber value={number} handleChange={setNumber} />
-
-        <AcsInputPhone value={phone} handleChange={setPhone} />
-
-        <AcsInputFile value={file} multiple handleChange={setFile} />
-      </VStack>
+      <AcsInputDate value={date} handleChange={ setDate } />
     </Container>
   )
 }
