@@ -4,13 +4,13 @@ export * from "./icons/Archive"
 
 export * from "./icons/ArrowDown"
 
-export * from "./icons/ArrowLeft"
+export * from "./icons/ArrowRight"
 
 export * from "./icons/ArrowLeftDown"
 
 export * from "./icons/ArrowLeftUp"
 
-export * from "./icons/ArrowRight"
+export * from "./icons/ArrowLeft"
 
 export * from "./icons/ArrowRightDown"
 
