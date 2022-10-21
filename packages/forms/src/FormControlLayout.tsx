@@ -26,10 +26,14 @@ const FormControlLayout: React.FC<IProps> = (props) => {
 
       {props.children}
 
-      <FormHelperText opacity={0.7} fontSize={"xs"}>
-        {props.hint}
-      </FormHelperText>
-      <FormErrorMessage fontSize={"xs"}>{props.error}</FormErrorMessage>
+      {props.hint && (
+        <FormHelperText opacity={0.7} fontSize={"xs"}>
+          {props.hint}
+        </FormHelperText>
+      )}
+      {props.error && (
+        <FormErrorMessage fontSize={"xs"}>{props.error}</FormErrorMessage>
+      )}
     </FormControl>
   )
 }
