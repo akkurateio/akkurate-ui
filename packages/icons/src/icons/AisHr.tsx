@@ -7,7 +7,7 @@ export const AisHr = createIcon({
   viewBox: "0 0 32 32",
   path: (
     <g fill="currentColor">
-      <path d="M29 19H3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h26a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1ZM4 17h24v-2H4v2Z" fill="#000"/>
+      <path d="M29 19H3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h26a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1ZM4 17h24v-2H4v2Z" />
     </g>
   ),
 })
