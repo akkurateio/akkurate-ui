@@ -17,5 +17,6 @@
   "dependencies": {
     "svgo": "^2.8.0",
     "svgson": "^5.2.1"
-  }
+  },
+  "gitHead": "00d22724cfbda21ce66ba2a59cceba5cffd82f71"
 }
