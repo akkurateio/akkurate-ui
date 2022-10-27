@@ -1,0 +1,15 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="AisFileZip">
+<g id="Vector">
+<path d="M23.414 2H8C6.897 2 6 2.897 6 4V28C6 29.103 6.897 30 8 30H11V28H8V4H14V6H16V4H22.586L24 5.414V28H21V30H24C25.103 30 26 29.103 26 28V4.586L23.414 2Z" fill="black"/>
+<path d="M18 6H16V8H18V6Z" fill="black"/>
+<path d="M16 8H14V10H16V8Z" fill="black"/>
+<path d="M18 10H16V12H18V10Z" fill="black"/>
+<path d="M16 12H14V14H16V12Z" fill="black"/>
+<path d="M18 14H16V16H18V14Z" fill="black"/>
+<path d="M16 16H14V18H16V16Z" fill="black"/>
+<path d="M18 18H16V20H18V18Z" fill="black"/>
+<path d="M14 21.586L13.293 22.293C13.105 22.481 13 22.735 13 23V29C13 29.552 13.447 30 14 30H18C18.553 30 19 29.552 19 29V23C19 22.735 18.895 22.48 18.707 22.293L16.707 20.293C16.512 20.098 16.256 20 16 20H14V21.586ZM17 23.414V28H15V23.414L16 22.414L17 23.414Z" fill="black"/>
+</g>
+</g>
+</svg>
