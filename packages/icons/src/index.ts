@@ -49,8 +49,6 @@ export * from "./icons/AisCaret"
 
 export * from "./icons/AisCart"
 
-export * from "./icons/AisCevronLeft"
-
 export * from "./icons/AisChangeLog"
 
 export * from "./icons/AisCheckbox"
@@ -64,6 +62,8 @@ export * from "./icons/AisCheckmark"
 export * from "./icons/AisCheckmarkFilled"
 
 export * from "./icons/AisChevronDown"
+
+export * from "./icons/AisChevronLeft"
 
 export * from "./icons/AisChevronRight"
 

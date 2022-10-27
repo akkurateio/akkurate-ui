@@ -2,8 +2,8 @@
 import React from 'react';
 import { createIcon } from "@chakra-ui/icon"
 
-export const AisCevronLeft = createIcon({
-  displayName: "AisCevronLeft",
+export const AisChevronLeft = createIcon({
+  displayName: "AisChevronLeft",
   viewBox: "0 0 32 32",
   path: (
     <g fill="currentColor">
