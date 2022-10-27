@@ -7,7 +7,7 @@ export const AisCheckbox = createIcon({
   viewBox: "0 0 32 32",
   path: (
     <g fill="currentColor">
-      <path d="M8 5h16a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3Z" stroke="#000" stroke-width="2"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M24 6H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2ZM8 4h16a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Z" />
     </g>
   ),
 })
