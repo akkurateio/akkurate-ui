@@ -123,6 +123,71 @@ const styles = {
         textDecoration: "underline",
       },
     },
+    ".markdown": {
+      h2: {
+        marginTop: "1rem",
+        marginBottom: "1rem",
+        fontSize: "1.875rem",
+        fontWeight: "bold",
+      },
+      h3: {
+        marginTop: "1rem",
+        marginBottom: "1rem",
+        fontSize: "1.5rem",
+        fontWeight: "bold",
+      },
+      h4: {
+        marginTop: "1rem",
+        marginBottom: "1rem",
+        fontSize: "1.25rem",
+        fontWeight: "bold",
+      },
+      h5: {
+        marginTop: "1rem",
+        marginBottom: "1rem",
+        fontSize: "1.125rem",
+        fontWeight: "bold",
+      },
+      h6: {
+        marginTop: "1rem",
+        marginBottom: "1rem",
+        fontSize: "1rem",
+        fontWeight: "bold",
+      },
+      p: {
+        marginBottom: "1rem",
+        fontSize: "0.875rem",
+      },
+      "pre > pre": {
+        borderRadius: "0.5rem",
+        backgroundColor: "gray.100",
+        padding: "0.5rem",
+        marginBottom: "1rem",
+        fontSize: "0.875rem",
+      },
+      blockquote: {
+        fontSize: "1.125rem",
+        backgroundColor: "gray.50",
+        padding: "0.5rem",
+        fontStyle: "italic",
+        fontFamily: "Times",
+        marginBottom: "1rem",
+      },
+      li: {},
+      ul: {
+        fontSize: "0.875rem",
+        marginLeft: "2rem",
+        marginBottom: "1rem",
+      },
+      ol: {
+        marginLeft: "2rem",
+        marginBottom: "1rem",
+      },
+      a: {
+        color: "blue.600",
+        textDecoration: "underline",
+      },
+    },
   }),
 }
 
