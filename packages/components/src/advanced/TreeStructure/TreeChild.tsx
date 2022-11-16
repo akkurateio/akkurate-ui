@@ -1,15 +1,7 @@
 import React, { useState } from "react"
 import { InterfaceTree } from "./InterfaceTree"
-import { Box, Flex, HStack, VStack } from "@chakra-ui/react"
-import {
-  AisArrowDown,
-  AisArrowRight,
-  AisArrowRightDown,
-  AisChevronDown,
-  AisChevronRight,
-  AisDot,
-  AisFolder,
-} from "@akkurateio/icons"
+import { Box, Flex, HStack } from "@chakra-ui/react"
+import { AisChevronDown, AisChevronRight, AisDot } from "@akkurateio/icons"
 
 interface IProps {
   child: {
