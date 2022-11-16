@@ -1,19 +1,18 @@
+import { AcsInputColor, AcsInputDate } from "@akkurateio/forms"
 import {
-  AcsInputColor,
-  AcsInputDate,
-} from "@akkurateio/forms"
-import {
-  Box, Button,
+  Box,
+  Button,
   Container,
   Flex,
-  Heading, HStack,
+  Heading,
+  HStack,
   Text,
   useTheme,
 } from "@chakra-ui/react"
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import ToggleColorMode from "../components/ToggleColorMode"
-import {AcsPaginate, Tree} from "@akkurateio/components";
+import { AcsPaginate, AcsPdfViewer, AcsTree } from "@akkurateio/components"
 
 function App() {
   const tree = [
@@ -32,20 +31,18 @@ function App() {
                 {
                   id: 4,
                   name: "thibaut",
-                  children: []
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       id: 5,
       name: "laurent",
-      children: [
-      ]
-
+      children: [],
     },
     {
       id: 6,
@@ -53,11 +50,13 @@ function App() {
       children: [
         { id: 7, name: "je sais pas", children: [] },
         { id: 8, name: "toujours pas", children: [] },
-        { id: 9, name: "j'arrete la", children: [
-            { id: 10, name: "je sais pas", children: [] },
-          ] },
-      ]
-    }
+        {
+          id: 9,
+          name: "j'arrete la",
+          children: [{ id: 10, name: "je sais pas", children: [] }],
+        },
+      ],
+    },
   ]
   const theme = useTheme()
 
@@ -110,23 +109,30 @@ function App() {
   console.log(search)
 
   return (
-    <Container maxW={"container.xl"}>
-      <Head>
-        <title>Akkurate UI - Testing</title>
-      </Head>
-      <Flex justifyContent={"space-between"} alignItems={"center"}>
-        <Heading fontSize={"3xl"} fontWeight={600} py={2}>
-          Test components
-        </Heading>
+    <Box bg={"red.100"} height={"600px"} width={"full"}>
+      {/*<Head>*/}
+      {/*  <title>Akkurate UI - Testing</title>*/}
+      {/*</Head>*/}
+      {/*<Flex justifyContent={"space-between"} alignItems={"center"}>*/}
+      {/*  <Heading fontSize={"3xl"} fontWeight={600} py={2}>*/}
+      {/*    Test components*/}
+      {/*  </Heading>*/}
 
-        <ToggleColorMode />
-      </Flex>
-      <AcsInputDate value={date} handleChange={ setDate } />
+      {/*  <ToggleColorMode />*/}
+      {/*</Flex>*/}
+      {/*<AcsInputDate value={date} handleChange={setDate} />*/}
 
-     <AcsInputColor handleChange={ setColor } value={ color }  />
-      <AcsPaginate max={100 } current={1} handleChangePage={ setPage } />
-      <Tree tree={tree} />
-    </Container>
+      {/*<AcsInputColor handleChange={setColor} value={color} />*/}
+      {/*<AcsPaginate max={100} current={1} handleChangePage={setPage} />*/}
+      {/*<AcsTree tree={tree} />*/}
+      <AcsPdfViewer
+        viewerOnly={false}
+        withFitH={true}
+        src={
+          "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+        }
+      />
+    </Box>
   )
 }
 
