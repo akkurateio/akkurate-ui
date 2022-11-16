@@ -1,10 +1,6 @@
 import {
   AcsInputColor,
   AcsInputDate,
-  AcsInputFile,
-  AcsInputNumber,
-  AcsInputPhone,
-  AcsInputSearch
 } from "@akkurateio/forms"
 import {
   Box, Button,
@@ -13,14 +9,56 @@ import {
   Heading, HStack,
   Text,
   useTheme,
-  VStack,
 } from "@chakra-ui/react"
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import ToggleColorMode from "../components/ToggleColorMode"
-import {AcsDropzone, AcsModal} from "@akkurateio/components";
+import {AcsPaginate, Tree} from "@akkurateio/components";
 
 function App() {
+  const tree = [
+    {
+      id: 1,
+      name: "Dashboard",
+      children: [
+        {
+          id: 2,
+          name: "Subvitamine",
+          children: [
+            {
+              id: 3,
+              name: "jean",
+              children: [
+                {
+                  id: 4,
+                  name: "thibaut",
+                  children: []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 5,
+      name: "laurent",
+      children: [
+      ]
+
+    },
+    {
+      id: 6,
+      name: "vincent",
+      children: [
+        { id: 7, name: "je sais pas", children: [] },
+        { id: 8, name: "toujours pas", children: [] },
+        { id: 9, name: "j'arrete la", children: [
+            { id: 10, name: "je sais pas", children: [] },
+          ] },
+      ]
+    }
+  ]
   const theme = useTheme()
 
   const [text, setText] = useState("Salut à tous")
@@ -86,6 +124,8 @@ function App() {
       <AcsInputDate value={date} handleChange={ setDate } />
 
      <AcsInputColor handleChange={ setColor } value={ color }  />
+      <AcsPaginate max={100 } current={1} handleChangePage={ setPage } />
+      <Tree tree={tree} />
     </Container>
   )
 }
