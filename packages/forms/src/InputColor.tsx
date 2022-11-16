@@ -1,6 +1,6 @@
 import React from "react"
 
-import { AisCheckmark, AisPencil } from "@akkurateio/icons"
+import { AisColorPalette} from "@akkurateio/icons"
 import {
   Box,
   FormControlOptions,
@@ -126,12 +126,12 @@ export const AcsInputColor: React.FC<InputProps> = ({
                       props.iconOpen ? (
                         props.iconOpen
                       ) : (
-                        <AisCheckmark w={8} h={8} />
+                        <AisColorPalette w={7} h={7} />
                       )
                     ) : props.iconClose ? (
                       props.iconClose
                     ) : (
-                      <AisPencil w={7} h={7} />
+                      <AisColorPalette w={7} h={7} />
                     )}
                   </Box>
                 </PopoverTrigger>

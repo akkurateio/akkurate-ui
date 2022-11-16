@@ -1,9 +1,16 @@
-import {AcsInputDate, AcsInputFile, AcsInputNumber, AcsInputPhone, AcsInputSearch} from "@akkurateio/forms"
+import {
+  AcsInputColor,
+  AcsInputDate,
+  AcsInputFile,
+  AcsInputNumber,
+  AcsInputPhone,
+  AcsInputSearch
+} from "@akkurateio/forms"
 import {
   Box, Button,
   Container,
   Flex,
-  Heading,
+  Heading, HStack,
   Text,
   useTheme,
   VStack,
@@ -77,6 +84,8 @@ function App() {
         <ToggleColorMode />
       </Flex>
       <AcsInputDate value={date} handleChange={ setDate } />
+
+     <AcsInputColor handleChange={ setColor } value={ color }  />
     </Container>
   )
 }
