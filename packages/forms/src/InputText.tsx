@@ -11,8 +11,8 @@ import FormControlLayout from "./FormControlLayout"
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
-  handleChange: (e: string) => void
-  value: string
+  handleChange?: (e: string) => void
+  value?: string
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -62,7 +62,7 @@ export const AcsInputText: React.FC<InputProps> = ({
             color: "error.600",
           }}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => (handleChange ? handleChange(e.target.value) : null)}
           fontSize={"sm"}
           rounded={"4px"}
           p={2.5}
