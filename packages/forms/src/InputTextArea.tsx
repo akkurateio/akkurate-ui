@@ -76,7 +76,9 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
             bg: "error.100",
             color: "error.600",
           }}
-          px={props.px ? props.px : 3}
+          fontSize={"sm"}
+          rounded={"4px"}
+          p={2.5}
           bg={props.bg ? props.bg : "white"}
           rows={
             props.autoResize

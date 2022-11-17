@@ -19,6 +19,7 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  register?: any
 }
 
 interface InputProps
@@ -29,6 +30,7 @@ interface InputProps
 
 export const AcsInputText: React.FC<InputProps> = ({
   handleChange,
+  register,
   ...props
 }) => {
   const propsForInput = () => {
@@ -59,9 +61,12 @@ export const AcsInputText: React.FC<InputProps> = ({
             bg: "error.100",
             color: "error.600",
           }}
-          px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
           onChange={(e) => handleChange(e.target.value)}
+          fontSize={"sm"}
+          rounded={"4px"}
+          p={2.5}
+          register={register}
         />
       </InputGroup>
     </FormControlLayout>

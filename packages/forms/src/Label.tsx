@@ -8,12 +8,11 @@ interface IProps {
 const Label: React.FC<IProps> = ({ label }) => {
   return (
     <FormLabel
-      fontSize={"xs"}
-      lineHeight={"1.2rem"}
+      height={3}
+      fontSize={"2xs"}
       fontWeight={"normal"}
       opacity={0.7}
-      m={0}
-      ml={1}
+      mb={2}
     >
       {label}
     </FormLabel>

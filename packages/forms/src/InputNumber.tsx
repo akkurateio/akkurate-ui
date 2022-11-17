@@ -129,7 +129,9 @@ export const AcsInputNumber: React.FC<InputProps> = ({
               color: "error.600",
             }}
             textAlign={"center"}
-            px={props.px ? props.px : 3}
+            fontSize={"sm"}
+            rounded={"4px"}
+            p={2.5}
             bg={props.bg ? props.bg : "white"}
           />
           <InputRightElement

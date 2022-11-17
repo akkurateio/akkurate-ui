@@ -66,12 +66,16 @@ export const AcsInputSearch: React.FC<InputProps> = ({
             bg: "error.100",
             color: "error.600",
           }}
+          fontSize={"sm"}
+          rounded={"4px"}
+          pb={2.5}
+          pt={2.5}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
           onChange={(e) => handleChange(e.target.value)}
         />
-          <InputRightElement>
-            {props.value && props.value.length > 0 && (
+        <InputRightElement>
+          {props.value && props.value.length > 0 && (
             <IconButton
               aria-label="Close"
               rounded={"full"}
@@ -81,8 +85,8 @@ export const AcsInputSearch: React.FC<InputProps> = ({
             >
               <AisClose boxSize={5} onClick={() => handleChange("")} />
             </IconButton>
-            )}
-          </InputRightElement>
+          )}
+        </InputRightElement>
       </InputGroup>
     </FormControlLayout>
   )
