@@ -67,7 +67,7 @@ export const AcsInputText: React.FC<InputProps> = ({
           rounded={"4px"}
           p={2.5}
           {...register(props.name)}
-          defaultValue={props.value}
+          defaultValue={props.defaultValue}
         />
       </InputGroup>
     </FormControlLayout>
