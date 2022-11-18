@@ -1,4 +1,11 @@
-import { AcsInputText, AcsInputTextArea } from "@akkurateio/forms"
+import {
+  AcsInputNumber,
+  AcsInputPassword,
+  AcsInputText,
+  AcsInputTextArea,
+  AcsInputSearch,
+  AcsRadioSelectCard,
+} from "@akkurateio/forms"
 import {
   Box,
   Button,
@@ -41,7 +48,7 @@ function App() {
 
   const [date, setDate] = useState("2022-09-01")
 
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState<number | string>("1")
 
   const [file, setFile] = useState<FileList | File[] | null>(null)
 
@@ -63,10 +70,10 @@ function App() {
     }
   }, [search])
 
-  console.log(search)
+  console.log(page)
 
   return (
-    <Box height={"600px"} width={"full"} paddingTop={20} m={10}>
+    <Box height={"600px"} width={"80%"} paddingTop={20} m={10}>
       {/*<Head>*/}
       {/*  <title>Akkurate UI - Testing</title>*/}
       {/*</Head>*/}
@@ -75,10 +82,40 @@ function App() {
       {/*    Test components*/}
       {/*  </Heading>*/}
       {/*  <ToggleColorMode />*/}
-      <AcsInputText handleChange={setText} value={text} />
-      <AcsInputTextArea />
       {/*</Flex>*/}
       {/*<AcsInputDate value={date} handleChange={setDate} />*/}
+      <AcsInputPassword />
+
+      <Box height={"40px"} />
+
+      <AcsRadioSelectCard
+        contentArray={[
+          {
+            id: "1",
+            body: (
+              <Box width={"200px"} height={"auto"}>
+                <Heading>Coucou</Heading>
+                <Text>
+                  il etait une fois dans une galaxie lointaine, très
+                  lointaine....
+                </Text>
+                <Text fontSize={"sm"}>Taaan taaan tan tan tan tan taaaaan</Text>
+              </Box>
+            ),
+          },
+          {
+            id: "2",
+            body: (
+              <Box width={"200px"} height={"auto"}>
+                <Heading>Coucou</Heading>
+              </Box>
+            ),
+          },
+        ]}
+        selectedCardId={page}
+        setSelectedCardId={(id: number | string) => setPage(id)}
+        justifyContent={"space-evenly"}
+      />
       {/*<AcsInputColor handleChange={setColor} value={color} />*/}
       {/*<AcsPaginate max={100} current={1} handleChangePage={setPage} />*/}
       {/*<AcsTree tree={tree} />*/}
