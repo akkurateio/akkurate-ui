@@ -94,7 +94,7 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
               <IconButton
                 colorScheme={currentId === item.id ? "primary" : "white"}
                 borderWidth={1}
-                borderColor={currentId !== item.id ? "gray.200" : "primary.500"}
+                borderColor={currentId === item.id ? "primary.500" : "gray.200"}
                 size={"xs"}
                 rounded={"full"}
                 aria-label={"Select"}

@@ -1,10 +1,10 @@
 import {
-  AcsInputNumber,
-  AcsInputPassword,
-  AcsInputText,
-  AcsInputTextArea,
-  AcsInputSearch,
-  AcsRadioSelectCard,
+    AcsInputNumber,
+    AcsInputPassword,
+    AcsInputText,
+    AcsInputTextArea,
+    AcsInputSearch,
+    AcsRadioSelectCard, AcsCheckboxCard,
 } from "@akkurateio/forms"
 import {
   Box,
@@ -48,7 +48,7 @@ function App() {
 
   const [date, setDate] = useState("2022-09-01")
 
-  const [page, setPage] = useState<number | string>("1")
+  const [page, setPage] = useState<(number | string)[]>(["1"])
 
   const [file, setFile] = useState<FileList | File[] | null>(null)
 
@@ -87,35 +87,59 @@ function App() {
       <AcsInputPassword />
 
       <Box height={"40px"} />
+        <AcsCheckboxCard contentArray={[
+            {
+              id: "1",
+              body: (
+                <Box width={"200px"} height={"auto"}>
+                  <Heading>Coucou</Heading>
+                  <Text>
+                    il etait une fois dans une galaxie lointaine, très
+                    lointaine....
+                  </Text>
+                  <Text fontSize={"sm"}>Taaan taaan tan tan tan tan taaaaan</Text>
+                </Box>
+              ),
+            },
+            {
+              id: "2",
+              body: (
+                <Box width={"200px"} height={"auto"}>
+                  <Heading>Coucou</Heading>
+                </Box>
+              ),
+            },
+          ]}
+            setSelectedCardIds={(id: (number | string)[]) => setPage(id)} selectedCardIds={page} />
 
-      <AcsRadioSelectCard
-        contentArray={[
-          {
-            id: "1",
-            body: (
-              <Box width={"200px"} height={"auto"}>
-                <Heading>Coucou</Heading>
-                <Text>
-                  il etait une fois dans une galaxie lointaine, très
-                  lointaine....
-                </Text>
-                <Text fontSize={"sm"}>Taaan taaan tan tan tan tan taaaaan</Text>
-              </Box>
-            ),
-          },
-          {
-            id: "2",
-            body: (
-              <Box width={"200px"} height={"auto"}>
-                <Heading>Coucou</Heading>
-              </Box>
-            ),
-          },
-        ]}
-        selectedCardId={page}
-        setSelectedCardId={(id: number | string) => setPage(id)}
-        justifyContent={"space-evenly"}
-      />
+      {/*<AcsRadioSelectCard*/}
+      {/*  contentArray={[*/}
+      {/*    {*/}
+      {/*      id: "1",*/}
+      {/*      body: (*/}
+      {/*        <Box width={"200px"} height={"auto"}>*/}
+      {/*          <Heading>Coucou</Heading>*/}
+      {/*          <Text>*/}
+      {/*            il etait une fois dans une galaxie lointaine, très*/}
+      {/*            lointaine....*/}
+      {/*          </Text>*/}
+      {/*          <Text fontSize={"sm"}>Taaan taaan tan tan tan tan taaaaan</Text>*/}
+      {/*        </Box>*/}
+      {/*      ),*/}
+      {/*    },*/}
+      {/*    {*/}
+      {/*      id: "2",*/}
+      {/*      body: (*/}
+      {/*        <Box width={"200px"} height={"auto"}>*/}
+      {/*          <Heading>Coucou</Heading>*/}
+      {/*        </Box>*/}
+      {/*      ),*/}
+      {/*    },*/}
+      {/*  ]}*/}
+      {/*  selectedCardId={page}*/}
+      {/*  setSelectedCardId={(id: number | string) => setPage(id)}*/}
+      {/*  justifyContent={"space-evenly"}*/}
+      {/*/>*/}
       {/*<AcsInputColor handleChange={setColor} value={color} />*/}
       {/*<AcsPaginate max={100} current={1} handleChangePage={setPage} />*/}
       {/*<AcsTree tree={tree} />*/}
