@@ -13,8 +13,8 @@ import React, { useState } from "react"
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
-  handleChange: (e: string) => void
-  value: string
+  handleChange?: (e: string) => void
+  value?: string
   focusBorderColor?: string
   errorBorderColor?: string
   htmlSize?: number
@@ -23,6 +23,7 @@ interface InputOptions {
   hint?: string
   iconOpen?: JSX.Element
   iconClose?: JSX.Element
+  register?: any
 }
 
 interface InputProps
@@ -33,6 +34,7 @@ interface InputProps
 
 export const AcsInputPassword: React.FC<InputProps> = ({
   handleChange,
+  register,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -52,6 +54,18 @@ export const AcsInputPassword: React.FC<InputProps> = ({
     return rest
   }
 
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (handleChange) {
+      handleChange(e.target.value)
+    }
+
+    if (register) {
+      return null
+    }
+
+    return null
+  }
+
   return (
     <FormControlLayout {...props}>
       <InputGroup size={props.size} width={props.width}>
@@ -69,7 +83,9 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           rounded={"4px"}
           p={2.5}
           bg={props.bg ? props.bg : "white"}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={handleOnChange}
+          defaultValue={props.defaultValue}
+          {...(register ? { ...register(props.name) } : null)}
         />
 
         <InputRightElement
