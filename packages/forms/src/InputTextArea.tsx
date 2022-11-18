@@ -11,8 +11,8 @@ import React, { useEffect, useRef } from "react"
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
-  handleChange: (e: string) => void
-  value: string
+  handleChange?: (e: string) => void
+  value?: string
   focusBorderColor?: string
   errorBorderColor?: string
   autoResize?: boolean
@@ -20,6 +20,7 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  register?: any
 }
 
 interface InputProps
@@ -30,6 +31,7 @@ interface InputProps
 
 export const AcsInputTextArea: React.FC<InputProps> = ({
   handleChange,
+  register,
   ...props
 }) => {
   const propsForInput = () => {
@@ -50,6 +52,18 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (handleChange) {
+      handleChange(e.target.value)
+    }
+
+    if (register) {
+      return null
+    }
+
+    return null
+  }
+
   useEffect(() => {
     if (props.autoResize) {
       if (textareaRef && textareaRef.current) {
@@ -66,7 +80,7 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
       <InputGroup size={props.size}>
         <Textarea
           ref={textareaRef}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={() => handleOnChange}
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
@@ -93,6 +107,8 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
           resize={
             props.autoResize ? (props.resize ? props.resize : "none") : "none"
           }
+          {...(register ? { ...register(props.name) } : null)}
+          defaultValue={props.defaultValue}
         />
       </InputGroup>
     </FormControlLayout>

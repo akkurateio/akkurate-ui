@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@akkurateio/components": "0.0.30",
-    "@akkurateio/forms": "0.0.30",
-    "@akkurateio/icons": "0.0.30",
-    "@akkurateio/utils": "0.0.30",
+    "@akkurateio/components": "0.0.32",
+    "@akkurateio/forms": "0.0.32",
+    "@akkurateio/icons": "0.0.32",
+    "@akkurateio/utils": "0.0.32",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",

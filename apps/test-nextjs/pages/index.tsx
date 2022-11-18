@@ -1,15 +1,4 @@
-import {
-  AcsInputAutocomplete,
-  AcsInputColor,
-  AcsInputDate,
-  AcsInputNumber,
-  AcsInputPassword,
-  AcsInputSearch,
-  AcsInputText,
-  AcsInputTextArea,
-  AcsInputTime,
-  AcsSlider,
-} from "@akkurateio/forms"
+import { AcsInputText, AcsInputTextArea } from "@akkurateio/forms"
 import {
   Box,
   Button,
@@ -77,7 +66,7 @@ function App() {
   console.log(search)
 
   return (
-    <Box height={"600px"} width={"full"} paddingTop={20} paddingLeft={20}>
+    <Box height={"600px"} width={"full"} paddingTop={20} m={10}>
       {/*<Head>*/}
       {/*  <title>Akkurate UI - Testing</title>*/}
       {/*</Head>*/}
@@ -85,11 +74,11 @@ function App() {
       {/*  <Heading fontSize={"3xl"} fontWeight={600} py={2}>*/}
       {/*    Test components*/}
       {/*  </Heading>*/}
-      <AcsSlider key={"slider"} value={value} onChange={setValue} />
       {/*  <ToggleColorMode />*/}
+      <AcsInputText handleChange={setText} value={text} />
+      <AcsInputTextArea />
       {/*</Flex>*/}
       {/*<AcsInputDate value={date} handleChange={setDate} />*/}
-
       {/*<AcsInputColor handleChange={setColor} value={color} />*/}
       {/*<AcsPaginate max={100} current={1} handleChangePage={setPage} />*/}
       {/*<AcsTree tree={tree} />*/}

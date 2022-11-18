@@ -78,7 +78,7 @@ export const AcsInputText: React.FC<InputProps> = ({
           fontSize={"sm"}
           rounded={"4px"}
           p={2.5}
-          {...register(props.name)}
+          {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}
         />
       </InputGroup>
