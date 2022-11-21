@@ -5,8 +5,8 @@ import {
   Textarea,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import FormControlLayout from "./FormControlLayout"
 import React, { useEffect, useRef } from "react"
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -80,7 +80,7 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
       <InputGroup size={props.size}>
         <Textarea
           ref={textareaRef}
-          onChange={() => handleOnChange}
+          onChange={handleOnChange}
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
