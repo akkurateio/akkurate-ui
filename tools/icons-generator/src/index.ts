@@ -42,7 +42,7 @@ const main = async () => {
     // Create icon file
     writeFileSync(
       path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
-      templateCreateIcon(newSVGToString.replace('fill="#000"', ""), basename),
+      templateCreateIcon(newSVGToString.replace('fill="#000"', "").replace('fill-rule', 'fillRule').replace('clip-rule', 'clipRule'), basename),
     )
 
     // Add to index file
