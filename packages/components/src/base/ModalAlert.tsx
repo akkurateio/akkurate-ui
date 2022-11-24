@@ -22,6 +22,7 @@ interface ModalAlertOptions {
   cancelText?: string
   footer?: JSX.Element
   isCentered?: boolean
+  isLoading?: boolean
 }
 
 interface AcsModalAlertProps
@@ -40,6 +41,7 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
   footer,
   isCentered,
   size,
+  isLoading,
   ...props
 }) => {
   const cancelRef = useRef<any | null>(null)
@@ -83,6 +85,7 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
                 colorScheme={"primary"}
                 variant={"solid"}
                 onClick={action}
+                isLoading={isLoading}
               >
                 {confirmText ? confirmText : "Confirmer"}
               </Button>

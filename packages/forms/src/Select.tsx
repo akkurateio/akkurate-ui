@@ -40,6 +40,9 @@ export const AcsSelect: React.FC<InputProps> = ({
       <Select
         {...props}
         placeholder={props.placeholder}
+        focusBorderColor={
+          props.focusBorderColor ? props.focusBorderColor : "primary.500"
+        }
         value={props.value}
         onChange={(e) => handleChange(e.target.value)}
         cursor={"pointer"}
