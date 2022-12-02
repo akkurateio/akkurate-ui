@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
 import { AisCheckmark } from "@akkurateio/icons"
+import { StackDirection } from "@chakra-ui/layout"
 import {
   Box,
   FormControlOptions,
@@ -8,9 +8,9 @@ import {
   IconButton,
   Stack,
 } from "@chakra-ui/react"
-import FormControlLayout from "./FormControlLayout"
 import { SystemProps, ThemingProps } from "@chakra-ui/system"
-import { StackDirection } from "@chakra-ui/layout"
+import React, { useEffect, useState } from "react"
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted =
   | "disabled"
@@ -84,7 +84,6 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
             position={"relative"}
             borderWidth={2}
             borderColor={currentId === item.id ? "primary.500" : "gray.200"}
-            shadow={"md"}
             bg={"white"}
             transition={"all 0.2s ease-in-out"}
           >
