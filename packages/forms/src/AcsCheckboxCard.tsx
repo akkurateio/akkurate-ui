@@ -87,7 +87,6 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             position={"relative"}
             borderWidth={2}
             borderColor={currentIds.includes(item.id) ? "primary.500" : "gray.200"}
-            shadow={"md"}
             bg={"white"}
             transition={"all 0.2s ease-in-out"}
           >
