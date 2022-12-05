@@ -8,9 +8,12 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react"
-import { useDropzone } from "react-dropzone"
+import {FileRejection, useDropzone} from "react-dropzone"
 import ForMultiple from "./ForMultiple"
 import ForOne from "./ForOne"
+import {AisDownload, AisError, AisUploadCloud} from "@akkurateio/icons";
+import {Simulate} from "react-dom/test-utils";
+import waiting = Simulate.waiting;
 
 interface IProps {
   accept?: string
@@ -28,12 +31,14 @@ export const AcsDropzone: React.FC<IProps> = ({
   handleChange,
 }: IProps) => {
   const [files, setFiles] = useState<File[]>([])
+  const [toManyFiles, setToManyFiles] = useState(false)
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       if (maxFiles === 1) {
         if (acceptedFiles.length === 1) {
           setFiles(acceptedFiles)
+          setToManyFiles(false)
         }
       } else if (maxFiles > 1) {
         if (files.length + acceptedFiles.length <= maxFiles) {
@@ -43,17 +48,28 @@ export const AcsDropzone: React.FC<IProps> = ({
     },
     [files, maxFiles],
   )
+  const onDropRejected = useCallback(
+      (rejectedFiles: FileRejection[]) => {
+        if (rejectedFiles.length > 0) {
+          setToManyFiles(true)
+        }
+        },
+        [],
+    )
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     maxFiles: maxFiles,
     noClick: true,
     noKeyboard: true,
+    onDropRejected,
   })
+  console.log(toManyFiles)
 
   useEffect(() => {
     handleChange(files)
 
   }, [files])
+
 
   return (
     <Box
@@ -74,21 +90,44 @@ export const AcsDropzone: React.FC<IProps> = ({
         alignItems={"center"}
         py={12}
       >
-        {files.length === 0 && (
-          <Box>
-            <input {...getInputProps()} accept={"image/jpg"} />
-            <Text>Vous pouvez glisser et déposer dans cette zone.</Text>
+        {files.length === 0 &&  (
+          <Box textAlign={"center"}>
+            <input {...getInputProps()} accept={"image/jpg"}/>
+            {!toManyFiles ? (
+            <AisUploadCloud boxSize={20} color={"blackAlpha.700"} />
+            ) : (
+                <AisError boxSize={20} color={"red.600"} />
+            )}
+            {!toManyFiles ? (
+            maxFiles === 1 ? (
+                <Text>Glissez / Déposer le fichier ou cliquez ci-dessous.</Text>) : (
+                <Text>Glissez / Déposer les fichiers ou cliquez ci-dessous.</Text>
+            ))
+             : (
+                <Text>Nombre de fichier excède la limite autorisée.</Text>
+            )}
+            {!toManyFiles ? ( maxFiles > 1 ? (
+                <Text>Nombre de fichier maximum autorisés : {maxFiles}</Text>
+                    ) : (
+                <Text>Nombre de fichier maximum autorisés : {maxFiles}</Text>)) :(
+                <Text>Nombre de fichiers maximum autorisés : {maxFiles}</Text>
+                )}
             <Button
+              backgroundColor={"blue.400"}
               onClick={open}
-              colorScheme={isDragActive ? "primary" : undefined}
-              marginLeft={24}
+              colorScheme={isDragActive ? "pimary" : undefined}
+              paddingLeft={1}
             >
-              {files.length > 0 ? "Remplacer" : "Sélectionner"}
+              { toManyFiles ? (
+
+                  <><AisDownload boxSize={6} marginBottom={2}/><Text paddingLeft={3}>Réessayer</Text></>) : (
+                <><AisDownload boxSize={6} marginBottom={2} /><Text paddingLeft={3}>{files.length > 0 ? "Remplacer" : "Importer un fichier"}</Text></>
+                )}
             </Button>
           </Box>
         )}
 
-        {files.length > 0 && (
+        {files.length > 0 &&  (
           <>
             {maxFiles > 1 ? (
               <HStack alignItems={"flex-start"} width={"full"}>
@@ -122,11 +161,6 @@ export const AcsDropzone: React.FC<IProps> = ({
           </>
         )}
       </Flex>
-      {maxFiles > 1 && (
-        <Text position={"absolute"} right={"15%"}>
-          {files.length} / {maxFiles}
-        </Text>
-      )}
     </Box>
   )
 }

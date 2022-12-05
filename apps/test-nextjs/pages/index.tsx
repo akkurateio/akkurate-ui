@@ -19,7 +19,7 @@ import {
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import ToggleColorMode from "../components/ToggleColorMode"
-import { AcsPaginate, AcsPdfViewer, AcsTree } from "@akkurateio/components"
+import {AcsDropzone, AcsPaginate, AcsPdfViewer, AcsTree} from "@akkurateio/components"
 
 function App() {
   const theme = useTheme()
@@ -73,7 +73,7 @@ function App() {
   console.log(page)
 
   return (
-    <Box height={"600px"} width={"80%"} paddingTop={20} m={10}>
+    <Box height={"600px"}  paddingTop={20} m={10}>
       {/*<Head>*/}
       {/*  <title>Akkurate UI - Testing</title>*/}
       {/*</Head>*/}
@@ -85,32 +85,33 @@ function App() {
       {/*</Flex>*/}
       {/*<AcsInputDate value={date} handleChange={setDate} />*/}
       <AcsInputPassword />
+        <AcsDropzone handleChange={ setFile} maxFiles={2}  />
 
       <Box height={"40px"} />
-        <AcsCheckboxCard contentArray={[
-            {
-              id: "1",
-              body: (
-                <Box width={"200px"} height={"auto"}>
-                  <Heading>Coucou</Heading>
-                  <Text>
-                    il etait une fois dans une galaxie lointaine, très
-                    lointaine....
-                  </Text>
-                  <Text fontSize={"sm"}>Taaan taaan tan tan tan tan taaaaan</Text>
-                </Box>
-              ),
-            },
-            {
-              id: "2",
-              body: (
-                <Box width={"200px"} height={"auto"}>
-                  <Heading>Coucou</Heading>
-                </Box>
-              ),
-            },
-          ]}
-            setSelectedCardIds={(id: (number | string)[]) => setPage(id)} selectedCardIds={page} />
+        {/*<AcsCheckboxCard contentArray={[*/}
+        {/*    {*/}
+        {/*      id: "1",*/}
+        {/*      body: (*/}
+        {/*        <Box width={"200px"} height={"auto"}>*/}
+        {/*          <Heading>Coucou</Heading>*/}
+        {/*          <Text>*/}
+        {/*            il etait une fois dans une galaxie lointaine, très*/}
+        {/*            lointaine....*/}
+        {/*          </Text>*/}
+        {/*          <Text fontSize={"sm"}>Taaan taaan tan tan tan tan taaaaan</Text>*/}
+        {/*        </Box>*/}
+        {/*      ),*/}
+        {/*    },*/}
+        {/*    {*/}
+        {/*      id: "2",*/}
+        {/*      body: (*/}
+        {/*        <Box width={"200px"} height={"auto"}>*/}
+        {/*          <Heading>Coucou</Heading>*/}
+        {/*        </Box>*/}
+        {/*      ),*/}
+        {/*    },*/}
+        {/*  ]}*/}
+        {/*    setSelectedCardIds={(id: (number | string)[]) => setPage(id)} selectedCardIds={page} />*/}
 
       {/*<AcsRadioSelectCard*/}
       {/*  contentArray={[*/}
