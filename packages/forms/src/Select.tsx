@@ -30,7 +30,7 @@ interface InputProps
     ThemingProps<"Select">,
     FormControlOptions {}
 
-export const AcsSelect: React.FC<InputProps> = ({
+export const AcsSelect_old: React.FC<InputProps> = ({
   valuesArray,
   handleChange,
   ...props
