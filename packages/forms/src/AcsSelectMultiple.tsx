@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react"
-import {
-  Box,
-  FormControlOptions,
-  FormLabel,
-  HTMLChakraProps,
-} from "@chakra-ui/react"
+import { Box, FormControlOptions, HTMLChakraProps } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import FormControlLayout from "./FormControlLayout"
 import { Select } from "chakra-react-select"
@@ -16,8 +11,8 @@ interface AcsSelectProps {
     value: string
     label: string
   }[]
-  handleChange: (e: string) => void
-  value: string
+  handleChange: (e: (string | number)[]) => void
+  value: (string | number)[]
   label?: string
 }
 
@@ -27,22 +22,31 @@ interface SelectProps
     ThemingProps<"Select">,
     FormControlOptions {}
 
-export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
-  const [value, setValue] = useState("")
-  const [currentValue, setCurrentValue] = useState("")
+export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
+  const [currentValues, setCurrentValues] = useState<any>([])
 
-  const handleChange = (e: any) => {
-    setValue(e.value)
-    setCurrentValue(e)
+  const handleChange = (e: { value: string | number; label: string }[]) => {
+    setCurrentValues(e)
     if (props.handleChange) {
-      props.handleChange(e.value)
+      props.handleChange(e.map((item) => item.value))
     }
   }
+
+  useEffect(() => {
+    if (props.options && props.value) {
+      if (props.value.length > 0) {
+        const array = props.options.filter((v) => props.value.includes(v.value))
+
+        setCurrentValues(array)
+      }
+    }
+  }, [props.options, props.value])
 
   return (
     <FormControlLayout label={props.label}>
       <Box width={"full"} h={"full"} backgroundColor={"white"} rounded={5}>
         <Select
+          isMulti
           menuPortalTarget={document.body}
           useBasicStyles={true}
           // @ts-ignore
@@ -52,19 +56,17 @@ export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
               ...base,
               zIndex: 9999,
             }),
-            option: () => ({
-              fontSize: "12px",
-            }),
           }}
+          closeMenuOnSelect={false}
+          selectedOptionStyle={"check"}
+          hideSelectedOptions={false}
           focusBorderColor={
             props.colorScheme ? props.colorScheme : "primary.500"
           }
-          selectedOptionStyle={"check"}
-          closeMenuOnSelect={true}
-          hideSelectedOptions={false}
-          errorBorderColor={props.onError ? "red.500" : "primary.500"}
-          value={currentValue}
-          onChange={handleChange}
+          value={currentValues}
+          onChange={(e) => {
+            handleChange(e.map((option) => option))
+          }}
           placeholder={props.placeholder}
         />
       </Box>
