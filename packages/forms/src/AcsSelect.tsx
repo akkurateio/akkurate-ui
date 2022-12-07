@@ -28,11 +28,9 @@ interface SelectProps
     FormControlOptions {}
 
 export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
-  const [value, setValue] = useState("")
   const [currentValue, setCurrentValue] = useState("")
 
   const handleChange = (e: any) => {
-    setValue(e.value)
     setCurrentValue(e)
     if (props.handleChange) {
       props.handleChange(e.value)
