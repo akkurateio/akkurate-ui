@@ -114,7 +114,6 @@ export const AcsDropzone: React.FC<IProps> = ({
               <Text>Nombre de fichiers maximum autorisés : {maxFiles}</Text>
             )}
             <Button
-              backgroundColor={"blue.400"}
               onClick={open}
               colorScheme={isDragActive ? "pimary" : undefined}
               paddingLeft={1}
