@@ -71,7 +71,7 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
               </Box>
             )
           ) : (
-            <AisDot />
+            <AisDot boxSize={"16px"} />
           )}
         </Box>
 
