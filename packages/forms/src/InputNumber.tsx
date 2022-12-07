@@ -112,11 +112,10 @@ export const AcsInputNumber: React.FC<InputProps> = ({
         <InputGroup size={props.size}>
           <InputLeftElement
             color={props.isInvalid ? "error.600" : "primary.500"}
-            borderRight={"1px solid"}
             borderColor={props.isInvalid ? "error.600" : "gray.200"}
           >
             <Button {...dec} variant={"unstyled"}>
-              <AisSubstract boxSize={6} />
+              <AisSubstract boxSize={"16px"} />
             </Button>
           </InputLeftElement>
           <Input
@@ -136,14 +135,13 @@ export const AcsInputNumber: React.FC<InputProps> = ({
           />
           <InputRightElement
             color={props.isInvalid ? "error.600" : "primary.500"}
-            borderLeft={"1px solid"}
             borderColor={props.isInvalid ? "error.600" : "gray.200"}
             _focus={{
               borderColor: "primary.700",
             }}
           >
             <Button {...inc} variant={"unstyled"}>
-              <AisAdd boxSize={6} />
+              <AisAdd boxSize={"16px"} />
             </Button>
           </InputRightElement>
         </InputGroup>

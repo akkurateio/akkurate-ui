@@ -34,7 +34,7 @@ export const AcsCarousel: React.FC<IProps> = ({
     <Box width={"full"}>
       <Flex width={"full"} alignItems={"center"}>
         <Button onClick={handlePrevious} variant={"ghost"}>
-          <AisChevronLeft />
+          <AisChevronLeft boxSize={"24px"} />
         </Button>
         <Box width={"100%"} overflow={"hidden"}>
           <Flex
@@ -59,7 +59,7 @@ export const AcsCarousel: React.FC<IProps> = ({
         </Box>
 
         <Button onClick={handleNext} variant={"ghost"}>
-          <AisChevronRight />
+          <AisChevronRight boxSize={"24px"} />
         </Button>
       </Flex>
       {withIndicator && (

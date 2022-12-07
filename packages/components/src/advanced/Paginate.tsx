@@ -34,7 +34,7 @@ export const AcsPaginate: React.FC<IProps> = ({
             aria-label={"Première page"}
             onClick={() => handleChangePage(1)}
           >
-            <AisPageFirst boxSize={6} />
+            <AisPageFirst boxSize={"24px"} />
           </IconButton>
         )}
         <IconButton
@@ -45,7 +45,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           aria-label={"Page précédente"}
           onClick={() => handleChangePage(current - 1)}
         >
-          <AisChevronLeft boxSize={6} />
+          <AisChevronLeft boxSize={"24px"} />
         </IconButton>
 
         <HStack spacing={0.5} alignItems={"center"}>
@@ -115,7 +115,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           aria-label={"Page suivante"}
           onClick={() => handleChangePage(current + 1)}
         >
-          <AisChevronRight boxSize={6} />
+          <AisChevronRight boxSize={"24px"} />
         </IconButton>
         {max > 6 && (
           <IconButton
@@ -125,7 +125,7 @@ export const AcsPaginate: React.FC<IProps> = ({
             aria-label={"Dernière page"}
             onClick={() => handleChangePage(max)}
           >
-            <AisPageLast boxSize={6} />
+            <AisPageLast boxSize={"24px"} />
           </IconButton>
         )}
       </HStack>

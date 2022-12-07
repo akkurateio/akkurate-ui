@@ -97,12 +97,12 @@ export const AcsInputPassword: React.FC<InputProps> = ({
             props.iconOpen ? (
               props.iconOpen
             ) : (
-              <AisEye w={8} h={8} />
+              <AisEye boxSize={"24px"} />
             )
           ) : props.iconClose ? (
             props.iconClose
           ) : (
-            <AisEyeClosed w={8} h={8} />
+            <AisEyeClosed boxSize={"24px"} />
           )}
         </InputRightElement>
       </InputGroup>

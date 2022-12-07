@@ -139,7 +139,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
                 _active={{ color: "primary.700" }}
                 zIndex={1}
               >
-                <AisTime boxSize={6} />
+                <AisTime boxSize={"24px"} />
               </Button>
             </PopoverTrigger>
             <PopoverContent overflow={"hidden"} w={44} h={72}>

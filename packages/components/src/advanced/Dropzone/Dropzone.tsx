@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import {
   Box,
   Button,
@@ -8,12 +8,12 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react"
-import {FileRejection, useDropzone} from "react-dropzone"
+import { FileRejection, useDropzone } from "react-dropzone"
 import ForMultiple from "./ForMultiple"
 import ForOne from "./ForOne"
-import {AisDownload, AisError, AisUploadCloud} from "@akkurateio/icons";
-import {Simulate} from "react-dom/test-utils";
-import waiting = Simulate.waiting;
+import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/icons"
+import { Simulate } from "react-dom/test-utils"
+import waiting = Simulate.waiting
 
 interface IProps {
   accept?: string
@@ -48,14 +48,11 @@ export const AcsDropzone: React.FC<IProps> = ({
     },
     [files, maxFiles],
   )
-  const onDropRejected = useCallback(
-      (rejectedFiles: FileRejection[]) => {
-        if (rejectedFiles.length > 0) {
-          setToManyFiles(true)
-        }
-        },
-        [],
-    )
+  const onDropRejected = useCallback((rejectedFiles: FileRejection[]) => {
+    if (rejectedFiles.length > 0) {
+      setToManyFiles(true)
+    }
+  }, [])
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     maxFiles: maxFiles,
@@ -67,9 +64,7 @@ export const AcsDropzone: React.FC<IProps> = ({
 
   useEffect(() => {
     handleChange(files)
-
   }, [files])
-
 
   return (
     <Box
@@ -90,51 +85,65 @@ export const AcsDropzone: React.FC<IProps> = ({
         alignItems={"center"}
         py={12}
       >
-        {files.length === 0 &&  (
+        {files.length === 0 && (
           <Box textAlign={"center"}>
-            <input {...getInputProps()} accept={"image/jpg"}/>
+            <input {...getInputProps()} accept={"image/jpg"} />
             {!toManyFiles ? (
-            <AisUploadCloud boxSize={20} color={"blackAlpha.700"} />
+              <AisUploadCloud boxSize={"64px"} color={"blackAlpha.700"} />
             ) : (
-                <AisError boxSize={20} color={"red.600"} />
+              <AisError boxSize={"64px"} color={"red.600"} />
             )}
             {!toManyFiles ? (
-            maxFiles === 1 ? (
-                <Text>Glissez / Déposer le fichier ou cliquez ci-dessous.</Text>) : (
-                <Text>Glissez / Déposer les fichiers ou cliquez ci-dessous.</Text>
-            ))
-             : (
-                <Text>Nombre de fichier excède la limite autorisée.</Text>
+              maxFiles === 1 ? (
+                <Text>Glissez / Déposer le fichier ou cliquez ci-dessous.</Text>
+              ) : (
+                <Text>
+                  Glissez / Déposer les fichiers ou cliquez ci-dessous.
+                </Text>
+              )
+            ) : (
+              <Text>Nombre de fichier excède la limite autorisée.</Text>
             )}
-            {!toManyFiles ? ( maxFiles > 1 ? (
+            {!toManyFiles ? (
+              maxFiles > 1 ? (
                 <Text>Nombre de fichier maximum autorisés : {maxFiles}</Text>
-                    ) : (
-                <Text>Nombre de fichier maximum autorisés : {maxFiles}</Text>)) :(
-                <Text>Nombre de fichiers maximum autorisés : {maxFiles}</Text>
-                )}
+              ) : (
+                <Text>Nombre de fichier maximum autorisés : {maxFiles}</Text>
+              )
+            ) : (
+              <Text>Nombre de fichiers maximum autorisés : {maxFiles}</Text>
+            )}
             <Button
               backgroundColor={"blue.400"}
               onClick={open}
               colorScheme={isDragActive ? "pimary" : undefined}
               paddingLeft={1}
             >
-              { toManyFiles ? (
-
-                  <><AisDownload boxSize={6} marginBottom={2}/><Text paddingLeft={3}>Réessayer</Text></>) : (
-                <><AisDownload boxSize={6} marginBottom={2} /><Text paddingLeft={3}>{files.length > 0 ? "Remplacer" : "Importer un fichier"}</Text></>
-                )}
+              {toManyFiles ? (
+                <>
+                  <AisDownload boxSize={"24px"} marginBottom={2} />
+                  <Text paddingLeft={3}>Réessayer</Text>
+                </>
+              ) : (
+                <>
+                  <AisDownload boxSize={"24px"} marginBottom={2} />
+                  <Text paddingLeft={3}>
+                    {files.length > 0 ? "Remplacer" : "Importer un fichier"}
+                  </Text>
+                </>
+              )}
             </Button>
           </Box>
         )}
 
-        {files.length > 0 &&  (
+        {files.length > 0 && (
           <>
             {maxFiles > 1 ? (
               <HStack alignItems={"flex-start"} width={"full"}>
                 {files.map((file, idx) => (
                   <Box>
                     <ForMultiple
-                        key={idx}
+                      key={idx}
                       file={file}
                       onDelete={() => setFiles(files.filter((f) => f !== file))}
                       boxSize={boxSize}
@@ -148,7 +157,7 @@ export const AcsDropzone: React.FC<IProps> = ({
                 {files.map((file, idx) => (
                   <>
                     <ForOne
-                        key={idx}
+                      key={idx}
                       file={file}
                       onDelete={() => setFiles(files.filter((f) => f !== file))}
                       boxSize={boxSize}

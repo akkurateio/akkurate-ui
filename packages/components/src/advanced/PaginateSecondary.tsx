@@ -73,7 +73,7 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
           isDisabled={current === 1}
         >
           <HStack alignItems={"center"} spacing={2}>
-            <AisChevronLeft boxSize={6} />
+            <AisChevronLeft boxSize={"24px"} />
             <Text>Précédent</Text>
           </HStack>
         </Button>
@@ -90,7 +90,7 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
             <>
               <PopoverTrigger>
                 <Button size={"xs"} variant={"ghost"}>
-                  <AisChevronSort boxSize={4} />
+                  <AisChevronSort boxSize={"24px"} />
                 </Button>
               </PopoverTrigger>
               <PopoverContent width={"fit-content"}>
@@ -125,7 +125,7 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
         >
           <HStack alignItems={"center"} spacing={2}>
             <Text>Suivant</Text>
-            <AisChevronRight boxSize={6} />
+            <AisChevronRight boxSize={"24px"} />
           </HStack>
         </Button>
       )}

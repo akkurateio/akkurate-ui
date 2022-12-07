@@ -7,7 +7,7 @@ import {
   IconButton,
   Stack,
 } from "@chakra-ui/react"
-import {AisCheckbox, AisCheckmark} from "@akkurateio/icons"
+import { AisCheckbox, AisCheckmark } from "@akkurateio/icons"
 import FormControlLayout from "./FormControlLayout"
 import { StackDirection } from "@chakra-ui/layout"
 import { SystemProps, ThemingProps } from "@chakra-ui/system"
@@ -22,7 +22,7 @@ type Omitted =
   | "alignItems"
 
 interface CardOptions {
-  contentArray: { id: string | number; body: JSX.Element} []
+  contentArray: { id: string | number; body: JSX.Element }[]
   selectedCardIds: (string | number)[]
   setSelectedCardIds: (ids: (string | number)[]) => void
   direction?: StackDirection
@@ -47,24 +47,23 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
   alignItems = "center",
   ...props
 }) => {
-
-  const [currentIds, setCurrentIds] = useState<(string | number)[]>( selectedCardIds ? selectedCardIds : [])
+  const [currentIds, setCurrentIds] = useState<(string | number)[]>(
+    selectedCardIds ? selectedCardIds : [],
+  )
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false)
   const [isIndeterminate, setIsIndeterminate] = useState<boolean>(false)
 
-    const handleOnChange = (id: string | number) => {
+  const handleOnChange = (id: string | number) => {
     if (currentIds && currentIds.includes(id)) {
-            const newIds = currentIds.filter((i) => i !== id)
-            setCurrentIds(newIds)
-            setSelectedCardIds(newIds)
-        } else {
-            const newIds = currentIds ? [...currentIds, id] : [id]
-            setCurrentIds(newIds)
-            setSelectedCardIds(newIds)
-        }
+      const newIds = currentIds.filter((i) => i !== id)
+      setCurrentIds(newIds)
+      setSelectedCardIds(newIds)
+    } else {
+      const newIds = currentIds ? [...currentIds, id] : [id]
+      setCurrentIds(newIds)
+      setSelectedCardIds(newIds)
     }
-
-
+  }
 
   return (
     <FormControlLayout {...props}>
@@ -86,7 +85,9 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             key={idx}
             position={"relative"}
             borderWidth={2}
-            borderColor={currentIds.includes(item.id) ? "primary.500" : "gray.200"}
+            borderColor={
+              currentIds.includes(item.id) ? "primary.500" : "gray.200"
+            }
             bg={"white"}
             transition={"all 0.2s ease-in-out"}
           >
@@ -96,11 +97,13 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
               <IconButton
                 colorScheme={currentIds.includes(item.id) ? "primary" : "white"}
                 borderWidth={1}
-                borderColor={currentIds.includes(item.id) ? "primary.500" : "gray.200"}
+                borderColor={
+                  currentIds.includes(item.id) ? "primary.500" : "gray.200"
+                }
                 rounded={"md"}
-                size={'2xs'}
+                size={"2xs"}
                 aria-label={"Select"}
-                icon={<AisCheckmark boxSize={5} color={"white"} />}
+                icon={<AisCheckmark boxSize={"24px"} color={"white"} />}
                 transition={"all 0.2s ease-in-out"}
               />
             </Box>

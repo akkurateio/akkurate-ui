@@ -97,7 +97,7 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
                 size={"xs"}
                 rounded={"full"}
                 aria-label={"Select"}
-                icon={<AisCheckmark boxSize={5} color={"white"} />}
+                icon={<AisCheckmark boxSize={"24px"} color={"white"} />}
                 transition={"all 0.2s ease-in-out"}
               />
             </Box>

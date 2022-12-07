@@ -128,12 +128,12 @@ export const AcsInputColor: React.FC<InputProps> = ({
                       props.iconOpen ? (
                         props.iconOpen
                       ) : (
-                        <AisColorPalette w={7} h={7} />
+                        <AisColorPalette boxSize={"24px"} />
                       )
                     ) : props.iconClose ? (
                       props.iconClose
                     ) : (
-                      <AisColorPalette w={7} h={7} />
+                      <AisColorPalette boxSize={"24px"} />
                     )}
                   </Box>
                 </PopoverTrigger>

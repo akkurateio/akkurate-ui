@@ -67,7 +67,7 @@ export const AcsInputFile: React.FC<InputProps> = ({
     <FormControlLayout {...props}>
       <InputGroup size={props.size}>
         <InputLeftElement>
-          <AisFile boxSize={6} color={"gray.500"} />
+          <AisFile boxSize={"24px"} color={"gray.500"} />
         </InputLeftElement>
         <Input
           position={"relative"}
@@ -99,7 +99,7 @@ export const AcsInputFile: React.FC<InputProps> = ({
               size={"xs"}
               rounded={"full"}
             >
-              <AisClose boxSize={5} color={"gray.500"} />
+              <AisClose boxSize={"24px"} color={"gray.500"} />
             </IconButton>
           </InputRightElement>
         )}

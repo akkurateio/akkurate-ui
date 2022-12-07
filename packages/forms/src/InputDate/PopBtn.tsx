@@ -42,7 +42,7 @@ export const PopBtn = ({ date, setDate }: IProps) => {
             color={"primary.500"}
             zIndex={1}
           >
-            <AisCalendar boxSize={6} />
+            <AisCalendar boxSize={"24px"} />
           </Button>
         </PopoverTrigger>
         {/* <Button onClick={handleClick} variant={"ghost"}>

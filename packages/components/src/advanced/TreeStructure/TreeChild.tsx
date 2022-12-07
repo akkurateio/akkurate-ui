@@ -40,7 +40,7 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
             showChildren ? (
               <Box
                 textAlign={"center"}
-                boxSize={4}
+                boxSize={"24px"}
                 border={"1px"}
                 rounded={"full"}
                 backgroundColor={
@@ -48,7 +48,7 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
                 }
               >
                 <AisChevronDown
-                  boxSize={3}
+                  boxSize={"16px"}
                   marginTop={-3}
                   color={item.id === child.id ? "white" : undefined}
                 />
@@ -56,7 +56,7 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
             ) : (
               <Box
                 textAlign={"center"}
-                boxSize={4}
+                boxSize={"24px"}
                 border={"1px"}
                 rounded={"full"}
                 backgroundColor={
@@ -64,7 +64,7 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
                 }
               >
                 <AisChevronRight
-                  boxSize={3}
+                  boxSize={"16px"}
                   marginTop={-3}
                   color={item.id === child.id ? "white" : undefined}
                 />

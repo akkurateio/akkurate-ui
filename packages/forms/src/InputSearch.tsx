@@ -83,7 +83,7 @@ export const AcsInputSearch: React.FC<InputProps> = ({
               color={"white"}
               colorScheme={"gray"}
             >
-              <AisClose boxSize={5} onClick={() => handleChange("")} />
+              <AisClose boxSize={"24px"} onClick={() => handleChange("")} />
             </IconButton>
           )}
         </InputRightElement>
