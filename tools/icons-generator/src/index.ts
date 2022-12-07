@@ -42,7 +42,13 @@ const main = async () => {
     // Create icon file
     writeFileSync(
       path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
-      templateCreateIcon(newSVGToString.replace('fill="#000"', "").replace('fill-rule', 'fillRule').replace('clip-rule', 'clipRule'), basename),
+      templateCreateIcon(
+        newSVGToString
+          .replace('fill="#000"', "")
+          .replace("fill-rule", "fillRule")
+          .replace("clip-rule", "clipRule"),
+        basename,
+      ),
     )
 
     // Add to index file
@@ -97,6 +103,9 @@ import { createIcon } from "@chakra-ui/icon"
 export const ${name} = createIcon({
   displayName: "${name}",
   viewBox: "0 0 32 32",
+  defaultProps: {
+		boxSize: '24px',
+	},
   path: (
     <g fill="currentColor">
       ${svg}
