@@ -16,8 +16,8 @@ interface AcsSelectProps {
     value: string
     label: string
   }[]
-  handleChange: (e: string) => void
-  value: string
+  handleChange: (e: string | number) => void
+  value: string | number
   label?: string
 }
 
@@ -28,7 +28,7 @@ interface SelectProps
     FormControlOptions {}
 
 export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
-  const [currentValue, setCurrentValue] = useState("")
+  const [currentValue, setCurrentValue] = useState<string | number>()
 
   const handleChange = (e: any) => {
     setCurrentValue(e)
