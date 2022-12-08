@@ -62,13 +62,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
-        <SliderThumb
-          width={3}
-          h={20}
-          borderRadius={2}
-          backgroundColor={"blue.500"}
-          // boxSize={box()}
-        >
+        <SliderThumb boxSize={box()}>
           <Box>{props.value}</Box>
         </SliderThumb>
       </Slider>
