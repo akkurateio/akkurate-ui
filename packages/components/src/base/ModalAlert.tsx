@@ -51,7 +51,7 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
       onClose={onClose}
       isOpen={isOpen}
       leastDestructiveRef={cancelRef}
-      isCentered={isCentered}
+      isCentered={isCentered ? isCentered : true}
       closeOnOverlayClick={false}
       size={size}
     >
