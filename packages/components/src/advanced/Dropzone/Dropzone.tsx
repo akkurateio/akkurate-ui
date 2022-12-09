@@ -21,6 +21,8 @@ interface IProps {
   height?: string
   boxSize?: string
   handleChange: (files: FileList | File[] | null) => void
+  colorScheme?: string
+  backgroundColor?: string
 }
 
 export const AcsDropzone: React.FC<IProps> = ({
@@ -29,6 +31,7 @@ export const AcsDropzone: React.FC<IProps> = ({
   maxFiles = 1,
   boxSize = "150px",
   handleChange,
+  ...props
 }: IProps) => {
   const [files, setFiles] = useState<File[]>([])
   const [toManyFiles, setToManyFiles] = useState(false)
@@ -95,28 +98,42 @@ export const AcsDropzone: React.FC<IProps> = ({
             )}
             {!toManyFiles ? (
               maxFiles === 1 ? (
-                <Text>Glissez / Déposer le fichier ou cliquez ci-dessous.</Text>
+                <Text marginTop={"32px"}>
+                  Glissez / Déposer le fichier ou cliquez ci-dessous.
+                </Text>
               ) : (
-                <Text>
+                <Text marginTop={"32px"}>
                   Glissez / Déposer les fichiers ou cliquez ci-dessous.
                 </Text>
               )
             ) : (
-              <Text>Nombre de fichier excède la limite autorisée.</Text>
+              <Text color={"red.500"}>
+                Nombre de fichier excède la limite autorisée.
+              </Text>
             )}
             {!toManyFiles ? (
               maxFiles > 1 ? (
-                <Text>Nombre de fichier maximum autorisés : {maxFiles}</Text>
+                <Text fontSize={"sm"} color={"neutral.400"} marginTop={"4px"}>
+                  Nombre de fichier maximum autorisés : {maxFiles}
+                </Text>
               ) : (
-                <Text>Nombre de fichier maximum autorisés : {maxFiles}</Text>
+                <Text fontSize={"sm"} color={"neutral.400"} marginTop={"4px"}>
+                  Nombre de fichier maximum autorisés : {maxFiles}
+                </Text>
               )
             ) : (
-              <Text>Nombre de fichiers maximum autorisés : {maxFiles}</Text>
+              <Text fontSize={"sm"} color={"neutral.400"} marginTop={"4px"}>
+                Nombre de fichiers maximum autorisés : {maxFiles}
+              </Text>
             )}
             <Button
               onClick={open}
-              colorScheme={isDragActive ? "pimary" : undefined}
+              colorScheme={isDragActive ? "primary" : "neutral"}
               paddingLeft={1}
+              backgroundColor={
+                props.backgroundColor ? props.backgroundColor : "primary.500"
+              }
+              marginTop={"4px"}
             >
               {toManyFiles ? (
                 <>

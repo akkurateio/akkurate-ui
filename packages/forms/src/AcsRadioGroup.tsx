@@ -23,13 +23,12 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
-  value: string | number
+  value: string | number | undefined
   valuesArray: {
-    value: string | number
+    value: string | number | undefined
     label: string
   }[]
   direction?: "horizontal" | "vertical"
-  isChecked: boolean
 }
 
 interface InputProps
@@ -42,7 +41,6 @@ export const AcsRadioGroup: React.FC<InputProps> = ({
   handleChange,
   valuesArray,
   direction,
-  isChecked = false,
   value,
   ...props
 }) => {
@@ -94,11 +92,12 @@ export const AcsRadioGroup: React.FC<InputProps> = ({
         direction={direction === "vertical" ? "column" : "row"}
         flexWrap={props.flexWrap}
       >
-        {valuesArray.map((item) => (
+        {valuesArray.map((item, idx) => (
           <Button
             onClick={() => setCurrentValue(item.value)}
             variant={"unstyled"}
             fontWeight={"normal"}
+            key={idx}
           >
             <HStack
               spacing={spacing}
