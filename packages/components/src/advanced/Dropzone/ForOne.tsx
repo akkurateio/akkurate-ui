@@ -24,8 +24,8 @@ const ForOne: React.FC<IProps> = ({ file, onDelete, boxSize, height }) => {
         <Image
           src={URL.createObjectURL(file)}
           alt={file.name}
-          w={boxSize}
-          height={boxSize}
+          boxSize={boxSize}
+          objectFit={"contain"}
           p={8}
         />
       ) : (

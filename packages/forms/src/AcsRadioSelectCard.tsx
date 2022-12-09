@@ -2,6 +2,7 @@ import { AisCheckmark } from "@akkurateio/icons"
 import { StackDirection } from "@chakra-ui/layout"
 import {
   Box,
+  Flex,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
@@ -89,18 +90,26 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
           >
             {item.body}
             <Box width={"48px"} />
-            <Box position={"absolute"} marginLeft={2} top={2} right={2}>
+            <Flex
+              position={"absolute"}
+              marginLeft={2}
+              top={2}
+              right={2}
+              justifyContent={"center"}
+              alignItems={"center"}
+              boxSize={"24px"}
+            >
               <IconButton
                 colorScheme={currentId === item.id ? "primary" : "white"}
                 borderWidth={1}
                 borderColor={currentId === item.id ? "primary.500" : "gray.200"}
-                size={"xs"}
                 rounded={"full"}
+                size={"2xs"}
                 aria-label={"Select"}
-                icon={<AisCheckmark boxSize={"24px"} color={"white"} />}
+                icon={<AisCheckmark boxSize={"16px"} color={"white"} />}
                 transition={"all 0.2s ease-in-out"}
               />
-            </Box>
+            </Flex>
             )
           </HStack>
         ))}
