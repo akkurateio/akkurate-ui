@@ -86,6 +86,15 @@ export const AcsRadioGroup: React.FC<InputProps> = ({
     padding = "0px"
   }
 
+  let paddingLeft = "8px"
+  if (props.size === "sm") {
+    paddingLeft = "4px"
+  } else if (props.size === "md") {
+    paddingLeft = "8px"
+  } else if (props.size === "lg") {
+    paddingLeft = "15px"
+  }
+
   return (
     <FormControlLayout {...props}>
       <Stack
@@ -98,10 +107,11 @@ export const AcsRadioGroup: React.FC<InputProps> = ({
             variant={"unstyled"}
             fontWeight={"normal"}
             key={idx}
+            paddingLeft={paddingLeft}
           >
             <HStack
               spacing={spacing}
-              paddingLeft={padding ? props.paddingLeft : 3}
+              // paddingLeft={padding ? props.paddingLeft : 3}
             >
               {currentValue === item.value ? (
                 <AisRadioButtonChecked
