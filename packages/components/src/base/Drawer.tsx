@@ -17,6 +17,7 @@ interface DrawerOptions {
   onClose: () => void
   placement?: "top" | "right" | "bottom" | "left"
   title?: string
+  header?: JSX.Element
   hasCloseBtn?: boolean
   footer?: JSX.Element
   closeOnOverlayClick?: boolean
@@ -32,6 +33,7 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
   onClose,
   placement,
   title,
+  header,
   hasCloseBtn,
   body,
   footer,
@@ -50,7 +52,12 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
       <DrawerOverlay />
       <DrawerContent {...props}>
         {hasCloseBtn && <DrawerCloseButton />}
-        {title && <DrawerHeader>{title}</DrawerHeader>}
+        {title && !header && <DrawerHeader>{title}</DrawerHeader>}
+        {header && (
+          <DrawerHeader fontWeight={"md"} fontSize={"md"}>
+            {header}
+          </DrawerHeader>
+        )}
 
         <DrawerBody>{body}</DrawerBody>
 
