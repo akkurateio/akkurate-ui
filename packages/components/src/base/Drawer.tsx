@@ -58,9 +58,7 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
             {header}
           </DrawerHeader>
         )}
-
         <DrawerBody>{body}</DrawerBody>
-
         {footer && <DrawerFooter>{footer}</DrawerFooter>}
       </DrawerContent>
     </Drawer>
