@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react"
+import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/icons"
 import {
   Box,
   Button,
@@ -8,11 +8,11 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react"
+import React, { useCallback, useEffect, useState } from "react"
+import { Simulate } from "react-dom/test-utils"
 import { FileRejection, useDropzone } from "react-dropzone"
 import ForMultiple from "./ForMultiple"
 import ForOne from "./ForOne"
-import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/icons"
-import { Simulate } from "react-dom/test-utils"
 import waiting = Simulate.waiting
 
 interface IProps {
@@ -51,11 +51,13 @@ export const AcsDropzone: React.FC<IProps> = ({
     },
     [files, maxFiles],
   )
+
   const onDropRejected = useCallback((rejectedFiles: FileRejection[]) => {
     if (rejectedFiles.length > 0) {
       setToManyFiles(true)
     }
   }, [])
+
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     maxFiles: maxFiles,
@@ -63,7 +65,6 @@ export const AcsDropzone: React.FC<IProps> = ({
     noKeyboard: true,
     onDropRejected,
   })
-  console.log(toManyFiles)
 
   useEffect(() => {
     handleChange(files)
@@ -89,67 +90,68 @@ export const AcsDropzone: React.FC<IProps> = ({
         py={12}
       >
         {files.length === 0 && (
-          <Box textAlign={"center"}>
+          <VStack width={"full"} spacing={4}>
             <input {...getInputProps()} accept={"image/jpg"} />
             {!toManyFiles ? (
               <AisUploadCloud boxSize={"64px"} color={"blackAlpha.700"} />
             ) : (
               <AisError boxSize={"64px"} color={"red.600"} />
             )}
-            {!toManyFiles ? (
-              maxFiles === 1 ? (
-                <Text marginTop={"32px"}>
-                  Glissez / Déposer le fichier ou cliquez ci-dessous.
-                </Text>
+
+            <Box textAlign={"center"}>
+              {!toManyFiles ? (
+                maxFiles === 1 ? (
+                  <Text>
+                    Glissez / Déposer le fichier ou cliquez ci-dessous.
+                  </Text>
+                ) : (
+                  <Text>
+                    Glissez / Déposer les fichiers ou cliquez ci-dessous.
+                  </Text>
+                )
               ) : (
-                <Text marginTop={"32px"}>
-                  Glissez / Déposer les fichiers ou cliquez ci-dessous.
+                <Text color={"red.500"}>
+                  Nombre de fichier excède la limite autorisée.
                 </Text>
-              )
-            ) : (
-              <Text color={"red.500"}>
-                Nombre de fichier excède la limite autorisée.
-              </Text>
-            )}
-            {!toManyFiles ? (
-              maxFiles > 1 ? (
-                <Text fontSize={"sm"} color={"neutral.400"} marginTop={"4px"}>
-                  Nombre de fichier maximum autorisés : {maxFiles}
-                </Text>
+              )}
+              {!toManyFiles ? (
+                maxFiles > 1 ? (
+                  <Text fontSize={"sm"} color={"neutral.400"}>
+                    Nombre de fichier maximum autorisés : {maxFiles}
+                  </Text>
+                ) : (
+                  <Text fontSize={"sm"} color={"neutral.400"}>
+                    Nombre de fichier maximum autorisés : {maxFiles}
+                  </Text>
+                )
               ) : (
-                <Text fontSize={"sm"} color={"neutral.400"} marginTop={"4px"}>
-                  Nombre de fichier maximum autorisés : {maxFiles}
+                <Text fontSize={"sm"} color={"neutral.400"}>
+                  Nombre de fichiers maximum autorisés : {maxFiles}
                 </Text>
-              )
-            ) : (
-              <Text fontSize={"sm"} color={"neutral.400"} marginTop={"4px"}>
-                Nombre de fichiers maximum autorisés : {maxFiles}
-              </Text>
-            )}
+              )}
+            </Box>
             <Button
               onClick={open}
               colorScheme={isDragActive ? "primary" : "neutral"}
-              paddingLeft={1}
               backgroundColor={
                 props.backgroundColor ? props.backgroundColor : "primary.500"
               }
-              marginTop={"4px"}
             >
               {toManyFiles ? (
-                <>
-                  <AisDownload boxSize={"24px"} marginBottom={2} />
-                  <Text paddingLeft={3}>Réessayer</Text>
-                </>
+                <HStack>
+                  <AisDownload boxSize={"24px"} />
+                  <Text>Réessayer</Text>
+                </HStack>
               ) : (
-                <>
-                  <AisDownload boxSize={"24px"} marginBottom={2} />
-                  <Text paddingLeft={3}>
+                <HStack>
+                  <AisDownload boxSize={"24px"} />
+                  <Text>
                     {files.length > 0 ? "Remplacer" : "Importer un fichier"}
                   </Text>
-                </>
+                </HStack>
               )}
             </Button>
-          </Box>
+          </VStack>
         )}
 
         {files.length > 0 && (
@@ -157,29 +159,25 @@ export const AcsDropzone: React.FC<IProps> = ({
             {maxFiles > 1 ? (
               <HStack alignItems={"flex-start"} width={"full"}>
                 {files.map((file, idx) => (
-                  <Box>
-                    <ForMultiple
-                      key={idx}
-                      file={file}
-                      onDelete={() => setFiles(files.filter((f) => f !== file))}
-                      boxSize={boxSize}
-                      height={height}
-                    />
-                  </Box>
+                  <ForMultiple
+                    key={idx}
+                    file={file}
+                    onDelete={() => setFiles(files.filter((f) => f !== file))}
+                    boxSize={boxSize}
+                    height={height}
+                  />
                 ))}
               </HStack>
             ) : (
               <VStack spacing={2} divider={<Divider />} my={6} width={"full"}>
                 {files.map((file, idx) => (
-                  <>
-                    <ForOne
-                      key={idx}
-                      file={file}
-                      onDelete={() => setFiles(files.filter((f) => f !== file))}
-                      boxSize={boxSize}
-                      height={height}
-                    />
-                  </>
+                  <ForOne
+                    key={idx}
+                    file={file}
+                    onDelete={() => setFiles(files.filter((f) => f !== file))}
+                    boxSize={boxSize}
+                    height={height}
+                  />
                 ))}
               </VStack>
             )}
