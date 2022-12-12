@@ -16,6 +16,7 @@ interface ModalOptions {
   isOpen: boolean
   onClose: () => void
   title?: string
+  header?: JSX.Element
   hasCloseBtn?: boolean
   footer?: JSX.Element
   closeOnOverlayClick?: boolean
@@ -29,6 +30,7 @@ interface AcsModalProps
 
 export const AcsModal: React.FC<AcsModalProps> = ({
   title,
+  header,
   hasCloseBtn,
   body,
   footer,
@@ -50,7 +52,12 @@ export const AcsModal: React.FC<AcsModalProps> = ({
     >
       <ModalOverlay />
       <ModalContent {...props}>
-        {title && <ModalHeader>{title}</ModalHeader>}
+        {title && !header && <ModalHeader>{title}</ModalHeader>}
+        {header && (
+          <ModalHeader fontWeight={"md"} fontSize={"md"}>
+            {header}
+          </ModalHeader>
+        )}
         {hasCloseBtn && <ModalCloseButton />}
         <ModalBody>{body}</ModalBody>
 

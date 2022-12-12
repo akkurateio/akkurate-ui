@@ -17,6 +17,7 @@ interface ModalAlertOptions {
   onClose: () => void
   action?: () => void
   title?: string
+  header?: JSX.Element
   hasCloseBtn?: boolean
   confirmText?: string
   cancelText?: string
@@ -34,12 +35,13 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
   isOpen,
   onClose,
   title,
+  header,
   body,
   action,
   confirmText,
   cancelText,
   footer,
-  isCentered,
+  isCentered = true,
   size,
   isLoading,
   ...props
@@ -51,15 +53,20 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
       onClose={onClose}
       isOpen={isOpen}
       leastDestructiveRef={cancelRef}
-      isCentered={isCentered ? isCentered : true}
+      isCentered={isCentered}
       closeOnOverlayClick={false}
       size={size}
     >
       <AlertDialogOverlay>
         <AlertDialogContent {...props}>
-          {title && (
+          {title && !header && (
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               {title}
+            </AlertDialogHeader>
+          )}
+          {header && (
+            <AlertDialogHeader fontWeight={"md"} fontSize={"md"}>
+              {header}
             </AlertDialogHeader>
           )}
 
