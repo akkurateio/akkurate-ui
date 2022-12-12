@@ -1,7 +1,7 @@
 {
   "name": "icons-generator",
   "private": true,
-  "version": "0.0.40",
+  "version": "0.0.41",
   "description": "Cli for generate icons",
   "main": "index.js",
   "author": "Subvitamine",
@@ -10,7 +10,7 @@
     "generate": "ts-node ./src/index.ts"
   },
   "devDependencies": {
-    "@akkurateio/icons": "^0.0.40",
+    "@akkurateio/icons": "^0.0.41",
     "@types/node": "^18.7.9",
     "@types/svgo": "^2.6.4",
     "typescript": "^4.7.4"
