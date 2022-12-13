@@ -11,6 +11,7 @@ import { AisCheckbox, AisCheckmark } from "@akkurateio/icons"
 import FormControlLayout from "./FormControlLayout"
 import { StackDirection } from "@chakra-ui/layout"
 import { SystemProps, ThemingProps } from "@chakra-ui/system"
+import { theme } from "@akkurateio/utils"
 
 type Omitted =
   | "disabled"
@@ -79,34 +80,44 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             onClick={() => handleOnChange(item.id)}
             height={"auto"}
             width={"auto"}
-            rounded={"md"}
+            rounded={"6px"}
             alignItems={"flex-start"}
-            p={2}
+            minWidth={"245px"}
+            pt={"9px"}
+            pl={"9px"}
+            pb={"9px"}
             key={idx}
-            position={"relative"}
-            borderWidth={2}
+            // position={"relative"}
+            boxShadow={
+              currentIds.includes(item.id)
+                ? `0 0 0 3px ${theme.colors.primary[500]}25 `
+                : undefined
+            }
+            borderWidth={"1px"}
             borderColor={
               currentIds.includes(item.id) ? "primary.500" : "gray.200"
             }
             bg={"white"}
             transition={"all 0.2s ease-in-out"}
+            justifyContent={"space-between"}
           >
-            {item.body}
-            <Box width={"48px"} />
-            <Box position={"absolute"} marginLeft={2} top={2} right={2}>
-              <IconButton
-                colorScheme={currentIds.includes(item.id) ? "primary" : "white"}
-                borderWidth={1}
-                borderColor={
-                  currentIds.includes(item.id) ? "primary.500" : "gray.200"
-                }
-                rounded={"md"}
-                size={"2xs"}
-                aria-label={"Select"}
-                icon={<AisCheckmark boxSize={"24px"} color={"white"} />}
-                transition={"all 0.2s ease-in-out"}
-              />
-            </Box>
+            <Box>{item.body}</Box>
+            {/*<Box width={"48px"} />*/}
+            <IconButton
+              colorScheme={currentIds.includes(item.id) ? "primary" : "white"}
+              borderWidth={"1px"}
+              borderColor={
+                currentIds.includes(item.id) ? "primary.500" : "gray.200"
+              }
+              rounded={"md"}
+              size={"2xs"}
+              aria-label={"Select"}
+              icon={<AisCheckmark boxSize={"24px"} color={"white"} />}
+              transition={"all 0.2s ease-in-out"}
+              boxSize={"24px"}
+              right={"8px"}
+              marginRight={"-8px"}
+            />
             )
           </HStack>
         ))}

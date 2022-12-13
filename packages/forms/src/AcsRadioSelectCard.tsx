@@ -12,6 +12,7 @@ import {
 import { SystemProps, ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+import { theme } from "@akkurateio/utils"
 
 type Omitted =
   | "disabled"
@@ -83,7 +84,12 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
             p={2}
             key={idx}
             position={"relative"}
-            borderWidth={2}
+            boxShadow={
+              currentId === item.id
+                ? `0 0 0 3px ${theme.colors.primary[500]}25 `
+                : undefined
+            }
+            borderWidth={"1px"}
             borderColor={currentId === item.id ? "primary.500" : "gray.200"}
             bg={"white"}
             transition={"all 0.2s ease-in-out"}
@@ -92,12 +98,12 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
             <Box width={"48px"} />
             <Flex
               position={"absolute"}
-              marginLeft={2}
-              top={2}
-              right={2}
               justifyContent={"center"}
               alignItems={"center"}
               boxSize={"24px"}
+              right={0}
+              paddingTop={"1px"}
+              paddingRight={"9px"}
             >
               <IconButton
                 colorScheme={currentId === item.id ? "primary" : "white"}
@@ -106,8 +112,9 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
                 rounded={"full"}
                 size={"2xs"}
                 aria-label={"Select"}
-                icon={<AisCheckmark boxSize={"16px"} color={"white"} />}
+                icon={<AisCheckmark boxSize={"24px"} color={"white"} />}
                 transition={"all 0.2s ease-in-out"}
+                boxSize={"24px"}
               />
             </Flex>
             )
