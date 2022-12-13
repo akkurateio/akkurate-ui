@@ -461,10 +461,6 @@ export * from "./icons/AisLpWan"
 
 export * from "./listIcons"
 
-export * from "./icons/AisMagicHand-1"
-
-export * from "./listIcons"
-
 export * from "./icons/AisMagicHand"
 
 export * from "./listIcons"
