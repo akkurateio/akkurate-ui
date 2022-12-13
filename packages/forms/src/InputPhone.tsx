@@ -25,6 +25,7 @@ import Flag from "react-world-flags"
 import { AisChevronDown } from "@akkurateio/icons"
 import { ThemingProps } from "@chakra-ui/system"
 import FormControlLayout from "./FormControlLayout"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -83,18 +84,20 @@ export const AcsInputPhone: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup
-        size={props.size}
-        width={"fit-content"}
-        rounded={"4px"}
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
-        borderWidth={"1px"}
-        borderColor={focus ? "primary.500" : "neutral.400"}
-        boxShadow={
-          focus ? `0 0 0 3px ${theme.colors.primary[500]}25 ` : undefined
-        }
-      >
+      {/*<InputGroup*/}
+      {/*  size={props.size}*/}
+      {/*  width={"fit-content"}*/}
+      {/*  rounded={"4px"}*/}
+      {/*  onFocus={() => setFocus(true)}*/}
+      {/*  onBlur={() => setFocus(false)}*/}
+      {/*  borderWidth={"1px"}*/}
+      {/*  borderColor={focus ? "primary.500" : "neutral.400"}*/}
+      {/*  boxShadow={*/}
+      {/*    focus ? `0 0 0 3px ${theme.colors.primary[500]}25 ` : undefined*/}
+      {/*  }*/}
+      {/*>*/}
+
+      <InputGroupWithShadow size={props.size}>
         <InputLeftAddon
           outline={"none"}
           rounded={"4px"}
@@ -114,6 +117,8 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 display={"flex"}
                 alignItems={"center"}
                 border={"none"}
+                cursor={"pointer"}
+                as={Box}
               >
                 <HStack spacing={"16px"}>
                   <Flag code={country} width={"32px"} />
@@ -187,7 +192,8 @@ export const AcsInputPhone: React.FC<InputProps> = ({
             fontWeight: "regular",
           }}
         />
-      </InputGroup>
+      </InputGroupWithShadow>
+      {/*</InputGroup>*/}
     </FormControlLayout>
   )
 }

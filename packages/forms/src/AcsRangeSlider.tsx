@@ -7,12 +7,17 @@ import {
   RangeSliderMark,
   RangeSliderThumb,
   RangeSliderTrack,
+  SliderMark,
+  Text,
+  Toast,
   UseRangeSliderProps,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 
 interface AcsSliderProps {
   indicatorSteps?: number
+  title?: string
+  allStep: boolean
 }
 
 interface SliderRangeProps
@@ -22,54 +27,110 @@ interface SliderRangeProps
     AcsSliderProps {}
 
 export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
+  allStep,
   min = 0,
   max = 100,
   ...props
 }) => {
-  // const size depending on the max number
-  const box = () => {
-    if (max) {
-      if (max >= 1000) {
-        return "50px"
-      }
-      if (max < 1000) {
-        return "40px"
-      }
-      if (max > 10000) {
-        return "90px"
-      }
-    }
-  }
-
   const { indicatorSteps, ...rangeProps } = { ...props, max, min }
 
   return (
-    <RangeSlider {...rangeProps}>
-      {props.indicatorSteps &&
-        max &&
-        [...Array(props.indicatorSteps - 1)].map((i, idx) => (
-          <RangeSliderMark
-            key={idx}
-            value={
-              max! / props.indicatorSteps! +
-              (max! / props.indicatorSteps!) * idx
-            }
-          >
-            <Box color={"black"} textAlign={"center"}>
-              {max! / props.indicatorSteps! +
-                (max! / props.indicatorSteps!) * idx}
-            </Box>
-          </RangeSliderMark>
-        ))}
-      <RangeSliderTrack>
-        <RangeSliderFilledTrack bg={"red.200"} />
-      </RangeSliderTrack>
-      <RangeSliderThumb index={0} boxSize={box()}>
-        <Box color={"black"}>{props.value && props.value[0]}</Box>
-      </RangeSliderThumb>
-      <RangeSliderThumb index={1} boxSize={box()}>
-        <Box color={"black"}>{props.value && props.value[1]}</Box>
-      </RangeSliderThumb>
-    </RangeSlider>
+    <>
+      {max <= 1000 ? (
+        <>
+          <Text marginBottom={2} fontSize={"16px"}>
+            {props.title}
+          </Text>
+          <RangeSlider {...rangeProps}>
+            {props.indicatorSteps &&
+              max &&
+              [...Array(props.indicatorSteps - 1)].map((i, idx) =>
+                allStep ? (
+                  <>
+                    <RangeSliderMark
+                      key={idx}
+                      value={
+                        max! / props.indicatorSteps! +
+                        (max! / props.indicatorSteps!) * idx
+                      }
+                      marginTop={"32px"}
+                    >
+                      <Box
+                        fontSize={"14px"}
+                        color={"black"}
+                        textAlign={"center"}
+                      >
+                        {max! / props.indicatorSteps! +
+                          (max! / props.indicatorSteps!) * idx}
+                      </Box>
+                    </RangeSliderMark>
+                    <RangeSliderMark
+                      key={idx}
+                      value={max}
+                      fontSize={"14px"}
+                      fontWeight={"normal"}
+                      marginTop={"32px"}
+                    >
+                      {max}
+                    </RangeSliderMark>
+                    <RangeSliderMark
+                      marginTop={"32px"}
+                      fontSize={"14px"}
+                      value={min}
+                    >
+                      {min}
+                    </RangeSliderMark>
+                  </>
+                ) : (
+                  <>
+                    <RangeSliderMark
+                      fontSize={"14px"}
+                      key={idx}
+                      value={max}
+                      marginTop={"32px"}
+                    >
+                      {max}
+                    </RangeSliderMark>
+                    <RangeSliderMark
+                      fontSize={"14px"}
+                      value={min}
+                      marginTop={"32px"}
+                    >
+                      {min}
+                    </RangeSliderMark>
+                  </>
+                ),
+              )}
+            <RangeSliderTrack>
+              <RangeSliderFilledTrack backgroundColor={"primary.500"} />
+            </RangeSliderTrack>
+            <RangeSliderThumb
+              backgroundColor={"primary.500"}
+              boxSize={"36px"}
+              fontWeight={"bold"}
+              color={"white"}
+              fontSize={"14px"}
+              index={0}
+            >
+              {props.value && props.value[0]}
+            </RangeSliderThumb>
+            <RangeSliderThumb
+              backgroundColor={"primary.500"}
+              boxSize={"36px"}
+              fontWeight={"bold"}
+              color={"white"}
+              fontSize={"14px"}
+              index={1}
+            >
+              {props.value && props.value[1]}
+            </RangeSliderThumb>
+          </RangeSlider>
+        </>
+      ) : (
+        <>
+          <Toast title={"La valeur maximale est de 1000"} />
+        </>
+      )}
+    </>
   )
 }
