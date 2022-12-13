@@ -46,8 +46,6 @@ const main = async () => {
           .replace(/fill-rule/g, "fillRule")
           .replace(/clip-rule/g, "clipRule")
 
-      console.log(newSVGToString)
-
       // Create icon file
       writeFileSync(
           path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
