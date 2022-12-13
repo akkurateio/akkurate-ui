@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/components",
-  "version": "0.0.41",
+  "version": "0.0.42",
   "description": "Library for Akkurate UI components",
   "keywords": [
     "icons"
@@ -31,7 +31,7 @@
     "@types/react-file-icon": "^1.0.1"
   },
   "dependencies": {
-    "@akkurateio/utils": "^0.0.41",
+    "@akkurateio/utils": "^0.0.42",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
