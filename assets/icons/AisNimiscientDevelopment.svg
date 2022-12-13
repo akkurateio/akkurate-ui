@@ -1,0 +1,20 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 4C9 2.34 7.66 1 6 1C4.34 1 3 2.34 3 4C3 5.66 4.34 7 6 7C7.66 7 9 5.66 9 4ZM5 4C5 3.45 5.45 3 6 3C6.55 3 7 3.45 7 4C7 4.55 6.55 5 6 5C5.45 5 5 4.55 5 4Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21 4C21 2.34 19.66 1 18 1C16.34 1 15 2.34 15 4C15 5.66 16.34 7 18 7C19.66 7 21 5.66 21 4ZM17 4C17 3.45 17.45 3 18 3C18.55 3 19 3.45 19 4C19 4.55 18.55 5 18 5C17.45 5 17 4.55 17 4Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M25 12C25 10.34 23.66 9 22 9C20.34 9 19 10.34 19 12C19 13.66 20.34 15 22 15C23.66 15 25 13.66 25 12ZM21 12C21 11.45 21.45 11 22 11C22.55 11 23 11.45 23 12C23 12.55 22.55 13 22 13C21.45 13 21 12.55 21 12Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10 9C11.66 9 13 10.34 13 12C13 13.66 11.66 15 10 15C8.34 15 7 13.66 7 12C7 10.34 8.34 9 10 9ZM10 11C9.45 11 9 11.45 9 12C9 12.55 9.45 13 10 13C10.55 13 11 12.55 11 12C11 11.45 10.55 11 10 11Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13 20C13 18.34 11.66 17 10 17C8.34 17 7 18.34 7 20C7 21.66 8.34 23 10 23C11.66 23 13 21.66 13 20ZM9 20C9 19.45 9.45 19 10 19C10.55 19 11 19.45 11 20C11 20.55 10.55 21 10 21C9.45 21 9 20.55 9 20Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M22 17C23.66 17 25 18.34 25 20C25 21.66 23.66 23 22 23C20.34 23 19 21.66 19 20C19 18.34 20.34 17 22 17ZM22 19C21.45 19 21 19.45 21 20C21 20.55 21.45 21 22 21C22.55 21 23 20.55 23 20C23 19.45 22.55 19 22 19Z" fill="black"/>
+<path d="M5 17H3V31H5V17Z" fill="black"/>
+<path d="M27 17H29V23H27V17Z" fill="black"/>
+<path d="M5 9H3V15H5V9Z" fill="black"/>
+<path d="M11 1H13V7H11V1Z" fill="black"/>
+<path d="M9 25H7V31H9V25Z" fill="black"/>
+<path d="M23 1H25V7H23V1Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M26 25C27.66 25 29 26.34 29 28C29 29.66 27.66 31 26 31C24.34 31 23 29.66 23 28C23 26.34 24.34 25 26 25ZM26 27C25.45 27 25 27.45 25 28C25 28.55 25.45 29 26 29C26.55 29 27 28.55 27 28C27 27.45 26.55 27 26 27Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17 28C17 26.34 15.66 25 14 25C12.34 25 11 26.34 11 28C11 29.66 12.34 31 14 31C15.66 31 17 29.66 17 28ZM13 28C13 27.45 13.45 27 14 27C14.55 27 15 27.45 15 28C15 28.55 14.55 29 14 29C13.45 29 13 28.55 13 28Z" fill="black"/>
+<path d="M21 25H19V31H21V25Z" fill="black"/>
+<path d="M15 17H17V23H15V17Z" fill="black"/>
+<path d="M17 9H15V15H17V9Z" fill="black"/>
+<path d="M27 1H29V15H27V1Z" fill="black"/>
+</svg>

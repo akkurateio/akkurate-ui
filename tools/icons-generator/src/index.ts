@@ -22,45 +22,52 @@ const main = async () => {
   for (const SVGIcon of allSVGIcons) {
     // Optimize SVG
 
-    const result = optimize(
-      readFileSync(path.join(SVG_DIR, SVGIcon), "utf8"),
-    ) as OptimizedSvg
+    if (SVGIcon !== '.DS_Store') {
+      const result = optimize(
+          readFileSync(path.join(SVG_DIR, SVGIcon), "utf8"),
+      ) as OptimizedSvg
 
-    // Make object with SVG data
-    const parsedSVG = parseSync(result.data)
+      // Make object with SVG data
+      const parsedSVG = parseSync(result.data)
 
-    let newSVGToString = ""
+      let newSVGToString = ""
 
-    // Each SVG element and save it to new SVG string
-    for (const child of parsedSVG.children) {
-      newSVGToString += stringify(child)
+      // Each SVG element and save it to new SVG string
+      for (const child of parsedSVG.children) {
+        newSVGToString += stringify(child)
+      }
+
+      // Create icon base file name
+      const basename = path.basename(SVGIcon, ".svg")
+
+      newSVGToString = newSVGToString
+          .replace(/fill="#000"/g, '')
+          .replace(/fill="black"/g, '')
+          .replace(/fill-rule/g, "fillRule")
+          .replace(/clip-rule/g, "clipRule")
+
+      console.log(newSVGToString)
+
+      // Create icon file
+      writeFileSync(
+          path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
+          templateCreateIcon(
+              newSVGToString,
+              basename,
+          ),
+      )
+
+      // Add to index file
+      indexFile.push(templateIndexFile(`./icons/${basename}`))
     }
 
-    // Create icon base file name
-    const basename = path.basename(SVGIcon, ".svg")
+    // Create index file
+    indexFile.push(templateIndexFile(`./listIcons`))
+    writeFileSync(path.join(ICONS_DIR, "src", `index.ts`), indexFile.join(""))
 
-    // Create icon file
-    writeFileSync(
-      path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
-      templateCreateIcon(
-        newSVGToString
-          .replace('fill="#000"', "")
-          .replace("fill-rule", "fillRule")
-          .replace("clip-rule", "clipRule"),
-        basename,
-      ),
-    )
-
-    // Add to index file
-    indexFile.push(templateIndexFile(`./icons/${basename}`))
+    // Create listInfoIcons file
+    generateListInfoIcons(allSVGIcons)
   }
-
-  // Create index file
-  indexFile.push(templateIndexFile(`./listIcons`))
-  writeFileSync(path.join(ICONS_DIR, "src", `index.ts`), indexFile.join(""))
-
-  // Create listInfoIcons file
-  generateListInfoIcons(allSVGIcons)
 }
 
 /**
@@ -103,13 +110,15 @@ import { createIcon } from "@chakra-ui/icon"
 export const ${name} = createIcon({
   displayName: "${name}",
   viewBox: "0 0 32 32",
+  
   defaultProps: {
-		boxSize: '24px',
+		boxSize: "24px",
+		fill: "currentColor",
 	},
   path: (
-    <g fill="currentColor">
+    <>
       ${svg}
-    </g>
+    </>
   ),
 })
 `
@@ -140,6 +149,24 @@ export interface IInfoIcons {
 
 export const listInfoIcons: IInfoIcons[] = ${JSON.stringify(listInfoIcons)}
 `
+}
+
+/**
+ * MultiReplace
+ */
+interface IReplacement {
+  pattern: string
+  replacement: string
+}
+
+const allReplace = (string: string, replacements: IReplacement[]) => {
+  let str: string = string
+
+  const treatment = replacements.map((replacement) => {
+    str.replace(new RegExp(replacement.pattern, 'g'), replacement.replacement);
+  })
+
+  return treatment
 }
 
 main()

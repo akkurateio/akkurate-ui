@@ -1,9 +1,5 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="AisFileMarkdown">
-<g id="Vector">
 <path d="M8 20V12H10.0645L12.129 14.9412L14.1935 12H16.2581V20H14.1935V15.4118L12.129 18.3529L10.0645 15.4118V20H8ZM20.9032 20L17.8065 16.1176H19.871V12H21.9355V16.1176H24L20.9032 20Z" fill="black"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M20.414 2H8C6.897 2 6 2.897 6 4V10H8V4H18V10H26V7.586L20.414 2ZM20 4.414L23.586 8H20V4.414Z" fill="black"/>
 <path d="M24 22H26V28C26 29.103 25.103 30 24 30H8C6.897 30 6 29.103 6 28V22H8V28H24V22Z" fill="black"/>
-</g>
-</g>
 </svg>

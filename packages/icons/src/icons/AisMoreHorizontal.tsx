@@ -5,9 +5,14 @@ import { createIcon } from "@chakra-ui/icon"
 export const AisMoreHorizontal = createIcon({
   displayName: "AisMoreHorizontal",
   viewBox: "0 0 32 32",
+  
+  defaultProps: {
+		boxSize: "24px",
+		fill: "currentColor",
+	},
   path: (
-    <g fill="currentColor">
-      <g ><path d="M16 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM8 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM24 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></g>
-    </g>
+    <>
+      <path d="M16 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM8 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM24 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+    </>
   ),
 })
