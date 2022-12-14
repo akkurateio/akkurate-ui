@@ -7,7 +7,6 @@ export const AisFileJson = createIcon({
   viewBox: "0 0 32 32",
   
   defaultProps: {
-		boxSize: "24px",
 		fill: "currentColor",
 	},
   path: (

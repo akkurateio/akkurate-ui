@@ -110,7 +110,6 @@ export const ${name} = createIcon({
   viewBox: "0 0 32 32",
   
   defaultProps: {
-		boxSize: "24px",
 		fill: "currentColor",
 	},
   path: (
