@@ -9,8 +9,9 @@ import {
   InputRightElement,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import React from "react"
+import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -50,44 +51,60 @@ export const AcsInputSearch: React.FC<InputProps> = ({
     return rest
   }
 
+  const [focus, setFocus] = useState(false)
+
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size}>
-        <InputLeftElement color={"gray.400"}>
-          <AisSearch boxSize={6} />
+      <InputGroupWithShadow size={props.size}>
+        <InputLeftElement
+          backgroundColor={props.isInvalid ? "red.50" : "white"}
+          width={"32px"}
+          height={"38px"}
+          ml={"6px"}
+        >
+          <AisSearch
+            boxSize={"24px"}
+            color={
+              props.isInvalid
+                ? "red.500"
+                : focus
+                ? "primary.500"
+                : "neutral.400"
+            }
+          />
         </InputLeftElement>
         <Input
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
-          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
-          _invalid={{
-            borderColor: "error.600",
-            bg: "error.100",
-            color: "error.600",
-          }}
-          fontSize={"sm"}
+          focusBorderColor={props.isInvalid ? "error.500" : "primary.500"}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          fontSize={"14px"}
           rounded={"4px"}
-          pb={2.5}
-          pt={2.5}
-          px={props.px ? props.px : 3}
-          bg={props.bg ? props.bg : "white"}
+          paddingBottom={"10.5px"}
+          paddingTop={"10.5px"}
+          paddingLeft={"36px"}
+          bg={props.isInvalid ? "red.50" : "white"}
           onChange={(e) => handleChange(e.target.value)}
+          border={"none"}
+          width={props.width ? props.width : "300px"}
+          height={"38px"}
         />
         <InputRightElement>
           {props.value && props.value.length > 0 && (
             <IconButton
               aria-label="Close"
               rounded={"full"}
-              size={"xs"}
               color={"white"}
-              colorScheme={"gray"}
+              colorScheme={"neutral"}
+              size={"16px"}
             >
-              <AisClose boxSize={"24px"} onClick={() => handleChange("")} />
+              <AisClose boxSize={"16px"} onClick={() => handleChange("")} />
             </IconButton>
           )}
         </InputRightElement>
-      </InputGroup>
+      </InputGroupWithShadow>
     </FormControlLayout>
   )
 }

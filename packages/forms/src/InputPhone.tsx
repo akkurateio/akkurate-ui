@@ -84,30 +84,22 @@ export const AcsInputPhone: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      {/*<InputGroup*/}
-      {/*  size={props.size}*/}
-      {/*  width={"fit-content"}*/}
-      {/*  rounded={"4px"}*/}
-      {/*  onFocus={() => setFocus(true)}*/}
-      {/*  onBlur={() => setFocus(false)}*/}
-      {/*  borderWidth={"1px"}*/}
-      {/*  borderColor={focus ? "primary.500" : "neutral.400"}*/}
-      {/*  boxShadow={*/}
-      {/*    focus ? `0 0 0 3px ${theme.colors.primary[500]}25 ` : undefined*/}
-      {/*  }*/}
-      {/*>*/}
-
-      <InputGroupWithShadow size={props.size}>
+      <InputGroupWithShadow isInvalid={props.isInvalid} size={props.size}>
         <InputLeftAddon
           outline={"none"}
           rounded={"4px"}
-          backgroundColor={"white"}
+          backgroundColor={props.isInvalid ? "red.50" : "white"}
           border={"none"}
           width={"83px"}
           paddingLeft={"10px"}
           paddingTop={"6px"}
           paddingBottom={"6px"}
           paddingRight={"7px"}
+          _invalid={{
+            borderColor: "error.500",
+            bg: "red.50",
+            color: "error.500",
+          }}
         >
           <Popover>
             <PopoverTrigger>
@@ -185,6 +177,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
               ? `1px solid ${theme.colors.primary[500]}`
               : `1px solid ${theme.colors.neutral[400]}`,
             borderTopRightRadius: "4px",
+            backgroundColor: props.isInvalid ? theme.colors.red[50] : "white",
             borderBottomRightRadius: "4px",
             outline: "none",
             fontSize: "14px",
@@ -193,7 +186,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
           }}
         />
       </InputGroupWithShadow>
-      {/*</InputGroup>*/}
     </FormControlLayout>
   )
 }
