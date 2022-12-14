@@ -90,6 +90,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
           rounded={"4px"}
           backgroundColor={props.isInvalid ? "red.50" : "white"}
           border={"none"}
+          height={"38px"}
           width={"83px"}
           paddingLeft={"10px"}
           paddingTop={"6px"}
@@ -114,7 +115,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
               >
                 <HStack spacing={"16px"}>
                   <Flag code={country} width={"32px"} />
-                  <AisChevronDown />
+                  <AisChevronDown boxSize={"16px"} />
                 </HStack>
               </Button>
             </PopoverTrigger>
@@ -166,8 +167,9 @@ export const AcsInputPhone: React.FC<InputProps> = ({
           countryCodeEditable={false}
           value={props.value}
           inputStyle={{
-            width: "100%",
-            height: "100%",
+            // @ts-ignore
+            width: props.width ? props.width : "217px",
+            height: "38px",
             paddingLeft: "12px",
             paddingTop: "10.5px",
             paddingBottom: "10.5px",

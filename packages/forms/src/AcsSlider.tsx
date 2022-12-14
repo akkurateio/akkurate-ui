@@ -38,7 +38,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
   return (
     <FormControlLayout {...props}>
       {max <= 1000 ? (
-        <Box>
+        <Box marginBottom={"30px"}>
           <Text fontSize={"16px"}>{props.title}</Text>
           <Slider {...sliderProps} marginTop={"16px"}>
             {props.indicatorSteps &&

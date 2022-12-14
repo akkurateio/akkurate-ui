@@ -7,6 +7,7 @@ import {
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
 import FormControlLayout from "./FormControlLayout"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -62,12 +63,15 @@ export const AcsInputText: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size}>
+      <InputGroupWithShadow isInvalid={props.isInvalid} size={props.size}>
         <Input
+          border={"none"}
+          height={"38px"}
+          rounded={"4px"}
+          width={props.width ? props.width : "300px"}
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
-          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
           _invalid={{
             borderColor: "error.600",
             bg: "error.100",
@@ -75,13 +79,14 @@ export const AcsInputText: React.FC<InputProps> = ({
           }}
           bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
-          fontSize={"sm"}
-          rounded={"4px"}
-          p={2.5}
+          pl={"11px"}
+          pt={"10.5px"}
+          pb={"10.5px"}
+          fontSize={"14px"}
           {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}
         />
-      </InputGroup>
+      </InputGroupWithShadow>
     </FormControlLayout>
   )
 }

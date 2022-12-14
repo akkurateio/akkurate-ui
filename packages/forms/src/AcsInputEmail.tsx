@@ -7,11 +7,12 @@ import {
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
 import FormControlLayout from "./FormControlLayout"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
-  handleChange?: (e: string) => void
+  handleChange: (e: string) => void
   value?: string
   focusBorderColor?: string
   errorBorderColor?: string
@@ -62,26 +63,30 @@ export const AcsInputEmail: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size}>
+      <InputGroupWithShadow isInvalid={props.isInvalid} size={props.size}>
         <Input
+          border={"none"}
+          height={"38px"}
+          rounded={"4px"}
+          width={props.width ? props.width : "300px"}
           type={"email"}
           {...propsForInput()}
           variant={props.variant}
-          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
           _invalid={{
-            borderColor: "error.600",
-            bg: "error.100",
-            color: "error.600",
+            borderColor: "error.500",
+            bg: "red.50",
+            color: "error.500",
           }}
+          pl={"11px"}
+          pt={"10.5px"}
+          pb={"10.5px"}
           bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
-          fontSize={"sm"}
-          rounded={"4px"}
-          p={2.5}
+          fontSize={"14px"}
           {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}
         />
-      </InputGroup>
+      </InputGroupWithShadow>
     </FormControlLayout>
   )
 }

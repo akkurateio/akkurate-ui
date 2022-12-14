@@ -35,7 +35,7 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
   const { indicatorSteps, ...rangeProps } = { ...props, max, min }
 
   return (
-    <>
+    <Box marginBottom={"30px"}>
       {max <= 1000 ? (
         <>
           <Text marginBottom={2} fontSize={"16px"}>
@@ -131,6 +131,6 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
           <Toast title={"La valeur maximale est de 1000"} />
         </>
       )}
-    </>
+    </Box>
   )
 }
