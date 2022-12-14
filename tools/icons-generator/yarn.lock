@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@akkurateio/icons@0.0.24":
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/@akkurateio/icons/-/icons-0.0.24.tgz#06f9d2c38d86a62cf8a0402a6394a01459b5aafb"
-  integrity sha512-3JtUrz0JB2j45KnhyLQgOrLr8Waq56GP63b3HxW26g0QEQx+VxAmQQblx1VHo+eDBCRb5l9oK17gF9jTDTTi1Q==
+"@akkurateio/icons@^0.0.41":
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/@akkurateio/icons/-/icons-0.0.41.tgz#46521f29d99b4361a85d16e045313693c3c7bc88"
+  integrity sha512-RnY2OELG82Mb2f2FKNGAq7SMZbsVOc39EVOqXX+rw71EhHSY/Re4+dHJAjIUcctpFkRQKFuFqq5kFpn/XtX5nA==
   dependencies:
     "@chakra-ui/react" ">=2.0.0"
     "@emotion/react" ">=11.0.0"
