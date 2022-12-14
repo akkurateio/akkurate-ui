@@ -10,6 +10,7 @@ import { DateObject } from "../../types"
 import FormControlLayout from "../FormControlLayout"
 import { PopBtn } from "./PopBtn"
 import React, { useEffect, useState } from "react"
+import InputGroupWithShadow from "../InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -67,6 +68,7 @@ export const AcsInputDate: React.FC<InputProps> = ({
     disabledDays: props.disabledDays,
     disabledDates: props.disabledDates,
   })
+  const [focus, setFocus] = useState(false)
 
   useEffect(() => {
     if (date.selectedDate) {
@@ -90,12 +92,18 @@ export const AcsInputDate: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size} position={"relative"} width={props.width}>
+      <InputGroupWithShadow position={"relative"}>
         <Input
+          border={"none"}
+          height={"38px"}
+          rounded={"4px"}
+          width={props.width ? props.width : "300px"}
           type={"date"}
           {...propsForInput()}
           value={props.value}
           variant={props.variant}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
           focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
           _invalid={{
             borderColor: "error.600",
@@ -107,8 +115,8 @@ export const AcsInputDate: React.FC<InputProps> = ({
           onChange={(e) => handleManualChange(e.target.value)}
         />
 
-        <PopBtn date={date} setDate={setDate} />
-      </InputGroup>
+        <PopBtn focus={focus} date={date} setDate={setDate} />
+      </InputGroupWithShadow>
     </FormControlLayout>
   )
 }

@@ -2,7 +2,7 @@ import { AisCalendar } from "@akkurateio/icons"
 import { Button, Flex, Popover, PopoverTrigger } from "@chakra-ui/react"
 import dayjs from "dayjs"
 import "dayjs/locale/fr"
-import React from "react"
+import React, { useState } from "react"
 import { DateObject } from "../../types"
 import PopContent from "./PopContent"
 
@@ -11,9 +11,11 @@ dayjs.locale("fr")
 interface IProps {
   date: DateObject
   setDate: (e: DateObject) => void
+  focus?: boolean
 }
 
-export const PopBtn = ({ date, setDate }: IProps) => {
+export const PopBtn = ({ date, setDate, focus }: IProps) => {
+  const [isBlue, setIsBlue] = useState(false)
   const handleClick = () => {
     setDate({
       ...date,
@@ -34,15 +36,20 @@ export const PopBtn = ({ date, setDate }: IProps) => {
       <Popover placement={"bottom-end"}>
         <PopoverTrigger>
           <Button
+            // onFocus={() => setIsBlue(true)}
+            // onBlur={() => setIsBlue(false)}
             variant={"unstyled"}
             width={"50%"}
             w={"32px"}
             h={"32px"}
             bg={"white"}
-            color={"primary.500"}
+            // color={focus || isBlue ? "primary.500" : "neutral.500"}
             zIndex={1}
           >
-            <AisCalendar boxSize={"24px"} />
+            <AisCalendar
+              color={focus ? "primary.500" : "neutral.500"}
+              boxSize={"24px"}
+            />
           </Button>
         </PopoverTrigger>
         {/* <Button onClick={handleClick} variant={"ghost"}>

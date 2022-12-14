@@ -63,7 +63,7 @@ export const AcsInputText: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow isInvalid={props.isInvalid} size={props.size}>
+      <InputGroupWithShadow isInvalid={props.isInvalid}>
         <Input
           border={"none"}
           height={"38px"}
@@ -73,9 +73,9 @@ export const AcsInputText: React.FC<InputProps> = ({
           {...propsForInput()}
           variant={props.variant}
           _invalid={{
-            borderColor: "error.600",
-            bg: "error.100",
-            color: "error.600",
+            borderColor: "error.500",
+            bg: "red.50",
+            color: "error.500",
           }}
           bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}

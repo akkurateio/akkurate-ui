@@ -39,7 +39,9 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
     }
 
     if (type === "before" || type === "after") return "gray.500"
-    return "primary.900"
+    {
+      return "primary.900"
+    }
   }
 
   const handleWeight = (day: Dayjs) => {

@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react"
 import FormControlLayout from "./FormControlLayout"
 import React, { useState } from "react"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -38,6 +39,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [focus, setFocus] = useState(false)
 
   const propsForInput = () => {
     const {
@@ -68,8 +70,12 @@ export const AcsInputPassword: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size} width={props.width}>
+      <InputGroupWithShadow isInvalid={props.isInvalid}>
         <Input
+          border={"none"}
+          height={"38px"}
+          rounded={"4px"}
+          width={props.width ? props.width : "300px"}
           type={showPassword ? "text" : "password"}
           {...propsForInput()}
           variant={props.variant}
@@ -79,9 +85,12 @@ export const AcsInputPassword: React.FC<InputProps> = ({
             bg: "error.100",
             color: "error.600",
           }}
-          fontSize={"sm"}
-          rounded={"4px"}
-          p={2.5}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          fontSize={"14px"}
+          pl={"11px"}
+          pt={"10.5px"}
+          pb={"10.5px"}
           bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
           defaultValue={props.defaultValue}
@@ -91,21 +100,41 @@ export const AcsInputPassword: React.FC<InputProps> = ({
         <InputRightElement
           cursor={"pointer"}
           onClick={() => setShowPassword(!showPassword)}
-          color={props.isInvalid ? "error.400" : "primary.400"}
+          pb={"7px"}
+          pr={"8px"}
+          pt={"7px"}
         >
           {showPassword ? (
             props.iconOpen ? (
               props.iconOpen
             ) : (
-              <AisEye boxSize={"24px"} />
+              <AisEye
+                color={
+                  props.isInvalid
+                    ? "error.500"
+                    : focus
+                    ? "primary.500"
+                    : "neurtral.500"
+                }
+                boxSize={"24px"}
+              />
             )
           ) : props.iconClose ? (
             props.iconClose
           ) : (
-            <AisEyeClosed boxSize={"24px"} />
+            <AisEyeClosed
+              color={
+                props.isInvalid
+                  ? "error.500"
+                  : focus
+                  ? "primary.500"
+                  : "neurtral.500"
+              }
+              boxSize={"24px"}
+            />
           )}
         </InputRightElement>
-      </InputGroup>
+      </InputGroupWithShadow>
     </FormControlLayout>
   )
 }
