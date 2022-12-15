@@ -61,6 +61,10 @@ export * from "./icons/AisAttachement"
 
 export * from "./listIcons"
 
+export * from "./icons/AisBackward"
+
+export * from "./listIcons"
+
 export * from "./icons/AisBag"
 
 export * from "./listIcons"
@@ -90,6 +94,10 @@ export * from "./icons/AisCalendar"
 export * from "./listIcons"
 
 export * from "./icons/AisCamera"
+
+export * from "./listIcons"
+
+export * from "./icons/AisCancel"
 
 export * from "./listIcons"
 
@@ -253,6 +261,10 @@ export * from "./icons/AisFileDoc"
 
 export * from "./listIcons"
 
+export * from "./icons/AisFileJson"
+
+export * from "./listIcons"
+
 export * from "./icons/AisFileMarkdown"
 
 export * from "./listIcons"
@@ -266,6 +278,14 @@ export * from "./icons/AisFileSlide"
 export * from "./listIcons"
 
 export * from "./icons/AisFileTable"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFileTypescript"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFileXml"
 
 export * from "./listIcons"
 
@@ -298,6 +318,10 @@ export * from "./icons/AisFolder"
 export * from "./listIcons"
 
 export * from "./icons/AisFolders"
+
+export * from "./listIcons"
+
+export * from "./icons/AisForward"
 
 export * from "./listIcons"
 
