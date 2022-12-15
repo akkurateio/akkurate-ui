@@ -1,4 +1,8 @@
-import { AisCheckmark } from "@akkurateio/icons"
+import {
+  AisCheckmark,
+  AisRadioButton,
+  AisRadioButtonChecked,
+} from "@akkurateio/icons"
 import { StackDirection } from "@chakra-ui/layout"
 import {
   Box,
@@ -7,9 +11,10 @@ import {
   HStack,
   HTMLChakraProps,
   IconButton,
+  SimpleGrid,
   Stack,
 } from "@chakra-ui/react"
-import { SystemProps, ThemingProps } from "@chakra-ui/system"
+import { ResponsiveValue, SystemProps, ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import { theme } from "@akkurateio/utils"
@@ -27,7 +32,7 @@ interface CardOptions {
   contentArray: { id: string | number; body: JSX.Element }[]
   selectedCardId: string | number
   setSelectedCardId: (id: string | number) => void
-  direction?: StackDirection
+  columns?: ResponsiveValue<number>
   spacing?: SystemProps["margin"]
   justifyContent?: SystemProps["justifyContent"]
   alignItems?: SystemProps["alignItems"]
@@ -43,8 +48,8 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
   contentArray,
   selectedCardId,
   setSelectedCardId,
-  direction = "row",
-  spacing = 4,
+  columns = 2,
+  spacing = 6,
   justifyContent = "flex-start",
   alignItems = "center",
   ...props
@@ -67,8 +72,8 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <Stack
-        direction={direction}
+      <SimpleGrid
+        columns={columns}
         spacing={spacing}
         justifyContent={justifyContent}
         alignItems={alignItems}
@@ -77,11 +82,11 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
           <HStack
             cursor={"pointer"}
             onClick={() => setCurrentId(item.id)}
-            height={"auto"}
+            height={"full"}
             width={"auto"}
             rounded={"md"}
             alignItems={"flex-start"}
-            p={2}
+            p={3}
             key={idx}
             position={"relative"}
             boxShadow={
@@ -92,35 +97,35 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
             borderWidth={"1px"}
             borderColor={currentId === item.id ? "primary.500" : "gray.200"}
             bg={"white"}
-            transition={"all 0.2s ease-in-out"}
           >
-            {item.body}
-            <Box width={"48px"} />
-            <Flex
+            <Box mr={"48px"}>{item.body}</Box>
+            <Box
               position={"absolute"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              boxSize={"24px"}
-              right={0}
-              paddingTop={"1px"}
-              paddingRight={"9px"}
+              top={2}
+              right={2}
+              color={currentId === item.id ? "primary.500" : "neutral.300"}
             >
-              <IconButton
-                colorScheme={currentId === item.id ? "primary" : "white"}
-                borderWidth={1}
-                borderColor={currentId === item.id ? "primary.500" : "gray.200"}
-                rounded={"full"}
-                size={"2xs"}
-                aria-label={"Select"}
-                icon={<AisCheckmark boxSize={"24px"} color={"white"} />}
-                transition={"all 0.2s ease-in-out"}
-                boxSize={"24px"}
-              />
-            </Flex>
+              {currentId === item.id ? (
+                <AisRadioButtonChecked boxSize={"24px"} />
+              ) : (
+                <AisRadioButton boxSize={"24px"} />
+              )}
+              {/*<IconButton*/}
+              {/*  colorScheme={currentId === item.id ? "primary" : "white"}*/}
+              {/*  borderWidth={1}*/}
+              {/*  borderColor={currentId === item.id ? "primary.500" : "gray.200"}*/}
+              {/*  rounded={"full"}*/}
+              {/*  size={"2xs"}*/}
+              {/*  aria-label={"Select"}*/}
+              {/*  icon={<AisCheckmark boxSize={"24px"} color={"white"} />}*/}
+              {/*  transition={"all 0.2s ease-in-out"}*/}
+              {/*  boxSize={"24px"}*/}
+              {/*/>*/}
+            </Box>
             )
           </HStack>
         ))}
-      </Stack>
+      </SimpleGrid>
     </FormControlLayout>
   )
 }
