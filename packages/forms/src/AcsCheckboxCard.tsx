@@ -5,12 +5,13 @@ import {
   HStack,
   HTMLChakraProps,
   IconButton,
+  SimpleGrid,
   Stack,
 } from "@chakra-ui/react"
-import { AisCheckbox, AisCheckmark } from "@akkurateio/icons"
+import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/icons"
 import FormControlLayout from "./FormControlLayout"
 import { StackDirection } from "@chakra-ui/layout"
-import { SystemProps, ThemingProps } from "@chakra-ui/system"
+import { ResponsiveValue, SystemProps, ThemingProps } from "@chakra-ui/system"
 import { theme } from "@akkurateio/utils"
 
 type Omitted =
@@ -26,10 +27,9 @@ interface CardOptions {
   contentArray: { id: string | number; body: JSX.Element }[]
   selectedCardIds: (string | number)[]
   setSelectedCardIds: (ids: (string | number)[]) => void
+  columns?: ResponsiveValue<number>
   direction?: StackDirection
   spacing?: SystemProps["margin"]
-  justifyContent?: SystemProps["justifyContent"]
-  alignItems?: SystemProps["alignItems"]
 }
 
 interface InputProps
@@ -41,11 +41,10 @@ interface InputProps
 export const AcsCheckboxCard: React.FC<InputProps> = ({
   contentArray,
   selectedCardIds,
+  columns = 2,
   setSelectedCardIds,
   direction = "row",
   spacing = 4,
-  justifyContent = "flex-start",
-  alignItems = "center",
   ...props
 }) => {
   const [currentIds, setCurrentIds] = useState<(string | number)[]>(
@@ -68,14 +67,10 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <Stack
-        direction={direction}
-        spacing={spacing}
-        justifyContent={justifyContent}
-        alignItems={alignItems}
-      >
+      <SimpleGrid columns={columns} spacing={spacing}>
         {contentArray.map((item, idx) => (
           <HStack
+            position={"relative"}
             cursor={"pointer"}
             onClick={() => handleOnChange(item.id)}
             height={"auto"}
@@ -102,26 +97,24 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             justifyContent={"space-between"}
           >
             <Box>{item.body}</Box>
-            {/*<Box width={"48px"} />*/}
-            <IconButton
-              colorScheme={currentIds.includes(item.id) ? "primary" : "white"}
-              borderWidth={"1px"}
-              borderColor={
-                currentIds.includes(item.id) ? "primary.500" : "gray.200"
+            <Box
+              position={"absolute"}
+              top={2}
+              right={2}
+              color={
+                currentIds.includes(item.id) ? "primary.500" : "neutral.300"
               }
-              rounded={"md"}
-              size={"2xs"}
-              aria-label={"Select"}
-              icon={<AisCheckmark boxSize={"24px"} color={"white"} />}
-              transition={"all 0.2s ease-in-out"}
-              boxSize={"24px"}
-              right={"8px"}
-              marginRight={"-8px"}
-            />
+            >
+              {currentIds.includes(item.id) ? (
+                <AisCheckboxChecked boxSize={"24px"} />
+              ) : (
+                <AisCheckbox boxSize={"24px"} />
+              )}
+            </Box>
             )
           </HStack>
         ))}
-      </Stack>
+      </SimpleGrid>
     </FormControlLayout>
   )
 }

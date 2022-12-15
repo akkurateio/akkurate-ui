@@ -110,17 +110,6 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
               ) : (
                 <AisRadioButton boxSize={"24px"} />
               )}
-              {/*<IconButton*/}
-              {/*  colorScheme={currentId === item.id ? "primary" : "white"}*/}
-              {/*  borderWidth={1}*/}
-              {/*  borderColor={currentId === item.id ? "primary.500" : "gray.200"}*/}
-              {/*  rounded={"full"}*/}
-              {/*  size={"2xs"}*/}
-              {/*  aria-label={"Select"}*/}
-              {/*  icon={<AisCheckmark boxSize={"24px"} color={"white"} />}*/}
-              {/*  transition={"all 0.2s ease-in-out"}*/}
-              {/*  boxSize={"24px"}*/}
-              {/*/>*/}
             </Box>
             )
           </HStack>
