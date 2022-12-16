@@ -73,9 +73,9 @@ export const AcsInputPassword: React.FC<InputProps> = ({
       <InputGroupWithShadow isInvalid={props.isInvalid}>
         <Input
           border={"none"}
-          height={"38px"}
-          rounded={"4px"}
-          width={props.width ? props.width : "300px"}
+          height={"full"}
+          rounded={"base"}
+          width={"full"}
           type={showPassword ? "text" : "password"}
           {...propsForInput()}
           variant={props.variant}
@@ -87,10 +87,10 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           }}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          fontSize={"14px"}
-          pl={"11px"}
-          pt={"10.5px"}
-          pb={"10.5px"}
+          fontSize={props.fontSize || "sm"}
+          pl={"0.688rem"}
+          pt={"0.656rem"}
+          pb={"0.656rem"}
           bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
           defaultValue={props.defaultValue}
@@ -100,9 +100,9 @@ export const AcsInputPassword: React.FC<InputProps> = ({
         <InputRightElement
           cursor={"pointer"}
           onClick={() => setShowPassword(!showPassword)}
-          pb={"7px"}
-          pr={"8px"}
-          pt={"7px"}
+          pb={"0.438rem"}
+          pr={"0.5rem"}
+          pt={"0.438rem"}
         >
           {showPassword ? (
             props.iconOpen ? (

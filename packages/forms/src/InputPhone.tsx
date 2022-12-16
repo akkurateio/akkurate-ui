@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import {
   Box,
   Button,
+  Flex,
   FormControlOptions,
   FormLabel,
   HStack,
@@ -45,6 +46,7 @@ interface InputOptions {
     code: string
     prefix: string
   }[]
+  fontSizePhone?: string
 }
 
 interface InputProps
@@ -55,6 +57,7 @@ interface InputProps
 
 export const AcsInputPhone: React.FC<InputProps> = ({
   defaultCountry = "fr",
+  fontSizePhone = "14px",
   handleChange,
   ...props
 }) => {
@@ -84,18 +87,23 @@ export const AcsInputPhone: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow isInvalid={props.isInvalid} size={props.size}>
+      <InputGroupWithShadow
+        isInvalid={props.isInvalid}
+        width={props.width}
+        height={props.height}
+        size={props.size}
+      >
         <InputLeftAddon
           outline={"none"}
-          rounded={"4px"}
+          rounded={"0.25rem"}
           backgroundColor={props.isInvalid ? "red.50" : "white"}
           border={"none"}
-          height={"38px"}
-          width={"83px"}
-          paddingLeft={"10px"}
-          paddingTop={"6px"}
-          paddingBottom={"6px"}
-          paddingRight={"7px"}
+          height={"full"}
+          width={"fit-content"}
+          paddingLeft={"0.625rem"}
+          paddingTop={"0.375rem"}
+          paddingBottom={"0.325rem"}
+          paddingRight={"0.438rem"}
           _invalid={{
             borderColor: "error.500",
             bg: "red.50",
@@ -119,21 +127,29 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 </HStack>
               </Button>
             </PopoverTrigger>
-            <PopoverContent overflow={"hidden"} width={"85px"} h={"226px"}>
+            <PopoverContent
+              overflow={"hidden"}
+              width={"5.313rem"}
+              h={"14.125rem"}
+            >
               <PopoverBody
                 overflow={"hidden"}
                 overflowY={"auto"}
                 padding={0}
-                paddingLeft={"5px"}
+                paddingLeft={"0.313rem"}
               >
                 <Box h={"full"}>
-                  <SimpleGrid columns={1} spacing={"2px"} paddingTop={"5px"}>
+                  <SimpleGrid
+                    columns={1}
+                    spacing={"0.125rem"}
+                    paddingTop={"0.313rem"}
+                  >
                     {frenchCountryWithCode.map((country, idx) => {
                       return (
                         <Tooltip key={idx} label={country.name}>
                           <Button
-                            width={"62px"}
-                            height={"34px"}
+                            width={"3.875rem"}
+                            height={"2.125rem"}
                             onClick={() => changeCountry(country.code)}
                             variant={"unstyled"}
                             backgroundColor={
@@ -141,7 +157,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                                 ? "primary.500"
                                 : "primary.100"
                             }
-                            rounded={"2px"}
+                            rounded={"sm"}
                             justifyContent={"center"}
                             display={"flex"}
                           >
@@ -160,33 +176,36 @@ export const AcsInputPhone: React.FC<InputProps> = ({
             </PopoverContent>
           </Popover>
         </InputLeftAddon>
-        <PhoneInput
-          specialLabel={""}
-          country={countryLower}
-          onChange={(phoneNumber) => handleChange("+" + phoneNumber)}
-          countryCodeEditable={false}
-          value={props.value}
-          inputStyle={{
-            // @ts-ignore
-            width: props.width ? props.width : "217px",
-            height: "38px",
-            paddingLeft: "12px",
-            paddingTop: "10.5px",
-            paddingBottom: "10.5px",
-            borderLeft: props.isInvalid
-              ? `1px solid ${theme.colors.red[600]}`
-              : focus
-              ? `1px solid ${theme.colors.primary[500]}`
-              : `1px solid ${theme.colors.neutral[400]}`,
-            borderTopRightRadius: "4px",
-            backgroundColor: props.isInvalid ? theme.colors.red[50] : "white",
-            borderBottomRightRadius: "4px",
-            outline: "none",
-            fontSize: "14px",
-            fontStyle: "inter",
-            fontWeight: "regular",
-          }}
-        />
+        <Box width={"full"} height={"full"}>
+          <PhoneInput
+            specialLabel={""}
+            country={countryLower}
+            onChange={(phoneNumber) => handleChange("+" + phoneNumber)}
+            countryCodeEditable={false}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            value={props.value}
+            inputStyle={{
+              width: "100%",
+              height: "100%",
+              paddingLeft: "0.75rem",
+              paddingTop: "0.625rem",
+              paddingBottom: "0.625rem",
+              borderLeft: props.isInvalid
+                ? `1px solid ${theme.colors.red[600]}`
+                : focus
+                ? `1px solid ${theme.colors.primary[500]}`
+                : `1px solid ${theme.colors.neutral[400]}`,
+              borderTopRightRadius: "0.25rem",
+              backgroundColor: props.isInvalid ? theme.colors.red[50] : "white",
+              borderBottomRightRadius: "0.25rem",
+              outline: "none",
+              fontSize: fontSizePhone || "14px",
+              fontStyle: "inter",
+              fontWeight: "regular",
+            }}
+          />
+        </Box>
       </InputGroupWithShadow>
     </FormControlLayout>
   )

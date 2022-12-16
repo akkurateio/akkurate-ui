@@ -82,7 +82,7 @@ export const AcsInputText: React.FC<InputProps> = ({
           pl={"11px"}
           pt={"10.5px"}
           pb={"10.5px"}
-          fontSize={"14px"}
+          fontSize={props.fontSize || "sm"}
           {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}
         />

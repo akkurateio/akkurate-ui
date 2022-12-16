@@ -79,7 +79,7 @@ export const AcsDropzone: React.FC<IProps> = ({
       bg={isDragActive ? "primary.100" : undefined}
       height={height}
       minHeight={"250px"}
-      overflow={"scroll"}
+      overflow={"auto"}
     >
       <Flex
         {...getRootProps()}

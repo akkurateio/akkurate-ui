@@ -11,8 +11,9 @@ import {
   useNumberInput,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted =
   | "disabled"
@@ -45,6 +46,7 @@ export interface InputProps
 
 export const AcsInputNumber: React.FC<InputProps> = ({
   handleChange,
+  height,
   ...props
 }) => {
   const propsForInput = () => {
@@ -61,7 +63,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
     } = props
     return rest
   }
-
+  const [focus, setFocus] = useState(false)
   const {
     getInputProps,
     getIncrementButtonProps,
@@ -109,42 +111,64 @@ export const AcsInputNumber: React.FC<InputProps> = ({
   return (
     <FormControlLayout {...props}>
       <HStack>
-        <InputGroup size={props.size}>
+        <InputGroupWithShadow isInvalid={props.isInvalid}>
           <InputLeftElement
-            color={props.isInvalid ? "error.600" : "primary.500"}
-            borderColor={props.isInvalid ? "error.600" : "gray.200"}
+            color={
+              props.isInvalid
+                ? "error.500"
+                : focus
+                ? "primary.500"
+                : "neutral.500"
+            }
+            height={"full"}
+            pl={"0.5rem"}
+            pt={"0.438rem"}
+            pb={"0.5rem"}
           >
-            <Button {...dec} variant={"unstyled"}>
-              <AisSubstract boxSize={"16px"} />
+            <Button textAlign={"left"} {...dec} variant={"unstyled"}>
+              <AisSubstract boxSize={"24px"} />
             </Button>
           </InputLeftElement>
           <Input
             {...input}
             variant={props.variant}
-            focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
             _invalid={{
-              borderColor: "error.600",
-              bg: "error.100",
-              color: "error.600",
+              borderColor: "error.500",
+              bg: "red.50",
+              color: "error.500",
             }}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
             textAlign={"center"}
-            fontSize={"sm"}
-            rounded={"4px"}
-            p={2.5}
+            fontSize={props.fontSize || "sm"}
+            border={"none"}
+            height={"full"}
+            rounded={"base"}
             bg={props.bg ? props.bg : "white"}
           />
           <InputRightElement
-            color={props.isInvalid ? "error.600" : "primary.500"}
-            borderColor={props.isInvalid ? "error.600" : "gray.200"}
-            _focus={{
-              borderColor: "primary.700",
-            }}
+            height={"full"}
+            color={
+              props.isInvalid
+                ? "error.500"
+                : focus
+                ? "primary.500"
+                : "neutral.500"
+            }
+            pt={"0.438rem"}
+            pb={"0.438rem"}
+            pr={"0.5rem"}
           >
-            <Button {...inc} variant={"unstyled"}>
-              <AisAdd boxSize={"16px"} />
+            <Button
+              width={"fit-content"}
+              {...inc}
+              variant={"unstyled"}
+              textAlign={"right"}
+            >
+              <AisAdd boxSize={"24px"} />
             </Button>
           </InputRightElement>
-        </InputGroup>
+        </InputGroupWithShadow>
       </HStack>
     </FormControlLayout>
   )

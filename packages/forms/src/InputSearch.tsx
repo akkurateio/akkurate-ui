@@ -55,12 +55,12 @@ export const AcsInputSearch: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow size={props.size}>
+      <InputGroupWithShadow width={props.width} size={props.size}>
         <InputLeftElement
           backgroundColor={props.isInvalid ? "red.50" : "white"}
-          width={"32px"}
-          height={"38px"}
-          ml={"6px"}
+          width={8}
+          height={"full"}
+          ml={"0.375rem"}
         >
           <AisSearch
             boxSize={"24px"}
@@ -80,16 +80,16 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           focusBorderColor={props.isInvalid ? "error.500" : "primary.500"}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          fontSize={"14px"}
-          rounded={"4px"}
-          paddingBottom={"10.5px"}
-          paddingTop={"10.5px"}
+          fontSize={props.fontSize || "sm"}
+          rounded={"base"}
+          paddingBottom={"0.656rem"}
+          paddingTop={"0.656rem"}
           paddingLeft={"36px"}
           bg={props.isInvalid ? "red.50" : "white"}
           onChange={(e) => handleChange(e.target.value)}
           border={"none"}
-          width={props.width ? props.width : "300px"}
-          height={"38px"}
+          width={"full"}
+          height={"full"}
         />
         <InputRightElement>
           {props.value && props.value.length > 0 && (

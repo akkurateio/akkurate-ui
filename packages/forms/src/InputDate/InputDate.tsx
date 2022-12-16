@@ -92,12 +92,12 @@ export const AcsInputDate: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow position={"relative"}>
+      <InputGroupWithShadow position={"relative"} width={props.width}>
         <Input
           border={"none"}
-          height={"38px"}
-          rounded={"4px"}
-          width={props.width ? props.width : "300px"}
+          height={"full"}
+          rounded={"base"}
+          width={"full"}
           type={"date"}
           {...propsForInput()}
           value={props.value}

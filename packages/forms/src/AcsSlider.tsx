@@ -39,7 +39,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
     <FormControlLayout {...props}>
       {max <= 1000 ? (
         <Box marginBottom={"30px"}>
-          <Text fontSize={"16px"}>{props.title}</Text>
+          <Text fontSize={props.fontSize || "md"}>{props.title}</Text>
           <Slider {...sliderProps} marginTop={"16px"}>
             {props.indicatorSteps &&
               max &&
@@ -55,7 +55,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
                       marginTop={"32px"}
                     >
                       <Box
-                        fontSize={"14px"}
+                        fontSize={props.fontSize || "sm"}
                         color={"black"}
                         textAlign={"center"}
                       >
@@ -66,7 +66,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
                     <SliderMark
                       key={idx}
                       value={max}
-                      fontSize={"14px"}
+                      fontSize={props.fontSize || "sm"}
                       fontWeight={"normal"}
                       marginTop={"32px"}
                     >
@@ -74,7 +74,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
                     </SliderMark>
                     <SliderMark
                       marginTop={"32px"}
-                      fontSize={"14px"}
+                      fontSize={props.fontSize || "sm"}
                       value={min}
                     >
                       {min}
@@ -83,7 +83,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
                 ) : (
                   <>
                     <SliderMark
-                      fontSize={"14px"}
+                      fontSize={props.fontSize || "sm"}
                       key={idx}
                       value={max}
                       marginTop={"32px"}
@@ -91,7 +91,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
                       {max}
                     </SliderMark>
                     <SliderMark
-                      fontSize={"14px"}
+                      fontSize={props.fontSize || "sm"}
                       value={min}
                       marginTop={"32px"}
                     >
@@ -108,7 +108,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
               boxSize={"36px"}
               fontWeight={"bold"}
               color={"white"}
-              fontSize={"14px"}
+              fontSize={props.fontSize || "sm"}
             >
               {props.value}
             </SliderThumb>

@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 
 import {
+  Box,
+  Flex,
   FormControl,
   FormControlOptions,
   FormErrorMessage,
@@ -9,9 +11,8 @@ import {
   InputGroup,
   ResponsiveValue,
 } from "@chakra-ui/react"
-import Label from "./Label"
-import { theme } from "@akkurateio/utils"
 import { ThemingProps } from "@chakra-ui/system"
+import { theme } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -50,8 +51,9 @@ const FormControlLayout: React.FC<InputProps> = (props) => {
   return (
     <InputGroup
       size={props.size}
-      width={"fit-content"}
-      rounded={"4px"}
+      height={"38px"}
+      width={props.width ? props.width : "full"}
+      rounded={"base"}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       borderWidth={"1px"}
@@ -62,7 +64,9 @@ const FormControlLayout: React.FC<InputProps> = (props) => {
         focus ? `0 0 0 3px ${theme.colors.primary[500]}25 ` : undefined
       }
     >
-      {props.children}
+      <Flex w={"full"} h={"full"}>
+        {props.children}
+      </Flex>
     </InputGroup>
   )
 }

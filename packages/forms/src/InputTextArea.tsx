@@ -8,6 +8,7 @@ import { ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useRef } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+import { theme } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -51,6 +52,8 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
     return rest
   }
 
+  const [focus, setFocus] = React.useState(false)
+
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,14 +81,16 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow isInvalid={props.isInvalid} size={props.size}>
+      <InputGroup width={props.width} size={props.size} height={props.height}>
         <Textarea
-          border={"none"}
-          rounded={"4px"}
-          width={props.width ? props.width : "600px"}
+          rounded={"base"}
+          width={"full"}
+          height={"full"}
           ref={textareaRef}
           onChange={handleOnChange}
           type={"text"}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
           {...propsForInput()}
           variant={props.variant}
           _invalid={{
@@ -93,9 +98,14 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
             bg: "red.50",
             color: "error.500",
           }}
-          fontSize={"14px"}
-          pl={"11px"}
-          pt={"10px"}
+          _focus={{
+            boxShadow: focus
+              ? `0 0 0 3px ${theme.colors.primary[500]}25 `
+              : "none",
+          }}
+          fontSize={props.fontSize || "sm"}
+          pl={"0.688rem"}
+          pt={"0.625rem"}
           bg={props.bg ? props.bg : "white"}
           rows={
             props.autoResize
@@ -113,7 +123,7 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
           {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}
         />
-      </InputGroupWithShadow>
+      </InputGroup>
     </FormControlLayout>
   )
 }

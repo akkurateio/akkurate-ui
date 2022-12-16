@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import { AisColorPalette } from "@akkurateio/icons"
 import {
@@ -18,6 +18,7 @@ import {
 import styled from "@emotion/styled"
 import { HexColorPicker } from "react-colorful"
 import FormControlLayout from "./FormControlLayout"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 const StyledBox = styled.div`
   .react-colorful__saturation {
@@ -69,6 +70,7 @@ interface InputProps
 
 export const AcsInputColor: React.FC<InputProps> = ({
   handleChange,
+  height,
   ...props
 }) => {
   const propsForInput = () => {
@@ -85,24 +87,34 @@ export const AcsInputColor: React.FC<InputProps> = ({
     } = props
     return rest
   }
+  const [focus, setFocus] = useState(false)
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size}>
-        <InputLeftElement width={"80px"}>
+      <InputGroupWithShadow isInvalid={props.isInvalid}>
+        <InputLeftElement width={"fit-content"} height={"38px"}>
           <Box
+            ml={"4px"}
+            mt={"4px"}
+            mb={"4px"}
+            mr={0}
             backgroundColor={props.value as string}
-            width={"4rem"}
-            height={"1.6rem"}
-            rounded={"sm"}
-            border={"1px solid black"}
+            width={"64px"}
+            height={"30px"}
+            rounded={"2px"}
           />
         </InputLeftElement>
         <Input
+          border={"none"}
+          height={"full"}
+          rounded={"4px"}
+          width={"full"}
           type={"text"}
           value={props.value}
           placeholder={"placeholder"}
-          pl={"80px"}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          pl={"78px"}
           {...propsForInput()}
           variant={props.variant}
           focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
@@ -111,9 +123,9 @@ export const AcsInputColor: React.FC<InputProps> = ({
             bg: "error.100",
             color: "error.600",
           }}
-          fontSize={"sm"}
-          rounded={"4px"}
-          p={2.5}
+          fontSize={props.fontSize || "sm"}
+          pt={"10.5px"}
+          pb={"10.5px"}
           bg={props.bg ? props.bg : "white"}
           onChange={(e) => handleChange(e.target.value)}
         />
@@ -123,7 +135,15 @@ export const AcsInputColor: React.FC<InputProps> = ({
             {({ isOpen }) => (
               <>
                 <PopoverTrigger>
-                  <Box color={props.isInvalid ? "error.400" : "primary.400"}>
+                  <Box
+                    color={
+                      props.isInvalid
+                        ? "error.500"
+                        : focus || isOpen
+                        ? "primary.500"
+                        : "neutral.500"
+                    }
+                  >
                     {isOpen ? (
                       props.iconOpen ? (
                         props.iconOpen
@@ -137,12 +157,16 @@ export const AcsInputColor: React.FC<InputProps> = ({
                     )}
                   </Box>
                 </PopoverTrigger>
-                <PopoverContent width={"fit-content"}>
+                <PopoverContent marginRight={-2} width={"fit-content"}>
                   <PopoverBody p={0}>
                     <StyledBox>
                       <HexColorPicker
                         color={props.value as string}
                         onChange={handleChange}
+                        style={{
+                          width: "18.75rem",
+                          height: "13.875rem",
+                        }}
                       />
                     </StyledBox>
                   </PopoverBody>
@@ -151,7 +175,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
             )}
           </Popover>
         </InputRightElement>
-      </InputGroup>
+      </InputGroupWithShadow>
     </FormControlLayout>
   )
 }
