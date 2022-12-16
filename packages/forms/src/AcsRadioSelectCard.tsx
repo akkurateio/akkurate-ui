@@ -95,7 +95,7 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
                 : undefined
             }
             borderWidth={"1px"}
-            borderColor={currentId === item.id ? "primary.500" : "gray.200"}
+            borderColor={currentId === item.id ? "primary.500" : "neutral.200"}
             bg={"white"}
           >
             <Box mr={"48px"}>{item.body}</Box>

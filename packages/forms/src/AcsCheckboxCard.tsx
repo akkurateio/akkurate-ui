@@ -78,9 +78,9 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             rounded={"6px"}
             alignItems={"flex-start"}
             minWidth={"245px"}
-            pt={"9px"}
-            pl={"9px"}
-            pb={"9px"}
+            pt={"0.563rem"}
+            pl={"0.563rem"}
+            pb={"0.563rem"}
             key={idx}
             // position={"relative"}
             boxShadow={
@@ -90,7 +90,7 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             }
             borderWidth={"1px"}
             borderColor={
-              currentIds.includes(item.id) ? "primary.500" : "gray.200"
+              currentIds.includes(item.id) ? "primary.500" : "neutral.200"
             }
             bg={"white"}
             transition={"all 0.2s ease-in-out"}

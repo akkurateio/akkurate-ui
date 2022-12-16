@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { FormControlOptions, HTMLChakraProps } from "@chakra-ui/react"
+import { Box, FormControlOptions, HTMLChakraProps } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import FormControlLayout from "./FormControlLayout"
-import { Select, StylesConfig } from "chakra-react-select"
-import { theme } from "@akkurateio/utils"
+import { Select } from "chakra-react-select"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+import { theme } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -20,9 +20,9 @@ interface AcsSelectProps {
 }
 
 interface SelectProps
-  extends Omit<HTMLChakraProps<"select">, Omitted>,
+  extends Omit<HTMLChakraProps<"input">, Omitted>,
     AcsSelectProps,
-    ThemingProps<"Select">,
+    ThemingProps<"Input">,
     FormControlOptions {}
 
 export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
@@ -35,10 +35,11 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
       props.handleChange(e.value)
     }
   }
+  console.log(focus)
 
   return (
     <FormControlLayout label={props.label}>
-      <InputGroupWithShadow isInvalid={props.isInvalid}>
+      <Box width={"full"} h={"full"} backgroundColor={"white"} rounded={"base"}>
         <Select
           // menuPortalTarget={document.body}
           useBasicStyles={true}
@@ -46,14 +47,10 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
           options={props.options}
           closeMenuOnSelect={true}
           hideSelectedOptions={false}
-          errorBorderColor={props.isInvalid ? "error.500" : "primary.500"}
           value={currentValue}
           onChange={handleChange}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          // components={{
-          //   DropdownIndicator,
-          // }}
           placeholder={props.placeholder || "Sélectionner"}
           styles={{
             menuPortal: (base) => ({
@@ -62,33 +59,32 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
             }),
           }}
           chakraStyles={{
-            control: (provided: any, state: any) => ({
-              ...provided,
+            control: (base, state) => ({
+              ...base,
+              rounded: "base",
+              padding: "0 0",
               backgroundColor: props.isInvalid ? "red.50" : "white",
-              width: props.width ? props.width : "300px",
-              height: "38px",
-              color: props.isInvalid ? "error.500" : "black",
-              border: "none",
-              rounded: "4px",
+              color: props.isInvalid ? "red.500" : "black",
+              outline: "none",
               fontSize: props.fontSize || "sm",
             }),
             option: (provided: any, state: any) => ({
               ...provided,
               backgroundColor: state.isSelected ? "primary.500" : "primary.100",
-              margin: "1px 0",
+              margin: "0.063rem 0",
               color: state.isSelected ? "white" : "primary.500",
-              height: "38px",
-              width: "100%",
-              rounded: "2px",
-
+              rounded: "sm",
+              width: "full",
+              height: 9,
               fontSize: props.fontSize || "sm",
-              padding: "0",
+              padding: 0,
+              paddingLeft: "0.255rem",
             }),
             menuList: (provided: any, state: any) => ({
               ...provided,
-              padding: "5px 0",
-              paddingRight: "5px",
-              paddingLeft: "5px",
+              padding: "0.313rem 0",
+              paddingRight: "0.313rem",
+              paddingLeft: "0.313rem",
               height: "248px",
             }),
             placeholder: (provided: any, state: any) => ({
@@ -99,20 +95,32 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
             }),
             valueContainer: (provided: any, state: any) => ({
               ...provided,
-              padding: "10.5px 0",
-              paddingLeft: "10px",
+              padding: "0 0",
+              paddingLeft: "0.688rem",
+              fontSize: props.fontSize || "sm",
             }),
-            downChevron: (provided: any, state: any) => ({
+            singleValue: (provided: any, state: any) => ({
               ...provided,
-              color: props.isInvalid
-                ? "error.500"
-                : focus
-                ? "primary.500"
-                : "neutral.500",
+              margin: "0 0",
+              fontSize: props.fontSize || "sm",
+            }),
+            inputContainer: (provided: any, state: any) => ({
+              ...provided,
+              padding: "0 0",
+              margin: "0",
+              fontSize: props.fontSize || "sm",
+            }),
+            container: (provided: any, state: any) => ({
+              ...provided,
+              boxShadow: focus
+                ? `0 0 0 3px ${theme.colors.primary[500]}25 `
+                : undefined,
+              rounded: "base",
+              borderColor: props.isInvalid ? "red.500" : "gray.300",
             }),
           }}
         />
-      </InputGroupWithShadow>
+      </Box>
     </FormControlLayout>
   )
 }
