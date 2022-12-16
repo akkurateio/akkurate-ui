@@ -42,8 +42,6 @@ export interface InputProps
     ThemingProps<"NumberInput">,
     FormControlOptions {}
 
-// @TODO: Ne fonctionne pas
-
 export const AcsInputNumber: React.FC<InputProps> = ({
   handleChange,
   height,
@@ -115,7 +113,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
           <InputLeftElement
             color={
               props.isInvalid
-                ? "error.500"
+                ? "red.500"
                 : focus
                 ? "primary.500"
                 : "neutral.500"
@@ -133,9 +131,9 @@ export const AcsInputNumber: React.FC<InputProps> = ({
             {...input}
             variant={props.variant}
             _invalid={{
-              borderColor: "error.500",
+              borderColor: "red.500",
               bg: "red.50",
-              color: "error.500",
+              color: "red.500",
             }}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
@@ -150,7 +148,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
             height={"full"}
             color={
               props.isInvalid
-                ? "error.500"
+                ? "red.500"
                 : focus
                 ? "primary.500"
                 : "neutral.500"

@@ -94,9 +94,9 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
           {...propsForInput()}
           variant={props.variant}
           _invalid={{
-            borderColor: "error.500",
+            borderColor: "red.500",
             bg: "red.50",
-            color: "error.500",
+            color: "red.500",
           }}
           _focus={{
             boxShadow: focus

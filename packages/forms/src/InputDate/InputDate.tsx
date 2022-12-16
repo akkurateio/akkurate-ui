@@ -104,11 +104,11 @@ export const AcsInputDate: React.FC<InputProps> = ({
           variant={props.variant}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
+          focusBorderColor={props.isInvalid ? "red.500" : "primary.500"}
           _invalid={{
-            borderColor: "error.600",
-            bg: "error.100",
-            color: "error.600",
+            borderColor: "red.500",
+            bg: "red.50",
+            color: "red.500",
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}

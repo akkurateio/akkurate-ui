@@ -36,14 +36,11 @@ export const PopBtn = ({ date, setDate, focus }: IProps) => {
       <Popover placement={"bottom-end"}>
         <PopoverTrigger>
           <Button
-            // onFocus={() => setIsBlue(true)}
-            // onBlur={() => setIsBlue(false)}
             variant={"unstyled"}
             width={"50%"}
             w={"32px"}
             h={"32px"}
             bg={"white"}
-            // color={focus || isBlue ? "primary.500" : "neutral.500"}
             zIndex={1}
           >
             <AisCalendar
@@ -52,9 +49,6 @@ export const PopBtn = ({ date, setDate, focus }: IProps) => {
             />
           </Button>
         </PopoverTrigger>
-        {/* <Button onClick={handleClick} variant={"ghost"}>
-        x
-      </Button> */}
         <PopContent date={date} setDate={setDate} />
       </Popover>
     </Flex>

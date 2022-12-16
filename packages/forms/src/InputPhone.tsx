@@ -192,10 +192,10 @@ export const AcsInputPhone: React.FC<InputProps> = ({
               paddingTop: "0.625rem",
               paddingBottom: "0.625rem",
               borderLeft: props.isInvalid
-                ? `1px solid ${theme.colors.red[600]}`
+                ? `1px solid ${theme.colors.red[500]}`
                 : focus
                 ? `1px solid ${theme.colors.primary[500]}`
-                : `1px solid ${theme.colors.neutral[400]}`,
+                : `1px solid ${theme.colors.neutral[300]}`,
               borderTopRightRadius: "0.25rem",
               backgroundColor: props.isInvalid ? theme.colors.red[50] : "white",
               borderBottomRightRadius: "0.25rem",
