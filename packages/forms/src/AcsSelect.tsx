@@ -5,6 +5,7 @@ import FormControlLayout from "./FormControlLayout"
 import { Select } from "chakra-react-select"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 import { theme } from "@akkurateio/utils"
+import { AisArrowFromSelection, AisChevronSort } from "@akkurateio/icons"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -28,6 +29,7 @@ interface SelectProps
 export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
   const [currentValue, setCurrentValue] = useState<string | number>()
   const [focus, setFocus] = useState(false)
+  const [notValid, setNotValid] = useState(false)
 
   const handleChange = (e: any) => {
     setCurrentValue(e)
@@ -37,9 +39,22 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
   }
   console.log(focus)
 
+  useEffect(() => {
+    if (props.isInvalid) {
+      setNotValid(true)
+    } else {
+      setNotValid(false)
+    }
+  }, [notValid, props.isInvalid])
+
   return (
     <FormControlLayout label={props.label}>
-      <Box width={"full"} h={"full"} backgroundColor={"white"} rounded={"base"}>
+      <Box
+        width={props.width ? props.width : "full"}
+        h={"full"}
+        backgroundColor={"white"}
+        rounded={"base"}
+      >
         <Select
           // menuPortalTarget={document.body}
           useBasicStyles={true}
@@ -67,6 +82,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               color: props.isInvalid ? "red.500" : "black",
               outline: "none",
               fontSize: props.fontSize || "sm",
+              border: "none",
               _hover: {
                 borderColor: props.isInvalid ? "red.500" : "gray.400",
               },
@@ -82,6 +98,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               fontSize: props.fontSize || "sm",
               padding: 0,
               paddingLeft: "0.255rem",
+              border: "none",
             }),
             menuList: (provided: any, state: any) => ({
               ...provided,
@@ -89,6 +106,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               paddingRight: "0.313rem",
               paddingLeft: "0.313rem",
               height: "248px",
+              border: "none",
             }),
             placeholder: (provided: any, state: any) => ({
               ...provided,
@@ -119,14 +137,29 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
                 ? `0 0 0 3px ${theme.colors.primary[500]}25 `
                 : undefined,
               rounded: "base",
+              borderWidth: "1px",
               borderColor: props.isInvalid ? "red.500" : "gray.300",
               _hover: {
-                borderColor: props.isInvalid ? "red.500" : "gray.400",
+                borderColor: props.isInvalid
+                  ? "red.500"
+                  : focus
+                  ? "primary.500"
+                  : "gray.400",
               },
             }),
-            dropdownIndicator: (provided: any, state: any) => ({
-              ...provided,
-            }),
+          }}
+          components={{
+            DropdownIndicator: (props) => (
+              <Box {...props} margin={"0.5rem"}>
+                <AisChevronSort
+                  color={
+                    notValid ? "red.500" : focus ? "primary.500" : "neutral.500"
+                  }
+                  boxSize={"16px"}
+                  ml={2}
+                />
+              </Box>
+            ),
           }}
         />
       </Box>
