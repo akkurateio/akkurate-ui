@@ -94,7 +94,7 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
   return (
     <Flex alignItems={"flex-start"} flexDir={"column"} gap={1}>
       <Box onClick={handleOpen}>{step1()}</Box>
-      <Box marginLeft={5}>
+      <Box marginLeft={"2rem"} mt={"0.5rem"}>
         {showChildren &&
           child.children &&
           child.children.map((child) => (
