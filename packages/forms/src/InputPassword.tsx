@@ -91,6 +91,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           pl={"0.688rem"}
           pt={"0.656rem"}
           pb={"0.656rem"}
+          pr={"2.5rem"}
           bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
           defaultValue={props.defaultValue}

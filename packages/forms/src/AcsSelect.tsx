@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react"
-import { Box, FormControlOptions, HTMLChakraProps } from "@chakra-ui/react"
+import {
+  Box,
+  FormControlOptions,
+  HStack,
+  HTMLChakraProps,
+  Text,
+} from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import FormControlLayout from "./FormControlLayout"
-import { Select } from "chakra-react-select"
-import InputGroupWithShadow from "./InputGroupWithShadow"
+import { Select, chakraComponents } from "chakra-react-select"
+import { AisChevronSort } from "@akkurateio/icons"
 import { theme } from "@akkurateio/utils"
-import { AisArrowFromSelection, AisChevronSort } from "@akkurateio/icons"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -14,6 +19,7 @@ interface AcsSelectProps {
     value: string
     label: string
     isDisabled?: boolean
+    icon?: JSX.Element
   }[]
   handleChange: (e: string | number) => void
   value: string | number
@@ -37,7 +43,6 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
       props.handleChange(e.value)
     }
   }
-  console.log(focus)
 
   useEffect(() => {
     if (props.isInvalid) {
@@ -49,12 +54,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
 
   return (
     <FormControlLayout label={props.label}>
-      <Box
-        width={props.width ? props.width : "full"}
-        h={"full"}
-        backgroundColor={"white"}
-        rounded={"base"}
-      >
+      <Box width={"full"} h={"full"} backgroundColor={"white"} rounded={"base"}>
         <Select
           // menuPortalTarget={document.body}
           useBasicStyles={true}
@@ -105,7 +105,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               padding: "0.313rem 0",
               paddingRight: "0.313rem",
               paddingLeft: "0.313rem",
-              height: "248px",
+              maxHeight: "248px",
               border: "none",
             }),
             placeholder: (provided: any, state: any) => ({
@@ -159,6 +159,21 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
                   ml={2}
                 />
               </Box>
+            ),
+            NoOptionsMessage: (props) => (
+              <Box textAlign={"center"} {...props}>
+                <Text color={"neutral.300"} fontSize={"sm"}>
+                  Aucun résultat
+                </Text>
+              </Box>
+            ),
+            Option: ({ children, ...props }) => (
+              <chakraComponents.Option {...props}>
+                <HStack width={"full"}>
+                  {/*@ts-ignore*/}
+                  <Text>{children}</Text> {props.data.icon}
+                </HStack>
+              </chakraComponents.Option>
             ),
           }}
         />
