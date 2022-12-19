@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { InterfaceTree } from "./InterfaceTree"
-import { Box, Flex, HStack, Text } from "@chakra-ui/react"
+import { Box, color, Flex, HStack, Text } from "@chakra-ui/react"
 import { AisChevronDown, AisChevronRight, AisDot } from "@akkurateio/icons"
 
 interface IProps {
@@ -40,25 +40,27 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
           alignItems={"center"}
         >
           {showChildren ? (
-            <HStack
+            <Flex
               borderWidth={"1px"}
               boxSize={"24px"}
               backgroundColor={"primary.500"}
               rounded={"full"}
               justifyContent={"center"}
+              alignItems={"center"}
             >
-              <AisChevronDown boxSize={"16px"} />
-            </HStack>
+              <AisChevronDown color={"white"} boxSize={"16px"} />
+            </Flex>
           ) : (
-            <HStack
+            <Flex
               borderWidth={"1px"}
               boxSize={"24px"}
               backgroundColor={"neutral.200"}
               rounded={"full"}
               justifyContent={"center"}
+              alignItems={"center"}
             >
               <AisChevronRight boxSize={"16px"} />
-            </HStack>
+            </Flex>
           )}
           <Text color={showChildren ? "primary.500" : ""} onClick={handleClick}>
             {child.name}
@@ -73,15 +75,16 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
           spacing={2}
           alignItems={"center"}
         >
-          <HStack
+          <Flex
             borderWidth={"1px"}
             boxSize={"24px"}
             backgroundColor={"neutral.200"}
             rounded={"full"}
             justifyContent={"center"}
+            alignItems={"center"}
           >
             <AisDot boxSize={"16px"} />
-          </HStack>
+          </Flex>
           <Text onClick={handleClick}>{child.name}</Text>
         </HStack>
       )
