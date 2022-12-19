@@ -53,7 +53,7 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
                         max! / props.indicatorSteps! +
                         (max! / props.indicatorSteps!) * idx
                       }
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                     >
                       <Box
                         fontSize={props.fontSize || "sm"}
@@ -69,12 +69,12 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
                       value={max}
                       fontSize={props.fontSize || "sm"}
                       fontWeight={"normal"}
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                     >
                       {max}
                     </RangeSliderMark>
                     <RangeSliderMark
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                       fontSize={props.fontSize || "sm"}
                       value={min}
                     >
@@ -87,14 +87,14 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
                       fontSize={props.fontSize || "sm"}
                       key={idx}
                       value={max}
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                     >
                       {max}
                     </RangeSliderMark>
                     <RangeSliderMark
                       fontSize={props.fontSize || "sm"}
                       value={min}
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                     >
                       {min}
                     </RangeSliderMark>

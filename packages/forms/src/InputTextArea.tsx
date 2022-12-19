@@ -7,7 +7,6 @@ import {
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useRef } from "react"
 import FormControlLayout from "./FormControlLayout"
-import InputGroupWithShadow from "./InputGroupWithShadow"
 import { theme } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"

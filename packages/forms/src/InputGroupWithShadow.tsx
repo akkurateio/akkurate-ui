@@ -1,15 +1,10 @@
 import React, { useState } from "react"
 
 import {
-  Box,
   Flex,
-  FormControl,
   FormControlOptions,
-  FormErrorMessage,
-  FormHelperText,
   HTMLChakraProps,
   InputGroup,
-  ResponsiveValue,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { theme } from "@akkurateio/utils"
@@ -64,9 +59,7 @@ const FormControlLayout: React.FC<InputProps> = (props) => {
         focus ? `0 0 0 3px ${theme.colors.primary[500]}25 ` : undefined
       }
     >
-      <Flex w={"full"} h={"full"}>
-        {props.children}
-      </Flex>
+      {props.children}
     </InputGroup>
   )
 }

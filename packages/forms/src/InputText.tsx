@@ -48,7 +48,6 @@ export const AcsInputText: React.FC<InputProps> = ({
     } = props
     return rest
   }
-
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (handleChange) {
       handleChange(e.target.value)
@@ -63,12 +62,16 @@ export const AcsInputText: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow isInvalid={props.isInvalid}>
+      <InputGroupWithShadow
+        width={props.width}
+        height={props.height}
+        isInvalid={props.isInvalid}
+      >
         <Input
           border={"none"}
-          height={"38px"}
-          rounded={"4px"}
-          width={props.width ? props.width : "300px"}
+          height={"full"}
+          rounded={"base"}
+          width={"full"}
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
@@ -79,9 +82,9 @@ export const AcsInputText: React.FC<InputProps> = ({
           }}
           bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
-          pl={"11px"}
-          pt={"10.5px"}
-          pb={"10.5px"}
+          pl={"0.688rem"}
+          pt={"0.656rem"}
+          pb={"0.656rem"}
           fontSize={props.fontSize || "sm"}
           {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}

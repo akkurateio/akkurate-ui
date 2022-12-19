@@ -6,10 +6,10 @@ import FormControlLayout from "@akkurateio/forms/src/FormControlLayout"
 interface TreeOptions {
   tree: InterfaceTree[]
   item: {
-    id: string | number
-    name: string
+    id: string | number | null
+    name: string | null
   }
-  setItem: (item: { id: string | number; name: string }) => void
+  setItem: (item: { id: string | number | null; name: string | null }) => void
 }
 
 export const AcsTree: React.FC<TreeOptions> = ({

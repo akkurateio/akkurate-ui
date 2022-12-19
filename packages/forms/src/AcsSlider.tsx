@@ -52,7 +52,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
                         max! / props.indicatorSteps! +
                         (max! / props.indicatorSteps!) * idx
                       }
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                     >
                       <Box
                         fontSize={props.fontSize || "sm"}
@@ -68,7 +68,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
                       value={max}
                       fontSize={props.fontSize || "sm"}
                       fontWeight={"normal"}
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                     >
                       {max}
                     </SliderMark>
@@ -86,14 +86,14 @@ export const AcsSlider: React.FC<SliderProps> = ({
                       fontSize={props.fontSize || "sm"}
                       key={idx}
                       value={max}
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                     >
                       {max}
                     </SliderMark>
                     <SliderMark
                       fontSize={props.fontSize || "sm"}
                       value={min}
-                      marginTop={"32px"}
+                      marginTop={"2rem"}
                     >
                       {min}
                     </SliderMark>

@@ -7,6 +7,7 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
@@ -84,14 +85,14 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           rounded={"base"}
           paddingBottom={"0.656rem"}
           paddingTop={"0.656rem"}
-          paddingLeft={"36px"}
+          paddingLeft={"2.5rem"}
           bg={props.isInvalid ? "red.50" : "white"}
           onChange={(e) => handleChange(e.target.value)}
           border={"none"}
           width={"full"}
           height={"full"}
         />
-        <InputRightElement>
+        <InputRightElement height={"full"}>
           {props.value && props.value.length > 0 && (
             <IconButton
               aria-label="Close"

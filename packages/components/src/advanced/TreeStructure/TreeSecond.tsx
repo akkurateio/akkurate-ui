@@ -8,7 +8,7 @@ interface IProps {
     id: string | number | null
     name: string | null
   }
-  setItem: (item: { id: string | number; name: string }) => void
+  setItem: (item: { id: string | number | null; name: string | null }) => void
 }
 
 const TreeSecond: React.FC<IProps> = ({ tree, item, setItem }) => {
