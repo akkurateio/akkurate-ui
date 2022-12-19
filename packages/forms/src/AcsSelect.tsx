@@ -54,9 +54,14 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
 
   return (
     <FormControlLayout label={props.label}>
-      <Box width={"full"} h={"full"} backgroundColor={"white"} rounded={"base"}>
+      <Box
+        width={props.width ? props.width : "full"}
+        h={"full"}
+        backgroundColor={"white"}
+        rounded={"base"}
+      >
         <Select
-          // menuPortalTarget={document.body}
+          menuPortalTarget={document.body}
           useBasicStyles={true}
           // @ts-ignore
           options={props.options}

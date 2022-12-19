@@ -68,7 +68,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
       <Box width={"full"} h={"full"} backgroundColor={"white"} rounded={5}>
         <Select
           isMulti
-          // menuPortalTarget={document.body}
+          menuPortalTarget={document.body}
           useBasicStyles={true}
           // @ts-ignore
           options={props.options}
