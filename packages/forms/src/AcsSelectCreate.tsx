@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { ThemingProps } from "@chakra-ui/system"
-import { Box, FormControlOptions, HTMLChakraProps } from "@chakra-ui/react"
+import {
+  Box,
+  FormControlOptions,
+  HStack,
+  HTMLChakraProps,
+  Text,
+} from "@chakra-ui/react"
 import FormControlLayout from "./FormControlLayout"
-import { CreatableSelect } from "chakra-react-select"
+import { chakraComponents, CreatableSelect } from "chakra-react-select"
+import { AisChevronSort, AisClose } from "@akkurateio/icons"
+import { theme } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -31,10 +39,20 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
     { value: string | number; label: string }[]
   >([])
 
+  const [focus, setFocus] = useState(false)
+  const [notValid, setNotValid] = useState(false)
+
   const handleChange = (value: any) => {
     setCurrentValues(value)
     props.handleChange(value.map((v: any) => v.value))
   }
+  useEffect(() => {
+    if (props.isInvalid) {
+      setNotValid(true)
+    } else {
+      setNotValid(false)
+    }
+  }, [notValid, props.isInvalid])
 
   useEffect(() => {
     if (props.options) {
@@ -61,12 +79,6 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
           useBasicStyles={true}
           // @ts-ignore
           options={props.options}
-          styles={{
-            menuPortal: (base) => ({
-              ...base,
-              zIndex: 9999,
-            }),
-          }}
           value={currentValues}
           closeMenuOnSelect={false}
           selectedOptionStyle={"check"}
@@ -76,6 +88,137 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
           }
           onChange={(e) => {
             handleChange(e.map((option) => option))
+          }}
+          styles={{
+            menuPortal: (base) => ({
+              ...base,
+              zIndex: 9999,
+            }),
+          }}
+          chakraStyles={{
+            control: (base, state) => ({
+              ...base,
+              rounded: "base",
+              padding: "0 0",
+              backgroundColor: props.isInvalid ? "red.50" : "white",
+              color: props.isInvalid ? "red.500" : "black",
+              outline: "none",
+              fontSize: props.fontSize || "sm",
+              border: "none",
+              _hover: {
+                borderColor: props.isInvalid ? "red.500" : "gray.400",
+              },
+            }),
+            option: (provided: any, state: any) => ({
+              ...provided,
+              backgroundColor: state.isSelected ? "primary.500" : "primary.100",
+              margin: "0.063rem 0",
+              color: state.isSelected ? "white" : "primary.500",
+              rounded: "sm",
+              width: "full",
+              height: 9,
+              fontSize: props.fontSize || "sm",
+              padding: 0,
+              paddingLeft: "0.255rem",
+              border: "none",
+            }),
+            menuList: (provided: any, state: any) => ({
+              ...provided,
+              padding: "0.313rem 0",
+              paddingRight: "0.313rem",
+              paddingLeft: "0.313rem",
+              maxHeight: "248px",
+              border: "none",
+            }),
+            placeholder: (provided: any, state: any) => ({
+              ...provided,
+              padding: "0 0",
+              margin: "0",
+              fontSize: props.fontSize || "sm",
+            }),
+            valueContainer: (provided: any, state: any) => ({
+              ...provided,
+              padding: "0 0",
+              paddingLeft: "0.688rem",
+              fontSize: props.fontSize || "sm",
+            }),
+            singleValue: (provided: any, state: any) => ({
+              ...provided,
+              margin: "0 0",
+              fontSize: props.fontSize || "sm",
+            }),
+            inputContainer: (provided: any, state: any) => ({
+              ...provided,
+              padding: "0 0",
+              margin: "0",
+              fontSize: props.fontSize || "sm",
+            }),
+            container: (provided: any, state: any) => ({
+              ...provided,
+              boxShadow: focus
+                ? `0 0 0 3px ${theme.colors.primary[500]}25 `
+                : undefined,
+              rounded: "base",
+              borderWidth: "1px",
+              borderColor: props.isInvalid ? "red.500" : "gray.300",
+              _hover: {
+                borderColor: props.isInvalid
+                  ? "red.500"
+                  : focus
+                  ? "primary.500"
+                  : "gray.400",
+              },
+            }),
+          }}
+          components={{
+            DropdownIndicator: (props) => (
+              <Box {...props} marginRight={"0.5rem"}>
+                <AisChevronSort
+                  color={
+                    notValid ? "red.500" : focus ? "primary.500" : "neutral.500"
+                  }
+                  boxSize={"16px"}
+                  ml={2}
+                />
+              </Box>
+            ),
+            NoOptionsMessage: (props) => (
+              <Box textAlign={"center"} {...props}>
+                <Text color={"neutral.300"} fontSize={"sm"}>
+                  Aucun résultat
+                </Text>
+              </Box>
+            ),
+            Option: ({ children, ...props }) => (
+              <chakraComponents.Option {...props}>
+                <HStack width={"full"}>
+                  {/*@ts-ignore*/}
+                  <Text>{children}</Text> {props.data.icon}
+                </HStack>
+              </chakraComponents.Option>
+            ),
+            ClearIndicator: (props) => {
+              const {
+                innerProps: { ref, ...restInnerProps },
+              } = props
+              return (
+                <Box
+                  cursor={"pointer"}
+                  ref={ref}
+                  {...props}
+                  {...restInnerProps}
+                  p={2}
+                >
+                  <AisClose
+                    rounded={"full"}
+                    backgroundColor={"neutral.500"}
+                    color={"white"}
+                    boxSize={"16px"}
+                    ml={2}
+                  />
+                </Box>
+              )
+            },
           }}
         />
       </Box>
