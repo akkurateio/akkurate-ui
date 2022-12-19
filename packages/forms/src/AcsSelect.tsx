@@ -67,6 +67,9 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               color: props.isInvalid ? "red.500" : "black",
               outline: "none",
               fontSize: props.fontSize || "sm",
+              _hover: {
+                borderColor: props.isInvalid ? "red.500" : "gray.400",
+              },
             }),
             option: (provided: any, state: any) => ({
               ...provided,
@@ -117,6 +120,12 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
                 : undefined,
               rounded: "base",
               borderColor: props.isInvalid ? "red.500" : "gray.300",
+              _hover: {
+                borderColor: props.isInvalid ? "red.500" : "gray.400",
+              },
+            }),
+            dropdownIndicator: (provided: any, state: any) => ({
+              ...provided,
             }),
           }}
         />
