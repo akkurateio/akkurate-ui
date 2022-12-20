@@ -38,6 +38,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           </IconButton>
         )}
         <IconButton
+          pr={"0.25rem"}
           variant={"ghost"}
           boxSize={6}
           disabled={current === 1}
@@ -48,7 +49,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           <AisChevronLeft boxSize={"24px"} />
         </IconButton>
 
-        <HStack spacing={0.5} alignItems={"center"}>
+        <HStack spacing={1} alignItems={"center"}>
           {current > 4 && current >= max && (
             <PageBtn
               page={current - 4}
@@ -109,6 +110,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           )}
         </HStack>
         <IconButton
+          pl={"0.25rem"}
           variant={"ghost"}
           disabled={current === max}
           size={"sm"}

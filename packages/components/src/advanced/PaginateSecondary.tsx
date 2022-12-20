@@ -79,32 +79,33 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
         </Button>
       )}
 
-      <HStack alignItems={"center"} spacing={1}>
-        <Text>Page</Text>
-        <Text minW={10} textAlign={"right"}>
-          {current}
-        </Text>
+      <HStack m={0} alignItems={"center"}>
+        <Text mr={"2rem"}>Page</Text>
+        <Text textAlign={"right"}>{current}</Text>
 
         <Popover placement={"bottom-end"}>
           {({ isOpen, onClose }) => (
             <>
               <PopoverTrigger>
-                <Button size={"xs"} variant={"ghost"}>
+                <Button p={0} pl={0.5} size={"xs"} variant={"ghost"}>
                   <AisChevronSort boxSize={"24px"} />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent width={"fit-content"}>
-                <PopoverBody m={0} p={0.5} maxH={"240px"} overflowY={"scroll"}>
-                  <VStack spacing={0.5} mr={0.5}>
+              <PopoverContent mr={1.5} width={"82px"}>
+                <PopoverBody p={1.5} maxH={"260px"} overflowY={"scroll"}>
+                  <VStack spacing={0.5}>
                     {[...Array(max)].map((_, i) => (
                       <PageBtn
+                        width={"60px"}
+                        height={"38px"}
+                        fontSize={"sm"}
                         key={i}
                         action={() => {
                           handleChangePage(i + 1)
                           onClose()
                         }}
                         page={i + 1}
-                        current={i + 1 === current ? true : false}
+                        current={i + 1 === current}
                       />
                     ))}
                   </VStack>
@@ -113,7 +114,7 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
             </>
           )}
         </Popover>
-        <Text>sur {max}</Text>
+        <Text paddingLeft={0.5}>sur {max}</Text>
       </HStack>
 
       {withBtns && (
