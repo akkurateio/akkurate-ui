@@ -3,11 +3,11 @@ import {
   HTMLChakraProps,
   InputGroup,
   Textarea,
+  useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useRef } from "react"
 import FormControlLayout from "./FormControlLayout"
-import { theme } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -50,6 +50,7 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
     } = props
     return rest
   }
+  const theme = useTheme()
 
   const [focus, setFocus] = React.useState(false)
 

@@ -6,11 +6,11 @@ import {
   HStack,
   HTMLChakraProps,
   Text,
+  useTheme,
 } from "@chakra-ui/react"
 import FormControlLayout from "./FormControlLayout"
 import { chakraComponents, CreatableSelect } from "chakra-react-select"
 import { AisChevronSort, AisClose } from "@akkurateio/icons"
-import { theme } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -31,6 +31,7 @@ interface SelectProps
     FormControlOptions {}
 
 export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
+  const theme = useTheme()
   const [valuesArr, setValuesArr] = useState<
     { value: string | number; label: string }[]
   >([])

@@ -6,11 +6,11 @@ import {
   HTMLChakraProps,
   IconButton,
   Text,
+  useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import FormControlLayout from "./FormControlLayout"
 import { chakraComponents, Select } from "chakra-react-select"
-import { theme } from "@akkurateio/utils"
 import { AisChevronSort, AisClose } from "@akkurateio/icons"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -34,6 +34,7 @@ interface SelectProps
     FormControlOptions {}
 
 export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
+  const theme = useTheme()
   const [currentValues, setCurrentValues] = useState<any>([])
   const [focus, setFocus] = useState(false)
   const [notValid, setNotValid] = useState(false)
