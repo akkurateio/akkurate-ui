@@ -130,11 +130,6 @@ export const AcsInputNumber: React.FC<InputProps> = ({
           <Input
             {...input}
             variant={props.variant}
-            _invalid={{
-              borderColor: "red.500",
-              bg: "red.50",
-              color: "red.500",
-            }}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
             textAlign={"center"}
@@ -142,7 +137,6 @@ export const AcsInputNumber: React.FC<InputProps> = ({
             border={"none"}
             height={"full"}
             rounded={"base"}
-            bg={props.bg ? props.bg : "white"}
           />
           <InputRightElement
             height={"full"}

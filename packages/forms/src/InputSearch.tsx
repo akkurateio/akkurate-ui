@@ -78,7 +78,6 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
-          focusBorderColor={props.isInvalid ? "error.500" : "primary.500"}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           fontSize={props.fontSize || "sm"}
@@ -86,7 +85,6 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           paddingBottom={"0.656rem"}
           paddingTop={"0.656rem"}
           paddingLeft={"2.5rem"}
-          bg={props.isInvalid ? "red.50" : "white"}
           onChange={(e) => handleChange(e.target.value)}
           border={"none"}
           width={"full"}

@@ -79,12 +79,6 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           type={showPassword ? "text" : "password"}
           {...propsForInput()}
           variant={props.variant}
-          focusBorderColor={props.isInvalid ? "red.500" : "primary.700"}
-          _invalid={{
-            borderColor: "red.500",
-            bg: "red.50",
-            color: "red.500",
-          }}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           fontSize={props.fontSize || "sm"}
@@ -92,7 +86,6 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           pt={"0.656rem"}
           pb={"0.656rem"}
           pr={"2.5rem"}
-          bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
           defaultValue={props.defaultValue}
           {...(register ? { ...register(props.name) } : null)}

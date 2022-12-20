@@ -15,9 +15,8 @@ import {
   PopoverTrigger,
   SimpleGrid,
   Tooltip,
+  useTheme,
 } from "@chakra-ui/react"
-// @ts-ignore
-import { theme } from "@akkurateio/utils"
 // @ts-ignore
 import isoCountriesLanguages from "iso-countries-languages"
 import { countries, Country } from "countries-list"
@@ -61,6 +60,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {
+  const theme = useTheme()
   const [isOpen, setIsOpen] = useState(false)
   const [country, setCountry] = useState<string>(defaultCountry)
   const [focus, setFocus] = useState(false)

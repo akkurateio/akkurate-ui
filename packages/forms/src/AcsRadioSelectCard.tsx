@@ -13,11 +13,11 @@ import {
   IconButton,
   SimpleGrid,
   Stack,
+  useTheme,
 } from "@chakra-ui/react"
 import { ResponsiveValue, SystemProps, ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
-import { theme } from "@akkurateio/utils"
 
 type Omitted =
   | "disabled"
@@ -59,6 +59,8 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
       props
     return rest
   }
+
+  const theme = useTheme()
 
   const [currentId, setCurrentId] = useState<number | string | undefined>(
     selectedCardId ? selectedCardId : undefined,

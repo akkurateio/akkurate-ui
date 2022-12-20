@@ -75,12 +75,6 @@ export const AcsInputText: React.FC<InputProps> = ({
           type={"text"}
           {...propsForInput()}
           variant={props.variant}
-          _invalid={{
-            borderColor: "error.500",
-            bg: "red.50",
-            color: "error.500",
-          }}
-          bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
           pl={"0.688rem"}
           pt={"0.656rem"}

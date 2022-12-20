@@ -5,9 +5,9 @@ import {
   FormControlOptions,
   HTMLChakraProps,
   InputGroup,
+  useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { theme } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -27,20 +27,8 @@ interface InputProps
     FormControlOptions {}
 
 const FormControlLayout: React.FC<InputProps> = (props) => {
-  const propsForInput = () => {
-    const {
-      label,
-      hint,
-      error,
-      isRequired,
-      isDisabled,
-      isInvalid,
-      isReadOnly,
-      size,
-      ...rest
-    } = props
-    return rest
-  }
+  const theme = useTheme()
+
   const [focus, setFocus] = useState(false)
 
   return (
@@ -52,6 +40,8 @@ const FormControlLayout: React.FC<InputProps> = (props) => {
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       borderWidth={"1px"}
+      backgroundColor={props.isInvalid ? "red.50" : "white"}
+      color={props.isInvalid ? "red.500" : "gray.500"}
       borderColor={
         props.isInvalid ? "error.500" : focus ? "primary.500" : "neutral.300"
       }
