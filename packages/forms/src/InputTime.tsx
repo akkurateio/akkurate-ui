@@ -17,6 +17,7 @@ import { ThemingProps } from "@chakra-ui/system"
 import { MinuteStep } from "../types"
 import FormControlLayout from "./FormControlLayout"
 import React, { useState } from "react"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -71,6 +72,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
 
   const [hourValue, setHourValue] = useState("00")
   const [minuteValue, setMinuteValue] = useState("00")
+  const [focus, setFocus] = useState(false)
 
   const handleHourChange = (e: any) => {
     setHourValue(e.target.value)
@@ -101,22 +103,27 @@ export const AcsInputTime: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size} position={"relative"} width={props.width}>
+      <InputGroupWithShadow
+        isInvalid={props.isInvalid}
+        position={"relative"}
+        width={props.width}
+      >
         <Input
           type={"time"}
           onChange={handleManualTimeChange}
           step={minuteStep ? minuteStep * 60 : 60}
           {...propsForInput()}
-          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
-          _invalid={{
-            borderColor: "error.600",
-            bg: "error.100",
-            color: "error.600",
-          }}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          color={props.isInvalid ? "red.500" : undefined}
+          border={"none"}
+          height={"full"}
+          pl={"0.688rem"}
+          pt={"0.656rem"}
+          pb={"0.656rem"}
+          rounded={"base"}
+          width={"full"}
           fontSize={"sm"}
-          rounded={"4px"}
-          p={2.5}
-          bg={props.bg ? props.bg : "white"}
         />
         <Flex
           top={0}
@@ -131,31 +138,39 @@ export const AcsInputTime: React.FC<InputProps> = ({
             <PopoverTrigger>
               <Button
                 variant={"unstyled"}
-                color={"primary.500"}
+                backgroundColor={props.isInvalid ? "red.50" : "white"}
+                color={
+                  props.isInvalid
+                    ? "red.500"
+                    : focus
+                    ? "primary.500"
+                    : "neutral.500"
+                }
                 bg={"white"}
                 w={"32px"}
                 h={"32px"}
                 _hover={{ color: "primary.700" }}
-                _active={{ color: "primary.700" }}
+                _active={{ color: "primary.500" }}
                 zIndex={1}
               >
                 <AisTime boxSize={"24px"} />
               </Button>
             </PopoverTrigger>
-            <PopoverContent overflow={"hidden"} w={44} h={72}>
-              <PopoverBody overflow={"hidden"} bg={"white"}>
+            <PopoverContent overflow={"hidden"} w={"9.813rem"} h={"15.625rem"}>
+              <PopoverBody p={1.5} overflow={"hidden"} bg={"white"}>
                 <SimpleGrid
                   columns={2}
-                  spacing={4}
+                  spacing={"0.313rem"}
                   h={"full"}
                   overflow={"hidden"}
                 >
-                  <Box pr={2} h={"full"} overflowY={"auto"}>
-                    <SimpleGrid spacingY={0.5}>
+                  <Box h={"full"} overflowY={"auto"}>
+                    <SimpleGrid>
                       {hourOptions.map((h) => (
                         <Button
-                          size={"sm"}
+                          mb={0.5}
                           fontWeight={"normal"}
+                          fontSize={"sm"}
                           value={h}
                           bg={h === hourValue ? "primary.500" : "primary.100"}
                           color={h === hourValue ? "white" : "primary.500"}
@@ -163,14 +178,15 @@ export const AcsInputTime: React.FC<InputProps> = ({
                             bg: "primary.300",
                             color: "white",
                           }}
+                          p={0}
                           _active={{
                             bg: "primary.600",
                           }}
                           key={h}
                           onClick={handleHourChange}
-                          width={"3rem"}
-                          height={"2rem"}
-                          borderRadius={"2px"}
+                          width={"3.75rem"}
+                          height={"2.375rem"}
+                          borderRadius={"sm"}
                           isDisabled={
                             disabledHours && disabledHours.includes(+h)
                           }
@@ -180,11 +196,13 @@ export const AcsInputTime: React.FC<InputProps> = ({
                       ))}
                     </SimpleGrid>
                   </Box>
-                  <Box pr={2} h={"full"} overflowY={"auto"}>
-                    <SimpleGrid spacingY={0.5}>
+                  <Box h={"full"} overflowY={"auto"}>
+                    <SimpleGrid>
                       {minuteOptions.map((m) => (
                         <Button
-                          size={"sm"}
+                          p={0}
+                          mb={0.5}
+                          fontSize={"sm"}
                           fontWeight={"normal"}
                           value={m}
                           bg={m === minuteValue ? "primary.500" : "primary.100"}
@@ -197,9 +215,9 @@ export const AcsInputTime: React.FC<InputProps> = ({
                             bg: "primary.600",
                           }}
                           key={m}
-                          width={"3rem"}
-                          height={"2rem"}
-                          borderRadius={"2px"}
+                          width={"3.75rem"}
+                          height={"2.375rem"}
+                          borderRadius={"sm"}
                           onClick={handleMinuteChange}
                           isDisabled={
                             disabledMinutes && disabledMinutes.includes(+m)
@@ -215,7 +233,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
             </PopoverContent>
           </Popover>
         </Flex>
-      </InputGroup>
+      </InputGroupWithShadow>
     </FormControlLayout>
   )
 }
