@@ -6,10 +6,15 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  Box,
   Button,
+  HStack,
+  IconButton,
+  ModalHeader,
   ThemingProps,
 } from "@chakra-ui/react"
 import React, { useRef } from "react"
+import { AisClose } from "@akkurateio/icons"
 
 interface ModalAlertOptions {
   body: JSX.Element
@@ -34,6 +39,7 @@ interface AcsModalAlertProps
 export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
   isOpen,
   onClose,
+  hasCloseBtn,
   title,
   header,
   body,
@@ -58,27 +64,60 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
       size={size}
     >
       <AlertDialogOverlay>
-        <AlertDialogContent {...props}>
-          {title && !header && (
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              {title}
-            </AlertDialogHeader>
-          )}
+        <AlertDialogContent p={"1rem"} position={"relative"} {...props}>
+          <HStack justifyContent={"space-between"} w={"full"} mb={"1rem"}>
+            {title && !header && (
+              <ModalHeader p={0} fontWeight={"md"} fontSize={"md"}>
+                {title}
+              </ModalHeader>
+            )}
+            {hasCloseBtn && title && (
+              <IconButton
+                aria-label="Close"
+                icon={<AisClose boxSize={"24px"} />}
+                color={"neutral.500"}
+                onClick={onClose}
+                size={"xs"}
+                variant={"ghost"}
+                cursor={"pointer"}
+              />
+            )}
+            {hasCloseBtn && !title && (
+              <IconButton
+                position={"absolute"}
+                right={"1rem"}
+                top={"1rem"}
+                aria-label="Close"
+                icon={<AisClose boxSize={"24px"} />}
+                color={"neutral.500"}
+                onClick={onClose}
+                size={"xs"}
+                variant={"ghost"}
+                cursor={"pointer"}
+              />
+            )}
+          </HStack>
           {header && (
-            <AlertDialogHeader fontWeight={"md"} fontSize={"md"}>
+            <ModalHeader p={0} mb={"1rem"} fontWeight={"md"} fontSize={"md"}>
               {header}
-            </AlertDialogHeader>
+            </ModalHeader>
           )}
 
-          <AlertDialogBody>{body}</AlertDialogBody>
+          <AlertDialogBody p={0} mt={"1.5rem"} mb={"1.5rem"} fontSize={"sm"}>
+            {body}
+          </AlertDialogBody>
 
           {footer ? (
-            <AlertDialogFooter>{footer}</AlertDialogFooter>
+            <AlertDialogFooter p={0} mt={"1rem"}>
+              {footer}
+            </AlertDialogFooter>
           ) : (
             <AlertDialogFooter
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
+              p={0}
+              mt={"1rem"}
             >
               <Button
                 colorScheme={"primary"}
