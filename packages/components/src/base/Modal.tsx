@@ -1,6 +1,7 @@
 import {
   Flex,
   HStack,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -62,11 +63,14 @@ export const AcsModal: React.FC<AcsModalProps> = ({
             </ModalHeader>
           )}
           {hasCloseBtn && (
-            <AisClose
+            <IconButton
+              aria-label="Close"
+              icon={<AisClose boxSize={"24px"} />}
               color={"neutral.500"}
               onClick={onClose}
+              size={"xs"}
+              variant={"ghost"}
               cursor={"pointer"}
-              boxSize={"24px"}
             />
           )}
         </HStack>
