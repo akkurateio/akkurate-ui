@@ -41,7 +41,7 @@ const FormControlLayout: React.FC<InputProps> = (props) => {
       onBlur={() => setFocus(false)}
       borderWidth={"1px"}
       backgroundColor={props.isInvalid ? "red.50" : "white"}
-      color={props.isInvalid ? "red.500" : "gray.500"}
+      color={props.isInvalid ? "red.500" : "black"}
       borderColor={
         props.isInvalid ? "error.500" : focus ? "primary.500" : "neutral.300"
       }
