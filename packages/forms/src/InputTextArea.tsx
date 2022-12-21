@@ -14,8 +14,6 @@ type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 interface InputOptions {
   handleChange: (e: string) => void
   value?: string
-  focusBorderColor?: string
-  errorBorderColor?: string
   autoResize?: boolean
   htmlSize?: number
   label?: string

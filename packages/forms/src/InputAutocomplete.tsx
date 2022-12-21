@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import FormControlLayout from "./FormControlLayout"
+import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -55,20 +56,18 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
       isInvalid={isInvalid}
       isReadOnly={isReadOnly}
     >
-      <InputGroup size={size}>
+      <InputGroupWithShadow isInvalid={isInvalid} size={size}>
         <Input
           type={"text"}
           {...props}
-          focusBorderColor={isInvalid ? "error.700" : "primary.700"}
-          _invalid={{
-            borderColor: "error.600",
-            bg: "error.100",
-            color: "error.600",
-          }}
-          fontSize={"sm"}
-          rounded={"4px"}
-          p={2.5}
-          bg={props.bg ? props.bg : "white"}
+          border={"none"}
+          height={"full"}
+          rounded={"base"}
+          width={"full"}
+          pl={"0.688rem"}
+          pt={"0.656rem"}
+          pb={"0.656rem"}
+          fontSize={props.fontSize || "sm"}
           onChange={(e) => {
             if (e.target.value.length >= 3) {
               setIsVisible(true)
@@ -76,7 +75,7 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
             handleChange(e.target.value)
           }}
         />
-      </InputGroup>
+      </InputGroupWithShadow>
 
       {isVisible &&
         resultsArray.length > 0 &&

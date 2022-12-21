@@ -14,9 +14,6 @@ type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 interface InputOptions {
   handleChange?: (e: string) => void
   value?: string
-  focusBorderColor?: string
-  errorBorderColor?: string
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string
@@ -35,19 +32,10 @@ export const AcsInputText: React.FC<InputProps> = ({
   ...props
 }) => {
   const propsForInput = () => {
-    const {
-      label,
-      hint,
-      error,
-      isRequired,
-      isDisabled,
-      isInvalid,
-      isReadOnly,
-      size,
-      ...rest
-    } = props
+    const { label, error, isRequired, isDisabled, isInvalid, ...rest } = props
     return rest
   }
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (handleChange) {
       handleChange(e.target.value)
