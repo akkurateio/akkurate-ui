@@ -1,6 +1,4 @@
 
-export * from "./listIcons"
-
 export * from "./icons/AisAdd"
 
 export * from "./listIcons"

@@ -22,9 +22,9 @@ const main = async () => {
   for (const SVGIcon of allSVGIcons) {
     // Optimize SVG
 
-    if (SVGIcon !== '.DS_Store') {
+    if (SVGIcon !== ".DS_Store") {
       const result = optimize(
-          readFileSync(path.join(SVG_DIR, SVGIcon), "utf8"),
+        readFileSync(path.join(SVG_DIR, SVGIcon), "utf8"),
       ) as OptimizedSvg
 
       // Make object with SVG data
@@ -41,18 +41,15 @@ const main = async () => {
       const basename = path.basename(SVGIcon, ".svg")
 
       newSVGToString = newSVGToString
-          .replace(/fill="#000"/g, '')
-          .replace(/fill="black"/g, '')
-          .replace(/fill-rule/g, "fillRule")
-          .replace(/clip-rule/g, "clipRule")
+        .replace(/fill="#000"/g, "")
+        .replace(/fill="black"/g, "")
+        .replace(/fill-rule/g, "fillRule")
+        .replace(/clip-rule/g, "clipRule")
 
       // Create icon file
       writeFileSync(
-          path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
-          templateCreateIcon(
-              newSVGToString,
-              basename,
-          ),
+        path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
+        templateCreateIcon(newSVGToString, basename),
       )
 
       // Add to index file
@@ -108,9 +105,9 @@ import { createIcon } from "@chakra-ui/icon"
 export const ${name} = createIcon({
   displayName: "${name}",
   viewBox: "0 0 32 32",
-  
   defaultProps: {
 		fill: "currentColor",
+    boxSize: "24px",
 	},
   path: (
     <>
@@ -160,7 +157,7 @@ const allReplace = (string: string, replacements: IReplacement[]) => {
   let str: string = string
 
   const treatment = replacements.map((replacement) => {
-    str.replace(new RegExp(replacement.pattern, 'g'), replacement.replacement);
+    str.replace(new RegExp(replacement.pattern, "g"), replacement.replacement)
   })
 
   return treatment

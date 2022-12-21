@@ -5,9 +5,9 @@ import { createIcon } from "@chakra-ui/icon"
 export const AisTranslate = createIcon({
   displayName: "AisTranslate",
   viewBox: "0 0 32 32",
-  
   defaultProps: {
 		fill: "currentColor",
+    boxSize: "24px",
 	},
   path: (
     <>
