@@ -1,7 +1,7 @@
-import React from "react"
-import { Box, HStack, IconButton, Image, Text } from "@chakra-ui/react"
-import { defaultStyles, FileIcon } from "react-file-icon"
 import { AisTrash } from "@akkurateio/icons"
+import { Box, HStack, IconButton, Image, Text } from "@chakra-ui/react"
+import React from "react"
+import { defaultStyles, FileIcon } from "react-file-icon"
 // @ts-ignore
 import { formatBytes } from "@akkurateio/utils"
 

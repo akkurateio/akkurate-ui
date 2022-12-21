@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from "react"
-import {
-  Box,
-  ControlBoxOptions,
-  FormControlOptions,
-  HTMLChakraProps,
-  omitThemingProps,
-} from "@chakra-ui/react"
+import { Box, ControlBoxOptions, HTMLChakraProps } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
+import React, { useEffect, useState } from "react"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 

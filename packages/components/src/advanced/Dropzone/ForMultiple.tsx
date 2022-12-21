@@ -1,6 +1,6 @@
-import React from "react"
-import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react"
 import { AisClose } from "@akkurateio/icons"
+import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react"
+import React from "react"
 // @ts-ignore
 import { formatBytes } from "@akkurateio/utils"
 import { defaultStyles, FileIcon } from "react-file-icon"

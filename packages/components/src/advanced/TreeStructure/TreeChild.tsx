@@ -1,7 +1,7 @@
+import { AisChevronDown, AisChevronRight, AisDot } from "@akkurateio/icons"
+import { Box, Flex, HStack, Text } from "@chakra-ui/react"
 import React, { useState } from "react"
 import { InterfaceTree } from "./InterfaceTree"
-import { Box, color, Flex, HStack, Text } from "@chakra-ui/react"
-import { AisChevronDown, AisChevronRight, AisDot } from "@akkurateio/icons"
 
 interface IProps {
   child: {

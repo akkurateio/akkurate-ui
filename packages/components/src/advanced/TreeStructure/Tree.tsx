@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
+import FormControlLayout from "@akkurateio/forms/src/FormControlLayout"
+import React from "react"
 import { InterfaceTree } from "./InterfaceTree"
 import TreeSecond from "./TreeSecond"
-import FormControlLayout from "@akkurateio/forms/src/FormControlLayout"
 
 interface TreeOptions {
   tree: InterfaceTree[]

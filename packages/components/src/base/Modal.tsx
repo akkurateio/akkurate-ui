@@ -1,10 +1,9 @@
+import { AisClose } from "@akkurateio/icons"
 import {
-  Flex,
   HStack,
   IconButton,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalContentProps,
   ModalFooter,
@@ -13,7 +12,6 @@ import {
   ThemingProps,
 } from "@chakra-ui/react"
 import React from "react"
-import { AisClose } from "@akkurateio/icons"
 
 interface ModalOptions {
   body: JSX.Element

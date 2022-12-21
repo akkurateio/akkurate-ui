@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { InterfaceTree } from "./InterfaceTree"
 import TreeChild from "./TreeChild"
 

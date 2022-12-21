@@ -1,12 +1,11 @@
+import { AisClose } from "@akkurateio/icons"
 import {
   AlertDescriptionProps,
   AlertDialog,
   AlertDialogBody,
   AlertDialogContent,
   AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogOverlay,
-  Box,
   Button,
   HStack,
   IconButton,
@@ -14,7 +13,6 @@ import {
   ThemingProps,
 } from "@chakra-ui/react"
 import React, { useRef } from "react"
-import { AisClose } from "@akkurateio/icons"
 
 interface ModalAlertOptions {
   body: JSX.Element
