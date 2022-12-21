@@ -5,7 +5,6 @@ import {
   HStack,
   HTMLChakraProps,
   Input,
-  InputGroup,
   InputLeftElement,
   InputRightElement,
   useNumberInput,
@@ -109,7 +108,11 @@ export const AcsInputNumber: React.FC<InputProps> = ({
   return (
     <FormControlLayout {...props}>
       <HStack>
-        <InputGroupWithShadow isInvalid={props.isInvalid}>
+        <InputGroupWithShadow
+          isInvalid={props.isInvalid}
+          width={props.width}
+          height={height}
+        >
           <InputLeftElement
             color={
               props.isInvalid

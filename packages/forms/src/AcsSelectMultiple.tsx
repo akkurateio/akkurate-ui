@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react"
+import { AisChevronSort, AisClose } from "@akkurateio/icons"
 import {
   Box,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
-  IconButton,
   Text,
   useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import FormControlLayout from "./FormControlLayout"
 import { chakraComponents, Select } from "chakra-react-select"
-import { AisChevronSort, AisClose } from "@akkurateio/icons"
+import React, { useEffect, useState } from "react"
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 

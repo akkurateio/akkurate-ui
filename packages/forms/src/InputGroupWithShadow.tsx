@@ -1,40 +1,21 @@
+import { InputGroup, useTheme } from "@chakra-ui/react"
 import React, { useState } from "react"
 
-import {
-  Flex,
-  FormControlOptions,
-  HTMLChakraProps,
-  InputGroup,
-  useTheme,
-} from "@chakra-ui/react"
-import { ThemingProps } from "@chakra-ui/system"
-
-type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
-
-interface InputOptions {
-  focusBorderColor?: string
-  errorBorderColor?: string
-  htmlSize?: number
-  label?: string
-  error?: string
-  hint?: string
+interface IProps {
+  children: React.ReactNode
+  width: any
+  height: any
+  isInvalid: any
 }
 
-interface InputProps
-  extends Omit<HTMLChakraProps<"input">, Omitted>,
-    InputOptions,
-    ThemingProps<"Input">,
-    FormControlOptions {}
-
-const FormControlLayout: React.FC<InputProps> = (props) => {
+const FormControlLayout: React.FC<IProps> = (props) => {
   const theme = useTheme()
 
   const [focus, setFocus] = useState(false)
 
   return (
     <InputGroup
-      size={props.size}
-      height={"38px"}
+      height={props.height ? props.height : "38px"}
       width={props.width ? props.width : "full"}
       rounded={"base"}
       onFocus={() => setFocus(true)}

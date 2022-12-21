@@ -1,18 +1,10 @@
-import {
-  AisCheckmark,
-  AisRadioButton,
-  AisRadioButtonChecked,
-} from "@akkurateio/icons"
-import { StackDirection } from "@chakra-ui/layout"
+import { AisRadioButton, AisRadioButtonChecked } from "@akkurateio/icons"
 import {
   Box,
-  Flex,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
-  IconButton,
   SimpleGrid,
-  Stack,
   useTheme,
 } from "@chakra-ui/react"
 import { ResponsiveValue, SystemProps, ThemingProps } from "@chakra-ui/system"
@@ -113,7 +105,6 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
                 <AisRadioButton boxSize={"24px"} />
               )}
             </Box>
-            )
           </HStack>
         ))}
       </SimpleGrid>

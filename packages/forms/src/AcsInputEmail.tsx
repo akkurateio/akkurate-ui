@@ -1,9 +1,4 @@
-import {
-  FormControlOptions,
-  HTMLChakraProps,
-  Input,
-  InputGroup,
-} from "@chakra-ui/react"
+import { FormControlOptions, HTMLChakraProps, Input } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
 import FormControlLayout from "./FormControlLayout"
@@ -67,7 +62,6 @@ export const AcsInputEmail: React.FC<InputProps> = ({
         isInvalid={props.isInvalid}
         width={props.width}
         height={props.height}
-        size={props.size}
       >
         <Input
           border={"none"}

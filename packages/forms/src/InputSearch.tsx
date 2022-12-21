@@ -4,10 +4,8 @@ import {
   HTMLChakraProps,
   IconButton,
   Input,
-  InputGroup,
   InputLeftElement,
   InputRightElement,
-  VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
@@ -56,7 +54,11 @@ export const AcsInputSearch: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow width={props.width} size={props.size}>
+      <InputGroupWithShadow
+        width={props.width}
+        height={props.height}
+        isInvalid={props.isInvalid}
+      >
         <InputLeftElement
           backgroundColor={props.isInvalid ? "red.50" : "white"}
           width={8}

@@ -6,7 +6,6 @@ import {
   FormControlOptions,
   HTMLChakraProps,
   Input,
-  InputGroup,
   InputLeftElement,
   InputRightElement,
   Popover,
@@ -91,7 +90,11 @@ export const AcsInputColor: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow isInvalid={props.isInvalid}>
+      <InputGroupWithShadow
+        isInvalid={props.isInvalid}
+        height={height}
+        width={props.width}
+      >
         <InputLeftElement width={"fit-content"} height={"38px"}>
           <Box
             ml={"4px"}

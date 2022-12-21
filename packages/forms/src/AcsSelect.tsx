@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { AisChevronSort } from "@akkurateio/icons"
 import {
   Box,
   FormControlOptions,
@@ -8,9 +8,9 @@ import {
   useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
+import { chakraComponents, Select } from "chakra-react-select"
+import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
-import { Select, chakraComponents } from "chakra-react-select"
-import { AisChevronSort } from "@akkurateio/icons"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -106,7 +106,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               paddingLeft: "0.255rem",
               border: "none",
             }),
-            menuList: (provided: any, state: any) => ({
+            menuList: (provided: any) => ({
               ...provided,
               padding: "0.313rem 0",
               paddingRight: "0.313rem",
@@ -114,30 +114,30 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               maxHeight: "248px",
               border: "none",
             }),
-            placeholder: (provided: any, state: any) => ({
+            placeholder: (provided: any) => ({
               ...provided,
               padding: "0 0",
               margin: "0",
               fontSize: props.fontSize || "sm",
             }),
-            valueContainer: (provided: any, state: any) => ({
+            valueContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
               paddingLeft: "0.688rem",
               fontSize: props.fontSize || "sm",
             }),
-            singleValue: (provided: any, state: any) => ({
+            singleValue: (provided: any) => ({
               ...provided,
               margin: "0 0",
               fontSize: props.fontSize || "sm",
             }),
-            inputContainer: (provided: any, state: any) => ({
+            inputContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
               margin: "0",
               fontSize: props.fontSize || "sm",
             }),
-            container: (provided: any, state: any) => ({
+            container: (provided: any) => ({
               ...provided,
               boxShadow: focus
                 ? `0 0 0 3px ${theme.colors.primary[500]}25 `

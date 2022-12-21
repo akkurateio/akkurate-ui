@@ -1,5 +1,6 @@
 import { AisClose, AisFile } from "@akkurateio/icons"
-import { formatBytes } from "@akkurateio/utils"
+import { formatBytes } from "@akkurateio/utils/src"
+
 import {
   FormControlOptions,
   HTMLChakraProps,

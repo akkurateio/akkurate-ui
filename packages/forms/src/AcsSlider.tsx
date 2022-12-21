@@ -1,4 +1,3 @@
-import React, { useState } from "react"
 import {
   Box,
   HTMLChakraProps,
@@ -12,8 +11,8 @@ import {
   UseSliderProps,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
+import React from "react"
 import FormControlLayout from "./FormControlLayout"
-import { theme } from "@akkurateio/utils"
 
 interface AcsSliderProps {
   indicatorSteps?: number

@@ -1,9 +1,4 @@
-import {
-  FormControlOptions,
-  HTMLChakraProps,
-  Input,
-  InputGroup,
-} from "@chakra-ui/react"
+import { FormControlOptions, HTMLChakraProps, Input } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
 import FormControlLayout from "./FormControlLayout"
@@ -40,11 +35,9 @@ export const AcsInputText: React.FC<InputProps> = ({
     if (handleChange) {
       handleChange(e.target.value)
     }
-
     if (register) {
       return null
     }
-
     return null
   }
 

@@ -1,13 +1,12 @@
-import React, { useState } from "react"
 import {
   Box,
   FormControlOptions,
   HTMLChakraProps,
   Input,
-  InputGroup,
   VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
+import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 
@@ -56,7 +55,11 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
       isInvalid={isInvalid}
       isReadOnly={isReadOnly}
     >
-      <InputGroupWithShadow isInvalid={isInvalid} size={size}>
+      <InputGroupWithShadow
+        isInvalid={isInvalid}
+        height={props.height}
+        width={props.width}
+      >
         <Input
           type={"text"}
           {...props}

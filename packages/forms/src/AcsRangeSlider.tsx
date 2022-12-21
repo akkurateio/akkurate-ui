@@ -1,4 +1,3 @@
-import React from "react"
 import {
   Box,
   HTMLChakraProps,
@@ -7,12 +6,12 @@ import {
   RangeSliderMark,
   RangeSliderThumb,
   RangeSliderTrack,
-  SliderMark,
   Text,
   Toast,
   UseRangeSliderProps,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
+import React from "react"
 
 interface AcsSliderProps {
   indicatorSteps?: number

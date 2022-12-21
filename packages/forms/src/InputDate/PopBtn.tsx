@@ -2,7 +2,7 @@ import { AisCalendar } from "@akkurateio/icons"
 import { Button, Flex, Popover, PopoverTrigger } from "@chakra-ui/react"
 import dayjs from "dayjs"
 import "dayjs/locale/fr"
-import React, { useState } from "react"
+import React from "react"
 import { DateObject } from "../../types"
 import PopContent from "./PopContent"
 
@@ -15,14 +15,6 @@ interface IProps {
 }
 
 export const PopBtn = ({ date, setDate, focus }: IProps) => {
-  const [isBlue, setIsBlue] = useState(false)
-  const handleClick = () => {
-    setDate({
-      ...date,
-      selectedDate: null,
-    })
-  }
-
   return (
     <Flex
       position={"absolute"}

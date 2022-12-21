@@ -6,7 +6,6 @@ import {
   FormControlOptions,
   HTMLChakraProps,
   Input,
-  InputGroup,
   Popover,
   PopoverBody,
   PopoverContent,
@@ -14,9 +13,9 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
+import React, { useState } from "react"
 import { MinuteStep } from "../types"
 import FormControlLayout from "./FormControlLayout"
-import React, { useState } from "react"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -105,8 +104,8 @@ export const AcsInputTime: React.FC<InputProps> = ({
     <FormControlLayout {...props}>
       <InputGroupWithShadow
         isInvalid={props.isInvalid}
-        position={"relative"}
         width={props.width}
+        height={props.height}
       >
         <Input
           type={"time"}
@@ -123,7 +122,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
           pb={"0.656rem"}
           rounded={"base"}
           width={"full"}
-          fontSize={"sm"}
+          fontSize={props.fontSize ? props.fontSize : "sm"}
         />
         <Flex
           top={0}

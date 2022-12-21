@@ -1,18 +1,20 @@
-import React, { useState } from "react"
+import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/icons"
+import { StackDirection } from "@chakra-ui/layout"
 import {
   Box,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
-  IconButton,
   SimpleGrid,
-  Stack,
 } from "@chakra-ui/react"
-import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/icons"
+import {
+  ResponsiveValue,
+  SystemProps,
+  ThemingProps,
+  useTheme,
+} from "@chakra-ui/system"
+import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
-import { StackDirection } from "@chakra-ui/layout"
-import { ResponsiveValue, SystemProps, ThemingProps } from "@chakra-ui/system"
-import { theme } from "@akkurateio/utils"
 
 type Omitted =
   | "disabled"
@@ -47,11 +49,11 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
   spacing = 4,
   ...props
 }) => {
+  const theme = useTheme()
+
   const [currentIds, setCurrentIds] = useState<(string | number)[]>(
     selectedCardIds ? selectedCardIds : [],
   )
-  const [isAllChecked, setIsAllChecked] = useState<boolean>(false)
-  const [isIndeterminate, setIsIndeterminate] = useState<boolean>(false)
 
   const handleOnChange = (id: string | number) => {
     if (currentIds && currentIds.includes(id)) {
@@ -82,7 +84,6 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             pl={"0.563rem"}
             pb={"0.563rem"}
             key={idx}
-            // position={"relative"}
             boxShadow={
               currentIds.includes(item.id)
                 ? `0 0 0 3px ${theme.colors.primary[500]}25 `
@@ -111,7 +112,6 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
                 <AisCheckbox boxSize={"24px"} />
               )}
             </Box>
-            )
           </HStack>
         ))}
       </SimpleGrid>

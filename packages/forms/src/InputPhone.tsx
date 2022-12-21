@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react"
+import { AisChevronDown } from "@akkurateio/icons"
 import {
   Box,
   Button,
-  Flex,
   FormControlOptions,
-  FormLabel,
   HStack,
   HTMLChakraProps,
-  InputGroup,
   InputLeftAddon,
   Popover,
   PopoverBody,
@@ -17,13 +14,13 @@ import {
   Tooltip,
   useTheme,
 } from "@chakra-ui/react"
+import { ThemingProps } from "@chakra-ui/system"
+import { countries } from "countries-list"
+import React, { useState } from "react"
 // @ts-ignore
 import isoCountriesLanguages from "iso-countries-languages"
-import { countries, Country } from "countries-list"
 import PhoneInput from "react-phone-input-2"
 import Flag from "react-world-flags"
-import { AisChevronDown } from "@akkurateio/icons"
-import { ThemingProps } from "@chakra-ui/system"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 
@@ -91,7 +88,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
         isInvalid={props.isInvalid}
         width={props.width}
         height={props.height}
-        size={props.size}
       >
         <InputLeftAddon
           outline={"none"}

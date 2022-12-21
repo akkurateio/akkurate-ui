@@ -1,7 +1,6 @@
+import { AisRadioButton, AisRadioButtonChecked } from "@akkurateio/icons"
 import {
-  Box,
   Button,
-  Flex,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
@@ -9,9 +8,8 @@ import {
   Text,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import FormControlLayout from "./FormControlLayout"
 import React, { useEffect, useState } from "react"
-import { AisRadioButton, AisRadioButtonChecked } from "@akkurateio/icons"
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 

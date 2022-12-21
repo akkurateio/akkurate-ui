@@ -1,16 +1,11 @@
-import {
-  FormControlOptions,
-  HTMLChakraProps,
-  Input,
-  InputGroup,
-} from "@chakra-ui/react"
+import { FormControlOptions, HTMLChakraProps, Input } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import dayjs, { Dayjs } from "dayjs"
+import React, { useEffect, useState } from "react"
 import { DateObject } from "../../types"
 import FormControlLayout from "../FormControlLayout"
-import { PopBtn } from "./PopBtn"
-import React, { useEffect, useState } from "react"
 import InputGroupWithShadow from "../InputGroupWithShadow"
+import { PopBtn } from "./PopBtn"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -92,7 +87,11 @@ export const AcsInputDate: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow position={"relative"} width={props.width}>
+      <InputGroupWithShadow
+        height={props.height}
+        width={props.width}
+        isInvalid={props.isInvalid}
+      >
         <Input
           border={"none"}
           height={"full"}

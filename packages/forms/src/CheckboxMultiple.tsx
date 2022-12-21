@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react"
+import { Checkbox, FormControlOptions, Stack } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { Box, Checkbox, FormControlOptions, Stack } from "@chakra-ui/react"
-import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/icons"
+import React, { useState } from "react"
 
 type Omitted =
   | "disabled"

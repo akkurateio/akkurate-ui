@@ -3,12 +3,11 @@ import {
   FormControlOptions,
   HTMLChakraProps,
   Input,
-  InputGroup,
   InputRightElement,
   ThemingProps,
 } from "@chakra-ui/react"
-import FormControlLayout from "./FormControlLayout"
 import React, { useState } from "react"
+import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -70,7 +69,11 @@ export const AcsInputPassword: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroupWithShadow isInvalid={props.isInvalid}>
+      <InputGroupWithShadow
+        isInvalid={props.isInvalid}
+        width={props.width}
+        height={props.height}
+      >
         <Input
           border={"none"}
           height={"full"}

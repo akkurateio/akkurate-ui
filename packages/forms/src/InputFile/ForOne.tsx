@@ -1,5 +1,5 @@
-import React from "react"
 import { Box, Input, Text } from "@chakra-ui/react"
+import React from "react"
 
 interface IProps {
   file: File
@@ -7,7 +7,6 @@ interface IProps {
 }
 
 const ForOne: React.FC<IProps> = ({ file }) => {
-
   return (
     <Box>
       <Text>{file.name}</Text>
