@@ -1,5 +1,4 @@
 import { AisClose, AisFile } from "@akkurateio/icons"
-import { formatBytes } from "@akkurateio/utils/src"
 
 import {
   FormControlOptions,
@@ -63,6 +62,14 @@ export const AcsInputFile: React.FC<InputProps> = ({
     handleChange(files)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [files])
+
+  const formatBytes = (bytes: number, decimals: number): string => {
+    const k = 1000 // or 1024 for binary
+    const dm = decimals || 2
+    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
+  }
 
   return (
     <FormControlLayout {...props}>
