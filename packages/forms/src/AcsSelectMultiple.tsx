@@ -90,8 +90,9 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
               outline: "none",
               fontSize: props.fontSize || "sm",
               border: "none",
-              _hover: {
-                borderColor: props.isInvalid ? "red.500" : "gray.400",
+              _focusVisible: {
+                border: "none",
+                boxShadow: "none",
               },
             }),
             option: (provided: any, state: any) => ({
@@ -107,7 +108,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
               paddingLeft: "0.255rem",
               border: "none",
             }),
-            menuList: (provided: any, state: any) => ({
+            menuList: (provided: any) => ({
               ...provided,
               padding: "0.313rem 0",
               paddingRight: "0.313rem",
@@ -115,44 +116,41 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
               maxHeight: "248px",
               border: "none",
             }),
-            placeholder: (provided: any, state: any) => ({
+            placeholder: (provided: any) => ({
               ...provided,
               padding: "0 0",
               margin: "0",
               fontSize: props.fontSize || "sm",
             }),
-            valueContainer: (provided: any, state: any) => ({
+            valueContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
               paddingLeft: "0.688rem",
               fontSize: props.fontSize || "sm",
             }),
-            singleValue: (provided: any, state: any) => ({
+            singleValue: (provided: any) => ({
               ...provided,
               margin: "0 0",
               fontSize: props.fontSize || "sm",
             }),
-            inputContainer: (provided: any, state: any) => ({
+            inputContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
               margin: "0",
               fontSize: props.fontSize || "sm",
             }),
-            container: (provided: any, state: any) => ({
+            container: (provided: any) => ({
               ...provided,
               boxShadow: focus
                 ? `0 0 0 3px ${theme.colors.primary[500]}25 `
                 : undefined,
               rounded: "base",
               borderWidth: "1px",
-              borderColor: props.isInvalid ? "red.500" : "gray.300",
-              _hover: {
-                borderColor: props.isInvalid
-                  ? "red.500"
-                  : focus
-                  ? "primary.500"
-                  : "gray.400",
-              },
+              borderColor: props.isInvalid
+                ? "red.500"
+                : focus
+                ? theme.colors.primary[500]
+                : "neutral.300",
             }),
           }}
           closeMenuOnSelect={false}

@@ -7,7 +7,7 @@ import {
   InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react"
-import { ThemingProps } from "@chakra-ui/system"
+import { ThemingProps, useTheme } from "@chakra-ui/system"
 import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
@@ -35,6 +35,8 @@ export const AcsInputSearch: React.FC<InputProps> = ({
   handleChange,
   ...props
 }) => {
+  const theme = useTheme()
+
   const propsForInput = () => {
     const {
       label,
@@ -71,7 +73,7 @@ export const AcsInputSearch: React.FC<InputProps> = ({
               props.isInvalid
                 ? "red.500"
                 : focus
-                ? "primary.500"
+                ? theme.colors.primary[500]
                 : "neutral.400"
             }
           />
@@ -89,6 +91,10 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           paddingLeft={"2.5rem"}
           onChange={(e) => handleChange(e.target.value)}
           border={"none"}
+          _focusVisible={{
+            border: "none",
+            boxShadow: `none`,
+          }}
           width={"full"}
           height={"full"}
         />

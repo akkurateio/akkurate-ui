@@ -76,6 +76,10 @@ export const AcsInputPassword: React.FC<InputProps> = ({
       >
         <Input
           border={"none"}
+          _focusVisible={{
+            border: "none",
+            boxShadow: `none`,
+          }}
           height={"full"}
           rounded={"base"}
           width={"full"}

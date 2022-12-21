@@ -138,6 +138,10 @@ export const AcsInputNumber: React.FC<InputProps> = ({
             textAlign={"center"}
             fontSize={props.fontSize || "sm"}
             border={"none"}
+            _focusVisible={{
+              border: "none",
+              boxShadow: `none`,
+            }}
             height={"full"}
             rounded={"base"}
           />

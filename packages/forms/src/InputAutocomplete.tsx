@@ -64,6 +64,10 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
           type={"text"}
           {...props}
           border={"none"}
+          _focusVisible={{
+            border: "none",
+            boxShadow: `none`,
+          }}
           height={"full"}
           rounded={"base"}
           width={"full"}

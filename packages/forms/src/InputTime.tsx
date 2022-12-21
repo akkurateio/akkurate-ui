@@ -116,6 +116,10 @@ export const AcsInputTime: React.FC<InputProps> = ({
           onBlur={() => setFocus(false)}
           color={props.isInvalid ? "red.500" : undefined}
           border={"none"}
+          _focusVisible={{
+            border: "none",
+            boxShadow: `none`,
+          }}
           height={"full"}
           pl={"0.688rem"}
           pt={"0.656rem"}

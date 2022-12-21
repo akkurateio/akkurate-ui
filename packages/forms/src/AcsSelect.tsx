@@ -62,7 +62,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
         rounded={"base"}
       >
         <Select
-          menuPortalTarget={document.body}
+          // menuPortalTarget={document.body}
           useBasicStyles={true}
           // @ts-ignore
           options={props.options}
@@ -89,8 +89,9 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               outline: "none",
               fontSize: props.fontSize || "sm",
               border: "none",
-              _hover: {
-                borderColor: props.isInvalid ? "red.500" : "gray.400",
+              _focusVisible: {
+                border: "none",
+                boxShadow: "none",
               },
             }),
             option: (provided: any, state: any) => ({
@@ -144,14 +145,11 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
                 : undefined,
               rounded: "base",
               borderWidth: "1px",
-              borderColor: props.isInvalid ? "red.500" : "gray.300",
-              _hover: {
-                borderColor: props.isInvalid
-                  ? "red.500"
-                  : focus
-                  ? "primary.500"
-                  : "gray.400",
-              },
+              borderColor: props.isInvalid
+                ? "red.500"
+                : focus
+                ? theme.colors.primary[500]
+                : "neutral.300",
             }),
           }}
           components={{
@@ -159,7 +157,11 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               <Box {...props} margin={"0.5rem"}>
                 <AisChevronSort
                   color={
-                    notValid ? "red.500" : focus ? "primary.500" : "neutral.500"
+                    notValid
+                      ? "red.500"
+                      : focus
+                      ? theme.colors.primary[500]
+                      : "neutral.500"
                   }
                   boxSize={"16px"}
                   ml={2}

@@ -109,6 +109,10 @@ export const AcsInputColor: React.FC<InputProps> = ({
         </InputLeftElement>
         <Input
           border={"none"}
+          _focusVisible={{
+            border: "none",
+            boxShadow: `none`,
+          }}
           height={"full"}
           rounded={"4px"}
           width={"full"}

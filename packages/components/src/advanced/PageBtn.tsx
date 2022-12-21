@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/react"
-import React, { memo } from "react"
+import React from "react"
 
 interface IProps {
   page: number
@@ -37,4 +37,4 @@ const PageBtn: React.FC<IProps> = ({
   )
 }
 
-export default memo(PageBtn)
+export default PageBtn

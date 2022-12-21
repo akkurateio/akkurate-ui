@@ -81,6 +81,13 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
     <FormControlLayout {...props}>
       <InputGroup width={props.width} size={props.size} height={props.height}>
         <Textarea
+          _focusVisible={{
+            borderWidth: "1px",
+            borderColor: theme.colors.primary[500],
+            boxShadow: focus
+              ? `0 0 0 3px ${theme.colors.primary[500]}25 `
+              : "none",
+          }}
           rounded={"base"}
           width={"full"}
           height={"full"}
@@ -95,11 +102,6 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
             borderColor: "red.500",
             bg: "red.50",
             color: "red.500",
-          }}
-          _focus={{
-            boxShadow: focus
-              ? `0 0 0 3px ${theme.colors.primary[500]}25 `
-              : "none",
           }}
           fontSize={props.fontSize || "sm"}
           pl={"0.688rem"}
