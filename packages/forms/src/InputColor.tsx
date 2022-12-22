@@ -95,7 +95,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
         height={height}
         width={props.width}
       >
-        <InputLeftElement width={"fit-content"} height={"38px"}>
+        <InputLeftElement width={"fit-content"} height={"full"}>
           <Box
             ml={"0.25rem"}
             mt={"0.25rem"}
@@ -137,7 +137,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
           onChange={(e) => handleChange(e.target.value)}
         />
 
-        <InputRightElement cursor={"pointer"}>
+        <InputRightElement cursor={"pointer"} height={"full"}>
           <Popover placement={"bottom-end"}>
             {({ isOpen }) => (
               <>
@@ -164,7 +164,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
                     )}
                   </Box>
                 </PopoverTrigger>
-                <PopoverContent marginRight={-2} width={"fit-content"}>
+                <PopoverContent width={"fit-content"}>
                   <PopoverBody p={0}>
                     <StyledBox>
                       <HexColorPicker
