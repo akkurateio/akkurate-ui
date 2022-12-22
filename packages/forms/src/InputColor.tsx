@@ -97,9 +97,9 @@ export const AcsInputColor: React.FC<InputProps> = ({
       >
         <InputLeftElement width={"fit-content"} height={"38px"}>
           <Box
-            ml={"4px"}
-            mt={"4px"}
-            mb={"4px"}
+            ml={"0.25rem"}
+            mt={"0.25rem"}
+            mb={"0.25rem"}
             mr={0}
             backgroundColor={props.value as string}
             width={"64px"}
@@ -114,7 +114,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
             boxShadow: `none`,
           }}
           height={"full"}
-          rounded={"4px"}
+          rounded={"base"}
           width={"full"}
           type={"text"}
           value={props.value}
@@ -131,8 +131,8 @@ export const AcsInputColor: React.FC<InputProps> = ({
             color: "error.600",
           }}
           fontSize={props.fontSize || "sm"}
-          pt={"10.5px"}
-          pb={"10.5px"}
+          pt={"0.641rem"}
+          pb={"0.641rem"}
           bg={props.bg ? props.bg : "white"}
           onChange={(e) => handleChange(e.target.value)}
         />

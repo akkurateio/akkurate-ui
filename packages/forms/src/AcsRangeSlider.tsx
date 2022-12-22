@@ -34,7 +34,7 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
   const { indicatorSteps, ...rangeProps } = { ...props, max, min }
 
   return (
-    <Box marginBottom={"30px"}>
+    <Box width={"full"} marginBottom={"30px"}>
       {max <= 1000 ? (
         <>
           <Text marginBottom={2} fontSize={props.fontSize || "md"}>
