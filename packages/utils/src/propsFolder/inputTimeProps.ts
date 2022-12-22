@@ -1,4 +1,4 @@
-export const propsForInputSearch = [
+export const propsForInputTime = [
   {
     props: "label",
     type: "string",
@@ -12,9 +12,27 @@ export const propsForInputSearch = [
     required: false,
   },
   {
-    props: "fontSize",
-    type: "string",
-    description: "Taille de la police",
+    props: "handleChange",
+    type: "function",
+    description: "Fonction de gestion de la modification de la valeur",
+    required: false,
+  },
+  {
+    props: "minutesStep",
+    type: "number",
+    description: "Pas de la valeur en minutes",
+    required: false,
+  },
+  {
+    props: "disabledHours",
+    type: "number[]",
+    description: "Heures désactivées",
+    required: false,
+  },
+  {
+    props: "disabledMinutes",
+    type: "number[]",
+    description: "Minutes désactivées",
     required: false,
   },
   {
@@ -33,12 +51,6 @@ export const propsForInputSearch = [
     props: "height",
     type: "string",
     description: "Hauteur du champ",
-    required: false,
-  },
-  {
-    props: "variant",
-    type: "string",
-    description: "Variant du champ",
     required: false,
   },
 ]

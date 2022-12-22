@@ -1,0 +1,80 @@
+export const propsForModalAlert = [
+  {
+    props: "title",
+    type: "string",
+    description: "Titre de la modale",
+    required: false,
+  },
+  {
+    props: "header",
+    type: "JSX.Element",
+    description: "Contenu du header",
+    required: false,
+  },
+  {
+    props: "body",
+    type: "JSX.Element",
+    description: "Contenu du body",
+    required: false,
+  },
+  {
+    props: "footer",
+    type: "JSX.Element",
+    description: "Contenu du footer",
+    required: false,
+  },
+  {
+    props: "isOpen",
+    type: "boolean",
+    description: "Ouverture de la modale",
+    required: true,
+  },
+  {
+    props: "onClose",
+    type: "function",
+    description: "Fonction qui ferme la modale",
+    required: true,
+  },
+  {
+    props: "action",
+    type: "function",
+    description: "Fonction qui s'exécute au clic sur le bouton",
+    required: false,
+  },
+  {
+    props: "hasCloseBtn",
+    type: "boolean",
+    description: "Affichage du bouton de fermeture",
+    required: false,
+  },
+  {
+    props: "confirmText",
+    type: "string",
+    description: "Texte du bouton de confirmation",
+    required: false,
+  },
+  {
+    props: "cancelText",
+    type: "string",
+    description: "Texte du bouton d'annulation",
+    required: false,
+  },
+  {
+    props: "isCentered",
+    type: "boolean",
+    description: "Centrage de la modale",
+    required: false,
+  },
+  {
+    props: "isLoading",
+    type: "boolean",
+    description: "Affichage du loader",
+    required: false,
+  },
+  {
+    props: "size",
+    type: "string",
+    description: "Taille de la modale",
+    required: false,
+  },
+]

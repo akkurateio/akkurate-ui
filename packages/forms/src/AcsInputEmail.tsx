@@ -71,10 +71,9 @@ export const AcsInputEmail: React.FC<InputProps> = ({
           type={"email"}
           {...propsForInput()}
           variant={props.variant}
-          _invalid={{
-            borderColor: "red.500",
-            bg: "red.50",
-            color: "red.500",
+          _focusVisible={{
+            border: "none",
+            boxShadow: `none`,
           }}
           pl={"0.688rem"}
           pt={"0.656rem"}

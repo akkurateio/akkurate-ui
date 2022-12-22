@@ -1,4 +1,4 @@
-const propsForInputTextArea = [
+export const propsForInputTextArea = [
   {
     props: "handleChange",
     type: "function",

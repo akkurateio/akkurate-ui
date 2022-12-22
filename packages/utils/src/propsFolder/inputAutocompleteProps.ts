@@ -1,4 +1,10 @@
-export const propsForInputSearch = [
+export const propsForInputAutocomplete = [
+  {
+    props: "handleChange",
+    type: "function",
+    description: "fonction pour recupérer la données saisie",
+    required: true,
+  },
   {
     props: "label",
     type: "string",
@@ -33,12 +39,6 @@ export const propsForInputSearch = [
     props: "height",
     type: "string",
     description: "Hauteur du champ",
-    required: false,
-  },
-  {
-    props: "variant",
-    type: "string",
-    description: "Variant du champ",
     required: false,
   },
 ]

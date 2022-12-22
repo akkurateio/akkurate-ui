@@ -1,4 +1,4 @@
-const propsForInputText = [
+export const propsForInputText = [
   {
     props: "handleChange",
     type: "function",

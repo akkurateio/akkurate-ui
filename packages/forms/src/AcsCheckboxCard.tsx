@@ -30,7 +30,6 @@ interface CardOptions {
   selectedCardIds: (string | number)[]
   setSelectedCardIds: (ids: (string | number)[]) => void
   columns?: ResponsiveValue<number>
-  direction?: StackDirection
   spacing?: SystemProps["margin"]
 }
 
@@ -45,7 +44,6 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
   selectedCardIds,
   columns = 2,
   setSelectedCardIds,
-  direction = "row",
   spacing = 4,
   ...props
 }) => {
