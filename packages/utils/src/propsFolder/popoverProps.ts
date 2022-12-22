@@ -1,0 +1,98 @@
+export const propsForPopover = [
+  {
+    props: "isOpen",
+    type: "boolean",
+    description: "Permet d'ouvrir ou de fermer le popover",
+    required: true,
+  },
+  {
+    props: "onClose",
+    type: "function",
+    description: "La fonction qui permet de fermer le popover",
+    required: true,
+  },
+  {
+    props: "body",
+    type: "ReactNode",
+    description: "Le contenu du popover",
+    required: true,
+  },
+  {
+    props: "placement",
+    type: "string",
+    description: "Permet de choisir la position du popover",
+    required: false,
+  },
+  {
+    props: "title",
+    type: "string",
+    description: "Le titre du popover",
+    required: false,
+  },
+  {
+    props: "action",
+    type: "function",
+    description: "La fonction qui permet de réaliser une action sur un bouton",
+    required: false,
+  },
+  {
+    props: "hasCloseButton",
+    type: "boolean",
+    description: "Permet d'afficher ou non le bouton de fermeture",
+    required: false,
+  },
+  {
+    props: "hasArrow",
+    type: "boolean",
+    description: "Permet d'afficher ou non la flèche du popover",
+    required: false,
+  },
+  {
+    props: "hasFooter",
+    type: "boolean",
+    description: "Permet d'afficher ou non le footer du popover",
+    required: false,
+  },
+  {
+    props: "footer",
+    type: "ReactNode",
+    description: "Le contenu du footer du popover",
+    required: false,
+  },
+  {
+    props: "triggerBtn",
+    type: "ReactNode",
+    description: "Le bouton qui permet ",
+    required: false,
+  },
+  {
+    props: "triggerBtnOpen",
+    type: "ReactNode",
+    description: "Le bouton qui permet d'ouvrir le popover",
+    required: false,
+  },
+  {
+    props: "triggerBtnClose",
+    type: "ReactNode",
+    description: "Le bouton qui permet de fermer le popover",
+    required: false,
+  },
+  {
+    props: "closeOnBlur",
+    type: "boolean",
+    description: "Permet de fermer le popover en cliquant à l'extérieur",
+    required: false,
+  },
+  {
+    props: "cancelText",
+    type: "string",
+    description: "Le texte du bouton de fermeture",
+    required: false,
+  },
+  {
+    props: "confirmText",
+    type: "string",
+    description: "Le texte du bouton de confirmation",
+    required: false,
+  },
+]
