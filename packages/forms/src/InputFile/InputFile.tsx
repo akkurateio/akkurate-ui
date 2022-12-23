@@ -1,17 +1,16 @@
 import { AisClose, AisFile } from "@akkurateio/icons"
-
 import {
   FormControlOptions,
   HTMLChakraProps,
   IconButton,
   Input,
-  InputGroup,
   InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "../FormControlLayout"
+import InputGroupWithShadow from "../InputGroupWithShadow"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -73,11 +72,16 @@ export const AcsInputFile: React.FC<InputProps> = ({
 
   return (
     <FormControlLayout {...props}>
-      <InputGroup size={props.size}>
-        <InputLeftElement>
-          <AisFile boxSize={"24px"} color={"gray.500"} />
+      <InputGroupWithShadow
+        width={props.width}
+        height={props.height}
+        isInvalid={props.isInvalid}
+      >
+        <InputLeftElement height={"full"}> 
+          <AisFile boxSize={"24px"} color={"neutral.500"} />
         </InputLeftElement>
         <Input
+          height={"full"}
           position={"relative"}
           type={"text"}
           {...propsForInput()}
@@ -87,11 +91,10 @@ export const AcsInputFile: React.FC<InputProps> = ({
             )
             .join(", ")}
           variant={props.variant}
-          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
-          _invalid={{
-            borderColor: "error.600",
-            bg: "error.100",
-            color: "error.600",
+          border={"none"}
+          _focusVisible={{
+            border: "none",
+            boxShadow: `none`,
           }}
           px={props.px ? props.px : 3}
           bg={props.bg ? props.bg : "white"}
@@ -100,14 +103,14 @@ export const AcsInputFile: React.FC<InputProps> = ({
         />
 
         {props.value && props.value.length > 0 && (
-          <InputRightElement zIndex={2}>
+          <InputRightElement zIndex={2} height={"full"}>
             <IconButton
               aria-label={"delete button"}
               onClick={handleDelete}
               size={"xs"}
               rounded={"full"}
             >
-              <AisClose boxSize={"24px"} color={"gray.500"} />
+              <AisClose boxSize={"24px"} color={"neutral.500"} />
             </IconButton>
           </InputRightElement>
         )}
@@ -125,7 +128,7 @@ export const AcsInputFile: React.FC<InputProps> = ({
           onChange={(e) => setFiles(Array.from(e.target.files as FileList))}
           multiple={props.multiple}
         />
-      </InputGroup>
+      </InputGroupWithShadow>
     </FormControlLayout>
   )
 }
