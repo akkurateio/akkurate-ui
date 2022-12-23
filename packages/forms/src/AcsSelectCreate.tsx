@@ -77,7 +77,6 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
           <CreatableSelect
             isMulti
             formatCreateLabel={(inputValue) => `Créer le tag : ${inputValue}`}
-            menuPortalTarget={document.body}
             useBasicStyles={true}
             // @ts-ignore
             options={props.options}

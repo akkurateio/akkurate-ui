@@ -63,7 +63,6 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
           rounded={"base"}
         >
           <Select
-            // menuPortalTarget={document.body}
             useBasicStyles={true}
             // @ts-ignore
             options={props.options}
