@@ -2,6 +2,7 @@ import { AisChevronDown } from "@akkurateio/icons"
 import {
   Box,
   Button,
+  Flex,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
@@ -172,7 +173,21 @@ export const AcsInputPhone: React.FC<InputProps> = ({
             </PopoverContent>
           </Popover>
         </InputLeftAddon>
-        <Box width={"full"} height={"full"}>
+        <Flex
+          borderLeft={
+            props.isInvalid
+              ? `1px solid ${theme.colors.red[500]}`
+              : focus
+              ? `1px solid ${theme.colors.primary[500]}`
+              : `1px solid ${theme.colors.neutral[300]}`
+          }
+          width={"full"}
+          height={"full"}
+          backgroundColor={props.isInvalid ? theme.colors.red[50] : "white"}
+          borderTopRightRadius={"0.25rem"}
+          borderBottomRightRadius={"0.25rem"}
+          pl={"0.75rem"}
+        >
           <PhoneInput
             specialLabel={""}
             country={countryLower}
@@ -184,24 +199,20 @@ export const AcsInputPhone: React.FC<InputProps> = ({
             inputStyle={{
               width: "100%",
               height: "100%",
-              paddingLeft: "0.75rem",
-              paddingTop: "0.625rem",
-              paddingBottom: "0.625rem",
-              borderLeft: props.isInvalid
-                ? `1px solid ${theme.colors.red[500]}`
-                : focus
-                ? `1px solid ${theme.colors.primary[500]}`
-                : `1px solid ${theme.colors.neutral[300]}`,
               borderTopRightRadius: "0.25rem",
-              backgroundColor: props.isInvalid ? theme.colors.red[50] : "white",
               borderBottomRightRadius: "0.25rem",
+              backgroundColor: "inherit",
               outline: "none",
               fontSize: fontSizePhone || "14px",
               fontStyle: "inter",
               fontWeight: "regular",
             }}
+            containerStyle={{
+              width: "100%",
+              height: "100%",
+            }}
           />
-        </Box>
+        </Flex>
       </InputGroupWithShadow>
     </FormControlLayout>
   )
