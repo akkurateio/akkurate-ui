@@ -54,138 +54,142 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
   }, [notValid, props.isInvalid])
 
   return (
-    <FormControlLayout label={props.label}>
-      <Box
-        width={props.width ? props.width : "full"}
-        h={"full"}
-        backgroundColor={"white"}
-        rounded={"base"}
-      >
-        <Select
-          // menuPortalTarget={document.body}
-          useBasicStyles={true}
-          // @ts-ignore
-          options={props.options}
-          closeMenuOnSelect={true}
-          hideSelectedOptions={false}
-          value={currentValue}
-          onChange={handleChange}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={props.placeholder || "Sélectionner"}
-          styles={{
-            menuPortal: (base) => ({
-              ...base,
-              zIndex: 9999,
-            }),
-          }}
-          chakraStyles={{
-            control: (base, state) => ({
-              ...base,
-              rounded: "base",
-              padding: "0 0",
-              backgroundColor: props.isInvalid ? "red.50" : "white",
-              color: props.isInvalid ? "red.500" : "black",
-              outline: "none",
-              fontSize: props.fontSize || "sm",
-              border: "none",
-              _focusVisible: {
+    <Box>
+      <FormControlLayout label={props.label}>
+        <Box
+          width={props.width ? props.width : "full"}
+          h={"full"}
+          backgroundColor={"white"}
+          rounded={"base"}
+        >
+          <Select
+            // menuPortalTarget={document.body}
+            useBasicStyles={true}
+            // @ts-ignore
+            options={props.options}
+            closeMenuOnSelect={true}
+            hideSelectedOptions={false}
+            value={currentValue}
+            onChange={handleChange}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            placeholder={props.placeholder || "Sélectionner"}
+            styles={{
+              menuPortal: (base) => ({
+                ...base,
+                zIndex: 9999,
+              }),
+            }}
+            chakraStyles={{
+              control: (base, state) => ({
+                ...base,
+                rounded: "base",
+                padding: "0 0",
+                backgroundColor: props.isInvalid ? "red.50" : "white",
+                color: props.isInvalid ? "red.500" : "black",
+                outline: "none",
+                fontSize: props.fontSize || "sm",
                 border: "none",
-                boxShadow: "none",
-              },
-            }),
-            option: (provided: any, state: any) => ({
-              ...provided,
-              backgroundColor: state.isSelected ? "primary.500" : "primary.100",
-              margin: "0.063rem 0",
-              color: state.isSelected ? "white" : "primary.500",
-              rounded: "sm",
-              width: "full",
-              height: 9,
-              fontSize: props.fontSize || "sm",
-              padding: 0,
-              paddingLeft: "0.255rem",
-              border: "none",
-            }),
-            menuList: (provided: any) => ({
-              ...provided,
-              padding: "0.313rem 0",
-              paddingRight: "0.313rem",
-              paddingLeft: "0.313rem",
-              maxHeight: "248px",
-              border: "none",
-            }),
-            placeholder: (provided: any) => ({
-              ...provided,
-              padding: "0 0",
-              margin: "0",
-              fontSize: props.fontSize || "sm",
-            }),
-            valueContainer: (provided: any) => ({
-              ...provided,
-              padding: "0 0",
-              paddingLeft: "0.688rem",
-              fontSize: props.fontSize || "sm",
-            }),
-            singleValue: (provided: any) => ({
-              ...provided,
-              margin: "0 0",
-              fontSize: props.fontSize || "sm",
-            }),
-            inputContainer: (provided: any) => ({
-              ...provided,
-              padding: "0 0",
-              margin: "0",
-              fontSize: props.fontSize || "sm",
-            }),
-            container: (provided: any) => ({
-              ...provided,
-              boxShadow: focus
-                ? `0 0 0 3px ${theme.colors.primary[500]}25 `
-                : undefined,
-              rounded: "base",
-              borderWidth: "1px",
-              borderColor: props.isInvalid
-                ? "red.500"
-                : focus
-                ? theme.colors.primary[500]
-                : "neutral.300",
-            }),
-          }}
-          components={{
-            DropdownIndicator: (props) => (
-              <Box {...props} margin={"0.5rem"}>
-                <AisChevronSort
-                  color={
-                    notValid
-                      ? "red.500"
-                      : focus
-                      ? theme.colors.primary[500]
-                      : "neutral.500"
-                  }
-                  boxSize={"16px"}
-                  ml={2}
-                />
-              </Box>
-            ),
-            NoOptionsMessage: (props) => (
-              <Box textAlign={"center"} {...props}>
-                <Text color={"neutral.300"} fontSize={"sm"}>
-                  Aucun résultat
-                </Text>
-              </Box>
-            ),
-            Option: ({ children, ...props }) => (
-              <chakraComponents.Option {...props}>
-                <HStack width={"full"}>
-                  {/*@ts-ignore*/}
-                  <Text>{children}</Text> {props.data.icon}
-                </HStack>
-              </chakraComponents.Option>
-            ),
-          }}
-        />
-      </Box>
-    </FormControlLayout>
+                _focusVisible: {
+                  border: "none",
+                  boxShadow: "none",
+                },
+              }),
+              option: (provided: any, state: any) => ({
+                ...provided,
+                backgroundColor: state.isSelected
+                  ? "primary.500"
+                  : "primary.100",
+                margin: "0.063rem 0",
+                color: state.isSelected ? "white" : "primary.500",
+                rounded: "sm",
+                width: "full",
+                height: 9,
+                fontSize: props.fontSize || "sm",
+                padding: 0,
+                paddingLeft: "0.255rem",
+                border: "none",
+              }),
+              menuList: (provided: any) => ({
+                ...provided,
+                padding: "0.313rem 0",
+                paddingRight: "0.313rem",
+                paddingLeft: "0.313rem",
+                maxHeight: "248px",
+                border: "none",
+              }),
+              placeholder: (provided: any) => ({
+                ...provided,
+                padding: "0 0",
+                margin: "0",
+                fontSize: props.fontSize || "sm",
+              }),
+              valueContainer: (provided: any) => ({
+                ...provided,
+                padding: "0 0",
+                paddingLeft: "0.688rem",
+                fontSize: props.fontSize || "sm",
+              }),
+              singleValue: (provided: any) => ({
+                ...provided,
+                margin: "0 0",
+                fontSize: props.fontSize || "sm",
+              }),
+              inputContainer: (provided: any) => ({
+                ...provided,
+                padding: "0 0",
+                margin: "0",
+                fontSize: props.fontSize || "sm",
+              }),
+              container: (provided: any) => ({
+                ...provided,
+                boxShadow: focus
+                  ? `0 0 0 3px ${theme.colors.primary[500]}25 `
+                  : undefined,
+                rounded: "base",
+                borderWidth: "1px",
+                borderColor: props.isInvalid
+                  ? "red.500"
+                  : focus
+                  ? theme.colors.primary[500]
+                  : "neutral.300",
+              }),
+            }}
+            components={{
+              DropdownIndicator: (props) => (
+                <Box {...props} margin={"0.5rem"}>
+                  <AisChevronSort
+                    color={
+                      notValid
+                        ? "red.500"
+                        : focus
+                        ? theme.colors.primary[500]
+                        : "neutral.500"
+                    }
+                    boxSize={"16px"}
+                    ml={2}
+                  />
+                </Box>
+              ),
+              NoOptionsMessage: (props) => (
+                <Box textAlign={"center"} {...props}>
+                  <Text color={"neutral.300"} fontSize={"sm"}>
+                    Aucun résultat
+                  </Text>
+                </Box>
+              ),
+              Option: ({ children, ...props }) => (
+                <chakraComponents.Option {...props}>
+                  <HStack width={"full"}>
+                    {/*@ts-ignore*/}
+                    <Text>{children}</Text> {props.data.icon}
+                  </HStack>
+                </chakraComponents.Option>
+              ),
+            }}
+          />
+        </Box>
+      </FormControlLayout>
+    </Box>
   )
 }
