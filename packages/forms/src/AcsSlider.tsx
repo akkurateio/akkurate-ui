@@ -18,6 +18,7 @@ interface AcsSliderProps {
   indicatorSteps?: number
   title?: string
   allStep: boolean
+  label?: string
 }
 
 interface SliderProps
@@ -35,7 +36,7 @@ export const AcsSlider: React.FC<SliderProps> = ({
   const { indicatorSteps, ...sliderProps } = { ...props, max, min }
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout label={props.label} {...props}>
       {max <= 1000 ? (
         <Box width={"full"} marginBottom={"30px"}>
           <Text fontSize={props.fontSize || "md"}>{props.title}</Text>
