@@ -2,7 +2,7 @@ export const propsForDrawer = [
   {
     props: "title",
     type: "string",
-    description: "Titre de la modale",
+    description: "Titre du drawer",
     required: false,
   },
   {
@@ -26,13 +26,13 @@ export const propsForDrawer = [
   {
     props: "isOpen",
     type: "boolean",
-    description: "Ouverture de la modale",
+    description: "Ouverture du drawer",
     required: true,
   },
   {
     props: "onClose",
     type: "function",
-    description: "Fonction qui ferme la modale",
+    description: "Fonction qui ferme la drawer",
     required: true,
   },
   {
@@ -44,19 +44,19 @@ export const propsForDrawer = [
   {
     props: "position",
     type: "string",
-    description: "Position de la drawer",
+    description: "Position du drawer",
     required: false,
   },
   {
     props: "closeOnOverlayClick",
     type: "boolean",
-    description: "Fermeture de la drawer au clic sur l'overlay",
+    description: "Fermeture du drawer au clic sur l'overlay",
     required: false,
   },
   {
     props: "size",
     type: "string",
-    description: "Taille de la modale",
+    description: "Taille du drawer",
     required: false,
   },
 ]

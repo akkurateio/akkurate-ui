@@ -2,7 +2,7 @@ export const propsForInputAutocomplete = [
   {
     props: "handleChange",
     type: "function",
-    description: "fonction pour recupérer la données saisie",
+    description: "fonction pour récupérer la donnée saisie",
     required: true,
   },
   {

@@ -2,7 +2,7 @@ export const propsForInputPhone = [
   {
     props: "value",
     type: "string",
-    description: "valeur de l'ipunt",
+    description: "valeur de l'input",
     required: false,
   },
   {

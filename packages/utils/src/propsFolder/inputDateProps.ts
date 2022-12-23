@@ -32,13 +32,13 @@ export const propsForInputDate = [
   {
     props: "disabledDate",
     type: "Array",
-    description: "Un tableau de date désactivé",
+    description: "Un tableau de date désactivé au format YYYY-MM-DD",
     required: false,
   },
   {
     props: "disabledDays",
     type: "Array",
-    description: "Un tableau de jour désactivé",
+    description: "Un tableau de jour désactivé au format 0-6",
     required: false,
   },
 ]

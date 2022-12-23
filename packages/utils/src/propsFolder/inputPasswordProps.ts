@@ -50,13 +50,13 @@ export const propsForInputPassword = [
   {
     props: "iconOpen",
     type: "JSX.Element",
-    description: "Icone oeil ouvert mais peut être changer si besoin",
+    description: "Permet de modifier l’icône de l'oeil ouvert",
     required: false,
   },
   {
     props: "iconClose",
     type: "JSX.Element",
-    description: "Icone oeil fermé mais peut être changer si besoin",
+    description: "Permet de modifier l'l’icône de l'oeil fermé",
     required: false,
   },
 ]

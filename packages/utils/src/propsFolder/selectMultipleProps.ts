@@ -3,7 +3,7 @@ export const propsForSelectMultiple = [
     props: "options",
     type: "array",
     description:
-      "Tableau des option avec une value, un label et en option un isDisabled et une icon",
+      "Tableau des option avec une value, un label et en option un isDisabled et une icône",
     required: true,
   },
   {

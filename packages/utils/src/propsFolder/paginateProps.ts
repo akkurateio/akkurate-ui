@@ -30,7 +30,7 @@ export const propsForPaginate = [
     required: false,
   },
   {
-    props: "compsantPaginateSecondary",
+    props: "composantPaginateSecondary",
     type: "ReactNode",
     description:
       "Offre la possibilité d'utilisé le composant secondaire en complément en suivant l'exemple suivant. Le composant sera affiché à droite de la pagination",

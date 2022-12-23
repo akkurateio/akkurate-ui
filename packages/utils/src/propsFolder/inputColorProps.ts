@@ -3,7 +3,7 @@ export const propsForInputColor = [
     props: "handleChange",
     type: "function",
     description:
-      "Fonction permettant de changer la valeur de la couler dans l'input",
+      "Fonction permettant de changer la valeur de la couleur dans l'input",
     required: true,
   },
   {

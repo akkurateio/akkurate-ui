@@ -1,3 +1,4 @@
+import { AcsInputColor, AcsInputPhone } from "@akkurateio/forms"
 import { Heading, useTheme, VStack } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 
@@ -90,8 +91,12 @@ function App() {
   })
 
   return (
-    <VStack width={"full"} spacing={20}>
+    <VStack width={"full"} spacing={20} p={10}>
       <Heading>Hello</Heading>
+
+      <AcsInputColor value={color} handleChange={setColor} />
+
+      <AcsInputPhone value={phone} handleChange={setPhone} />
     </VStack>
   )
 }

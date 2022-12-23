@@ -3,7 +3,7 @@ export const propsForCheckboxMultiple = [
     props: "contentArray",
     type: "string[]",
     description:
-      "Tableau d'objet comportent un id , un name et un bolléen pour savoir si l'objet est sélectionné ou non",
+      "Tableau d'objet comportant un id, un name et un booléen pour savoir si l'objet est sélectionné ou non",
     required: true,
   },
   {

@@ -2,7 +2,7 @@ export const propsForInputPin = [
   {
     props: "handleChange",
     type: "function",
-    description: "permet de récuperé les valeurs ",
+    description: "permet de récupérer les valeurs ",
     required: true,
   },
   {
