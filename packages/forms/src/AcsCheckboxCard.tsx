@@ -77,10 +77,8 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             width={"auto"}
             rounded={"md"}
             alignItems={"flex-start"}
-            pt={"0.563rem"}
-            pl={"0.563rem"}
-            pb={"0.563rem"}
             key={idx}
+            minH={"42px"}
             boxShadow={
               currentIds.includes(item.id)
                 ? `0 0 0 3px ${theme.colors.primary[500]}25 `
@@ -94,11 +92,19 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             transition={"all 0.2s ease-in-out"}
             justifyContent={"space-between"}
           >
-            <Box>{item.body}</Box>
+            <Box
+              w={"full"}
+              ml={"0.75rem"}
+              mt={"0.563rem"}
+              mb={"0.563rem"}
+              mr={"2.4rem"}
+            >
+              {item.body}
+            </Box>
             <Box
               position={"absolute"}
-              top={2}
               right={2}
+              top={2}
               color={
                 currentIds.includes(item.id) ? "primary.500" : "neutral.300"
               }

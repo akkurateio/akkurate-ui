@@ -9,6 +9,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Text,
   ThemingProps,
 } from "@chakra-ui/react"
 import React from "react"
@@ -54,13 +55,26 @@ export const AcsModal: React.FC<AcsModalProps> = ({
     >
       <ModalOverlay />
       <ModalContent p={"1rem"} {...props}>
-        <HStack justifyContent={"space-between"} w={"full"} mb={"1rem"}>
-          {title && !header && (
-            <ModalHeader p={0} fontWeight={"md"} fontSize={"md"}>
+        {title && !header && (
+          <HStack justifyContent={"space-between"} w={"full"} mb={"1rem"}>
+            <ModalHeader flex={1} p={0} fontWeight={"md"} fontSize={"md"}>
               {title}
             </ModalHeader>
-          )}
-          {hasCloseBtn && (
+            {hasCloseBtn && (
+              <IconButton
+                aria-label="Close"
+                icon={<AisClose boxSize={"24px"} />}
+                color={"neutral.500"}
+                onClick={onClose}
+                size={"xs"}
+                variant={"ghost"}
+                cursor={"pointer"}
+              />
+            )}
+          </HStack>
+        )}
+        {!title && hasCloseBtn && (
+          <HStack justifyContent={"flex-end"} w={"full"} mb={"1rem"}>
             <IconButton
               aria-label="Close"
               icon={<AisClose boxSize={"24px"} />}
@@ -70,10 +84,15 @@ export const AcsModal: React.FC<AcsModalProps> = ({
               variant={"ghost"}
               cursor={"pointer"}
             />
-          )}
-        </HStack>
+          </HStack>
+        )}
         {header && (
-          <ModalHeader p={0} mb={"1rem"} fontWeight={"md"} fontSize={"md"}>
+          <ModalHeader
+            backgroundColor={"blue.400"}
+            p={0}
+            fontWeight={"md"}
+            fontSize={"md"}
+          >
             {header}
           </ModalHeader>
         )}
