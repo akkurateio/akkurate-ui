@@ -51,9 +51,6 @@ type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 interface InputOptions {
   handleChange: (e: string) => void
   value?: string
-  focusBorderColor?: string
-  errorBorderColor?: string
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string
@@ -89,7 +86,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
   const [focus, setFocus] = useState(false)
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
         isInvalid={props.isInvalid}
         height={height}

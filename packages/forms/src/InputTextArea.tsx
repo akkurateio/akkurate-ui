@@ -12,10 +12,9 @@ import FormControlLayout from "./FormControlLayout"
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
 interface InputOptions {
-  handleChange: (e: string) => void
+  handleChange?: (e: string) => void
   value?: string
   autoResize?: boolean
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string

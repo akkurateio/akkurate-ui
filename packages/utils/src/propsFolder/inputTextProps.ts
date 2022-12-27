@@ -3,7 +3,7 @@ export const propsForInputText = [
     props: "handleChange",
     type: "function",
     description: "fonction pour récupérer la données saisie",
-    required: true,
+    required: false,
   },
   {
     props: "label",
@@ -39,18 +39,6 @@ export const propsForInputText = [
     props: "isInvalid",
     type: "boolean",
     description: "Indique si le champ est invalide",
-    required: false,
-  },
-  {
-    props: "width",
-    type: "string",
-    description: "Largeur du champ",
-    required: false,
-  },
-  {
-    props: "height",
-    type: "string",
-    description: "Hauteur du champ",
     required: false,
   },
   {

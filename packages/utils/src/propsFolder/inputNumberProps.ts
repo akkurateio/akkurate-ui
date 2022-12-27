@@ -6,21 +6,15 @@ export const propsForInputNumber = [
     required: false,
   },
   {
+    props: "handleChange",
+    type: "function",
+    description: "Fonction pour récupérer la valeur saisie",
+    required: true,
+  },
+  {
     props: "value",
     type: "number",
     description: "Valeur de l'input number",
-    required: false,
-  },
-  {
-    props: "min",
-    type: "number",
-    description: "Valeur minimum de l'input number",
-    required: false,
-  },
-  {
-    props: "max",
-    type: "number",
-    description: "Valeur maximum de l'input number",
     required: false,
   },
   {
@@ -43,12 +37,6 @@ export const propsForInputNumber = [
     required: false,
   },
   {
-    props: "defaultValue",
-    type: "number",
-    description: "Valeur par défaut de l'input number",
-    required: false,
-  },
-  {
     props: "width",
     type: "string",
     description: "Largeur de l'input number",
@@ -58,6 +46,12 @@ export const propsForInputNumber = [
     props: "height",
     type: "string",
     description: "Hauteur de l'input number",
+    required: false,
+  },
+  {
+    props: "defaultValue",
+    type: "number",
+    description: "Valeur par défaut de l'input number",
     required: false,
   },
 ]

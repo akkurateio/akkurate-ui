@@ -1,16 +1,16 @@
 export const propsForPopover = [
-  {
-    props: "isOpen",
-    type: "boolean",
-    description: "Permet d'ouvrir ou de fermer le popover",
-    required: true,
-  },
-  {
-    props: "onClose",
-    type: "function",
-    description: "La fonction qui permet de fermer le popover",
-    required: true,
-  },
+  // {
+  //   props: "isOpen",
+  //   type: "boolean",
+  //   description: "Permet d'ouvrir ou de fermer le popover",
+  //   required: true,
+  // },
+  // {
+  //   props: "onClose",
+  //   type: "function",
+  //   description: "La fonction qui permet de fermer le popover",
+  //   required: true,
+  // },
   {
     props: "body",
     type: "ReactNode",

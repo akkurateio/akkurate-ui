@@ -12,12 +12,6 @@ export const propsForInputPassword = [
     required: false,
   },
   {
-    props: "fontSize",
-    type: "string",
-    description: "Taille de la police",
-    required: false,
-  },
-  {
     props: "isInvalid",
     type: "boolean",
     description: "Indique si le champ est invalide",
@@ -57,6 +51,12 @@ export const propsForInputPassword = [
     props: "iconClose",
     type: "JSX.Element",
     description: "Permet de modifier l'l’icône de l'oeil fermé",
+    required: false,
+  },
+  {
+    props: "hint",
+    type: "string",
+    description: "Permet d'afficher un message d'aide",
     required: false,
   },
 ]

@@ -15,7 +15,7 @@ export const propsForSlider = [
     props: "allSteps",
     type: "boolean",
     description: "Afficher tous les pas",
-    required: false,
+    required: true,
   },
   {
     props: "min",
@@ -33,12 +33,6 @@ export const propsForSlider = [
     props: "fontSize",
     type: "string | number",
     description: "Taille de la police",
-    required: false,
-  },
-  {
-    props: "width",
-    type: "string | number",
-    description: "Largeur du slider",
     required: false,
   },
 ]

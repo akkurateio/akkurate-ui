@@ -3,7 +3,7 @@ export const propsForInputTextArea = [
     props: "handleChange",
     type: "function",
     description: "fonction pour récupérer la données saisie",
-    required: true,
+    required: false,
   },
   {
     props: "label",

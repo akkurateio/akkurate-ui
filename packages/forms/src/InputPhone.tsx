@@ -30,10 +30,7 @@ type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 interface InputOptions {
   value?: string
   handleChange: (e: string) => void
-  focusBorderColor?: string
   defaultCountry?: string
-  errorBorderColor?: string
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string
@@ -84,7 +81,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
   const countryLower = country.toLowerCase()
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
         isInvalid={props.isInvalid}
         width={props.width}

@@ -24,6 +24,7 @@ interface AcsSelectProps {
   handleChange: (e: string | number) => void
   value: string | number
   label?: string
+  iconOnLeft?: boolean
 }
 
 interface SelectProps
@@ -96,9 +97,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               }),
               option: (provided: any, state: any) => ({
                 ...provided,
-                backgroundColor: state.isSelected
-                  ? "primary.500"
-                  : "primary.100",
+                backgroundColor: state.isSelected ? "primary.500" : null,
                 margin: "0.063rem 0",
                 color: state.isSelected ? "white" : "primary.500",
                 rounded: "sm",
@@ -177,14 +176,24 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
                   </Text>
                 </Box>
               ),
-              Option: ({ children, ...props }) => (
-                <chakraComponents.Option {...props}>
-                  <HStack width={"full"}>
-                    {/*@ts-ignore*/}
-                    <Text>{children}</Text> {props.data.icon}
-                  </HStack>
-                </chakraComponents.Option>
-              ),
+              Option: ({ children, ...data }) =>
+                props.iconOnLeft ? (
+                  <chakraComponents.Option {...data}>
+                    <HStack width={"full"}>
+                      {/*@ts-ignore*/}
+                      {data.data.icon}
+                      <Text>{children}</Text>
+                    </HStack>
+                  </chakraComponents.Option>
+                ) : (
+                  <chakraComponents.Option {...data}>
+                    <HStack width={"full"}>
+                      <Text>{children}</Text>
+                      {/*@ts-ignore*/}
+                      {data.data.icon}
+                    </HStack>
+                  </chakraComponents.Option>
+                ),
             }}
           />
         </Box>

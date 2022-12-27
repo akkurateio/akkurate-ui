@@ -6,6 +6,12 @@ export const propsForInputAutocomplete = [
     required: true,
   },
   {
+    props: "resultsArray",
+    type: "string[]",
+    description: "Tableau de résultats",
+    required: true,
+  },
+  {
     props: "label",
     type: "string",
     description: "Label du champ",
@@ -39,6 +45,12 @@ export const propsForInputAutocomplete = [
     props: "height",
     type: "string",
     description: "Hauteur du champ",
+    required: false,
+  },
+  {
+    props: "hint",
+    type: "string",
+    description: "Indication sous le champ",
     required: false,
   },
 ]

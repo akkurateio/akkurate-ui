@@ -12,9 +12,6 @@ type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 interface InputOptions {
   value: string
   handleChange: (e: string) => void
-  focusBorderColor?: string
-  errorBorderColor?: string
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string
@@ -86,7 +83,7 @@ export const AcsInputDate: React.FC<InputProps> = ({
   }
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
         height={props.height}
         width={props.width}

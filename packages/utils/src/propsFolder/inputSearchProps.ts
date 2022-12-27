@@ -1,5 +1,11 @@
 export const propsForInputSearch = [
   {
+    props: "handleChange",
+    type: "function",
+    description: "fonction pour récupérer la données saisie",
+    required: true,
+  },
+  {
     props: "label",
     type: "string",
     description: "Label du champ",

@@ -29,4 +29,22 @@ export const propsForInputPin = [
     description: "couleur de la bordure lors de l'erreur",
     required: false,
   },
+  {
+    props: "htmlSize",
+    type: "number",
+    description: "taille du champ",
+    required: false,
+  },
+  {
+    props: "label",
+    type: "string",
+    description: "label du champ",
+    required: false,
+  },
+  {
+    props: "hint",
+    type: "string",
+    description: "texte d'aide",
+    required: false,
+  },
 ]

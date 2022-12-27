@@ -9,11 +9,9 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import React, { useCallback, useEffect, useState } from "react"
-import { Simulate } from "react-dom/test-utils"
 import { FileRejection, useDropzone } from "react-dropzone"
 import ForMultiple from "./ForMultiple"
 import ForOne from "./ForOne"
-import waiting = Simulate.waiting
 
 interface IProps {
   accept?: string

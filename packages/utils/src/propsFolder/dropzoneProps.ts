@@ -1,7 +1,7 @@
 export const propsForDropzone = [
   {
     props: "handleChange",
-    type: "function",
+    type: "function (files: FileList | File[] | null) => void",
     description:
       "La fonction qui permet de récupérer les informations du/des fichiers ",
     required: true,

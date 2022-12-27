@@ -15,7 +15,7 @@ export const propsForDrawer = [
     props: "body",
     type: "JSX.Element",
     description: "Contenu du body",
-    required: false,
+    required: true,
   },
   {
     props: "footer",
@@ -42,7 +42,7 @@ export const propsForDrawer = [
     required: false,
   },
   {
-    props: "position",
+    props: "placement",
     type: "string",
     description: "Position du drawer",
     required: false,

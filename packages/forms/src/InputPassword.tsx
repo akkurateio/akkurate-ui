@@ -68,7 +68,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
   }
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
         isInvalid={props.isInvalid}
         width={props.width}

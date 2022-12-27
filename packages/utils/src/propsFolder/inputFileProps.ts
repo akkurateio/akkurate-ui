@@ -24,4 +24,10 @@ export const propsForInputFile = [
       "Permet de choisir si l'on veut un input à fichier unique ou multiple",
     required: false,
   },
+  {
+    props: "hint",
+    type: "string",
+    description: "Le texte d'indication",
+    required: false,
+  },
 ]

@@ -1,9 +1,9 @@
 export const propsForSelect = [
   {
-    props: "options",
-    type: "array",
+    props: "options (? veut dire optionnel)",
+    type: "[{value: string, label: string, isDisabled?: boolean , icon?: JSX.Element}]",
     description:
-      "Tableau des option avec une value, un label et en option un isDisabled et une icon",
+      "Tableau des options avec une value, un label et en option un isDisabled et une icon",
     required: true,
   },
   {

@@ -75,9 +75,8 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             onClick={() => handleOnChange(item.id)}
             height={"auto"}
             width={"auto"}
-            rounded={"6px"}
+            rounded={"md"}
             alignItems={"flex-start"}
-            minWidth={"245px"}
             pt={"0.563rem"}
             pl={"0.563rem"}
             pb={"0.563rem"}

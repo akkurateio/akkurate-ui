@@ -17,9 +17,6 @@ type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 interface InputOptions {
   value: FileList | null
   handleChange: (e: FileList | null) => void
-  focusBorderColor?: string
-  errorBorderColor?: string
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string
@@ -77,7 +74,7 @@ export const AcsInputFile: React.FC<InputProps> = ({
         height={props.height}
         isInvalid={props.isInvalid}
       >
-        <InputLeftElement height={"full"}> 
+        <InputLeftElement height={"full"}>
           <AisFile boxSize={"24px"} color={"neutral.500"} />
         </InputLeftElement>
         <Input

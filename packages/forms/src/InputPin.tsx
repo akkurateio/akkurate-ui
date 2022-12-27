@@ -50,7 +50,7 @@ export const AcsInputPin: React.FC<InputProps> = ({
   const pinArray = Array.from({ length: props.pinNumber }, (v, k) => k)
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout label={props.label} {...props}>
       <HStack>
         <PinInput
           {...propsForInput}

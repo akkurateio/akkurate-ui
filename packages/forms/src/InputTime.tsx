@@ -26,9 +26,6 @@ interface InputOptions {
   minuteStep?: MinuteStep
   disabledHours?: number[]
   disabledMinutes?: number[]
-  focusBorderColor?: string
-  errorBorderColor?: string
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string

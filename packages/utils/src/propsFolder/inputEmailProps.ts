@@ -3,7 +3,7 @@ export const propsForInputEmail = [
     props: "handleChange",
     type: "function",
     description: "fonction pour récupérer la donnée saisie",
-    required: true,
+    required: false,
   },
   {
     props: "label",
@@ -63,6 +63,12 @@ export const propsForInputEmail = [
     props: "register",
     type: "function",
     description: "props qui permet d'associer avec React Hook Form",
+    required: false,
+  },
+  {
+    props: "hint",
+    type: "string",
+    description: "Indique un message d'aide",
     required: false,
   },
 ]

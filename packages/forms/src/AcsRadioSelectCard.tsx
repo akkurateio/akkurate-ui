@@ -28,6 +28,7 @@ interface CardOptions {
   spacing?: SystemProps["margin"]
   justifyContent?: SystemProps["justifyContent"]
   alignItems?: SystemProps["alignItems"]
+  label?: string
 }
 
 interface InputProps
@@ -65,7 +66,7 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
   }, [currentId])
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout label={props.label} {...props}>
       <SimpleGrid
         columns={columns}
         spacing={spacing}

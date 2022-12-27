@@ -7,7 +7,7 @@ export const propsForRadioGroup = [
   },
   {
     props: "valuesArray",
-    type: "array",
+    type: "[{value: string | number | undefined, label: string}]",
     description: "Tableau des options { id: string | number; label:string }",
     required: true,
   },
@@ -45,6 +45,12 @@ export const propsForRadioGroup = [
     props: "color",
     type: "string",
     description: "Couleur des options",
+    required: false,
+  },
+  {
+    prop: "hint",
+    type: "string",
+    description: "Texte d'aide",
     required: false,
   },
 ]

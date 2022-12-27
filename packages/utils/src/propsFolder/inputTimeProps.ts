@@ -15,10 +15,10 @@ export const propsForInputTime = [
     props: "handleChange",
     type: "function",
     description: "Fonction de gestion de la modification de la valeur",
-    required: false,
+    required: true,
   },
   {
-    props: "minutesStep",
+    props: "minuteStep",
     type: "number",
     description: "Pas de la valeur en minutes",
     required: false,

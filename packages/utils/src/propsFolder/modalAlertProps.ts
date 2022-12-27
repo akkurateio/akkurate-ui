@@ -15,7 +15,7 @@ export const propsForModalAlert = [
     props: "body",
     type: "JSX.Element",
     description: "Contenu du body",
-    required: false,
+    required: true,
   },
   {
     props: "footer",

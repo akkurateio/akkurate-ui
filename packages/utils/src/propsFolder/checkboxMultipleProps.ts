@@ -10,7 +10,7 @@ export const propsForCheckboxMultiple = [
     props: "label",
     type: "string",
     description: "Label du composant",
-    required: true,
+    required: false,
   },
   {
     props: "selectedCheckboxIds",

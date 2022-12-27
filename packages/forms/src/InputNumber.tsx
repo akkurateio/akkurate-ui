@@ -25,9 +25,6 @@ type Omitted =
 interface InputOptions {
   handleChange: (e: number) => void
   value?: number
-  focusBorderColor?: string
-  errorBorderColor?: string
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string

@@ -10,7 +10,7 @@ export const propsForInputColor = [
     props: "value",
     type: "string",
     description: "Valeur de la couleur",
-    required: true,
+    required: false,
   },
   {
     props: "isInvalid",
@@ -40,6 +40,12 @@ export const propsForInputColor = [
     props: "fontSize",
     type: "string",
     description: "Permet de changer la taille de la police",
+    required: false,
+  },
+  {
+    props: "width",
+    type: "string",
+    description: "Permet de changer la largeur de l'input",
     required: false,
   },
 ]
