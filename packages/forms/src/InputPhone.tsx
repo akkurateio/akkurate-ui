@@ -16,7 +16,6 @@ import {
   useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { countries } from "countries-list"
 import React, { useState } from "react"
 // @ts-ignore
 import isoCountriesLanguages from "iso-countries-languages"
@@ -24,6 +23,7 @@ import PhoneInput from "react-phone-input-2"
 import Flag from "react-world-flags"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+import { countryArrayCode } from "@akkurateio/utils/src/country/countryArray"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -66,9 +66,9 @@ export const AcsInputPhone: React.FC<InputProps> = ({
   }
 
   const frenchCountry = isoCountriesLanguages.getCountries("fr")
-  const countryArray = Object.keys(countries).filter((key) => {
+  const countryArray = Object.keys(countryArrayCode).filter((key) => {
     // @ts-ignore
-    return countries[key].continent === "EU"
+    return countryArrayCode[key].continent === "EU"
   })
 
   const frenchCountryWithCode = countryArray.map((code, idx) => {
@@ -116,14 +116,14 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 as={Box}
               >
                 <HStack spacing={"16px"}>
-                  <Flag code={country} width={"32px"} />
+                  <Flag code={country} width={"24px"} />
                   <AisChevronDown boxSize={"16px"} />
                 </HStack>
               </Button>
             </PopoverTrigger>
             <PopoverContent
               overflow={"hidden"}
-              width={"5.313rem"}
+              width={"4.5rem"}
               h={"14.125rem"}
             >
               <PopoverBody
@@ -137,12 +137,13 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                     columns={1}
                     spacing={"0.125rem"}
                     paddingTop={"0.313rem"}
+                    paddingBottom={"0.313rem"}
                   >
                     {frenchCountryWithCode.map((country, idx) => {
                       return (
                         <Tooltip key={idx} label={country.name}>
                           <Button
-                            width={"3.875rem"}
+                            width={"3rem"}
                             height={"2.125rem"}
                             onClick={() => changeCountry(country.code)}
                             variant={"unstyled"}
@@ -156,8 +157,8 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                             display={"flex"}
                           >
                             <Flag
-                              width={"32px"}
-                              height={"24px"}
+                              width={"24px"}
+                              height={"18px"}
                               code={country.code}
                             />
                           </Button>

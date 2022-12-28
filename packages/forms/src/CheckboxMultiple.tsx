@@ -1,6 +1,20 @@
-import { Checkbox, FormControlOptions, Stack } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlOptions,
+  HStack,
+  Stack,
+  Text,
+} from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
+import {
+  AisCheckbox,
+  AisCheckboxChecked,
+  AisCheckboxIntermediate,
+} from "@akkurateio/icons"
+import FormControlLayout from "./FormControlLayout"
 
 type Omitted =
   | "disabled"
@@ -16,23 +30,8 @@ interface CheckboxMultiple {
   selectedCheckboxIds: (string | number)[]
   setSelectedCheckboxIds: (ids: (string | number)[]) => void
   multiple?: boolean
-  direction?: "row" | "column"
-  margin?: number | string
-  marginBottom?: number | string
-  marginTop?: number | string
-  marginLeft?: number | string
-  marginRight?: number | string
-  padding?: number | string
-  paddingTop?: number | string
-  paddingLeft?: number | string
-  paddingRight?: number | string
-  paddingBottom?: number | string
-  spacing?: number | string
-  justifyContent?: "flex-start" | "center" | "flex-end"
-  alignItems?: "center" | "flex-start" | "flex-end"
-  width?: number | string
-  height?: number | string
-  backgroundColor?: string
+  direction?: "horizontal" | "vertical"
+  label?: string
 }
 
 interface CheckboxMultipleProps
@@ -46,10 +45,12 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
   selectedCheckboxIds,
   setSelectedCheckboxIds,
   multiple = false,
+  direction,
   ...props
 }) => {
   const [allIsChecked, setAllIsChecked] = useState(false)
   const [items, setItems] = useState(contentArray)
+  const [focus, setFocus] = useState(false)
 
   const handleCheckAll = () => {
     const newItems = items.map((items) => ({
@@ -82,74 +83,109 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
       .map((item) => item.id)
     setSelectedCheckboxIds(toto)
   }
+  const isInderminate = items.some((item) => item.isChecked) && !allIsChecked
+  const isAllChecked = items.every((item) => item.isChecked)
+
+  let boxSize = "22px"
+  if (props.size === "sm") {
+    boxSize = "16px"
+  } else if (props.size === "md") {
+    boxSize = "22px"
+  } else if (props.size === "lg") {
+    boxSize = "24px"
+  }
+
+  let fontSize = "14px"
+  if (props.size === "sm") {
+    fontSize = "12px"
+  } else if (props.size === "md") {
+    fontSize = "14px"
+  } else if (props.size === "lg") {
+    fontSize = "16px"
+  }
+
+  let spacing = "8px"
+  if (props.size === "sm") {
+    spacing = "6px"
+  } else if (props.size === "md") {
+    spacing = "8px"
+  } else if (props.size === "lg") {
+    spacing = "10px"
+  }
+
+  let padding = "8px"
+  if (direction === "vertical") {
+    padding = "0px"
+  }
+
+  let paddingLeft = "8px"
+  if (props.size === "sm") {
+    paddingLeft = "4px"
+  } else if (props.size === "md") {
+    paddingLeft = "8px"
+  } else if (props.size === "lg") {
+    paddingLeft = "15px"
+  }
 
   return (
-    <Stack direction={props.direction ? props.direction : "row"}>
-      {multiple ? (
-        <Checkbox
-          size={props.size ? props.size : "md"}
-          onChange={handleCheckAll}
-          isChecked={allIsChecked}
-          isIndeterminate={
-            items.some((item) => item.isChecked) && !allIsChecked
-          }
-          colorScheme={props.colorScheme ? props.colorScheme : "primary"}
-          margin={props.margin ? props.margin : 0}
-          marginTop={props.marginTop ? props.marginTop : 0}
-          marginLeft={props.marginLeft ? props.marginLeft : 0}
-          marginRight={props.marginRight ? props.marginRight : 0}
-          marginBottom={props.marginBottom ? props.marginBottom : 0}
-          padding={props.padding ? props.padding : 0}
-          paddingTop={props.paddingTop ? props.paddingTop : 0}
-          paddingLeft={props.paddingLeft ? props.paddingLeft : 0}
-          paddingRight={props.paddingRight ? props.paddingRight : 0}
-          paddingBottom={props.paddingBottom ? props.paddingBottom : 0}
-          spacing={props.spacing ? props.spacing : 0}
-          justifyContent={
-            props.justifyContent ? props.justifyContent : "flex-start"
-          }
-          alignItems={props.alignItems ? props.alignItems : "center"}
-          width={props.width ? props.width : "auto"}
-          height={props.height ? props.height : "auto"}
-          backgroundColor={
-            props.backgroundColor ? props.backgroundColor : "transparent"
-          }
-        >
-          tous les éléments
-        </Checkbox>
-      ) : null}
+    <FormControlLayout label={props.label} {...props}>
+      <Stack direction={direction === "vertical" ? "column" : "row"}>
+        {multiple ? (
+          <Button
+            onClick={handleCheckAll}
+            variant={"unstyled"}
+            fontWeight={"normal"}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            _focus={{ outline: "none" }}
+            _focusVisible={{ textDecoration: "none" }}
+            paddingLeft={paddingLeft}
+          >
+            <HStack spacing={spacing}>
+              {isInderminate ? (
+                <AisCheckboxIntermediate
+                  color={"primary.500"}
+                  boxSize={boxSize}
+                />
+              ) : isAllChecked ? (
+                <AisCheckboxChecked color={"primary.500"} boxSize={boxSize} />
+              ) : (
+                <AisCheckbox
+                  color={focus ? "primary.500" : "neutral.300"}
+                  boxSize={boxSize}
+                />
+              )}
+              <Text fontSize={fontSize}>Tous les éléments</Text>
+            </HStack>
+          </Button>
+        ) : null}
 
-      {items.map((item) => (
-        <Checkbox
-          size={props.size ? props.size : "md"}
-          key={item.id}
-          isChecked={item.isChecked}
-          onChange={() => handleCheck(item.id)}
-          colorScheme={props.colorScheme ? props.colorScheme : "primary"}
-          margin={props.margin ? props.margin : 0}
-          marginTop={props.marginTop ? props.marginTop : 0}
-          marginLeft={props.marginLeft ? props.marginLeft : 0}
-          marginRight={props.marginRight ? props.marginRight : 0}
-          marginBottom={props.marginBottom ? props.marginBottom : 0}
-          padding={props.padding ? props.padding : 0}
-          paddingTop={props.paddingTop ? props.paddingTop : 0}
-          paddingLeft={props.paddingLeft ? props.paddingLeft : 0}
-          paddingRight={props.paddingRight ? props.paddingRight : 0}
-          paddingBottom={props.paddingBottom ? props.paddingBottom : 0}
-          spacing={props.spacing ? props.spacing : 0}
-          justifyContent={
-            props.justifyContent ? props.justifyContent : "flex-start"
-          }
-          alignItems={props.alignItems ? props.alignItems : "center"}
-          width={props.width ? props.width : "auto"}
-          height={props.height ? props.height : "auto"}
-          backgroundColor={
-            props.backgroundColor ? props.backgroundColor : "transparent"
-          }
-        >
-          {item.name}
-        </Checkbox>
-      ))}
-    </Stack>
+        {items.map((item) => (
+          <Button
+            variant={"unstyled"}
+            fontWeight={"normal"}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            _focus={{ outline: "none" }}
+            _focusVisible={{ textDecoration: "none" }}
+            key={item.id}
+            onClick={() => handleCheck(item.id)}
+            paddingLeft={paddingLeft}
+          >
+            <HStack spacing={spacing}>
+              {item.isChecked ? (
+                <AisCheckboxChecked color={"primary.500"} boxSize={boxSize} />
+              ) : (
+                <AisCheckbox
+                  color={focus ? "primary.500" : "neutral.300"}
+                  boxSize={boxSize}
+                />
+              )}
+              <Text fontSize={fontSize}>{item.name}</Text>
+            </HStack>
+          </Button>
+        ))}
+      </Stack>
+    </FormControlLayout>
   )
 }

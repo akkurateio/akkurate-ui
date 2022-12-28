@@ -97,6 +97,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
               }),
               option: (provided: any, state: any) => ({
                 ...provided,
+                borderBottom: "1px",
                 backgroundColor: state.isSelected ? "primary.500" : null,
                 margin: "0.063rem 0",
                 color: state.isSelected ? "white" : "primary.500",
@@ -106,7 +107,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
                 fontSize: props.fontSize || "sm",
                 padding: 0,
                 paddingLeft: "0.255rem",
-                border: "none",
+                borderBottomColor: "neutral.200",
               }),
               menuList: (provided: any) => ({
                 ...provided,

@@ -49,7 +49,7 @@ export const AcsRadioGroup: React.FC<InputProps> = ({
     }
   }, [currentValue])
 
-  let boxSize = "24px"
+  let boxSize = "22px"
   if (props.size === "sm") {
     boxSize = "16px"
   } else if (props.size === "md") {
