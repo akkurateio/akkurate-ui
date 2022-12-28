@@ -23,7 +23,7 @@ import PhoneInput from "react-phone-input-2"
 import Flag from "react-world-flags"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
-import { countryArrayCode } from "@akkurateio/utils/src/country/countryArray"
+import { countryArrayCode } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
