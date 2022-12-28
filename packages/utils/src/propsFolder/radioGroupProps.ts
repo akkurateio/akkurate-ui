@@ -24,12 +24,6 @@ export const propsForRadioGroup = [
     required: false,
   },
   {
-    props: "direction",
-    type: "string",
-    description: "Direction des options",
-    required: false,
-  },
-  {
     props: "size",
     type: "string",
     description: "Taille des options",
