@@ -86,10 +86,11 @@ export const AcsInputPhone: React.FC<InputProps> = ({
         isInvalid={props.isInvalid}
         width={props.width}
         height={props.height}
+        rounded={props.rounded}
       >
         <InputLeftAddon
           outline={"none"}
-          rounded={"0.25rem"}
+          rounded={props.rounded ? props.rounded : "0.25rem"}
           backgroundColor={props.isInvalid ? "red.50" : "white"}
           border={"none"}
           height={"full"}
@@ -182,8 +183,8 @@ export const AcsInputPhone: React.FC<InputProps> = ({
           width={"full"}
           height={"full"}
           backgroundColor={props.isInvalid ? theme.colors.red[50] : "white"}
-          borderTopRightRadius={"0.25rem"}
-          borderBottomRightRadius={"0.25rem"}
+          borderTopRightRadius={props.rounded ? props.rounded : "0.25rem"}
+          borderBottomRightRadius={props.rounded ? props.rounded : "0.25rem"}
           pl={"0.75rem"}
         >
           <PhoneInput
@@ -197,8 +198,8 @@ export const AcsInputPhone: React.FC<InputProps> = ({
             inputStyle={{
               width: "100%",
               height: "100%",
-              borderTopRightRadius: "0.25rem",
-              borderBottomRightRadius: "0.25rem",
+              borderTopRightRadius: props.rounded ? "100%" : "0.25rem",
+              borderBottomRightRadius: props.rounded ? "10rem" : "0.25rem",
               backgroundColor: "inherit",
               outline: "none",
               fontSize: fontSizePhone || "14px",

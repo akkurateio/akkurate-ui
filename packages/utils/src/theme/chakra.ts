@@ -255,7 +255,8 @@ const sizes = {
 }
 
 // Extend the theme to include every needed part
-const global = {
+
+export const global = {
   styles,
   colors,
   config,

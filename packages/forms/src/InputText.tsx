@@ -47,6 +47,7 @@ export const AcsInputText: React.FC<InputProps> = ({
         width={props.width}
         height={props.height}
         isInvalid={props.isInvalid}
+        rounded={props.rounded}
       >
         <Input
           border={"none"}

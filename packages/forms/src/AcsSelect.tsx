@@ -33,7 +33,7 @@ interface SelectProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
+export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
   const theme = useTheme()
   const [currentValue, setCurrentValue] = useState<string | number>()
   const [focus, setFocus] = useState(false)
@@ -59,9 +59,8 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
       <FormControlLayout label={props.label}>
         <Box
           width={props.width ? props.width : "full"}
-          h={"full"}
           backgroundColor={"white"}
-          rounded={"base"}
+          rounded={props.rounded ? props.rounded : "base"}
         >
           <Select
             useBasicStyles={true}
@@ -70,6 +69,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
             closeMenuOnSelect={true}
             hideSelectedOptions={false}
             value={currentValue}
+            variant={"outline"}
             onChange={handleChange}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
@@ -83,8 +83,10 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
             chakraStyles={{
               control: (base, state) => ({
                 ...base,
-                rounded: "base",
+                rounded: props.rounded ? props.rounded : "base",
                 padding: "0 0",
+                height: props.height ? props.height : "38px",
+                minHeight: props.height ? props.height : "38px",
                 backgroundColor: props.isInvalid ? "red.50" : "white",
                 color: props.isInvalid ? "red.500" : "black",
                 outline: "none",
@@ -145,7 +147,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ height, ...props }) => {
                 boxShadow: focus
                   ? `0 0 0 3px ${theme.colors.primary[500]}25 `
                   : undefined,
-                rounded: "base",
+                rounded: props.rounded ? props.rounded : "base",
                 borderWidth: "1px",
                 borderColor: props.isInvalid
                   ? "red.500"

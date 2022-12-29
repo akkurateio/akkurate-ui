@@ -1,11 +1,11 @@
 import {
-  Box,
   Button,
-  Checkbox,
   FormControlOptions,
   HStack,
+  SimpleGrid,
   Stack,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
@@ -15,6 +15,8 @@ import {
   AisCheckboxIntermediate,
 } from "@akkurateio/icons"
 import FormControlLayout from "./FormControlLayout"
+import { StackDirection } from "@chakra-ui/layout"
+import { allSizes } from "@akkurateio/utils"
 
 type Omitted =
   | "disabled"
@@ -30,13 +32,14 @@ interface CheckboxMultiple {
   selectedCheckboxIds: (string | number)[]
   setSelectedCheckboxIds: (ids: (string | number)[]) => void
   multiple?: boolean
-  direction?: "horizontal" | "vertical"
+  direction: StackDirection
   label?: string
+  columns?: number
+  size?: "sm" | "md" | "lg"
 }
 
 interface CheckboxMultipleProps
   extends Omit<ThemingProps<"Checkbox">, Omitted>,
-    ThemingProps<"Checkbox">,
     CheckboxMultiple,
     FormControlOptions {}
 
@@ -45,7 +48,8 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
   selectedCheckboxIds,
   setSelectedCheckboxIds,
   multiple = false,
-  direction,
+  direction = "column",
+  size = "md",
   ...props
 }) => {
   const [allIsChecked, setAllIsChecked] = useState(false)
@@ -86,50 +90,19 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
   const isInderminate = items.some((item) => item.isChecked) && !allIsChecked
   const isAllChecked = items.every((item) => item.isChecked)
 
-  let boxSize = "22px"
-  if (props.size === "sm") {
-    boxSize = "16px"
-  } else if (props.size === "md") {
-    boxSize = "22px"
-  } else if (props.size === "lg") {
-    boxSize = "24px"
-  }
+  const directionState = useBreakpointValue(
+    typeof direction === "object" ? direction : {},
+  )
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
 
-  let fontSize = "14px"
-  if (props.size === "sm") {
-    fontSize = "12px"
-  } else if (props.size === "md") {
-    fontSize = "14px"
-  } else if (props.size === "lg") {
-    fontSize = "16px"
-  }
-
-  let spacing = "8px"
-  if (props.size === "sm") {
-    spacing = "6px"
-  } else if (props.size === "md") {
-    spacing = "8px"
-  } else if (props.size === "lg") {
-    spacing = "10px"
-  }
-
-  let padding = "8px"
-  if (direction === "vertical") {
-    padding = "0px"
-  }
-
-  let paddingLeft = "8px"
-  if (props.size === "sm") {
-    paddingLeft = "4px"
-  } else if (props.size === "md") {
-    paddingLeft = "8px"
-  } else if (props.size === "lg") {
-    paddingLeft = "15px"
-  }
+  const sizes = allSizes(
+    directionState ? directionState : (direction as string),
+    sizeState ? sizeState : (size as string),
+  )
 
   return (
     <FormControlLayout label={props.label} {...props}>
-      <Stack direction={direction === "vertical" ? "column" : "row"}>
+      <Stack direction={direction}>
         {multiple ? (
           <Button
             onClick={handleCheckAll}
@@ -139,52 +112,59 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
             onBlur={() => setFocus(false)}
             _focus={{ outline: "none" }}
             _focusVisible={{ textDecoration: "none" }}
-            paddingLeft={paddingLeft}
           >
-            <HStack spacing={spacing}>
+            <HStack spacing={sizes?.spacing}>
               {isInderminate ? (
                 <AisCheckboxIntermediate
                   color={"primary.500"}
-                  boxSize={boxSize}
+                  boxSize={sizes?.boxSize}
                 />
               ) : isAllChecked ? (
-                <AisCheckboxChecked color={"primary.500"} boxSize={boxSize} />
+                <AisCheckboxChecked
+                  color={"primary.500"}
+                  boxSize={sizes?.boxSize}
+                />
               ) : (
                 <AisCheckbox
                   color={focus ? "primary.500" : "neutral.300"}
-                  boxSize={boxSize}
+                  boxSize={sizes?.boxSize}
                 />
               )}
-              <Text fontSize={fontSize}>Tous les éléments</Text>
+              <Text fontSize={sizes?.fontSize}>Tous les éléments</Text>
             </HStack>
           </Button>
         ) : null}
 
-        {items.map((item) => (
-          <Button
-            variant={"unstyled"}
-            fontWeight={"normal"}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
-            _focus={{ outline: "none" }}
-            _focusVisible={{ textDecoration: "none" }}
-            key={item.id}
-            onClick={() => handleCheck(item.id)}
-            paddingLeft={paddingLeft}
-          >
-            <HStack spacing={spacing}>
-              {item.isChecked ? (
-                <AisCheckboxChecked color={"primary.500"} boxSize={boxSize} />
-              ) : (
-                <AisCheckbox
-                  color={focus ? "primary.500" : "neutral.300"}
-                  boxSize={boxSize}
-                />
-              )}
-              <Text fontSize={fontSize}>{item.name}</Text>
-            </HStack>
-          </Button>
-        ))}
+        <SimpleGrid columns={props.columns}>
+          {items.map((item) => (
+            <Button
+              variant={"unstyled"}
+              fontWeight={"normal"}
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+              _focus={{ outline: "none" }}
+              _focusVisible={{ textDecoration: "none" }}
+              key={item.id}
+              onClick={() => handleCheck(item.id)}
+              paddingLeft={sizes?.paddingLeft}
+            >
+              <HStack spacing={sizes?.spacing}>
+                {item.isChecked ? (
+                  <AisCheckboxChecked
+                    color={"primary.500"}
+                    boxSize={sizes?.boxSize}
+                  />
+                ) : (
+                  <AisCheckbox
+                    color={focus ? "primary.500" : "neutral.300"}
+                    boxSize={sizes?.boxSize}
+                  />
+                )}
+                <Text fontSize={sizes?.fontSize}>{item.name}</Text>
+              </HStack>
+            </Button>
+          ))}
+        </SimpleGrid>
       </Stack>
     </FormControlLayout>
   )

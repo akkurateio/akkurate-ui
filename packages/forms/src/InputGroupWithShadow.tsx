@@ -1,11 +1,13 @@
 import { InputGroup, useTheme } from "@chakra-ui/react"
 import React, { useState } from "react"
+import * as CSS from "csstype"
 
 interface IProps {
   children: React.ReactNode
   width: any
   height: any
   isInvalid: any
+  rounded?: any
 }
 
 const FormControlLayout: React.FC<IProps> = (props) => {
@@ -15,9 +17,9 @@ const FormControlLayout: React.FC<IProps> = (props) => {
 
   return (
     <InputGroup
-      height={props.height ? props.height : "38px"}
+      height={props.height ? props.height : "40px"}
       width={props.width ? props.width : "full"}
-      rounded={"base"}
+      rounded={props.rounded ? props.rounded : "base"}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       borderWidth={"1px"}

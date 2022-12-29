@@ -66,7 +66,12 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
   return (
     <Box>
       <FormControlLayout label={props.label}>
-        <Box width={"full"} h={"full"} backgroundColor={"white"} rounded={5}>
+        <Box
+          width={"full"}
+          h={"full"}
+          backgroundColor={"white"}
+          rounded={props.rounded ? props.rounded : "base"}
+        >
           <Select
             isMulti
             useBasicStyles={true}
@@ -83,10 +88,12 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
             chakraStyles={{
               control: (base, state) => ({
                 ...base,
-                rounded: "base",
+                rounded: props.rounded ? props.rounded : "base",
                 padding: "0 0",
                 backgroundColor: props.isInvalid ? "red.50" : "white",
                 color: props.isInvalid ? "red.500" : "black",
+                height: props.height ? props.height : "38px",
+                minHeight: props.height ? props.height : "38px",
                 outline: "none",
                 fontSize: props.fontSize || "sm",
                 border: "none",

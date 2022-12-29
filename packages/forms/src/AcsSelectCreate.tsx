@@ -73,7 +73,12 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
   return (
     <Box>
       <FormControlLayout label={props.label}>
-        <Box width={"full"} h={"full"} backgroundColor={"white"} rounded={5}>
+        <Box
+          width={"full"}
+          h={"full"}
+          backgroundColor={"white"}
+          rounded={props.rounded ? props.rounded : "base"}
+        >
           <CreatableSelect
             isMulti
             formatCreateLabel={(inputValue) => `Créer le tag : ${inputValue}`}
@@ -99,12 +104,14 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
             chakraStyles={{
               control: (base, state) => ({
                 ...base,
-                rounded: "base",
+                rounded: props.rounded ? props.rounded : "base",
                 padding: "0 0",
                 backgroundColor: props.isInvalid ? "red.50" : "white",
                 color: props.isInvalid ? "red.500" : "black",
                 outline: "none",
                 fontSize: props.fontSize || "sm",
+                height: props.height ? props.height : "38px",
+                minHeight: props.height ? props.height : "38px",
                 border: "none",
                 _focusVisible: {
                   border: "none",
