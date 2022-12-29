@@ -37,7 +37,6 @@
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
     "chakra-react-select": "^4.4.2",
-    "countries-list": "^2.6.1",
     "dayjs": "1.11.5",
     "framer-motion": ">=7.0.0",
     "iso-countries-languages": "^0.3.0",
