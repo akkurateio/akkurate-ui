@@ -3,17 +3,12 @@ import {
   FormControlOptions,
   HStack,
   SimpleGrid,
-  Stack,
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react"
-import {ResponsiveValue, ThemingProps} from "@chakra-ui/system"
+import { ResponsiveValue, ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
-import {
-  AisCheckbox,
-  AisCheckboxChecked,
-  AisCheckboxIntermediate,
-} from "@akkurateio/icons"
+import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/icons"
 import FormControlLayout from "./FormControlLayout"
 import { allSizes } from "@akkurateio/utils"
 
@@ -47,8 +42,8 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
   selectedCheckboxIds,
   setSelectedCheckboxIds,
   multiple = false,
-    columns=1,
-    size = "md",
+  columns = 1,
+  size = "md",
   ...props
 }) => {
   const [allIsChecked, setAllIsChecked] = useState(false)
@@ -91,44 +86,42 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
 
   const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
 
-  const sizes = allSizes(
-    sizeState ? sizeState : (size as string),
-  )
+  const sizes = allSizes(sizeState ? sizeState : (size as string))
 
   return (
     <FormControlLayout label={props.label} {...props}>
-        <SimpleGrid columns={columns} spacing={sizes?.spacing}>
-          {items.map((item) => (
-            <Button
-              w={'full'}
-              h={'full'}
-              variant={"unstyled"}
-              fontWeight={"normal"}
-              onFocus={() => setFocus(true)}
-              onBlur={() => setFocus(false)}
-              _focus={{ outline: "none" }}
-              _focusVisible={{ textDecoration: "none" }}
-              key={item.id}
-              onClick={() => handleCheck(item.id)}
-            >
-              <HStack spacing={sizes?.spacing}>
-                {item.isChecked ? (
-                  <AisCheckboxChecked
-                    color={"primary.500"}
-                    boxSize={sizes?.boxSize}
-                  />
-                ) : (
-                  <AisCheckbox
-                    color={focus ? "primary.500" : "neutral.300"}
-                    boxSize={sizes?.boxSize}
-                    _hover={{ color: props.color ? props.color : "neutral.500" }}
-                  />
-                )}
-                <Text fontSize={sizes?.fontSize}>{item.name}</Text>
-              </HStack>
-            </Button>
-          ))}
-        </SimpleGrid>
+      <SimpleGrid columns={columns} spacing={sizes?.spacing}>
+        {items.map((item) => (
+          <Button
+            w={"full"}
+            h={"full"}
+            variant={"unstyled"}
+            fontWeight={"normal"}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            _focus={{ outline: "none" }}
+            _focusVisible={{ textDecoration: "none" }}
+            key={item.id}
+            onClick={() => handleCheck(item.id)}
+          >
+            <HStack spacing={sizes?.spacing}>
+              {item.isChecked ? (
+                <AisCheckboxChecked
+                  color={"primary.500"}
+                  boxSize={sizes?.boxSize}
+                />
+              ) : (
+                <AisCheckbox
+                  color={focus ? "primary.500" : "neutral.300"}
+                  boxSize={sizes?.boxSize}
+                  _hover={{ color: "neutral.500" }}
+                />
+              )}
+              <Text fontSize={sizes?.fontSize}>{item.name}</Text>
+            </HStack>
+          </Button>
+        ))}
+      </SimpleGrid>
     </FormControlLayout>
   )
 }

@@ -9,7 +9,6 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Text,
   ThemingProps,
 } from "@chakra-ui/react"
 import React from "react"
@@ -56,7 +55,7 @@ export const AcsModal: React.FC<AcsModalProps> = ({
       <ModalOverlay />
       <ModalContent p={"1rem"} {...props}>
         {title && !header && (
-          <HStack justifyContent={"space-between"} w={"full"} mb={"1rem"}>
+          <HStack justifyContent={"space-between"} w={"full"}>
             <ModalHeader flex={1} p={0} fontWeight={"md"} fontSize={"md"}>
               {title}
             </ModalHeader>
@@ -74,7 +73,7 @@ export const AcsModal: React.FC<AcsModalProps> = ({
           </HStack>
         )}
         {!title && hasCloseBtn && (
-          <HStack justifyContent={"flex-end"} w={"full"} mb={"1rem"}>
+          <HStack justifyContent={"flex-end"} w={"full"}>
             <IconButton
               aria-label="Close"
               icon={<AisClose boxSize={"24px"} />}
@@ -100,9 +99,7 @@ export const AcsModal: React.FC<AcsModalProps> = ({
           {body}
         </ModalBody>
 
-        <ModalFooter p={0} mt={"1rem"}>
-          {footer && footer}
-        </ModalFooter>
+        <ModalFooter p={0}>{footer && footer}</ModalFooter>
       </ModalContent>
     </Modal>
   )

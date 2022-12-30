@@ -63,7 +63,7 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
     >
       <AlertDialogOverlay>
         <AlertDialogContent p={"1rem"} position={"relative"} {...props}>
-          <HStack justifyContent={"space-between"} w={"full"} mb={"1rem"}>
+          <HStack justifyContent={"space-between"} w={"full"}>
             {title && !header && (
               <ModalHeader p={0} fontWeight={"md"} fontSize={"md"}>
                 {title}
@@ -84,7 +84,6 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
               <IconButton
                 position={"absolute"}
                 right={"1rem"}
-                top={"1rem"}
                 aria-label="Close"
                 icon={<AisClose boxSize={"24px"} />}
                 color={"neutral.500"}
@@ -96,7 +95,7 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
             )}
           </HStack>
           {header && (
-            <ModalHeader p={0} mb={"1rem"} fontWeight={"md"} fontSize={"md"}>
+            <ModalHeader p={0} fontWeight={"md"} fontSize={"md"}>
               {header}
             </ModalHeader>
           )}
@@ -106,22 +105,21 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
           </AlertDialogBody>
 
           {footer ? (
-            <AlertDialogFooter p={0} mt={"1rem"}>
-              {footer}
-            </AlertDialogFooter>
+            <AlertDialogFooter p={0}>{footer}</AlertDialogFooter>
           ) : (
             <AlertDialogFooter
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
               p={0}
-              mt={"1rem"}
             >
               <Button
                 colorScheme={"primary"}
                 variant={"outline"}
                 ref={cancelRef}
                 onClick={onClose}
+                backgroundColor={"neutral.400"}
+                color={"white"}
               >
                 {cancelText ? cancelText : "Annuler"}
               </Button>
@@ -130,6 +128,8 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
                 variant={"solid"}
                 onClick={action}
                 isLoading={isLoading}
+                backgroundColor={"primary.400"}
+                color={"white"}
               >
                 {confirmText ? confirmText : "Confirmer"}
               </Button>
