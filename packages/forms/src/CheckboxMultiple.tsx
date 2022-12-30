@@ -7,7 +7,7 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react"
-import { ThemingProps } from "@chakra-ui/system"
+import {ResponsiveValue, ThemingProps} from "@chakra-ui/system"
 import React, { useState } from "react"
 import {
   AisCheckbox,
@@ -15,7 +15,6 @@ import {
   AisCheckboxIntermediate,
 } from "@akkurateio/icons"
 import FormControlLayout from "./FormControlLayout"
-import { StackDirection } from "@chakra-ui/layout"
 import { allSizes } from "@akkurateio/utils"
 
 type Omitted =
@@ -32,9 +31,9 @@ interface CheckboxMultiple {
   selectedCheckboxIds: (string | number)[]
   setSelectedCheckboxIds: (ids: (string | number)[]) => void
   multiple?: boolean
-  direction: StackDirection
+  // direction?: StackDirection
   label?: string
-  columns?: number
+  columns?: ResponsiveValue<number>
   size?: "sm" | "md" | "lg"
 }
 
@@ -48,8 +47,8 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
   selectedCheckboxIds,
   setSelectedCheckboxIds,
   multiple = false,
-  direction = "column",
-  size = "md",
+    columns=1,
+    size = "md",
   ...props
 }) => {
   const [allIsChecked, setAllIsChecked] = useState(false)
@@ -90,54 +89,19 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
   const isInderminate = items.some((item) => item.isChecked) && !allIsChecked
   const isAllChecked = items.every((item) => item.isChecked)
 
-  const directionState = useBreakpointValue(
-    typeof direction === "object" ? direction : {},
-  )
   const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
 
   const sizes = allSizes(
-    directionState ? directionState : (direction as string),
     sizeState ? sizeState : (size as string),
   )
 
   return (
     <FormControlLayout label={props.label} {...props}>
-      <Stack direction={direction}>
-        {multiple ? (
-          <Button
-            onClick={handleCheckAll}
-            variant={"unstyled"}
-            fontWeight={"normal"}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
-            _focus={{ outline: "none" }}
-            _focusVisible={{ textDecoration: "none" }}
-          >
-            <HStack spacing={sizes?.spacing}>
-              {isInderminate ? (
-                <AisCheckboxIntermediate
-                  color={"primary.500"}
-                  boxSize={sizes?.boxSize}
-                />
-              ) : isAllChecked ? (
-                <AisCheckboxChecked
-                  color={"primary.500"}
-                  boxSize={sizes?.boxSize}
-                />
-              ) : (
-                <AisCheckbox
-                  color={focus ? "primary.500" : "neutral.300"}
-                  boxSize={sizes?.boxSize}
-                />
-              )}
-              <Text fontSize={sizes?.fontSize}>Tous les éléments</Text>
-            </HStack>
-          </Button>
-        ) : null}
-
-        <SimpleGrid columns={props.columns}>
+        <SimpleGrid columns={columns} spacing={sizes?.spacing}>
           {items.map((item) => (
             <Button
+              w={'full'}
+              h={'full'}
               variant={"unstyled"}
               fontWeight={"normal"}
               onFocus={() => setFocus(true)}
@@ -146,7 +110,6 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
               _focusVisible={{ textDecoration: "none" }}
               key={item.id}
               onClick={() => handleCheck(item.id)}
-              paddingLeft={sizes?.paddingLeft}
             >
               <HStack spacing={sizes?.spacing}>
                 {item.isChecked ? (
@@ -158,6 +121,7 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
                   <AisCheckbox
                     color={focus ? "primary.500" : "neutral.300"}
                     boxSize={sizes?.boxSize}
+                    _hover={{ color: props.color ? props.color : "neutral.500" }}
                   />
                 )}
                 <Text fontSize={sizes?.fontSize}>{item.name}</Text>
@@ -165,7 +129,6 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
             </Button>
           ))}
         </SimpleGrid>
-      </Stack>
     </FormControlLayout>
   )
 }

@@ -4,12 +4,14 @@ import {
   FormControlOptions,
   HStack,
   HTMLChakraProps,
-  Stack,
+  SimpleGrid,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react"
-import { ThemingProps } from "@chakra-ui/system"
+import { ResponsiveValue, ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+import { allSizes } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -23,19 +25,21 @@ interface InputOptions {
     value: string | number | undefined
     label: string
   }[]
-  direction?: "horizontal" | "vertical"
+  columns?: ResponsiveValue<number>
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"div">, Omitted>,
     InputOptions,
-    ThemingProps<"Radio">,
+    Omit<ThemingProps<"Radio">, Omitted>,
     FormControlOptions {}
 
 export const AcsRadioGroup: React.FC<InputProps> = ({
   handleChange,
   valuesArray,
-  direction,
+  size = "md",
+  columns = 1,
   value,
   ...props
 }) => {
@@ -49,82 +53,40 @@ export const AcsRadioGroup: React.FC<InputProps> = ({
     }
   }, [currentValue])
 
-  let boxSize = "22px"
-  if (props.size === "sm") {
-    boxSize = "16px"
-  } else if (props.size === "md") {
-    boxSize = "22px"
-  } else if (props.size === "lg") {
-    boxSize = "24px"
-  }
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
 
-  let fontSize = "14px"
-  if (props.size === "sm") {
-    fontSize = "12px"
-  } else if (props.size === "md") {
-    fontSize = "14px"
-  } else if (props.size === "lg") {
-    fontSize = "16px"
-  }
-
-  let spacing = "8px"
-  if (props.size === "sm") {
-    spacing = "6px"
-  } else if (props.size === "md") {
-    spacing = "8px"
-  } else if (props.size === "lg") {
-    spacing = "10px"
-  }
-
-  let padding = "8px"
-  if (direction === "vertical") {
-    padding = "0px"
-  }
-
-  let paddingLeft = "8px"
-  if (props.size === "sm") {
-    paddingLeft = "4px"
-  } else if (props.size === "md") {
-    paddingLeft = "8px"
-  } else if (props.size === "lg") {
-    paddingLeft = "15px"
-  }
+  const sizes = allSizes(sizeState ? sizeState : (size as string))
 
   return (
     <FormControlLayout {...props}>
-      <Stack
-        direction={direction === "vertical" ? "column" : "row"}
-        flexWrap={props.flexWrap}
-      >
+      <SimpleGrid columns={columns} spacing={sizes?.spacing}>
         {valuesArray.map((item, idx) => (
           <Button
+            w={"full"}
+            h={"full"}
             onClick={() => setCurrentValue(item.value)}
             variant={"unstyled"}
             fontWeight={"normal"}
             key={idx}
-            paddingLeft={paddingLeft}
           >
-            <HStack
-              spacing={spacing}
-              // paddingLeft={padding ? props.paddingLeft : 3}
-            >
+            <HStack spacing={sizes?.spacing}>
               {currentValue === item.value ? (
                 <AisRadioButtonChecked
-                  boxSize={boxSize}
-                  color={props.color ? props.color : "primary.500"}
+                  boxSize={sizes?.boxSize}
+                  color={props.color ? props.color : "primary.300"}
                 />
               ) : (
                 <AisRadioButton
-                  boxSize={boxSize}
-                  color={"neutral.400"}
+                  boxSize={sizes?.boxSize}
+                  color={"neutral.300"}
                   _hover={{ color: props.color ? props.color : "neutral.500" }}
                 />
               )}
-              <Text fontSize={fontSize}>{item.label}</Text>
+              <Text fontSize={sizes?.fontSize}>{item.label}</Text>
             </HStack>
           </Button>
         ))}
-      </Stack>
+      </SimpleGrid>
     </FormControlLayout>
   )
 }
