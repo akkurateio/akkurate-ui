@@ -103,6 +103,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
         isInvalid={props.isInvalid}
         width={props.width}
         height={props.height}
+        rounded={props.rounded}
       >
         <Input
           type={"time"}

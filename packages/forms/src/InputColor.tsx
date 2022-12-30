@@ -88,6 +88,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
+        rounded={props.rounded}
         isInvalid={props.isInvalid}
         height={height}
         width={props.width}

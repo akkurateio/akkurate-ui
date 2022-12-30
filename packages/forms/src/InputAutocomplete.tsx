@@ -56,6 +56,7 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
         isInvalid={isInvalid}
         height={props.height}
         width={props.width}
+        rounded={props.rounded}
       >
         <Input
           type={"text"}

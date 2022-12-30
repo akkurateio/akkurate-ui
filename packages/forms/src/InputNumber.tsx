@@ -109,6 +109,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
           isInvalid={props.isInvalid}
           width={props.width}
           height={height}
+          rounded={props.rounded}
         >
           <InputLeftElement
             color={

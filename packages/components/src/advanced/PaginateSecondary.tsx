@@ -5,6 +5,7 @@ import {
 } from "@akkurateio/icons"
 import {
   Button,
+  Divider,
   HStack,
   Popover,
   PopoverBody,
@@ -14,7 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import React from "react"
-import PageBtn from "./PageBtn"
+import PageBtnSecondary from "./PagesBtnSecondary"
 
 interface IProps {
   max: number
@@ -91,13 +92,13 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
                   <AisChevronSort boxSize={"24px"} />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent mr={1.5} width={"82px"}>
-                <PopoverBody p={1.5} maxH={"260px"} overflowY={"scroll"}>
-                  <VStack spacing={0.5}>
+              <PopoverContent rounded={"base"} mr={1.5} width={"5.125rem"}>
+                <PopoverBody p={1.5} maxH={"16.25rem"} overflowY={"scroll"}>
+                  <VStack spacing={0.5} divider={<Divider />}>
                     {[...Array(max)].map((_, i) => (
-                      <PageBtn
-                        width={"60px"}
-                        height={"38px"}
+                      <PageBtnSecondary
+                        width={"3.75rem"}
+                        height={"2.375rem"}
                         fontSize={"sm"}
                         key={i}
                         action={() => {

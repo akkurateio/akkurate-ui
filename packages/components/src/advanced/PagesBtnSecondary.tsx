@@ -11,7 +11,7 @@ interface IProps {
   color?: boolean
 }
 
-const PageBtn: React.FC<IProps> = ({
+const PageBtnSecondary: React.FC<IProps> = ({
   fontSize,
   width,
   height,
@@ -23,12 +23,10 @@ const PageBtn: React.FC<IProps> = ({
   return (
     <Button
       size={"sm"}
-      borderRadius={"base"}
       fontSize={fontSize ? fontSize : "2xs"}
       fontWeight={current ? "bold" : "normal"}
-      backgroundColor={current ? "primary.500" : "neutral.200"}
-      _hover={{ backgroundColor: current ? "primary.700" : "neutral.400" }}
-      _active={{ backgroundColor: current ? "primary.900" : "neutral.600" }}
+      _hover={{ backgroundColor: current ? "primary.700" : "neutral.200" }}
+      colorScheme={current ? "primary" : "white"}
       color={current ? "white" : "neutral.600"}
       onClick={action}
       width={width ? width : "2.063rem"}
@@ -39,4 +37,4 @@ const PageBtn: React.FC<IProps> = ({
   )
 }
 
-export default PageBtn
+export default PageBtnSecondary

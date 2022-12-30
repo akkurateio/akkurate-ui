@@ -26,29 +26,30 @@ export const AcsPaginate: React.FC<IProps> = ({
   return (
     <Flex alignItems={"center"} justifyContent={"space-between"}>
       <HStack alignItems={"center"}>
-        {max > 6 && (
+        <HStack spacing={2}>
+          {max > 6 && (
+            <IconButton
+              variant={"ghost"}
+              disabled={current === 1}
+              size={"xs"}
+              aria-label={"Première page"}
+              onClick={() => handleChangePage(1)}
+            >
+              <AisPageFirst boxSize={"24px"} />
+            </IconButton>
+          )}
           <IconButton
+            pr={"0.5rem"}
             variant={"ghost"}
+            boxSize={6}
             disabled={current === 1}
-            size={"sm"}
-            aria-label={"Première page"}
-            onClick={() => handleChangePage(1)}
+            size={"xs"}
+            aria-label={"Page précédente"}
+            onClick={() => handleChangePage(current - 1)}
           >
-            <AisPageFirst boxSize={"24px"} />
+            <AisChevronLeft boxSize={"24px"} />
           </IconButton>
-        )}
-        <IconButton
-          pr={"0.25rem"}
-          variant={"ghost"}
-          boxSize={6}
-          disabled={current === 1}
-          size={"sm"}
-          aria-label={"Page précédente"}
-          onClick={() => handleChangePage(current - 1)}
-        >
-          <AisChevronLeft boxSize={"24px"} />
-        </IconButton>
-
+        </HStack>
         <HStack spacing={1} alignItems={"center"}>
           {current > 4 && current >= max && (
             <PageBtn
@@ -109,27 +110,29 @@ export const AcsPaginate: React.FC<IProps> = ({
             />
           )}
         </HStack>
-        <IconButton
-          pl={"0.25rem"}
-          variant={"ghost"}
-          disabled={current === max}
-          size={"sm"}
-          aria-label={"Page suivante"}
-          onClick={() => handleChangePage(current + 1)}
-        >
-          <AisChevronRight boxSize={"24px"} />
-        </IconButton>
-        {max > 6 && (
+        <HStack spacing={1}>
           <IconButton
+            pl={"0.25rem"}
             variant={"ghost"}
             disabled={current === max}
-            size={"sm"}
-            aria-label={"Dernière page"}
-            onClick={() => handleChangePage(max)}
+            size={"xs"}
+            aria-label={"Page suivante"}
+            onClick={() => handleChangePage(current + 1)}
           >
-            <AisPageLast boxSize={"24px"} />
+            <AisChevronRight boxSize={"24px"} />
           </IconButton>
-        )}
+          {max > 6 && (
+            <IconButton
+              variant={"ghost"}
+              disabled={current === max}
+              size={"xs"}
+              aria-label={"Dernière page"}
+              onClick={() => handleChangePage(max)}
+            >
+              <AisPageLast boxSize={"24px"} />
+            </IconButton>
+          )}
+        </HStack>
       </HStack>
 
       {withPageInfos && (
