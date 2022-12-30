@@ -1,5 +1,4 @@
 import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/icons"
-import { StackDirection } from "@chakra-ui/layout"
 import {
   Box,
   FormControlOptions,
@@ -73,7 +72,7 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             position={"relative"}
             cursor={"pointer"}
             onClick={() => handleOnChange(item.id)}
-            height={"auto"}
+            height={"fit-content"}
             width={"auto"}
             rounded={"md"}
             alignItems={"flex-start"}

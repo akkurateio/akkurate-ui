@@ -77,7 +77,7 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
           <HStack
             cursor={"pointer"}
             onClick={() => setCurrentId(item.id)}
-            height={"full"}
+            height={"fit-content"}
             width={"auto"}
             rounded={"md"}
             minH={"42px"}
