@@ -118,8 +118,8 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
                 variant={"outline"}
                 ref={cancelRef}
                 onClick={onClose}
-                backgroundColor={"neutral.400"}
-                color={"white"}
+                // backgroundColor={"neutral.400"}
+                // color={"white"}
               >
                 {cancelText ? cancelText : "Annuler"}
               </Button>
@@ -128,8 +128,8 @@ export const AcsModalAlert: React.FC<AcsModalAlertProps> = ({
                 variant={"solid"}
                 onClick={action}
                 isLoading={isLoading}
-                backgroundColor={"primary.400"}
-                color={"white"}
+                // backgroundColor={"primary.400"}
+                // color={"white"}
               >
                 {confirmText ? confirmText : "Confirmer"}
               </Button>
