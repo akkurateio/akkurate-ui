@@ -67,6 +67,10 @@ export * from "./icons/AisBag"
 
 export * from "./listIcons"
 
+export * from "./icons/AisBlockquote"
+
+export * from "./listIcons"
+
 export * from "./icons/AisBold"
 
 export * from "./listIcons"
@@ -459,7 +463,15 @@ export * from "./icons/AisList"
 
 export * from "./listIcons"
 
+export * from "./icons/AisListCheck"
+
+export * from "./listIcons"
+
 export * from "./icons/AisListOrdered"
+
+export * from "./listIcons"
+
+export * from "./icons/AisListTask"
 
 export * from "./listIcons"
 
@@ -744,6 +756,10 @@ export * from "./icons/AisTwitter"
 export * from "./listIcons"
 
 export * from "./icons/AisUnderline"
+
+export * from "./listIcons"
+
+export * from "./icons/AisUnlink"
 
 export * from "./listIcons"
 

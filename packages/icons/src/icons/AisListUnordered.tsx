@@ -11,7 +11,7 @@ export const AisListUnordered = createIcon({
 	},
   path: (
     <>
-      <path d="M14 11a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H15a1 1 0 0 1-1-1ZM14 21a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H15a1 1 0 0 1-1-1ZM10 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM10 21a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+      <path d="M7 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM7 26a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM30 22H16v2h14v-2ZM30 8H16v2h14V8Z" />
     </>
   ),
 })

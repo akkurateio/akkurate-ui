@@ -11,7 +11,7 @@ export const AisItalic = createIcon({
 	},
   path: (
     <>
-      <path d="M23 5H13a1 1 0 1 0 0 2h3.719l-4.5 18H8a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2h-3.719l4.5-18H23a1 1 0 1 0 0-2Z" />
+      <path d="M25 9V7H12v2h5.14l-4.37 14H7v2h13v-2h-5.14l4.37-14H25Z" />
     </>
   ),
 })
