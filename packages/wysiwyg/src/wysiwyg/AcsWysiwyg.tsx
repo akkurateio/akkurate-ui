@@ -23,6 +23,11 @@ interface IProps {
   closeDropzone?: boolean
 }
 
+// Pour que le composant marche bien il faut ajouter le style dans le theme de chakra,
+// Notamment les classes .markdown et .ProseMirror et .ProseMirror-focused
+// Autrement le rendu du wysiwyg ne sera pas très joli
+// !TODO: Ajouter dans la doc
+
 export const AcsWysiwyg: FunctionComponent<IProps> = ({
   value = "",
   setValue,
