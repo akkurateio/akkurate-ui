@@ -189,7 +189,7 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
   ]
 
   return (
-    <>
+    <Box width={"full"}>
       <HStack
         w={"full"}
         rounded={"sm"}
@@ -272,7 +272,7 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
           onClose={() => setIsLinkModalOpen(false)}
         />
       )}
-    </>
+    </Box>
   )
 }
 
