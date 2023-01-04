@@ -1,11 +1,10 @@
-import { theme } from "@akkurateio/utils"
 import { ChakraProvider } from "@chakra-ui/react"
 import type { AppProps } from "next/app"
-import customTheme from "../theme/chakra"
+import { theme } from "../theme/chakra"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={customTheme}>
+    <ChakraProvider theme={theme}>
       <Component {...pageProps} />
     </ChakraProvider>
   )

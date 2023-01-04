@@ -29,6 +29,9 @@ interface IProps {
   hasDropzone: boolean
   isDropzoneOpen: boolean
   setIsDropzoneOpen: (val: boolean) => void
+
+  bgColor?: string
+  colorScheme?: string
 }
 
 const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
@@ -36,6 +39,8 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
   hasDropzone,
   isDropzoneOpen,
   setIsDropzoneOpen,
+  bgColor,
+  colorScheme,
 }) => {
   const [isLinkModalOpen, setIsLinkModalOpen] = useState<boolean>(false)
 
@@ -196,7 +201,7 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
         p={1}
         flexWrap={"wrap"}
         spacing={2}
-        bg={"gray.100"}
+        bg={bgColor}
         justifyContent={"space-between"}
       >
         <HStack>
@@ -205,7 +210,7 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
               key={index}
               size={"xs"}
               isAttached
-              colorScheme={"primary"}
+              colorScheme={colorScheme}
             >
               {arrayOfBtn.map((button, index) => (
                 <Tooltip
@@ -238,6 +243,7 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
             openDelay={800}
           >
             <Button
+              colorScheme={colorScheme}
               onClick={dropzoneBtn.onClick}
               disabled={dropzoneBtn.disabled}
               variant={"ghost"}

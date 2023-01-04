@@ -21,6 +21,8 @@ interface IProps {
   height?: string
   withMenuBar?: boolean
   closeDropzone?: boolean
+  bgColor?: string
+  colorScheme?: string
 }
 
 // Pour que le composant marche bien il faut ajouter le style dans le theme de chakra,
@@ -39,6 +41,8 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
   height = "auto",
   withMenuBar = true,
   closeDropzone,
+  bgColor = "gray.100",
+  colorScheme = "primary",
 }) => {
   const [isDropzoneOpen, setIsDropzoneOpen] = useState<boolean>(false)
 
@@ -113,6 +117,8 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
           hasDropzone={!!setFiles}
           isDropzoneOpen={isDropzoneOpen}
           setIsDropzoneOpen={setIsDropzoneOpen}
+          bgColor={bgColor}
+          colorScheme={colorScheme}
         />
       )}
 
