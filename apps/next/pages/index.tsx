@@ -13,8 +13,8 @@ const Pages: NextPage = () => {
       <AcsWysiwyg
         value={text}
         setValue={setText}
-        menuBgColor={"red.500"}
-        menuColorScheme={"blue"}
+        menuBgColor={"#ebebeb25"}
+        menuColorScheme={"success"}
         isInvalid
       />
     </Flex>
