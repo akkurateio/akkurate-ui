@@ -23,6 +23,8 @@ interface IProps {
   closeDropzone?: boolean
   menuBgColor?: string
   menuColorScheme?: string
+  maxFiles?: number
+  isInvalid?: boolean
 }
 
 // Pour que le composant marche bien il faut ajouter le style dans le theme de chakra,
@@ -43,6 +45,8 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
   closeDropzone,
   menuBgColor = "gray.100",
   menuColorScheme = "primary",
+  maxFiles = 5,
+  isInvalid = false,
 }) => {
   const [isDropzoneOpen, setIsDropzoneOpen] = useState<boolean>(false)
 
@@ -103,9 +107,15 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
           height,
           width: "100%",
           overflow: "auto",
-          border: `1px solid ${theme.colors.gray[200] ?? "gray"}`,
+          border: `1px solid ${
+            isInvalid
+              ? theme.colors.red[500] ?? "red"
+              : theme.colors.gray[200] ?? "gray"
+          }`,
           borderRadius: "4px",
-          backgroundColor: bgSecondary
+          backgroundColor: isInvalid
+            ? theme.colors.red[50] ?? "red"
+            : bgSecondary
             ? bgSecondaryColor ?? theme.colors.yellow[50]
             : bgPrimaryColor ?? "white",
         }}
@@ -137,7 +147,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
               onClick={() => setIsDropzoneOpen(false)}
             />
           </HStack>
-          <AcsDropzone handleChange={setFiles} maxFiles={5} />
+          <AcsDropzone handleChange={setFiles} maxFiles={maxFiles} />
         </VStack>
       )}
     </VStack>

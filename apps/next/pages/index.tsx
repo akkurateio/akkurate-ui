@@ -15,6 +15,7 @@ const Pages: NextPage = () => {
         setValue={setText}
         menuBgColor={"red.500"}
         menuColorScheme={"blue"}
+        isInvalid
       />
     </Flex>
   )
