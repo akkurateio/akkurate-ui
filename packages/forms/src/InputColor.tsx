@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { AisColorPalette } from "@akkurateio/icons"
 import {
@@ -29,15 +29,18 @@ const StyledBox = styled.div`
     height: 120px;
     border-radius: 0 0 4px 4px;
   }
+
   .react-colorful__hue {
     height: 20px;
     border-radius: 0 0 4px 4px;
   }
+
   .react-colorful__saturation-pointer {
     width: 16px;
     height: 16px;
     border-radius: 99px;
   }
+
   .react-colorful__hue-pointer,
   .react-colorful__alpha-pointer {
     width: 12px;
@@ -59,16 +62,18 @@ interface InputOptions {
 }
 
 interface InputProps
-  extends Omit<HTMLChakraProps<"input">, Omitted>,
-    InputOptions,
-    ThemingProps<"Input">,
-    FormControlOptions {}
+    extends Omit<HTMLChakraProps<"input">, Omitted>,
+        InputOptions,
+        ThemingProps<"Input">,
+        FormControlOptions {
+}
 
 export const AcsInputColor: React.FC<InputProps> = ({
-  handleChange,
-  height,
-  ...props
-}) => {
+                                                      handleChange,
+                                                      height,
+                                                      value,
+                                                      ...props
+                                                    }) => {
   const propsForInput = () => {
     const {
       label,
@@ -85,102 +90,109 @@ export const AcsInputColor: React.FC<InputProps> = ({
   }
   const [focus, setFocus] = useState(false)
 
-  return (
-    <FormControlLayout label={props.label} {...props}>
-      <InputGroupWithShadow
-        rounded={props.rounded}
-        isInvalid={props.isInvalid}
-        height={height}
-        width={props.width}
-      >
-        <InputLeftElement width={"fit-content"} height={"full"}>
-          <Box
-            ml={"0.25rem"}
-            mt={"0.25rem"}
-            mb={"0.25rem"}
-            mr={0}
-            backgroundColor={props.value as string}
-            width={"64px"}
-            height={"30px"}
-            rounded={"2px"}
-          />
-        </InputLeftElement>
-        <Input
-          border={"none"}
-          _focusVisible={{
-            border: "none",
-            boxShadow: `none`,
-          }}
-          height={"full"}
-          rounded={"base"}
-          width={"full"}
-          type={"text"}
-          value={props.value}
-          placeholder={"placeholder"}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          pl={"78px"}
-          {...propsForInput()}
-          variant={props.variant}
-          focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
-          _invalid={{
-            borderColor: "error.600",
-            bg: "error.100",
-            color: "error.600",
-          }}
-          fontSize={props.fontSize || "sm"}
-          pt={"0.641rem"}
-          pb={"0.641rem"}
-          bg={props.bg ? props.bg : "white"}
-          onChange={(e) => handleChange(e.target.value)}
-        />
+  useEffect(() => {
+    if (!value) {
+      handleChange("#ff0000")
+    }
+  }, [value]);
 
-        <InputRightElement cursor={"pointer"} height={"full"}>
-          <Popover placement={"bottom-end"}>
-            {({ isOpen }) => (
-              <>
-                <PopoverTrigger>
-                  <Box
-                    color={
-                      props.isInvalid
-                        ? "error.500"
-                        : focus || isOpen
-                        ? "primary.500"
-                        : "neutral.500"
-                    }
-                  >
-                    {isOpen ? (
-                      props.iconOpen ? (
-                        props.iconOpen
-                      ) : (
-                        <AisColorPalette boxSize={"24px"} />
-                      )
-                    ) : props.iconClose ? (
-                      props.iconClose
-                    ) : (
-                      <AisColorPalette boxSize={"24px"} />
-                    )}
-                  </Box>
-                </PopoverTrigger>
-                <PopoverContent width={"fit-content"}>
-                  <PopoverBody p={0}>
-                    <StyledBox>
-                      <HexColorPicker
-                        color={props.value as string}
-                        onChange={handleChange}
-                        style={{
-                          width: "18.75rem",
-                          height: "13.875rem",
-                        }}
-                      />
-                    </StyledBox>
-                  </PopoverBody>
-                </PopoverContent>
-              </>
-            )}
-          </Popover>
-        </InputRightElement>
-      </InputGroupWithShadow>
-    </FormControlLayout>
+
+  console.log("isFocused", value)
+  return (
+      <FormControlLayout label={props.label} {...props}>
+        <InputGroupWithShadow
+            rounded={props.rounded}
+            isInvalid={props.isInvalid}
+            height={height}
+            width={props.width}
+        >
+          <InputLeftElement width={"fit-content"} height={"full"}>
+            <Box
+                ml={"0.25rem"}
+                mt={"0.25rem"}
+                mb={"0.25rem"}
+                mr={0}
+                backgroundColor={value as string}
+                width={"64px"}
+                height={"30px"}
+                rounded={"2px"}
+            />
+          </InputLeftElement>
+          <Input
+              border={"none"}
+              _focusVisible={{
+                border: "none",
+                boxShadow: `none`,
+              }}
+              height={"full"}
+              rounded={"base"}
+              width={"full"}
+              type={"text"}
+              value={value}
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+              pl={"78px"}
+              {...propsForInput()}
+              variant={props.variant}
+              focusBorderColor={props.isInvalid ? "error.700" : "primary.700"}
+              _invalid={{
+                borderColor: "error.600",
+                bg: "error.100",
+                color: "error.600",
+              }}
+              fontSize={props.fontSize || "sm"}
+              pt={"0.641rem"}
+              pb={"0.641rem"}
+              bg={props.bg ? props.bg : "white"}
+              onChange={(e) => handleChange(e.target.value)}
+          />
+
+          <InputRightElement cursor={"pointer"} height={"full"}>
+            <Popover placement={"bottom-end"}>
+              {({isOpen}) => (
+                  <>
+                    <PopoverTrigger>
+                      <Box
+                          color={
+                            props.isInvalid
+                                ? "error.500"
+                                : focus || isOpen
+                                    ? "primary.500"
+                                    : "neutral.500"
+                          }
+                      >
+                        {isOpen ? (
+                            props.iconOpen ? (
+                                props.iconOpen
+                            ) : (
+                                <AisColorPalette boxSize={"24px"}/>
+                            )
+                        ) : props.iconClose ? (
+                            props.iconClose
+                        ) : (
+                            <AisColorPalette boxSize={"24px"}/>
+                        )}
+                      </Box>
+                    </PopoverTrigger>
+                    <PopoverContent width={"fit-content"}>
+                      <PopoverBody p={0}>
+                        <StyledBox>
+                          <HexColorPicker
+                              color={value as string}
+                              onChange={handleChange}
+                              style={{
+                                width: "18.75rem",
+                                height: "13.875rem",
+                              }}
+                          />
+                        </StyledBox>
+                      </PopoverBody>
+                    </PopoverContent>
+                  </>
+              )}
+            </Popover>
+          </InputRightElement>
+        </InputGroupWithShadow>
+      </FormControlLayout>
   )
 }
