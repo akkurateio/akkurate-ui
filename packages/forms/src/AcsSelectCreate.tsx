@@ -24,6 +24,8 @@ interface AcsSelectProps {
   label?: string
   selectedBgColor?: string
   iconOnLeft?: boolean
+  tagBgColor?: string
+  fontSizeTag?: string
 }
 
 interface SelectProps
@@ -160,10 +162,19 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
                 paddingLeft: "0.688rem",
                 fontSize: props.fontSize || "sm",
               }),
-              singleValue: (provided: any) => ({
+              multiValue: (provided: any, state: any) => ({
                 ...provided,
-                margin: "0 0",
-                fontSize: props.fontSize || "sm",
+                width: "fit-content",
+                rounded: "full",
+                backgroundColor: props.tagBgColor
+                  ? props.tagBgColor
+                  : "primary.50",
+                color: props.color ? props.color : "primary.900",
+                paddingLeft: "0.75rem",
+                paddinTop: "0.25rem",
+                paddinBottom: "0.25rem",
+                paddinRight: "0.60rem",
+                fontSize: props.fontSizeTag ? props.fontSizeTag : "2xs",
               }),
               inputContainer: (provided: any) => ({
                 ...provided,
