@@ -25,6 +25,7 @@ interface AcsSelectProps {
   value: string | number
   label?: string
   iconOnLeft?: boolean
+  selectedBgColor?: string
 }
 
 interface SelectProps
@@ -100,7 +101,12 @@ export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
               option: (provided: any, state: any) => ({
                 ...provided,
                 borderBottom: "1px",
-                backgroundColor: state.isSelected ? "primary.500" : null,
+                backgroundColor:
+                  state.isSelected && props.selectedBgColor
+                    ? props.selectedBgColor
+                    : state.isSelected
+                    ? "primary.500"
+                    : null,
                 margin: "0.063rem 0",
                 color: state.isSelected ? "white" : "primary.500",
                 rounded: "sm",
