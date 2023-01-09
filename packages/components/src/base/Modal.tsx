@@ -98,8 +98,7 @@ export const AcsModal: React.FC<AcsModalProps> = ({
         <ModalBody p={0} mt={"1.5rem"} mb={"1.5rem"} fontSize={"sm"}>
           {body}
         </ModalBody>
-
-        <ModalFooter p={0}>{footer && footer}</ModalFooter>
+        {footer && <ModalFooter p={0}>{footer}</ModalFooter>}
       </ModalContent>
     </Modal>
   )
