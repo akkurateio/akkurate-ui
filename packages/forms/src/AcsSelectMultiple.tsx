@@ -141,9 +141,9 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
               }),
               menuList: (provided: any) => ({
                 ...provided,
-                padding: "0.313rem 0",
-                paddingRight: "0.313rem",
-                paddingLeft: "0.313rem",
+                padding: "0.375rem 0",
+                paddingRight: "0.375rem",
+                paddingLeft: "0.375rem",
                 maxHeight: "248px",
                 border: "1px",
                 borderColor: "neutral.200",
