@@ -67,7 +67,7 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
             boxShadow: `none`,
           }}
           height={"full"}
-          rounded={"base"}
+          rounded={props.rounded ? props.rounded : "base"}
           width={"full"}
           pl={"0.688rem"}
           pt={"0.656rem"}

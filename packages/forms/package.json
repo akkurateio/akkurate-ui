@@ -33,7 +33,7 @@
   "dependencies": {
     "@akkurateio/icons": "^0.0.63",
     "@akkurateio/utils": "^0.0.63",
-    "@chakra-ui/react": ">=2.0.0",
+    "@chakra-ui/react": ">=2.4.6",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
     "chakra-react-select": "^4.4.2",

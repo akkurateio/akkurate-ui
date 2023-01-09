@@ -117,7 +117,8 @@ export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
                 paddingRight: "0.313rem",
                 paddingLeft: "0.313rem",
                 maxHeight: "248px",
-                border: "none",
+                border: "1px",
+                borderColor: "neutral.200",
               }),
               placeholder: (provided: any) => ({
                 ...provided,

@@ -104,9 +104,8 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
               }),
               option: (provided: any, state: any) => ({
                 ...provided,
-                backgroundColor: state.isSelected
-                  ? "primary.500"
-                  : "primary.100",
+                borderBottom: "1px",
+                backgroundColor: state.isSelected ? "primary.500" : null,
                 margin: "0.063rem 0",
                 color: state.isSelected ? "white" : "primary.500",
                 rounded: "sm",
@@ -115,7 +114,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
                 fontSize: props.fontSize || "sm",
                 padding: 0,
                 paddingLeft: "0.255rem",
-                border: "none",
+                borderBottomColor: "neutral.200",
               }),
               menuList: (provided: any) => ({
                 ...provided,
@@ -123,7 +122,8 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
                 paddingRight: "0.313rem",
                 paddingLeft: "0.313rem",
                 maxHeight: "248px",
-                border: "none",
+                border: "1px",
+                borderColor: "neutral.200",
               }),
               placeholder: (provided: any) => ({
                 ...provided,
@@ -153,7 +153,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({ ...props }) => {
                 boxShadow: focus
                   ? `0 0 0 3px ${theme.colors.primary[500]}25 `
                   : undefined,
-                rounded: "base",
+                rounded: props.rounded ? props.rounded : "base",
                 borderWidth: "1px",
                 borderColor: props.isInvalid
                   ? "red.500"

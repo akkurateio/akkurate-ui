@@ -67,6 +67,7 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           width={8}
           height={"full"}
           ml={"0.375rem"}
+          rounded={props.rounded}
         >
           <AisSearch
             boxSize={"24px"}
@@ -86,7 +87,7 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           fontSize={props.fontSize || "sm"}
-          rounded={"base"}
+          rounded={props.rounded ? props.rounded : "base"}
           paddingBottom={"0.656rem"}
           paddingTop={"0.656rem"}
           paddingLeft={"2.5rem"}

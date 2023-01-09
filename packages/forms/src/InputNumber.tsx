@@ -141,7 +141,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
               boxShadow: `none`,
             }}
             height={"full"}
-            rounded={"base"}
+            rounded={props.rounded ? props.rounded : "base"}
           />
           <InputRightElement
             height={"full"}

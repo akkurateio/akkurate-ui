@@ -122,7 +122,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
           pl={"0.688rem"}
           pt={"0.656rem"}
           pb={"0.656rem"}
-          rounded={"base"}
+          rounded={props.rounded ? props.rounded : "base"}
           width={"full"}
           fontSize={props.fontSize ? props.fontSize : "sm"}
         />
