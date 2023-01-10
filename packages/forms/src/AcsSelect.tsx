@@ -34,9 +34,14 @@ interface SelectProps
     ThemingProps<"Input">,
     FormControlOptions {}
 
-export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
+export const AcsSelect: React.FC<SelectProps> = (props) => {
   const theme = useTheme()
-  const [currentValue, setCurrentValue] = useState<string | number>()
+
+  const [currentValue, setCurrentValue] = useState<any>(
+    props.value
+      ? props.options.find((opt) => opt.value == props.value)
+      : undefined,
+  )
   const [focus, setFocus] = useState(false)
 
   const handleChange = (e: any) => {

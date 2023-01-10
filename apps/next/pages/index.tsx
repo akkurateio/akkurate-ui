@@ -1,4 +1,5 @@
-import { AcsDrawer } from "@akkurateio/components"
+import { AcsDrawer, AcsDropzone } from "@akkurateio/components"
+import { AcsSelect } from "@akkurateio/forms"
 import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 import { Button, Flex, Heading, Text } from "@chakra-ui/react"
 import type { NextPage } from "next"
@@ -7,6 +8,13 @@ import { useState } from "react"
 const Pages: NextPage = () => {
   const [text, setText] = useState("")
   const [modalDrawer, setModalDrawer] = useState<boolean>(false)
+
+  const options = [
+    { value: "1", label: "Option 1", isDisabled: true },
+    { value: "2", label: "Option 2" },
+    { value: "3", label: "Option 3" },
+  ]
+  const [selected, setSelected] = useState<string | number>("2")
 
   return (
     <Flex p={4} flexDirection={"column"} gap={4}>
@@ -39,22 +47,27 @@ const Pages: NextPage = () => {
         footer={
           <Flex justifyContent={"space-between"} width={"full"}>
             <Button
-              backgroundColor={"neutral.400"}
-              color={"white"}
+              colorScheme={"primary"}
+              variant={"outline"}
               onClick={() => setModalDrawer(false)}
             >
-              Close
+              Bidule
             </Button>
-            <Button
-              backgroundColor={"primary.500"}
-              color={"white"}
-              onClick={() => console.log("jojo")}
-            >
+            <Button colorScheme={"primary"} onClick={() => console.log("jojo")}>
               Vue
             </Button>
           </Flex>
         }
       />
+
+      <AcsSelect
+        options={options}
+        handleChange={setSelected}
+        value={selected}
+        label={"Select"}
+      />
+
+      <AcsDropzone handleChange={console.log} maxFiles={5} />
     </Flex>
   )
 }

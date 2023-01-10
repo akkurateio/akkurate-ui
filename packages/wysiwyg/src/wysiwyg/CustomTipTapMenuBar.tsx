@@ -29,7 +29,6 @@ interface IProps {
   hasDropzone: boolean
   isDropzoneOpen: boolean
   setIsDropzoneOpen: (val: boolean) => void
-
   bgColor?: string
   colorScheme?: string
 }
