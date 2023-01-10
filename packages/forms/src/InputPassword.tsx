@@ -103,14 +103,13 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           cursor={"pointer"}
           onClick={() => setShowPassword(!showPassword)}
           pb={"0.438rem"}
-          pr={"0.5rem"}
           pt={"0.438rem"}
         >
           {showPassword ? (
             props.iconOpen ? (
               props.iconOpen
             ) : (
-              <AisEye
+              <AisEyeClosed
                 color={
                   props.isInvalid
                     ? "error.500"
@@ -124,7 +123,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           ) : props.iconClose ? (
             props.iconClose
           ) : (
-            <AisEyeClosed
+            <AisEye
               color={
                 props.isInvalid
                   ? "error.500"

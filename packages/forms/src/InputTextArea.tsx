@@ -104,8 +104,7 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
             color: "red.500",
           }}
           fontSize={props.fontSize || "sm"}
-          pl={"0.688rem"}
-          pt={"0.625rem"}
+          p={"0.688rem"}
           bg={props.bg ? props.bg : "white"}
           rows={
             props.autoResize

@@ -165,7 +165,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
                   h={"full"}
                   overflow={"hidden"}
                 >
-                  <Box h={"full"} overflowY={"auto"}>
+                  <Box zIndex={"popover"} h={"full"} overflowY={"auto"}>
                     <SimpleGrid>
                       {hourOptions.map((h) => (
                         <Button

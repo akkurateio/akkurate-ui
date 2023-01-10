@@ -84,13 +84,13 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
             alignItems={"flex-start"}
             key={idx}
             position={"relative"}
-            boxShadow={
-              currentId === item.id
-                ? `0 0 0 3px ${theme.colors.primary[500]}25 `
-                : undefined
-            }
             borderWidth={"1px"}
             borderColor={currentId === item.id ? "primary.500" : "neutral.200"}
+            boxShadow={
+              currentId === item.id
+                ? `0px 0px 0px 1px ${theme.colors.primary[500]}`
+                : "none"
+            }
             bg={"white"}
           >
             <Box
@@ -98,14 +98,14 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
               ml={"0.75rem"}
               mt={"0.563rem"}
               mb={"0.563rem"}
-              mr={"2.4rem"}
+              mr={"2.563rem"}
             >
               {item.body}
             </Box>
             <Box
               position={"absolute"}
-              top={2}
               right={2}
+              top={"0.45rem"}
               color={currentId === item.id ? "primary.500" : "neutral.300"}
             >
               {currentId === item.id ? (
