@@ -122,13 +122,14 @@ export const AcsInputTime: React.FC<InputProps> = ({
           pl={"0.688rem"}
           pt={"0.656rem"}
           pb={"0.656rem"}
+          pr={0}
           rounded={props.rounded ? props.rounded : "base"}
           width={"full"}
           fontSize={props.fontSize ? props.fontSize : "sm"}
         />
         <Flex
           top={0}
-          right={2}
+          right={0}
           bottom={0}
           w={10}
           position={"absolute"}
@@ -148,8 +149,8 @@ export const AcsInputTime: React.FC<InputProps> = ({
                     : "neutral.500"
                 }
                 bg={"white"}
-                w={"32px"}
-                h={"32px"}
+                w={"full"}
+                h={"full"}
                 _hover={{ color: "primary.700" }}
                 _active={{ color: "primary.500" }}
                 zIndex={1}

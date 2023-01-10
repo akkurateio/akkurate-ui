@@ -22,7 +22,7 @@ import { useTheme } from "@chakra-ui/system"
 
 const StyledBox = styled.div`
   .react-colorful__saturation {
-    border-radius: 4px 4px 0 0;
+    border-radius: 2px 2px 2px 2px;
   }
 
   .react-colorful {
@@ -32,20 +32,21 @@ const StyledBox = styled.div`
   }
 
   .react-colorful__hue {
-    height: 20px;
-    border-radius: 0 0 4px 4px;
+    margin-top: 12px;
+    height: 12px;
+    border-radius: 2px 2px 2px 2px;
   }
 
   .react-colorful__saturation-pointer {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 99px;
   }
 
   .react-colorful__hue-pointer,
   .react-colorful__alpha-pointer {
-    width: 12px;
-    height: 12px;
+    width: 20px;
+    height: 20px;
     border-radius: 99px;
   }
 `
@@ -179,8 +180,8 @@ export const AcsInputColor: React.FC<InputProps> = ({
                   </Box>
                 </PopoverTrigger>
                 <PopoverContent
-                  p={"0.313rem"}
-                  pb={"1.125rem"}
+                  p={"0.25rem"}
+                  pb={"1.063rem"}
                   _focus={{ boxShadow: "none" }}
                   width={"fit-content"}
                 >
