@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, Select } from "chakra-react-select"
-import React, { useEffect, useId, useState } from "react"
+import React, { useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -38,7 +38,6 @@ export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
   const theme = useTheme()
   const [currentValue, setCurrentValue] = useState<string | number>()
   const [focus, setFocus] = useState(false)
-  const [notValid, setNotValid] = useState(false)
 
   const handleChange = (e: any) => {
     setCurrentValue(e)
@@ -47,13 +46,6 @@ export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
     }
   }
 
-  useEffect(() => {
-    if (props.isInvalid) {
-      setNotValid(true)
-    } else {
-      setNotValid(false)
-    }
-  }, [notValid, props.isInvalid])
   const instanceId = useId()
 
   return (
@@ -167,11 +159,11 @@ export const AcsSelect: React.FC<SelectProps> = ({ ...props }) => {
             }),
           }}
           components={{
-            DropdownIndicator: (props) => (
+            DropdownIndicator: (dropdownProps) => (
               <Box margin={"0.5rem"}>
                 <AisChevronSort
                   color={
-                    notValid
+                    props.isInvalid
                       ? "red.500"
                       : focus
                       ? theme.colors.primary[500]
