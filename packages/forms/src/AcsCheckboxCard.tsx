@@ -96,7 +96,7 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
               ml={"0.75rem"}
               mt={"0.563rem"}
               mb={"0.563rem"}
-              mr={"2.75rem"}
+              mr={"2.563rem"}
             >
               {item.body}
             </Box>
