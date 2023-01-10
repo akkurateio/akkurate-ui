@@ -1,4 +1,4 @@
-import { AcsDrawer, AcsDropzone } from "@akkurateio/components"
+import { AcsCarousel, AcsDrawer, AcsDropzone } from "@akkurateio/components"
 import { AcsSelect } from "@akkurateio/forms"
 import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 import { Button, Flex, Heading, Text } from "@chakra-ui/react"
@@ -68,6 +68,110 @@ const Pages: NextPage = () => {
       />
 
       <AcsDropzone handleChange={console.log} maxFiles={5} />
+
+      <AcsCarousel
+        cardsArray={[
+          <Flex
+            key={0}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 1</Text>
+          </Flex>,
+          <Flex
+            key={1}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 2</Text>
+          </Flex>,
+          <Flex
+            key={2}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 3</Text>
+          </Flex>,
+          <Flex
+            key={0}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 1</Text>
+          </Flex>,
+          <Flex
+            key={1}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 2</Text>
+          </Flex>,
+          <Flex
+            key={2}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 3</Text>
+          </Flex>,
+          <Flex
+            key={0}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 1</Text>
+          </Flex>,
+          <Flex
+            key={1}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 2</Text>
+          </Flex>,
+          <Flex
+            key={2}
+            bg={"gray.500"}
+            shadow={"inner"}
+            h={"200px"}
+            w={"120px"}
+            rounded={"sm"}
+            p={2}
+          >
+            <Text>Hello 3</Text>
+          </Flex>,
+        ]}
+      />
     </Flex>
   )
 }

@@ -30,19 +30,29 @@ export const AcsCarousel: React.FC<IProps> = ({
       setIndex(cardsArray.length - 1)
     }
   }
+
+  const defineBoxSize = (idx: number) => {
+    if (idx === index) {
+      return "8px"
+    }
+
+    return "6px"
+  }
+
   return (
     <Box width={"full"}>
       <Flex width={"full"} alignItems={"center"}>
-        <Button onClick={handlePrevious} variant={"ghost"}>
-          <AisChevronLeft boxSize={"24px"} />
+        <Button onClick={handlePrevious} variant={"ghost"} size={"none"}>
+          <AisChevronLeft boxSize={"32px"} />
         </Button>
-        <Box width={"100%"} overflow={"hidden"}>
+
+        <Box width={"100%"} overflow={"hidden"} px={4}>
           <Flex
             width={`${100 * cardsArray.length}%`}
             justifyContent={"flex-start"}
             alignItems={"center"}
-            transition={"all 0.4s ease-in-out"}
             transform={`translateX(-${index * (100 / cardsArray.length)}%)`}
+            transition={"all 0.3s ease-in-out"}
           >
             {cardsArray.map((card, index) => (
               <Flex
@@ -50,7 +60,7 @@ export const AcsCarousel: React.FC<IProps> = ({
                 width={`100%`}
                 justifyContent={"center"}
                 alignItems={"center"}
-                p={2}
+                py={2}
               >
                 {card}
               </Flex>
@@ -58,8 +68,8 @@ export const AcsCarousel: React.FC<IProps> = ({
           </Flex>
         </Box>
 
-        <Button onClick={handleNext} variant={"ghost"}>
-          <AisChevronRight boxSize={"24px"} />
+        <Button onClick={handleNext} variant={"ghost"} size={"none"}>
+          <AisChevronRight boxSize={"32px"} />
         </Button>
       </Flex>
       {withIndicator && (
@@ -75,9 +85,10 @@ export const AcsCarousel: React.FC<IProps> = ({
               key={idx}
               rounded={"full"}
               bg={idx === index ? "primary.500" : "gray.500"}
-              width={2}
-              height={2}
+              width={defineBoxSize(idx)}
+              height={defineBoxSize(idx)}
               shadow={"inner"}
+              transition={"all 0.3s ease-in-out"}
             />
           ))}
         </HStack>
