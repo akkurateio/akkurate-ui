@@ -1,3 +1,4 @@
+import { AisClose } from "@akkurateio/icons"
 import {
   Box,
   Drawer,
@@ -12,7 +13,6 @@ import {
   ThemingProps,
 } from "@chakra-ui/react"
 import React from "react"
-import { AisClose } from "@akkurateio/icons"
 
 interface DrawerOptions {
   body: JSX.Element
@@ -56,22 +56,18 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
       <DrawerContent {...props}>
         {title && !header && (
           <>
-            <HStack justifyContent={"space-between"} w={"full"}>
+            <HStack justifyContent={"space-between"} w={"full"} p={4} pb={0}>
               <DrawerHeader
                 alignItems={"center"}
                 flex={1}
                 fontWeight={"md"}
                 fontSize={"md"}
-                pl={"1rem"}
-                pt={"1rem"}
-                pr={0}
-                pb={0}
+                p={0}
               >
                 {title}
               </DrawerHeader>
               {hasCloseBtn && (
                 <IconButton
-                  pr={"1rem"}
                   aria-label="Close"
                   icon={<AisClose boxSize={"24px"} />}
                   color={"neutral.500"}
@@ -82,7 +78,7 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
                 />
               )}
             </HStack>
-            <Box height={"1px"} bg={"neutral.300"} m={4} mr={0} ml={0} />
+            <Box height={"1px"} bg={"neutral.300"} my={4} />
           </>
         )}
         {!title && hasCloseBtn && (
@@ -91,9 +87,7 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
               alignItems={"center"}
               justifyContent={"flex-end"}
               w={"full"}
-              pl={"1rem"}
-              pt={"1rem"}
-              pr={"1rem"}
+              p={4}
               pb={0}
             >
               <IconButton
@@ -106,7 +100,7 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
                 cursor={"pointer"}
               />
             </HStack>
-            <Box height={"1px"} bg={"neutral.300"} m={4} mr={0} ml={0} />
+            <Box height={"1px"} bg={"neutral.300"} my={4} />
           </>
         )}
         {header && (
@@ -117,22 +111,20 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
               fontWeight={"md"}
               fontSize={"md"}
               w={"full"}
-              pl={"1rem"}
-              pt={"1rem"}
-              pr={"1rem"}
+              p={4}
               pb={0}
             >
               {header}
             </DrawerHeader>
-            <Box height={"1px"} bg={"neutral.300"} m={4} mr={0} ml={0} />
+            <Box height={"1px"} bg={"neutral.300"} my={4} />
           </>
         )}
-        <DrawerBody pl={"1rem"} pr={"1rem"} pt={0} pb={0}>
+        <DrawerBody px={4} py={0}>
           {body}
         </DrawerBody>
-        <Box height={"1px"} bg={"neutral.300"} m={4} ml={0} mr={0} />
+        <Box height={"1px"} bg={"neutral.300"} my={4} />
         {footer && (
-          <DrawerFooter pl={"1rem"} pr={"1rem"} pt={0} pb={"1rem"}>
+          <DrawerFooter pt={0} px={4} pb={4}>
             {footer}
           </DrawerFooter>
         )}
