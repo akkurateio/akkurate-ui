@@ -65,7 +65,7 @@ export const AcsInputSearch: React.FC<InputProps> = ({
         <InputLeftElement
           backgroundColor={props.isInvalid ? "red.50" : "white"}
           height={"full"}
-          rounded={props.rounded}
+          rounded={props.rounded ? props.rounded : "base"}
         >
           <AisSearch
             boxSize={"24px"}
