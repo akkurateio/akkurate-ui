@@ -10,6 +10,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  Portal,
   SimpleGrid,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
@@ -158,86 +159,90 @@ export const AcsInputTime: React.FC<InputProps> = ({
                 <AisTime boxSize={"24px"} />
               </Button>
             </PopoverTrigger>
-            <PopoverContent
-              rootProps={{ style: { transform: "scale(0)" } }}
-              overflow={"hidden"}
-              w={"9.813rem"}
-              h={"15.625rem"}
-            >
-              <PopoverBody p={1.5} overflow={"hidden"} bg={"white"}>
-                <SimpleGrid
-                  columns={2}
-                  spacing={"0.313rem"}
-                  h={"full"}
-                  overflow={"hidden"}
-                >
-                  <Box zIndex={"popover"} h={"full"} overflowY={"auto"}>
-                    <SimpleGrid>
-                      {hourOptions.map((h) => (
-                        <Button
-                          mb={0.5}
-                          fontWeight={"normal"}
-                          fontSize={"sm"}
-                          value={h}
-                          bg={h === hourValue ? "primary.500" : "primary.100"}
-                          color={h === hourValue ? "white" : "primary.500"}
-                          _hover={{
-                            bg: "primary.300",
-                            color: "white",
-                          }}
-                          p={0}
-                          _active={{
-                            bg: "primary.600",
-                          }}
-                          key={h}
-                          onClick={handleHourChange}
-                          width={"3.75rem"}
-                          height={"2.375rem"}
-                          borderRadius={"sm"}
-                          isDisabled={
-                            disabledHours && disabledHours.includes(+h)
-                          }
-                        >
-                          {h}
-                        </Button>
-                      ))}
-                    </SimpleGrid>
-                  </Box>
-                  <Box h={"full"} overflowY={"auto"}>
-                    <SimpleGrid>
-                      {minuteOptions.map((m) => (
-                        <Button
-                          p={0}
-                          mb={0.5}
-                          fontSize={"sm"}
-                          fontWeight={"normal"}
-                          value={m}
-                          bg={m === minuteValue ? "primary.500" : "primary.100"}
-                          color={m === minuteValue ? "white" : "primary.500"}
-                          _hover={{
-                            bg: "primary.300",
-                            color: "white",
-                          }}
-                          _active={{
-                            bg: "primary.600",
-                          }}
-                          key={m}
-                          width={"3.75rem"}
-                          height={"2.375rem"}
-                          borderRadius={"sm"}
-                          onClick={handleMinuteChange}
-                          isDisabled={
-                            disabledMinutes && disabledMinutes.includes(+m)
-                          }
-                        >
-                          {m}
-                        </Button>
-                      ))}
-                    </SimpleGrid>
-                  </Box>
-                </SimpleGrid>
-              </PopoverBody>
-            </PopoverContent>
+            <Portal>
+              <PopoverContent
+                rootProps={{ style: { transform: "scale(0)" } }}
+                overflow={"hidden"}
+                w={"9.813rem"}
+                h={"15.625rem"}
+              >
+                <PopoverBody p={1.5} overflow={"hidden"} bg={"white"}>
+                  <SimpleGrid
+                    columns={2}
+                    spacing={"0.313rem"}
+                    h={"full"}
+                    overflow={"hidden"}
+                  >
+                    <Box zIndex={"popover"} h={"full"} overflowY={"auto"}>
+                      <SimpleGrid>
+                        {hourOptions.map((h) => (
+                          <Button
+                            mb={0.5}
+                            fontWeight={"normal"}
+                            fontSize={"sm"}
+                            value={h}
+                            bg={h === hourValue ? "primary.500" : "primary.100"}
+                            color={h === hourValue ? "white" : "primary.500"}
+                            _hover={{
+                              bg: "primary.300",
+                              color: "white",
+                            }}
+                            p={0}
+                            _active={{
+                              bg: "primary.600",
+                            }}
+                            key={h}
+                            onClick={handleHourChange}
+                            width={"3.75rem"}
+                            height={"2.375rem"}
+                            borderRadius={"sm"}
+                            isDisabled={
+                              disabledHours && disabledHours.includes(+h)
+                            }
+                          >
+                            {h}
+                          </Button>
+                        ))}
+                      </SimpleGrid>
+                    </Box>
+                    <Box h={"full"} overflowY={"auto"}>
+                      <SimpleGrid>
+                        {minuteOptions.map((m) => (
+                          <Button
+                            p={0}
+                            mb={0.5}
+                            fontSize={"sm"}
+                            fontWeight={"normal"}
+                            value={m}
+                            bg={
+                              m === minuteValue ? "primary.500" : "primary.100"
+                            }
+                            color={m === minuteValue ? "white" : "primary.500"}
+                            _hover={{
+                              bg: "primary.300",
+                              color: "white",
+                            }}
+                            _active={{
+                              bg: "primary.600",
+                            }}
+                            key={m}
+                            width={"3.75rem"}
+                            height={"2.375rem"}
+                            borderRadius={"sm"}
+                            onClick={handleMinuteChange}
+                            isDisabled={
+                              disabledMinutes && disabledMinutes.includes(+m)
+                            }
+                          >
+                            {m}
+                          </Button>
+                        ))}
+                      </SimpleGrid>
+                    </Box>
+                  </SimpleGrid>
+                </PopoverBody>
+              </PopoverContent>
+            </Portal>
           </Popover>
         </Flex>
       </InputGroupWithShadow>

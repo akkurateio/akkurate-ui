@@ -12,6 +12,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  Portal,
   SimpleGrid,
   Tooltip,
   useTheme,
@@ -126,18 +127,14 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 </HStack>
               </Button>
             </PopoverTrigger>
-            <PopoverContent
-              rootProps={{ style: { transform: "scale(0)" } }}
-              overflow={"hidden"}
-              width={"4.5rem"}
-              h={"14.125rem"}
-            >
-              <PopoverBody
+            <Portal>
+              <PopoverContent
+                rootProps={{ style: { transform: "scale(0)" } }}
                 overflow={"hidden"}
-                overflowY={"auto"}
-                padding={0}
-                paddingLeft={"0.313rem"}
+                width={"4.5rem"}
+                h={"14.125rem"}
               >
+<<<<<<< Updated upstream
                 <Box h={"full"}>
                   <SimpleGrid
                     columns={1}
@@ -175,6 +172,52 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 </Box>
               </PopoverBody>
             </PopoverContent>
+=======
+                <PopoverBody
+                  overflow={"hidden"}
+                  overflowY={"auto"}
+                  padding={0}
+                  paddingLeft={"0.313rem"}
+                >
+                  <Box h={"full"}>
+                    <SimpleGrid
+                      columns={1}
+                      spacing={"0.125rem"}
+                      paddingTop={"0.313rem"}
+                      paddingBottom={"0.313rem"}
+                    >
+                      {frenchCountryWithCode.map((country, idx) => {
+                        return (
+                          <Tooltip key={idx} label={country.name}>
+                            <Button
+                              width={"3rem"}
+                              height={"2.125rem"}
+                              onClick={() => changeCountry(country.code)}
+                              variant={"unstyled"}
+                              backgroundColor={
+                                country.code.toLowerCase() === countryLower
+                                  ? "primary.500"
+                                  : "primary.100"
+                              }
+                              rounded={"sm"}
+                              justifyContent={"center"}
+                              display={"flex"}
+                            >
+                              <Flag
+                                width={"24px"}
+                                height={"18px"}
+                                code={country.code}
+                              />
+                            </Button>
+                          </Tooltip>
+                        )
+                      })}
+                    </SimpleGrid>
+                  </Box>
+                </PopoverBody>
+              </PopoverContent>
+            </Portal>
+>>>>>>> Stashed changes
           </Popover>
         </InputLeftAddon>
         <Flex

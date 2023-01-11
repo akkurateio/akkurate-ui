@@ -11,6 +11,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  Portal,
   Text,
   VStack,
 } from "@chakra-ui/react"
@@ -92,26 +93,28 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
                   <AisChevronSort boxSize={"24px"} />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent rounded={"base"} mr={1.5} width={"5.125rem"}>
-                <PopoverBody p={1.5} maxH={"16.25rem"} overflowY={"scroll"}>
-                  <VStack spacing={0.5} divider={<Divider />}>
-                    {[...Array(max)].map((_, i) => (
-                      <PageBtnSecondary
-                        width={"3.75rem"}
-                        height={"2.375rem"}
-                        fontSize={"sm"}
-                        key={i}
-                        action={() => {
-                          handleChangePage(i + 1)
-                          onClose()
-                        }}
-                        page={i + 1}
-                        current={i + 1 === current}
-                      />
-                    ))}
-                  </VStack>
-                </PopoverBody>
-              </PopoverContent>
+              <Portal>
+                <PopoverContent rounded={"base"} mr={1.5} width={"5.125rem"}>
+                  <PopoverBody p={1.5} maxH={"16.25rem"} overflowY={"scroll"}>
+                    <VStack spacing={0.5} divider={<Divider />}>
+                      {[...Array(max)].map((_, i) => (
+                        <PageBtnSecondary
+                          width={"3.75rem"}
+                          height={"2.375rem"}
+                          fontSize={"sm"}
+                          key={i}
+                          action={() => {
+                            handleChangePage(i + 1)
+                            onClose()
+                          }}
+                          page={i + 1}
+                          current={i + 1 === current}
+                        />
+                      ))}
+                    </VStack>
+                  </PopoverBody>
+                </PopoverContent>
+              </Portal>
             </>
           )}
         </Popover>

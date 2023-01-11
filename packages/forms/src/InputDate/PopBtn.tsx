@@ -25,7 +25,7 @@ export const PopBtn = ({ date, setDate, focus }: IProps) => {
       alignItems={"center"}
       justifyItems={"center"}
     >
-      <Popover placement={"bottom-end"} >
+      <Popover placement={"bottom-end"}>
         <PopoverTrigger>
           <Button
             variant={"unstyled"}

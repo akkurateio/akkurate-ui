@@ -55,9 +55,19 @@ const Pages: NextPage = () => {
         isInvalid
       />
 
+      <AcsInputDate value={date} handleChange={setDate} />
+      <AcsInputDate value={date} handleChange={setDate} />
+      <AcsInputDate value={date} handleChange={setDate} />
+
       <AcsTree tree={tree} item={treeItem} setItem={setTreeItem} />
 
-      <AcsInputDate value={date} handleChange={setDate} />
+      <AcsWysiwyg
+        value={text}
+        setValue={setText}
+        menuBgColor={"#ebebeb25"}
+        menuColorScheme={"success"}
+        isInvalid
+      />
     </Flex>
   )
 }

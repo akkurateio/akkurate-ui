@@ -12,6 +12,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  Portal,
   ThemingProps,
 } from "@chakra-ui/react"
 import { useTheme } from "@chakra-ui/system"
@@ -179,26 +180,28 @@ export const AcsInputColor: React.FC<InputProps> = ({
                     )}
                   </Box>
                 </PopoverTrigger>
-                <PopoverContent
-                  rootProps={{ style: { transform: "scale(0)" } }}
-                  p={"0.25rem"}
-                  pb={"1.063rem"}
-                  _focus={{ boxShadow: "none" }}
-                  width={"fit-content"}
-                >
-                  <PopoverBody p={0}>
-                    <StyledBox>
-                      <HexColorPicker
-                        color={value as string}
-                        onChange={handleChange}
-                        style={{
-                          width: "18.75rem",
-                          height: "13.875rem",
-                        }}
-                      />
-                    </StyledBox>
-                  </PopoverBody>
-                </PopoverContent>
+                <Portal>
+                  <PopoverContent
+                    rootProps={{ style: { transform: "scale(0)" } }}
+                    p={"0.25rem"}
+                    pb={"1.063rem"}
+                    _focus={{ boxShadow: "none" }}
+                    width={"fit-content"}
+                  >
+                    <PopoverBody p={0}>
+                      <StyledBox>
+                        <HexColorPicker
+                          color={value as string}
+                          onChange={handleChange}
+                          style={{
+                            width: "18.75rem",
+                            height: "13.875rem",
+                          }}
+                        />
+                      </StyledBox>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Portal>
               </>
             )}
           </Popover>

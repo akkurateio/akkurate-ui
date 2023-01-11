@@ -1,4 +1,4 @@
-import { PopoverContent } from "@chakra-ui/react"
+import { PopoverContent, Portal } from "@chakra-ui/react"
 import React from "react"
 import { DateObject } from "../../types"
 import PopBody from "./PopBody"
@@ -11,14 +11,16 @@ interface IProps {
 
 const PopContent = ({ date, setDate }: IProps) => {
   return (
-    <PopoverContent
-      width={"auto"}
-      // hack because the popover content would take his space on the right of the input when never opened
-      rootProps={{ style: { transform: "scale(0)" } }}
-    >
-      <PopHeader date={date} setDate={setDate} />
-      <PopBody date={date} setDate={setDate} />
-    </PopoverContent>
+    <Portal>
+      <PopoverContent
+        width={"auto"}
+        // hack because the popover content would take his space on the right of the input when never opened
+        rootProps={{ style: { transform: "scale(0)" } }}
+      >
+        <PopHeader date={date} setDate={setDate} />
+        <PopBody date={date} setDate={setDate} />
+      </PopoverContent>
+    </Portal>
   )
 }
 
