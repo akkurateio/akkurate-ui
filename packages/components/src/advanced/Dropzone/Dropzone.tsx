@@ -1,5 +1,6 @@
 import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/icons"
 import {
+  background,
   Box,
   Button,
   Divider,
@@ -25,7 +26,7 @@ interface IProps {
 
 export const AcsDropzone: React.FC<IProps> = ({
   accept,
-  height = "250px",
+  height = "300px",
   maxFiles = 1,
   boxSize = "150px",
   handleChange,
@@ -46,6 +47,7 @@ export const AcsDropzone: React.FC<IProps> = ({
           setFiles([...files, ...acceptedFiles])
         }
       }
+
     },
     [files, maxFiles],
   )
@@ -56,7 +58,7 @@ export const AcsDropzone: React.FC<IProps> = ({
     }
   }, [])
 
-  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, open,  } = useDropzone({
     onDrop,
     maxFiles: maxFiles,
     noClick: true,
@@ -154,7 +156,8 @@ export const AcsDropzone: React.FC<IProps> = ({
 
         {files.length > 0 && (
           <>
-            {maxFiles > 1 ? (
+            {maxFiles > 1 && files.length <= maxFiles ? (
+                <VStack spacing={4}>
               <HStack alignItems={"flex-start"} width={"full"}>
                 {files.map((file, idx) => (
                   <ForMultiple
@@ -166,6 +169,17 @@ export const AcsDropzone: React.FC<IProps> = ({
                   />
                 ))}
               </HStack>
+                  <HStack>
+                   <Button
+                      onClick={open}
+                      colorScheme={isDragActive ? "primary" : "neutral"}
+                      backgroundColor={
+                        props.backgroundColor ? props.backgroundColor : "primary.500"
+                      }>
+                    <AisDownload boxSize={"24px"} /><Text ml={2} >Importer un nouveau fichier</Text>
+                  </Button>
+                  </HStack>
+                </VStack>
             ) : (
               <VStack spacing={2} divider={<Divider />} my={6} width={"full"}>
                 {files.map((file, idx) => (
