@@ -19,7 +19,7 @@ export const PopBtn = ({ date, setDate, focus }: IProps) => {
     <Flex
       position={"absolute"}
       top={0}
-      right={2}
+      right={0}
       bottom={0}
       w={10}
       alignItems={"center"}

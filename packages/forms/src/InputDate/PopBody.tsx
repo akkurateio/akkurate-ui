@@ -74,7 +74,7 @@ const PopBody = ({ date, setDate }: IProps) => {
   }, [date.currentDate])
 
   return (
-    <PopoverBody>
+    <PopoverBody p={2}>
       <SimpleGrid columns={7} spacing={1}>
         {shortDaysArray.map((day, index) => (
           <Box key={index}>

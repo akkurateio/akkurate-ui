@@ -4,7 +4,14 @@ import {
   AisClose,
   AisDot,
 } from "@akkurateio/icons"
-import { Box, Button, Flex, PopoverHeader, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  PopoverHeader,
+  Text,
+} from "@chakra-ui/react"
 import dayjs from "dayjs"
 import React from "react"
 import { DateObject } from "../../types"
@@ -36,12 +43,19 @@ const PopHeader = ({ date, setDate }: IProps) => {
     })
   }
 
+  const handleCurrentMonth = () => {
+    setDate({
+      ...date,
+      currentDate: dayjs(),
+    })
+  }
+
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
   return (
-    <PopoverHeader>
+    <PopoverHeader borderBottom={"none"} pb={0.5} pt={2} px={2}>
       <Flex alignItems={"center"}>
         <Flex flex={2} justifyContent={"space-between"} alignItems={"center"}>
           <Box>
@@ -52,24 +66,30 @@ const PopHeader = ({ date, setDate }: IProps) => {
               {capitalizeFirstLetter(dayjs(date.currentDate).format("MMMM"))}
             </Text>
           </Box>
-
-          <Button variant={"ghost"} onClick={handleReset}>
-            <AisClose boxSize={"24px"} />
-          </Button>
         </Flex>
 
-        <Flex
-          flex={1}
-          alignItems={"center"}
-          justifyContent={"space-between"}
-          color={"primary.500"}
-        >
-          <Button variant={"ghost"} onClick={handlePreviousMonth}>
-            <AisChevronLeft boxSize={"24px"} />
-          </Button>
-          <AisDot boxSize={6} />
-          <Button variant={"ghost"} onClick={handleNextMonth}>
-            <AisChevronRight boxSize={"24px"} />
+        <Flex alignItems={"center"} color={"primary.500"}>
+          <HStack flex={1} alignItems={"center"} spacing={1}>
+            <Button
+              variant={"ghost"}
+              size={"none"}
+              onClick={handlePreviousMonth}
+            >
+              <AisChevronLeft boxSize={"24px"} />
+            </Button>
+            <Button
+              variant={"ghost"}
+              size={"none"}
+              onClick={handleCurrentMonth}
+            >
+              <AisDot boxSize={6} />
+            </Button>
+            <Button variant={"ghost"} size={"none"} onClick={handleNextMonth}>
+              <AisChevronRight boxSize={"24px"} />
+            </Button>
+          </HStack>
+          <Button ml={4} variant={"ghost"} size={"none"} onClick={handleReset}>
+            <AisClose boxSize={"24px"} />
           </Button>
         </Flex>
       </Flex>

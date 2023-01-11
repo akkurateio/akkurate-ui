@@ -106,7 +106,7 @@ export const AcsInputDate: React.FC<InputProps> = ({
             bg: "red.50",
             color: "red.500",
           }}
-          px={props.px ? props.px : 3}
+          px={props.px ? props.px : 2}
           bg={props.bg ? props.bg : "white"}
           onChange={(e) => handleManualChange(e.target.value)}
         />

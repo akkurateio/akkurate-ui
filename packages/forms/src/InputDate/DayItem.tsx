@@ -91,6 +91,7 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
       height={"2.2rem"}
       borderRadius={"2px"}
       position={"relative"}
+      boxSize={8}
     >
       {dayjs(day).isSame(dayjs(), "day") && (
         <Box
