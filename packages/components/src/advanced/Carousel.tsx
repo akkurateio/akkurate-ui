@@ -78,7 +78,7 @@ export const AcsCarousel: React.FC<IProps> = ({
           width={"full"}
           alignItems={"center"}
           justifyContent={"center"}
-          py={2}
+          h={4}
         >
           {cardsArray.map((card, idx) => (
             <Box
