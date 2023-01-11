@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, Select } from "chakra-react-select"
-import React, { useId, useState } from "react"
+import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -37,11 +37,7 @@ interface SelectProps
 export const AcsSelect: React.FC<SelectProps> = (props) => {
   const theme = useTheme()
 
-  const [currentValue, setCurrentValue] = useState<any>(
-    props.value
-      ? props.options.find((opt) => opt.value == props.value)
-      : undefined,
-  )
+  const [currentValue, setCurrentValue] = useState<any>(undefined)
   const [focus, setFocus] = useState(false)
 
   const handleChange = (e: any) => {
@@ -52,6 +48,18 @@ export const AcsSelect: React.FC<SelectProps> = (props) => {
   }
 
   const instanceId = useId()
+
+  useEffect(() => {
+    if (currentValue === undefined) {
+      if (props.value) {
+        setCurrentValue(props.options.find((opt) => opt.value == props.value))
+      }
+    } else {
+      if (props.value && props.value != currentValue.value) {
+        setCurrentValue(props.options.find((opt) => opt.value == props.value))
+      }
+    }
+  }, [props.value])
 
   return (
     <FormControlLayout label={props.label}>

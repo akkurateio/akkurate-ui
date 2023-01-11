@@ -1,5 +1,5 @@
 import { AcsTree } from "@akkurateio/components"
-import { AcsInputDate, AcsInputPhone } from "@akkurateio/forms"
+import { AcsInputDate, AcsInputPhone, AcsSelect } from "@akkurateio/forms"
 import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 import { Flex, Heading } from "@chakra-ui/react"
 import type { NextPage } from "next"
@@ -14,7 +14,7 @@ const Pages: NextPage = () => {
     { value: "2", label: "Option 2" },
     { value: "3", label: "Option 3" },
   ]
-  const [selected, setSelected] = useState<string | number>("2")
+  const [selected, setSelected] = useState<string | number>(2)
 
   const [phoneNumber, setPhoneNumber] = useState("")
 
@@ -55,6 +55,12 @@ const Pages: NextPage = () => {
         menuBgColor={"#ebebeb25"}
         menuColorScheme={"success"}
         isInvalid
+      />
+
+      <AcsSelect
+        options={options}
+        value={selected}
+        handleChange={setSelected}
       />
 
       <AcsInputDate value={date} handleChange={setDate} />
