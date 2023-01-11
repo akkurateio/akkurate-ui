@@ -103,13 +103,16 @@ export const AcsInputFile: React.FC<InputProps> = ({
           <InputRightElement zIndex={2} height={"full"}>
             <IconButton
               aria-label="Close"
-              icon={<AisClose boxSize={"24px"} />}
-              color={"neutral.500"}
               onClick={handleDelete}
-              size={"xs"}
               variant={"ghost"}
               cursor={"pointer"}
-            />
+              color={"white"}
+              backgroundColor={"neutral.500"}
+              rounded={"full"}
+              size={"24px"}
+            >
+              <AisClose boxSize={"24px"}/>
+            </IconButton>
           </InputRightElement>
         )}
         <Input
