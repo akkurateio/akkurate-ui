@@ -99,7 +99,6 @@ export const AcsInputColor: React.FC<InputProps> = ({
     }
   }, [value])
 
-  console.log("isFocused", value)
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
