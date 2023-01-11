@@ -28,7 +28,7 @@ interface IProps {
   maxFiles?: number
   isInvalid?: boolean
   label?: string
-  menueBar?: "top" | "bottom"
+  menueBarPlacement?: "top" | "bottom"
 }
 
 // Pour que le composant marche bien il faut ajouter le style dans le theme de chakra,
@@ -52,7 +52,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
   maxFiles = 5,
   isInvalid = false,
   label,
-  menueBar = "bottom",
+  menueBarPlacement = "bottom",
 }) => {
   const [isDropzoneOpen, setIsDropzoneOpen] = useState<boolean>(false)
 
@@ -106,7 +106,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
   return (
     <VStack spacing={1} alignItems={"flex-start"} w={"full"} h={"full"}>
       <FormControlLayout label={label}>
-        {withMenuBar && menueBar === "top" && editor && (
+        {withMenuBar && menueBarPlacement === "top" && editor && (
           <CustomTipTapMenuBar
             editor={editor}
             hasDropzone={!!setFiles}
@@ -140,7 +140,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
         </InputGroupWithShadow>
       </FormControlLayout>
 
-      {withMenuBar && menueBar === "bottom" && editor && (
+      {withMenuBar && menueBarPlacement === "bottom" && editor && (
         <CustomTipTapMenuBar
           editor={editor}
           hasDropzone={!!setFiles}

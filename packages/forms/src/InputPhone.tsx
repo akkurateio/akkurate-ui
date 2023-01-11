@@ -2,6 +2,7 @@ import { AisChevronDown } from "@akkurateio/icons"
 import {
   Box,
   Button,
+  Divider,
   Flex,
   FormControlOptions,
   HStack,
@@ -151,24 +152,24 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                             size={"xs"}
                             placement={"right"}
                           >
-                            <Button
-                              width={"3rem"}
-                              height={"2.125rem"}
-                              onClick={() => changeCountry(countryMapped.code)}
-                              variant={"unstyled"}
-                              backgroundColor={
-                                countryMapped.code === country
-                                  ? "primary.500"
-                                  : "primary.100"
-                              }
-                              rounded={"sm"}
-                              justifyContent={"center"}
-                              display={"flex"}
-                            >
-                              <Text>
-                                {countryArrayCode[countryMapped.code].flag}
-                              </Text>
-                            </Button>
+                            <Box>
+                              <Button
+                                width={"3rem"}
+                                height={"2.125rem"}
+                                onClick={() =>
+                                  changeCountry(countryMapped.code)
+                                }
+                                variant={"unstyled"}
+                                rounded={"sm"}
+                                justifyContent={"center"}
+                                display={"flex"}
+                              >
+                                <Text>
+                                  {countryArrayCode[countryMapped.code].flag}
+                                </Text>
+                              </Button>
+                              <Divider />
+                            </Box>
                           </Tooltip>
                         )
                       })}
