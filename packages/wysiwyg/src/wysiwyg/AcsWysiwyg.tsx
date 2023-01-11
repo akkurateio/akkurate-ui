@@ -9,8 +9,8 @@ import { marked } from "marked"
 import React, { FunctionComponent, useEffect, useState } from "react"
 import TurndownService from "turndown"
 import CustomTipTapMenuBar from "./CustomTipTapMenuBar"
-import InputGroupWithShadow from "@akkurateio/forms/src/InputGroupWithShadow";
-import FormControlLayout from "@akkurateio/forms/src/FormControlLayout";
+import InputGroupWithShadow from "@akkurateio/forms/src/InputGroupWithShadow"
+import FormControlLayout from "@akkurateio/forms/src/FormControlLayout"
 
 interface IProps {
   value: string | undefined // this is markdown
@@ -28,6 +28,7 @@ interface IProps {
   maxFiles?: number
   isInvalid?: boolean
   label?: string
+  menueBar?: "top" | "bottom"
 }
 
 // Pour que le composant marche bien il faut ajouter le style dans le theme de chakra,
@@ -50,7 +51,8 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
   menuColorScheme = "primary",
   maxFiles = 5,
   isInvalid = false,
-    label,
+  label,
+  menueBar = "bottom",
 }) => {
   const [isDropzoneOpen, setIsDropzoneOpen] = useState<boolean>(false)
 
@@ -103,28 +105,42 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
 
   return (
     <VStack spacing={1} alignItems={"flex-start"} w={"full"} h={"full"}>
-      <FormControlLayout label={label} >
-      <InputGroupWithShadow width={"full"} height={"full"} isInvalid={isInvalid}>
-      <EditorContent
-        className="markdown"
-        editor={editor}
-        style={{
-          minHeight,
-          height,
-          width: "100%",
-          overflow: "auto",
-          borderRadius: "4px",
-          backgroundColor: isInvalid
-            ? theme.colors.red[50] ?? "red"
-            : bgSecondary
-            ? bgSecondaryColor ?? theme.colors.yellow[50]
-            : bgPrimaryColor ?? "white",
-        }}
-      />
+      <FormControlLayout label={label}>
+        {withMenuBar && menueBar === "top" && editor && (
+          <CustomTipTapMenuBar
+            editor={editor}
+            hasDropzone={!!setFiles}
+            isDropzoneOpen={isDropzoneOpen}
+            setIsDropzoneOpen={setIsDropzoneOpen}
+            bgColor={menuBgColor}
+            colorScheme={menuColorScheme}
+          />
+        )}
+        <InputGroupWithShadow
+          width={"full"}
+          height={"full"}
+          isInvalid={isInvalid}
+        >
+          <EditorContent
+            className="markdown"
+            editor={editor}
+            style={{
+              minHeight,
+              height,
+              width: "100%",
+              overflow: "auto",
+              borderRadius: "4px",
+              backgroundColor: isInvalid
+                ? theme.colors.red[50] ?? "red"
+                : bgSecondary
+                ? bgSecondaryColor ?? theme.colors.yellow[50]
+                : bgPrimaryColor ?? "white",
+            }}
+          />
         </InputGroupWithShadow>
       </FormControlLayout>
 
-      {withMenuBar && editor && (
+      {withMenuBar && menueBar === "bottom" && editor && (
         <CustomTipTapMenuBar
           editor={editor}
           hasDropzone={!!setFiles}

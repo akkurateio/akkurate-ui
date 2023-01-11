@@ -100,7 +100,8 @@ export const AcsPopover: React.FC<AcsPopoverProps> = ({
                     outline={"none"}
                     size={"sm"}
                     onClick={onClose}
-                    _hover={{ backgroundColor: "neutral.300" }}
+                    color={"white"}
+                    _hover={{ backgroundColor: "neutral.500" }}
                   >
                     {cancelText ? cancelText : "Annuler"}
                   </Button>
