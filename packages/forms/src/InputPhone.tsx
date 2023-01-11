@@ -6,6 +6,7 @@ import {
   FormControlOptions,
   HStack,
   HTMLChakraProps,
+  Image,
   InputLeftAddon,
   Popover,
   PopoverBody,
@@ -19,9 +20,7 @@ import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
 // @ts-ignore
 import { countryArrayCode } from "@akkurateio/utils"
-import isoCountriesLanguages from "iso-countries-languages"
 import PhoneInput from "react-phone-input-2"
-import Flag from "react-world-flags"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 
@@ -39,6 +38,7 @@ interface InputOptions {
     icon: JSX.Element
     code: string
     prefix: string
+    flag: any
   }[]
   fontSizePhone?: string
 }
@@ -65,7 +65,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
     setIsOpen(false)
   }
 
-  const frenchCountry = isoCountriesLanguages.getCountries("fr")
   const countryArray = Object.keys(countryArrayCode).filter((key) => {
     // @ts-ignore
     return countryArrayCode[key].continent === "EU"
@@ -74,7 +73,8 @@ export const AcsInputPhone: React.FC<InputProps> = ({
   const frenchCountryWithCode = countryArray.map((code, idx) => {
     return {
       code: code,
-      name: frenchCountry[code],
+      name: countryArrayCode[code].name,
+      flag: countryArrayCode[code].flag,
     }
   })
 
@@ -117,7 +117,11 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 as={Box}
               >
                 <HStack spacing={"16px"}>
-                  <Flag code={country} width={"24px"} />
+                  <Image
+                    src={countryArrayCode[countryLower].flag}
+                    width={"24px"}
+                    height={"24px"}
+                  />
                   <AisChevronDown boxSize={"16px"} />
                 </HStack>
               </Button>
@@ -158,10 +162,10 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                             justifyContent={"center"}
                             display={"flex"}
                           >
-                            <Flag
+                            <Image
+                              src={countryArrayCode[countryLower].flag}
                               width={"24px"}
-                              height={"18px"}
-                              code={country.code}
+                              height={"24px"}
                             />
                           </Button>
                         </Tooltip>
