@@ -71,24 +71,36 @@ export const AcsPopover: React.FC<AcsPopoverProps> = ({
               : triggerBtnClosed}
           </PopoverTrigger>
           <Portal>
-            <PopoverContent {...props}>
-              {title && <PopoverHeader>{title}</PopoverHeader>}
+            <PopoverContent p={3} {...props}>
+              {title && (
+                <PopoverHeader p={0} mb={4}>
+                  {title}
+                </PopoverHeader>
+              )}
               {hasArrow && <PopoverArrow />}
               {hasCloseBtn && <PopoverCloseButton />}
-              <PopoverBody>{body}</PopoverBody>
+              <PopoverBody p={0}>{body}</PopoverBody>
               {hasFooter && footer ? (
-                <PopoverFooter>{footer}</PopoverFooter>
+                <PopoverFooter p={0} mt={4}>
+                  {footer}
+                </PopoverFooter>
               ) : (
                 <PopoverFooter
+                  pt={2}
+                  pr={0}
+                  pb={0}
+                  pl={0}
+                  mt={4}
                   display={"flex"}
                   justifyContent={"space-between"}
                   alignItems={"center"}
                 >
                   <Button
-                    colorScheme={"primary"}
-                    variant={"outline"}
+                    backgroundColor={"neutral.400"}
+                    outline={"none"}
                     size={"sm"}
                     onClick={onClose}
+                    _hover={{ backgroundColor: "neutral.300" }}
                   >
                     {cancelText ? cancelText : "Annuler"}
                   </Button>
