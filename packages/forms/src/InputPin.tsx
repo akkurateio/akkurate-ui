@@ -3,7 +3,7 @@ import {
   HStack,
   PinInput,
   PinInputField,
-  UsePinInputProps,
+  UsePinInputProps, useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
@@ -46,6 +46,7 @@ export const AcsInputPin: React.FC<InputProps> = ({
     } = props
     return rest
   }
+  const theme = useTheme()
 
   const pinArray = Array.from({ length: props.pinNumber }, (v, k) => k)
 
@@ -58,7 +59,7 @@ export const AcsInputPin: React.FC<InputProps> = ({
           manageFocus={true}
         >
           {pinArray.map((pin, idx) => (
-            <PinInputField key={idx} bg={props.bg ? props.bg : "white"} />
+            <PinInputField _focus={{boxShadow:`0 0 0 3px ${theme.colors.primary[500]}25 `}} key={idx} bg={props.bg ? props.bg : "white"} />
           ))}
         </PinInput>
       </HStack>

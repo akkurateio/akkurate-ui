@@ -8,7 +8,7 @@ import {
   RangeSliderTrack,
   Text,
   Toast,
-  UseRangeSliderProps,
+  UseRangeSliderProps, useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
@@ -34,13 +34,14 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
   ...props
 }) => {
   const { indicatorSteps, ...rangeProps } = { ...props, max, min }
+  const theme = useTheme()
 
   return (
     <FormControlLayout label={props.label} {...props}>
       <Box width={"full"} marginBottom={"30px"}>
         {max <= 1000 ? (
           <>
-            <Text marginBottom={2} fontSize={props.fontSize || "md"}>
+            <Text marginBottom={2} fontSize={props.fontSize || "sm"}>
               {props.title}
             </Text>
             <RangeSlider {...rangeProps}>
@@ -113,6 +114,9 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
                 color={"white"}
                 fontSize={props.fontSize || "sm"}
                 index={0}
+                _focus={{
+                  boxShadow: `0 0 0 3px ${theme.colors.primary[500]}25 `,}
+                }
               >
                 {props.value && props.value[0]}
               </RangeSliderThumb>
@@ -123,6 +127,9 @@ export const AcsRangeSlider: React.FC<SliderRangeProps> = ({
                 color={"white"}
                 fontSize={props.fontSize || "sm"}
                 index={1}
+                _focus={{
+                  boxShadow: `0 0 0 3px ${theme.colors.primary[500]}25 `,}
+                }
               >
                 {props.value && props.value[1]}
               </RangeSliderThumb>

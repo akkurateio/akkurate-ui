@@ -8,7 +8,7 @@ import {
   SliderTrack,
   Text,
   Toast,
-  UseSliderProps,
+  UseSliderProps, useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
@@ -34,12 +34,13 @@ export const AcsSlider: React.FC<SliderProps> = ({
   ...props
 }) => {
   const { indicatorSteps, ...sliderProps } = { ...props, max, min }
+  const theme = useTheme()
 
   return (
     <FormControlLayout label={props.label} {...props}>
       {max <= 1000 ? (
         <Box width={"full"} marginBottom={"30px"}>
-          <Text fontSize={props.fontSize || "md"}>{props.title}</Text>
+          <Text fontSize={props.fontSize || "sm"}>{props.title}</Text>
           <Slider {...sliderProps} marginTop={"16px"}>
             {props.indicatorSteps &&
               max &&
@@ -109,6 +110,9 @@ export const AcsSlider: React.FC<SliderProps> = ({
               fontWeight={"bold"}
               color={"white"}
               fontSize={props.fontSize || "sm"}
+              _focus={{
+                boxShadow: `0 0 0 3px ${theme.colors.primary[500]}25 `,}
+              }
             >
               {props.value}
             </SliderThumb>
