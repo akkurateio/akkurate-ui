@@ -1,5 +1,5 @@
 import { AisChevronDown, AisChevronRight, AisDot } from "@akkurateio/icons"
-import { Box, Flex, HStack, Text } from "@chakra-ui/react"
+import { Box, Flex, HStack, IconButton, Text } from "@chakra-ui/react"
 import React, { useState } from "react"
 import { InterfaceTree } from "./InterfaceTree"
 
@@ -31,69 +31,80 @@ const TreeChild: React.FC<IProps> = ({ child, item, setItem }) => {
   }
 
   const step1 = () => {
-    if (child && child.children.length > 0) {
-      return (
-        <HStack
+    return (
+      <HStack
+        onClick={handleClick}
+        cursor={"pointer"}
+        spacing={2}
+        alignItems={"center"}
+      >
+        <IconButton
+          size={"xs"}
+          variant={"unstyled"}
+          aria-label="Toggle children visibility"
+          icon={
+            child.children.length > 0 ? (
+              showChildren ? (
+                <AisChevronDown boxSize={"16px"} />
+              ) : (
+                <AisChevronRight boxSize={"16px"} />
+              )
+            ) : (
+              <AisDot boxSize={"16px"} />
+            )
+          }
+          bg={item.id === child.id ? "primary.500" : "neutral.200"}
+          color={item.id === child.id ? "white" : "black"}
+          rounded={"full"}
+        />
+
+        <Text
+          color={showChildren ? "primary.500" : undefined}
           onClick={handleClick}
-          cursor={"pointer"}
-          spacing={2}
-          alignItems={"center"}
         >
-          {showChildren ? (
-            <Flex
-              borderWidth={"1px"}
-              boxSize={"24px"}
-              backgroundColor={"primary.500"}
-              rounded={"full"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <AisChevronDown color={"white"} boxSize={"16px"} />
-            </Flex>
-          ) : (
-            <Flex
-              borderWidth={"1px"}
-              boxSize={"24px"}
-              backgroundColor={"neutral.200"}
-              rounded={"full"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <AisChevronRight boxSize={"16px"} />
-            </Flex>
-          )}
-          <Text color={showChildren ? "primary.500" : ""} onClick={handleClick}>
-            {child.name}
-          </Text>
-        </HStack>
-      )
-    } else {
-      return (
-        <HStack
-          onClick={handleClick}
-          cursor={"pointer"}
-          spacing={2}
-          alignItems={"center"}
-        >
-          <Flex
-            borderWidth={"1px"}
-            boxSize={"24px"}
-            backgroundColor={"neutral.200"}
-            rounded={"full"}
-            justifyContent={"center"}
-            alignItems={"center"}
-          >
-            <AisDot boxSize={"16px"} />
-          </Flex>
-          <Text onClick={handleClick}>{child.name}</Text>
-        </HStack>
-      )
-    }
+          {child.name}
+        </Text>
+      </HStack>
+    )
   }
 
   return (
     <Flex alignItems={"flex-start"} flexDir={"column"} gap={1}>
-      <Box onClick={handleOpen}>{step1()}</Box>
+      <Box onClick={handleOpen}>
+        <HStack
+          onClick={handleClick}
+          cursor={"pointer"}
+          spacing={2}
+          alignItems={"center"}
+        >
+          <IconButton
+            size={"xs"}
+            variant={"unstyled"}
+            aria-label="Toggle children visibility"
+            icon={
+              child.children.length > 0 ? (
+                showChildren ? (
+                  <AisChevronDown boxSize={"16px"} />
+                ) : (
+                  <AisChevronRight boxSize={"16px"} />
+                )
+              ) : (
+                <AisDot boxSize={"16px"} />
+              )
+            }
+            bg={item.id === child.id ? "primary.500" : "neutral.200"}
+            color={item.id === child.id ? "white" : "black"}
+            rounded={"full"}
+          />
+
+          <Text
+            color={showChildren ? "primary.500" : undefined}
+            onClick={handleClick}
+          >
+            {child.name}
+          </Text>
+        </HStack>
+      </Box>
       <Box marginLeft={"2rem"} mt={"0.5rem"}>
         {showChildren &&
           child.children &&
