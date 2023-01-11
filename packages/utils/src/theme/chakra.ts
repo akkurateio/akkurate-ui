@@ -248,8 +248,10 @@ const styles = {
 
 // Config to include color mode
 const config: ThemeConfig = {
-  initialColorMode: "dark",
-  useSystemColorMode: true,
+  initialColorMode: "light",
+  useSystemColorMode: false,
+  cssVarPrefix: "subvitamine",
+  disableTransitionOnChange: false,
 }
 
 // Custom breakpoints (that will override default breakpoints)
