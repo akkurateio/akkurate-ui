@@ -67,7 +67,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
   }
 
   const countryArray = Object.keys(countryArrayCode).filter((key) => {
-    // @ts-ignore
     return countryArrayCode[key].continent === "EU"
   })
 

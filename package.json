@@ -4,8 +4,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "tools/*",
-    "apps/*"
+    "tools/*"
   ],
   "scripts": {
     "prepare": "husky install",

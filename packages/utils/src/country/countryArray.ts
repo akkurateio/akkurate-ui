@@ -1,4 +1,12 @@
-export const countryArrayCode = {
+export const countryArrayCode: {
+  [key: string]: {
+    name: string
+    code: string
+    phone: string
+    continent: string
+    flag: string
+  }
+} = {
   FR: { name: "France", code: "FR", phone: "33", continent: "EU", flag: "🇫🇷" },
   BE: {
     name: "Belgique",
