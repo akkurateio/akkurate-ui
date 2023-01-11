@@ -229,6 +229,7 @@ const styles = {
       ...markdownCss,
     },
     ".ProseMirror": {
+      border: "none",
       width: "100%",
       height: "100%",
       minHeight: "100px",
@@ -239,6 +240,8 @@ const styles = {
     },
     ".ProseMirror-focused": {
       outlineColor: "primary.500",
+      outline: "none",
+      border: "none",
     },
   }),
 }
