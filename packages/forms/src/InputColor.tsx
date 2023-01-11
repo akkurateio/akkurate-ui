@@ -14,11 +14,11 @@ import {
   PopoverTrigger,
   ThemingProps,
 } from "@chakra-ui/react"
+import { useTheme } from "@chakra-ui/system"
 import styled from "@emotion/styled"
 import { HexColorPicker } from "react-colorful"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
-import { useTheme } from "@chakra-ui/system"
 
 const StyledBox = styled.div`
   .react-colorful__saturation {
@@ -180,6 +180,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
                   </Box>
                 </PopoverTrigger>
                 <PopoverContent
+                  rootProps={{ style: { transform: "scale(0)" } }}
                   p={"0.25rem"}
                   pb={"1.063rem"}
                   _focus={{ boxShadow: "none" }}

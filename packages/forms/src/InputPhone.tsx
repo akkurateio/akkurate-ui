@@ -18,12 +18,12 @@ import {
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
 // @ts-ignore
+import { countryArrayCode } from "@akkurateio/utils"
 import isoCountriesLanguages from "iso-countries-languages"
 import PhoneInput from "react-phone-input-2"
 import Flag from "react-world-flags"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
-import { countryArrayCode } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -123,6 +123,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
               </Button>
             </PopoverTrigger>
             <PopoverContent
+              rootProps={{ style: { transform: "scale(0)" } }}
               overflow={"hidden"}
               width={"4.5rem"}
               h={"14.125rem"}

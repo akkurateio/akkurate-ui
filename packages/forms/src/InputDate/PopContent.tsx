@@ -11,7 +11,11 @@ interface IProps {
 
 const PopContent = ({ date, setDate }: IProps) => {
   return (
-    <PopoverContent width={"auto"}>
+    <PopoverContent
+      width={"auto"}
+      // hack because the popover content would take his space on the right of the input when never opened
+      rootProps={{ style: { transform: "scale(0)" } }}
+    >
       <PopHeader date={date} setDate={setDate} />
       <PopBody date={date} setDate={setDate} />
     </PopoverContent>

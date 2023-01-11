@@ -158,7 +158,12 @@ export const AcsInputTime: React.FC<InputProps> = ({
                 <AisTime boxSize={"24px"} />
               </Button>
             </PopoverTrigger>
-            <PopoverContent overflow={"hidden"} w={"9.813rem"} h={"15.625rem"}>
+            <PopoverContent
+              rootProps={{ style: { transform: "scale(0)" } }}
+              overflow={"hidden"}
+              w={"9.813rem"}
+              h={"15.625rem"}
+            >
               <PopoverBody p={1.5} overflow={"hidden"} bg={"white"}>
                 <SimpleGrid
                   columns={2}

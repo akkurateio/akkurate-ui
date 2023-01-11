@@ -1,4 +1,5 @@
 import { AcsTree } from "@akkurateio/components"
+import { AcsInputDate } from "@akkurateio/forms"
 import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 import { Flex, Heading } from "@chakra-ui/react"
 import type { NextPage } from "next"
@@ -40,6 +41,8 @@ const Pages: NextPage = () => {
     name: string | null
   }>({ id: null, name: null })
 
+  const [date, setDate] = useState("2023-01-10")
+
   return (
     <Flex p={4} flexDirection={"column"} gap={4}>
       <Heading>Pages</Heading>
@@ -53,6 +56,8 @@ const Pages: NextPage = () => {
       />
 
       <AcsTree tree={tree} item={treeItem} setItem={setTreeItem} />
+
+      <AcsInputDate value={date} handleChange={setDate} />
     </Flex>
   )
 }

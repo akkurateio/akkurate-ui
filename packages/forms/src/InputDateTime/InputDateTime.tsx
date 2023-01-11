@@ -1,3 +1,4 @@
+import { AisTime } from "@akkurateio/icons"
 import {
   Box,
   Button,
@@ -15,10 +16,9 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import dayjs, { Dayjs } from "dayjs"
+import React, { useEffect, useState } from "react"
 import { DateObject, MinuteStep } from "../../types"
 import FormControlLayout from "../FormControlLayout"
-import { AisTime } from "@akkurateio/icons"
-import React, { useEffect, useState } from "react"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -201,7 +201,12 @@ export const AcsInputDateTime: React.FC<InputProps> = ({
                   <AisTime boxSize={6} />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent overflow={"hidden"} w={44} h={72}>
+              <PopoverContent
+                rootProps={{ style: { transform: "scale(0)" } }}
+                overflow={"hidden"}
+                w={44}
+                h={72}
+              >
                 <PopoverBody overflow={"hidden"} bg={"white"}>
                   <SimpleGrid
                     columns={2}
