@@ -6,7 +6,6 @@ import {
   FormControlOptions,
   HStack,
   HTMLChakraProps,
-  Image,
   InputLeftAddon,
   Popover,
   PopoverBody,
@@ -14,6 +13,7 @@ import {
   PopoverTrigger,
   Portal,
   SimpleGrid,
+  Text,
   Tooltip,
   useTheme,
 } from "@chakra-ui/react"
@@ -51,7 +51,7 @@ interface InputProps
     FormControlOptions {}
 
 export const AcsInputPhone: React.FC<InputProps> = ({
-  defaultCountry = "fr",
+  defaultCountry = "FR",
   fontSizePhone = "14px",
   handleChange,
   ...props
@@ -118,11 +118,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 as={Box}
               >
                 <HStack spacing={"16px"}>
-                  <Image
-                    src={countryArrayCode[countryLower].flag}
-                    width={"24px"}
-                    height={"24px"}
-                  />
+                  <Text>{countryArrayCode[country].flag}</Text>
                   <AisChevronDown boxSize={"16px"} />
                 </HStack>
               </Button>
@@ -134,45 +130,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 width={"4.5rem"}
                 h={"14.125rem"}
               >
-<<<<<<< Updated upstream
-                <Box h={"full"}>
-                  <SimpleGrid
-                    columns={1}
-                    spacing={"0.125rem"}
-                    paddingTop={"0.313rem"}
-                    paddingBottom={"0.313rem"}
-                  >
-                    {frenchCountryWithCode.map((country, idx) => {
-                      return (
-                        <Tooltip key={idx} label={country.name}>
-                          <Button
-                            width={"3rem"}
-                            height={"2.125rem"}
-                            onClick={() => changeCountry(country.code)}
-                            variant={"unstyled"}
-                            backgroundColor={
-                              country.code.toLowerCase() === countryLower
-                                ? "primary.500"
-                                : "primary.100"
-                            }
-                            rounded={"sm"}
-                            justifyContent={"center"}
-                            display={"flex"}
-                          >
-                            <Image
-                              src={countryArrayCode[countryLower].flag}
-                              width={"24px"}
-                              height={"24px"}
-                            />
-                          </Button>
-                        </Tooltip>
-                      )
-                    })}
-                  </SimpleGrid>
-                </Box>
-              </PopoverBody>
-            </PopoverContent>
-=======
                 <PopoverBody
                   overflow={"hidden"}
                   overflowY={"auto"}
@@ -186,16 +143,22 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                       paddingTop={"0.313rem"}
                       paddingBottom={"0.313rem"}
                     >
-                      {frenchCountryWithCode.map((country, idx) => {
+                      {frenchCountryWithCode.map((countryMapped, idx) => {
                         return (
-                          <Tooltip key={idx} label={country.name}>
+                          <Tooltip
+                            key={idx}
+                            label={countryMapped.name}
+                            openDelay={300}
+                            size={"xs"}
+                            placement={"right"}
+                          >
                             <Button
                               width={"3rem"}
                               height={"2.125rem"}
-                              onClick={() => changeCountry(country.code)}
+                              onClick={() => changeCountry(countryMapped.code)}
                               variant={"unstyled"}
                               backgroundColor={
-                                country.code.toLowerCase() === countryLower
+                                countryMapped.code === country
                                   ? "primary.500"
                                   : "primary.100"
                               }
@@ -203,11 +166,9 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                               justifyContent={"center"}
                               display={"flex"}
                             >
-                              <Flag
-                                width={"24px"}
-                                height={"18px"}
-                                code={country.code}
-                              />
+                              <Text>
+                                {countryArrayCode[countryMapped.code].flag}
+                              </Text>
                             </Button>
                           </Tooltip>
                         )
@@ -217,7 +178,6 @@ export const AcsInputPhone: React.FC<InputProps> = ({
                 </PopoverBody>
               </PopoverContent>
             </Portal>
->>>>>>> Stashed changes
           </Popover>
         </InputLeftAddon>
         <Flex

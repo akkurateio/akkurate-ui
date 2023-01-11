@@ -1,5 +1,5 @@
 import { AcsTree } from "@akkurateio/components"
-import { AcsInputDate } from "@akkurateio/forms"
+import { AcsInputDate, AcsInputPhone } from "@akkurateio/forms"
 import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 import { Flex, Heading } from "@chakra-ui/react"
 import type { NextPage } from "next"
@@ -15,6 +15,8 @@ const Pages: NextPage = () => {
     { value: "3", label: "Option 3" },
   ]
   const [selected, setSelected] = useState<string | number>("2")
+
+  const [phoneNumber, setPhoneNumber] = useState("")
 
   const tree = [
     {
@@ -68,6 +70,8 @@ const Pages: NextPage = () => {
         menuColorScheme={"success"}
         isInvalid
       />
+
+      <AcsInputPhone value={phoneNumber} handleChange={setPhoneNumber} />
     </Flex>
   )
 }
