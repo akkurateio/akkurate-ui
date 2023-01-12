@@ -239,7 +239,6 @@ const styles = {
       ...markdownCss,
     },
     ".ProseMirror-focused": {
-      outlineColor: "primary.500",
       outline: "none",
       border: "none",
     },
