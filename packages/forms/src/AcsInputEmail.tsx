@@ -1,8 +1,14 @@
-import { FormControlOptions, HTMLChakraProps, Input } from "@chakra-ui/react"
+import {
+  FormControlOptions,
+  HTMLChakraProps,
+  Input,
+  useBreakpointValue,
+} from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -13,17 +19,19 @@ interface InputOptions {
   error?: string
   hint?: string
   register?: any
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputEmail: React.FC<InputProps> = ({
   handleChange,
   register,
+  size = "md",
   ...props
 }) => {
   const propsForInput = () => {
@@ -35,7 +43,6 @@ export const AcsInputEmail: React.FC<InputProps> = ({
       isDisabled,
       isInvalid,
       isReadOnly,
-      size,
       ...rest
     } = props
     return rest
@@ -53,12 +60,15 @@ export const AcsInputEmail: React.FC<InputProps> = ({
     return null
   }
 
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
+
   return (
     <FormControlLayout {...props}>
       <InputGroupWithShadow
         isInvalid={props.isInvalid}
         width={props.width}
-        height={props.height}
+        height={sizeInput?.height}
         rounded={props.rounded}
       >
         <Input
@@ -79,7 +89,7 @@ export const AcsInputEmail: React.FC<InputProps> = ({
           pr={"0.688rem"}
           bg={props.bg ? props.bg : "white"}
           onChange={handleOnChange}
-          fontSize={props.fontSize || "sm"}
+          fontSize={sizeInput?.fontSize}
           {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}
         />

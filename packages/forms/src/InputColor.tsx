@@ -14,12 +14,14 @@ import {
   PopoverTrigger,
   Portal,
   ThemingProps,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import { useTheme } from "@chakra-ui/system"
 import styled from "@emotion/styled"
 import { HexColorPicker } from "react-colorful"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+import { sizesAll } from "@akkurateio/utils"
 
 const StyledBox = styled.div`
   .react-colorful__saturation {
@@ -62,18 +64,20 @@ interface InputOptions {
   hint?: string
   iconOpen?: JSX.Element
   iconClose?: JSX.Element
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputColor: React.FC<InputProps> = ({
   handleChange,
   height,
   value,
+  size = "md",
   ...props
 }) => {
   const propsForInput = () => {
@@ -85,7 +89,6 @@ export const AcsInputColor: React.FC<InputProps> = ({
       isDisabled,
       isInvalid,
       isReadOnly,
-      size,
       ...rest
     } = props
     return rest
@@ -98,13 +101,15 @@ export const AcsInputColor: React.FC<InputProps> = ({
       handleChange(theme.colors.primary[500])
     }
   }, [value])
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
 
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
         rounded={props.rounded}
         isInvalid={props.isInvalid}
-        height={height}
+        height={sizeInput?.height}
         width={props.width}
       >
         <InputLeftElement width={"fit-content"} height={"full"}>
@@ -114,9 +119,9 @@ export const AcsInputColor: React.FC<InputProps> = ({
             mb={"0.25rem"}
             mr={0}
             backgroundColor={value as string}
-            width={"64px"}
-            height={"30px"}
-            rounded={"2px"}
+            width={"4rem"}
+            height={"1.875rem"}
+            rounded={"0.125rem"}
           />
         </InputLeftElement>
         <Input
@@ -141,7 +146,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
             bg: "error.100",
             color: "error.600",
           }}
-          fontSize={props.fontSize || "sm"}
+          fontSize={sizeInput?.fontSize}
           pt={"0.641rem"}
           pb={"0.641rem"}
           bg={props.bg ? props.bg : "white"}
@@ -170,12 +175,12 @@ export const AcsInputColor: React.FC<InputProps> = ({
                       props.iconOpen ? (
                         props.iconOpen
                       ) : (
-                        <AisColorPalette boxSize={"24px"} />
+                        <AisColorPalette boxSize={sizeInput?.boxSize} />
                       )
                     ) : props.iconClose ? (
                       props.iconClose
                     ) : (
-                      <AisColorPalette boxSize={"24px"} />
+                      <AisColorPalette boxSize={sizeInput?.boxSize} />
                     )}
                   </Box>
                 </PopoverTrigger>

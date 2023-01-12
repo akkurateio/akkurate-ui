@@ -16,12 +16,13 @@ import {
   SimpleGrid,
   Text,
   Tooltip,
+  useBreakpointValue,
   useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
 // @ts-ignore
-import { countryArrayCode } from "@akkurateio/utils"
+import { countryArrayCode, sizesAll } from "@akkurateio/utils"
 import PhoneInput from "react-phone-input-2"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
@@ -36,18 +37,20 @@ interface InputOptions {
   error?: string
   hint?: string
   fontSizePhone?: string
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"InputPhone">,
+    Omit<ThemingProps<"InputPhone">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputPhone: React.FC<InputProps> = ({
   defaultCountry = "FR",
   fontSizePhone = "14px",
   handleChange,
+  size = "md",
   ...props
 }) => {
   const theme = useTheme()
@@ -74,12 +77,15 @@ export const AcsInputPhone: React.FC<InputProps> = ({
 
   const countryLower = country.toLowerCase()
 
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
+
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
         isInvalid={props.isInvalid}
         width={props.width}
-        height={props.height}
+        height={sizeInput?.height}
         rounded={props.rounded}
       >
         <InputLeftAddon
@@ -112,7 +118,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
               >
                 <HStack spacing={"16px"}>
                   <Text>{countryArrayCode[country].flag}</Text>
-                  <AisChevronDown boxSize={"16px"} />
+                  <AisChevronDown boxSize={sizeInput?.iconSize} />
                 </HStack>
               </Button>
             </PopoverTrigger>
@@ -203,7 +209,7 @@ export const AcsInputPhone: React.FC<InputProps> = ({
               borderBottomRightRadius: props.rounded ? "10rem" : "0.25rem",
               backgroundColor: "inherit",
               outline: "none",
-              fontSize: fontSizePhone || "14px",
+              fontSize: sizeInput?.fontSize,
               fontStyle: "inter",
               fontWeight: "regular",
             }}

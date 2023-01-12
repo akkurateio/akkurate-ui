@@ -5,10 +5,13 @@ import {
   Input,
   InputRightElement,
   ThemingProps,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+// @ts-ignore
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -23,21 +26,26 @@ interface InputOptions {
   iconOpen?: JSX.Element
   iconClose?: JSX.Element
   register?: any
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputPassword: React.FC<InputProps> = ({
   handleChange,
   register,
+  size = "md",
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [focus, setFocus] = useState(false)
+
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
 
   const propsForInput = () => {
     const {
@@ -48,7 +56,6 @@ export const AcsInputPassword: React.FC<InputProps> = ({
       isDisabled,
       isInvalid,
       isReadOnly,
-      size,
       ...rest
     } = props
     return rest
@@ -71,7 +78,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
       <InputGroupWithShadow
         isInvalid={props.isInvalid}
         width={props.width}
-        height={props.height}
+        height={sizeInput?.height}
         rounded={props.rounded}
       >
         <Input
@@ -88,7 +95,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           variant={props.variant}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          fontSize={props.fontSize || "sm"}
+          fontSize={sizeInput?.fontSize}
           pl={"0.688rem"}
           pt={"0.656rem"}
           pb={"0.656rem"}
@@ -116,7 +123,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
                     ? "primary.500"
                     : "neutral.500"
                 }
-                boxSize={"24px"}
+                boxSize={sizeInput?.boxSize}
               />
             )
           ) : props.iconClose ? (
@@ -130,7 +137,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
                   ? "primary.500"
                   : "neutral.500"
               }
-              boxSize={"24px"}
+              boxSize={sizeInput?.boxSize}
             />
           )}
         </InputRightElement>

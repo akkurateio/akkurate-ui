@@ -8,6 +8,7 @@ import { ResponsiveValue, ThemingProps } from "@chakra-ui/system"
 import React from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+// @ts-ignore
 import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -19,19 +20,19 @@ interface InputOptions {
   error?: string
   hint?: string
   register?: any
-  sizes?: "sm" | "md" | "lg"
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputText: React.FC<InputProps> = ({
   handleChange,
   register,
-  sizes = "md",
+  size = "md",
   ...props
 }) => {
   const propsForInput = () => {
@@ -49,9 +50,8 @@ export const AcsInputText: React.FC<InputProps> = ({
     return null
   }
 
-  const sizeState = useBreakpointValue(typeof sizes === "object" ? sizes : {})
-
-  const sizeInput = sizesAll(sizeState ? sizeState : (sizes as string))
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
 
   return (
     <FormControlLayout {...props}>

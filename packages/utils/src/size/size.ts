@@ -23,23 +23,29 @@ export const allSizes = (size: string) => {
   }
 }
 
-export const sizesAll = (sizes: string) => {
-  if (sizes === "lg") {
+export const sizesAll = (size: string) => {
+  if (size === "lg") {
     return {
       fontSize: "1rem",
-      height: "2.5rem",
+      height: "2.875rem",
+      boxSize: "32px",
+      iconSize: "24px",
     }
   }
-  if (sizes === "md") {
+  if (size === "md") {
     return {
       fontSize: "0.875rem",
-      height: "2.25rem",
+      height: "2.375rem",
+      boxSize: "24px",
+      iconSize: "16px",
     }
   }
-  if (sizes === "sm") {
+  if (size === "sm") {
     return {
       fontSize: "0.75rem",
-      height: "1.75rem",
+      height: "1.875rem",
+      boxSize: "16px",
+      iconSize: "8px",
     }
   }
 }

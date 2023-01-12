@@ -118,7 +118,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
         )}
         <InputGroupWithShadow
           width={"full"}
-          height={"full"}
+          height={height}
           isInvalid={isInvalid}
         >
           <EditorContent
@@ -126,7 +126,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
             editor={editor}
             style={{
               minHeight,
-              height,
+              height: "100%",
               width: "100%",
               overflow: "auto",
               borderRadius: "4px",

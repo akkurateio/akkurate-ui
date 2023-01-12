@@ -7,12 +7,15 @@ import {
   Input,
   InputLeftElement,
   InputRightElement,
+  useBreakpointValue,
   useNumberInput,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+// @ts-ignore
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted =
   | "disabled"
@@ -30,17 +33,19 @@ interface InputOptions {
   hint?: string
   precision?: number
   allowMouseWheel?: boolean
+  size?: "sm" | "md" | "lg"
 }
 
 export interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"NumberInput">,
+    Omit<ThemingProps<"NumberInput">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputNumber: React.FC<InputProps> = ({
   handleChange,
   height,
+  size = "md",
   ...props
 }) => {
   const propsForInput = () => {
@@ -52,7 +57,6 @@ export const AcsInputNumber: React.FC<InputProps> = ({
       isDisabled,
       isInvalid,
       isReadOnly,
-      size,
       ...rest
     } = props
     return rest
@@ -94,6 +98,10 @@ export const AcsInputNumber: React.FC<InputProps> = ({
   const dec = getDecrementButtonProps()
   const input = getInputProps()
 
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
+
   useEffect(() => {
     if (!!valueAsNumber) {
       handleChange(valueAsNumber)
@@ -108,7 +116,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
         <InputGroupWithShadow
           isInvalid={props.isInvalid}
           width={props.width}
-          height={height}
+          height={sizeInput?.height}
           rounded={props.rounded}
         >
           <InputLeftElement
@@ -125,7 +133,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
             pb={"0.5rem"}
           >
             <Button textAlign={"left"} {...dec} variant={"unstyled"}>
-              <AisSubstract boxSize={"24px"} />
+              <AisSubstract boxSize={sizeInput?.boxSize} />
             </Button>
           </InputLeftElement>
           <Input
@@ -134,7 +142,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
             textAlign={"center"}
-            fontSize={props.fontSize || "sm"}
+            fontSize={sizeInput?.fontSize}
             border={"none"}
             _focusVisible={{
               border: "none",
@@ -162,7 +170,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
               variant={"unstyled"}
               textAlign={"right"}
             >
-              <AisAdd boxSize={"24px"} />
+              <AisAdd boxSize={sizeInput?.boxSize} />
             </Button>
           </InputRightElement>
         </InputGroupWithShadow>

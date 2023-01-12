@@ -3,12 +3,14 @@ import {
   FormControlOptions,
   HTMLChakraProps,
   Input,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -19,12 +21,13 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputAutocomplete: React.FC<InputProps> = ({
@@ -32,15 +35,19 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
   hint,
   error,
   isRequired,
+  size = "md",
   isDisabled,
   isInvalid,
   isReadOnly,
-  size,
   resultsArray,
   handleChange,
   ...props
 }) => {
   const [isVisible, setIsVisible] = useState(true)
+
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
 
   return (
     <FormControlLayout
@@ -54,7 +61,7 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
     >
       <InputGroupWithShadow
         isInvalid={isInvalid}
-        height={props.height}
+        height={sizeInput?.height}
         width={props.width}
         rounded={props.rounded}
       >
@@ -72,7 +79,7 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
           pl={"0.688rem"}
           pt={"0.656rem"}
           pb={"0.656rem"}
-          fontSize={props.fontSize || "sm"}
+          fontSize={sizeInput?.fontSize}
           onChange={(e) => {
             if (e.target.value.length >= 3) {
               setIsVisible(true)

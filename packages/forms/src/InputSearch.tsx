@@ -6,11 +6,14 @@ import {
   Input,
   InputLeftElement,
   InputRightElement,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import { ThemingProps, useTheme } from "@chakra-ui/system"
 import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+// @ts-ignore
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -23,16 +26,18 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputSearch: React.FC<InputProps> = ({
   handleChange,
+  size = "md",
   ...props
 }) => {
   const theme = useTheme()
@@ -46,7 +51,6 @@ export const AcsInputSearch: React.FC<InputProps> = ({
       isDisabled,
       isInvalid,
       isReadOnly,
-      size,
       ...rest
     } = props
     return rest
@@ -54,11 +58,15 @@ export const AcsInputSearch: React.FC<InputProps> = ({
 
   const [focus, setFocus] = useState(false)
 
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
+
   return (
     <FormControlLayout {...props}>
       <InputGroupWithShadow
         width={props.width}
-        height={props.height}
+        height={sizeInput?.height}
         isInvalid={props.isInvalid}
         rounded={props.rounded}
       >
@@ -68,7 +76,7 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           rounded={props.rounded ? props.rounded : "base"}
         >
           <AisSearch
-            boxSize={"24px"}
+            boxSize={sizeInput?.boxSize}
             color={
               props.isInvalid
                 ? "red.500"
@@ -84,7 +92,7 @@ export const AcsInputSearch: React.FC<InputProps> = ({
           variant={props.variant}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          fontSize={props.fontSize || "sm"}
+          fontSize={sizeInput?.fontSize}
           rounded={props.rounded ? props.rounded : "base"}
           paddingBottom={"0.656rem"}
           paddingTop={"0.656rem"}
@@ -105,9 +113,12 @@ export const AcsInputSearch: React.FC<InputProps> = ({
               rounded={"full"}
               color={"white"}
               colorScheme={"neutral"}
-              size={"16px"}
+              size={sizeInput?.boxSize}
             >
-              <AisClose boxSize={"16px"} onClick={() => handleChange("")} />
+              <AisClose
+                boxSize={sizeInput?.boxSize}
+                onClick={() => handleChange("")}
+              />
             </IconButton>
           )}
         </InputRightElement>

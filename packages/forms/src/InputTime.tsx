@@ -12,12 +12,14 @@ import {
   PopoverTrigger,
   Portal,
   SimpleGrid,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
 import { MinuteStep } from "../types"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -30,12 +32,13 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 const hourArray = Array.from({ length: 24 }, (v, k) => {
@@ -50,6 +53,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
   disabledHours,
   disabledMinutes,
   minuteStep = 1,
+  size = "md",
   ...props
 }) => {
   const propsForInput = () => {
@@ -61,7 +65,6 @@ export const AcsInputTime: React.FC<InputProps> = ({
       isDisabled,
       isInvalid,
       isReadOnly,
-      size,
       ...rest
     } = props
     return rest
@@ -97,13 +100,15 @@ export const AcsInputTime: React.FC<InputProps> = ({
       setMinuteValue(minute)
     }
   }
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
 
   return (
     <FormControlLayout {...props}>
       <InputGroupWithShadow
         isInvalid={props.isInvalid}
         width={props.width}
-        height={props.height}
+        height={sizeInput?.height}
         rounded={props.rounded}
       >
         <Input
@@ -126,7 +131,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
           pr={0}
           rounded={props.rounded ? props.rounded : "base"}
           width={"full"}
-          fontSize={props.fontSize ? props.fontSize : "sm"}
+          fontSize={sizeInput?.fontSize}
         />
         <Flex
           top={0}
@@ -156,7 +161,7 @@ export const AcsInputTime: React.FC<InputProps> = ({
                 _active={{ color: "primary.500" }}
                 zIndex={1}
               >
-                <AisTime boxSize={"24px"} />
+                <AisTime boxSize={sizeInput?.boxSize} />
               </Button>
             </PopoverTrigger>
             <Portal>

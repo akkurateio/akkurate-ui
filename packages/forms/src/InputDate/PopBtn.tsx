@@ -12,9 +12,10 @@ interface IProps {
   date: DateObject
   setDate: (e: DateObject) => void
   focus?: boolean
+  sizeInput?: string
 }
 
-export const PopBtn = ({ date, setDate, focus }: IProps) => {
+export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
   return (
     <Flex
       position={"absolute"}
@@ -37,7 +38,7 @@ export const PopBtn = ({ date, setDate, focus }: IProps) => {
           >
             <AisCalendar
               color={focus ? "primary.500" : "neutral.500"}
-              boxSize={"24px"}
+              boxSize={sizeInput}
             />
           </Button>
         </PopoverTrigger>

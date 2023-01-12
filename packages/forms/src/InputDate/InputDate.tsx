@@ -1,4 +1,9 @@
-import { FormControlOptions, HTMLChakraProps, Input } from "@chakra-ui/react"
+import {
+  FormControlOptions,
+  HTMLChakraProps,
+  Input,
+  useBreakpointValue,
+} from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import dayjs, { Dayjs } from "dayjs"
 import React, { useEffect, useState } from "react"
@@ -6,6 +11,7 @@ import { DateObject } from "../../types"
 import FormControlLayout from "../FormControlLayout"
 import InputGroupWithShadow from "../InputGroupWithShadow"
 import { PopBtn } from "./PopBtn"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -20,16 +26,18 @@ interface InputOptions {
   maxDate?: string | Dayjs
   disabledDays?: number[] // 0 - 6 : 0 - Sunday, 1 - Monday, ...
   disabledDates?: string[] // format : YYYY-MM-DD
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputDate: React.FC<InputProps> = ({
   handleChange,
+  size = "md",
   ...props
 }) => {
   const propsForInput = () => {
@@ -41,7 +49,6 @@ export const AcsInputDate: React.FC<InputProps> = ({
       isDisabled,
       isInvalid,
       isReadOnly,
-      size,
       minDate,
       maxDate,
       disabledDays,
@@ -82,10 +89,13 @@ export const AcsInputDate: React.FC<InputProps> = ({
     handleChange(e)
   }
 
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
+
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
-        height={props.height}
+        height={sizeInput?.height}
         width={props.width}
         isInvalid={props.isInvalid}
       >
@@ -96,6 +106,7 @@ export const AcsInputDate: React.FC<InputProps> = ({
           width={"full"}
           type={"date"}
           {...propsForInput()}
+          fontSize={sizeInput?.fontSize}
           value={props.value}
           variant={props.variant}
           onFocus={() => setFocus(true)}
@@ -111,7 +122,12 @@ export const AcsInputDate: React.FC<InputProps> = ({
           onChange={(e) => handleManualChange(e.target.value)}
         />
 
-        <PopBtn focus={focus} date={date} setDate={setDate} />
+        <PopBtn
+          focus={focus}
+          date={date}
+          setDate={setDate}
+          sizeInput={sizeInput?.boxSize}
+        />
       </InputGroupWithShadow>
     </FormControlLayout>
   )

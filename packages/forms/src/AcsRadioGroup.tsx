@@ -11,6 +11,7 @@ import {
 import { ResponsiveValue, ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+// @ts-ignore
 import { allSizes } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
