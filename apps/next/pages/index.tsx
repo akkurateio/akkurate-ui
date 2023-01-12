@@ -1,5 +1,6 @@
 import { AcsInputDateRange } from "@akkurateio/forms"
-import { Flex, Heading, Text } from "@chakra-ui/react"
+import { AcsWysiwyg } from "@akkurateio/wysiwyg"
+import { Box, Flex, Heading, Text } from "@chakra-ui/react"
 import dayjs from "dayjs"
 import type { NextPage } from "next"
 import { useState } from "react"
@@ -75,6 +76,10 @@ const Pages: NextPage = () => {
           ? dayjs(dateRange.beforeDate).format("dddd DD MMMM YYYY")
           : "à définir"}
       </Text>
+
+      <Box width={"full"} height={"700px"}>
+        <AcsWysiwyg value={text} setValue={setText} height={"100%"} />
+      </Box>
     </Flex>
   )
 }

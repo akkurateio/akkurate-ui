@@ -1,4 +1,6 @@
 import { AcsDropzone, AisClose } from "@akkurateio/ds"
+import InputGroupWithShadow from "@akkurateio/forms/src/InputGroupWithShadow"
+import Label from "@akkurateio/forms/src/Label"
 import { HStack, IconButton, Text, useTheme, VStack } from "@chakra-ui/react"
 import Link from "@tiptap/extension-link"
 import TaskItem from "@tiptap/extension-task-item"
@@ -9,8 +11,6 @@ import { marked } from "marked"
 import React, { FunctionComponent, useEffect, useState } from "react"
 import TurndownService from "turndown"
 import CustomTipTapMenuBar from "./CustomTipTapMenuBar"
-import InputGroupWithShadow from "@akkurateio/forms/src/InputGroupWithShadow"
-import FormControlLayout from "@akkurateio/forms/src/FormControlLayout"
 
 interface IProps {
   value: string | undefined // this is markdown
@@ -105,40 +105,39 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
 
   return (
     <VStack spacing={1} alignItems={"flex-start"} w={"full"} h={"full"}>
-      <FormControlLayout label={label}>
-        {withMenuBar && menueBarPlacement === "top" && editor && (
-          <CustomTipTapMenuBar
-            editor={editor}
-            hasDropzone={!!setFiles}
-            isDropzoneOpen={isDropzoneOpen}
-            setIsDropzoneOpen={setIsDropzoneOpen}
-            bgColor={menuBgColor}
-            colorScheme={menuColorScheme}
-          />
-        )}
-        <InputGroupWithShadow
-          width={"full"}
-          height={height}
-          isInvalid={isInvalid}
-        >
-          <EditorContent
-            className="markdown"
-            editor={editor}
-            style={{
-              minHeight,
-              height: "100%",
-              width: "100%",
-              overflow: "auto",
-              borderRadius: "4px",
-              backgroundColor: isInvalid
-                ? theme.colors.red[50] ?? "red"
-                : bgSecondary
-                ? bgSecondaryColor ?? theme.colors.yellow[50]
-                : bgPrimaryColor ?? "white",
-            }}
-          />
-        </InputGroupWithShadow>
-      </FormControlLayout>
+      {label && <Label label={label} />}
+      {withMenuBar && menueBarPlacement === "top" && editor && (
+        <CustomTipTapMenuBar
+          editor={editor}
+          hasDropzone={!!setFiles}
+          isDropzoneOpen={isDropzoneOpen}
+          setIsDropzoneOpen={setIsDropzoneOpen}
+          bgColor={menuBgColor}
+          colorScheme={menuColorScheme}
+        />
+      )}
+      <InputGroupWithShadow
+        width={"full"}
+        height={height}
+        isInvalid={isInvalid}
+      >
+        <EditorContent
+          className="markdown"
+          editor={editor}
+          style={{
+            minHeight,
+            height: "100%",
+            width: "100%",
+            overflow: "auto",
+            borderRadius: "4px",
+            backgroundColor: isInvalid
+              ? theme.colors.red[50] ?? "red"
+              : bgSecondary
+              ? bgSecondaryColor ?? theme.colors.yellow[50]
+              : bgPrimaryColor ?? "white",
+          }}
+        />
+      </InputGroupWithShadow>
 
       {withMenuBar && menueBarPlacement === "bottom" && editor && (
         <CustomTipTapMenuBar
