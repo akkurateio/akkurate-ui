@@ -1,7 +1,6 @@
-import { AcsTree } from "@akkurateio/components"
-import { AcsInputDate, AcsInputPhone, AcsSelect } from "@akkurateio/forms"
-import { AcsWysiwyg } from "@akkurateio/wysiwyg"
-import { Flex, Heading } from "@chakra-ui/react"
+import { AcsInputDateRange } from "@akkurateio/forms"
+import { Flex, Heading, Text } from "@chakra-ui/react"
+import dayjs from "dayjs"
 import type { NextPage } from "next"
 import { useState } from "react"
 
@@ -45,39 +44,37 @@ const Pages: NextPage = () => {
 
   const [date, setDate] = useState("2023-01-10")
 
+  const [dateRange, setDateRange] = useState({
+    afterDate: null,
+    beforeDate: null,
+    currentDate: dayjs(),
+  })
+
   return (
     <Flex p={4} flexDirection={"column"} gap={4}>
       <Heading>Pages</Heading>
 
-      <AcsWysiwyg
-        value={text}
-        setValue={setText}
-        menuBgColor={"#ebebeb25"}
-        menuColorScheme={"success"}
-        isInvalid
+      <AcsInputDateRange
+        value={dateRange}
+        handleChange={setDateRange}
+        options={{
+          disabledDays: [0, 6],
+        }}
       />
 
-      <AcsSelect
-        options={options}
-        value={selected}
-        handleChange={setSelected}
-      />
+      <Text>
+        Réservé du :
+        {dateRange.afterDate
+          ? dayjs(dateRange.afterDate).format("dddd DD MMMM YYYY")
+          : "à définir"}
+      </Text>
 
-      <AcsInputDate value={date} handleChange={setDate} />
-      <AcsInputDate value={date} handleChange={setDate} />
-      <AcsInputDate value={date} handleChange={setDate} />
-
-      <AcsTree tree={tree} item={treeItem} setItem={setTreeItem} />
-
-      <AcsWysiwyg
-        value={text}
-        setValue={setText}
-        menuBgColor={"#ebebeb25"}
-        menuColorScheme={"success"}
-        isInvalid
-      />
-
-      <AcsInputPhone value={phoneNumber} handleChange={setPhoneNumber} />
+      <Text>
+        Réservé au :
+        {dateRange.beforeDate
+          ? dayjs(dateRange.beforeDate).format("dddd DD MMMM YYYY")
+          : "à définir"}
+      </Text>
     </Flex>
   )
 }
