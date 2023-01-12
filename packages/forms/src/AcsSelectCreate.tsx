@@ -100,6 +100,8 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
             options={props.options}
             value={currentValues}
             closeMenuOnSelect={false}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
             selectedOptionStyle={"check"}
             hideSelectedOptions={false}
             focusBorderColor={
