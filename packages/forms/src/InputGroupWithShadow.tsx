@@ -17,7 +17,7 @@ const FormControlLayout: React.FC<IProps> = (props) => {
 
   return (
     <InputGroup
-      height={props.height ? props.height : "40px"}
+      height={props.size ? props.size : "38px"}
       width={props.width ? props.width : "full"}
       rounded={props.rounded ? props.rounded : "base"}
       onFocus={() => setFocus(true)}

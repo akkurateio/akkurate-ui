@@ -1,8 +1,14 @@
-import { FormControlOptions, HTMLChakraProps, Input } from "@chakra-ui/react"
-import { ThemingProps } from "@chakra-ui/system"
+import {
+  FormControlOptions,
+  HTMLChakraProps,
+  Input,
+  useBreakpointValue,
+} from "@chakra-ui/react"
+import { ResponsiveValue, ThemingProps } from "@chakra-ui/system"
 import React from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -13,6 +19,7 @@ interface InputOptions {
   error?: string
   hint?: string
   register?: any
+  sizes?: "sm" | "md" | "lg"
 }
 
 interface InputProps
@@ -24,6 +31,7 @@ interface InputProps
 export const AcsInputText: React.FC<InputProps> = ({
   handleChange,
   register,
+  sizes = "md",
   ...props
 }) => {
   const propsForInput = () => {
@@ -41,11 +49,15 @@ export const AcsInputText: React.FC<InputProps> = ({
     return null
   }
 
+  const sizeState = useBreakpointValue(typeof sizes === "object" ? sizes : {})
+
+  const sizeInput = sizesAll(sizeState ? sizeState : (sizes as string))
+
   return (
     <FormControlLayout {...props}>
       <InputGroupWithShadow
         width={props.width}
-        height={props.height}
+        height={sizeInput?.height}
         isInvalid={props.isInvalid}
         rounded={props.rounded}
       >
@@ -66,7 +78,7 @@ export const AcsInputText: React.FC<InputProps> = ({
           pt={"0.656rem"}
           pb={"0.656rem"}
           pr={"0.688rem"}
-          fontSize={props.fontSize || "sm"}
+          fontSize={sizeInput?.fontSize}
           {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}
         />
