@@ -31,8 +31,8 @@ export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
           <Button
             variant={"unstyled"}
             width={"50%"}
-            w={"32px"}
-            h={"32px"}
+            w={"full"}
+            h={"full"}
             bg={"white"}
             zIndex={1}
           >

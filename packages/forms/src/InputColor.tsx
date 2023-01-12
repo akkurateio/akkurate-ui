@@ -120,7 +120,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
             mr={0}
             backgroundColor={value as string}
             width={"4rem"}
-            height={"1.875rem"}
+            height={"80%"}
             rounded={"0.125rem"}
           />
         </InputLeftElement>

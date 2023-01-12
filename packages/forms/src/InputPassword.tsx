@@ -108,8 +108,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
         <InputRightElement
           cursor={"pointer"}
           onClick={() => setShowPassword(!showPassword)}
-          pb={"0.438rem"}
-          pt={"0.438rem"}
+          h={"full"}
         >
           {showPassword ? (
             props.iconOpen ? (
