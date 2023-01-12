@@ -8,10 +8,7 @@ import Date from "./Date"
 
 interface IProps {
   value: DefaultDate
-  handleChange: (date: {
-    afterDate: Dayjs | null
-    beforeDate: Dayjs | null
-  }) => void
+  handleChange: (date: DefaultDate) => void
 
   options?: DateOptions
 
