@@ -32,16 +32,16 @@ export const propsForCheckboxMultiple = [
     required: false,
   },
   {
-    props: "direction",
-    type: "string",
+    props: "columns",
+    type: "number",
     description:
-      "Permet de choisir la direction de l'affichage des checkbox (row / column)",
+      "Nombre de colonnes pour l'affichage des checkbox (1, 2, 3, 4, 6, 12)",
     required: false,
   },
   {
     props: "size",
-    type: "string",
-    description: "Taille des options",
+    type: "sm, md, lg",
+    description: "Taille des checkbox (small, medium, large) et du text",
     required: false,
   },
 ]

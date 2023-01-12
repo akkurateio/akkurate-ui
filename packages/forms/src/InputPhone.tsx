@@ -35,13 +35,6 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
-  countriesArray?: {
-    name: string
-    icon: JSX.Element
-    code: string
-    prefix: string
-    flag: any
-  }[]
   fontSizePhone?: string
 }
 

@@ -30,15 +30,15 @@ export const propsForInputPhone = [
     required: false,
   },
   {
-    props: "countriesArray",
-    type: "array[name:string, icon: JSX.Element, code: string, prefix: string]",
-    description: "tableau des pays",
-    required: false,
-  },
-  {
     props: "hint",
     type: "string",
     description: "texte d'indication",
+    required: false,
+  },
+  {
+    props: "rounded",
+    type: "string",
+    description: "Permet d'arrondir les coins du champ",
     required: false,
   },
 ]

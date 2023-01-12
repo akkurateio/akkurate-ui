@@ -63,7 +63,7 @@ export const AcsInputEmail: React.FC<InputProps> = ({
       >
         <Input
           border={"none"}
-          rounded={"base"}
+          rounded={props.rounded ? props.rounded : "base"}
           height={"full"}
           width={"full"}
           type={"email"}

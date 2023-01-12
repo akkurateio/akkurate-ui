@@ -40,7 +40,7 @@ export const propsForDropzone = [
   {
     props: "boxSize",
     type: "string",
-    description: "Permet de choisir la taille de la zone",
+    description: "Permet de choisir la taille des cards files",
     required: false,
   },
 ]

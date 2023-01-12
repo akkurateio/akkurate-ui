@@ -30,18 +30,6 @@ export const propsForCheckboxCard = [
     description: "Espacement entre les options",
     required: false,
   },
-  // {
-  //     props: "justifyContent",
-  //     type: "string",
-  //     description: "Alignement horizontal des options",
-  //     required: false,
-  // },
-  // {
-  //     props: "alignItems",
-  //     type: "string",
-  //     description: "Alignement vertical des options",
-  //     required: false,
-  // },
   {
     props: "label",
     type: "string",

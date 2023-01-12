@@ -17,7 +17,6 @@ interface InputOptions {
   value?: string
   focusBorderColor?: string
   errorBorderColor?: string
-  htmlSize?: number
   label?: string
   error?: string
   hint?: string

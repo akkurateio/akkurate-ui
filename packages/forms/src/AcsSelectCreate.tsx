@@ -18,6 +18,8 @@ interface AcsSelectProps {
   options: {
     value: string
     label: string
+    isDisabled?: boolean
+    icon?: JSX.Element
   }[]
   handleChange: (e: (string | number)[]) => void
   value: (string | number)[]

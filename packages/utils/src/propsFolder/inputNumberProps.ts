@@ -54,4 +54,10 @@ export const propsForInputNumber = [
     description: "Valeur par défaut de l'input number",
     required: false,
   },
+  {
+    props: "rounded",
+    type: "string",
+    description: "Permet d'arrondir les angles de l'input number",
+    required: false,
+  },
 ]

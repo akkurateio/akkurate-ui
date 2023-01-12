@@ -71,4 +71,10 @@ export const propsForInputEmail = [
     description: "Indique un message d'aide",
     required: false,
   },
+  {
+    props: "rounded",
+    type: "string",
+    description: "Permet d'arrondir les coins du champ",
+    required: false,
+  },
 ]

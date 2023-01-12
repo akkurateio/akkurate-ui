@@ -53,4 +53,10 @@ export const propsForInputText = [
     description: "props qui permet d'associer avec React Hook Form",
     required: false,
   },
+  {
+    props: "rounded",
+    type: "string",
+    description: "Permet d'arrondir les coins du champ",
+    required: false,
+  },
 ]

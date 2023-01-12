@@ -37,4 +37,23 @@ export const propsForSelect = [
     description: "Taille de la police",
     required: false,
   },
+  {
+    props: "rounded",
+    type: "string",
+    description: "Permet d'arrondir les coins du champ",
+    required: false,
+  },
+  {
+    props: "selectedBgColor",
+    type: "string",
+    description:
+      "Permet de changer la couleur de fond des options sélectionnées",
+    required: false,
+  },
+  {
+    props: "iconOnLeft",
+    type: "boolean",
+    description: "Permet d'afficher l'icone à gauche du select",
+    required: false,
+  },
 ]

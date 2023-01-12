@@ -30,6 +30,7 @@ interface CardOptions {
   setSelectedCardIds: (ids: (string | number)[]) => void
   columns?: ResponsiveValue<number>
   spacing?: SystemProps["margin"]
+  label?: string
 }
 
 interface InputProps
@@ -65,7 +66,7 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
   }
 
   return (
-    <FormControlLayout {...props}>
+    <FormControlLayout label={props.label} {...props}>
       <SimpleGrid columns={columns} spacing={spacing}>
         {contentArray.map((item, idx) => (
           <HStack

@@ -53,4 +53,10 @@ export const propsForInputTime = [
     description: "Hauteur du champ",
     required: false,
   },
+  {
+    props: "rounded",
+    type: "string",
+    description: "Permet d'arrondir les coins du champ",
+    required: false,
+  },
 ]
