@@ -5,12 +5,14 @@ import {
   HStack,
   HTMLChakraProps,
   Text,
+  useBreakpointValue,
   useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, Select } from "chakra-react-select"
 import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -26,15 +28,16 @@ interface AcsSelectProps {
   label?: string
   iconOnLeft?: boolean
   selectedBgColor?: string
+  size?: "sm" | "md" | "lg"
 }
 
 interface SelectProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     AcsSelectProps,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
-export const AcsSelect: React.FC<SelectProps> = (props) => {
+export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
   const theme = useTheme()
 
   const [currentValue, setCurrentValue] = useState<any>(undefined)
@@ -60,6 +63,9 @@ export const AcsSelect: React.FC<SelectProps> = (props) => {
       }
     }
   }, [props.value])
+
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
 
   return (
     <FormControlLayout label={props.label}>
@@ -92,13 +98,13 @@ export const AcsSelect: React.FC<SelectProps> = (props) => {
               ...base,
               rounded: props.rounded ? props.rounded : "base",
               padding: "0 0",
-              height: props.height ? props.height : "38px",
-              minHeight: props.height ? props.height : "38px",
+              height: sizeInput?.height,
+              minHeight: sizeInput?.height,
               backgroundColor: props.isInvalid ? "red.50" : "white",
               color: props.isInvalid ? "red.500" : "black",
               width: "full",
               outline: "none",
-              fontSize: props.fontSize || "sm",
+              fontSize: sizeInput?.fontSize,
               border: "none",
               _focusVisible: {
                 border: "none",
@@ -119,7 +125,7 @@ export const AcsSelect: React.FC<SelectProps> = (props) => {
               rounded: "sm",
               width: "full",
               height: 9,
-              fontSize: props.fontSize || "sm",
+              fontSize: sizeInput?.fontSize,
               padding: 0,
               paddingLeft: "0.255rem",
               borderBottomColor: "neutral.200",
@@ -138,24 +144,24 @@ export const AcsSelect: React.FC<SelectProps> = (props) => {
               ...provided,
               padding: "0 0",
               margin: "0",
-              fontSize: props.fontSize || "sm",
+              fontSize: sizeInput?.fontSize,
             }),
             valueContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
               paddingLeft: "0.688rem",
-              fontSize: props.fontSize || "sm",
+              fontSize: sizeInput?.fontSize,
             }),
             singleValue: (provided: any) => ({
               ...provided,
               margin: "0 0",
-              fontSize: props.fontSize || "sm",
+              fontSize: sizeInput?.fontSize,
             }),
             inputContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
               margin: "0",
-              fontSize: props.fontSize || "sm",
+              fontSize: sizeInput?.fontSize,
             }),
             container: (provided: any) => ({
               ...provided,
@@ -182,14 +188,14 @@ export const AcsSelect: React.FC<SelectProps> = (props) => {
                       ? theme.colors.primary[500]
                       : "neutral.500"
                   }
-                  boxSize={"16px"}
+                  boxSize={sizeInput?.iconSize}
                   ml={2}
                 />
               </Box>
             ),
             NoOptionsMessage: (props) => (
               <Box textAlign={"center"}>
-                <Text color={"neutral.300"} fontSize={"sm"}>
+                <Text color={"neutral.300"} fontSize={sizeInput?.fontSize}>
                   Aucun résultat
                 </Text>
               </Box>

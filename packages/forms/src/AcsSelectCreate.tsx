@@ -5,12 +5,14 @@ import {
   HStack,
   HTMLChakraProps,
   Text,
+  useBreakpointValue,
   useTheme,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, CreatableSelect } from "chakra-react-select"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -28,15 +30,19 @@ interface AcsSelectProps {
   iconOnLeft?: boolean
   tagBgColor?: string
   fontSizeTag?: string
+  size?: "sm" | "md" | "lg"
 }
 
 interface SelectProps
   extends Omit<HTMLChakraProps<"select">, Omitted>,
     AcsSelectProps,
-    ThemingProps<"Select">,
+    Omit<ThemingProps<"Select">, Omitted>,
     FormControlOptions {}
 
-export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
+export const AcsSelectCreate: React.FC<SelectProps> = ({
+  size = "md",
+  ...props
+}) => {
   const theme = useTheme()
   const [valuesArr, setValuesArr] = useState<
     { value: string | number; label: string }[]
@@ -75,13 +81,14 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
       setValuesArr(arr)
     }
   }, [props.options])
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
 
   return (
     <Box>
       <FormControlLayout label={props.label}>
         <Box
           width={"full"}
-          h={"full"}
           backgroundColor={"white"}
           rounded={props.rounded ? props.rounded : "base"}
         >
@@ -115,9 +122,9 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
                 backgroundColor: props.isInvalid ? "red.50" : "white",
                 color: props.isInvalid ? "red.500" : "black",
                 outline: "none",
-                fontSize: props.fontSize || "sm",
-                height: props.height ? props.height : "38px",
-                minHeight: props.height ? props.height : "38px",
+                fontSize: sizeInput?.fontSize,
+                height: sizeInput?.height,
+                minHeight: sizeInput?.height,
                 border: "none",
                 _focusVisible: {
                   border: "none",
@@ -138,7 +145,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
                 rounded: "sm",
                 width: "full",
                 height: 9,
-                fontSize: props.fontSize || "sm",
+                fontSize: sizeInput?.fontSize,
                 padding: 0,
                 paddingLeft: "0.255rem",
                 borderBottomColor: "neutral.200",
@@ -156,13 +163,13 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
                 ...provided,
                 padding: "0 0",
                 margin: "0",
-                fontSize: props.fontSize || "sm",
+                fontSize: sizeInput?.fontSize,
               }),
               valueContainer: (provided: any) => ({
                 ...provided,
                 padding: "0 0",
                 paddingLeft: "0.688rem",
-                fontSize: props.fontSize || "sm",
+                fontSize: sizeInput?.fontSize,
               }),
               multiValue: (provided: any, state: any) => ({
                 ...provided,
@@ -182,7 +189,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
                 ...provided,
                 padding: "0 0",
                 margin: "0",
-                fontSize: props.fontSize || "sm",
+                fontSize: sizeInput?.fontSize,
               }),
               container: (provided: any) => ({
                 ...provided,
@@ -209,14 +216,14 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
                         ? "primary.500"
                         : "neutral.500"
                     }
-                    boxSize={"16px"}
+                    boxSize={sizeInput?.iconSize}
                     ml={2}
                   />
                 </Box>
               ),
               NoOptionsMessage: (props) => (
                 <Box textAlign={"center"} {...props}>
-                  <Text color={"neutral.300"} fontSize={"sm"}>
+                  <Text color={"neutral.300"} fontSize={sizeInput?.fontSize}>
                     Aucun résultat
                   </Text>
                 </Box>
@@ -255,7 +262,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({ ...props }) => {
                       rounded={"full"}
                       backgroundColor={"neutral.500"}
                       color={"white"}
-                      boxSize={"16px"}
+                      boxSize={sizeInput?.iconSize}
                       ml={2}
                     />
                   </Box>
