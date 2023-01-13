@@ -6,11 +6,13 @@ import {
   Input,
   InputLeftElement,
   InputRightElement,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "../FormControlLayout"
 import InputGroupWithShadow from "../InputGroupWithShadow"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -20,16 +22,18 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  size?: "sm" | "md" | "lg"
 }
 
 interface InputProps
   extends Omit<HTMLChakraProps<"input">, Omitted>,
     InputOptions,
-    ThemingProps<"Input">,
+    Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
 export const AcsInputFile: React.FC<InputProps> = ({
   handleChange,
+  size = "md",
   ...props
 }) => {
   const propsForInput = () => {
@@ -41,7 +45,6 @@ export const AcsInputFile: React.FC<InputProps> = ({
       isDisabled,
       isInvalid,
       isReadOnly,
-      size,
       ...rest
     } = props
     return rest
@@ -67,15 +70,18 @@ export const AcsInputFile: React.FC<InputProps> = ({
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
   }
 
+  const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
+  const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
+
   return (
     <FormControlLayout {...props}>
       <InputGroupWithShadow
         width={props.width}
-        height={props.height}
+        height={sizeInput?.height}
         isInvalid={props.isInvalid}
       >
         <InputLeftElement height={"full"}>
-          <AisFile boxSize={"24px"} color={"neutral.500"} />
+          <AisFile boxSize={sizeInput?.boxSize} color={"neutral.500"} />
         </InputLeftElement>
         <Input
           height={"full"}
@@ -111,7 +117,7 @@ export const AcsInputFile: React.FC<InputProps> = ({
               rounded={"full"}
               size={"24px"}
             >
-              <AisClose boxSize={"24px"}/>
+              <AisClose boxSize={sizeInput?.boxSize} />
             </IconButton>
           </InputRightElement>
         )}
