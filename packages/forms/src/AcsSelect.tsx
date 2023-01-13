@@ -7,11 +7,13 @@ import {
   Text,
   useBreakpointValue,
   useTheme,
+  VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, Select } from "chakra-react-select"
 import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+// @ts-ignore
 import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -42,6 +44,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
 
   const [currentValue, setCurrentValue] = useState<any>(undefined)
   const [focus, setFocus] = useState(false)
+  const [notValid, setNotValid] = useState(false)
 
   const handleChange = (e: any) => {
     setCurrentValue(e)
@@ -49,6 +52,14 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
       props.handleChange(e.value)
     }
   }
+
+  useEffect(() => {
+    if (props.isInvalid) {
+      setNotValid(true)
+    } else {
+      setNotValid(false)
+    }
+  }, [notValid, props.isInvalid])
 
   const instanceId = useId()
 
@@ -73,6 +84,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
         width={props.width ? props.width : "full"}
         backgroundColor={"white"}
         rounded={props.rounded ? props.rounded : "base"}
+        h={"full"}
       >
         <Select
           useBasicStyles={true}
@@ -98,8 +110,8 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
               ...base,
               rounded: props.rounded ? props.rounded : "base",
               padding: "0 0",
-              height: sizeInput?.height,
-              minHeight: sizeInput?.height,
+              height: sizeInput?.heightSelect,
+              minHeight: sizeInput?.heightSelect,
               backgroundColor: props.isInvalid ? "red.50" : "white",
               color: props.isInvalid ? "red.500" : "black",
               width: "full",
@@ -179,19 +191,15 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
           }}
           components={{
             DropdownIndicator: (dropdownProps) => (
-              <Box margin={"0.5rem"}>
+              <VStack {...props} marginRight={"0.5rem"}>
                 <AisChevronSort
                   color={
-                    props.isInvalid
-                      ? "red.500"
-                      : focus
-                      ? theme.colors.primary[500]
-                      : "neutral.500"
+                    notValid ? "red.500" : focus ? "primary.500" : "neutral.500"
                   }
                   boxSize={sizeInput?.iconSize}
                   ml={2}
                 />
-              </Box>
+              </VStack>
             ),
             NoOptionsMessage: (props) => (
               <Box textAlign={"center"}>

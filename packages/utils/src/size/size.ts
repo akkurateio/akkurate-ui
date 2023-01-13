@@ -28,24 +28,27 @@ export const sizesAll = (size: string) => {
     return {
       fontSize: "1rem",
       height: "2.875rem",
+      heightSelect: "2.75rem",
       boxSize: "32px",
-      iconSize: "24px",
+      iconSize: "32px",
     }
   }
   if (size === "md") {
     return {
       fontSize: "0.875rem",
       height: "2.375rem",
+      heightSelect: "2.25rem",
       boxSize: "24px",
-      iconSize: "16px",
+      iconSize: "24px",
     }
   }
   if (size === "sm") {
     return {
       fontSize: "0.75rem",
       height: "1.875rem",
+      heightSelect: "1.75rem",
       boxSize: "16px",
-      iconSize: "8px",
+      iconSize: "16px",
     }
   }
 }

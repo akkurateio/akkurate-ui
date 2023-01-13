@@ -7,11 +7,13 @@ import {
   Text,
   useBreakpointValue,
   useTheme,
+  VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, CreatableSelect } from "chakra-react-select"
 import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+// @ts-ignore
 import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -125,8 +127,8 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
                 color: props.isInvalid ? "red.500" : "black",
                 outline: "none",
                 fontSize: sizeInput?.fontSize,
-                height: sizeInput?.height,
-                minHeight: sizeInput?.height,
+                height: sizeInput?.heightSelect,
+                minHeight: sizeInput?.heightSelect,
                 border: "none",
                 _focusVisible: {
                   border: "none",
@@ -209,7 +211,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
             }}
             components={{
               DropdownIndicator: (props) => (
-                <Box {...props} marginRight={"0.5rem"}>
+                <VStack {...props} marginRight={"0.5rem"}>
                   <AisChevronSort
                     color={
                       notValid
@@ -221,7 +223,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
                     boxSize={sizeInput?.iconSize}
                     ml={2}
                   />
-                </Box>
+                </VStack>
               ),
               NoOptionsMessage: (props) => (
                 <Box textAlign={"center"} {...props}>
