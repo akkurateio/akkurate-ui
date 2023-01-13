@@ -215,7 +215,7 @@ const styles = {
       background: "tertiary.700",
     },
     body: {
-      fontFamily: "Roboto, sans-serif",
+      fontFamily: "Inter, sans-serif",
       bg: mode("bgLight", "bgDark")(props), // custom bg color in dark mode or light mode
       color: mode("textDark", "textLight")(props), // custom text color in dark mode or light mode
     },
@@ -249,7 +249,7 @@ const styles = {
 const config: ThemeConfig = {
   initialColorMode: "light",
   useSystemColorMode: false,
-  cssVarPrefix: "subvitamine",
+  cssVarPrefix: "nimiscient",
   disableTransitionOnChange: false,
 }
 

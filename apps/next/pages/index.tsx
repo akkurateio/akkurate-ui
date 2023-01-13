@@ -1,7 +1,7 @@
 import { AcsInputDateRange } from "@akkurateio/forms"
 import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 import { Box, Flex, Heading, Text } from "@chakra-ui/react"
-import dayjs from "dayjs"
+import dayjs, { Dayjs } from "dayjs"
 import type { NextPage } from "next"
 import { useState } from "react"
 
@@ -45,7 +45,11 @@ const Pages: NextPage = () => {
 
   const [date, setDate] = useState("2023-01-10")
 
-  const [dateRange, setDateRange] = useState({
+  const [dateRange, setDateRange] = useState<{
+    afterDate: Dayjs | null
+    beforeDate: Dayjs | null
+    currentDate: Dayjs
+  }>({
     afterDate: null,
     beforeDate: null,
     currentDate: dayjs(),
