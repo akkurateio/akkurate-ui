@@ -17,12 +17,7 @@ export const propsForInputSearch = [
     description: "Valeur du champ",
     required: false,
   },
-  {
-    props: "fontSize",
-    type: "string",
-    description: "Taille de la police",
-    required: false,
-  },
+
   {
     props: "isInvalid",
     type: "boolean",
@@ -33,12 +28,6 @@ export const propsForInputSearch = [
     props: "width",
     type: "string",
     description: "Largeur du champ",
-    required: false,
-  },
-  {
-    props: "height",
-    type: "string",
-    description: "Hauteur du champ",
     required: false,
   },
   {

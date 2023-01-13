@@ -30,12 +30,6 @@ export const propsForInputText = [
     required: false,
   },
   {
-    props: "fontSize",
-    type: "string",
-    description: "Taille de la police",
-    required: false,
-  },
-  {
     props: "isInvalid",
     type: "boolean",
     description: "Indique si le champ est invalide",

@@ -24,12 +24,6 @@ export const propsForInputPhone = [
     required: false,
   },
   {
-    props: "fontSizePhone",
-    type: "string",
-    description: "taille de la police de l'input",
-    required: false,
-  },
-  {
     props: "hint",
     type: "string",
     description: "texte d'indication",

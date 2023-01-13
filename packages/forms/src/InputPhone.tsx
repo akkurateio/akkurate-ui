@@ -36,7 +36,6 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
-  fontSizePhone?: string
   size?: "sm" | "md" | "lg"
 }
 
@@ -48,7 +47,6 @@ interface InputProps
 
 export const AcsInputPhone: React.FC<InputProps> = ({
   defaultCountry = "FR",
-  fontSizePhone = "14px",
   handleChange,
   size = "md",
   ...props

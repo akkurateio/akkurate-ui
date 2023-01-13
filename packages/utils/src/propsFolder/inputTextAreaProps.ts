@@ -72,4 +72,10 @@ export const propsForInputTextArea = [
     description: "Hauteur minimale de la zone de texte",
     required: false,
   },
+  {
+    props: "fontSize",
+    type: "string",
+    description: "Taille de la police",
+    required: false,
+  },
 ]
