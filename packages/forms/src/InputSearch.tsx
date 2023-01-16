@@ -113,10 +113,10 @@ export const AcsInputSearch: React.FC<InputProps> = ({
               rounded={"full"}
               color={"white"}
               colorScheme={"neutral"}
-              size={sizeInput?.boxSize}
+              size={sizeInput?.iconSize}
             >
               <AisClose
-                boxSize={sizeInput?.boxSize}
+                boxSize={sizeInput?.iconSize}
                 onClick={() => handleChange("")}
               />
             </IconButton>
