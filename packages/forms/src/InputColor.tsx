@@ -21,6 +21,7 @@ import styled from "@emotion/styled"
 import { HexColorPicker } from "react-colorful"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
+// @ts-ignore
 import { sizesAll } from "@akkurateio/utils"
 
 const StyledBox = styled.div`

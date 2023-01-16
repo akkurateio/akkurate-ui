@@ -5,6 +5,7 @@ import {
   FormControlOptions,
   HStack,
   HTMLChakraProps,
+  Icon,
   Text,
   useBreakpointValue,
   useTheme,
@@ -36,6 +37,7 @@ interface AcsSelectProps {
   size?: "sm" | "md" | "lg"
   icon?: JSX.Element
   menuPlacement?: "auto" | "bottom" | "top"
+  iconSelected?: JSX.Element
 }
 
 interface SelectProps
@@ -48,6 +50,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
   size = "md",
   menuPlacement = "auto",
   iconOnLeft = false,
+  iconSelected,
   ...props
 }) => {
   const theme = useTheme()
@@ -221,13 +224,11 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
           components={{
             DropdownIndicator: (props) => (
               <VStack {...props} marginRight={"0.5rem"}>
-                <AisChevronSort
-                  color={
-                    notValid ? "red.500" : focus ? "primary.500" : "neutral.500"
-                  }
-                  boxSize={sizeInput?.iconSize}
-                  ml={2}
-                />
+                {iconSelected ? (
+                  <Icon boxSize={sizeInput?.iconSize}>{iconSelected}</Icon>
+                ) : (
+                  <AisChevronSort boxSize={sizeInput?.iconSize} />
+                )}
               </VStack>
             ),
             Control: ({ children, ...data }) => (

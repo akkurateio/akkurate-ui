@@ -49,6 +49,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
   handleChange,
   menuPlacement = "auto",
   iconOnLeft = false,
+  iconSelected,
   ...props
 }) => {
   const theme = useTheme()
@@ -207,10 +208,8 @@ export const AcsSelect: React.FC<SelectProps> = ({
           components={{
             DropdownIndicator: (dropdownProps) => (
               <VStack {...props} marginRight={"0.5rem"}>
-                {props.iconSelected ? (
-                  <Icon boxSize={sizeInput?.iconSize}>
-                    {props.iconSelected}
-                  </Icon>
+                {iconSelected ? (
+                  <Icon boxSize={sizeInput?.iconSize}>{iconSelected}</Icon>
                 ) : (
                   <AisChevronSort boxSize={sizeInput?.iconSize} />
                 )}

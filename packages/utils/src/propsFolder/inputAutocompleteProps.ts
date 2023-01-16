@@ -24,33 +24,21 @@ export const propsForInputAutocomplete = [
     required: false,
   },
   {
-    props: "fontSize",
-    type: "string",
-    description: "Taille de la police",
-    required: false,
-  },
-  {
     props: "isInvalid",
     type: "boolean",
     description: "Indique si le champ est invalide",
     required: false,
   },
   {
-    props: "width",
-    type: "string",
-    description: "Largeur du champ",
-    required: false,
-  },
-  {
-    props: "height",
-    type: "string",
-    description: "Hauteur du champ",
-    required: false,
-  },
-  {
     props: "hint",
     type: "string",
     description: "Indication sous le champ",
+    required: false,
+  },
+  {
+    props: "size",
+    type: "string",
+    description: "Permet de changer la taille du champ",
     required: false,
   },
 ]
