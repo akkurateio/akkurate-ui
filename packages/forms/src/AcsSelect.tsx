@@ -48,6 +48,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
   size = "md",
   handleChange,
   menuPlacement = "auto",
+  iconOnLeft = false,
   ...props
 }) => {
   const theme = useTheme()
@@ -87,8 +88,6 @@ export const AcsSelect: React.FC<SelectProps> = ({
 
   const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
   const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
-
-  console.log(focus)
 
   return (
     <FormControlLayout label={props.label}>
@@ -219,11 +218,11 @@ export const AcsSelect: React.FC<SelectProps> = ({
             SingleValue: ({ children, ...data }) => (
               <components.SingleValue {...data}>
                 <Flex onClick={() => setFocus(false)}>
-                  {data.data.icon && props.iconOnLeft && (
+                  {data.data.icon && iconOnLeft && (
                     <Box mr={1}>{data.data.icon}</Box>
                   )}
                   {children}
-                  {data.data.icon && !props.iconOnLeft && (
+                  {data.data.icon && !iconOnLeft && (
                     <Box ml={1}>{data.data.icon}</Box>
                   )}
                 </Flex>
@@ -264,7 +263,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
               </Box>
             ),
             Option: ({ children, ...data }) =>
-              props.iconOnLeft ? (
+              iconOnLeft ? (
                 <chakraComponents.Option {...data}>
                   <HStack onClick={() => setFocus(false)} width={"full"}>
                     {/*@ts-ignore*/}

@@ -47,6 +47,7 @@ interface SelectProps
 export const AcsSelectMultiple: React.FC<SelectProps> = ({
   size = "md",
   menuPlacement = "auto",
+  iconOnLeft = false,
   ...props
 }) => {
   const theme = useTheme()
@@ -251,7 +252,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
               </Box>
             ),
             Option: ({ children, ...data }) =>
-              props.iconOnLeft ? (
+              iconOnLeft ? (
                 <chakraComponents.Option {...data}>
                   <HStack width={"full"}>
                     {/*@ts-ignore*/}
