@@ -1,7 +1,7 @@
 {
   "name": "icons-generator",
   "private": true,
-  "version": "0.0.75",
+  "version": "0.0.76",
   "description": "Cli for generate icons",
   "main": "index.js",
   "author": "Subvitamine",
