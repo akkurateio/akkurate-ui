@@ -231,7 +231,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
             Control: ({ children, ...data }) => (
               <chakraComponents.Control {...data}>
                 <Flex
-                  ml={2}
+                  ml={props.icon ? 2 : 0}
                   experimental_spaceX={1}
                   w={"full"}
                   height={"full"}
