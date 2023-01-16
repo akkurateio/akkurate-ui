@@ -27,7 +27,7 @@ export const AcsPaginate: React.FC<IProps> = ({
     <Flex alignItems={"center"} justifyContent={"space-between"}>
       <HStack alignItems={"center"}>
         <HStack spacing={2}>
-          {max > 6 && (
+          {max >= 6 && (
             <IconButton
               variant={"ghost"}
               disabled={current === 1}
@@ -121,7 +121,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           >
             <AisChevronRight boxSize={"24px"} />
           </IconButton>
-          {max > 6 && (
+          {max >= 6 && (
             <IconButton
               variant={"ghost"}
               disabled={current === max}
