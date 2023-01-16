@@ -35,6 +35,7 @@ interface AcsSelectProps {
   fontSizeTag?: string
   size?: "sm" | "md" | "lg"
   icon?: JSX.Element
+  menuPlacement?: "auto" | "bottom" | "top"
 }
 
 interface SelectProps
@@ -45,6 +46,7 @@ interface SelectProps
 
 export const AcsSelectMultiple: React.FC<SelectProps> = ({
   size = "md",
+  menuPlacement = "auto",
   ...props
 }) => {
   const theme = useTheme()
@@ -92,6 +94,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
           useBasicStyles={true}
           // @ts-ignore
           options={props.options}
+          menuPlacement={menuPlacement}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           styles={{

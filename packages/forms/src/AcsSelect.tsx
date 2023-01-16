@@ -33,6 +33,7 @@ interface AcsSelectProps {
   selectedBgColor?: string
   size?: "sm" | "md" | "lg"
   icon?: JSX.Element
+  menuPlacement?: "auto" | "bottom" | "top"
 }
 
 interface SelectProps
@@ -44,6 +45,7 @@ interface SelectProps
 export const AcsSelect: React.FC<SelectProps> = ({
   size = "md",
   handleChange,
+  menuPlacement = "auto",
   ...props
 }) => {
   const theme = useTheme()
@@ -97,6 +99,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
           options={props.options}
           closeMenuOnSelect={true}
           hideSelectedOptions={false}
+          menuPlacement={menuPlacement}
           value={currentValue}
           variant={"outline"}
           instanceId={instanceId}
