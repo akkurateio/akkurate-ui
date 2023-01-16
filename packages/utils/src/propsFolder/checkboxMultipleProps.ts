@@ -1,7 +1,7 @@
 export const propsForCheckboxMultiple = [
   {
     props: "contentArray",
-    type: "string[]",
+    type: "{ id: string | number; name: string; isChecked: boolean }[]",
     description:
       "Tableau d'objet comportant un id, un name et un booléen pour savoir si l'objet est sélectionné ou non",
     required: true,
@@ -14,7 +14,7 @@ export const propsForCheckboxMultiple = [
   },
   {
     props: "selectedCheckboxIds",
-    type: "string[]",
+    type: "(string | number)[]",
     description: "Tableau d'id des checkbox sélectionnées",
     required: true,
   },
@@ -22,7 +22,7 @@ export const propsForCheckboxMultiple = [
     props: "setSelectedCheckboxIds",
     type: "function",
     description:
-      "Fonction pour mettre à jour le tableau d'id des checkbox sélectionnées",
+      "Fonction pour mettre à jour le tableau d'id des checkboxes sélectionnées",
     required: true,
   },
   {

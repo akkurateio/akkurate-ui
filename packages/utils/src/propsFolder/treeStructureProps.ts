@@ -1,7 +1,7 @@
 export const propsForTreeStructure = [
   {
     props: "tree",
-    type: "Array",
+    type: "Array [id :string | numer, name: string, children: tree[]",
     description:
       "Le tableau des données comme ceci( [id: string | number | null , name: string | null])",
     required: true,

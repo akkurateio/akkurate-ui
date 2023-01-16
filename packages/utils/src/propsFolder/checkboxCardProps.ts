@@ -8,14 +8,14 @@ export const propsForCheckboxCard = [
   },
   {
     props: "selectedCardId",
-    type: "string | number",
+    type: "(string | number)[]",
     description: "Id de l'option sélectionnée",
     required: true,
   },
   {
     props: "setSelectedCardId",
     type: "function",
-    description: "Fonction qui met à jour l'id de l'option sélectionnée",
+    description: "Fonction qui met à jour l'id des options sélectionnées",
     required: true,
   },
   {

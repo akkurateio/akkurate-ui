@@ -32,12 +32,6 @@ export const propsForSelectMultiple = [
     required: false,
   },
   {
-    props: "fontSize",
-    type: "string",
-    description: "Taille de la police",
-    required: false,
-  },
-  {
     props: "rounded",
     type: "string",
     description: "Permet d'arrondir les coins du champ",

@@ -10,6 +10,7 @@ import { ResponsiveValue, ThemingProps } from "@chakra-ui/system"
 import React, { useState } from "react"
 import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/icons"
 import FormControlLayout from "./FormControlLayout"
+// @ts-ignore
 import { allSizes } from "@akkurateio/utils"
 
 type Omitted =
