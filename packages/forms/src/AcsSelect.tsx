@@ -207,7 +207,6 @@ export const AcsSelect: React.FC<SelectProps> = ({
               <VStack {...props} marginRight={"0.5rem"}>
                 {props.iconSelected ? (
                   <Icon boxSize={sizeInput?.iconSize}>
-                    {" "}
                     {props.iconSelected}
                   </Icon>
                 ) : (

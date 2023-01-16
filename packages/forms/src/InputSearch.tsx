@@ -71,7 +71,7 @@ export const AcsInputSearch: React.FC<InputProps> = ({
         rounded={props.rounded}
       >
         <InputLeftElement
-          backgroundColor={props.isInvalid ? "red.50" : "white"}
+          backgroundColor={props.isInvalid ? "red.50" : "transparent"}
           height={"full"}
           rounded={props.rounded ? props.rounded : "base"}
         >
@@ -108,18 +108,10 @@ export const AcsInputSearch: React.FC<InputProps> = ({
         />
         <InputRightElement height={"full"}>
           {props.value && props.value.length > 0 && (
-            <IconButton
-              aria-label="Close"
-              rounded={"full"}
-              color={"white"}
-              colorScheme={"neutral"}
-              size={sizeInput?.iconSize}
-            >
-              <AisClose
-                boxSize={sizeInput?.iconSize}
-                onClick={() => handleChange("")}
-              />
-            </IconButton>
+            <AisClose
+              boxSize={sizeInput?.iconRightControl}
+              onClick={() => handleChange("")}
+            />
           )}
         </InputRightElement>
       </InputGroupWithShadow>

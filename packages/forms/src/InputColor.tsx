@@ -114,6 +114,7 @@ export const AcsInputColor: React.FC<InputProps> = ({
       >
         <InputLeftElement width={"fit-content"} height={"full"}>
           <Box
+            rounded={props.rounded ? props.rounded : "0.125rem"}
             ml={"0.25rem"}
             mt={"0.25rem"}
             mb={"0.25rem"}
@@ -121,7 +122,6 @@ export const AcsInputColor: React.FC<InputProps> = ({
             backgroundColor={value as string}
             width={"4rem"}
             height={"80%"}
-            rounded={"0.125rem"}
           />
         </InputLeftElement>
         <Input
@@ -157,12 +157,16 @@ export const AcsInputColor: React.FC<InputProps> = ({
           boxShadow={"none"}
           cursor={"pointer"}
           height={"full"}
+          display={"flex"}
+          alignItems={"center"}
         >
           <Popover placement={"bottom-end"}>
             {({ isOpen }) => (
               <>
                 <PopoverTrigger>
                   <Box
+                    position={"relative"}
+                    mt={"-1px"}
                     color={
                       props.isInvalid
                         ? "error.500"

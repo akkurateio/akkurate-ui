@@ -30,7 +30,8 @@ export const sizesAll = (size: string) => {
       height: "2.875rem",
       heightSelect: "2.75rem",
       boxSize: "32px",
-      iconSize: "24px",
+      iconSize: "32px",
+      iconRightControl: "20px",
     }
   }
   if (size === "md") {
@@ -39,7 +40,8 @@ export const sizesAll = (size: string) => {
       height: "2.375rem",
       heightSelect: "2.25rem",
       boxSize: "24px",
-      iconSize: "16px",
+      iconSize: "24px",
+      iconRightControl: "16px",
     }
   }
   if (size === "sm") {
@@ -48,7 +50,8 @@ export const sizesAll = (size: string) => {
       height: "1.875rem",
       heightSelect: "1.75rem",
       boxSize: "16px",
-      iconSize: "8px",
+      iconSize: "16px",
+      iconRightControl: "12px",
     }
   }
 }
