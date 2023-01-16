@@ -68,4 +68,10 @@ export const propsForSelectMultiple = [
     description: "Permet d'afficher l'icone à gauche du select",
     required: false,
   },
+  {
+    props: "size",
+    type: "string",
+    description: "Permet de changer la taille du select",
+    required: false,
+  },
 ]

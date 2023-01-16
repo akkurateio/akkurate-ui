@@ -42,4 +42,10 @@ export const propsForInputColor = [
     description: "Permet de changer la largeur de l'input",
     required: false,
   },
+  {
+    props: "size",
+    type: "string",
+    description: "Permet de changer la taille du select",
+    required: false,
+  },
 ]

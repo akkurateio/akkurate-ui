@@ -47,4 +47,10 @@ export const propsForInputDate = [
     description: "Le texte d'indication",
     required: false,
   },
+  {
+    props: "size",
+    type: "string",
+    description: "Permet de changer la taille du select",
+    required: false,
+  },
 ]

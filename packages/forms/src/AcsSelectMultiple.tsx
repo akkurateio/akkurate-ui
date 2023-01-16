@@ -1,6 +1,7 @@
 import { AisChevronSort, AisClose } from "@akkurateio/icons"
 import {
   Box,
+  Flex,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
@@ -33,6 +34,7 @@ interface AcsSelectProps {
   tagBgColor?: string
   fontSizeTag?: string
   size?: "sm" | "md" | "lg"
+  icon?: JSX.Element
 }
 
 interface SelectProps
@@ -133,6 +135,9 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
               padding: 0,
               paddingLeft: "0.255rem",
               borderBottomColor: "neutral.200",
+              _last: {
+                borderBottom: "none",
+              },
             }),
             multiValue: (provided: any, state: any) => ({
               ...provided,
@@ -208,6 +213,32 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
                   ml={2}
                 />
               </VStack>
+            ),
+            Control: ({ children, ...data }) => (
+              <chakraComponents.Control {...data}>
+                <Flex
+                  ml={2}
+                  experimental_spaceX={1}
+                  w={"full"}
+                  height={"full"}
+                  alignItems={"center"}
+                >
+                  {props.icon && (
+                    <Box
+                      color={
+                        notValid
+                          ? "red.500"
+                          : focus
+                          ? "primary.500"
+                          : "neutral.500"
+                      }
+                    >
+                      {props.icon}
+                    </Box>
+                  )}
+                  {children}
+                </Flex>
+              </chakraComponents.Control>
             ),
             NoOptionsMessage: (props) => (
               <Box textAlign={"center"} {...props}>

@@ -60,4 +60,10 @@ export const propsForInputNumber = [
     description: "Permet d'arrondir les angles de l'input number",
     required: false,
   },
+  {
+    props: "size",
+    type: "string",
+    description: "Permet de changer la taille du select",
+    required: false,
+  },
 ]

@@ -51,9 +51,21 @@ export const propsForSelect = [
     required: false,
   },
   {
+    props: "icon",
+    type: "JSX.Element",
+    description: "Permet d'ajouter une icone à gauche du champ",
+    required: false,
+  },
+  {
     props: "iconOnLeft",
     type: "boolean",
     description: "Permet d'afficher l'icone à gauche du select",
+    required: false,
+  },
+  {
+    props: "size",
+    type: "string",
+    description: "Permet de changer la taille du select",
     required: false,
   },
 ]

@@ -1,6 +1,7 @@
-import { AisChevronSort } from "@akkurateio/icons"
+import { AisChevronSort, AisFlag } from "@akkurateio/icons"
 import {
   Box,
+  Flex,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
@@ -10,7 +11,7 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { chakraComponents, Select } from "chakra-react-select"
+import { chakraComponents, Select, components } from "chakra-react-select"
 import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 // @ts-ignore
@@ -31,6 +32,7 @@ interface AcsSelectProps {
   iconOnLeft?: boolean
   selectedBgColor?: string
   size?: "sm" | "md" | "lg"
+  icon?: JSX.Element
 }
 
 interface SelectProps
@@ -39,17 +41,21 @@ interface SelectProps
     Omit<ThemingProps<"Input">, Omitted>,
     FormControlOptions {}
 
-export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
+export const AcsSelect: React.FC<SelectProps> = ({
+  size = "md",
+  handleChange,
+  ...props
+}) => {
   const theme = useTheme()
 
   const [currentValue, setCurrentValue] = useState<any>(undefined)
   const [focus, setFocus] = useState(false)
   const [notValid, setNotValid] = useState(false)
 
-  const handleChange = (e: any) => {
+  const handleChangeSelect = (e: any) => {
     setCurrentValue(e)
-    if (props.handleChange) {
-      props.handleChange(e.value)
+    if (handleChange) {
+      handleChange(e.value)
     }
   }
 
@@ -84,7 +90,6 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
         width={props.width ? props.width : "full"}
         backgroundColor={"white"}
         rounded={props.rounded ? props.rounded : "base"}
-        h={"full"}
       >
         <Select
           useBasicStyles={true}
@@ -95,7 +100,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
           value={currentValue}
           variant={"outline"}
           instanceId={instanceId}
-          onChange={handleChange}
+          onChange={handleChangeSelect}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           placeholder={props.placeholder || "Sélectionner"}
@@ -125,7 +130,6 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
             }),
             option: (provided: any, state: any) => ({
               ...provided,
-              borderBottom: "1px",
               backgroundColor:
                 state.isSelected && props.selectedBgColor
                   ? props.selectedBgColor
@@ -140,7 +144,11 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
               fontSize: sizeInput?.fontSize,
               padding: 0,
               paddingLeft: "0.255rem",
+              borderBottom: "1px",
               borderBottomColor: "neutral.200",
+              _last: {
+                borderBottom: "none",
+              },
             }),
             menuList: (provided: any) => ({
               ...provided,
@@ -161,7 +169,7 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
             valueContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
-              paddingLeft: "0.688rem",
+              paddingLeft: props.icon ? "0" : "0.688rem",
               fontSize: sizeInput?.fontSize,
             }),
             singleValue: (provided: any) => ({
@@ -200,6 +208,45 @@ export const AcsSelect: React.FC<SelectProps> = ({ size = "md", ...props }) => {
                   ml={2}
                 />
               </VStack>
+            ),
+            SingleValue: ({ children, ...data }) => (
+              <components.SingleValue {...data}>
+                <Flex>
+                  {props.icon && props.iconOnLeft && (
+                    <Box mr={1}>{data.data.icon}</Box>
+                  )}
+                  {children}
+                  {props.icon && !props.iconOnLeft && (
+                    <Box ml={1}>{data.data.icon}</Box>
+                  )}
+                </Flex>
+              </components.SingleValue>
+            ),
+            Control: ({ children, ...data }) => (
+              <chakraComponents.Control {...data}>
+                <Flex
+                  ml={2}
+                  experimental_spaceX={1}
+                  w={"full"}
+                  height={"full"}
+                  alignItems={"center"}
+                >
+                  {props.icon && (
+                    <Box
+                      color={
+                        notValid
+                          ? "red.500"
+                          : focus
+                          ? "primary.500"
+                          : "neutral.500"
+                      }
+                    >
+                      {props.icon}
+                    </Box>
+                  )}
+                  {children}
+                </Flex>
+              </chakraComponents.Control>
             ),
             NoOptionsMessage: (props) => (
               <Box textAlign={"center"}>

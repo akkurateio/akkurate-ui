@@ -65,4 +65,10 @@ export const propsForInputPassword = [
     description: "Permet d'arrondir les coins du champ",
     required: false,
   },
+  {
+    props: "size",
+    type: "string",
+    description: "Permet de changer la taille du select",
+    required: false,
+  },
 ]
