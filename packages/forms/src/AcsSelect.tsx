@@ -1,10 +1,10 @@
-import { AisChevronSort, AisFlag } from "@akkurateio/icons"
 import {
   Box,
   Flex,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
+  Icon,
   Text,
   useBreakpointValue,
   useTheme,
@@ -16,6 +16,7 @@ import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 // @ts-ignore
 import { sizesAll } from "@akkurateio/utils"
+import { AisChevronSort } from "@akkurateio/icons"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -34,6 +35,7 @@ interface AcsSelectProps {
   size?: "sm" | "md" | "lg"
   icon?: JSX.Element
   menuPlacement?: "auto" | "bottom" | "top"
+  iconSelected?: JSX.Element
 }
 
 interface SelectProps
@@ -203,13 +205,14 @@ export const AcsSelect: React.FC<SelectProps> = ({
           components={{
             DropdownIndicator: (dropdownProps) => (
               <VStack {...props} marginRight={"0.5rem"}>
-                <AisChevronSort
-                  color={
-                    notValid ? "red.500" : focus ? "primary.500" : "neutral.500"
-                  }
-                  boxSize={sizeInput?.iconSize}
-                  ml={2}
-                />
+                {props.iconSelected ? (
+                  <Icon boxSize={sizeInput?.iconSize}>
+                    {" "}
+                    {props.iconSelected}
+                  </Icon>
+                ) : (
+                  <AisChevronSort boxSize={sizeInput?.iconSize} />
+                )}
               </VStack>
             ),
             SingleValue: ({ children, ...data }) => (
