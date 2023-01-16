@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, Select } from "chakra-react-select"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 // @ts-ignore
 import { sizesAll } from "@akkurateio/utils"
@@ -74,6 +74,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
       }
     }
   }, [props.options, props.value])
+  const instanceId = useId()
 
   useEffect(() => {
     if (props.isInvalid) {
@@ -99,6 +100,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
           // @ts-ignore
           options={props.options}
           menuPlacement={menuPlacement}
+          instanceId={instanceId}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           blurInputOnSelect={true}

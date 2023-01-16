@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, CreatableSelect } from "chakra-react-select"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 // @ts-ignore
 import { sizesAll } from "@akkurateio/utils"
@@ -76,7 +76,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
       setNotValid(false)
     }
   }, [notValid, props.isInvalid])
-
+  const instanceId = useId()
   useEffect(() => {
     if (props.options) {
       const arr = props.options.map(
@@ -107,6 +107,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
           useBasicStyles={true}
           // @ts-ignore
           options={props.options}
+          instanceId={instanceId}
           value={currentValues}
           menuPlacement={menuPlacement}
           closeMenuOnSelect={false}

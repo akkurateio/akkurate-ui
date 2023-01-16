@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useId, useState } from "react"
 
 import { AisColorPalette } from "@akkurateio/icons"
 import {
@@ -79,6 +79,8 @@ export const AcsInputColor: React.FC<InputProps> = ({
   height,
   value,
   size = "md",
+  iconOpen,
+  iconClose,
   ...props
 }) => {
   const propsForInput = () => {
@@ -177,13 +179,13 @@ export const AcsInputColor: React.FC<InputProps> = ({
                     }
                   >
                     {isOpen ? (
-                      props.iconOpen ? (
-                        props.iconOpen
+                      iconOpen ? (
+                        iconOpen
                       ) : (
                         <AisColorPalette boxSize={sizeInput?.boxSize} />
                       )
-                    ) : props.iconClose ? (
-                      props.iconClose
+                    ) : iconClose ? (
+                      iconClose
                     ) : (
                       <AisColorPalette boxSize={sizeInput?.boxSize} />
                     )}
