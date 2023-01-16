@@ -212,11 +212,11 @@ export const AcsSelect: React.FC<SelectProps> = ({
             SingleValue: ({ children, ...data }) => (
               <components.SingleValue {...data}>
                 <Flex>
-                  {props.icon && props.iconOnLeft && (
+                  {data.data.icon && props.iconOnLeft && (
                     <Box mr={1}>{data.data.icon}</Box>
                   )}
                   {children}
-                  {props.icon && !props.iconOnLeft && (
+                  {data.data.icon && !props.iconOnLeft && (
                     <Box ml={1}>{data.data.icon}</Box>
                   )}
                 </Flex>
@@ -225,7 +225,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
             Control: ({ children, ...data }) => (
               <chakraComponents.Control {...data}>
                 <Flex
-                  ml={2}
+                  ml={props.icon ? 2 : 0}
                   experimental_spaceX={1}
                   w={"full"}
                   height={"full"}
