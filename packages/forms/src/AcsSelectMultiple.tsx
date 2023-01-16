@@ -98,6 +98,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
           menuPlacement={menuPlacement}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
+          blurInputOnSelect={true}
           styles={{
             menuPortal: (base) => ({
               ...base,

@@ -109,6 +109,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
           onChange={handleChangeSelect}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
+          blurInputOnSelect={true}
           placeholder={props.placeholder || "Sélectionner"}
           styles={{
             menuPortal: (base) => ({
@@ -217,7 +218,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
             ),
             SingleValue: ({ children, ...data }) => (
               <components.SingleValue {...data}>
-                <Flex onClick={() => setFocus(false)}>
+                <Flex>
                   {data.data.icon && iconOnLeft && (
                     <Box mr={1}>{data.data.icon}</Box>
                   )}
@@ -236,7 +237,6 @@ export const AcsSelect: React.FC<SelectProps> = ({
                   w={"full"}
                   height={"full"}
                   alignItems={"center"}
-                  onClick={() => setFocus(false)}
                 >
                   {props.icon && (
                     <Box
@@ -265,7 +265,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
             Option: ({ children, ...data }) =>
               iconOnLeft ? (
                 <chakraComponents.Option {...data}>
-                  <HStack onClick={() => setFocus(false)} width={"full"}>
+                  <HStack width={"full"}>
                     {/*@ts-ignore*/}
                     {data.data.icon}
                     <Text>{children}</Text>
@@ -273,7 +273,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
                 </chakraComponents.Option>
               ) : (
                 <chakraComponents.Option {...data}>
-                  <HStack onClick={() => setFocus(false)} width={"full"}>
+                  <HStack width={"full"}>
                     <Text>{children}</Text>
                     {/*@ts-ignore*/}
                     {data.data.icon}
