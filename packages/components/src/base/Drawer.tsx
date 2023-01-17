@@ -56,7 +56,7 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
       <DrawerContent {...props}>
         {title && !header && (
           <>
-            <HStack justifyContent={"space-between"} w={"full"} p={4} pb={0}>
+            <HStack justifyContent={"space-between"} w={"full"} p={4}>
               <DrawerHeader
                 alignItems={"center"}
                 flex={1}
@@ -78,7 +78,7 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
                 />
               )}
             </HStack>
-            <Box height={"1px"} bg={"neutral.300"} my={4} />
+            <Box height={"1px"} bg={"neutral.300"} />
           </>
         )}
         {!title && hasCloseBtn && (
@@ -88,7 +88,6 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
               justifyContent={"flex-end"}
               w={"full"}
               p={4}
-              pb={0}
             >
               <IconButton
                 aria-label="Close"
@@ -100,7 +99,7 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
                 cursor={"pointer"}
               />
             </HStack>
-            <Box height={"1px"} bg={"neutral.300"} my={4} />
+            <Box height={"1px"} bg={"neutral.300"} />
           </>
         )}
         {header && (
@@ -112,22 +111,17 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
               fontSize={"md"}
               w={"full"}
               p={4}
-              pb={0}
             >
               {header}
             </DrawerHeader>
-            <Box height={"1px"} bg={"neutral.300"} my={4} />
+            <Box height={"1px"} bg={"neutral.300"} />
           </>
         )}
-        <DrawerBody px={4} py={0}>
-          {body}
+        <DrawerBody p={0}>
+          <Box p={4}>{body}</Box>
         </DrawerBody>
-        <Box height={"1px"} bg={"neutral.300"} my={4} />
-        {footer && (
-          <DrawerFooter pt={0} px={4} pb={4}>
-            {footer}
-          </DrawerFooter>
-        )}
+        <Box height={"1px"} bg={"neutral.300"} />
+        {footer && <DrawerFooter p={4}>{footer}</DrawerFooter>}
       </DrawerContent>
     </Drawer>
   )
