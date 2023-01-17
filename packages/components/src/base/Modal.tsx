@@ -1,5 +1,6 @@
 import { AisClose } from "@akkurateio/icons"
 import {
+  Flex,
   HStack,
   IconButton,
   Modal,
@@ -9,6 +10,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Spinner,
   ThemingProps,
 } from "@chakra-ui/react"
 import React from "react"
@@ -23,6 +25,7 @@ interface ModalOptions {
   footer?: JSX.Element
   closeOnOverlayClick?: boolean
   isCentered?: boolean
+  isLoading?: boolean
 }
 
 interface AcsModalProps
@@ -95,10 +98,18 @@ export const AcsModal: React.FC<AcsModalProps> = ({
             {header}
           </ModalHeader>
         )}
-        <ModalBody p={0} mt={"1.5rem"} mb={"1.5rem"} fontSize={"sm"}>
-          {body}
-        </ModalBody>
-        {footer && <ModalFooter p={0}>{footer}</ModalFooter>}
+        {props.isLoading ? (
+          <Flex alignItems={"center"} justifyContent={"center"} h={"full"}>
+            <Spinner />
+          </Flex>
+        ) : (
+          <>
+            <ModalBody p={0} mt={"1.5rem"} mb={"1.5rem"} fontSize={"sm"}>
+              {body}
+            </ModalBody>
+            {footer && <ModalFooter p={0}>{footer}</ModalFooter>}
+          </>
+        )}
       </ModalContent>
     </Modal>
   )

@@ -8,8 +8,10 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  Flex,
   HStack,
   IconButton,
+  Spinner,
   ThemingProps,
 } from "@chakra-ui/react"
 import React from "react"
@@ -22,8 +24,9 @@ interface DrawerOptions {
   title?: string
   header?: JSX.Element
   hasCloseBtn?: boolean
-  footer?: JSX.Element
+  footer?: JSX.Element | null
   closeOnOverlayClick?: boolean
+  isLoading?: boolean
 }
 
 interface AcsDrawerProps
@@ -117,11 +120,19 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
             <Box height={"1px"} bg={"neutral.300"} />
           </>
         )}
-        <DrawerBody p={0}>
-          <Box p={4}>{body}</Box>
-        </DrawerBody>
-        <Box height={"1px"} bg={"neutral.300"} />
-        {footer && <DrawerFooter p={4}>{footer}</DrawerFooter>}
+        {props.isLoading ? (
+          <Flex alignItems={"center"} justifyContent={"center"} h={"full"}>
+            <Spinner />
+          </Flex>
+        ) : (
+          <>
+            <DrawerBody p={0}>
+              <Box p={4}>{body}</Box>
+            </DrawerBody>
+            <Box height={"1px"} bg={"neutral.300"} />
+            {footer && <DrawerFooter p={4}>{footer}</DrawerFooter>}
+          </>
+        )}
       </DrawerContent>
     </Drawer>
   )
