@@ -27,6 +27,7 @@ interface DrawerOptions {
   footer?: JSX.Element | null
   closeOnOverlayClick?: boolean
   isLoading?: boolean
+  colorSpinner?: string
 }
 
 interface AcsDrawerProps
@@ -122,7 +123,9 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
         )}
         {props.isLoading ? (
           <Flex alignItems={"center"} justifyContent={"center"} h={"full"}>
-            <Spinner />
+            <Spinner
+              color={props.colorSpinner ? props.colorSpinner : "primary.500"}
+            />
           </Flex>
         ) : (
           <>

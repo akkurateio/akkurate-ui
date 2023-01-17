@@ -26,6 +26,7 @@ interface ModalOptions {
   closeOnOverlayClick?: boolean
   isCentered?: boolean
   isLoading?: boolean
+  colorSpinner?: string
 }
 
 interface AcsModalProps
@@ -99,8 +100,10 @@ export const AcsModal: React.FC<AcsModalProps> = ({
           </ModalHeader>
         )}
         {props.isLoading ? (
-          <Flex alignItems={"center"} justifyContent={"center"} h={"full"}>
-            <Spinner />
+          <Flex alignItems={"center"} justifyContent={"center"} minH={64}>
+            <Spinner
+              color={props.colorSpinner ? props.colorSpinner : "primary.500"}
+            />
           </Flex>
         ) : (
           <>
