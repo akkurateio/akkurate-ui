@@ -59,4 +59,16 @@ export const propsForDrawer = [
     description: "Taille du drawer",
     required: false,
   },
+  {
+    props: "isLoading",
+    type: "boolean",
+    description: "Affichage du loader",
+    required: false,
+  },
+  {
+    props: "colorSpinner",
+    type: "string",
+    description: "Couleur du loader",
+    required: false,
+  },
 ]

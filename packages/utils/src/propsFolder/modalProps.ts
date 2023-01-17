@@ -59,4 +59,16 @@ export const propsForModal = [
     description: "Fermeture de la modale au clic sur l'overlay",
     required: false,
   },
+  {
+    props: "isLoading",
+    type: "boolean",
+    description: "Affichage du loader",
+    required: false,
+  },
+  {
+    props: "colorSpinner",
+    type: "string",
+    description: "Couleur du loader",
+    required: false,
+  },
 ]
