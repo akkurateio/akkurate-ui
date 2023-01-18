@@ -109,6 +109,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           cursor={"pointer"}
           onClick={() => setShowPassword(!showPassword)}
           h={"full"}
+          onBlur={() => setFocus(false)}
         >
           {showPassword ? (
             props.iconOpen ? (
