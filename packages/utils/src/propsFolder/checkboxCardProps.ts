@@ -28,7 +28,7 @@ export const propsForCheckboxCard = [
   {
     props: "heightBox",
     type: "string",
-    default: "auto",
+    default: "full",
     description: "Hauteur de la box",
     required: false,
   },

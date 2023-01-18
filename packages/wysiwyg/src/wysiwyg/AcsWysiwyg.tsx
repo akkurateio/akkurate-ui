@@ -54,7 +54,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
   isInvalid = false,
   label,
   menueBarPlacement = "bottom",
-  simpleBar = true,
+  simpleBar = false,
 }) => {
   const [isDropzoneOpen, setIsDropzoneOpen] = useState<boolean>(false)
 

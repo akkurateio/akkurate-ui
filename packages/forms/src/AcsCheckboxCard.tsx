@@ -46,7 +46,7 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
   columns = 2,
   setSelectedCardIds,
   spacing = 4,
-  heightBox = "auto",
+  heightBox = "full",
   ...props
 }) => {
   const theme = useTheme()

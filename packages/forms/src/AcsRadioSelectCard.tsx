@@ -46,7 +46,7 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
   spacing = 6,
   justifyContent = "flex-start",
   alignItems = "center",
-  heightBox = "auto",
+  heightBox = "full",
   ...props
 }) => {
   const propsForInput = () => {
