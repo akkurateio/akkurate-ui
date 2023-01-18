@@ -11,12 +11,12 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { chakraComponents, Select, components } from "chakra-react-select"
+import { chakraComponents, components, Select } from "chakra-react-select"
 import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 // @ts-ignore
-import { sizesAll } from "@akkurateio/utils"
 import { AisChevronSort } from "@akkurateio/icons"
+import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
