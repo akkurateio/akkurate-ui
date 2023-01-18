@@ -29,6 +29,7 @@ interface CardOptions {
   justifyContent?: SystemProps["justifyContent"]
   alignItems?: SystemProps["alignItems"]
   label?: string
+  heightBox?: string
 }
 
 interface InputProps
@@ -45,6 +46,7 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
   spacing = 6,
   justifyContent = "flex-start",
   alignItems = "center",
+  heightBox = "auto",
   ...props
 }) => {
   const propsForInput = () => {
@@ -77,7 +79,7 @@ export const AcsRadioSelectCard: React.FC<InputProps> = ({
           <HStack
             cursor={"pointer"}
             onClick={() => setCurrentId(item.id)}
-            height={"fit-content"}
+            height={heightBox}
             width={"auto"}
             rounded={"md"}
             minH={"42px"}

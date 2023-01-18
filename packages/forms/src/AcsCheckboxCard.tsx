@@ -31,6 +31,7 @@ interface CardOptions {
   columns?: ResponsiveValue<number>
   spacing?: SystemProps["margin"]
   label?: string
+  heightBox?: string
 }
 
 interface InputProps
@@ -45,6 +46,7 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
   columns = 2,
   setSelectedCardIds,
   spacing = 4,
+  heightBox = "auto",
   ...props
 }) => {
   const theme = useTheme()
@@ -73,7 +75,7 @@ export const AcsCheckboxCard: React.FC<InputProps> = ({
             position={"relative"}
             cursor={"pointer"}
             onClick={() => handleOnChange(item.id)}
-            height={"fit-content"}
+            height={heightBox}
             width={"auto"}
             rounded={"md"}
             alignItems={"flex-start"}

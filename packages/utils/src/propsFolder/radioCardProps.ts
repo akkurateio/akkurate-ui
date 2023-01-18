@@ -40,6 +40,13 @@ export const propsForRadioCard = [
     required: false,
   },
   {
+    props: "heightBox",
+    type: "string",
+    default: "auto",
+    description: "Hauteur de la box",
+    required: false,
+  },
+  {
     props: "alignItems",
     type: "string",
     default: "center",
