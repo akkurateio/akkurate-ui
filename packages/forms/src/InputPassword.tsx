@@ -72,7 +72,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
 
     return null
   }
-
+  console.log(focus)
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
@@ -117,11 +117,11 @@ export const AcsInputPassword: React.FC<InputProps> = ({
             ) : (
               <AisEyeClosed
                 color={
-                  props.isInvalid
+                  !focus
+                    ? "neutral.500"
+                    : props.isInvalid
                     ? "error.500"
-                    : focus
-                    ? "primary.500"
-                    : "neutral.500"
+                    : "primary.500"
                 }
                 boxSize={sizeInput?.boxSize}
               />
@@ -131,11 +131,11 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           ) : (
             <AisEye
               color={
-                props.isInvalid
+                !focus
+                  ? "neutral.500"
+                  : props.isInvalid
                   ? "error.500"
-                  : focus
-                  ? "primary.500"
-                  : "neutral.500"
+                  : "primary.500"
               }
               boxSize={sizeInput?.boxSize}
             />
