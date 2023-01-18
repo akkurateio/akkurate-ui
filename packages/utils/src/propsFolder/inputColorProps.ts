@@ -45,4 +45,10 @@ export const propsForInputColor = [
     description: "Permet de changer la taille du select",
     required: false,
   },
+  {
+    props: "rounded",
+    type: "string",
+    description: "Permet de changer d'arrondir l'input",
+    required: false,
+  },
 ]
