@@ -36,6 +36,8 @@ interface AcsSelectProps {
   icon?: JSX.Element
   menuPlacement?: "auto" | "bottom" | "top"
   iconSelected?: JSX.Element
+  heightMenu?: string
+  maxMenu?: string
 }
 
 interface SelectProps
@@ -50,6 +52,8 @@ export const AcsSelect: React.FC<SelectProps> = ({
   menuPlacement = "auto",
   iconOnLeft = false,
   iconSelected = <AisChevronSort />,
+  heightMenu = "auto",
+  maxMenu = "248px",
   ...props
 }) => {
   const theme = useTheme()
@@ -96,6 +100,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
         width={props.width ? props.width : "full"}
         backgroundColor={"white"}
         rounded={props.rounded ? props.rounded : "base"}
+        position={"relative"}
       >
         <Select
           useBasicStyles={true}
@@ -163,7 +168,8 @@ export const AcsSelect: React.FC<SelectProps> = ({
               padding: "0.375rem 0",
               paddingRight: "0.375rem",
               paddingLeft: "0.375rem",
-              maxHeight: "248px",
+              height: heightMenu,
+              maxHeight: maxMenu,
               border: "1px",
               boxShadow: `0px 0px 0px 1px ${theme.colors.neutral[200]}`,
               borderColor: "neutral.200",
