@@ -29,6 +29,7 @@ interface IProps {
   isInvalid?: boolean
   label?: string
   menueBarPlacement?: "top" | "bottom"
+  simpleBar?: boolean
 }
 
 // Pour que le composant marche bien il faut ajouter le style dans le theme de chakra,
@@ -53,6 +54,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
   isInvalid = false,
   label,
   menueBarPlacement = "bottom",
+  simpleBar = true,
 }) => {
   const [isDropzoneOpen, setIsDropzoneOpen] = useState<boolean>(false)
 
@@ -114,6 +116,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
           setIsDropzoneOpen={setIsDropzoneOpen}
           bgColor={menuBgColor}
           colorScheme={menuColorScheme}
+          simpleBar={simpleBar}
         />
       )}
       <InputGroupWithShadow
@@ -147,6 +150,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
           setIsDropzoneOpen={setIsDropzoneOpen}
           bgColor={menuBgColor}
           colorScheme={menuColorScheme}
+          simpleBar={simpleBar}
         />
       )}
 

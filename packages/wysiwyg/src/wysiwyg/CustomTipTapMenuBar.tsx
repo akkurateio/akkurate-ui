@@ -31,6 +31,7 @@ interface IProps {
   setIsDropzoneOpen: (val: boolean) => void
   bgColor?: string
   colorScheme?: string
+  simpleBar?: boolean
 }
 
 const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
@@ -40,6 +41,7 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
   setIsDropzoneOpen,
   bgColor,
   colorScheme,
+  simpleBar,
 }) => {
   const [isLinkModalOpen, setIsLinkModalOpen] = useState<boolean>(false)
 
@@ -192,19 +194,100 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
     ],
   ]
 
+  //map on button but with only two first button in each array
+  const buttons2 = buttons.slice(0, 2)
+
   return (
     <Box width={"full"}>
-      <HStack
-        w={"full"}
-        rounded={"sm"}
-        p={1}
-        flexWrap={"wrap"}
-        spacing={2}
-        bg={bgColor}
-        justifyContent={"space-between"}
-      >
+      {!simpleBar ? (
+        <>
+          <HStack
+            w={"full"}
+            rounded={"sm"}
+            p={1}
+            flexWrap={"wrap"}
+            spacing={2}
+            bg={bgColor}
+            justifyContent={"space-between"}
+          >
+            <HStack>
+              {buttons.map((arrayOfBtn, index) => (
+                <ButtonGroup
+                  key={index}
+                  size={"xs"}
+                  isAttached
+                  colorScheme={colorScheme}
+                >
+                  {arrayOfBtn.map((button, index) => (
+                    <Tooltip
+                      key={index + button.label}
+                      label={button.label}
+                      fontSize="2xs"
+                      openDelay={800}
+                    >
+                      <Button
+                        fontWeight={"normal"}
+                        borderRadius={"2px"}
+                        onClick={button.onClick}
+                        disabled={button.disabled}
+                        variant={button.variant}
+                        aria-label={button.label}
+                        h={7}
+                      >
+                        {button.icon}
+                      </Button>
+                    </Tooltip>
+                  ))}
+                </ButtonGroup>
+              ))}
+            </HStack>
+            {!!hasDropzone && (
+              <Tooltip
+                key={dropzoneBtn.label}
+                label={dropzoneBtn.label}
+                fontSize="2xs"
+                openDelay={800}
+              >
+                <Button
+                  colorScheme={colorScheme}
+                  onClick={dropzoneBtn.onClick}
+                  disabled={dropzoneBtn.disabled}
+                  variant={"ghost"}
+                  px={2}
+                  aria-label={dropzoneBtn.label}
+                  h={7}
+                >
+                  <HStack>
+                    <Text fontSize={"xs"} fontWeight={"normal"}>
+                      Joindre un fichier
+                    </Text>
+                    <Box>{dropzoneBtn.icon}</Box>
+                  </HStack>
+                </Button>
+              </Tooltip>
+            )}
+          </HStack>
+
+          {isLinkModalOpen && (
+            <UrlLinkEditModal
+              link={""}
+              handleValidate={(val) =>
+                editor
+                  .chain()
+                  .focus()
+                  .extendMarkRange("link")
+                  .setLink({ href: val, target: "_blank" })
+                  .run()
+              }
+              isOpen={isLinkModalOpen}
+              setIsOpen={setIsLinkModalOpen}
+              onClose={() => setIsLinkModalOpen(false)}
+            />
+          )}
+        </>
+      ) : (
         <HStack>
-          {buttons.map((arrayOfBtn, index) => (
+          {buttons2.map((arrayOfBtn, index) => (
             <ButtonGroup
               key={index}
               size={"xs"}
@@ -234,48 +317,6 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
             </ButtonGroup>
           ))}
         </HStack>
-        {!!hasDropzone && (
-          <Tooltip
-            key={dropzoneBtn.label}
-            label={dropzoneBtn.label}
-            fontSize="2xs"
-            openDelay={800}
-          >
-            <Button
-              colorScheme={colorScheme}
-              onClick={dropzoneBtn.onClick}
-              disabled={dropzoneBtn.disabled}
-              variant={"ghost"}
-              px={2}
-              aria-label={dropzoneBtn.label}
-              h={7}
-            >
-              <HStack>
-                <Text fontSize={"xs"} fontWeight={"normal"}>
-                  Joindre un fichier
-                </Text>
-                <Box>{dropzoneBtn.icon}</Box>
-              </HStack>
-            </Button>
-          </Tooltip>
-        )}
-      </HStack>
-
-      {isLinkModalOpen && (
-        <UrlLinkEditModal
-          link={""}
-          handleValidate={(val) =>
-            editor
-              .chain()
-              .focus()
-              .extendMarkRange("link")
-              .setLink({ href: val, target: "_blank" })
-              .run()
-          }
-          isOpen={isLinkModalOpen}
-          setIsOpen={setIsLinkModalOpen}
-          onClose={() => setIsLinkModalOpen(false)}
-        />
       )}
     </Box>
   )

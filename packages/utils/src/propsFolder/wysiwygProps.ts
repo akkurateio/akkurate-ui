@@ -105,4 +105,11 @@ export const propsForWysiwyg = [
     description: "Permet de choisir la position de la menue bar",
     required: false,
   },
+  {
+    props: "simpleBar",
+    type: "boolean",
+    default: "false",
+    description: "Permet de reduire la menue bar au quatre premiers buttons",
+    required: false,
+  },
 ]
