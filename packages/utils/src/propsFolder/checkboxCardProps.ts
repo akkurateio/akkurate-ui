@@ -21,12 +21,14 @@ export const propsForCheckboxCard = [
   {
     props: "columns",
     type: "number",
+    default: "2",
     description: "Nombre de colonnes",
     required: false,
   },
   {
     props: "spacing",
     type: "number",
+    default: "4",
     description: "Espacement entre les options",
     required: false,
   },

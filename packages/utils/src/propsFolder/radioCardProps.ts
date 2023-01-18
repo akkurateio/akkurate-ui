@@ -21,24 +21,28 @@ export const propsForRadioCard = [
   {
     props: "columns",
     type: "number",
+    default: "2",
     description: "Nombre de colonnes",
     required: false,
   },
   {
     props: "spacing",
     type: "number",
+    default: "6",
     description: "Espacement entre les options",
     required: false,
   },
   {
     props: "justifyContent",
     type: "string",
+    default: "space-between",
     description: "Alignement horizontal des options",
     required: false,
   },
   {
     props: "alignItems",
     type: "string",
+    default: "center",
     description: "Alignement vertical des options",
     required: false,
   },

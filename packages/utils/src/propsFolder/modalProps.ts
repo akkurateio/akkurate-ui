@@ -44,6 +44,7 @@ export const propsForModal = [
   {
     props: "isCentered",
     type: "boolean",
+    default: "true",
     description: "Centrage de la modale",
     required: false,
   },
@@ -68,6 +69,7 @@ export const propsForModal = [
   {
     props: "colorSpinner",
     type: "string",
+    default: "primary.500",
     description: "Couleur du loader",
     required: false,
   },

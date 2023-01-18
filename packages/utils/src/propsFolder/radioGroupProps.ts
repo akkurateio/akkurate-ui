@@ -26,13 +26,15 @@ export const propsForRadioGroup = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Taille des options",
     required: false,
   },
   {
-    props: "flexWrap",
-    type: "string",
-    description: "Wrap des options",
+    props: "columns",
+    type: "number",
+    default: "1",
+    description: "Nombre de colonnes",
     required: false,
   },
   {

@@ -20,6 +20,7 @@ export const propsForInputFile = [
   {
     props: "multiple",
     type: "boolean",
+    default: "false",
     description:
       "Permet de choisir si l'on veut un input à fichier unique ou multiple",
     required: false,
@@ -33,6 +34,7 @@ export const propsForInputFile = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Permet de changer la taille du select",
     required: false,
   },

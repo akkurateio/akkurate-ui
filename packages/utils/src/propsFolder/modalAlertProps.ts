@@ -62,6 +62,7 @@ export const propsForModalAlert = [
   {
     props: "isCentered",
     type: "boolean",
+    default: "true",
     description: "Centrage de la modale",
     required: false,
   },

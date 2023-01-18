@@ -75,6 +75,7 @@ export const propsForInputTextArea = [
   {
     props: "fontSize",
     type: "string",
+    default: "sm",
     description: "Taille de la police",
     required: false,
   },

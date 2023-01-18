@@ -49,7 +49,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
   handleChange,
   menuPlacement = "auto",
   iconOnLeft = false,
-  iconSelected,
+  iconSelected = <AisChevronSort />,
   ...props
 }) => {
   const theme = useTheme()

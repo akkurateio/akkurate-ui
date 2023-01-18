@@ -32,6 +32,7 @@ export const propsForSlider = [
   {
     props: "fontSize",
     type: "string | number",
+    default: "sm",
     description: "Taille de la police",
     required: false,
   },

@@ -132,8 +132,13 @@ export const AcsDrawer: React.FC<AcsDrawerProps> = ({
             <DrawerBody p={0}>
               <Box p={4}>{body}</Box>
             </DrawerBody>
-            <Box height={"1px"} bg={"neutral.300"} />
-            {footer && <DrawerFooter p={4}>{footer}</DrawerFooter>}
+
+            {footer && (
+              <>
+                <Box height={"1px"} bg={"neutral.300"} />
+                <DrawerFooter p={4}>{footer}</DrawerFooter>
+              </>
+            )}
           </>
         )}
       </DrawerContent>

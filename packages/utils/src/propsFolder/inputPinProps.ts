@@ -14,6 +14,7 @@ export const propsForInputPin = [
   {
     props: "bg",
     type: "string",
+    default: "white",
     description: "couleur de fond",
     required: false,
   },

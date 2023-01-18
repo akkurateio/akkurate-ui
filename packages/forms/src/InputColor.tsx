@@ -76,7 +76,6 @@ interface InputProps
 
 export const AcsInputColor: React.FC<InputProps> = ({
   handleChange,
-  height,
   value,
   size = "md",
   iconOpen,

@@ -20,6 +20,7 @@ export const propsForInputNumber = [
   {
     props: "step",
     type: "number",
+    default: "1",
     description: "Valeur de saut entre les nombres de l'input number",
     required: false,
   },
@@ -37,18 +38,6 @@ export const propsForInputNumber = [
     required: false,
   },
   {
-    props: "width",
-    type: "string",
-    description: "Largeur de l'input number",
-    required: false,
-  },
-  {
-    props: "height",
-    type: "string",
-    description: "Hauteur de l'input number",
-    required: false,
-  },
-  {
     props: "defaultValue",
     type: "number",
     description: "Valeur par défaut de l'input number",
@@ -63,6 +52,7 @@ export const propsForInputNumber = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Permet de changer la taille du select",
     required: false,
   },

@@ -15,6 +15,7 @@ export const propsForDropzone = [
   {
     props: "maxFiles",
     type: "number",
+    default: "1",
     description:
       "Permet de choisir le nombre de fichiers maximum possible de mettre dans la zone ",
     required: false,
@@ -22,12 +23,14 @@ export const propsForDropzone = [
   {
     props: "backgroundColor",
     type: "string",
+    default: "primary.500",
     description: "Permet de choisir la couleur de fond de la zone",
     required: false,
   },
   {
     props: "height",
     type: "string",
+    default: "350px",
     description: "Permet de choisir la hauteur de la zone",
     required: false,
   },
@@ -40,6 +43,7 @@ export const propsForDropzone = [
   {
     props: "boxSize",
     type: "string",
+    default: "100px",
     description: "Permet de choisir la taille des cards files",
     required: false,
   },

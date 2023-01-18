@@ -27,24 +27,21 @@ export const propsForInputColor = [
   {
     props: "iconOpen",
     type: "JSX.Element",
+    default: "<AisColorPalette />",
     description: "Permet de changer l'icon palette quand ouvert",
     required: false,
   },
   {
     props: "iconClose",
     type: "JSX.Element",
+    default: "<AisColorPalette />",
     description: "Permet de changer l'icon palette quand fermer",
-    required: false,
-  },
-  {
-    props: "width",
-    type: "string",
-    description: "Permet de changer la largeur de l'input",
     required: false,
   },
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Permet de changer la taille du select",
     required: false,
   },

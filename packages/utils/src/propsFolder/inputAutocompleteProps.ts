@@ -38,6 +38,7 @@ export const propsForInputAutocomplete = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Permet de changer la taille du champ",
     required: false,
   },

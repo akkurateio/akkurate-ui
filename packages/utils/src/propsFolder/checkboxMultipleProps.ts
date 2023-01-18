@@ -28,12 +28,14 @@ export const propsForCheckboxMultiple = [
   {
     props: "multiple",
     type: "boolean",
+    default: "true",
     description: "Permet de basculer sur une sélection multiple",
     required: false,
   },
   {
     props: "columns",
     type: "number",
+    default: "1",
     description:
       "Nombre de colonnes pour l'affichage des checkbox (1, 2, 3, 4, 6, 12)",
     required: false,
@@ -41,6 +43,7 @@ export const propsForCheckboxMultiple = [
   {
     props: "size",
     type: "sm, md, lg",
+    default: "md",
     description: "Taille des checkbox (small, medium, large) et du text",
     required: false,
   },

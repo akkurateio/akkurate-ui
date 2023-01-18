@@ -42,7 +42,7 @@ export const AcsCheckboxMultiple: React.FC<CheckboxMultipleProps> = ({
   contentArray,
   selectedCheckboxIds,
   setSelectedCheckboxIds,
-  multiple = false,
+  multiple = true,
   columns = 1,
   size = "md",
   ...props

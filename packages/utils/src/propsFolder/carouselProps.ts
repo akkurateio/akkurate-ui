@@ -7,8 +7,9 @@ export const propsForCarousel = [
   },
   {
     props: "widthIndicator",
-    type: "number",
-    description: "Le nombre de card à afficher dans le carousel",
+    type: "boolean",
+    default: "true",
+    description: "Affiche le nombre de card dans le carousel",
     required: false,
   },
 ]

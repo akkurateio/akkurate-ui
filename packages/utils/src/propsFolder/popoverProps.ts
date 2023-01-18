@@ -1,16 +1,4 @@
 export const propsForPopover = [
-  // {
-  //   props: "isOpen",
-  //   type: "boolean",
-  //   description: "Permet d'ouvrir ou de fermer le popover",
-  //   required: true,
-  // },
-  // {
-  //   props: "onClose",
-  //   type: "function",
-  //   description: "La fonction qui permet de fermer le popover",
-  //   required: true,
-  // },
   {
     props: "body",
     type: "ReactNode",
@@ -38,18 +26,21 @@ export const propsForPopover = [
   {
     props: "hasCloseButton",
     type: "boolean",
+    default: "false",
     description: "Permet d'afficher ou non le bouton de fermeture",
     required: false,
   },
   {
     props: "hasArrow",
     type: "boolean",
+    default: "false",
     description: "Permet d'afficher ou non la flèche du popover",
     required: false,
   },
   {
     props: "hasFooter",
     type: "boolean",
+    default: "true",
     description: "Permet d'afficher ou non le footer du popover",
     required: false,
   },
@@ -80,6 +71,7 @@ export const propsForPopover = [
   {
     props: "closeOnBlur",
     type: "boolean",
+    default: "true",
     description: "Permet de fermer le popover en cliquant à l'extérieur",
     required: false,
   },

@@ -50,7 +50,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
   size = "md",
   menuPlacement = "auto",
   iconOnLeft = false,
-  iconSelected,
+  iconSelected = <AisChevronSort />,
   ...props
 }) => {
   const theme = useTheme()

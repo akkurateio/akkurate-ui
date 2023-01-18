@@ -32,13 +32,8 @@ export const propsForRangeSlider = [
   {
     props: "fontSize",
     type: "string | number",
+    default: "sm",
     description: "Taille de la police",
-    required: false,
-  },
-  {
-    props: "width",
-    type: "string | number",
-    description: "Largeur du slider",
     required: false,
   },
 ]

@@ -44,6 +44,7 @@ export const propsForDrawer = [
   {
     props: "placement",
     type: "string",
+    default: "right",
     description: "Position du drawer",
     required: false,
   },
@@ -56,18 +57,21 @@ export const propsForDrawer = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Taille du drawer",
     required: false,
   },
   {
     props: "isLoading",
     type: "boolean",
+    default: "false",
     description: "Affichage du loader",
     required: false,
   },
   {
     props: "colorSpinner",
     type: "string",
+    default: "primary.500",
     description: "Couleur du loader",
     required: false,
   },

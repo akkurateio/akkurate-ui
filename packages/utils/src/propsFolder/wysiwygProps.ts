@@ -20,6 +20,7 @@ export const propsForWysiwyg = [
   {
     props: "isInvalid",
     type: "boolean",
+    default: "false",
     description: "Indique si le champ est invalide",
     required: false,
   },
@@ -32,6 +33,7 @@ export const propsForWysiwyg = [
   {
     props: "bgSecondary",
     type: "boolean",
+    default: "false",
     description: "Permet de changer la couleur de fond du champ",
     required: false,
   },
@@ -50,18 +52,21 @@ export const propsForWysiwyg = [
   {
     props: "minHeight",
     type: "string",
+    default: "100px",
     description: "Permet de définir la hauteur minimum du champ",
     required: false,
   },
   {
     props: "height",
     type: "string",
+    default: "auto",
     description: "Permet de définir la hauteur du champ",
     required: false,
   },
   {
     props: "widthMenuBar",
     type: "boolean",
+    default: "true",
     description: "Afficher la menue bar ou non",
     required: false,
   },
@@ -74,18 +79,21 @@ export const propsForWysiwyg = [
   {
     props: "menueBgColor",
     type: "string",
+    default: "gray.100",
     description: "Permet de changer la couleur de fond de la menue bar",
     required: false,
   },
   {
     props: "menueColorScheme",
     type: "string",
+    default: "primary",
     description: "Permet de changer la couleur de la menue bar",
     required: false,
   },
   {
     props: "maxFiles",
     type: "number",
+    default: "5",
     description:
       "Permet de choisir le nombre de fichiers maximum possible de mettre dans la zone ",
     required: false,
@@ -93,6 +101,7 @@ export const propsForWysiwyg = [
   {
     props: "menueBarPlacement",
     type: "top,bottom",
+    default: "bottom",
     description: "Permet de choisir la position de la menue bar",
     required: false,
   },

@@ -20,6 +20,7 @@ export const propsForInputTime = [
   {
     props: "minuteStep",
     type: "number",
+    default: "1",
     description: "Pas de la valeur en minutes",
     required: false,
   },
@@ -42,18 +43,6 @@ export const propsForInputTime = [
     required: false,
   },
   {
-    props: "width",
-    type: "string",
-    description: "Largeur du champ",
-    required: false,
-  },
-  {
-    props: "height",
-    type: "string",
-    description: "Hauteur du champ",
-    required: false,
-  },
-  {
     props: "rounded",
     type: "string",
     description: "Permet d'arrondir les coins du champ",
@@ -62,6 +51,7 @@ export const propsForInputTime = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Permet de changer la taille du select",
     required: false,
   },

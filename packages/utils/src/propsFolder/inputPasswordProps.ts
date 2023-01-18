@@ -18,18 +18,6 @@ export const propsForInputPassword = [
     required: false,
   },
   {
-    props: "width",
-    type: "string",
-    description: "Largeur du champ",
-    required: false,
-  },
-  {
-    props: "height",
-    type: "string",
-    description: "Hauteur du champ",
-    required: false,
-  },
-  {
     props: "variant",
     type: "string",
     description: "Variant du champ",
@@ -42,14 +30,16 @@ export const propsForInputPassword = [
     required: false,
   },
   {
-    props: "iconOpen",
+    props: "iconClose",
     type: "JSX.Element",
+    default: "<AisEye />",
     description: "Permet de modifier l’icône de l'oeil ouvert",
     required: false,
   },
   {
-    props: "iconClose",
+    props: "iconOpen",
     type: "JSX.Element",
+    default: "<AisEyeClosed />",
     description: "Permet de modifier l'l’icône de l'oeil fermé",
     required: false,
   },
@@ -68,6 +58,7 @@ export const propsForInputPassword = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Permet de changer la taille du select",
     required: false,
   },

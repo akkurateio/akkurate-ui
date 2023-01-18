@@ -59,7 +59,23 @@ export const propsForSelect = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Permet de changer la taille du select",
+    required: false,
+  },
+  {
+    props: "menuePlacement",
+    type: "string (top, bottom, auto)",
+    description: "Permet de changer la position du menu",
+    default: "auto",
+    required: false,
+  },
+  {
+    props: "iconSelected",
+    type: "JSX.Element",
+    description:
+      "Permet de changer l'icone du menue déroulant du composant select",
+    default: "<AisChevronSort />",
     required: false,
   },
 ]

@@ -36,18 +36,6 @@ export const propsForInputEmail = [
     required: false,
   },
   {
-    props: "width",
-    type: "string",
-    description: "Largeur du champ",
-    required: false,
-  },
-  {
-    props: "height",
-    type: "string",
-    description: "Hauteur du champ",
-    required: false,
-  },
-  {
     props: "variant",
     type: "string",
     description: "Variant du champ",
@@ -74,6 +62,7 @@ export const propsForInputEmail = [
   {
     props: "size",
     type: "string",
+    default: "md",
     description: "Permet de changer la taille du select",
     required: false,
   },
