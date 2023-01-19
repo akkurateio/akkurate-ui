@@ -52,10 +52,10 @@ const DisplayFile: React.FC<IProps> = ({ file, onDelete }) => {
         w={"full"}
         ml={2}
       >
-        <Text fontSize={"xs"} noOfLines={1}>
+        <Text fontSize={"sm"} noOfLines={1}>
           {file.name}
         </Text>
-        <Text fontSize={"2xs"}>{formatBytes(file.size, 1)}</Text>
+        <Text fontSize={"xs"}>{formatBytes(file.size, 1)}</Text>
       </VStack>
       <IconButton
         size={"xs"}

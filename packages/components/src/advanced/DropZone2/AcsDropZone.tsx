@@ -106,10 +106,10 @@ export const AcsDropZone2: React.FC<Iprops> = ({
               <>
                 <AisError boxSize={"64px"} color={"red.600"} />
                 <Box>
-                  <Text fontSize={"xs"} color={"red.500"}>
+                  <Text fontSize={"sm"} color={"red.500"}>
                     Nombre de fichier excède la limite autorisée.
                   </Text>
-                  <Text fontSize={"2xs"} color={"neutral.400"}>
+                  <Text fontSize={"xs"} color={"neutral.400"}>
                     Nombre de fichiers maximum autorisés : {maxFiles}
                   </Text>
                 </Box>
@@ -147,15 +147,15 @@ export const AcsDropZone2: React.FC<Iprops> = ({
                 <AisUploadCloud boxSize={"64px"} color={"blackAlpha.700"} />
                 <Box textAlign={"center"}>
                   {maxFiles === 1 ? (
-                    <Text fontSize={"xs"}>
+                    <Text fontSize={"sm"}>
                       Glissez / Déposer le fichier ou cliquez ci-dessous.
                     </Text>
                   ) : (
-                    <Text fontSize={"xs"}>
+                    <Text fontSize={"sm"}>
                       Glissez / Déposer les fichiers ou cliquez ci-dessous.
                     </Text>
                   )}
-                  <Text fontSize={"2xs"} color={"neutral.400"}>
+                  <Text fontSize={"xs"} color={"neutral.400"}>
                     Nombre de fichiers maximum autorisés : {maxFiles}
                   </Text>
                 </Box>
@@ -170,8 +170,8 @@ export const AcsDropZone2: React.FC<Iprops> = ({
                   }
                 >
                   <HStack>
-                    <AisDownload boxSize={"24px"} />
-                    <Text>Importer de nouveau fichier</Text>
+                    <AisDownload boxSize={"16px"} />
+                    <Text fontSize={"sm"}>Importer de nouveau fichier</Text>
                   </HStack>
                 </Button>
               </>
@@ -204,15 +204,11 @@ export const AcsDropZone2: React.FC<Iprops> = ({
                   props.backgroundColor ? props.backgroundColor : "primary.500"
                 }
               >
-                <AisDownload boxSize={"24px"} />
+                <AisDownload boxSize={"16px"} />
                 {files.length < maxFiles ? (
-                  <Text fontSize={"xs"} ml={2}>
-                    Importer un nouveau fichier
-                  </Text>
+                  <Text ml={2}>Importer un nouveau fichier</Text>
                 ) : (
-                  <Text fontSize={"xs"} ml={2}>
-                    Remplacer les fichiers
-                  </Text>
+                  <Text ml={2}>Remplacer les fichiers</Text>
                 )}
               </Button>
             </HStack>
