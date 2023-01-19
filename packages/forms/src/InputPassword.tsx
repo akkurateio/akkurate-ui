@@ -6,6 +6,7 @@ import {
   InputRightElement,
   ThemingProps,
   useBreakpointValue,
+  useTheme,
 } from "@chakra-ui/react"
 import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
@@ -60,7 +61,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
     } = props
     return rest
   }
-
+  const theme = useTheme()
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (handleChange) {
       handleChange(e.target.value)
@@ -72,7 +73,6 @@ export const AcsInputPassword: React.FC<InputProps> = ({
 
     return null
   }
-  console.log(focus)
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
@@ -118,10 +118,10 @@ export const AcsInputPassword: React.FC<InputProps> = ({
               <AisEyeClosed
                 color={
                   !focus
-                    ? "neutral.500"
+                    ? theme.colors.neutral[500]
                     : props.isInvalid
-                    ? "error.500"
-                    : "primary.500"
+                    ? theme.colors.error[500]
+                    : theme.colors.primary[500]
                 }
                 boxSize={sizeInput?.boxSize}
               />
@@ -132,10 +132,10 @@ export const AcsInputPassword: React.FC<InputProps> = ({
             <AisEye
               color={
                 !focus
-                  ? "neutral.500"
+                  ? theme.colors.neutral[500]
                   : props.isInvalid
-                  ? "error.500"
-                  : "primary.500"
+                  ? theme.colors.error[500]
+                  : theme.colors.primary[500]
               }
               boxSize={sizeInput?.boxSize}
             />
