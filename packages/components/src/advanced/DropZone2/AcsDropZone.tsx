@@ -24,7 +24,7 @@ interface Iprops {
   minHeight?: string
 }
 
-export const AcsDropZone2: React.FC<Iprops> = ({
+export const AcsDropzone: React.FC<Iprops> = ({
   handleChange,
   accept,
   maxFiles = 0,
@@ -66,7 +66,6 @@ export const AcsDropZone2: React.FC<Iprops> = ({
     }
   }, [props.clear])
 
-  console.log(toManyFiles)
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     noClick: true,
