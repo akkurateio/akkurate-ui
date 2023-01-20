@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/wysiwyg",
-  "version": "0.0.83",
+  "version": "0.0.84",
   "description": "Theme for Akkurate UI",
   "keywords": [
     "theme"
@@ -32,7 +32,7 @@
     "@types/turndown": "^5.0.1"
   },
   "dependencies": {
-    "@akkurateio/ds": "^0.0.83",
+    "@akkurateio/ds": "^0.0.84",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
