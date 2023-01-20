@@ -30,6 +30,7 @@ interface IProps {
   label?: string
   menueBarPlacement?: "top" | "bottom"
   simpleBar?: boolean
+  actionButtons?: JSX.Element
 }
 
 // Pour que le composant marche bien il faut ajouter le style dans le theme de chakra,
@@ -52,6 +53,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
   menuColorScheme = "primary",
   maxFiles = 5,
   isInvalid = false,
+  actionButtons,
   label,
   menueBarPlacement = "bottom",
   simpleBar = false,
@@ -151,6 +153,7 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
           bgColor={menuBgColor}
           colorScheme={menuColorScheme}
           simpleBar={simpleBar}
+          actionButtons={actionButtons}
         />
       )}
 

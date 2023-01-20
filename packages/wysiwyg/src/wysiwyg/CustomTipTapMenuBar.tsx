@@ -32,6 +32,7 @@ interface IProps {
   bgColor?: string
   colorScheme?: string
   simpleBar?: boolean
+  actionButtons?: JSX.Element
 }
 
 const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
@@ -42,6 +43,7 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
   bgColor,
   colorScheme,
   simpleBar,
+  actionButtons,
 }) => {
   const [isLinkModalOpen, setIsLinkModalOpen] = useState<boolean>(false)
 
@@ -286,36 +288,65 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
           )}
         </>
       ) : (
-        <HStack>
-          {buttons2.map((arrayOfBtn, index) => (
-            <ButtonGroup
-              key={index}
-              size={"xs"}
-              isAttached
-              colorScheme={colorScheme}
-            >
-              {arrayOfBtn.map((button, index) => (
-                <Tooltip
-                  key={index + button.label}
-                  label={button.label}
-                  fontSize="2xs"
-                  openDelay={800}
-                >
-                  <Button
-                    fontWeight={"normal"}
-                    borderRadius={"2px"}
-                    onClick={button.onClick}
-                    disabled={button.disabled}
-                    variant={button.variant}
-                    aria-label={button.label}
-                    h={7}
+        <HStack justifyContent={"space-between"}>
+          <HStack>
+            {buttons2.map((arrayOfBtn, index) => (
+              <ButtonGroup
+                key={index}
+                size={"xs"}
+                isAttached
+                colorScheme={colorScheme}
+              >
+                {arrayOfBtn.map((button, index) => (
+                  <Tooltip
+                    key={index + button.label}
+                    label={button.label}
+                    fontSize="2xs"
+                    openDelay={800}
                   >
-                    {button.icon}
-                  </Button>
-                </Tooltip>
-              ))}
-            </ButtonGroup>
-          ))}
+                    <Button
+                      fontWeight={"normal"}
+                      borderRadius={"2px"}
+                      onClick={button.onClick}
+                      disabled={button.disabled}
+                      variant={button.variant}
+                      aria-label={button.label}
+                      h={7}
+                    >
+                      {button.icon}
+                    </Button>
+                  </Tooltip>
+                ))}
+              </ButtonGroup>
+            ))}
+          </HStack>
+          {!actionButtons && !!hasDropzone ? (
+            <Tooltip
+              key={dropzoneBtn.label}
+              label={dropzoneBtn.label}
+              fontSize="2xs"
+              openDelay={800}
+            >
+              <Button
+                colorScheme={colorScheme}
+                onClick={dropzoneBtn.onClick}
+                disabled={dropzoneBtn.disabled}
+                variant={"ghost"}
+                px={2}
+                aria-label={dropzoneBtn.label}
+                h={7}
+              >
+                <HStack>
+                  <Text fontSize={"xs"} fontWeight={"normal"}>
+                    Joindre un fichier
+                  </Text>
+                  <Box>{dropzoneBtn.icon}</Box>
+                </HStack>
+              </Button>
+            </Tooltip>
+          ) : (
+            actionButtons
+          )}
         </HStack>
       )}
     </Box>
