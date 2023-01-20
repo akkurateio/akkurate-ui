@@ -8,7 +8,7 @@ import {
   useBreakpointValue,
   useTheme,
 } from "@chakra-ui/react"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 // @ts-ignore
@@ -73,6 +73,12 @@ export const AcsInputPassword: React.FC<InputProps> = ({
 
     return null
   }
+  const handleFocus = () => {
+    setFocus(false)
+  }
+  useEffect(() => {
+    handleFocus
+  }, [focus])
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
@@ -94,7 +100,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           {...propsForInput()}
           variant={props.variant}
           onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
+          onBlur={handleFocus}
           fontSize={sizeInput?.fontSize}
           pl={"0.688rem"}
           pt={"0.656rem"}
