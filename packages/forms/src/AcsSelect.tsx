@@ -1,5 +1,6 @@
 import {
   Box,
+  Code,
   Flex,
   FormControlOptions,
   HStack,
@@ -153,10 +154,12 @@ export const AcsSelect: React.FC<SelectProps> = ({
               color: state.isSelected ? "white" : "primary.500",
               rounded: "sm",
               width: "full",
-              height: 9,
+              minHeight: 9,
+              height: "auto",
               fontSize: sizeInput?.fontSize,
               padding: 0,
               paddingLeft: "0.255rem",
+              paddingTop: "0.2rem",
               borderBottom: "1px",
               borderBottomColor: "neutral.200",
               _last: {
