@@ -160,6 +160,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
               padding: 0,
               paddingLeft: "0.255rem",
               paddingTop: "0.2rem",
+              paddingBottom: "0.2rem",
               borderBottom: "1px",
               borderBottomColor: "neutral.200",
               _last: {
