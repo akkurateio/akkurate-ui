@@ -94,6 +94,40 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
         backgroundColor={"white"}
         rounded={props.rounded ? props.rounded : "base"}
       >
+        {props.icon && (
+          <Box
+            position={"absolute"}
+            top={0}
+            left={sizeInput?.iconSize === "32px" ? -1 : 0}
+            bottom={0}
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            width={sizeInput?.heightSelect}
+            backgroundColor={"white"}
+            roundedLeft={props.rounded ? props.rounded : "base"}
+            zIndex={1}
+            borderWidth={1}
+            borderRight={"none"}
+            borderColor={
+              props.isInvalid
+                ? "red.500"
+                : focus
+                ? "primary.500"
+                : "neutral.300"
+            }
+            boxShadow={
+              focus
+                ? `inset 0px 0px -3px 3px ${theme.colors.primary[500]}25 `
+                : undefined
+            }
+            color={
+              props.color ? props.color : focus ? "primary.500" : "neutral.500"
+            }
+          >
+            <Icon boxSize={sizeInput?.iconSize}>{props.icon} </Icon>
+          </Box>
+        )}
         <Select
           isMulti
           useBasicStyles={true}
@@ -117,6 +151,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
               padding: "0 0",
               backgroundColor: props.isInvalid ? "red.50" : "white",
               color: props.isInvalid ? "red.500" : "black",
+              paddingLeft: props.icon ? 10 : 0,
               height: sizeInput?.heightSelect,
               minHeight: sizeInput?.heightSelect,
               outline: "none",
@@ -221,32 +256,6 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
                   <AisChevronSort boxSize={sizeInput?.iconSize} />
                 )}
               </VStack>
-            ),
-            Control: ({ children, ...data }) => (
-              <chakraComponents.Control {...data}>
-                <Flex
-                  ml={props.icon ? 2 : 0}
-                  experimental_spaceX={1}
-                  w={"full"}
-                  height={"full"}
-                  alignItems={"center"}
-                >
-                  {props.icon && (
-                    <Box
-                      color={
-                        notValid
-                          ? "red.500"
-                          : focus
-                          ? "primary.500"
-                          : "neutral.500"
-                      }
-                    >
-                      {props.icon}
-                    </Box>
-                  )}
-                  {children}
-                </Flex>
-              </chakraComponents.Control>
             ),
             NoOptionsMessage: (props) => (
               <Box textAlign={"center"} {...props}>
