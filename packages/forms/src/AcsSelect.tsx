@@ -1,13 +1,11 @@
 import {
   Box,
-  Code,
   Flex,
   FormControlOptions,
   HStack,
   HTMLChakraProps,
   Icon,
   Text,
-  Tooltip,
   useBreakpointValue,
   useTheme,
   VStack,
@@ -17,7 +15,7 @@ import { chakraComponents, components, Select } from "chakra-react-select"
 import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 // @ts-ignore
-import { AisChevronSort, AisClose, AisPencil } from "@akkurateio/icons"
+import { AisChevronSort } from "@akkurateio/icons"
 import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -56,6 +54,8 @@ export const AcsSelect: React.FC<SelectProps> = ({
   iconSelected = <AisChevronSort />,
   heightMenu = "auto",
   maxMenu = "248px",
+  isInvalid = false,
+  isDisabled = false,
   ...props
 }) => {
   const theme = useTheme()
@@ -72,12 +72,12 @@ export const AcsSelect: React.FC<SelectProps> = ({
   }
 
   useEffect(() => {
-    if (props.isInvalid) {
+    if (isInvalid) {
       setNotValid(true)
     } else {
       setNotValid(false)
     }
-  }, [notValid, props.isInvalid])
+  }, [notValid, isInvalid])
 
   const instanceId = useId()
 
@@ -120,11 +120,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
             borderWidth={1}
             borderRight={"none"}
             borderColor={
-              props.isInvalid
-                ? "red.500"
-                : focus
-                ? "primary.500"
-                : "neutral.300"
+              isInvalid ? "red.500" : focus ? "primary.500" : "neutral.300"
             }
             boxShadow={
               focus
@@ -140,6 +136,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
         )}
         <Select
           useBasicStyles={true}
+          isDisabled={isDisabled}
           // @ts-ignore
           options={props.options}
           closeMenuOnSelect={true}
@@ -167,8 +164,8 @@ export const AcsSelect: React.FC<SelectProps> = ({
               paddingLeft: props.icon ? 10 : 0,
               height: sizeInput?.heightSelect,
               minHeight: sizeInput?.heightSelect,
-              backgroundColor: props.isInvalid ? "red.50" : "white",
-              color: props.isInvalid ? "red.500" : "black",
+              backgroundColor: isInvalid ? "red.50" : "white",
+              color: isInvalid ? "red.500" : "black",
               width: "full",
               outline: "none",
               fontSize: sizeInput?.fontSize,
@@ -242,7 +239,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
                 : undefined,
               rounded: props.rounded ? props.rounded : "base",
               borderWidth: "1px",
-              borderColor: props.isInvalid
+              borderColor: isInvalid
                 ? "red.500"
                 : focus
                 ? theme.colors.primary[500]
