@@ -73,12 +73,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
 
     return null
   }
-  const handleFocus = () => {
-    setFocus(false)
-  }
-  useEffect(() => {
-    handleFocus
-  }, [focus])
+
   return (
     <FormControlLayout label={props.label} {...props}>
       <InputGroupWithShadow
@@ -89,10 +84,10 @@ export const AcsInputPassword: React.FC<InputProps> = ({
       >
         <Input
           border={"none"}
-          _focusVisible={{
-            border: "none",
-            boxShadow: `none`,
-          }}
+          // _focusVisible={{
+          //   border: "none",
+          //   boxShadow: `none`,
+          // }}
           height={"full"}
           rounded={"base"}
           width={"full"}
@@ -100,7 +95,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           {...propsForInput()}
           variant={props.variant}
           onFocus={() => setFocus(true)}
-          onBlur={handleFocus}
+          onBlur={() => setFocus(false)}
           fontSize={sizeInput?.fontSize}
           pl={"0.688rem"}
           pt={"0.656rem"}
@@ -117,7 +112,7 @@ export const AcsInputPassword: React.FC<InputProps> = ({
           h={"full"}
           onBlur={() => setFocus(false)}
         >
-          {showPassword ? (
+          {(showPassword && register) || null ? (
             props.iconOpen ? (
               props.iconOpen
             ) : (
