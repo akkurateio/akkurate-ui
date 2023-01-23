@@ -320,7 +320,7 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
               </ButtonGroup>
             ))}
           </HStack>
-          {!actionButtons && !!hasDropzone ? (
+          {!actionButtons && !!hasDropzone && (
             <Tooltip
               key={dropzoneBtn.label}
               label={dropzoneBtn.label}
@@ -344,9 +344,9 @@ const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
                 </HStack>
               </Button>
             </Tooltip>
-          ) : (
-            actionButtons
           )}
+
+          {actionButtons && actionButtons}
         </HStack>
       )}
     </Box>
