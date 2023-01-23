@@ -7,6 +7,7 @@ import {
   HTMLChakraProps,
   Icon,
   Text,
+  Tooltip,
   useBreakpointValue,
   useTheme,
   VStack,
@@ -103,6 +104,40 @@ export const AcsSelect: React.FC<SelectProps> = ({
         rounded={props.rounded ? props.rounded : "base"}
         position={"relative"}
       >
+        {props.icon && (
+          <Box
+            position={"absolute"}
+            top={0}
+            left={0}
+            bottom={0}
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            width={sizeInput?.heightSelect}
+            backgroundColor={"white"}
+            roundedLeft={props.rounded ? props.rounded : "base"}
+            zIndex={1}
+            borderWidth={1}
+            borderRight={"none"}
+            borderColor={
+              props.isInvalid
+                ? "red.500"
+                : focus
+                ? "primary.500"
+                : "neutral.300"
+            }
+            boxShadow={
+              focus
+                ? `inset 0px 0px -3px 3px ${theme.colors.primary[500]}25 `
+                : undefined
+            }
+            color={
+              props.color ? props.color : focus ? "primary.500" : "neutral.500"
+            }
+          >
+            {props.icon}
+          </Box>
+        )}
         <Select
           useBasicStyles={true}
           // @ts-ignore
@@ -129,7 +164,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
               ...base,
               rounded: props.rounded ? props.rounded : "base",
               padding: "0 0",
-              paddingLeft: 2,
+              paddingLeft: props.icon ? 10 : 0,
               height: sizeInput?.heightSelect,
               minHeight: sizeInput?.heightSelect,
               backgroundColor: props.isInvalid ? "red.50" : "white",
@@ -218,9 +253,29 @@ export const AcsSelect: React.FC<SelectProps> = ({
             DropdownIndicator: (dropdownProps) => (
               <VStack {...props} marginRight={"0.5rem"}>
                 {iconSelected ? (
-                  <Icon boxSize={sizeInput?.iconSize}>{iconSelected}</Icon>
+                  <Icon
+                    color={
+                      props.color
+                        ? props.color
+                        : focus
+                        ? "primary.500"
+                        : "neutral.500"
+                    }
+                    boxSize={sizeInput?.iconSize}
+                  >
+                    {iconSelected}
+                  </Icon>
                 ) : (
-                  <AisChevronSort boxSize={sizeInput?.iconSize} />
+                  <AisChevronSort
+                    color={
+                      props.color
+                        ? props.color
+                        : focus
+                        ? "primary.500"
+                        : "neutral.500"
+                    }
+                    boxSize={sizeInput?.iconSize}
+                  />
                 )}
               </VStack>
             ),
