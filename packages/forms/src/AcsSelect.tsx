@@ -108,7 +108,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
           <Box
             position={"absolute"}
             top={0}
-            left={0}
+            left={sizeInput?.iconSize === "32px" ? -1 : 0}
             bottom={0}
             display={"flex"}
             alignItems={"center"}
@@ -135,7 +135,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
               props.color ? props.color : focus ? "primary.500" : "neutral.500"
             }
           >
-            {props.icon}
+            <Icon boxSize={sizeInput?.iconSize}>{props.icon} </Icon>
           </Box>
         )}
         <Select
