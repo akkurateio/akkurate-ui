@@ -22,6 +22,7 @@ interface IProps {
   handleChange: (files: FileList | File[] | null) => void
   colorScheme?: string
   backgroundColor?: string
+  maxFilesSize?: number
 }
 
 export const AcsDropzone: React.FC<IProps> = ({
@@ -47,10 +48,10 @@ export const AcsDropzone: React.FC<IProps> = ({
           setFiles([...files, ...acceptedFiles])
         }
       }
-
     },
     [files, maxFiles],
   )
+  const maxSizes = props.maxFilesSize ? props.maxFilesSize * (1024 * 1024) : 0
 
   const onDropRejected = useCallback((rejectedFiles: FileRejection[]) => {
     if (rejectedFiles.length > 0) {
@@ -58,12 +59,13 @@ export const AcsDropzone: React.FC<IProps> = ({
     }
   }, [])
 
-  const { getRootProps, getInputProps, isDragActive, open,  } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     maxFiles: maxFiles,
     noClick: true,
     noKeyboard: true,
     onDropRejected,
+    maxSize: maxSizes,
   })
 
   useEffect(() => {
@@ -101,18 +103,36 @@ export const AcsDropzone: React.FC<IProps> = ({
             <Box textAlign={"center"}>
               {!toManyFiles ? (
                 maxFiles === 1 ? (
-                  <Text>
+                  <Box>
                     Glissez / Déposer le fichier ou cliquez ci-dessous.
-                  </Text>
+                    {props.maxFilesSize && (
+                      <Text fontSize={"sm"} color={"neutral.400"}>
+                        Taille maximal par fichiers autorisée :{" "}
+                        {props.maxFilesSize} Mo
+                      </Text>
+                    )}
+                  </Box>
                 ) : (
-                  <Text>
+                  <Box>
                     Glissez / Déposer les fichiers ou cliquez ci-dessous.
-                  </Text>
+                    {props.maxFilesSize && (
+                      <Text fontSize={"sm"} color={"neutral.400"}>
+                        Taille maximal par fichiers autorisée :{" "}
+                        {props.maxFilesSize} Mo
+                      </Text>
+                    )}
+                  </Box>
                 )
               ) : (
-                <Text color={"red.500"}>
+                <Box color={"red.500"}>
                   Nombre de fichier excède la limite autorisée.
-                </Text>
+                  {props.maxFilesSize && (
+                    <Text>
+                      Taille maximal par fichiers autorisée :{" "}
+                      {props.maxFilesSize} Mo
+                    </Text>
+                  )}
+                </Box>
               )}
               {!toManyFiles ? (
                 maxFiles > 1 ? (
@@ -157,29 +177,33 @@ export const AcsDropzone: React.FC<IProps> = ({
         {files.length > 0 && (
           <>
             {maxFiles > 1 && files.length <= maxFiles ? (
-                <VStack spacing={4}>
-              <HStack alignItems={"flex-start"} width={"full"}>
-                {files.map((file, idx) => (
-                  <ForMultiple
-                    key={idx}
-                    file={file}
-                    onDelete={() => setFiles(files.filter((f) => f !== file))}
-                    boxSize={boxSize}
-                    height={height}
-                  />
-                ))}
-              </HStack>
-                  <HStack>
-                   <Button
-                      onClick={open}
-                      colorScheme={isDragActive ? "primary" : "neutral"}
-                      backgroundColor={
-                        props.backgroundColor ? props.backgroundColor : "primary.500"
-                      }>
-                    <AisDownload boxSize={"24px"} /><Text ml={2} >Importer un nouveau fichier</Text>
+              <VStack spacing={4}>
+                <HStack alignItems={"flex-start"} width={"full"}>
+                  {files.map((file, idx) => (
+                    <ForMultiple
+                      key={idx}
+                      file={file}
+                      onDelete={() => setFiles(files.filter((f) => f !== file))}
+                      boxSize={boxSize}
+                      height={height}
+                    />
+                  ))}
+                </HStack>
+                <HStack>
+                  <Button
+                    onClick={open}
+                    colorScheme={isDragActive ? "primary" : "neutral"}
+                    backgroundColor={
+                      props.backgroundColor
+                        ? props.backgroundColor
+                        : "primary.500"
+                    }
+                  >
+                    <AisDownload boxSize={"24px"} />
+                    <Text ml={2}>Importer un nouveau fichier</Text>
                   </Button>
-                  </HStack>
-                </VStack>
+                </HStack>
+              </VStack>
             ) : (
               <VStack spacing={2} divider={<Divider />} my={6} width={"full"}>
                 {files.map((file, idx) => (

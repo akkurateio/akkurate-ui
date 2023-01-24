@@ -289,33 +289,6 @@ export const AcsSelect: React.FC<SelectProps> = ({
                 </Flex>
               </components.SingleValue>
             ),
-            // Control: ({ children, ...data }) => (
-            //   <components.Control {...data}>
-            //     <Flex
-            //       ml={props.icon ? 2 : 0}
-            //       experimental_spaceX={1}
-            //       w={"full"}
-            //       height={"full"}
-            //       alignItems={"center"}
-            //     >
-            //       {props.icon && (
-            //         <Box
-            //           w={"full"}
-            //           color={
-            //             notValid
-            //               ? "red.500"
-            //               : focus
-            //               ? "primary.500"
-            //               : "neutral.500"
-            //           }
-            //         >
-            //           {props.icon}
-            //         </Box>
-            //       )}
-            //       {children}
-            //     </Flex>
-            //   </components.Control>
-            // ),
             NoOptionsMessage: (props) => (
               <Box textAlign={"center"}>
                 <Text color={"neutral.300"} fontSize={sizeInput?.fontSize}>

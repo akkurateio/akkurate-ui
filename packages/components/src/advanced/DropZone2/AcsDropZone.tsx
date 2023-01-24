@@ -22,19 +22,22 @@ interface Iprops {
   height?: string
   clear?: boolean
   minHeight?: string
+  maxFilesSize?: number
 }
 
-export const AcsDropzone: React.FC<Iprops> = ({
+export const AcsDropzone2: React.FC<Iprops> = ({
   handleChange,
   accept,
   maxFiles = 0,
   minHeight = "300px",
   height = "300px",
   boxSize = "150px",
+  maxFilesSize = 0,
   ...props
 }: Iprops) => {
   const [files, setFiles] = useState<File[]>([])
   const [toManyFiles, setToManyFiles] = useState(false)
+  const [toManyFilesSize, setToManyFilesSize] = useState(false)
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -42,23 +45,17 @@ export const AcsDropzone: React.FC<Iprops> = ({
         setFiles(acceptedFiles.slice(0, 1))
         setToManyFiles(acceptedFiles.length > 1)
       } else {
-        if (files.length === maxFiles && acceptedFiles.length <= maxFiles) {
-          setFiles(acceptedFiles)
-          setToManyFiles(false)
+        if (acceptedFiles.length + files.length <= maxFiles) {
+          setFiles([...files, ...acceptedFiles])
         } else {
-          const newFiles = [...files, ...acceptedFiles]
-          if (newFiles.length > maxFiles) {
-            setToManyFiles(true)
-            setFiles(newFiles.slice(0, maxFiles))
-          } else {
-            setToManyFiles(false)
-            setFiles(newFiles)
-          }
+          setToManyFiles(true)
         }
       }
     },
-    [files, maxFiles],
+    [files, maxFiles, toManyFiles],
   )
+
+  const maxSizes = maxFilesSize ? maxFilesSize * (1024 * 1024) : 0
 
   useEffect(() => {
     if (props.clear === true) {
@@ -76,9 +73,12 @@ export const AcsDropzone: React.FC<Iprops> = ({
     },
     onDropRejected: (rejectedFiles) => {
       if (rejectedFiles.length > 0) {
-        setToManyFiles(true)
+        setToManyFilesSize(true)
+      } else {
+        setToManyFilesSize(false)
       }
     },
+    maxSize: maxSizes,
   })
 
   useEffect(() => {
@@ -101,23 +101,42 @@ export const AcsDropzone: React.FC<Iprops> = ({
             alignItems={"center"}
           >
             <input {...getInputProps()} />
-            {toManyFiles ? (
+            {toManyFiles || toManyFilesSize ? (
               <>
-                <AisError boxSize={"64px"} color={"red.600"} />
-                <Box>
-                  <Text fontSize={"sm"} color={"red.500"}>
-                    Nombre de fichier excède la limite autorisée.
-                  </Text>
-                  <Text fontSize={"xs"} color={"neutral.400"}>
-                    Nombre de fichiers maximum autorisés : {maxFiles}
-                  </Text>
-                </Box>
+                {toManyFiles ? (
+                  <>
+                    <AisError boxSize={"64px"} color={"red.600"} />
+                    <Box>
+                      <Text fontSize={"sm"} color={"red.500"}>
+                        Nombre de fichier excède la limite autorisée.
+                      </Text>
+                      <Text fontSize={"xs"} color={"neutral.400"}>
+                        Nombre de fichiers maximum autorisés : {maxFiles}
+                      </Text>
+                    </Box>
+                  </>
+                ) : (
+                  <>
+                    <AisError boxSize={"64px"} color={"red.600"} />
+                    <Box>
+                      <Text fontSize={"sm"} color={"red.500"}>
+                        Taille de fichier excède la limite autorisée.
+                      </Text>
+                      <Text fontSize={"xs"} color={"neutral.400"}>
+                        Taille maximal par fichiers autorisée : {maxFilesSize}{" "}
+                        Mo
+                      </Text>
+                    </Box>
+                  </>
+                )}
                 <HStack>
                   <Button
                     colorScheme={"neutral"}
                     variant={"outline"}
                     onClick={() => {
+                      setFiles([])
                       setToManyFiles(false)
+                      setToManyFilesSize(false)
                     }}
                     size={"sm"}
                   >
@@ -125,7 +144,10 @@ export const AcsDropzone: React.FC<Iprops> = ({
                   </Button>
 
                   <Button
-                    onClick={open}
+                    onClick={() => {
+                      setToManyFilesSize(false)
+                      open()
+                    }}
                     size={"sm"}
                     colorScheme={isDragActive ? "primary" : "neutral"}
                     backgroundColor={
@@ -147,16 +169,21 @@ export const AcsDropzone: React.FC<Iprops> = ({
                 <Box textAlign={"center"}>
                   {maxFiles === 1 ? (
                     <Text fontSize={"sm"}>
-                      Glissez / Déposer le fichier ou cliquez ci-dessous.
+                      Glissez / Déposez le fichier ou cliquez ci-dessous.
                     </Text>
                   ) : (
                     <Text fontSize={"sm"}>
-                      Glissez / Déposer les fichiers ou cliquez ci-dessous.
+                      Glissez / Déposez les fichiers ou cliquez ci-dessous.
                     </Text>
                   )}
                   <Text fontSize={"xs"} color={"neutral.400"}>
                     Nombre de fichiers maximum autorisés : {maxFiles}
                   </Text>
+                  {maxFilesSize && (
+                    <Text fontSize={"xs"} color={"neutral.400"}>
+                      Taille maximal par fichiers autorisée : {maxFilesSize} Mo
+                    </Text>
+                  )}
                 </Box>
                 <Button
                   onClick={open}
@@ -175,6 +202,70 @@ export const AcsDropzone: React.FC<Iprops> = ({
                 </Button>
               </>
             )}
+          </VStack>
+        ) : toManyFilesSize || toManyFiles ? (
+          <VStack
+            w={"full"}
+            h={"full"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            {toManyFiles ? (
+              <>
+                <AisError boxSize={"64px"} color={"red.600"} />
+                <Box>
+                  <Text fontSize={"sm"} color={"red.500"}>
+                    Nombre de fichier excède la limite autorisée.
+                  </Text>
+                  <Text fontSize={"xs"} color={"neutral.400"}>
+                    Nombre de fichiers maximum autorisés : {maxFiles}
+                  </Text>
+                </Box>
+              </>
+            ) : (
+              <>
+                <AisError boxSize={"64px"} color={"red.600"} />
+                <Box>
+                  <Text fontSize={"sm"} color={"red.500"}>
+                    Taille de fichier excède la limite autorisée.
+                  </Text>
+                  <Text fontSize={"xs"} color={"neutral.400"}>
+                    Taille de fichier maximum autorisée : {maxFilesSize} Mo
+                  </Text>
+                </Box>
+              </>
+            )}
+            <HStack>
+              <Button
+                colorScheme={"neutral"}
+                variant={"outline"}
+                onClick={() => {
+                  setFiles([])
+                  setToManyFiles(false)
+                  setToManyFilesSize(false)
+                }}
+                size={"sm"}
+              >
+                Annuler
+              </Button>
+
+              <Button
+                onClick={() => {
+                  setToManyFilesSize(false)
+                  open()
+                }}
+                size={"sm"}
+                colorScheme={isDragActive ? "primary" : "neutral"}
+                backgroundColor={
+                  props.backgroundColor ? props.backgroundColor : "primary.500"
+                }
+              >
+                <HStack>
+                  <AisDownload boxSize={"24px"} />
+                  <Text>Réessayer</Text>
+                </HStack>
+              </Button>
+            </HStack>
           </VStack>
         ) : (
           <VStack spacing={4} h={"full"} width={"full"}>
