@@ -107,7 +107,7 @@ export const AcsDropzone: React.FC<IProps> = ({
                     Glissez / Déposer le fichier ou cliquez ci-dessous.
                     {props.maxFilesSize && (
                       <Text fontSize={"sm"} color={"neutral.400"}>
-                        Taille maximal par fichiers autorisée :{" "}
+                        Taille maximale par fichier autorisée :{" "}
                         {props.maxFilesSize} Mo
                       </Text>
                     )}
@@ -117,7 +117,7 @@ export const AcsDropzone: React.FC<IProps> = ({
                     Glissez / Déposer les fichiers ou cliquez ci-dessous.
                     {props.maxFilesSize && (
                       <Text fontSize={"sm"} color={"neutral.400"}>
-                        Taille maximal par fichiers autorisée :{" "}
+                        Taille maximale par fichier autorisée :{" "}
                         {props.maxFilesSize} Mo
                       </Text>
                     )}
@@ -128,7 +128,7 @@ export const AcsDropzone: React.FC<IProps> = ({
                   Nombre de fichier excède la limite autorisée.
                   {props.maxFilesSize && (
                     <Text>
-                      Taille maximal par fichiers autorisée :{" "}
+                      Taille maximale par fichier autorisée :{" "}
                       {props.maxFilesSize} Mo
                     </Text>
                   )}
@@ -137,11 +137,11 @@ export const AcsDropzone: React.FC<IProps> = ({
               {!toManyFiles ? (
                 maxFiles > 1 ? (
                   <Text fontSize={"sm"} color={"neutral.400"}>
-                    Nombre de fichier maximum autorisés : {maxFiles}
+                    Nombre de fichiers maximum autorisés : {maxFiles}
                   </Text>
                 ) : (
                   <Text fontSize={"sm"} color={"neutral.400"}>
-                    Nombre de fichier maximum autorisés : {maxFiles}
+                    Nombre de fichiers maximum autorisés : {maxFiles}
                   </Text>
                 )
               ) : (
