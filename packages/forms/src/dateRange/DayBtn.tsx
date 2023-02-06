@@ -11,6 +11,8 @@ interface IProps {
   setEndHover: (day: Dayjs | null) => void
   startDate: Dayjs | null | string
   endDate: Dayjs | null | string
+  btnColor: string
+  hoverColor: string
 }
 
 const DayBtn: FunctionComponent<IProps> = ({
@@ -22,6 +24,8 @@ const DayBtn: FunctionComponent<IProps> = ({
   endHover,
   handleEndHover,
   setEndHover,
+  btnColor,
+  hoverColor,
 }) => {
   const isDaySelected = (day: any) => {
     if (!startDate || !endDate) {
@@ -40,32 +44,44 @@ const DayBtn: FunctionComponent<IProps> = ({
     const end = dayjs(endHover)
     return day.isSameOrAfter(start) && day.isSameOrBefore(end)
   }
-  const getBackgroundColor = (day: Dayjs) => {
-    const selected = isDaySelected(day)
-    const clickStart = startDate && day.isSame(startDate)
-    const between = isDayBetween(day)
-    if (selected || clickStart) {
-      return "blue.500"
-    } else if (between) {
-      return "gray.400"
-    }
-    return "white"
-  }
 
   const isInCurrentMonth = day.isSame(month, "month")
 
   return (
     <Button
-      size={"sm"}
+      w={{ xl: "10px", lg: "30px", md: "30px", base: "50px" }}
+      h={{ xl: "40px", lg: "40px", md: "40px", base: "50px" }}
       onClick={() => handleDayClick(day)}
       onMouseEnter={() => handleEndHover(day)}
       onMouseLeave={() => setEndHover(null)}
       textAlign={"center"}
       variant={"ghost"}
-      backgroundColor={getBackgroundColor(day)}
-      fontSize={"sm"}
-      _hover={{ backgroundColor: "none" }}
-      opacity={isInCurrentMonth ? 1 : 0}
+      border={"1px"}
+      borderColor={"transparent"}
+      rounded={"full"}
+      fontSize={{ xl: "xs", lg: "xs", md: "xs", base: "xl" }}
+      _hover={{ backgroundColor: "none", border: "1px" }}
+      _disabled={{ opacity: 0 }}
+      bgColor={
+        startDate && day.isSame(startDate)
+          ? btnColor
+            ? btnColor
+            : "primary.500"
+          : endDate && day.isSame(endDate)
+          ? btnColor
+            ? btnColor
+            : "primary.500"
+          : startDate && endDate && day.isBetween(startDate, endDate)
+          ? hoverColor
+            ? hoverColor
+            : "neutral.400"
+          : isDayBetween(day)
+          ? hoverColor
+            ? hoverColor
+            : "neutral.400"
+          : "white"
+      }
+      isDisabled={!isInCurrentMonth}
       cursor={isInCurrentMonth ? "pointer" : "default"}
     >
       {day.date()}

@@ -11,11 +11,12 @@ import {
   PopoverContent,
   PopoverTrigger,
   SimpleGrid,
+  Stack,
   Text,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react"
-import { AisChevronLeft, AisChevronRight } from "@akkurateio/icons"
+import { AisChevronLeft, AisChevronRight, AisClose } from "@akkurateio/icons"
 import FormControlLayout from "../FormControlLayout"
 import React from "react"
 import GridDateRange from "./GridDateRange"
@@ -27,18 +28,23 @@ import isBetween from "dayjs/plugin/isBetween"
 interface IProps {
   handleChange: (date: dateDefaut) => void
   numberOfMonths?: number
+  value: dateDefaut
   isMobile: boolean
+  btnColor: string
+  hoverColor: string
 }
 
 export type dateDefaut = {
-  startDate: Dayjs | null
-  endDate: Dayjs | null
-  currentDate: Dayjs | null
+  startDate: Dayjs | null | string
+  endDate: Dayjs | null | string
+  currentDate: Dayjs | null | string
 }
 
 export const AcsDateRange: React.FC<IProps> = ({
-  handleChange,
   numberOfMonths,
+  handleChange = () => {},
+  hoverColor = "neutral.500",
+  btnColor = "primary.500",
   isMobile = false,
 }: IProps) => {
   dayjs.extend(weekday)
@@ -49,7 +55,13 @@ export const AcsDateRange: React.FC<IProps> = ({
   const [startDate, setStartDate] = useState<null | Dayjs | string>(null)
   const [endDate, setEndDate] = useState<null | Dayjs | string>(null)
   const [endHover, setEndHover] = useState<null | Dayjs>(null)
+  const [allMonths, setAllMonths] = useState<
+    { daysInMonth: Dayjs[]; firstDay: Dayjs; lastDay: Dayjs; month: any }[]
+  >([])
   const { onOpen, onClose, isOpen } = useDisclosure()
+  const [thisMonth, setThisMonth] = useState<
+    { daysInMonth: Dayjs[]; firstDay: Dayjs; lastDay: Dayjs; month: any }[]
+  >([])
 
   const firstDay = dayjs(currentDate).startOf("month").startOf("week")
   const lastDay = dayjs(currentDate).endOf("month").endOf("week")
@@ -65,6 +77,11 @@ export const AcsDateRange: React.FC<IProps> = ({
     }
     return months
   }
+
+  useEffect(() => {
+    currentMonth && setThisMonth(getMonthDays([currentMonth]))
+  }, [])
+
   function getMonthDays(months: any) {
     const monthsData = []
     for (let i = 0; i < months.length; i++) {
@@ -99,13 +116,31 @@ export const AcsDateRange: React.FC<IProps> = ({
     if (!startDate) {
       setStartDate(day)
     } else if (!endDate) {
-      setEndDate(day)
+      if (day.isBefore(startDate)) {
+        setStartDate(day)
+      } else {
+        setEndDate(day)
+      }
       setEndHover(null)
     } else {
-      setStartDate(day)
-      setEndDate(null)
+      if (day.isBefore(startDate)) {
+        setStartDate(day)
+        setEndDate(null)
+      } else {
+        setStartDate(startDate)
+        setEndDate(day)
+      }
     }
   }
+
+  useEffect(() => {
+    if (numberOfMonths) {
+      setAllMonths(
+        getMonthDays(getNextMonths(numberOfMonths ? numberOfMonths : 1)),
+      )
+    }
+  }, [numberOfMonths, currentDate])
+
   useEffect(() => {
     if (startDate) {
       if (endDate && dayjs(endDate).isBefore(startDate)) {
@@ -114,6 +149,17 @@ export const AcsDateRange: React.FC<IProps> = ({
     }
   }, [startDate, endDate])
 
+  useEffect(() => {
+    if (startDate && endDate) {
+      handleChange({ startDate, endDate, currentDate: dayjs(currentDate) })
+    }
+  }, [startDate, endDate, currentDate])
+
+  const deleteDate = () => {
+    setStartDate(null)
+    setEndDate(null)
+    handleChange({ startDate: null, endDate: null, currentDate: null })
+  }
   return (
     <FormControlLayout>
       <Popover placement={"bottom"}>
@@ -125,7 +171,7 @@ export const AcsDateRange: React.FC<IProps> = ({
             rounded={"full"}
             alignSelf={"center"}
             variant={"unstyled"}
-            h={"fit-content"}
+            h={10}
           >
             <Flex
               textAlign={"center"}
@@ -135,16 +181,22 @@ export const AcsDateRange: React.FC<IProps> = ({
               justifyContent={"space-between"}
               onClick={onOpen}
             >
-              <VStack ml={5}>
-                <Text w={"full"}>Départ</Text>
-                <Text>
+              <VStack w={"50%"} spacing={0}>
+                <Text fontSize={"sm"} w={"full"}>
+                  Départ
+                </Text>
+                <Text fontSize={"sm"}>
                   {startDate ? dayjs(startDate).format("DD MMMM") : ""}
                 </Text>
               </VStack>
-              <Box border={"1px"} color={"gray.300"} />
-              <VStack mr={5}>
-                <Text w={"full"}>Arrivée</Text>
-                <Text>{endDate ? dayjs(endDate).format("DD MMMM") : ""}</Text>
+              <Box border={"1px"} color={"gray.300"} h={"75%"} mt={1} />
+              <VStack w={"50%"} spacing={0}>
+                <Text fontSize={"sm"} w={"full"}>
+                  Arrivée
+                </Text>
+                <Text fontSize={"sm"}>
+                  {endDate ? dayjs(endDate).format("DD MMMM") : ""}
+                </Text>
               </VStack>
             </Flex>
           </Button>
@@ -169,40 +221,52 @@ export const AcsDateRange: React.FC<IProps> = ({
               >
                 <AisChevronLeft />
               </Button>
-              <HStack
+              <SimpleGrid
                 spacing={10}
                 w={"full"}
                 h={"full"}
-                alignItems={"flex-start"}
+                columns={{
+                  base: 1,
+                  md: numberOfMonths ? numberOfMonths - 2 : 2,
+                  lg: numberOfMonths ? numberOfMonths - 2 : 3,
+                  xl: numberOfMonths ? numberOfMonths + 1 : 4,
+                }}
               >
-                <GridDateRange
-                  currentDate={currentDate}
-                  shortDaysArray={shortDaysArray}
-                  daysArray={daysArray}
-                  handleDayClick={handleDayClick}
-                  handleEndHover={handleEndHover}
-                  startDate={startDate}
-                  endDate={endDate}
-                  setEndHover={setEndHover}
-                  endHover={endHover}
-                  isMobile={isMobile}
-                />
-                <GridDateRange
-                  currentDate={dayjs(currentDate).add(1, "month").toDate()}
-                  shortDaysArray={shortDaysArray}
-                  daysArray={daysArray}
-                  handleDayClick={handleDayClick}
-                  handleEndHover={handleEndHover}
-                  startDate={startDate}
-                  endDate={endDate}
-                  setEndHover={setEndHover}
-                  monthsArray={getMonthDays(
-                    getNextMonths(numberOfMonths ? numberOfMonths : 1),
-                  )}
-                  endHover={endHover}
-                  isMobile={isMobile}
-                />
-              </HStack>
+                {thisMonth.map((month: any, index: number) => (
+                  <GridDateRange
+                    currentDate={dayjs(currentDate).toDate()}
+                    shortDaysArray={shortDaysArray}
+                    daysArray={daysArray}
+                    handleDayClick={handleDayClick}
+                    handleEndHover={handleEndHover}
+                    startDate={startDate}
+                    endDate={endDate}
+                    setEndHover={setEndHover}
+                    endHover={endHover}
+                    btnColor={btnColor}
+                    hoverColor={hoverColor}
+                    month={month}
+                    key={index}
+                  />
+                ))}
+                {allMonths.map((month: any, index: number) => (
+                  <GridDateRange
+                    currentDate={dayjs(currentDate).add(1, "month").toDate()}
+                    shortDaysArray={shortDaysArray}
+                    daysArray={daysArray}
+                    handleDayClick={handleDayClick}
+                    handleEndHover={handleEndHover}
+                    startDate={startDate}
+                    endDate={endDate}
+                    setEndHover={setEndHover}
+                    endHover={endHover}
+                    btnColor={btnColor}
+                    hoverColor={hoverColor}
+                    month={month}
+                    key={index}
+                  />
+                ))}
+              </SimpleGrid>
               <Button
                 variant={"ghost"}
                 _hover={{ backgroundColor: "none" }}
