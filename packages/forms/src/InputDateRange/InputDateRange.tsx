@@ -1,4 +1,4 @@
-import { Divider } from "@chakra-ui/react"
+import { Divider, Flex } from "@chakra-ui/react"
 import { Dayjs } from "dayjs"
 import React from "react"
 import FormControlLayout from "../FormControlLayout"
@@ -43,23 +43,34 @@ export const AcsInputDateRange = ({
 }: IProps) => {
   return (
     <FormControlLayout label={label}>
-      <InputGroupWithShadow height={height} width={width} isInvalid={isInvalid}>
-        <Date
-          setDate={setDate}
-          dateObject={date}
-          date={date.afterDate}
-          dateFor={"afterDate"}
-          options={options}
-        />
-        <Divider orientation="vertical" />
-        <Date
-          setDate={setDate}
-          dateObject={date}
-          date={date.beforeDate}
-          dateFor={"beforeDate"}
-          options={options}
-        />
-      </InputGroupWithShadow>
+      <Flex experimental_spaceX={4}>
+        <InputGroupWithShadow
+          height={height}
+          width={width}
+          isInvalid={isInvalid}
+        >
+          <Date
+            setDate={setDate}
+            dateObject={date}
+            date={date.afterDate}
+            dateFor={"afterDate"}
+            options={options}
+          />
+        </InputGroupWithShadow>
+        <InputGroupWithShadow
+          height={height}
+          width={width}
+          isInvalid={isInvalid}
+        >
+          <Date
+            setDate={setDate}
+            dateObject={date}
+            date={date.beforeDate}
+            dateFor={"beforeDate"}
+            options={options}
+          />
+        </InputGroupWithShadow>
+      </Flex>
     </FormControlLayout>
   )
 }

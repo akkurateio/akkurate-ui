@@ -22,21 +22,8 @@ interface IProps {
 
 const Date = ({ date, setDate, dateObject, dateFor, options }: IProps) => {
   const handleClick = () => {
-    if (dateFor === "afterDate") {
-      setDate({
-        ...dateObject,
-        afterDate: null,
-      })
-    }
-
-    if (dateFor === "beforeDate") {
-      setDate({
-        ...dateObject,
-        beforeDate: null,
-      })
-    }
+    setDate({ ...dateObject, [dateFor]: null })
   }
-
   return (
     <Popover>
       <HStack
@@ -51,9 +38,7 @@ const Date = ({ date, setDate, dateObject, dateFor, options }: IProps) => {
           top={0.5}
           left={1}
           position={"absolute"}
-        >
-          {dateFor === "afterDate" ? "À partir du :" : "Jusqu'au :"}
-        </Text>
+        ></Text>
 
         <PopoverTrigger>
           <Button variant={"unstyled"} fontWeight={"normal"} fontSize={"sm"}>
