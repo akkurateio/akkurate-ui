@@ -13,6 +13,10 @@ interface IProps {
   endDate: Dayjs | null | string
   btnColor: string
   hoverColor: string
+  disabledStart: number[]
+  disabledStartDatesArray: string[]
+  disabledEnd: number[]
+  disabledEndDatesArray: string[]
 }
 
 const DayBtn: FunctionComponent<IProps> = ({
@@ -26,16 +30,11 @@ const DayBtn: FunctionComponent<IProps> = ({
   setEndHover,
   btnColor,
   hoverColor,
+  disabledStart,
+  disabledStartDatesArray,
+  disabledEnd,
+  disabledEndDatesArray,
 }) => {
-  const isDaySelected = (day: any) => {
-    if (!startDate || !endDate) {
-      return false
-    }
-    const start = dayjs(startDate)
-    const end = dayjs(endDate)
-    return day.isSameOrAfter(start) && day.isSameOrBefore(end)
-  }
-
   const isDayBetween = (day: any) => {
     if (!startDate || !endHover || endDate) {
       return false
@@ -46,7 +45,14 @@ const DayBtn: FunctionComponent<IProps> = ({
   }
 
   const isInCurrentMonth = day.isSame(month, "month")
+  const isDisabledStart = disabledStart.includes(day.day())
 
+  const isDisabledEnd = disabledEnd.includes(day.day()) && !!startDate
+  const isDisabledStartDatesArray = disabledStartDatesArray.includes(
+    day.format("YYYY-MM-DD"),
+  )
+  const isDisabledEndDatesArray =
+    disabledEndDatesArray.includes(day.format("YYYY-MM-DD")) && !!startDate
   return (
     <Button
       w={{ xl: "10px", lg: "30px", md: "30px", base: "50px" }}
@@ -61,7 +67,10 @@ const DayBtn: FunctionComponent<IProps> = ({
       rounded={"full"}
       fontSize={{ xl: "xs", lg: "xs", md: "xs", base: "xl" }}
       _hover={{ backgroundColor: "none", border: "1px" }}
-      _disabled={{ opacity: 0 }}
+      _disabled={{
+        opacity: !isInCurrentMonth ? 0 : 0.5,
+        cursor: !isInCurrentMonth ? "pointer" : "not-allowed",
+      }}
       bgColor={
         startDate && day.isSame(startDate)
           ? btnColor
@@ -81,7 +90,13 @@ const DayBtn: FunctionComponent<IProps> = ({
             : "neutral.400"
           : "white"
       }
-      isDisabled={!isInCurrentMonth}
+      isDisabled={
+        !isInCurrentMonth ||
+        isDisabledStart ||
+        isDisabledEnd ||
+        isDisabledStartDatesArray ||
+        isDisabledEndDatesArray
+      }
       cursor={isInCurrentMonth ? "pointer" : "default"}
     >
       {day.date()}

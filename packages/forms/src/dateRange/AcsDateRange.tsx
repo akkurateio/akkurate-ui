@@ -5,6 +5,7 @@ import {
   Button,
   Flex,
   HStack,
+  IconButton,
   Popover,
   PopoverBody,
   PopoverCloseButton,
@@ -29,9 +30,13 @@ interface IProps {
   handleChange: (date: dateDefaut) => void
   numberOfMonths?: number
   value: dateDefaut
-  isMobile: boolean
-  btnColor: string
-  hoverColor: string
+  label?: string
+  btnColor?: string
+  hoverColor?: string
+  disabledStartDays?: number[]
+  disabledEndDays?: number[]
+  disabledStartDates?: string[]
+  disabledEndDates?: string[]
 }
 
 export type dateDefaut = {
@@ -45,7 +50,11 @@ export const AcsDateRange: React.FC<IProps> = ({
   handleChange = () => {},
   hoverColor = "neutral.500",
   btnColor = "primary.500",
-  isMobile = false,
+  disabledStartDays = [],
+  disabledEndDays = [],
+  disabledStartDates = [],
+  disabledEndDates = [],
+  label,
 }: IProps) => {
   dayjs.extend(weekday)
   dayjs.extend(isSameOrBefore)
@@ -80,7 +89,7 @@ export const AcsDateRange: React.FC<IProps> = ({
 
   useEffect(() => {
     currentMonth && setThisMonth(getMonthDays([currentMonth]))
-  }, [])
+  }, [currentDate])
 
   function getMonthDays(months: any) {
     const monthsData = []
@@ -112,6 +121,12 @@ export const AcsDateRange: React.FC<IProps> = ({
       setEndHover(day)
     }
   }
+  const disabledStart = disabledStartDays ? disabledStartDays : []
+  const disabledStartDatesArray = disabledStartDates ? disabledStartDates : []
+
+  const disabledEnd = disabledEndDays ? disabledEndDays : []
+  const disabledEndDatesArray = disabledEndDates ? disabledEndDates : []
+
   const handleDayClick = (day: Dayjs) => {
     if (!startDate) {
       setStartDate(day)
@@ -161,7 +176,7 @@ export const AcsDateRange: React.FC<IProps> = ({
     handleChange({ startDate: null, endDate: null, currentDate: null })
   }
   return (
-    <FormControlLayout>
+    <FormControlLayout label={label}>
       <Popover placement={"bottom"}>
         <PopoverTrigger>
           <Button
@@ -181,15 +196,31 @@ export const AcsDateRange: React.FC<IProps> = ({
               justifyContent={"space-between"}
               onClick={onOpen}
             >
-              <VStack w={"50%"} spacing={0}>
+              <VStack w={"50%"} h={"full"} spacing={0}>
                 <Text fontSize={"sm"} w={"full"}>
                   Départ
                 </Text>
-                <Text fontSize={"sm"}>
-                  {startDate ? dayjs(startDate).format("DD MMMM") : ""}
+                <Text fontSize={"sm"} w={"full"}>
+                  {startDate ? dayjs(startDate).format("DD MMMM") : "  "}
                 </Text>
               </VStack>
-              <Box border={"1px"} color={"gray.300"} h={"75%"} mt={1} />
+              {isOpen && startDate ? (
+                <Box
+                  onClick={deleteDate}
+                  backgroundColor={"neutral.300"}
+                  w={"20px"}
+                  h={"16px"}
+                  rounded={"full"}
+                  as={"button"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  display={"flex"}
+                  mt={2.5}
+                >
+                  <AisClose boxSize={"14px"} />
+                </Box>
+              ) : null}
+              <Box border={"1px"} color={"gray.300"} h={"75%"} mt={1} ml={2} />
               <VStack w={"50%"} spacing={0}>
                 <Text fontSize={"sm"} w={"full"}>
                   Arrivée
@@ -198,6 +229,23 @@ export const AcsDateRange: React.FC<IProps> = ({
                   {endDate ? dayjs(endDate).format("DD MMMM") : ""}
                 </Text>
               </VStack>
+              {isOpen && startDate ? (
+                <Box
+                  onClick={deleteDate}
+                  backgroundColor={"neutral.300"}
+                  w={"20px"}
+                  h={"16px"}
+                  rounded={"full"}
+                  as={"button"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  display={"flex"}
+                  mt={2.5}
+                  mr={3}
+                >
+                  <AisClose boxSize={"14px"} />
+                </Box>
+              ) : null}
             </Flex>
           </Button>
         </PopoverTrigger>
@@ -227,8 +275,8 @@ export const AcsDateRange: React.FC<IProps> = ({
                 h={"full"}
                 columns={{
                   base: 1,
-                  md: numberOfMonths ? numberOfMonths - 2 : 2,
-                  lg: numberOfMonths ? numberOfMonths - 2 : 3,
+                  md: numberOfMonths ? numberOfMonths - 1 : 2,
+                  lg: numberOfMonths ? numberOfMonths : 3,
                   xl: numberOfMonths ? numberOfMonths + 1 : 4,
                 }}
               >
@@ -247,6 +295,10 @@ export const AcsDateRange: React.FC<IProps> = ({
                     hoverColor={hoverColor}
                     month={month}
                     key={index}
+                    disabledStart={disabledStart}
+                    disabledStartDatesArray={disabledStartDatesArray}
+                    disabledEnd={disabledEnd}
+                    disabledEndDatesArray={disabledEndDatesArray}
                   />
                 ))}
                 {allMonths.map((month: any, index: number) => (
@@ -264,6 +316,10 @@ export const AcsDateRange: React.FC<IProps> = ({
                     hoverColor={hoverColor}
                     month={month}
                     key={index}
+                    disabledStart={disabledStart}
+                    disabledStartDatesArray={disabledStartDatesArray}
+                    disabledEnd={disabledEnd}
+                    disabledEndDatesArray={disabledEndDatesArray}
                   />
                 ))}
               </SimpleGrid>

@@ -21,6 +21,10 @@ interface IProps {
     lastDay: Dayjs
     month: any
   }
+  disabledStart: number[]
+  disabledStartDatesArray: string[]
+  disabledEnd: number[]
+  disabledEndDatesArray: string[]
 }
 
 const GridDAteRange = ({
@@ -34,6 +38,10 @@ const GridDAteRange = ({
   hoverColor,
   setEndHover,
   month,
+  disabledEnd,
+  disabledEndDatesArray,
+  disabledStart,
+  disabledStartDatesArray,
 }: IProps) => {
   return (
     <SimpleGrid spacing={10}>
@@ -74,6 +82,10 @@ const GridDAteRange = ({
                 startDate={startDate}
                 btnColor={btnColor}
                 hoverColor={hoverColor}
+                disabledStart={disabledStart}
+                disabledStartDatesArray={disabledStartDatesArray}
+                disabledEnd={disabledEnd}
+                disabledEndDatesArray={disabledEndDatesArray}
               />
             )
           })}
