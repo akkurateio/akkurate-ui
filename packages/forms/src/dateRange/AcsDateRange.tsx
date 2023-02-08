@@ -37,6 +37,7 @@ interface IProps {
   disabledEndDays?: number[]
   disabledStartDates?: string[]
   disabledEndDates?: string[]
+  numericFormat?: boolean
 }
 
 export type dateDefaut = {
@@ -53,6 +54,7 @@ export const AcsDateRange: React.FC<IProps> = ({
   disabledEndDays = [],
   disabledStartDates = [],
   disabledEndDates = [],
+  numericFormat = false,
   label,
   ...props
 }: IProps) => {
@@ -187,10 +189,12 @@ export const AcsDateRange: React.FC<IProps> = ({
   }
   return (
     <FormControlLayout label={label}>
-      <Popover placement={"bottom-end"}>
+      <Popover placement={"bottom"}>
         <PopoverTrigger>
           <Button
-            w={250}
+            minW={400}
+            w={"full"}
+            display={{ base: "none", md: "flex" }}
             border={"1px"}
             borderColor={"gray.400"}
             rounded={"full"}
@@ -207,11 +211,19 @@ export const AcsDateRange: React.FC<IProps> = ({
               onClick={onOpen}
             >
               <VStack w={"50%"} h={"full"} spacing={0}>
-                <Text fontSize={"sm"} w={"full"}>
-                  Départ
+                <Text
+                  fontSize={startDate ? "2xs" : "sm"}
+                  fontWeight={startDate ? "normal" : "bold"}
+                  w={"full"}
+                >
+                  Date de départ
                 </Text>
-                <Text fontSize={"sm"} w={"full"}>
-                  {startDate ? dayjs(startDate).format("DD MMMM") : "  "}
+                <Text fontSize={"md"} w={"full"}>
+                  {startDate
+                    ? dayjs(startDate).format(
+                        numericFormat ? "DD/MM/YYYY" : "dddd DD MMMM YYYY",
+                      )
+                    : ""}
                 </Text>
               </VStack>
               {isOpen && startDate ? (
@@ -232,11 +244,19 @@ export const AcsDateRange: React.FC<IProps> = ({
               ) : null}
               <Box border={"1px"} color={"gray.300"} h={"75%"} mt={1} ml={2} />
               <VStack w={"50%"} spacing={0}>
-                <Text fontSize={"sm"} w={"full"}>
-                  Arrivée
+                <Text
+                  fontSize={endDate ? "2xs" : "sm"}
+                  fontWeight={endDate ? "normal" : "bold"}
+                  w={"full"}
+                >
+                  Date d'arrivée
                 </Text>
-                <Text fontSize={"sm"}>
-                  {endDate ? dayjs(endDate).format("DD MMMM") : ""}
+                <Text fontSize={"md"}>
+                  {endDate
+                    ? dayjs(endDate).format(
+                        numericFormat ? "DD/MM/YYYY" : "dddd DD MMMM YYYY",
+                      )
+                    : ""}
                 </Text>
               </VStack>
               {isOpen && startDate ? (
