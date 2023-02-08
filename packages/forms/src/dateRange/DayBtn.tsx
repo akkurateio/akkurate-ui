@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from "react"
 import { Button } from "@chakra-ui/react"
 import dayjs, { Dayjs } from "dayjs"
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore"
+import { useTheme } from "@chakra-ui/system"
 
 interface IProps {
   day: Dayjs
@@ -44,15 +46,41 @@ const DayBtn: FunctionComponent<IProps> = ({
     return day.isSameOrAfter(start) && day.isSameOrBefore(end)
   }
 
-  const isInCurrentMonth = day.isSame(month, "month")
-  const isDisabledStart = disabledStart.includes(day.day())
+  const theme = useTheme()
 
-  const isDisabledEnd = disabledEnd.includes(day.day()) && !!startDate
-  const isDisabledStartDatesArray = disabledStartDatesArray.includes(
-    day.format("YYYY-MM-DD"),
-  )
-  const isDisabledEndDatesArray =
-    disabledEndDatesArray.includes(day.format("YYYY-MM-DD")) && !!startDate
+  const isInCurrentMonth = day.isSame(month, "month")
+
+  const disabled = () => {
+    if (!startDate && disabledStart.includes(day.day())) {
+      return true
+    }
+    if (disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))) {
+      return true
+    }
+    if (
+      !!startDate &&
+      disabledEndDatesArray.includes(day.format("YYYY-MM-DD"))
+    ) {
+      return true
+    }
+    if (day.isBefore(startDate) && disabledStart.includes(day.day())) {
+      return true
+    }
+
+    if (endDate && day.isAfter(startDate) && disabledEnd.includes(day.day())) {
+      return true
+    }
+    if (
+      startDate &&
+      !endDate &&
+      disabledEnd.includes(day.day()) &&
+      day.isAfter(startDate)
+    ) {
+      return true
+    }
+    return false
+  }
+
   return (
     <Button
       w={{ xl: "10px", lg: "30px", md: "30px", base: "50px" }}
@@ -70,33 +98,33 @@ const DayBtn: FunctionComponent<IProps> = ({
       _disabled={{
         opacity: !isInCurrentMonth ? 0 : 0.5,
         cursor: !isInCurrentMonth ? "pointer" : "not-allowed",
+        backgroundColor:
+          disabled() && startDate && day.isBetween(startDate, endDate)
+            ? theme.colors.neutral[300]
+            : disabled() && isDayBetween(day)
+            ? theme.colors.neutral[300]
+            : "white",
       }}
       bgColor={
         startDate && day.isSame(startDate)
           ? btnColor
             ? btnColor
-            : "primary.500"
+            : theme.colors.primary[500]
           : endDate && day.isSame(endDate)
           ? btnColor
             ? btnColor
-            : "primary.500"
+            : theme.colors.primary[500]
           : startDate && endDate && day.isBetween(startDate, endDate)
           ? hoverColor
             ? hoverColor
-            : "neutral.400"
+            : theme.colors.neutral[400]
           : isDayBetween(day)
           ? hoverColor
             ? hoverColor
-            : "neutral.400"
+            : theme.colors.neutral[400]
           : "white"
       }
-      isDisabled={
-        !isInCurrentMonth ||
-        isDisabledStart ||
-        isDisabledEnd ||
-        isDisabledStartDatesArray ||
-        isDisabledEndDatesArray
-      }
+      isDisabled={!isInCurrentMonth || disabled()}
       cursor={isInCurrentMonth ? "pointer" : "default"}
     >
       {day.date()}

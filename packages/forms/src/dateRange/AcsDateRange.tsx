@@ -46,7 +46,6 @@ export type dateDefaut = {
 }
 
 export const AcsDateRange: React.FC<IProps> = ({
-  numberOfMonths,
   handleChange = () => {},
   hoverColor = "neutral.500",
   btnColor = "primary.500",
@@ -55,6 +54,7 @@ export const AcsDateRange: React.FC<IProps> = ({
   disabledStartDates = [],
   disabledEndDates = [],
   label,
+  ...props
 }: IProps) => {
   dayjs.extend(weekday)
   dayjs.extend(isSameOrBefore)
@@ -64,6 +64,10 @@ export const AcsDateRange: React.FC<IProps> = ({
   const [startDate, setStartDate] = useState<null | Dayjs | string>(null)
   const [endDate, setEndDate] = useState<null | Dayjs | string>(null)
   const [endHover, setEndHover] = useState<null | Dayjs>(null)
+  const [numberOfMonths, setNumberOfMonths] = useState(
+    props.numberOfMonths || 0,
+  )
+  const [nextMonthTrue, setNextMonthTrue] = useState(false)
   const [allMonths, setAllMonths] = useState<
     { daysInMonth: Dayjs[]; firstDay: Dayjs; lastDay: Dayjs; month: any }[]
   >([])
@@ -147,14 +151,20 @@ export const AcsDateRange: React.FC<IProps> = ({
       }
     }
   }
-
   useEffect(() => {
-    if (numberOfMonths) {
+    if (nextMonthTrue) {
+      setNumberOfMonths(numberOfMonths ? numberOfMonths + 1 : 0)
+      setAllMonths(
+        getMonthDays(getNextMonths(numberOfMonths ? numberOfMonths : 1)),
+      )
+      setNextMonthTrue(false)
+    }
+    if (props.numberOfMonths) {
       setAllMonths(
         getMonthDays(getNextMonths(numberOfMonths ? numberOfMonths : 1)),
       )
     }
-  }, [numberOfMonths, currentDate])
+  }, [numberOfMonths, currentDate, nextMonthTrue])
 
   useEffect(() => {
     if (startDate) {
@@ -177,10 +187,10 @@ export const AcsDateRange: React.FC<IProps> = ({
   }
   return (
     <FormControlLayout label={label}>
-      <Popover placement={"bottom"}>
+      <Popover placement={"bottom-end"}>
         <PopoverTrigger>
           <Button
-            w={300}
+            w={250}
             border={"1px"}
             borderColor={"gray.400"}
             rounded={"full"}
@@ -249,11 +259,16 @@ export const AcsDateRange: React.FC<IProps> = ({
             </Flex>
           </Button>
         </PopoverTrigger>
-        <PopoverContent width={"full"} h={"full"}>
+        <PopoverContent
+          width={"full"}
+          h={{ base: 600, md: "full" }}
+          overflowY={{ base: "auto", md: "hidden" }}
+        >
           <PopoverCloseButton />
           <PopoverBody>
             <HStack>
               <Button
+                display={{ base: "none", md: "block" }}
                 variant={"ghost"}
                 _hover={{ backgroundColor: "none" }}
                 onClick={() =>
@@ -272,7 +287,6 @@ export const AcsDateRange: React.FC<IProps> = ({
               <SimpleGrid
                 spacing={10}
                 w={"full"}
-                h={"full"}
                 columns={{
                   base: 1,
                   md: numberOfMonths ? numberOfMonths - 1 : 2,
@@ -324,6 +338,7 @@ export const AcsDateRange: React.FC<IProps> = ({
                 ))}
               </SimpleGrid>
               <Button
+                display={{ base: "none", md: "block" }}
                 variant={"ghost"}
                 _hover={{ backgroundColor: "none" }}
                 onClick={() =>
@@ -337,6 +352,15 @@ export const AcsDateRange: React.FC<IProps> = ({
                 <AisChevronRight />
               </Button>
             </HStack>
+            <Box w={"full"}>
+              <Button
+                w={"full"}
+                display={{ base: "flex", md: "none" }}
+                onClick={() => setNextMonthTrue(!nextMonthTrue)}
+              >
+                <Text>Valider</Text>
+              </Button>
+            </Box>
           </PopoverBody>
         </PopoverContent>
       </Popover>
