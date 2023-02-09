@@ -59,4 +59,10 @@ export const propsForAcsDateRange = [
     description: "Tableau des dates désactivés pour le end date",
     required: false,
   },
+  {
+    props: "numericFormat",
+    type: "boolean",
+    description: "Permet d'afficher les dates en format numérique",
+    required: false,
+  },
 ]
