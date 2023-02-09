@@ -54,9 +54,6 @@ const DayBtn: FunctionComponent<IProps> = ({
     if (!startDate && disabledStart.includes(day.day())) {
       return true
     }
-    if (disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))) {
-      return true
-    }
     if (
       !!startDate &&
       disabledEndDatesArray.includes(day.format("YYYY-MM-DD"))
@@ -75,6 +72,42 @@ const DayBtn: FunctionComponent<IProps> = ({
       !endDate &&
       disabledEnd.includes(day.day()) &&
       day.isAfter(startDate)
+    ) {
+      return true
+    }
+    if (
+      startDate &&
+      disabledStartDatesArray.includes(day.format("YYYY-MM-DD")) &&
+      day.isAfter(startDate)
+    ) {
+      return false
+    }
+    if (
+      startDate &&
+      disabledEndDatesArray.includes(day.format("YYYY-MM-DD")) &&
+      day.isBefore(startDate)
+    ) {
+      return true
+    }
+    if (
+      !startDate &&
+      disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))
+    ) {
+      return true
+    }
+    if (
+      startDate &&
+      !endDate &&
+      day.isBefore(startDate) &&
+      disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))
+    ) {
+      return true
+    }
+    if (
+      startDate &&
+      endDate &&
+      day.isBefore(startDate) &&
+      disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))
     ) {
       return true
     }

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import {
   Box,
   Button,
+  Divider,
   Flex,
   HStack,
   IconButton,
@@ -192,19 +193,94 @@ export const AcsDateRange: React.FC<IProps> = ({
       <Popover placement={"bottom"}>
         <PopoverTrigger>
           <Button
-            minW={400}
+            minW={{ base: "full", md: 400 }}
             w={"full"}
-            display={{ base: "none", md: "flex" }}
+            // display={{ base: "none", md: "flex" }}
             border={"1px"}
             borderColor={"gray.400"}
             rounded={"full"}
             alignSelf={"center"}
             variant={"unstyled"}
-            h={10}
+            h={{ base: 110, md: 10 }}
           >
+            <VStack
+              textAlign={"center"}
+              display={{ base: "flex", md: "none" }}
+              w={"full"}
+              h={"full"}
+              spacing={0}
+              divider={<Divider />}
+            >
+              <VStack h={"50%"} spacing={0}>
+                <Text
+                  fontSize={startDate ? "2xs" : "sm"}
+                  fontWeight={startDate ? "normal" : "bold"}
+                  w={"full"}
+                >
+                  Date de départ
+                </Text>
+                <Text fontSize={"md"} w={"full"}>
+                  {startDate
+                    ? dayjs(startDate).format(
+                        numericFormat ? "DD/MM/YYYY" : "dddd DD MMMM YYYY",
+                      )
+                    : ""}
+                </Text>
+              </VStack>
+              {isOpen && startDate ? (
+                <Box
+                  onClick={deleteDate}
+                  backgroundColor={"neutral.300"}
+                  w={"20px"}
+                  h={"16px"}
+                  rounded={"full"}
+                  as={"button"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  display={"flex"}
+                  mt={2.5}
+                >
+                  <AisClose boxSize={"14px"} />
+                </Box>
+              ) : null}
+              {/*<Box  border={"1px"} color={"gray.300"} w={"full"} />*/}
+              <VStack spacing={0}>
+                <Text
+                  fontSize={endDate ? "2xs" : "sm"}
+                  fontWeight={endDate ? "normal" : "bold"}
+                  w={"full"}
+                >
+                  Date d'arrivée
+                </Text>
+                <Text fontSize={"md"}>
+                  {endDate
+                    ? dayjs(endDate).format(
+                        numericFormat ? "DD/MM/YYYY" : "dddd DD MMMM YYYY",
+                      )
+                    : ""}
+                </Text>
+              </VStack>
+              {isOpen && startDate ? (
+                <Box
+                  onClick={deleteDate}
+                  backgroundColor={"neutral.300"}
+                  w={"20px"}
+                  h={"16px"}
+                  rounded={"full"}
+                  as={"button"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  display={"flex"}
+                  mt={2.5}
+                  mr={3}
+                >
+                  <AisClose boxSize={"14px"} />
+                </Box>
+              ) : null}
+            </VStack>
             <Flex
               textAlign={"center"}
-              display={"flex"}
+              display={{ base: "none", md: "flex" }}
               w={"full"}
               h={"full"}
               justifyContent={"space-between"}
