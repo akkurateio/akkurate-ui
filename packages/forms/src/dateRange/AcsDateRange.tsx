@@ -503,7 +503,7 @@ export const AcsDateRange: React.FC<IProps> = ({
                 display={{ base: "flex", md: "none" }}
                 onClick={() => setNextMonthTrue(!nextMonthTrue)}
               >
-                <Text>Valider</Text>
+                <Text>Afficher le mois suivant</Text>
               </Button>
             </Box>
           </PopoverBody>
