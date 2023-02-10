@@ -55,6 +55,7 @@ export const AcsDateRange: React.FC<IProps> = ({
   disabledStartDays = [],
   disabledEndDays = [],
   disabledStartDates = [],
+  numberOfMonths = 1,
   disabledEndDates = [],
   numericFormat = false,
   label,
@@ -68,18 +69,12 @@ export const AcsDateRange: React.FC<IProps> = ({
   const [startDate, setStartDate] = useState<null | Dayjs | string>(null)
   const [endDate, setEndDate] = useState<null | Dayjs | string>(null)
   const [endHover, setEndHover] = useState<null | Dayjs>(null)
-  const [numberOfMonths, setNumberOfMonths] = useState(
-    props.numberOfMonths || 0,
-  )
+  const [numberOfMonths2, setNumberOfMonths] = useState(numberOfMonths)
   const [nextMonthTrue, setNextMonthTrue] = useState(false)
   const [allMonths, setAllMonths] = useState<
     { daysInMonth: Dayjs[]; firstDay: Dayjs; lastDay: Dayjs; month: any }[]
   >([])
   const { onOpen, onClose, isOpen } = useDisclosure()
-  const [thisMonth, setThisMonth] = useState<
-    { daysInMonth: Dayjs[]; firstDay: Dayjs; lastDay: Dayjs; month: any }[]
-  >([])
-
   const firstDay = dayjs(currentDate).startOf("month").startOf("week")
   const lastDay = dayjs(currentDate).endOf("month").endOf("week")
   const daysArray = Array.from(
@@ -89,17 +84,13 @@ export const AcsDateRange: React.FC<IProps> = ({
   const currentMonth = dayjs(currentDate).startOf("month")
   const getNextMonths = (numberOfMonths: number) => {
     const months = []
-    for (let i = 1; i <= numberOfMonths; i++) {
+    for (let i = 0; i < numberOfMonths; i++) {
       months.push(dayjs(currentMonth).add(i, "month"))
     }
     return months
   }
 
   const screenSize = useBreakpointValue({ base: "base", md: "md" })
-
-  useEffect(() => {
-    currentMonth && setThisMonth(getMonthDays([currentMonth]))
-  }, [currentDate])
 
   function getMonthDays(months: any) {
     const monthsData = []
@@ -159,18 +150,20 @@ export const AcsDateRange: React.FC<IProps> = ({
   }
   useEffect(() => {
     if (nextMonthTrue) {
-      setNumberOfMonths(numberOfMonths ? numberOfMonths + 1 : 0)
+      console.log("coucou")
+      setNumberOfMonths(numberOfMonths2 ? numberOfMonths2 + 1 : 0)
       setAllMonths(
-        getMonthDays(getNextMonths(numberOfMonths ? numberOfMonths : 1)),
+        getMonthDays(getNextMonths(numberOfMonths2 ? numberOfMonths2 : 1)),
       )
       setNextMonthTrue(false)
     }
-    if (props.numberOfMonths) {
+    if (numberOfMonths) {
+      console.log("prout")
       setAllMonths(
-        getMonthDays(getNextMonths(numberOfMonths ? numberOfMonths : 1)),
+        getMonthDays(getNextMonths(numberOfMonths2 ? numberOfMonths2 : 1)),
       )
     }
-  }, [numberOfMonths, currentDate, nextMonthTrue])
+  }, [numberOfMonths2, currentDate, nextMonthTrue])
 
   useEffect(() => {
     if (startDate) {
@@ -182,7 +175,7 @@ export const AcsDateRange: React.FC<IProps> = ({
 
   useEffect(() => {
     if (startDate && endDate) {
-      handleChange({ startDate, endDate, currentDate: dayjs(currentDate) })
+      handleChange({ startDate, endDate, currentDate: dayjs(new Date()) })
     }
   }, [startDate, endDate, currentDate])
 
@@ -191,7 +184,7 @@ export const AcsDateRange: React.FC<IProps> = ({
     setEndDate(null)
     handleChange({ startDate: null, endDate: null, currentDate: null })
   }
-
+  console.log(numberOfMonths2, "patate")
   return (
     <FormControlLayout label={label}>
       <Popover placement={screenSize === "base" ? "bottom-end" : "bottom"}>
@@ -418,11 +411,8 @@ export const AcsDateRange: React.FC<IProps> = ({
                 _hover={{ backgroundColor: "none" }}
                 onClick={() =>
                   setCurrentDate(
-                    dayjs(currentDate)
-                      .subtract(
-                        numberOfMonths ? numberOfMonths + 1 : 2,
-                        "month",
-                      )
+                    dayjs(currentMonth)
+                      .subtract(numberOfMonths, "month")
                       .toDate(),
                   )
                 }
@@ -434,32 +424,11 @@ export const AcsDateRange: React.FC<IProps> = ({
                 w={"full"}
                 columns={{
                   base: 1,
-                  md: numberOfMonths ? numberOfMonths - 1 : 2,
-                  lg: numberOfMonths ? numberOfMonths : 3,
-                  xl: numberOfMonths ? numberOfMonths + 1 : 4,
+                  md: numberOfMonths2 < 2 ? numberOfMonths2 : 2,
+                  lg: numberOfMonths2 < 4 ? numberOfMonths2 : 3,
+                  xl: numberOfMonths2 < 5 ? numberOfMonths2 : 4,
                 }}
               >
-                {thisMonth.map((month: any, index: number) => (
-                  <GridDateRange
-                    currentDate={dayjs(currentDate).toDate()}
-                    shortDaysArray={shortDaysArray}
-                    daysArray={daysArray}
-                    handleDayClick={handleDayClick}
-                    handleEndHover={handleEndHover}
-                    startDate={startDate}
-                    endDate={endDate}
-                    setEndHover={setEndHover}
-                    endHover={endHover}
-                    btnColor={btnColor}
-                    hoverColor={hoverColor}
-                    month={month}
-                    key={index}
-                    disabledStart={disabledStart}
-                    disabledStartDatesArray={disabledStartDatesArray}
-                    disabledEnd={disabledEnd}
-                    disabledEndDatesArray={disabledEndDatesArray}
-                  />
-                ))}
                 {allMonths.map((month: any, index: number) => (
                   <GridDateRange
                     currentDate={dayjs(currentDate).add(1, "month").toDate()}
@@ -488,9 +457,7 @@ export const AcsDateRange: React.FC<IProps> = ({
                 _hover={{ backgroundColor: "none" }}
                 onClick={() =>
                   setCurrentDate(
-                    dayjs(currentDate)
-                      .add(numberOfMonths ? numberOfMonths + 1 : 2, "month")
-                      .toDate(),
+                    dayjs(currentMonth).add(numberOfMonths, "month").toDate(),
                   )
                 }
               >

@@ -20,6 +20,7 @@ export const propsForAcsDateRange = [
   {
     props: "numberOfMonths",
     type: "number",
+    default: 1,
     description: "Nombre de mois voulue affichés",
     required: false,
   },
