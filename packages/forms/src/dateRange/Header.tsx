@@ -22,8 +22,6 @@ const Header: React.FC<IProps> = ({
   isOpen,
   screenSize,
 }) => {
-  console.log(onOpen, "onOpen")
-  console.log(isOpen, "isOpen")
   return screenSize !== "base" ? (
     <Button
       minW={{ base: "full", md: 400 }}
