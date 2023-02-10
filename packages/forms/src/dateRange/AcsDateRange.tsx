@@ -313,38 +313,36 @@ export const AcsDateRange: React.FC<IProps> = ({
                     >
                       Date de départ
                     </Text>
-                    <HStack>
-                      <Text fontWeight={"bold"} fontSize={"md"}>
-                        {startDate
-                          ? dayjs(startDate).format(
-                              numericFormat
-                                ? "DD/MM/YYYY"
-                                : "dddd DD MMMM YYYY",
-                            )
-                          : ""}
-                      </Text>
-                      {isOpen && startDate ? (
-                        <HStack
-                          onClick={(e: any) => {
-                            e.stopPropagation()
-                            deleteDate()
-                          }}
-                          backgroundColor={"neutral.300"}
-                          w={"20px"}
-                          h={"20px"}
-                          rounded={"full"}
-                          as={"button"}
-                          position={"absolute"}
-                          alignItems={"center"}
-                          justifyContent={"center"}
-                          right={6}
-                        >
-                          <AisClose boxSize={"14px"} />
-                        </HStack>
-                      ) : null}
-                    </HStack>
+                    <Text fontWeight={"bold"} fontSize={"md"}>
+                      {startDate
+                        ? dayjs(startDate).format(
+                            numericFormat ? "DD/MM/YYYY" : "dddd DD MMMM YYYY",
+                          )
+                        : ""}
+                    </Text>
                   </VStack>
                 </HStack>
+                {isOpen && startDate ? (
+                  <Box
+                    onClick={(e: any) => {
+                      e.stopPropagation()
+                      deleteDate()
+                    }}
+                    backgroundColor={"neutral.300"}
+                    w={"20px"}
+                    h={"20px"}
+                    rounded={"full"}
+                    position={"absolute"}
+                    right={4}
+                    top={1.5}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    display={"flex"}
+                    as={"button"}
+                  >
+                    <AisClose boxSize={"14px"} />
+                  </Box>
+                ) : null}
               </VStack>
               <VStack
                 border={"1px"}
@@ -362,38 +360,36 @@ export const AcsDateRange: React.FC<IProps> = ({
                     >
                       Date d'arrivée
                     </Text>
-                    <HStack>
-                      <Text fontWeight={"bold"} fontSize={"md"}>
-                        {endDate
-                          ? dayjs(endDate).format(
-                              numericFormat
-                                ? "DD/MM/YYYY"
-                                : "dddd DD MMMM YYYY",
-                            )
-                          : ""}
-                      </Text>
-                      {isOpen && endDate ? (
-                        <HStack
-                          onClick={(e: any) => {
-                            e.stopPropagation()
-                            deleteDate()
-                          }}
-                          backgroundColor={"neutral.300"}
-                          w={"20px"}
-                          h={"20px"}
-                          rounded={"full"}
-                          as={"button"}
-                          position={"absolute"}
-                          alignItems={"center"}
-                          justifyContent={"center"}
-                          right={6}
-                        >
-                          <AisClose boxSize={"14px"} />
-                        </HStack>
-                      ) : null}
-                    </HStack>
+                    <Text fontWeight={"bold"} fontSize={"md"}>
+                      {endDate
+                        ? dayjs(endDate).format(
+                            numericFormat ? "DD/MM/YYYY" : "dddd DD MMMM YYYY",
+                          )
+                        : ""}
+                    </Text>
                   </VStack>
                 </HStack>
+                {isOpen && endDate ? (
+                  <Box
+                    onClick={(e: any) => {
+                      e.stopPropagation()
+                      deleteDate()
+                    }}
+                    backgroundColor={"neutral.300"}
+                    w={"20px"}
+                    h={"20px"}
+                    rounded={"full"}
+                    position={"absolute"}
+                    right={4}
+                    bottom={4}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    display={"flex"}
+                    as={"button"}
+                  >
+                    <AisClose boxSize={"14px"} />
+                  </Box>
+                ) : null}
               </VStack>
             </VStack>
           )}
