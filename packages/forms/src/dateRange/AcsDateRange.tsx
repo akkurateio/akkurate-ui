@@ -265,7 +265,7 @@ export const AcsDateRange: React.FC<IProps> = ({
                       : ""}
                   </Text>
                 </VStack>
-                {isOpen && startDate ? (
+                {isOpen && endDate ? (
                   <HStack
                     onClick={(e: any) => {
                       e.stopPropagation()
