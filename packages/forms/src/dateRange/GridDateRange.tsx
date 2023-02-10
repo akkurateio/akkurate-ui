@@ -25,6 +25,7 @@ interface IProps {
   disabledStartDatesArray: string[]
   disabledEnd: number[]
   disabledEndDatesArray: string[]
+  textColor?: string
 }
 
 const GridDAteRange = ({
@@ -42,6 +43,7 @@ const GridDAteRange = ({
   disabledEndDatesArray,
   disabledStart,
   disabledStartDatesArray,
+  textColor,
 }: IProps) => {
   return (
     <SimpleGrid spacing={10}>
@@ -86,6 +88,7 @@ const GridDAteRange = ({
                 disabledStartDatesArray={disabledStartDatesArray}
                 disabledEnd={disabledEnd}
                 disabledEndDatesArray={disabledEndDatesArray}
+                textColor={textColor}
               />
             )
           })}

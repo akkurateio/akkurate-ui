@@ -19,6 +19,7 @@ interface IProps {
   disabledStartDatesArray: string[]
   disabledEnd: number[]
   disabledEndDatesArray: string[]
+  textColor?: string
 }
 
 const DayBtn: FunctionComponent<IProps> = ({
@@ -35,6 +36,7 @@ const DayBtn: FunctionComponent<IProps> = ({
   disabledStart,
   disabledStartDatesArray,
   disabledEnd,
+  textColor = "black",
   disabledEndDatesArray,
 }) => {
   const isDayBetween = (day: any) => {
@@ -126,6 +128,13 @@ const DayBtn: FunctionComponent<IProps> = ({
       border={"1px"}
       borderColor={"transparent"}
       rounded={"full"}
+      color={
+        day.isBetween(startDate, endDate)
+          ? textColor
+          : startDate && endDate
+          ? textColor
+          : "black"
+      }
       fontSize={{ xl: "xs", lg: "xs", md: "xs", base: "xl" }}
       _hover={{ backgroundColor: "none", border: "1px" }}
       _disabled={{
