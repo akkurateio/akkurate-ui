@@ -232,12 +232,12 @@ export const AcsDateRange: React.FC<IProps> = ({
                     }}
                     backgroundColor={"neutral.300"}
                     w={"20px"}
-                    h={"16px"}
+                    h={"20px"}
                     rounded={"full"}
                     alignItems={"center"}
                     justifyContent={"center"}
                     display={"flex"}
-                    mt={2.5}
+                    mt={2}
                   >
                     <AisClose boxSize={"14px"} />
                   </Box>
@@ -266,23 +266,25 @@ export const AcsDateRange: React.FC<IProps> = ({
                   </Text>
                 </VStack>
                 {isOpen && startDate ? (
-                  <Box
+                  <HStack
                     onClick={(e: any) => {
                       e.stopPropagation()
                       deleteDate()
                     }}
                     backgroundColor={"neutral.300"}
                     w={"20px"}
-                    h={"16px"}
+                    h={"20px"}
+                    as={"button"}
                     rounded={"full"}
+                    position={"absolute"}
                     alignItems={"center"}
                     justifyContent={"center"}
-                    display={"flex"}
-                    mt={2.5}
-                    mr={3}
+                    verticalAlign={"middle"}
+                    right={3}
+                    top={2}
                   >
                     <AisClose boxSize={"14px"} />
-                  </Box>
+                  </HStack>
                 ) : null}
               </Flex>
             </Button>
