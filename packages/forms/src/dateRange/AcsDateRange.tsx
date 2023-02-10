@@ -184,7 +184,7 @@ export const AcsDateRange: React.FC<IProps> = ({
     setEndDate(null)
     handleChange({ startDate: null, endDate: null, currentDate: null })
   }
-  console.log(numberOfMonths2, "patate")
+
   return (
     <FormControlLayout label={label}>
       <Popover placement={screenSize === "base" ? "bottom-end" : "bottom"}>
