@@ -12,7 +12,7 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import { chakraComponents, Select } from "chakra-react-select"
+import { chakraComponents, Select, components } from "chakra-react-select"
 import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 // @ts-ignore
@@ -137,7 +137,6 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
           instanceId={instanceId}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          blurInputOnSelect={true}
           styles={{
             menuPortal: (base) => ({
               ...base,
