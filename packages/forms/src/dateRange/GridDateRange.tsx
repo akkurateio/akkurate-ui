@@ -26,6 +26,7 @@ interface IProps {
   disabledEnd: number[]
   disabledEndDatesArray: string[]
   textColor?: string
+  hoverCircleColor?: string
 }
 
 const GridDAteRange = ({
@@ -39,6 +40,7 @@ const GridDAteRange = ({
   hoverColor,
   setEndHover,
   month,
+  hoverCircleColor,
   disabledEnd,
   disabledEndDatesArray,
   disabledStart,
@@ -89,6 +91,7 @@ const GridDAteRange = ({
                 disabledEnd={disabledEnd}
                 disabledEndDatesArray={disabledEndDatesArray}
                 textColor={textColor}
+                hoverCircleColor={hoverCircleColor}
               />
             )
           })}

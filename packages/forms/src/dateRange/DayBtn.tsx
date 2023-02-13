@@ -20,6 +20,7 @@ interface IProps {
   disabledEnd: number[]
   disabledEndDatesArray: string[]
   textColor?: string
+  hoverCircleColor?: string
 }
 
 const DayBtn: FunctionComponent<IProps> = ({
@@ -31,6 +32,7 @@ const DayBtn: FunctionComponent<IProps> = ({
   endHover,
   handleEndHover,
   setEndHover,
+  hoverCircleColor,
   btnColor,
   hoverColor,
   disabledStart,
@@ -136,7 +138,13 @@ const DayBtn: FunctionComponent<IProps> = ({
           : "black"
       }
       fontSize={{ xl: "xs", lg: "xs", md: "xs", base: "xl" }}
-      _hover={{ backgroundColor: "none", border: "1px" }}
+      _hover={{
+        backgroundColor: "none",
+        border: "1px",
+        borderColor: hoverCircleColor
+          ? hoverCircleColor
+          : theme.colors.neutral[400],
+      }}
       _disabled={{
         opacity: !isInCurrentMonth ? 0 : 0.5,
         cursor: !isInCurrentMonth ? "pointer" : "not-allowed",

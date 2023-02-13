@@ -1,4 +1,4 @@
-export const propsForAcsDateRange = [
+export const propsForAcsDatePicker = [
   {
     props: "handleChange",
     type: "function",
@@ -64,6 +64,12 @@ export const propsForAcsDateRange = [
     props: "numericFormat",
     type: "boolean",
     description: "Permet d'afficher les dates en format numérique",
+    required: false,
+  },
+  {
+    props: "hoverCircleColor",
+    type: "string",
+    description: "Permet de changer la couleur du cercle de la date survoler",
     required: false,
   },
 ]

@@ -24,7 +24,6 @@ import isSameOrBefore from "dayjs/plugin/isSameOrBefore"
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter"
 import weekday from "dayjs/plugin/weekday"
 import isBetween from "dayjs/plugin/isBetween"
-import Header from "./Header"
 
 interface IProps {
   handleChange: (date: dateDefaut) => void
@@ -39,6 +38,7 @@ interface IProps {
   disabledEndDates?: string[]
   numericFormat?: boolean
   textColor?: string
+  hoverCircleColor?: string
 }
 
 export type dateDefaut = {
@@ -47,7 +47,7 @@ export type dateDefaut = {
   currentDate: Dayjs | null | string
 }
 
-export const AcsDateRange: React.FC<IProps> = ({
+export const AcsDatePicker: React.FC<IProps> = ({
   handleChange = () => {},
   hoverColor = "neutral.500",
   btnColor = "primary.500",
@@ -57,6 +57,7 @@ export const AcsDateRange: React.FC<IProps> = ({
   numberOfMonths = 1,
   disabledEndDates = [],
   numericFormat = false,
+  hoverCircleColor,
   label,
   ...props
 }: IProps) => {
@@ -75,6 +76,8 @@ export const AcsDateRange: React.FC<IProps> = ({
   >([])
   const { onOpen, onClose, isOpen } = useDisclosure()
   const firstDay = dayjs(currentDate).startOf("month").startOf("week")
+  const [deleteDay, setDeleteDay] = useState(false)
+  const firstFieldRef = React.useRef(null)
   const lastDay = dayjs(currentDate).endOf("month").endOf("week")
   const daysArray = Array.from(
     { length: lastDay.diff(firstDay, "days") + 1 },
@@ -177,6 +180,8 @@ export const AcsDateRange: React.FC<IProps> = ({
   }, [startDate, endDate, currentDate])
 
   const deleteDate = () => {
+    console.log("deleteDate")
+    isOpen
     setStartDate(null)
     setEndDate(null)
     handleChange({ startDate: null, endDate: null, currentDate: null })
@@ -185,23 +190,222 @@ export const AcsDateRange: React.FC<IProps> = ({
   return (
     <FormControlLayout label={label}>
       <>
-        <Header
-          startDate={startDate}
-          endDate={endDate}
-          numericFormat={numericFormat}
-          onOpen={onOpen}
-          deleteDate={deleteDate}
-          isOpen={isOpen}
-          screenSize={screenSize}
-        />
-
-        <Popover
-          isOpen={isOpen}
-          onClose={onClose}
-          placement={screenSize === "base" ? "bottom-end" : "bottom"}
-        >
+        <Popover placement={screenSize === "base" ? "bottom-end" : "bottom"}>
           <PopoverTrigger>
-            <Box w={"full"}></Box>
+            {screenSize !== "base" ? (
+              <Button
+                minW={{ base: "full", md: 400 }}
+                w={"full"}
+                border={"1px"}
+                borderColor={"gray.400"}
+                rounded={"full"}
+                alignSelf={"center"}
+                variant={"unstyled"}
+                h={14}
+              >
+                <Flex
+                  textAlign={"center"}
+                  display={{ base: "none", md: "flex" }}
+                  w={"full"}
+                  h={"full"}
+                  justifyContent={"space-between"}
+                  onClick={onOpen}
+                >
+                  <VStack w={"50%"} h={"full"} spacing={1}>
+                    <Text
+                      mt={1.5}
+                      fontSize={startDate ? "2xs" : "sm"}
+                      fontWeight={startDate ? "normal" : "bold"}
+                      w={"full"}
+                    >
+                      Date de départ
+                    </Text>
+                    <Text fontSize={"md"} w={"full"}>
+                      {startDate
+                        ? dayjs(startDate).format(
+                            numericFormat ? "DD/MM/YYYY" : "dddd DD MMMM YYYY",
+                          )
+                        : ""}
+                    </Text>
+                  </VStack>
+                  {isOpen && startDate ? (
+                    <Box
+                      onClick={(e: any) => {
+                        e.stopPropagation()
+                        deleteDate()
+                      }}
+                      backgroundColor={"neutral.300"}
+                      w={"20px"}
+                      h={"20px"}
+                      rounded={"full"}
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                      display={"flex"}
+                      mt={4}
+                    >
+                      <AisClose boxSize={"14px"} />
+                    </Box>
+                  ) : null}
+                  <Box
+                    border={"1px"}
+                    color={"gray.300"}
+                    h={"75%"}
+                    mt={1}
+                    ml={2}
+                  />
+                  <VStack w={"50%"} spacing={1}>
+                    <Text
+                      mt={1.5}
+                      fontSize={endDate ? "2xs" : "sm"}
+                      fontWeight={endDate ? "normal" : "bold"}
+                      w={"full"}
+                    >
+                      {/* eslint-disable-next-line react/no-unescaped-entities */}
+                      Date d'arrivée
+                    </Text>
+                    <Text fontSize={"md"}>
+                      {endDate
+                        ? dayjs(endDate).format(
+                            numericFormat ? "DD/MM/YYYY" : "dddd DD MMMM YYYY",
+                          )
+                        : ""}
+                    </Text>
+                  </VStack>
+                  {isOpen && endDate ? (
+                    <HStack
+                      onClick={(e: any) => {
+                        e.stopPropagation()
+                        deleteDate()
+                      }}
+                      backgroundColor={"neutral.300"}
+                      w={"20px"}
+                      h={"20px"}
+                      as={"button"}
+                      rounded={"full"}
+                      position={"absolute"}
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                      verticalAlign={"middle"}
+                      right={3}
+                      top={4}
+                    >
+                      <AisClose boxSize={"14px"} />
+                    </HStack>
+                  ) : null}
+                </Flex>
+              </Button>
+            ) : (
+              <VStack
+                textAlign={"center"}
+                display={{ base: "flex", md: "none" }}
+                w={"full"}
+                h={"full"}
+                spacing={2}
+                minH={110}
+              >
+                <VStack
+                  border={"1px"}
+                  w={"full"}
+                  h={55}
+                  rounded={"full"}
+                  onClick={onOpen}
+                >
+                  <HStack>
+                    <VStack spacing={1}>
+                      <Text
+                        mt={1.5}
+                        fontSize={startDate ? "2xs" : "sm"}
+                        fontWeight={startDate ? "normal" : "bold"}
+                        w={"full"}
+                      >
+                        Date de départ
+                      </Text>
+                      <Text fontWeight={"bold"} fontSize={"md"}>
+                        {startDate
+                          ? dayjs(startDate).format(
+                              numericFormat
+                                ? "DD/MM/YYYY"
+                                : "dddd DD MMMM YYYY",
+                            )
+                          : ""}
+                      </Text>
+                    </VStack>
+                  </HStack>
+                  {isOpen && startDate ? (
+                    <Box
+                      onClick={(e: any) => {
+                        e.stopPropagation()
+                        deleteDate()
+                      }}
+                      backgroundColor={"neutral.300"}
+                      w={"20px"}
+                      h={"20px"}
+                      rounded={"full"}
+                      position={"absolute"}
+                      right={4}
+                      top={2}
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      display={"flex"}
+                      as={"button"}
+                    >
+                      <AisClose boxSize={"14px"} />
+                    </Box>
+                  ) : null}
+                </VStack>
+                <VStack
+                  border={"1px"}
+                  w={"full"}
+                  h={55}
+                  rounded={"full"}
+                  onClick={onOpen}
+                >
+                  <HStack>
+                    <VStack spacing={1}>
+                      <Text
+                        mt={1.5}
+                        fontSize={endDate ? "2xs" : "sm"}
+                        fontWeight={endDate ? "normal" : "bold"}
+                        w={"full"}
+                      >
+                        {/* eslint-disable-next-line react/no-unescaped-entities */}
+                        Date d'arrivée
+                      </Text>
+                      <Text fontWeight={"bold"} fontSize={"md"}>
+                        {endDate
+                          ? dayjs(endDate).format(
+                              numericFormat
+                                ? "DD/MM/YYYY"
+                                : "dddd DD MMMM YYYY",
+                            )
+                          : ""}
+                      </Text>
+                    </VStack>
+                  </HStack>
+                  {isOpen && endDate ? (
+                    <Box
+                      onClick={(e: any) => {
+                        e.stopPropagation()
+                        deleteDate()
+                      }}
+                      backgroundColor={"neutral.300"}
+                      w={"20px"}
+                      h={"20px"}
+                      rounded={"full"}
+                      position={"absolute"}
+                      right={4}
+                      bottom={4}
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      display={"flex"}
+                      as={"button"}
+                    >
+                      <AisClose boxSize={"14px"} />
+                    </Box>
+                  ) : null}
+                </VStack>
+              </VStack>
+            )}
           </PopoverTrigger>
           <PopoverContent
             width={"full"}
@@ -256,6 +460,7 @@ export const AcsDateRange: React.FC<IProps> = ({
                       disabledEnd={disabledEnd}
                       disabledEndDatesArray={disabledEndDatesArray}
                       textColor={props.textColor}
+                      hoverCircleColor={hoverCircleColor}
                     />
                   ))}
                 </SimpleGrid>
@@ -272,7 +477,7 @@ export const AcsDateRange: React.FC<IProps> = ({
                   <AisChevronRight />
                 </Button>
               </HStack>
-              <Box w={"full"}>
+              <Box w={"full"} mt={3} mb={5}>
                 <Button
                   w={"full"}
                   display={{ base: "flex", md: "none" }}
