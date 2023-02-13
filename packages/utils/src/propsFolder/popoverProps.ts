@@ -53,19 +53,20 @@ export const propsForPopover = [
   {
     props: "triggerBtn",
     type: "ReactNode",
-    description: "Le bouton qui permet ",
+    description:
+      "Le bouton qui permet d'ouvrir ou de fermer le popover personalisable",
     required: false,
   },
   {
     props: "triggerBtnOpen",
     type: "ReactNode",
-    description: "Le bouton qui permet d'ouvrir le popover",
+    description: "bouton qui permet d'ouvrir le popover personalisable",
     required: false,
   },
   {
     props: "triggerBtnClose",
     type: "ReactNode",
-    description: "Le bouton qui permet de fermer le popover",
+    description: "Le bouton qui permet de fermer le popover personalisable",
     required: false,
   },
   {
