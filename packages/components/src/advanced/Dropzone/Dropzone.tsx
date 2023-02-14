@@ -25,7 +25,7 @@ interface IProps {
   maxFilesSize?: number
 }
 
-export const AcsDropzone: React.FC<IProps> = ({
+export const AcsDropzone2: React.FC<IProps> = ({
   accept,
   height = "300px",
   maxFiles = 1,

@@ -24,7 +24,7 @@ const DisplayFile: React.FC<IProps> = ({ file, onDelete }) => {
   return (
     <HStack justifyContent={"space-between"} alignItems={"center"} w={"full"}>
       {file.type.includes("image") ? (
-        <Box w={10} h={10}>
+        <Box w={"20px"} h={"28px"}>
           <Image
             src={URL.createObjectURL(file)}
             alt={file.name}
@@ -35,7 +35,7 @@ const DisplayFile: React.FC<IProps> = ({ file, onDelete }) => {
           />
         </Box>
       ) : (
-        <Box w={10} h={10}>
+        <Box w={"20px"} h={"28px"}>
           {file.name.split(".").pop() && (
             <FileIcon
               extension={file.name.split(".").pop()}
