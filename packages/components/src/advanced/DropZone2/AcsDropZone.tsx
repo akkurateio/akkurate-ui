@@ -27,7 +27,6 @@ interface Iprops {
   height?: string
   clear?: boolean
   minHeight?: string
-  maxFilesSize?: number
 }
 
 export const AcsDropzone: React.FC<Iprops> = ({
@@ -37,12 +36,10 @@ export const AcsDropzone: React.FC<Iprops> = ({
   minHeight = "300px",
   height = "350px",
   boxSize = "150px",
-  maxFilesSize = 0,
   ...props
 }: Iprops) => {
   const [files, setFiles] = useState<File[]>([])
   const [toManyFiles, setToManyFiles] = useState(false)
-  const [toManyFilesSize, setToManyFilesSize] = useState(false)
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -63,9 +60,6 @@ export const AcsDropzone: React.FC<Iprops> = ({
     },
     [files, maxFiles, toManyFiles],
   )
-  console.log("files", files)
-  console.log("toManyFiles", toManyFiles)
-  const maxSizes = maxFilesSize ? maxFilesSize * (1024 * 1024) : 0
 
   useEffect(() => {
     if (props.clear === true) {
@@ -101,7 +95,6 @@ export const AcsDropzone: React.FC<Iprops> = ({
             h={"full"}
             justifyContent={"center"}
             alignItems={"center"}
-            // py={12}
           >
             <AisUploadCloud boxSize={"64px"} color={"blackAlpha.700"} />
             <Box textAlign={"center"}>
@@ -178,7 +171,6 @@ export const AcsDropzone: React.FC<Iprops> = ({
                   onClick={() => {
                     setFiles([])
                     setToManyFiles(false)
-                    setToManyFilesSize(false)
                   }}
                 >
                   <Text>Supprimer les {files.length} fichiers</Text>
