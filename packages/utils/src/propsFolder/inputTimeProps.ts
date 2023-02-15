@@ -52,7 +52,7 @@ export const propsForInputTime = [
     props: "size",
     type: "string",
     default: "md",
-    description: "Permet de changer la taille du select",
+    description: "Permet de changer la taille de l'input",
     required: false,
   },
 ]

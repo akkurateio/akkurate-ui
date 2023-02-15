@@ -76,8 +76,6 @@ export const AcsDatePicker: React.FC<IProps> = ({
   >([])
   const { onOpen, onClose, isOpen } = useDisclosure()
   const firstDay = dayjs(currentDate).startOf("month").startOf("week")
-  const [deleteDay, setDeleteDay] = useState(false)
-  const firstFieldRef = React.useRef(null)
   const lastDay = dayjs(currentDate).endOf("month").endOf("week")
   const daysArray = Array.from(
     { length: lastDay.diff(firstDay, "days") + 1 },
@@ -180,7 +178,6 @@ export const AcsDatePicker: React.FC<IProps> = ({
   }, [startDate, endDate, currentDate])
 
   const deleteDate = () => {
-    console.log("deleteDate")
     isOpen
     setStartDate(null)
     setEndDate(null)

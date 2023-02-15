@@ -109,6 +109,9 @@ export const AcsInputSearch: React.FC<InputProps> = ({
         <InputRightElement height={"full"}>
           {props.value && props.value.length > 0 && (
             <AisClose
+              cursor={"pointer"}
+              _hover={{ backgroundColor: "neutral.200" }}
+              rounded={"full"}
               boxSize={sizeInput?.iconRightControl}
               onClick={() => handleChange("")}
             />

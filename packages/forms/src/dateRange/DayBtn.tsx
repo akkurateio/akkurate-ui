@@ -55,66 +55,57 @@ const DayBtn: FunctionComponent<IProps> = ({
   const isInCurrentMonth = day.isSame(month, "month")
 
   const disabled = () => {
-    if (!startDate && disabledStart.includes(day.day())) {
-      return true
-    }
+    // QUAND ON A PAS ENCORE SELECT LE START DAY ON DISABLE LES JOURS DE DEPART VOULUS
     if (
-      !!startDate &&
-      disabledEndDatesArray.includes(day.format("YYYY-MM-DD"))
+      !startDate &&
+      (disabledStart.includes(day.day()) ||
+        disabledStartDatesArray.includes(day.format("YYYY-MM-DD")))
     ) {
-      return true
-    }
-    if (day.isBefore(startDate) && disabledStart.includes(day.day())) {
       return true
     }
 
-    if (endDate && day.isAfter(startDate) && disabledEnd.includes(day.day())) {
-      return true
-    }
+    // QUAND ON A UN JOUR DE DEPART ON DISABLE LES JOURS DE DEPART VOULUS AVANT LE JOUR DE DEPART
     if (
       startDate &&
-      !endDate &&
-      disabledEnd.includes(day.day()) &&
-      day.isAfter(startDate)
-    ) {
-      return true
-    }
-    if (
-      startDate &&
-      disabledStartDatesArray.includes(day.format("YYYY-MM-DD")) &&
-      day.isAfter(startDate)
-    ) {
-      return false
-    }
-    if (
-      startDate &&
-      disabledEndDatesArray.includes(day.format("YYYY-MM-DD")) &&
+      (disabledStart.includes(day.day()) ||
+        disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))) &&
       day.isBefore(startDate)
     ) {
       return true
     }
-    if (
-      !startDate &&
-      disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))
-    ) {
-      return true
-    }
+
+    // QUAND ON A DEJA UN START DAY ON DISABLE LES JOURS DE RETOUR VOULUS
     if (
       startDate &&
       !endDate &&
-      day.isBefore(startDate) &&
-      disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))
+      (disabledEnd.includes(day.day()) ||
+        disabledEndDatesArray.includes(day.format("YYYY-MM-DD")))
     ) {
       return true
     }
+
+    // QUAND ON A DEJA UN START DAY ET UN END DAY ON DISABLE LES JOURS DE RETOURS VOULUS APRES LE START DAY
     if (
       startDate &&
       endDate &&
-      day.isBefore(startDate) &&
-      disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))
+      (disabledEnd.includes(day.day()) ||
+        disabledEndDatesArray.includes(day.format("YYYY-MM-DD"))) &&
+      day.isAfter(startDate)
     ) {
       return true
     }
+
+    // QUAND ON A DEJA UN START DAY ET UN END DAY ON DISABLE LES JOURS DE DEPART VOULUS AVANT LE START DAY
+    if (
+      startDate &&
+      endDate &&
+      (disabledStart.includes(day.day()) ||
+        disabledStartDatesArray.includes(day.format("YYYY-MM-DD"))) &&
+      day.isBefore(startDate)
+    ) {
+      return true
+    }
+
     return false
   }
 
@@ -148,12 +139,14 @@ const DayBtn: FunctionComponent<IProps> = ({
       _disabled={{
         opacity: !isInCurrentMonth ? 0 : 0.5,
         cursor: !isInCurrentMonth ? "pointer" : "not-allowed",
-        backgroundColor:
-          disabled() && startDate && day.isBetween(startDate, endDate)
+        backgroundColor: disabled()
+          ? day.isSame(startDate) ||
+            day.isSame(endDate) ||
+            day.isBetween(startDate, endDate) ||
+            isDayBetween(day)
             ? theme.colors.neutral[300]
-            : disabled() && isDayBetween(day)
-            ? theme.colors.neutral[300]
-            : "white",
+            : "white"
+          : "white",
       }}
       bgColor={
         startDate && day.isSame(startDate)

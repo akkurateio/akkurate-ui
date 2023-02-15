@@ -107,18 +107,13 @@ export const AcsInputFile: React.FC<InputProps> = ({
 
         {props.value && props.value.length > 0 && (
           <InputRightElement zIndex={2} height={"full"}>
-            <IconButton
-              aria-label="Close"
-              onClick={handleDelete}
-              variant={"ghost"}
+            <AisClose
               cursor={"pointer"}
-              color={"white"}
-              backgroundColor={"neutral.500"}
               rounded={"full"}
-              size={"24px"}
-            >
-              <AisClose boxSize={sizeInput?.boxSize} />
-            </IconButton>
+              _hover={{ backgroundColor: "neutral.200" }}
+              onClick={handleDelete}
+              boxSize={sizeInput?.iconRightControl}
+            />
           </InputRightElement>
         )}
         <Input

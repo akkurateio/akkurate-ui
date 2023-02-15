@@ -289,7 +289,7 @@ export const AcsSelect: React.FC<SelectProps> = ({
                 </Flex>
               </components.SingleValue>
             ),
-            NoOptionsMessage: (props) => (
+            NoOptionsMessage: (...data) => (
               <Box textAlign={"center"}>
                 <Text color={"neutral.300"} fontSize={sizeInput?.fontSize}>
                   Aucun résultat
