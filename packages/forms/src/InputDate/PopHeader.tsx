@@ -89,7 +89,13 @@ const PopHeader = ({ date, setDate }: IProps) => {
             </Button>
           </HStack>
           <Button ml={4} variant={"ghost"} size={"none"} onClick={handleReset}>
-            <AisClose boxSize={"24px"} />
+            <AisClose
+              boxSize={"24px"}
+              cursor={"pointer"}
+              rounded={"full"}
+              _hover={{ backgroundColor: "neutral.200" }}
+              color={"neutral.500"}
+            />
           </Button>
         </Flex>
       </Flex>

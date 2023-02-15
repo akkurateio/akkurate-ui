@@ -51,6 +51,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
   menuPlacement = "auto",
   iconOnLeft = false,
   iconSelected = <AisChevronSort />,
+  isInvalid,
   ...props
 }) => {
   const theme = useTheme()
@@ -77,12 +78,12 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
   const instanceId = useId()
 
   useEffect(() => {
-    if (props.isInvalid) {
+    if (isInvalid) {
       setNotValid(true)
     } else {
       setNotValid(false)
     }
-  }, [notValid, props.isInvalid])
+  }, [notValid, isInvalid])
 
   const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
   const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
@@ -110,11 +111,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
             borderWidth={1}
             borderRight={"none"}
             borderColor={
-              props.isInvalid
-                ? "red.500"
-                : focus
-                ? "primary.500"
-                : "neutral.300"
+              isInvalid ? "red.500" : focus ? "primary.500" : "neutral.300"
             }
             boxShadow={
               focus
@@ -148,8 +145,8 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
               ...base,
               rounded: props.rounded ? props.rounded : "base",
               padding: "0 0",
-              backgroundColor: props.isInvalid ? "red.50" : "white",
-              color: props.isInvalid ? "red.500" : "black",
+              backgroundColor: isInvalid ? "red.50" : "white",
+              color: isInvalid ? "red.500" : "black",
               paddingLeft: props.icon ? 10 : 0,
               height: sizeInput?.heightSelect,
               minHeight: sizeInput?.heightSelect,
@@ -196,6 +193,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
               paddinBottom: "0.25rem",
               paddinRight: "0.60rem",
               fontSize: props.fontSizeTag ? props.fontSizeTag : "2xs",
+              cursor: "pointer",
             }),
             menuList: (provided: any) => ({
               ...provided,
@@ -217,12 +215,14 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
               padding: "0 0",
               paddingLeft: "0.688rem",
               fontSize: sizeInput?.fontSize,
+              cursor: "pointer",
             }),
             inputContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
               margin: "0",
               fontSize: sizeInput?.fontSize,
+              cursor: "pointer",
             }),
             container: (provided: any) => ({
               ...provided,
@@ -231,11 +231,12 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
                 : undefined,
               rounded: props.rounded ? props.rounded : "base",
               borderWidth: "1px",
-              borderColor: props.isInvalid
+              borderColor: isInvalid
                 ? "red.500"
                 : focus
                 ? theme.colors.primary[500]
                 : "neutral.300",
+              cursor: "pointer",
             }),
           }}
           closeMenuOnSelect={false}
@@ -250,7 +251,18 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
             DropdownIndicator: (props) => (
               <VStack {...props} marginRight={"0.5rem"}>
                 {iconSelected ? (
-                  <Icon boxSize={sizeInput?.iconSize}>{iconSelected}</Icon>
+                  <Icon
+                    color={
+                      focus
+                        ? theme.colors.primary[500]
+                        : isInvalid
+                        ? theme.colors.red[500]
+                        : theme.colors.neutral[300]
+                    }
+                    boxSize={sizeInput?.iconSize}
+                  >
+                    {iconSelected}
+                  </Icon>
                 ) : (
                   <AisChevronSort boxSize={sizeInput?.iconSize} />
                 )}
@@ -266,7 +278,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
             Option: ({ children, ...data }) =>
               iconOnLeft ? (
                 <chakraComponents.Option {...data}>
-                  <HStack width={"full"}>
+                  <HStack cursor={"pointer"} width={"full"}>
                     {/*@ts-ignore*/}
                     {data.data.icon}
                     <Text>{children}</Text>
@@ -274,7 +286,7 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
                 </chakraComponents.Option>
               ) : (
                 <chakraComponents.Option {...data}>
-                  <HStack width={"full"}>
+                  <HStack cursor={"pointer"} width={"full"}>
                     <Text>{children}</Text>
                     {/*@ts-ignore*/}
                     {data.data.icon}
@@ -294,11 +306,11 @@ export const AcsSelectMultiple: React.FC<SelectProps> = ({
                   p={2}
                 >
                   <AisClose
+                    cursor={"pointer"}
                     rounded={"full"}
-                    backgroundColor={"neutral.500"}
-                    color={"white"}
-                    boxSize={sizeInput?.boxSize}
-                    ml={2}
+                    _hover={{ backgroundColor: "neutral.200" }}
+                    color={"neutral.500"}
+                    boxSize={sizeInput?.iconSize}
                   />
                 </Box>
               )

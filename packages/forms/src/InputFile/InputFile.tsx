@@ -109,10 +109,11 @@ export const AcsInputFile: React.FC<InputProps> = ({
         {props.value && props.value.length > 0 && (
           <InputRightElement zIndex={2} height={"full"}>
             <AisClose
+              onClick={handleDelete}
               cursor={"pointer"}
               rounded={"full"}
               _hover={{ backgroundColor: "neutral.200" }}
-              onClick={handleDelete}
+              color={"neutral.500"}
               boxSize={sizeInput?.iconRightControl}
             />
           </InputRightElement>

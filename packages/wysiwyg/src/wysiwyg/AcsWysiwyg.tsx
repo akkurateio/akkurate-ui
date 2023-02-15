@@ -167,7 +167,15 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
             <IconButton
               rounded={"base"}
               aria-label={"close"}
-              icon={<AisClose boxSize={"16px"} />}
+              icon={
+                <AisClose
+                  boxSize={"16px"}
+                  cursor={"pointer"}
+                  rounded={"full"}
+                  _hover={{ backgroundColor: "neutral.200" }}
+                  color={"neutral.500"}
+                />
+              }
               size={"xs"}
               onClick={() => setIsDropzoneOpen(false)}
             />

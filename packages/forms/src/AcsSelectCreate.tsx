@@ -221,6 +221,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
               padding: "0 0",
               paddingLeft: "0.688rem",
               fontSize: sizeInput?.fontSize,
+              cursor: "pointer",
             }),
             multiValue: (provided: any, state: any) => ({
               ...provided,
@@ -235,12 +236,14 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
               paddinBottom: "0.25rem",
               paddinRight: "0.60rem",
               fontSize: props.fontSizeTag ? props.fontSizeTag : "2xs",
+              cursor: "pointer",
             }),
             inputContainer: (provided: any) => ({
               ...provided,
               padding: "0 0",
               margin: "0",
               fontSize: sizeInput?.fontSize,
+              cursor: "pointer",
             }),
             container: (provided: any) => ({
               ...provided,
@@ -260,7 +263,18 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
             DropdownIndicator: (props) => (
               <VStack {...props} marginRight={"0.5rem"}>
                 {iconSelected ? (
-                  <Icon boxSize={sizeInput?.iconSize}>{iconSelected}</Icon>
+                  <Icon
+                    color={
+                      focus
+                        ? theme.colors.primary[500]
+                        : isInvalid
+                        ? theme.colors.red[500]
+                        : theme.colors.neutral[300]
+                    }
+                    boxSize={sizeInput?.iconSize}
+                  >
+                    {iconSelected}
+                  </Icon>
                 ) : (
                   <AisChevronSort boxSize={sizeInput?.iconSize} />
                 )}

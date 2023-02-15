@@ -240,7 +240,13 @@ export const AcsDatePicker: React.FC<IProps> = ({
                       display={"flex"}
                       mt={4}
                     >
-                      <AisClose boxSize={"14px"} />
+                      <AisClose
+                        boxSize={"14px"}
+                        cursor={"pointer"}
+                        rounded={"full"}
+                        _hover={{ backgroundColor: "neutral.200" }}
+                        color={"neutral.500"}
+                      />
                     </Box>
                   ) : null}
                   <Box
@@ -286,7 +292,13 @@ export const AcsDatePicker: React.FC<IProps> = ({
                       right={3}
                       top={4}
                     >
-                      <AisClose boxSize={"14px"} />
+                      <AisClose
+                        boxSize={"14px"}
+                        cursor={"pointer"}
+                        rounded={"full"}
+                        _hover={{ backgroundColor: "neutral.200" }}
+                        color={"neutral.500"}
+                      />
                     </HStack>
                   ) : null}
                 </Flex>
@@ -346,7 +358,13 @@ export const AcsDatePicker: React.FC<IProps> = ({
                       display={"flex"}
                       as={"button"}
                     >
-                      <AisClose boxSize={"14px"} />
+                      <AisClose
+                        boxSize={"14px"}
+                        cursor={"pointer"}
+                        rounded={"full"}
+                        _hover={{ backgroundColor: "neutral.200" }}
+                        color={"neutral.500"}
+                      />
                     </Box>
                   ) : null}
                 </VStack>
@@ -397,7 +415,13 @@ export const AcsDatePicker: React.FC<IProps> = ({
                       display={"flex"}
                       as={"button"}
                     >
-                      <AisClose boxSize={"14px"} />
+                      <AisClose
+                        boxSize={"14px"}
+                        cursor={"pointer"}
+                        rounded={"full"}
+                        _hover={{ backgroundColor: "neutral.200" }}
+                        color={"neutral.500"}
+                      />
                     </Box>
                   ) : null}
                 </VStack>
