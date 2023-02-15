@@ -79,6 +79,7 @@ export const AcsDropzone: React.FC<Iprops> = ({
 
   return (
     <Box
+      backgroundColor={isDragActive ? "neutral.50" : "transparent"}
       border={"1px dashed"}
       minHeight={minHeight}
       height={height}

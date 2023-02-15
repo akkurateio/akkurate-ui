@@ -67,8 +67,8 @@ export const AcsPopover: React.FC<AcsPopoverProps> = ({
             {triggerBtn
               ? triggerBtn
               : isOpen
-              ? triggerBtnOpened
-              : triggerBtnClosed}
+              ? triggerBtnClosed
+              : triggerBtnOpened}
           </PopoverTrigger>
           <Portal>
             <PopoverContent p={3} {...props}>
