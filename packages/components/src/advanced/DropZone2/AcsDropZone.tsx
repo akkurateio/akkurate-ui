@@ -6,16 +6,11 @@ import {
   Flex,
   HStack,
   Text,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react"
 import { useDropzone } from "react-dropzone"
-import ForMultiple from "../Dropzone/ForMultiple"
-import {
-  AisDownload,
-  AisError,
-  AisUploadCloud,
-  AisWarning,
-} from "@akkurateio/icons"
+import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/icons"
 import DisplayFile from "./DisplayFile"
 
 interface Iprops {
@@ -61,6 +56,8 @@ export const AcsDropzone: React.FC<Iprops> = ({
     [files, maxFiles, toManyFiles],
   )
 
+  const screenSize = useBreakpointValue({ base: "base", md: "md" })
+
   useEffect(() => {
     if (props.clear === true) {
       setFiles([])
@@ -86,7 +83,8 @@ export const AcsDropzone: React.FC<Iprops> = ({
       minHeight={minHeight}
       height={height}
       width={"full"}
-      p={5}
+      p={{ base: 4, md: 4 }}
+      pb={{ base: toManyFiles ? 2 : 4, md: 4 }}
     >
       <Flex {...getRootProps()} width={"full"} h={"full"}>
         {files.length === 0 ? (
@@ -129,28 +127,28 @@ export const AcsDropzone: React.FC<Iprops> = ({
           <>
             <input {...getInputProps()} />
             <VStack spacing={4} h={"full"} width={"full"}>
+              {toManyFiles ? (
+                <HStack
+                  w={"full"}
+                  h={"50px"}
+                  backgroundColor={"red.50"}
+                  borderLeftWidth={"2px"}
+                  borderColor={"red.500"}
+                >
+                  <AisError boxSize={"18px"} color={"red.500"} ml={4} />
+                  <Text fontSize={"sm"} color={"red.500"}>
+                    Vous ne pouvez pas charger plus de {maxFiles} fichiers
+                  </Text>
+                </HStack>
+              ) : null}
               <VStack
                 w={"full"}
                 overflow={"auto"}
                 alignItems={"flex-start"}
                 divider={<Divider />}
-                h={"full"}
+                h={toManyFiles ? "calc(100% - 120px)" : "100%"}
               >
-                {toManyFiles ? (
-                  <HStack
-                    w={"full"}
-                    h={"50px"}
-                    backgroundColor={"red.50"}
-                    borderLeftWidth={"2px"}
-                    borderColor={"red.500"}
-                  >
-                    <AisError boxSize={"18px"} color={"red.500"} ml={4} />
-                    <Text fontSize={"sm"} color={"red.500"}>
-                      Vous ne pouvez pas charger plus de {maxFiles} fichiers
-                    </Text>
-                  </HStack>
-                ) : null}
-                <VStack w={"full"} divider={<Divider />} h={"100px"}>
+                <VStack w={"full"} divider={<Divider />}>
                   {files.map((file, idx) => (
                     <DisplayFile
                       key={idx}
@@ -167,7 +165,7 @@ export const AcsDropzone: React.FC<Iprops> = ({
                 experimental_spaceX={{ base: 2, md: 0 }}
               >
                 <Button
-                  size={{ base: "xs", md: "md" }}
+                  size={"xs"}
                   onClick={() => {
                     setFiles([])
                     setToManyFiles(false)
@@ -176,7 +174,7 @@ export const AcsDropzone: React.FC<Iprops> = ({
                   <Text>Supprimer les {files.length} fichiers</Text>
                 </Button>
                 <Button
-                  size={{ base: "xs", md: "md" }}
+                  size={"xs"}
                   onClick={open}
                   colorScheme={isDragActive ? "primary" : "neutral"}
                   backgroundColor={
@@ -187,7 +185,11 @@ export const AcsDropzone: React.FC<Iprops> = ({
                   disabled={toManyFiles}
                 >
                   <AisDownload boxSize={"16px"} />
-                  <Text>Importer un nouveau fichier</Text>
+                  <Text>
+                    {screenSize === "base"
+                      ? "Importer des fichiers"
+                      : "Importer un nouveau fichier"}
+                  </Text>
                 </Button>
               </Flex>
             </VStack>
