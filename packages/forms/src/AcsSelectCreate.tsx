@@ -51,6 +51,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
   menuPlacement = "auto",
   iconOnLeft = false,
   iconSelected = <AisChevronSort />,
+  isInvalid,
   ...props
 }) => {
   const theme = useTheme()
@@ -70,12 +71,12 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
     props.handleChange(value.map((v: any) => v.value))
   }
   useEffect(() => {
-    if (props.isInvalid) {
+    if (isInvalid) {
       setNotValid(true)
     } else {
       setNotValid(false)
     }
-  }, [notValid, props.isInvalid])
+  }, [notValid, isInvalid])
   const instanceId = useId()
   useEffect(() => {
     if (props.options) {
@@ -117,11 +118,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
             borderWidth={1}
             borderRight={"none"}
             borderColor={
-              props.isInvalid
-                ? "red.500"
-                : focus
-                ? "primary.500"
-                : "neutral.300"
+              isInvalid ? "red.500" : focus ? "primary.500" : "neutral.300"
             }
             boxShadow={
               focus
@@ -167,8 +164,8 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
               rounded: props.rounded ? props.rounded : "base",
               padding: "0 0",
               paddingLeft: props.icon ? 10 : 0,
-              backgroundColor: props.isInvalid ? "red.50" : "white",
-              color: props.isInvalid ? "red.500" : "black",
+              backgroundColor: isInvalid ? "red.50" : "white",
+              color: isInvalid ? "red.500" : "black",
               outline: "none",
               fontSize: sizeInput?.fontSize,
               height: sizeInput?.heightSelect,
@@ -252,7 +249,7 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
                 : undefined,
               rounded: props.rounded ? props.rounded : "base",
               borderWidth: "1px",
-              borderColor: props.isInvalid
+              borderColor: isInvalid
                 ? "red.500"
                 : focus
                 ? theme.colors.primary[500]
