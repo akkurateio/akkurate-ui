@@ -1,13 +1,22 @@
 import {
   Box,
+  Divider,
   FormControlOptions,
+  HStack,
   HTMLChakraProps,
   Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   useBreakpointValue,
   VStack,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 // @ts-ignore
@@ -45,10 +54,24 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
   ...props
 }) => {
   const [isVisible, setIsVisible] = useState(true)
+  const [isOpened, setIsOpened] = useState(false)
+  const [text, setText] = useState("")
 
   const sizeState = useBreakpointValue(typeof size === "object" ? size : {})
 
   const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
+
+  useEffect(() => {
+    if (props.value && String(props.value).length >= 3) {
+      setIsOpened(true)
+    }
+  }, [props.value])
+
+  useEffect(() => {
+    if (text) {
+      handleChange(text)
+    }
+  }, [text])
 
   return (
     <FormControlLayout
@@ -85,6 +108,9 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
             if (e.target.value.length >= 3) {
               setIsVisible(true)
             }
+            if (text !== e.target.value) {
+              setText(e.target.value)
+            }
             handleChange(e.target.value)
           }}
         />
@@ -102,31 +128,46 @@ export const AcsInputAutocomplete: React.FC<InputProps> = ({
             borderBottomLeftRadius={4}
             borderBottomRightRadius={4}
           >
-            {
-              // show the first 10 results of the search
-              resultsArray
-                .filter((result) =>
-                  result
-                    .toLowerCase()
-                    .includes(String(props.value).toLowerCase()),
-                )
-                .slice(0, 10)
-                .map((result, idx) => (
-                  <Box
-                    key={idx}
-                    bg={"gray.100"}
-                    width={"full"}
-                    px={3}
-                    cursor={"pointer"}
-                    onClick={() => {
-                      handleChange(result)
-                      setIsVisible(false)
-                    }}
-                  >
-                    {result}
-                  </Box>
-                ))
-            }
+            <Popover
+              isOpen={isOpened}
+              onClose={() => setIsOpened(false)}
+              placement={"bottom-start"}
+              autoFocus={false}
+              closeOnBlur={true}
+            >
+              <PopoverContent
+                h={"full"}
+                mt={10}
+                backgroundColor={"yellow.100"}
+                w={"full"}
+              >
+                {
+                  // show the first 10 results of the search
+                  resultsArray
+                    .filter((result) =>
+                      result
+                        .toLowerCase()
+                        .includes(String(props.value).toLowerCase()),
+                    )
+                    .slice(0, 10)
+                    .map((result, idx) => (
+                      <Box
+                        backgroundColor={"blue.200"}
+                        w={"full"}
+                        h={"full"}
+                        key={idx}
+                        onClick={() => {
+                          setText(result)
+                          setIsOpened(false)
+                        }}
+                        cursor={"pointer"}
+                      >
+                        {result}
+                      </Box>
+                    ))
+                }
+              </PopoverContent>
+            </Popover>
           </VStack>
         )}
     </FormControlLayout>
