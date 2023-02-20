@@ -32,6 +32,7 @@
     "@types/react-table": "^7.7.14"
   },
   "dependencies": {
+    "@akkurateio/icons": "^0.0.96",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",

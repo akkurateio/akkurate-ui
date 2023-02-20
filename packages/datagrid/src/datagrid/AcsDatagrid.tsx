@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import FormControlLayout from "@akkurateio/forms/src/FormControlLayout"
 
 import {
@@ -10,57 +10,84 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react"
+import { useTable } from "react-table"
+import { AisChevronDown, AisChevronSort, AisChevronUp } from "@akkurateio/icons"
 
 interface Iprops {
-  headers: { id: string | number; column: string }[]
-  lines: any[]
+  columns: any[]
+  data: any[]
+  selectedColonne: (id?: string) => void
+  sortByAcs: boolean
+  setSortByAcs: (value: boolean) => void
+  selected: string
 }
 
-export const AcsDatagrid: React.FC<Iprops> = ({ headers, lines }) => {
-  // const [columns, setColums] = useState<any>([])
-
-  // faire une boucle pour récupérer les colonnes de la ligne
-  const indexLine = (lines: any[]) => {
-    const columns: any = []
-    lines.map((line) => {
-      columns.push(Object.keys(line))
-    })
-    return columns
-    //find the index of the column whre startwith column
+export const AcsDatagrid: React.FC<Iprops> = ({
+  columns,
+  data,
+  selectedColonne,
+  sortByAcs,
+  setSortByAcs,
+  selected,
+}: Iprops) => {
+  const handleSort = (id: string) => {
+    selectedColonne(id)
+    setSortByAcs(!sortByAcs)
   }
 
-  console.log(indexLine(lines))
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data })
 
   return (
     <FormControlLayout>
-      <TableContainer w={"full"}>
-        <Table w={"full"} variant={"unstyled"}>
+      <TableContainer>
+        <Table variant={"unstyled"} {...getTableProps()}>
           <Thead>
-            <Tr>
-              {headers.map((header, idx) => (
-                <Th textAlign={"center"} borderWidth={"1px"} key={idx}>
-                  {header.column}
-                </Th>
-              ))}
-            </Tr>
+            {headerGroups.map((headerGroup) => (
+              <Tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <Th borderWidth={"1px"} {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                    {selected === column.id && sortByAcs ? (
+                      <AisChevronUp
+                        ml={5}
+                        onClick={() => handleSort(column.id)}
+                        cursor={"pointer"}
+                      />
+                    ) : selected === column.id && !sortByAcs ? (
+                      <AisChevronDown
+                        ml={5}
+                        onClick={() => handleSort(column.id)}
+                        cursor={"pointer"}
+                      />
+                    ) : (
+                      <AisChevronSort
+                        ml={5}
+                        onClick={() => handleSort(column.id)}
+                        cursor={"pointer"}
+                      />
+                    )}
+                  </Th>
+                ))}
+              </Tr>
+            ))}
           </Thead>
-          <Tbody w={"full"}>
-            {/*{lines.map((line, idx) => (*/}
-            {/*  <Tr key={idx}>*/}
-            {/*    <Td textAlign={"center"} borderWidth={"1px"}>*/}
-            {/*      {line.column1}*/}
-            {/*    </Td>*/}
-            {/*<Td textAlign={"center"} borderWidth={"1px"}>*/}
-            {/*  {line.nom}*/}
-            {/*</Td>*/}
-            {/*<Td textAlign={"center"} borderWidth={"1px"}>*/}
-            {/*  {line.age}*/}
-            {/*</Td>*/}
-            {/*<Td textAlign={"center"} borderWidth={"1px"}>*/}
-            {/*  {line.sexe}*/}
-            {/*</Td>*/}
-            {/*</Tr>*/}
-            {/*))}*/}
+
+          <Tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row)
+              return (
+                <Tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <Td borderWidth={"1px"} {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </Td>
+                    )
+                  })}
+                </Tr>
+              )
+            })}
           </Tbody>
         </Table>
       </TableContainer>
