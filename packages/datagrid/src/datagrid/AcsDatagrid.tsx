@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import FormControlLayout from "@akkurateio/forms/src/FormControlLayout"
 
 import {
+  Box,
+  HStack,
+  Input,
   Table,
   TableContainer,
   Tbody,
@@ -11,15 +14,29 @@ import {
   Tr,
 } from "@chakra-ui/react"
 import { useTable } from "react-table"
-import { AisChevronDown, AisChevronSort, AisChevronUp } from "@akkurateio/icons"
+import {
+  AisChevronDown,
+  AisChevronSort,
+  AisChevronUp,
+  AisClose,
+} from "@akkurateio/icons"
+import { AcsPaginate, AcsPaginateSecondary } from "@akkurateio/components"
 
 interface Iprops {
-  columns: any[]
+  columns: {
+    Header: string
+    accessor: string
+    columns?: { header: string; accessor: string }[]
+  }[]
   data: any[]
   selectedColonne: (id?: string) => void
   sortByAcs: boolean
   setSortByAcs: (value: boolean) => void
   selected: string
+  paginate: number
+  setPaginate: (value: number) => void
+  total: number
+  handleChange: (value: string) => void
 }
 
 export const AcsDatagrid: React.FC<Iprops> = ({
@@ -29,6 +46,10 @@ export const AcsDatagrid: React.FC<Iprops> = ({
   sortByAcs,
   setSortByAcs,
   selected,
+  paginate,
+  setPaginate,
+  total,
+  handleChange,
 }: Iprops) => {
   const handleSort = (id: string) => {
     selectedColonne(id)
@@ -40,6 +61,14 @@ export const AcsDatagrid: React.FC<Iprops> = ({
 
   return (
     <FormControlLayout>
+      <Box alignItems={"flex-end"} textAlign={"end"} right={0}>
+        <Input
+          type={"search"}
+          onChange={(e) => handleChange(e.target.value)}
+          w={150}
+        ></Input>
+      </Box>
+
       <TableContainer>
         <Table variant={"unstyled"} {...getTableProps()}>
           <Thead>
@@ -67,6 +96,14 @@ export const AcsDatagrid: React.FC<Iprops> = ({
                         cursor={"pointer"}
                       />
                     )}
+                    {selected === column.id ? (
+                      <AisClose
+                        cursor={"pointer"}
+                        onClick={() => handleSort("")}
+                      />
+                    ) : (
+                      ""
+                    )}
                   </Th>
                 ))}
               </Tr>
@@ -91,6 +128,22 @@ export const AcsDatagrid: React.FC<Iprops> = ({
           </Tbody>
         </Table>
       </TableContainer>
+      <HStack width={"full"} justifyContent={"space-between"}>
+        <Box>
+          <AcsPaginate
+            max={total}
+            current={paginate}
+            handleChangePage={setPaginate}
+          />
+        </Box>
+        <Box>
+          <AcsPaginateSecondary
+            max={total}
+            current={paginate}
+            handleChangePage={setPaginate}
+          />
+        </Box>
+      </HStack>
     </FormControlLayout>
   )
 }
