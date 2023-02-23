@@ -1,7 +1,16 @@
-import React, { useEffect, useState } from "react"
+// @ts-ignore
+import { AcsPaginate, AcsPaginateSecondary } from "@akkurateio/components"
+import {
+  AisChevronDown,
+  AisChevronSort,
+  AisChevronUp,
+  AisClose,
+} from "@akkurateio/icons"
 import {
   Box,
+  Flex,
   HStack,
+  Spinner,
   Table,
   TableContainer,
   Tbody,
@@ -9,21 +18,11 @@ import {
   Th,
   Thead,
   Tr,
-  Flex,
-  Button,
-  VStack,
   useBreakpointValue,
-  Spinner,
-  Text,
+  VStack,
 } from "@chakra-ui/react"
+import React from "react"
 import { useTable } from "react-table"
-import {
-  AisChevronDown,
-  AisChevronSort,
-  AisChevronUp,
-  AisClose,
-} from "@akkurateio/icons"
-import { AcsPaginate, AcsPaginateSecondary } from "@akkurateio/components"
 
 interface Iprops {
   columns: {
