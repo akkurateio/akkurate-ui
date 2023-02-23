@@ -1,4 +1,4 @@
-export const AcsDatagrid = [
+export const propsForDatagrid = [
   {
     name: "data",
     type: "Array",
