@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import {
   Box,
   HStack,
@@ -13,6 +13,8 @@ import {
   Button,
   VStack,
   useBreakpointValue,
+  Spinner,
+  Text,
 } from "@chakra-ui/react"
 import { useTable } from "react-table"
 import {
@@ -22,25 +24,49 @@ import {
   AisClose,
 } from "@akkurateio/icons"
 import { AcsPaginate, AcsPaginateSecondary } from "@akkurateio/components"
-import { AcsInputSearch } from "@akkurateio/forms"
 
 interface Iprops {
   columns: {
     Header: string
     accessor: string
-    columns?: { header: string; accessor: string }[]
+    withSort: boolean
+    Cell?: (props: any) => JSX.Element | null
   }[]
   data: any[]
-  selectedColonne: (id?: string) => void
+  selectedColonne: (id: string) => void
   sortByAcs: boolean
   setSortByAcs: (value: boolean) => void
   selected: string
   paginate: number
   setPaginate: (value: number) => void
   total: number
-  handleChange: (value: string) => void
-  isOpen: boolean
-  setIsOpen: (value: boolean) => void
+  size?: "sm" | "md" | "lg" | string
+  borderHeaderWith?: string
+  borderColonneWith?: string
+  variant?: "simple" | "striped" | "unstyled"
+  colonneFontSize?:
+    | "xs"
+    | "sm"
+    | "md"
+    | "lg"
+    | "xl"
+    | "2xl"
+    | "3xl"
+    | "4xl"
+    | "5xl"
+    | string
+  colonneTitleFontSize?:
+    | "xs"
+    | "sm"
+    | "md"
+    | "lg"
+    | "xl"
+    | "2xl"
+    | "3xl"
+    | "4xl"
+    | "5xl"
+    | string
+  isLoading?: boolean
 }
 
 export const AcsDatagrid: React.FC<Iprops> = ({
@@ -53,153 +79,106 @@ export const AcsDatagrid: React.FC<Iprops> = ({
   paginate,
   setPaginate,
   total,
-  handleChange,
-  isOpen,
-  setIsOpen,
+  size = "md",
+  colonneTitleFontSize = "sm",
+  colonneFontSize = "xs",
+  isLoading = false,
+  borderHeaderWith = "",
+  borderColonneWith = "",
+  variant = "striped",
 }: Iprops) => {
   const handleSort = (id: string) => {
     selectedColonne(id)
     setSortByAcs(!sortByAcs)
   }
-
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data })
 
   const screenSize = useBreakpointValue({ base: "base", md: "md", lg: "lg" })
 
-  return (
+  const SortByAsc = (column: any, columns: any) => {
+    if (selected === column.id && sortByAcs) {
+      return (
+        <HStack spacing={2}>
+          <AisChevronUp
+            ml={5}
+            boxSize={"16px"}
+            onClick={() => handleSort(column.id)}
+            cursor={"pointer"}
+          />
+          <AisClose
+            boxSize={"16px"}
+            cursor={"pointer"}
+            onClick={() => handleSort("")}
+          />
+        </HStack>
+      )
+    } else if (selected === column.id && !sortByAcs) {
+      return (
+        <HStack spacing={2}>
+          <AisChevronDown
+            ml={5}
+            boxSize={"16px"}
+            onClick={() => handleSort(column.id)}
+            cursor={"pointer"}
+          />
+          <AisClose
+            boxSize={"16px"}
+            cursor={"pointer"}
+            onClick={() => handleSort("")}
+          />
+        </HStack>
+      )
+    } else if (selected !== column.id) {
+      return (
+        <HStack spacing={2}>
+          <AisChevronSort
+            ml={5}
+            boxSize={"16px"}
+            onClick={() => handleSort(column.id)}
+            cursor={"pointer"}
+          />
+          <Box w={"16px"} />
+        </HStack>
+      )
+    }
+  }
+
+  return isLoading ? (
+    <Spinner alignSelf={"center"} />
+  ) : (
     <Box w={"full"} position={"relative"}>
-      {/*{isOpen && (*/}
-      {/*  <Flex*/}
-      {/*    zIndex={1}*/}
-      {/*    position={"absolute"}*/}
-      {/*    top={0}*/}
-      {/*    left={0}*/}
-      {/*    right={0}*/}
-      {/*    bottom={0}*/}
-      {/*    alignItems={"center"}*/}
-      {/*    justifyContent={"center"}*/}
-      {/*  >*/}
-      {/*    <HStack*/}
-      {/*      maxW={"md"}*/}
-      {/*      spacing={3}*/}
-      {/*      p={3}*/}
-      {/*      rounded={"md"}*/}
-      {/*      bg={"gray.700"}*/}
-      {/*      color={"white"}*/}
-      {/*      boxShadow={"lg"}*/}
-      {/*      alignItems={"center"}*/}
-      {/*    >*/}
-      {/*      <AisSearch boxSize={"24px"} />*/}
-      {/*      <AcsInputSearch*/}
-      {/*        colorScheme={"whiteAlpha"}*/}
-      {/*        variant={"solid"}*/}
-      {/*        placeholder={"Rechercher par mot-clé"}*/}
-      {/*        // onChange={(e) => handleChange(e.target.value)}*/}
-      {/*        handleChange={handleChange}*/}
-      {/*      ></AcsInputSearch>*/}
-      {/*      <Button variant={"unstyled"} size={"none"} type={"button"}>*/}
-      {/*        <AisClose boxSize={"24px"} onClick={() => setIsOpen(!isOpen)} />*/}
-      {/*      </Button>*/}
-      {/*    </HStack>*/}
-      {/*  </Flex>*/}
-      {/*)}*/}
       <VStack spacing={3}>
         <TableContainer width={"full"}>
-          <Table width={"full"} variant={"unstyled"} {...getTableProps()}>
+          <Table
+            size={size}
+            width={"full"}
+            variant={variant}
+            {...getTableProps()}
+          >
             <Thead position={"sticky"} top={0} width={"full"}>
               {headerGroups.map((headerGroup) => (
                 <Tr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
-                    <Th borderWidth={"1px"} {...column.getHeaderProps()}>
+                    <Th
+                      fontSize={colonneTitleFontSize}
+                      borderWidth={borderHeaderWith}
+                      {...column.getHeaderProps()}
+                    >
                       <Flex
                         alignItems={"center"}
                         justifyContent={"space-between"}
                       >
                         {column.render("Header")}
-                        {selected === column.id && sortByAcs ? (
-                          <HStack spacing={2}>
-                            <AisChevronUp
-                              ml={5}
-                              boxSize={"16px"}
-                              onClick={() => handleSort(column.id)}
-                              cursor={"pointer"}
-                            />
-                            <AisClose
-                              boxSize={"16px"}
-                              cursor={"pointer"}
-                              onClick={() => handleSort("")}
-                            />
-                          </HStack>
-                        ) : selected === column.id && !sortByAcs ? (
-                          <HStack spacing={2}>
-                            <AisChevronDown
-                              ml={5}
-                              boxSize={"16px"}
-                              onClick={() => handleSort(column.id)}
-                              cursor={"pointer"}
-                            />
-                            <AisClose
-                              boxSize={"16px"}
-                              cursor={"pointer"}
-                              onClick={() => handleSort("")}
-                            />
-                          </HStack>
-                        ) : (
-                          <AisChevronSort
-                            ml={5}
-                            boxSize={"16px"}
-                            onClick={() => handleSort(column.id)}
-                            cursor={"pointer"}
-                          />
-                        )}
+                        {/*// @ts-ignore*/}
+                        {!(column.withSort === false) &&
+                          SortByAsc(column, columns)}
                       </Flex>
                     </Th>
                   ))}
                 </Tr>
               ))}
             </Thead>
-            {isOpen && (
-              <Tbody p={0} width={"full"}>
-                <Tr>
-                  <Td
-                    borderWidth={"1px"}
-                    p={0}
-                    backgroundColor={"red.200"}
-                    colSpan={4}
-                  >
-                    <HStack
-                      spacing={3}
-                      p={3}
-                      bg={"gray.700"}
-                      color={"white"}
-                      boxShadow={"lg"}
-                      alignItems={"center"}
-                    >
-                      <AcsInputSearch
-                        w={"full"}
-                        colorScheme={"whiteAlpha"}
-                        variant={"solid"}
-                        placeholder={"Rechercher par mot-clé"}
-                        handleChange={handleChange}
-                        boxShadow={"none"}
-                      />
-
-                      <Button
-                        variant={"unstyled"}
-                        size={"none"}
-                        type={"button"}
-                      >
-                        <AisClose
-                          boxSize={"24px"}
-                          onClick={() => setIsOpen(!isOpen)}
-                        />
-                      </Button>
-                    </HStack>
-                  </Td>
-                </Tr>
-              </Tbody>
-            )}
             <Tbody
               width={"full"}
               overflow={{ base: "auto" }}
@@ -212,9 +191,10 @@ export const AcsDatagrid: React.FC<Iprops> = ({
                     {row.cells.map((cell) => {
                       return (
                         <Td
+                          fontSize={colonneFontSize}
                           wordBreak={"break-word"}
                           whiteSpace={"normal"}
-                          borderWidth={"1px"}
+                          borderWidth={borderColonneWith}
                           {...cell.getCellProps()}
                         >
                           {cell.render("Cell")}
