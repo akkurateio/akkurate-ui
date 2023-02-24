@@ -40,8 +40,8 @@ interface Iprops {
   setPaginate: (value: number) => void
   total: number
   size?: "sm" | "md" | "lg" | string
-  borderHeaderWith?: string
-  borderColonneWith?: string
+  borderHeaderWidth?: string
+  borderColonneWidth?: string
   variant?: "simple" | "striped" | "unstyled"
   colonneFontSize?:
     | "xs"
@@ -66,6 +66,12 @@ interface Iprops {
     | "5xl"
     | string
   isLoading?: boolean
+  backgroundBoxColor?: string
+  borderBoxColor?: string
+  TheadBackgroundColor?: string
+  boxRounded?: string
+  borderBoxWidth?: string
+  boxSize?: string
 }
 
 export const AcsDatagrid: React.FC<Iprops> = ({
@@ -78,13 +84,19 @@ export const AcsDatagrid: React.FC<Iprops> = ({
   paginate,
   setPaginate,
   total,
+  boxSize = "16px",
   size = "md",
   colonneTitleFontSize = "sm",
   colonneFontSize = "xs",
   isLoading = false,
-  borderHeaderWith = "",
-  borderColonneWith = "",
+  borderHeaderWidth = "",
+  borderColonneWidth = "",
   variant = "striped",
+  backgroundBoxColor = "",
+  borderBoxColor = "",
+  borderBoxWidth = "",
+  boxRounded = "",
+  TheadBackgroundColor = "white",
 }: Iprops) => {
   const handleSort = (id: string) => {
     selectedColonne(id)
@@ -101,12 +113,12 @@ export const AcsDatagrid: React.FC<Iprops> = ({
         <HStack spacing={2}>
           <AisChevronUp
             ml={5}
-            boxSize={"16px"}
+            boxSize={boxSize}
             onClick={() => handleSort(column.id)}
             cursor={"pointer"}
           />
           <AisClose
-            boxSize={"16px"}
+            boxSize={boxSize}
             cursor={"pointer"}
             onClick={() => handleSort("")}
           />
@@ -117,12 +129,12 @@ export const AcsDatagrid: React.FC<Iprops> = ({
         <HStack spacing={2}>
           <AisChevronDown
             ml={5}
-            boxSize={"16px"}
+            boxSize={boxSize}
             onClick={() => handleSort(column.id)}
             cursor={"pointer"}
           />
           <AisClose
-            boxSize={"16px"}
+            boxSize={boxSize}
             cursor={"pointer"}
             onClick={() => handleSort("")}
           />
@@ -133,11 +145,11 @@ export const AcsDatagrid: React.FC<Iprops> = ({
         <HStack spacing={2}>
           <AisChevronSort
             ml={5}
-            boxSize={"16px"}
+            boxSize={boxSize}
             onClick={() => handleSort(column.id)}
             cursor={"pointer"}
           />
-          <Box w={"16px"} />
+          <Box w={boxSize} />
         </HStack>
       )
     }
@@ -146,86 +158,103 @@ export const AcsDatagrid: React.FC<Iprops> = ({
   return isLoading ? (
     <Spinner alignSelf={"center"} />
   ) : (
-    <Box w={"full"} position={"relative"}>
-      <VStack spacing={3}>
-        <TableContainer width={"full"}>
-          <Table
-            size={size}
-            width={"full"}
-            variant={variant}
-            {...getTableProps()}
+    <>
+      <Box
+        w={"full"}
+        bg={backgroundBoxColor}
+        borderColor={borderBoxColor}
+        borderWidth={borderBoxWidth}
+        rounded={boxRounded}
+        h={"full"}
+        overflow={"auto"}
+        //do a rounded scrollBar
+        sx={{
+          "&::-webkit-scrollbar-thumb": {
+            rounded: "10px",
+          },
+        }}
+      >
+        <Table
+          size={size}
+          width={"full"}
+          variant={variant}
+          {...getTableProps()}
+        >
+          <Thead
+            zIndex={1}
+            position={"sticky"}
+            top={0}
+            bg={TheadBackgroundColor}
           >
-            <Thead position={"sticky"} top={0} width={"full"}>
-              {headerGroups.map((headerGroup) => (
-                <Tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => (
-                    <Th
-                      fontSize={colonneTitleFontSize}
-                      borderWidth={borderHeaderWith}
-                      {...column.getHeaderProps()}
+            {headerGroups.map((headerGroup) => (
+              <Tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <Th
+                    fontSize={colonneTitleFontSize}
+                    borderWidth={borderHeaderWidth}
+                    {...column.getHeaderProps()}
+                  >
+                    <Flex
+                      alignItems={"center"}
+                      justifyContent={"space-between"}
                     >
-                      <Flex
-                        alignItems={"center"}
-                        justifyContent={"space-between"}
+                      {column.render("Header")}
+                      {/*// @ts-ignore*/}
+                      {!(column.withSort === false) &&
+                        SortByAsc(column, columns)}
+                    </Flex>
+                  </Th>
+                ))}
+              </Tr>
+            ))}
+          </Thead>
+          <Tbody
+            width={"full"}
+            overflow={{ base: "auto" }}
+            {...getTableBodyProps()}
+          >
+            {rows.map((row) => {
+              prepareRow(row)
+              return (
+                <Tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <Td
+                        fontSize={colonneFontSize}
+                        wordBreak={"break-word"}
+                        whiteSpace={"normal"}
+                        borderWidth={borderColonneWidth}
+                        {...cell.getCellProps()}
                       >
-                        {column.render("Header")}
-                        {/*// @ts-ignore*/}
-                        {!(column.withSort === false) &&
-                          SortByAsc(column, columns)}
-                      </Flex>
-                    </Th>
-                  ))}
+                        {cell.render("Cell")}
+                      </Td>
+                    )
+                  })}
                 </Tr>
-              ))}
-            </Thead>
-            <Tbody
-              width={"full"}
-              overflow={{ base: "auto" }}
-              {...getTableBodyProps()}
-            >
-              {rows.map((row) => {
-                prepareRow(row)
-                return (
-                  <Tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => {
-                      return (
-                        <Td
-                          fontSize={colonneFontSize}
-                          wordBreak={"break-word"}
-                          whiteSpace={"normal"}
-                          borderWidth={borderColonneWith}
-                          {...cell.getCellProps()}
-                        >
-                          {cell.render("Cell")}
-                        </Td>
-                      )
-                    })}
-                  </Tr>
-                )
-              })}
-            </Tbody>
-          </Table>
-        </TableContainer>
-        <HStack width={"full"} justifyContent={"space-between"}>
+              )
+            })}
+          </Tbody>
+        </Table>
+      </Box>
+      <HStack width={"full"} justifyContent={"space-between"}>
+        <Box>
+          <AcsPaginate
+            max={total}
+            current={paginate}
+            handleChangePage={setPaginate}
+          />
+        </Box>
+        {screenSize !== "base" && (
           <Box>
-            <AcsPaginate
+            <AcsPaginateSecondary
               max={total}
               current={paginate}
               handleChangePage={setPaginate}
             />
           </Box>
-          {screenSize !== "base" && (
-            <Box>
-              <AcsPaginateSecondary
-                max={total}
-                current={paginate}
-                handleChangePage={setPaginate}
-              />
-            </Box>
-          )}
-        </HStack>
-      </VStack>
-    </Box>
+        )}
+      </HStack>
+    </>
   )
 }
 
