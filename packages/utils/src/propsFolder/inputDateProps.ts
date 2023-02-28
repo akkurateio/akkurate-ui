@@ -54,4 +54,56 @@ export const propsForInputDate = [
     description: "Permet de changer la taille de l'input",
     required: false,
   },
+  {
+    props: "hoverBg",
+    type: "string",
+    default: "undefined",
+    description: "Permet de changer la couleur de fond au hover",
+    required: false,
+  },
+  {
+    props: "hoverColor",
+    type: "string",
+    default: "undefined",
+    description: "Permet de changer la couleur de texte au hover",
+    required: false,
+  },
+
+  {
+    props: "selectedBg",
+    type: "string",
+    default: "undefined",
+    description: "Permet de changer la couleur de fond du jour sélectionné",
+    required: false,
+  },
+  {
+    props: "selectedColor",
+    type: "string",
+    default: "undefined",
+    description: "Permet de changer la couleur de texte du jour sélectionné",
+    required: false,
+  },
+
+  {
+    props: "currentMonthBg",
+    type: "string",
+    default: "undefined",
+    description: "Permet de changer la couleur de fond du mois courant",
+    required: false,
+  },
+  {
+    props: "currentMonthColor",
+    type: "string",
+    default: "undefined",
+    description: "Permet de changer la couleur de texte du mois courant",
+    required: false,
+  },
+
+  {
+    props: "isEditable",
+    type: "boolean",
+    default: "true",
+    description: "Permet de rendre l'input éditable ou non",
+    required: false,
+  },
 ]
