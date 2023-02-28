@@ -68,7 +68,10 @@ const PopHeader = ({ date, setDate }: IProps) => {
           </Box>
         </Flex>
 
-        <Flex alignItems={"center"} color={"primary.500"}>
+        <Flex
+          alignItems={"center"}
+          color={date.currentMonthBg ?? "primary.500"}
+        >
           <HStack flex={1} alignItems={"center"} spacing={1}>
             <Button
               variant={"ghost"}

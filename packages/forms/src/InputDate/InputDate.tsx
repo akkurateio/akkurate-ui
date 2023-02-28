@@ -1,4 +1,6 @@
+import { sizesAll } from "@akkurateio/utils"
 import {
+  Flex,
   FormControlOptions,
   HTMLChakraProps,
   Input,
@@ -11,7 +13,6 @@ import { DateObject } from "../../types"
 import FormControlLayout from "../FormControlLayout"
 import InputGroupWithShadow from "../InputGroupWithShadow"
 import { PopBtn } from "./PopBtn"
-import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
 
@@ -21,12 +22,20 @@ interface InputOptions {
   label?: string
   error?: string
   hint?: string
+  isEditable?: boolean
   // ---
   minDate?: string | Dayjs
   maxDate?: string | Dayjs
   disabledDays?: number[] // 0 - 6 : 0 - Sunday, 1 - Monday, ...
   disabledDates?: string[] // format : YYYY-MM-DD
   size?: "sm" | "md" | "lg"
+  // ---
+  hoverBg?: string
+  hoverColor?: string
+  selectedBg?: string
+  selectedColor?: string
+  currentMonthBg?: string
+  currentMonthColor?: string
 }
 
 interface InputProps
@@ -38,6 +47,7 @@ interface InputProps
 export const AcsInputDate: React.FC<InputProps> = ({
   handleChange,
   size = "md",
+  isEditable = true,
   ...props
 }) => {
   const propsForInput = () => {
@@ -66,6 +76,13 @@ export const AcsInputDate: React.FC<InputProps> = ({
     maxDate: props.maxDate,
     disabledDays: props.disabledDays,
     disabledDates: props.disabledDates,
+
+    hoverBg: props.hoverBg,
+    hoverColor: props.hoverColor,
+    selectedBg: props.selectedBg,
+    selectedColor: props.selectedColor,
+    currentMonthBg: props.currentMonthBg,
+    currentMonthColor: props.currentMonthColor,
   })
   const [focus, setFocus] = useState(false)
 
@@ -80,6 +97,18 @@ export const AcsInputDate: React.FC<InputProps> = ({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date.selectedDate])
+
+  useEffect(() => {
+    setDate({
+      ...date,
+      minDate: props.minDate,
+      maxDate: props.maxDate,
+      disabledDays: props.disabledDays,
+      disabledDates: props.disabledDates,
+    })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.minDate, props.maxDate, props.disabledDays, props.disabledDates])
 
   const handleManualChange = (e: string) => {
     setDate({
@@ -99,28 +128,57 @@ export const AcsInputDate: React.FC<InputProps> = ({
         width={props.width}
         isInvalid={props.isInvalid}
       >
-        <Input
-          border={"none"}
-          height={"full"}
-          rounded={"base"}
-          width={"full"}
-          type={"date"}
-          {...propsForInput()}
-          fontSize={sizeInput?.fontSize}
-          value={props.value}
-          variant={props.variant}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          focusBorderColor={props.isInvalid ? "red.500" : "primary.500"}
-          _invalid={{
-            borderColor: "red.500",
-            bg: "red.50",
-            color: "red.500",
-          }}
-          px={props.px ? props.px : 2}
-          bg={props.bg ? props.bg : "white"}
-          onChange={(e) => handleManualChange(e.target.value)}
-        />
+        {isEditable ? (
+          <Input
+            border={"none"}
+            height={"full"}
+            rounded={"base"}
+            width={"full"}
+            type={"date"}
+            {...propsForInput()}
+            fontSize={sizeInput?.fontSize}
+            value={props.value}
+            variant={props.variant}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            focusBorderColor={props.isInvalid ? "red.500" : "primary.500"}
+            _invalid={{
+              borderColor: "red.500",
+              bg: "red.50",
+              color: "red.500",
+            }}
+            px={props.px ? props.px : 2}
+            bg={props.bg ? props.bg : "white"}
+            onChange={(e) => handleManualChange(e.target.value)}
+          />
+        ) : (
+          <Flex
+            alignItems={"center"}
+            border={"none"}
+            height={"full"}
+            rounded={"base"}
+            width={"full"}
+            type={"date"}
+            {...propsForInput()}
+            fontSize={sizeInput?.fontSize}
+            value={props.value}
+            variant={props.variant}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            focusBorderColor={props.isInvalid ? "red.500" : "primary.500"}
+            _invalid={{
+              borderColor: "red.500",
+              bg: "red.50",
+              color: "red.500",
+            }}
+            px={props.px ? props.px : 2}
+            bg={props.bg ? props.bg : "white"}
+          >
+            {props.value
+              ? dayjs(props.value).format("DD/MM/YYYY")
+              : "jj/mm/aaaa"}
+          </Flex>
+        )}
 
         <PopBtn
           focus={focus}

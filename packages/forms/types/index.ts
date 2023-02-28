@@ -10,4 +10,11 @@ export type DateObject = {
   maxDate: string | Dayjs | undefined
   disabledDays: number[] | undefined
   disabledDates: string[] | undefined
+  // --- Style props
+  hoverBg?: string
+  hoverColor?: string
+  selectedBg?: string
+  selectedColor?: string
+  currentMonthBg?: string
+  currentMonthColor?: string
 }

@@ -13,35 +13,34 @@ interface IProps {
 const DayItem = ({ day, type, date, setDate }: IProps) => {
   const handleBackgroundColor = (day: Dayjs) => {
     if (date.selectedDate && date.selectedDate.isSame(dayjs(day))) {
-      return "primary.500"
+      return date.selectedBg ?? "primary.500"
     }
 
     if (date.value && dayjs(date.value).isSame(dayjs(day))) {
-      return "primary.500"
+      return date.selectedBg ?? "primary.500"
     }
 
-    if (dayjs(day).isSame(dayjs(), "day")) {
-      if (type === "before" || type === "after") return "gray.100"
-      return "primary.100"
-    }
+    // if (dayjs(day).isSame(dayjs(), "day")) {
+    //   if (type === "before" || type === "after") return "gray.800"
+    //   return "gray.800"
+    // }
 
     if (type === "before" || type === "after") return "transparent"
-    return "primary.100"
+    return date.currentMonthBg ?? "primary.100"
   }
 
   const handleColor = (day: Dayjs) => {
     if (date.selectedDate && date.selectedDate.isSame(dayjs(day))) {
-      return "white"
+      return date.selectedColor ?? "white"
     }
 
     if (date.value && dayjs(date.value).isSame(dayjs(day))) {
-      return "white"
+      return date.selectedColor ?? "white"
     }
 
     if (type === "before" || type === "after") return "gray.500"
-    {
-      return "primary.900"
-    }
+
+    return date.currentMonthColor ?? "primary.900"
   }
 
   const handleWeight = (day: Dayjs) => {
@@ -76,16 +75,16 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
     <Button
       size={"sm"}
       fontWeight={handleWeight(day)}
+      isDisabled={disabledDays(day)}
       bg={handleBackgroundColor(day)}
       color={handleColor(day)}
-      isDisabled={disabledDays(day)}
       _hover={{
-        bg: "primary.300",
-        color: "white",
+        bg: date.hoverBg ?? "primary.700",
+        color: date.hoverColor ?? "primary.200",
       }}
-      _active={{
-        bg: "primary.600",
-      }}
+      // _active={{
+      //   bg: "primary.600",
+      // }}
       onClick={handleClick}
       width={"2.2rem"}
       height={"2.2rem"}
