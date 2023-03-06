@@ -19,7 +19,6 @@ import {
   Thead,
   Tr,
   useBreakpointValue,
-  VStack,
 } from "@chakra-ui/react"
 import React from "react"
 import { useTable } from "react-table"
@@ -107,7 +106,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
 
   const screenSize = useBreakpointValue({ base: "base", md: "md", lg: "lg" })
 
-  const SortByAsc = (column: any, columns: any) => {
+  const SortByAsc = (column: any) => {
     if (selected === column.id && sortByAcs) {
       return (
         <HStack spacing={2}>
@@ -167,11 +166,11 @@ export const AcsDatagrid: React.FC<Iprops> = ({
         rounded={boxRounded}
         h={"full"}
         overflow={"auto"}
-        //do a rounded scrollBar
         sx={{
           "&::-webkit-scrollbar-thumb": {
             rounded: "10px",
           },
+          "&::-webkit-scrollbar": {},
         }}
       >
         <Table
@@ -200,8 +199,8 @@ export const AcsDatagrid: React.FC<Iprops> = ({
                     >
                       {column.render("Header")}
                       {/*// @ts-ignore*/}
-                      {!(column.withSort === false) &&
-                        SortByAsc(column, columns)}
+                      {/*{!(column.withSort === false) && SortByAsc(column)}*/}
+                      {SortByAsc(column)}
                     </Flex>
                   </Th>
                 ))}

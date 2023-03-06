@@ -154,5 +154,4 @@ export const propsForDatagrid = [
     description: "Taille des icones sort ",
     required: false,
   },
-  {},
 ]
