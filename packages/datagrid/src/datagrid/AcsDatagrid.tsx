@@ -199,8 +199,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
                     >
                       {column.render("Header")}
                       {/*// @ts-ignore*/}
-                      {/*{!(column.withSort === false) && SortByAsc(column)}*/}
-                      {SortByAsc(column)}
+                      {!(column.withSort === false) && SortByAsc(column)}
                     </Flex>
                   </Th>
                 ))}
