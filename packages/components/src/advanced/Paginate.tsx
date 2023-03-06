@@ -30,7 +30,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           {max >= 6 && (
             <IconButton
               variant={"ghost"}
-              disabled={current === 1}
+              isDisabled={current === 1}
               size={"xs"}
               boxSize={"33px"}
               aria-label={"Première page"}
@@ -43,7 +43,7 @@ export const AcsPaginate: React.FC<IProps> = ({
             pr={"0.5rem"}
             variant={"ghost"}
             boxSize={"33px"}
-            disabled={current === 1}
+            isDisabled={current === 1}
             aria-label={"Page précédente"}
             onClick={() => handleChangePage(current - 1)}
           >
@@ -114,7 +114,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           <IconButton
             pl={"0.25rem"}
             variant={"ghost"}
-            disabled={current === max}
+            isDisabled={current === max}
             boxSize={"33px"}
             aria-label={"Page suivante"}
             onClick={() => handleChangePage(current + 1)}
@@ -124,7 +124,7 @@ export const AcsPaginate: React.FC<IProps> = ({
           {max >= 6 && (
             <IconButton
               variant={"ghost"}
-              disabled={current === max}
+              isDisabled={current === max}
               boxSize={"33px"}
               aria-label={"Dernière page"}
               onClick={() => handleChangePage(max)}

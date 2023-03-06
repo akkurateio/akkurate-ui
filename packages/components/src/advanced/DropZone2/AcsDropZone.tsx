@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react"
+import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/icons"
 import {
   Box,
   Button,
@@ -9,8 +9,8 @@ import {
   useBreakpointValue,
   VStack,
 } from "@chakra-ui/react"
+import React, { useCallback, useEffect, useState } from "react"
 import { useDropzone } from "react-dropzone"
-import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/icons"
 import DisplayFile from "./DisplayFile"
 
 interface Iprops {
@@ -183,7 +183,7 @@ export const AcsDropzone: React.FC<Iprops> = ({
                       ? props.backgroundColor
                       : "primary.500"
                   }
-                  disabled={toManyFiles}
+                  isDisabled={toManyFiles}
                 >
                   <AisDownload boxSize={"16px"} />
                   <Text>
