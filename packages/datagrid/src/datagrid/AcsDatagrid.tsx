@@ -233,7 +233,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
           </Tbody>
         </Table>
       </Box>
-      {total > 0 && (
+      {total > 1 && (
         <HStack width={"full"} justifyContent={"space-between"}>
           <Box>
             <AcsPaginate
