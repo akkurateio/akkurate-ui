@@ -12,7 +12,6 @@ import {
   HStack,
   Spinner,
   Table,
-  TableContainer,
   Tbody,
   Td,
   Th,
@@ -234,24 +233,26 @@ export const AcsDatagrid: React.FC<Iprops> = ({
           </Tbody>
         </Table>
       </Box>
-      <HStack width={"full"} justifyContent={"space-between"}>
-        <Box>
-          <AcsPaginate
-            max={total}
-            current={paginate}
-            handleChangePage={setPaginate}
-          />
-        </Box>
-        {screenSize !== "base" && (
+      {total > 0 && (
+        <HStack width={"full"} justifyContent={"space-between"}>
           <Box>
-            <AcsPaginateSecondary
+            <AcsPaginate
               max={total}
               current={paginate}
               handleChangePage={setPaginate}
             />
           </Box>
-        )}
-      </HStack>
+          {screenSize !== "base" && (
+            <Box>
+              <AcsPaginateSecondary
+                max={total}
+                current={paginate}
+                handleChangePage={setPaginate}
+              />
+            </Box>
+          )}
+        </HStack>
+      )}
     </>
   )
 }
