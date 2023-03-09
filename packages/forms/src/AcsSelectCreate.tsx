@@ -257,8 +257,8 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
             }),
           }}
           components={{
-            DropdownIndicator: (props) => (
-              <VStack {...props} marginRight={"0.5rem"}>
+            DropdownIndicator: () => (
+              <VStack marginRight={"0.5rem"}>
                 {iconSelected ? (
                   <Icon
                     color={
@@ -277,8 +277,8 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
                 )}
               </VStack>
             ),
-            NoOptionsMessage: (props) => (
-              <Box textAlign={"center"} {...props}>
+            NoOptionsMessage: () => (
+              <Box textAlign={"center"}>
                 <Text color={"neutral.300"} fontSize={sizeInput?.fontSize}>
                   Aucun résultat
                 </Text>
@@ -302,18 +302,9 @@ export const AcsSelectCreate: React.FC<SelectProps> = ({
                   </HStack>
                 </chakraComponents.Option>
               ),
-            ClearIndicator: (props) => {
-              const {
-                innerProps: { ref, ...restInnerProps },
-              } = props
+            ClearIndicator: () => {
               return (
-                <Box
-                  cursor={"pointer"}
-                  ref={ref}
-                  {...props}
-                  {...restInnerProps}
-                  p={2}
-                >
+                <Box cursor={"pointer"} p={2}>
                   <AisClose
                     rounded={"full"}
                     backgroundColor={"neutral.500"}
