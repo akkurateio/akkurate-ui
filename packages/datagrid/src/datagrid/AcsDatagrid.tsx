@@ -39,7 +39,7 @@ interface Iprops {
   total: number
   size?: "sm" | "md" | "lg" | string
   borderHeaderWidth?: string
-  borderColonneWidth?: string
+  borderColumnWidth?: string
   variant?: "simple" | "striped" | "unstyled"
   columnFontSize?:
     | "xs"
@@ -88,7 +88,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
   columnFontSize = "2xs",
   isLoading = false,
   borderHeaderWidth = "",
-  borderColonneWidth = "",
+  borderColumnWidth = "",
   variant = "striped",
   backgroundBoxColor = "",
   borderBoxColor = "",
@@ -220,7 +220,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
                         fontSize={columnFontSize}
                         wordBreak={"break-word"}
                         whiteSpace={"normal"}
-                        borderWidth={borderColonneWidth}
+                        borderWidth={borderColumnWidth}
                         {...cell.getCellProps()}
                       >
                         {cell.render("Cell")}

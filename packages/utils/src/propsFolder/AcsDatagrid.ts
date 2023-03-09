@@ -21,7 +21,7 @@ export const propsForDatagrid = [
     required: false,
   },
   {
-    props: "selectedColonne",
+    props: "selectedColumn",
     type: "function",
     default: "",
     description: "Fonction qui permet de récupérer la colonne sélectionnée",
@@ -78,14 +78,14 @@ export const propsForDatagrid = [
     required: false,
   },
   {
-    props: "colonneFontSize",
+    props: "columnFontSize",
     type: "string",
     default: "xs",
     description: "Taille de la police des colonnes",
     required: false,
   },
   {
-    props: "colonneTitleFontSize",
+    props: "columnTitleFontSize",
     type: "string",
     default: "sm",
     description: "Taille de la police des headers",
@@ -99,7 +99,7 @@ export const propsForDatagrid = [
     required: false,
   },
   {
-    props: "borderColonneWidth",
+    props: "borderColumnWidth",
     type: "string",
     default: "",
     description: "Taille de la bordure des colonnes",
