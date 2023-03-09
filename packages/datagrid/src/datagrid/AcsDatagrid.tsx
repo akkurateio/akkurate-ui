@@ -30,7 +30,7 @@ interface Iprops {
     Cell?: (props: any) => JSX.Element | null
   }[]
   data: any[]
-  selectedColonne: (id: string) => void
+  selectedColumn: (id: string) => void
   sortByAcs: boolean
   setSortByAcs: (value: boolean) => void
   selected: string
@@ -41,7 +41,7 @@ interface Iprops {
   borderHeaderWidth?: string
   borderColonneWidth?: string
   variant?: "simple" | "striped" | "unstyled"
-  colonneFontSize?:
+  columnFontSize?:
     | "xs"
     | "sm"
     | "md"
@@ -52,7 +52,7 @@ interface Iprops {
     | "4xl"
     | "5xl"
     | string
-  colonneTitleFontSize?:
+  columnTitleFontSize?:
     | "xs"
     | "sm"
     | "md"
@@ -75,7 +75,7 @@ interface Iprops {
 export const AcsDatagrid: React.FC<Iprops> = ({
   columns,
   data,
-  selectedColonne,
+  selectedColumn,
   sortByAcs,
   setSortByAcs,
   selected,
@@ -84,8 +84,8 @@ export const AcsDatagrid: React.FC<Iprops> = ({
   total,
   boxSize = "16px",
   size = "md",
-  colonneTitleFontSize = "sm",
-  colonneFontSize = "xs",
+  columnTitleFontSize = "xs",
+  columnFontSize = "2xs",
   isLoading = false,
   borderHeaderWidth = "",
   borderColonneWidth = "",
@@ -97,7 +97,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
   TheadBackgroundColor = "white",
 }: Iprops) => {
   const handleSort = (id: string) => {
-    selectedColonne(id)
+    selectedColumn(id)
     setSortByAcs(!sortByAcs)
   }
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -188,7 +188,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
               <Tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
                   <Th
-                    fontSize={colonneTitleFontSize}
+                    fontSize={columnTitleFontSize}
                     borderWidth={borderHeaderWidth}
                     {...column.getHeaderProps()}
                   >
@@ -217,7 +217,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
                   {row.cells.map((cell) => {
                     return (
                       <Td
-                        fontSize={colonneFontSize}
+                        fontSize={columnFontSize}
                         wordBreak={"break-word"}
                         whiteSpace={"normal"}
                         borderWidth={borderColonneWidth}
