@@ -1,5 +1,23 @@
 
+export * from "./listIcons"
+
 export * from "./icons/AisAdd"
+
+export * from "./listIcons"
+
+export * from "./icons/AisAlignCenter"
+
+export * from "./listIcons"
+
+export * from "./icons/AisAlignJustify"
+
+export * from "./listIcons"
+
+export * from "./icons/AisAlignLeft"
+
+export * from "./listIcons"
+
+export * from "./icons/AisAlignRight"
 
 export * from "./listIcons"
 
@@ -183,6 +201,10 @@ export * from "./icons/AisCopy"
 
 export * from "./listIcons"
 
+export * from "./icons/AisCurrencyEuro"
+
+export * from "./listIcons"
+
 export * from "./icons/AisDashboard"
 
 export * from "./listIcons"
@@ -228,6 +250,10 @@ export * from "./icons/AisEnterprise"
 export * from "./listIcons"
 
 export * from "./icons/AisError"
+
+export * from "./listIcons"
+
+export * from "./icons/AisEventBadge"
 
 export * from "./listIcons"
 
@@ -347,6 +373,14 @@ export * from "./icons/AisGraphBar"
 
 export * from "./listIcons"
 
+export * from "./icons/AisGraphDonut"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGraphGauge"
+
+export * from "./listIcons"
+
 export * from "./icons/AisGraphLine"
 
 export * from "./listIcons"
@@ -356,6 +390,10 @@ export * from "./icons/AisGraphPie"
 export * from "./listIcons"
 
 export * from "./icons/AisGrid"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGroupPresentation"
 
 export * from "./listIcons"
 
@@ -408,6 +446,10 @@ export * from "./icons/AisIndustry"
 export * from "./listIcons"
 
 export * from "./icons/AisInfo"
+
+export * from "./listIcons"
+
+export * from "./icons/AisInside"
 
 export * from "./listIcons"
 
