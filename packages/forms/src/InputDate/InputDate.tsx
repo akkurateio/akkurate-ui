@@ -92,7 +92,7 @@ export const AcsInputDate: React.FC<InputProps> = ({
       setDate({ ...date, value: date.selectedDate.format("YYYY-MM-DD") })
     } else {
       handleChange("")
-      setDate({ ...date, value: "" })
+      setDate({ ...date, value: null })
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

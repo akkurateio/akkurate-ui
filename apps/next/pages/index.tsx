@@ -28,7 +28,6 @@ import {
   AcsSelectMultiple,
   AcsCheckboxCard,
   AcsInputDateRange,
-  AcsDateRange,
 } from "@akkurateio/forms"
 import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 import {
@@ -48,7 +47,6 @@ import {
   AisFilter,
   AisFlag,
 } from "@akkurateio/icons"
-import { useForm } from "react-hook-form"
 import dayjs, { Dayjs } from "dayjs"
 import { base } from "next/dist/build/webpack/config/blocks/base"
 const Pages: NextPage = () => {
@@ -171,23 +169,9 @@ const Pages: NextPage = () => {
     },
   ]
   return (
-    <Flex p={4} flexDirection={"column"} gap={4}>
-      <Heading>Pages</Heading>
-      {/*<Box height={"700px"} w={"full"}>*/}
-
-      {/*<AcsInputDateRange value={dateRange} handleChange={setDateRange} />*/}
-      <AcsDropzone2 handleChange={setFiles} maxFilesSize={3} maxFiles={7} />
-      <AcsDateRange
-        handleChange={setDateRange}
-        value={dateRange}
-        btnColor={"yellow.400"}
-        numberOfMonths={3}
-        disabledStartDays={[0, 6]}
-        disabledStartDates={["2023-02-08", "2023-03-01"]}
-        disabledEndDays={[0, 6]}
-        disabledEndDates={["2023-02-10", "2023-03-07"]}
-      />
-    </Flex>
+    <div>
+      <AcsInputDate value={inputDate} handleChange={setInputDate} />
+    </div>
   )
 }
 
