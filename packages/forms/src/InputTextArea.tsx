@@ -43,6 +43,7 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
       isReadOnly,
       size,
       autoResize,
+      value,
       ...rest
     } = props
     return rest
