@@ -120,8 +120,9 @@ export const AcsInputTextArea: React.FC<InputProps> = ({
           resize={
             props.autoResize ? (props.resize ? props.resize : "none") : "none"
           }
-          {...(register ? { ...register(props.name) } : null)}
           defaultValue={props.defaultValue}
+          value={props.value}
+          {...(register ? { ...register(props.name) } : null)}
         />
       </InputGroup>
     </FormControlLayout>
