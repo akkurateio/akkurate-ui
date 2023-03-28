@@ -132,7 +132,7 @@ const Pages: NextPage = () => {
     setMessage(true)
     setModal(false)
   }
-  console.log(dateRange)
+
 
   const array = [
     {

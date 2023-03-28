@@ -26,7 +26,17 @@ export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
       alignItems={"center"}
       justifyItems={"center"}
     >
-      <Popover placement={"bottom-end"}>
+      <Popover
+        placement={"bottom-end"}
+        onClose={() => {
+          setDate({
+            ...date,
+            currentDate: dayjs(date.value).isValid()
+              ? dayjs(date.value)
+              : dayjs(new Date()),
+          })
+        }}
+      >
         <PopoverTrigger>
           <Button
             variant={"unstyled"}

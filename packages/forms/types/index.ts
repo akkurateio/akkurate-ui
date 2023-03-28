@@ -15,6 +15,13 @@ export type DateObject = {
   hoverColor?: string
   selectedBg?: string
   selectedColor?: string
+  otherMonthBg?: string
+  otherMonthColor?: string
   currentMonthBg?: string
   currentMonthColor?: string
+  disabledBg?: string
+  disabledColor?: string
+  // --- Usefull props
+  isResetable?: boolean
+  isOtherMonthVisible?: boolean
 }

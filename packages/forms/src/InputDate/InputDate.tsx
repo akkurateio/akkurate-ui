@@ -1,3 +1,4 @@
+// @ts-ignore
 import { sizesAll } from "@akkurateio/utils"
 import {
   Flex,
@@ -23,6 +24,8 @@ interface InputOptions {
   error?: string
   hint?: string
   isEditable?: boolean
+  isResetable?: boolean
+  isOtherMonthVisible?: boolean
   // ---
   minDate?: string | Dayjs
   maxDate?: string | Dayjs
@@ -34,8 +37,12 @@ interface InputOptions {
   hoverColor?: string
   selectedBg?: string
   selectedColor?: string
+  otherMonthBg?: string
+  otherMonthColor?: string
   currentMonthBg?: string
   currentMonthColor?: string
+  disabledBg?: string
+  disabledColor?: string
 }
 
 interface InputProps
@@ -57,39 +64,61 @@ export const AcsInputDate: React.FC<InputProps> = ({
       error,
       isRequired,
       isDisabled,
+      isResetable,
+      isOtherMonthVisible,
       isInvalid,
       isReadOnly,
       minDate,
       maxDate,
       disabledDays,
       disabledDates,
+      hoverBg,
+      hoverColor,
+      selectedBg,
+      selectedColor,
+      otherMonthBg,
+      otherMonthColor,
+      currentMonthBg,
+      currentMonthColor,
+      disabledBg,
+      disabledColor,
       ...rest
     } = props
     return rest
   }
 
   const [date, setDate] = useState<DateObject>({
-    currentDate: dayjs(new Date()),
+    currentDate: props.value ? dayjs(props.value) : dayjs(new Date()),
     selectedDate: props.value ? dayjs(props.value) : null,
     value: props.value,
     minDate: props.minDate,
     maxDate: props.maxDate,
     disabledDays: props.disabledDays,
     disabledDates: props.disabledDates,
-
+    // -----
     hoverBg: props.hoverBg,
     hoverColor: props.hoverColor,
     selectedBg: props.selectedBg,
     selectedColor: props.selectedColor,
+    otherMonthBg: props.otherMonthBg,
+    otherMonthColor: props.otherMonthColor,
     currentMonthBg: props.currentMonthBg,
     currentMonthColor: props.currentMonthColor,
+    disabledBg: props.disabledBg,
+    disabledColor: props.disabledColor,
+    // -----
+    isResetable: props.isResetable ?? false,
+    isOtherMonthVisible: props.isOtherMonthVisible ?? true,
   })
   const [focus, setFocus] = useState(false)
 
   useEffect(() => {
     if (date.selectedDate) {
       handleChange(date.selectedDate.format("YYYY-MM-DD"))
-      setDate({ ...date, value: date.selectedDate.format("YYYY-MM-DD") })
+      setDate({
+        ...date,
+        value: date.selectedDate.format("YYYY-MM-DD"),
+      })
     } else {
       handleChange("")
       setDate({ ...date, value: null })
@@ -105,16 +134,25 @@ export const AcsInputDate: React.FC<InputProps> = ({
       maxDate: props.maxDate,
       disabledDays: props.disabledDays,
       disabledDates: props.disabledDates,
+      isResetable: props.isResetable ?? false,
     })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.minDate, props.maxDate, props.disabledDays, props.disabledDates])
+  }, [
+    props.minDate,
+    props.maxDate,
+    props.disabledDays,
+    props.disabledDates,
+    props.isResetable,
+  ])
 
   const handleManualChange = (e: string) => {
     setDate({
       ...date,
+      currentDate: dayjs(e).isValid() ? dayjs(e) : dayjs(new Date()),
       value: e,
     })
+
     handleChange(e)
   }
 

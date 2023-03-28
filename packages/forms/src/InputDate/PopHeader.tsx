@@ -74,32 +74,44 @@ const PopHeader = ({ date, setDate }: IProps) => {
         >
           <HStack flex={1} alignItems={"center"} spacing={1}>
             <Button
-              variant={"ghost"}
+              variant={"unstyled"}
               size={"none"}
               onClick={handlePreviousMonth}
             >
               <AisChevronLeft boxSize={"24px"} />
             </Button>
-            <Button
-              variant={"ghost"}
-              size={"none"}
-              onClick={handleCurrentMonth}
+            <Box
+            // variant={"unstyled"}
+            // size={"none"}
+            // onClick={handleCurrentMonth}
             >
               <AisDot boxSize={6} />
-            </Button>
-            <Button variant={"ghost"} size={"none"} onClick={handleNextMonth}>
+            </Box>
+            <Button
+              variant={"unstyled"}
+              size={"none"}
+              onClick={handleNextMonth}
+            >
               <AisChevronRight boxSize={"24px"} />
             </Button>
           </HStack>
-          <Button ml={4} variant={"ghost"} size={"none"} onClick={handleReset}>
-            <AisClose
-              boxSize={"24px"}
-              cursor={"pointer"}
-              rounded={"full"}
-              _hover={{ backgroundColor: "neutral.200" }}
-              color={"neutral.500"}
-            />
-          </Button>
+
+          {date.isResetable ? (
+            <Button
+              ml={4}
+              variant={"unstyled"}
+              size={"none"}
+              onClick={handleReset}
+            >
+              <AisClose
+                boxSize={"24px"}
+                cursor={"pointer"}
+                rounded={"full"}
+                _hover={{ backgroundColor: "neutral.200" }}
+                color={"neutral.500"}
+              />
+            </Button>
+          ) : null}
         </Flex>
       </Flex>
     </PopoverHeader>

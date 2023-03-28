@@ -25,7 +25,10 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
     //   return "gray.800"
     // }
 
-    if (type === "before" || type === "after") return "transparent"
+    if (type === "before" || type === "after") {
+      return date.otherMonthBg ?? "transparent"
+    }
+
     return date.currentMonthBg ?? "primary.100"
   }
 
@@ -38,7 +41,9 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
       return date.selectedColor ?? "white"
     }
 
-    if (type === "before" || type === "after") return "gray.500"
+    if (type === "before" || type === "after") {
+      return date.otherMonthColor ?? "gray.500"
+    }
 
     return date.currentMonthColor ?? "primary.900"
   }
@@ -52,15 +57,25 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
   }
 
   const disabledDays = (day: Dayjs) => {
-    if (date.disabledDays && date.disabledDays.includes(dayjs(day).day()))
+    if (date.disabledDays && date.disabledDays.includes(dayjs(day).day())) {
       return true
+    }
+
     if (
       date.disabledDates &&
       date.disabledDates.includes(dayjs(day).format("YYYY-MM-DD"))
-    )
+    ) {
       return true
-    if (date.minDate && dayjs(day).isBefore(dayjs(date.minDate))) return true
-    if (date.maxDate && dayjs(day).isAfter(dayjs(date.maxDate))) return true
+    }
+
+    if (date.minDate && dayjs(day).isBefore(dayjs(date.minDate))) {
+      return true
+    }
+
+    if (date.maxDate && dayjs(day).isAfter(dayjs(date.maxDate))) {
+      return true
+    }
+
     return false
   }
 
@@ -69,6 +84,10 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
       ...date,
       selectedDate: day,
     })
+  }
+
+  if (!date.isOtherMonthVisible && (type === "before" || type === "after")) {
+    return <Box />
   }
 
   return (
@@ -82,9 +101,19 @@ const DayItem = ({ day, type, date, setDate }: IProps) => {
         bg: date.hoverBg ?? "primary.700",
         color: date.hoverColor ?? "primary.200",
       }}
-      // _active={{
-      //   bg: "primary.600",
-      // }}
+      _disabled={{
+        bg: date.disabledBg ?? "gray.100",
+        color: date.disabledColor ?? "gray.500",
+        cursor: "not-allowed",
+        _hover: {
+          bg: date.disabledBg ?? "gray.100",
+          color: date.disabledColor ?? "gray.500",
+        },
+        _active: {
+          bg: date.disabledBg ?? "gray.100",
+          color: date.disabledColor ?? "gray.500",
+        },
+      }}
       onClick={handleClick}
       width={"2.2rem"}
       height={"2.2rem"}
