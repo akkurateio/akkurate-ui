@@ -11,6 +11,7 @@ export type DateObject = {
   disabledDays: number[] | undefined
   disabledDates: string[] | undefined
   // --- Style props
+  arrowColor?: string
   hoverBg?: string
   hoverColor?: string
   selectedBg?: string
@@ -24,4 +25,5 @@ export type DateObject = {
   // --- Usefull props
   isResetable?: boolean
   isOtherMonthVisible?: boolean
+  isCloseOnSelect?: boolean
 }

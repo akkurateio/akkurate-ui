@@ -3,22 +3,24 @@ import { Heading, VStack } from "@chakra-ui/react"
 import { useState } from "react"
 
 function App() {
-  const [value, setValue] = useState<string>("1996-04-21")
+  const [value, setValue] = useState<string>("2020-04-21")
 
   const dateStyles = {
-    hoverBg: "blue.400",
-    hoverColor: "green.100",
-    selectedBg: "purple.400",
-    selectedColor: "purple.100",
-    otherMonthBg: "orange.100",
-    otherMonthColor: "orange.900",
-    currentMonthBg: "blue.400",
-    currentMonthColor: "green.100",
-    disabledBg: "yellow.400",
-    disabledColor: "blue.100",
+    arrowColor: "teal.400",
+    hoverBg: "green.300",
+    hoverColor: "green.900",
+    selectedBg: "green.800",
+    selectedColor: "green.100",
+    otherMonthBg: "transparent",
+    otherMonthColor: "green.700",
+    currentMonthBg: "green.100",
+    currentMonthColor: "green.700",
+    disabledBg: "gray.200",
+    disabledColor: "gray.700",
     //
     isResetable: false,
-    isOtherMonthVisible: false,
+    isOtherMonthVisible: true,
+    isCloseOnSelect: true,
   }
 
   return (

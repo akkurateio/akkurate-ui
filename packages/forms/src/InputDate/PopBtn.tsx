@@ -1,8 +1,14 @@
 import { AisCalendar } from "@akkurateio/icons"
-import { Button, Flex, Popover, PopoverTrigger } from "@chakra-ui/react"
+import {
+  Button,
+  Flex,
+  Popover,
+  PopoverTrigger,
+  useDisclosure,
+} from "@chakra-ui/react"
 import dayjs from "dayjs"
 import "dayjs/locale/fr"
-import React from "react"
+import React, { useEffect } from "react"
 import { DateObject } from "../../types"
 import PopContent from "./PopContent"
 
@@ -16,6 +22,18 @@ interface IProps {
 }
 
 export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
+  const { onOpen, onClose, isOpen } = useDisclosure()
+
+  useEffect(() => {
+    if (date.isCloseOnSelect) {
+      if (date.selectedDate && dayjs(date.selectedDate).isValid()) {
+        onClose()
+      }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [date.selectedDate])
+
   return (
     <Flex
       position={"absolute"}
@@ -27,6 +45,7 @@ export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
       justifyItems={"center"}
     >
       <Popover
+        isOpen={isOpen}
         placement={"bottom-end"}
         onClose={() => {
           setDate({
@@ -35,6 +54,7 @@ export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
               ? dayjs(date.value)
               : dayjs(new Date()),
           })
+          onClose()
         }}
       >
         <PopoverTrigger>
@@ -45,6 +65,7 @@ export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
             h={"full"}
             bg={"white"}
             zIndex={1}
+            onClick={isOpen ? onClose : onOpen}
           >
             <AisCalendar
               color={focus ? "primary.500" : "neutral.500"}

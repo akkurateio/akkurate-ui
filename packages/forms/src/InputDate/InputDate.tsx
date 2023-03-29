@@ -26,6 +26,7 @@ interface InputOptions {
   isEditable?: boolean
   isResetable?: boolean
   isOtherMonthVisible?: boolean
+  isCloseOnSelect?: boolean
   // ---
   minDate?: string | Dayjs
   maxDate?: string | Dayjs
@@ -33,6 +34,7 @@ interface InputOptions {
   disabledDates?: string[] // format : YYYY-MM-DD
   size?: "sm" | "md" | "lg"
   // ---
+  arrowColor?: string
   hoverBg?: string
   hoverColor?: string
   selectedBg?: string
@@ -66,12 +68,14 @@ export const AcsInputDate: React.FC<InputProps> = ({
       isDisabled,
       isResetable,
       isOtherMonthVisible,
+      isCloseOnSelect,
       isInvalid,
       isReadOnly,
       minDate,
       maxDate,
       disabledDays,
       disabledDates,
+      arrowColor,
       hoverBg,
       hoverColor,
       selectedBg,
@@ -96,6 +100,7 @@ export const AcsInputDate: React.FC<InputProps> = ({
     disabledDays: props.disabledDays,
     disabledDates: props.disabledDates,
     // -----
+    arrowColor: props.arrowColor ?? props.currentMonthBg ?? "primary.500",
     hoverBg: props.hoverBg,
     hoverColor: props.hoverColor,
     selectedBg: props.selectedBg,
@@ -109,6 +114,7 @@ export const AcsInputDate: React.FC<InputProps> = ({
     // -----
     isResetable: props.isResetable ?? false,
     isOtherMonthVisible: props.isOtherMonthVisible ?? true,
+    isCloseOnSelect: props.isCloseOnSelect ?? false,
   })
   const [focus, setFocus] = useState(false)
 
