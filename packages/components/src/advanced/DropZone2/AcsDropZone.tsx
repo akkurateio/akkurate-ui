@@ -7,32 +7,35 @@ import {
   HStack,
   Text,
   useBreakpointValue,
+  useToast,
   VStack,
 } from "@chakra-ui/react"
 import React, { useCallback, useEffect, useState } from "react"
-import { useDropzone } from "react-dropzone"
+import { Accept, useDropzone } from "react-dropzone"
 import DisplayFile from "./DisplayFile"
 
-interface Iprops {
+interface IProps {
   handleChange: (files: FileList | File[] | null) => void
-  accept?: string
+  accept?: Accept
   maxFiles?: number
   backgroundColor?: string
   boxSize?: string
   height?: string
   clear?: boolean
   minHeight?: string
+  maxFilesSize?: number
 }
 
-export const AcsDropzone: React.FC<Iprops> = ({
+export const AcsDropzone: React.FC<IProps> = ({
   handleChange,
   accept,
   maxFiles = 0,
   minHeight = "300px",
   height = "350px",
   boxSize = "150px",
+  maxFilesSize,
   ...props
-}: Iprops) => {
+}: IProps) => {
   const [files, setFiles] = useState<File[]>([])
   const [toManyFiles, setToManyFiles] = useState(false)
 
@@ -57,6 +60,7 @@ export const AcsDropzone: React.FC<Iprops> = ({
   )
 
   const screenSize = useBreakpointValue({ base: "base", md: "md" })
+  const maxSizes = maxFilesSize ? maxFilesSize * (1024 * 1024) : undefined
 
   useEffect(() => {
     if (props.clear === true) {
@@ -64,12 +68,33 @@ export const AcsDropzone: React.FC<Iprops> = ({
     }
   }, [props.clear])
 
+  const toast = useToast()
+
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     noClick: true,
     noKeyboard: true,
+    maxSize: maxSizes,
+    accept,
     onDropAccepted: () => {
       handleChange(files)
+    },
+    onDropRejected: (err) => {
+      err.map((e) => {
+        toast({
+          title: `Fichier : ${e.file.name}`,
+          description: `Une erreur est survenue. ${
+            e.errors[0].code === "file-too-large"
+              ? "Le fichier est trop volumineux."
+              : e.errors[0].code === "file-invalid-type"
+              ? "Le type de fichier n'est pas accepté."
+              : null
+          }`,
+          status: "error",
+          duration: 30000,
+          isClosable: true,
+        })
+      })
     },
   })
 
@@ -106,9 +131,20 @@ export const AcsDropzone: React.FC<Iprops> = ({
                   Glissez / Déposez les fichiers ou cliquez ci-dessous.
                 </Text>
               )}
-              <Text fontSize={"xs"} color={"neutral.400"}>
-                Nombre de fichiers maximum autorisés : {maxFiles}
-              </Text>
+              {maxFiles === 1 ? (
+                <Text fontSize={"xs"} color={"neutral.400"}>
+                  Un seul fichier autorisé.
+                </Text>
+              ) : (
+                <Text fontSize={"xs"} color={"neutral.400"}>
+                  Nombre de fichiers maximum autorisés : {maxFiles}.
+                </Text>
+              )}
+              {maxFilesSize && (
+                <Text fontSize={"xs"} color={"neutral.400"}>
+                  Taille maximale par fichier autorisée : {maxFilesSize} Mo.
+                </Text>
+              )}
             </Box>
             <Button
               onClick={open}

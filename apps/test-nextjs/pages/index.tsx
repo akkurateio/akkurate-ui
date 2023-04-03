@@ -1,9 +1,10 @@
-import { AcsInputDate } from "@akkurateio/forms"
+import { AcsDropzone } from "@akkurateio/components"
 import { Heading, VStack } from "@chakra-ui/react"
 import { useState } from "react"
 
 function App() {
   const [value, setValue] = useState<string>("2020-04-21")
+  const [files, setFiles] = useState()
 
   const dateStyles = {
     arrowColor: "teal.400",
@@ -27,13 +28,7 @@ function App() {
     <VStack width={"full"} spacing={20} p={10}>
       <Heading>Hello</Heading>
 
-      <AcsInputDate
-        label={"Date de début"}
-        value={value}
-        handleChange={setValue}
-        disabledDays={[0, 6]}
-        {...dateStyles}
-      />
+      <AcsDropzone handleChange={setFiles} maxFiles={5} maxFilesSize={6} />
     </VStack>
   )
 }
