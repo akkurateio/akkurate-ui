@@ -1,6 +1,6 @@
-import { AcsDropzone } from "@akkurateio/components"
 import { Heading, VStack } from "@chakra-ui/react"
 import { useState } from "react"
+import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 
 function App() {
   const [value, setValue] = useState<string>("2020-04-21")
@@ -28,7 +28,7 @@ function App() {
     <VStack width={"full"} spacing={20} p={10}>
       <Heading>Hello</Heading>
 
-      <AcsDropzone handleChange={setFiles} maxFiles={5} maxFilesSize={6} />
+      <AcsWysiwyg value={value} setValue={setValue} setFiles={setFiles} />
     </VStack>
   )
 }
