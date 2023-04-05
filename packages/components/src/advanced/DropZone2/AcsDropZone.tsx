@@ -219,7 +219,7 @@ export const AcsDropzone: React.FC<IProps> = ({
                       ? props.backgroundColor
                       : "primary.500"
                   }
-                  isDisabled={toManyFiles}
+                  isDisabled={files.length >= maxFiles}
                 >
                   <AisDownload boxSize={"16px"} />
                   <Text>
