@@ -37,6 +37,10 @@ export * from "./icons/AisArchive"
 
 export * from "./listIcons"
 
+export * from "./icons/AisArrowBackward"
+
+export * from "./listIcons"
+
 export * from "./icons/AisArrowDown"
 
 export * from "./listIcons"
@@ -69,6 +73,10 @@ export * from "./icons/AisArrowRightUp"
 
 export * from "./listIcons"
 
+export * from "./icons/AisArrowToSelection"
+
+export * from "./listIcons"
+
 export * from "./icons/AisArrowUp"
 
 export * from "./listIcons"
@@ -90,6 +98,10 @@ export * from "./icons/AisBlockquote"
 export * from "./listIcons"
 
 export * from "./icons/AisBold"
+
+export * from "./listIcons"
+
+export * from "./icons/AisBook"
 
 export * from "./listIcons"
 
@@ -206,6 +218,10 @@ export * from "./icons/AisCurrencyEuro"
 export * from "./listIcons"
 
 export * from "./icons/AisDashboard"
+
+export * from "./listIcons"
+
+export * from "./icons/AisDataUnstructured"
 
 export * from "./listIcons"
 
@@ -361,6 +377,38 @@ export * from "./icons/AisGithub"
 
 export * from "./listIcons"
 
+export * from "./icons/AisGoDown"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGoFirst"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGoLast"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGoLeft"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGoRight"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGoSort"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGoSortOutline"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGoUp"
+
+export * from "./listIcons"
+
 export * from "./icons/AisGoogle"
 
 export * from "./listIcons"
@@ -373,6 +421,10 @@ export * from "./icons/AisGraphBar"
 
 export * from "./listIcons"
 
+export * from "./icons/AisGraphBarAlternative"
+
+export * from "./listIcons"
+
 export * from "./icons/AisGraphDonut"
 
 export * from "./listIcons"
@@ -382,6 +434,10 @@ export * from "./icons/AisGraphGauge"
 export * from "./listIcons"
 
 export * from "./icons/AisGraphLine"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGraphLineAlternative"
 
 export * from "./listIcons"
 
@@ -406,6 +462,10 @@ export * from "./icons/AisHandleVertical"
 export * from "./listIcons"
 
 export * from "./icons/AisHardDrive"
+
+export * from "./listIcons"
+
+export * from "./icons/AisHashtag"
 
 export * from "./listIcons"
 
@@ -445,6 +505,10 @@ export * from "./icons/AisIndustry"
 
 export * from "./listIcons"
 
+export * from "./icons/AisInfinite"
+
+export * from "./listIcons"
+
 export * from "./icons/AisInfo"
 
 export * from "./listIcons"
@@ -458,6 +522,10 @@ export * from "./icons/AisInstagram"
 export * from "./listIcons"
 
 export * from "./icons/AisIntervention"
+
+export * from "./listIcons"
+
+export * from "./icons/AisIssues"
 
 export * from "./listIcons"
 
@@ -585,6 +653,10 @@ export * from "./icons/AisMoreVertical"
 
 export * from "./listIcons"
 
+export * from "./icons/AisNeutral"
+
+export * from "./listIcons"
+
 export * from "./icons/AisNimiscient"
 
 export * from "./listIcons"
@@ -649,6 +721,18 @@ export * from "./icons/AisPhone"
 
 export * from "./listIcons"
 
+export * from "./icons/AisPhoneFilled"
+
+export * from "./listIcons"
+
+export * from "./icons/AisPin"
+
+export * from "./listIcons"
+
+export * from "./icons/AisPinFilled"
+
+export * from "./listIcons"
+
 export * from "./icons/AisPinterest"
 
 export * from "./listIcons"
@@ -662,6 +746,10 @@ export * from "./icons/AisPrint"
 export * from "./listIcons"
 
 export * from "./icons/AisProcessor"
+
+export * from "./listIcons"
+
+export * from "./icons/AisQrCode"
 
 export * from "./listIcons"
 
@@ -717,6 +805,18 @@ export * from "./icons/AisSlack"
 
 export * from "./listIcons"
 
+export * from "./icons/AisSms"
+
+export * from "./listIcons"
+
+export * from "./icons/AisSortDown"
+
+export * from "./listIcons"
+
+export * from "./icons/AisSortUp"
+
+export * from "./listIcons"
+
 export * from "./icons/AisSpinner"
 
 export * from "./listIcons"
@@ -754,6 +854,14 @@ export * from "./icons/AisSun"
 export * from "./listIcons"
 
 export * from "./icons/AisSupport"
+
+export * from "./listIcons"
+
+export * from "./icons/AisSwitchOff"
+
+export * from "./listIcons"
+
+export * from "./icons/AisSwitchOn"
 
 export * from "./listIcons"
 
@@ -858,5 +966,9 @@ export * from "./icons/AisZoomIn"
 export * from "./listIcons"
 
 export * from "./icons/AisZoomOut"
+
+export * from "./listIcons"
+
+export * from "./icons/Headset"
 
 export * from "./listIcons"
