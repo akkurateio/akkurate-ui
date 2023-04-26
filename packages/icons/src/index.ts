@@ -1,4 +1,6 @@
 
+export * from "./listIcons"
+
 export * from "./icons/AisAdd"
 
 export * from "./listIcons"
@@ -80,6 +82,10 @@ export * from "./icons/AisArrowUp"
 export * from "./listIcons"
 
 export * from "./icons/AisAttachement"
+
+export * from "./listIcons"
+
+export * from "./icons/AisBabyCarrier"
 
 export * from "./listIcons"
 
@@ -287,6 +293,10 @@ export * from "./icons/AisEyeDropper"
 
 export * from "./listIcons"
 
+export * from "./icons/AisFaceHappy"
+
+export * from "./listIcons"
+
 export * from "./icons/AisFacebook"
 
 export * from "./listIcons"
@@ -468,6 +478,10 @@ export * from "./icons/AisHashtag"
 export * from "./listIcons"
 
 export * from "./icons/AisHeadline"
+
+export * from "./listIcons"
+
+export * from "./icons/AisHeadset"
 
 export * from "./listIcons"
 
@@ -788,6 +802,14 @@ export * from "./icons/AisShieldChecked"
 export * from "./listIcons"
 
 export * from "./icons/AisShieldLock"
+
+export * from "./listIcons"
+
+export * from "./icons/AisShipFrom"
+
+export * from "./listIcons"
+
+export * from "./icons/AisShipTo"
 
 export * from "./listIcons"
 
