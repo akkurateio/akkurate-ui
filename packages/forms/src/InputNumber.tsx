@@ -73,7 +73,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
     allowMouseWheel: props.allowMouseWheel ? props.allowMouseWheel : false,
     min: props.min ? Number(props.min) : undefined,
     max: props.max ? Number(props.max) : undefined,
-    defaultValue: props.value === undefined ? undefined : Number(props.value),
+    value: props.value === undefined ? undefined : Number(props.value),
     format: (value) => {
       return value.toString().replace(",", ".")
     },
