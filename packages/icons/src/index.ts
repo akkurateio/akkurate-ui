@@ -997,6 +997,10 @@ export * from "./icons/AisTableRemoveColumnBefore"
 
 export * from "./listIcons"
 
+export * from "./icons/AisTableRemoveRow"
+
+export * from "./listIcons"
+
 export * from "./icons/AisTableRemoveRowAfter"
 
 export * from "./listIcons"
@@ -1006,10 +1010,6 @@ export * from "./icons/AisTableRemoveRowBefore"
 export * from "./listIcons"
 
 export * from "./icons/AisTableUnMergeCell"
-
-export * from "./listIcons"
-
-export * from "./icons/AisTableremoveRow"
 
 export * from "./listIcons"
 

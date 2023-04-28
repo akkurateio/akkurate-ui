@@ -2,8 +2,8 @@
 import React from 'react';
 import { createIcon } from "@chakra-ui/icon"
 
-export const AisTableremoveRow = createIcon({
-  displayName: "AisTableremoveRow",
+export const AisTableRemoveRow = createIcon({
+  displayName: "AisTableRemoveRow",
   viewBox: "0 0 32 32",
   defaultProps: {
 		fill: "currentColor",
