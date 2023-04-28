@@ -11,7 +11,7 @@ export const AisQrCode = createIcon({
 	},
   path: (
     <>
-      <path d="M26 6h-4v4h4V6Z" /><path fillRule="evenodd" clipRule="evenodd" d="M30 14H18V2h12v12Zm-10-2h8V4h-8v8Z" /><path d="M6 22h4v4H6v-4Z" /><path fillRule="evenodd" clipRule="evenodd" d="M2 30h12V18H2v12Zm10-2H4v-8h8v8Z" /><path d="M28 26h2v4h-4v-2h2v-2ZM26 26h2v-4h2v-4h-4v2h2v2h-2v4ZM24 26h2v2h-2v-2ZM20 26h4v-6h-2v-2h-4v2h4v4h-2v-2h-2v2h2v2ZM20 26v2h2v2h-4v-4h2ZM6 6h4v4H6V6Z" /><path fillRule="evenodd" clipRule="evenodd" d="M2 14h12V2H2v12Zm10-2H4V4h8v8Z" />
+      <path d="M26 7a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V7Z" /><path fillRule="evenodd" clipRule="evenodd" d="M30 13a1 1 0 0 1-1 1H19a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v10Zm-10-2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6Z" /><path d="M6 23a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2Z" /><path fillRule="evenodd" clipRule="evenodd" d="M2 29a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V19a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v10Zm10-2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6Z" /><path d="M28 26h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1h1a1 1 0 0 0 1-1v-1ZM26 26h2v-4h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2a1 1 0 1 0 0 2 1 1 0 0 1 1 1v1h-1a1 1 0 0 0-1 1v3ZM24 26h2v2h-1a1 1 0 0 1-1-1v-1ZM20 26h4v-5a1 1 0 0 0-1-1h-1v-1a1 1 0 0 0-1-1h-2a1 1 0 1 0 0 2h3v3a1 1 0 0 1-1 1h-1v-1a1 1 0 1 0-1 1h1v2ZM20 26v1a1 1 0 0 0 1 1 1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h1ZM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" /><path fillRule="evenodd" clipRule="evenodd" d="M2 13a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v10Zm10-2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6Z" />
     </>
   ),
 })

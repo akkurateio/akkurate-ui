@@ -293,7 +293,63 @@ export * from "./icons/AisEyeDropper"
 
 export * from "./listIcons"
 
+export * from "./icons/AisFaceDazed"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceDead"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceGlasses"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceGod"
+
+export * from "./listIcons"
+
 export * from "./icons/AisFaceHappy"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceLookDown"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceLookFront"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceLookUp"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceMischievous"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceNeutral"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFacePending"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceSad"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceSorry"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceSuprized"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFaceWink"
 
 export * from "./listIcons"
 
@@ -450,6 +506,10 @@ export * from "./icons/AisGraphLineAlternative"
 export * from "./listIcons"
 
 export * from "./icons/AisGraphPie"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGraphPieFilled"
 
 export * from "./listIcons"
 
@@ -634,6 +694,10 @@ export * from "./icons/AisMaximaze"
 export * from "./listIcons"
 
 export * from "./icons/AisMeta"
+
+export * from "./listIcons"
+
+export * from "./icons/AisMicrophone"
 
 export * from "./listIcons"
 
@@ -886,6 +950,66 @@ export * from "./icons/AisSwitchOn"
 export * from "./listIcons"
 
 export * from "./icons/AisTable"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableAddColumn"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableAddColumnAfter"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableAddColumnBefore"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableAddRow"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableAddRowAfter"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableAddRowBefore"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableMergeCell"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableRemove"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableRemoveColumn"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableRemoveColumnAfter"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableRemoveColumnBefore"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableRemoveRowAfter"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableRemoveRowBefore"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableUnMergeCell"
+
+export * from "./listIcons"
+
+export * from "./icons/AisTableremoveRow"
 
 export * from "./listIcons"
 
