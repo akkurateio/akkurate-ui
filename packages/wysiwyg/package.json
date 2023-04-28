@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/wysiwyg",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Theme for Akkurate UI",
   "keywords": [
     "theme"
@@ -32,11 +32,10 @@
     "@types/turndown": "^5.0.1"
   },
   "dependencies": {
+    "@akkurateio/ds": "^0.1.12",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
-    "framer-motion": ">=7.0.0",
-    "@akkurateio/ds": "^0.1.11",
     "@tiptap/extension-document": "^2.0.2",
     "@tiptap/extension-hard-break": "^2.0.2",
     "@tiptap/extension-link": "^2.0.2",
@@ -49,6 +48,7 @@
     "@tiptap/pm": "^2.0.2",
     "@tiptap/react": "^2.0.2",
     "@tiptap/starter-kit": "^2.0.2",
+    "framer-motion": ">=7.0.0",
     "marked": "^4.3.0",
     "turndown": "^7.1.2"
   },
