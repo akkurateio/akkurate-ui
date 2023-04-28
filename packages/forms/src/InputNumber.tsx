@@ -11,7 +11,7 @@ import {
   useNumberInput,
 } from "@chakra-ui/react"
 import { ThemingProps } from "@chakra-ui/system"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import FormControlLayout from "./FormControlLayout"
 import InputGroupWithShadow from "./InputGroupWithShadow"
 // @ts-ignore
@@ -26,8 +26,8 @@ type Omitted =
   | "value"
 
 interface InputOptions {
-  handleChange: (e: number) => void
-  value?: number
+  handleChange: (e: any) => void
+  value?: any
   label?: string
   error?: string
   hint?: string
@@ -73,7 +73,7 @@ export const AcsInputNumber: React.FC<InputProps> = ({
     allowMouseWheel: props.allowMouseWheel ? props.allowMouseWheel : false,
     min: props.min ? Number(props.min) : undefined,
     max: props.max ? Number(props.max) : undefined,
-    value: props.value === undefined ? undefined : Number(props.value),
+    value: props.value === undefined ? undefined : props.value,
     format: (value) => {
       return value.toString().replace(",", ".")
     },
@@ -92,6 +92,13 @@ export const AcsInputNumber: React.FC<InputProps> = ({
       char === "7" ||
       char === "8" ||
       char === "9",
+    onChange(valueAsString, valueAsNumber) {
+      if (valueAsString === "") {
+        handleChange(undefined)
+      } else {
+        handleChange(valueAsString)
+      }
+    },
   })
 
   const inc = getIncrementButtonProps()
@@ -102,13 +109,13 @@ export const AcsInputNumber: React.FC<InputProps> = ({
 
   const sizeInput = sizesAll(sizeState ? sizeState : (size as string))
 
-  useEffect(() => {
-    if (!!valueAsNumber) {
-      handleChange(valueAsNumber)
-    } else if (valueAsNumber === 0) {
-      handleChange(0)
-    }
-  }, [valueAsNumber])
+  // useEffect(() => {
+  //   if (!!valueAsNumber) {
+  //     handleChange(valueAsNumber)
+  //   } else if (valueAsNumber === 0) {
+  //     handleChange(0)
+  //   }
+  // }, [valueAsNumber])
 
   return (
     <FormControlLayout {...props}>
