@@ -1,9 +1,8 @@
-import { AcsInputNumber } from "@akkurateio/forms"
-import { Heading, Text, VStack } from "@chakra-ui/react"
+import { Heading, VStack } from "@chakra-ui/react"
 import { useState } from "react"
 
 function App() {
-  const [number, setNumber] = useState<number>(0)
+  const [htmlValue, setHtmlValue] = useState<string>("")
 
   const dateStyles = {
     arrowColor: "teal.400",
@@ -26,12 +25,6 @@ function App() {
   return (
     <VStack width={"full"} spacing={20} p={10}>
       <Heading>Hello</Heading>
-
-      <AcsInputNumber value={number} handleChange={setNumber} />
-
-      <button onClick={() => setNumber((prev) => prev + 1)}>OK</button>
-
-      <Text>{number}</Text>
     </VStack>
   )
 }

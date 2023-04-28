@@ -1,6 +1,5 @@
 import { InputGroup, useTheme } from "@chakra-ui/react"
 import React, { useState } from "react"
-import * as CSS from "csstype"
 
 interface IProps {
   children: React.ReactNode
@@ -29,19 +28,21 @@ const FormControlLayout: React.FC<IProps> = (props) => {
         props.isInvalid
           ? "error.500"
           : focus
-          ? theme.colors.primary[500]
+          ? // ? theme.colors.primary[500]
+            "#1A202C"
           : "neutral.300"
       }
       boxShadow={
-        focus ? `0 0 0 3px ${theme.colors.primary[500]}25 ` : undefined
+        // focus ? `0 0 0 3px ${theme.colors.primary[500]}25 ` : undefined
+        focus ? `0 0 0 3px #FAFAFA25 ` : undefined
       }
       _focus={{
         border: "none",
-        boxShadow: `0 0 0 3px ${theme.colors.primary[500]}25 `,
+        // boxShadow: `0 0 0 3px ${theme.colors.primary[500]}25 `,
       }}
       _focusVisible={{
         border: "none",
-        boxShadow: `0 0 0 3px ${theme.colors.primary[500]}25 `,
+        // boxShadow: `0 0 0 3px ${theme.colors.primary[500]}25 `,
       }}
     >
       {props.children}

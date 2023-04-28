@@ -1,76 +1,70 @@
-import { AcsDropzone, AisClose } from "@akkurateio/ds"
 import InputGroupWithShadow from "@akkurateio/forms/src/InputGroupWithShadow"
 import Label from "@akkurateio/forms/src/Label"
-import { HStack, IconButton, Text, useTheme, VStack } from "@chakra-ui/react"
+import { useTheme, VStack } from "@chakra-ui/react"
 import Link from "@tiptap/extension-link"
+import Table from "@tiptap/extension-table"
+import TableCell from "@tiptap/extension-table-cell"
+import TableHeader from "@tiptap/extension-table-header"
+import TableRow from "@tiptap/extension-table-row"
 import TaskItem from "@tiptap/extension-task-item"
 import TaskList from "@tiptap/extension-task-list"
-import { EditorContent, useEditor } from "@tiptap/react"
+import { Editor, EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import { marked } from "marked"
-import React, { FunctionComponent, useEffect, useState } from "react"
+import React, { FunctionComponent } from "react"
 import TurndownService from "turndown"
-import CustomTipTapMenuBar from "./CustomTipTapMenuBar"
+import { CustomTipTapMenuBar } from "./CustomTipTapMenuBar"
 
 interface IProps {
-  value: string | undefined // this is markdown
-  setValue: (val: string) => void // the val is returned as markdown
-  setFiles?: (val: any) => void
-  bgSecondary?: boolean
-  bgPrimaryColor?: string
-  bgSecondaryColor?: string
+  value: string
+  setValue: (val: string) => void
+  isHtml?: boolean
+  // -=-=-=-=-=-=-=-=-=-=-=-=
   minHeight?: string
   height?: string
-  withMenuBar?: boolean
-  closeDropzone?: boolean
+  // -=-=-=-=-=-=-=-=-=-=-=-=
+  bgPrimaryColor?: string
+  bgSecondary?: boolean
+  bgSecondaryColor?: string
   menuBgColor?: string
   menuColorScheme?: string
-  maxFiles?: number
+  // -=-=-=-=-=-=-=-=-=-=-=-=
+  withMenuBar?: boolean
+  menuBarPlacement?: "top" | "bottom"
+  actionButtons?: JSX.Element
+  isSimple?: boolean
+  // -=-=-=-=-=-=-=-=-=-=-=-=
   isInvalid?: boolean
   label?: string
-  menueBarPlacement?: "top" | "bottom"
-  simpleBar?: boolean
-  actionButtons?: JSX.Element
 }
 
-// Pour que le composant marche bien il faut ajouter le style dans le theme de chakra,
-// Notamment les classes .markdown et .ProseMirror et .ProseMirror-focused
-// Autrement le rendu du wysiwyg ne sera pas très joli
-// !TODO: Ajouter dans la doc
-
 export const AcsWysiwyg: FunctionComponent<IProps> = ({
-  value = "",
+  value,
   setValue,
-  setFiles,
-  bgSecondary = false,
-  bgPrimaryColor,
-  bgSecondaryColor,
+  isHtml = false,
+  // -=-=-=-=-=-=-=-=-=-=-=-=
   minHeight = "100px",
   height = "auto",
-  withMenuBar = true,
-  closeDropzone,
+  // -=-=-=-=-=-=-=-=-=-=-=-=
+  bgPrimaryColor,
+  bgSecondary,
+  bgSecondaryColor,
   menuBgColor = "gray.100",
   menuColorScheme = "primary",
-  maxFiles = 5,
-  isInvalid = false,
+  // -=-=-=-=-=-=-=-=-=-=-=-=
+  menuBarPlacement = "top",
+  withMenuBar = true,
   actionButtons,
+  isSimple,
+  // -=-=-=-=-=-=-=-=-=-=-=-=
+  isInvalid,
   label,
-  menueBarPlacement = "bottom",
-  simpleBar = false,
 }) => {
-  const [isDropzoneOpen, setIsDropzoneOpen] = useState<boolean>(false)
+  const theme = useTheme()
 
   const editor = useEditor({
     extensions: [
       StarterKit,
-      /* It's adding a keyboard shortcut to the editor. */
-      // HardBreak.extend({
-      // 	addKeyboardShortcuts() {
-      // 		return {
-      // 			Enter: () => this.editor.commands.setHardBreak(),
-      // 		}
-      // 	},
-      // }),
       TaskList,
       TaskItem.configure({
         nested: true,
@@ -81,44 +75,41 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
       Link.configure({
         openOnClick: false,
       }),
+      Table.configure({
+        resizable: false,
+      }),
+      TableRow,
+      TableHeader,
+      TableCell,
     ],
-    content: marked(value),
+    content: isHtml ? value : marked(value),
     onUpdate: ({ editor }) => {
       const html = editor.getHTML()
 
-      const turndownService = new TurndownService()
-      const markdown = turndownService.turndown(html)
+      if (isHtml) {
+        setValue(html)
+      } else {
+        const turndownService = new TurndownService()
+        const markdown = turndownService.turndown(html)
 
-      setValue(markdown)
+        setValue(markdown)
+      }
     },
   })
 
-  useEffect(() => {
-    if (editor && value === "") {
-      editor.commands.clearContent()
-    }
-  }, [value])
-
-  useEffect(() => {
-    if (editor && closeDropzone && isDropzoneOpen) {
-      setIsDropzoneOpen(false)
-    }
-  }, [closeDropzone])
-
-  const theme = useTheme()
+  if (!editor) return null
 
   return (
     <VStack spacing={1} alignItems={"flex-start"} w={"full"} h={"full"}>
       {label && <Label label={label} />}
-      {withMenuBar && menueBarPlacement === "top" && editor && (
+      {withMenuBar && menuBarPlacement === "top" && (
         <CustomTipTapMenuBar
-          editor={editor}
-          hasDropzone={!!setFiles}
-          isDropzoneOpen={isDropzoneOpen}
-          setIsDropzoneOpen={setIsDropzoneOpen}
+          editor={editor as Editor}
+          isSimple={isSimple}
           bgColor={menuBgColor}
           colorScheme={menuColorScheme}
-          simpleBar={simpleBar}
+          actionButtons={actionButtons}
+          isHtml={isHtml}
         />
       )}
       <InputGroupWithShadow
@@ -127,7 +118,6 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
         isInvalid={isInvalid}
       >
         <EditorContent
-          className="markdown"
           editor={editor}
           style={{
             minHeight,
@@ -143,45 +133,15 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
           }}
         />
       </InputGroupWithShadow>
-
-      {withMenuBar && menueBarPlacement === "bottom" && editor && (
+      {withMenuBar && menuBarPlacement === "bottom" && (
         <CustomTipTapMenuBar
-          editor={editor}
-          hasDropzone={!!setFiles}
-          isDropzoneOpen={isDropzoneOpen}
-          setIsDropzoneOpen={setIsDropzoneOpen}
+          editor={editor as Editor}
+          isSimple={isSimple}
           bgColor={menuBgColor}
           colorScheme={menuColorScheme}
-          simpleBar={simpleBar}
           actionButtons={actionButtons}
+          isHtml={isHtml}
         />
-      )}
-
-      {!!setFiles && isDropzoneOpen && (
-        <VStack width={"full"}>
-          <HStack width={"full"} justifyContent={"space-between"}>
-            <Text fontSize={"sm"} fontWeight={"bold"}>
-              Importez vos fichiers
-            </Text>
-
-            <IconButton
-              rounded={"base"}
-              aria-label={"close"}
-              icon={
-                <AisClose
-                  boxSize={"16px"}
-                  cursor={"pointer"}
-                  rounded={"full"}
-                  _hover={{ backgroundColor: "neutral.200" }}
-                  color={"neutral.500"}
-                />
-              }
-              size={"xs"}
-              onClick={() => setIsDropzoneOpen(false)}
-            />
-          </HStack>
-          <AcsDropzone handleChange={setFiles} maxFiles={maxFiles} />
-        </VStack>
       )}
     </VStack>
   )
