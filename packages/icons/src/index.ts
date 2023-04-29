@@ -921,6 +921,10 @@ export * from "./icons/AisStarHalfFilled"
 
 export * from "./listIcons"
 
+export * from "./icons/AisSubscriber"
+
+export * from "./listIcons"
+
 export * from "./icons/AisSubstract"
 
 export * from "./listIcons"
