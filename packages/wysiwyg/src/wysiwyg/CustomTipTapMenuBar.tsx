@@ -4,6 +4,7 @@ import {
   AisBold,
   AisCode,
   AisForward,
+  AisImage,
   AisItalic,
   AisLink,
   AisListOrdered,
@@ -30,6 +31,7 @@ import {
 import { Editor } from "@tiptap/react"
 import React, { FunctionComponent, useState } from "react"
 import UrlLinkEditModal from "./UrlLinkEditModal"
+import UrlMediaModal from "./UrlMediaModal"
 
 interface IProps {
   editor: Editor
@@ -49,6 +51,7 @@ export const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
   isHtml = false,
 }) => {
   const [isLinkModalOpen, setIsLinkModalOpen] = useState<boolean>(false)
+  const [isMediaModalOpen, setIsMediaModalOpen] = useState<boolean>(false)
 
   const iconSize = "16px"
 
@@ -296,6 +299,17 @@ export const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
         needsHtml: false,
       },
     ],
+    [
+      {
+        onClick: () => setIsMediaModalOpen(!isLinkModalOpen),
+        disabled: false,
+        variant: "outline",
+        icon: <AisImage boxSize={iconSize} />,
+        label: "Ajouter une image",
+        isSimple: false,
+        needsHtml: false,
+      },
+    ],
   ]
 
   return (
@@ -361,6 +375,18 @@ export const CustomTipTapMenuBar: FunctionComponent<IProps> = ({
           isOpen={isLinkModalOpen}
           setIsOpen={setIsLinkModalOpen}
           onClose={() => setIsLinkModalOpen(false)}
+        />
+      )}
+
+      {isMediaModalOpen && (
+        <UrlMediaModal
+          link={""}
+          handleValidate={(val) =>
+            editor.chain().focus().setImage({ src: val }).run()
+          }
+          isOpen={isMediaModalOpen}
+          setIsOpen={setIsMediaModalOpen}
+          onClose={() => setIsMediaModalOpen(false)}
         />
       )}
     </Box>

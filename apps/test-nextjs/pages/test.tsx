@@ -7,10 +7,12 @@ const Pages: NextPage = () => {
   const [htmlValue, setHtmlValue] = useState<string>("")
 
   return (
-    <VStack w={"100vw"} bg={"blue.100"}>
+    <VStack w={"100vw"} p={12}>
       <Heading>Pages</Heading>
 
-      <AcsWysiwyg value={htmlValue} setValue={setHtmlValue} />
+      <AcsWysiwyg value={htmlValue} setValue={setHtmlValue} isHtml />
+
+      <div dangerouslySetInnerHTML={{ __html: htmlValue }} />
     </VStack>
   )
 }

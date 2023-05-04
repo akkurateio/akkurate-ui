@@ -1,6 +1,7 @@
 import InputGroupWithShadow from "@akkurateio/forms/src/InputGroupWithShadow"
 import Label from "@akkurateio/forms/src/Label"
 import { useTheme, VStack } from "@chakra-ui/react"
+import Image from "@tiptap/extension-image"
 import Link from "@tiptap/extension-link"
 import Table from "@tiptap/extension-table"
 import TableCell from "@tiptap/extension-table-cell"
@@ -77,6 +78,9 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
       }),
       Table.configure({
         resizable: false,
+      }),
+      Image.configure({
+        allowBase64: true,
       }),
       TableRow,
       TableHeader,
