@@ -197,6 +197,18 @@ export * from "./icons/AisClose"
 
 export * from "./listIcons"
 
+export * from "./icons/AisCloud"
+
+export * from "./listIcons"
+
+export * from "./icons/AisCloudy"
+
+export * from "./listIcons"
+
+export * from "./icons/AisCloudyPartly"
+
+export * from "./listIcons"
+
 export * from "./icons/AisCode"
 
 export * from "./listIcons"
@@ -258,6 +270,10 @@ export * from "./icons/AisDownload"
 export * from "./listIcons"
 
 export * from "./icons/AisDownloadCloud"
+
+export * from "./listIcons"
+
+export * from "./icons/AisDrizzly"
 
 export * from "./listIcons"
 
@@ -837,6 +853,10 @@ export * from "./icons/AisRadioButtonChecked"
 
 export * from "./listIcons"
 
+export * from "./icons/AisRainy"
+
+export * from "./listIcons"
+
 export * from "./icons/AisRefresh"
 
 export * from "./listIcons"
@@ -918,6 +938,10 @@ export * from "./icons/AisStarFilled"
 export * from "./listIcons"
 
 export * from "./icons/AisStarHalfFilled"
+
+export * from "./listIcons"
+
+export * from "./icons/AisStormly"
 
 export * from "./listIcons"
 
@@ -1102,6 +1126,10 @@ export * from "./icons/AisWatch"
 export * from "./listIcons"
 
 export * from "./icons/AisWebhook"
+
+export * from "./listIcons"
+
+export * from "./icons/AisWind"
 
 export * from "./listIcons"
 
