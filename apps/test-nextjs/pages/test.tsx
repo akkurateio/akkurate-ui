@@ -4,7 +4,9 @@ import type { NextPage } from "next"
 import { useState } from "react"
 
 const Pages: NextPage = () => {
-  const [htmlValue, setHtmlValue] = useState<string>("")
+  const [htmlValue, setHtmlValue] = useState<string>(
+    "<p>un super long texte et même qu edes foi quand c'est cool comme ça on fait des trucs</p>",
+  )
 
   return (
     <VStack w={"100vw"} p={12}>
@@ -13,6 +15,8 @@ const Pages: NextPage = () => {
       <AcsWysiwyg value={htmlValue} setValue={setHtmlValue} isHtml />
 
       <div dangerouslySetInnerHTML={{ __html: htmlValue }} />
+
+      <button onClick={() => setHtmlValue('<p></p>')}>Vider</button>
     </VStack>
   )
 }

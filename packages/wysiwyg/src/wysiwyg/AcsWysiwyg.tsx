@@ -12,7 +12,7 @@ import TaskList from "@tiptap/extension-task-list"
 import { Editor, EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import { marked } from "marked"
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useEffect } from "react"
 import TurndownService from "turndown"
 import { CustomTipTapMenuBar } from "./CustomTipTapMenuBar"
 
@@ -100,6 +100,19 @@ export const AcsWysiwyg: FunctionComponent<IProps> = ({
       }
     },
   })
+
+  useEffect(() => {
+    if (editor && editor.getText() !== "") {
+      if (
+        value === "" ||
+        value === null ||
+        value === undefined ||
+        value === "<p></p>"
+      ) {
+        editor.commands.setContent("")
+      }
+    }
+  }, [value, editor])
 
   if (!editor) return null
 
