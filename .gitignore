@@ -104,3 +104,5 @@ report.*
 
 # vs code
 .vscode
+
+tools/icons-generator/export

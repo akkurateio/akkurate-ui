@@ -1,6 +1,3 @@
-
-export * from "./listIcons"
-
 export * from "./icons/AisAdd"
 
 export * from "./listIcons"
@@ -237,11 +234,11 @@ export * from "./icons/AisDashboard"
 
 export * from "./listIcons"
 
-export * from "./icons/AisDataUnstructured"
+export * from "./icons/AisDatabase"
 
 export * from "./listIcons"
 
-export * from "./icons/AisDatabase"
+export * from "./icons/AisDataUnstructured"
 
 export * from "./listIcons"
 
@@ -261,15 +258,15 @@ export * from "./icons/AisDot"
 
 export * from "./listIcons"
 
-export * from "./icons/AisDownToBottom"
-
-export * from "./listIcons"
-
 export * from "./icons/AisDownload"
 
 export * from "./listIcons"
 
 export * from "./icons/AisDownloadCloud"
+
+export * from "./listIcons"
+
+export * from "./icons/AisDownToBottom"
 
 export * from "./listIcons"
 
@@ -306,6 +303,10 @@ export * from "./icons/AisEyeClosed"
 export * from "./listIcons"
 
 export * from "./icons/AisEyeDropper"
+
+export * from "./listIcons"
+
+export * from "./icons/AisFacebook"
 
 export * from "./listIcons"
 
@@ -366,10 +367,6 @@ export * from "./icons/AisFaceSuprized"
 export * from "./listIcons"
 
 export * from "./icons/AisFaceWink"
-
-export * from "./listIcons"
-
-export * from "./icons/AisFacebook"
 
 export * from "./listIcons"
 
@@ -473,6 +470,14 @@ export * from "./icons/AisGoLeft"
 
 export * from "./listIcons"
 
+export * from "./icons/AisGoogle"
+
+export * from "./listIcons"
+
+export * from "./icons/AisGoogleDrive"
+
+export * from "./listIcons"
+
 export * from "./icons/AisGoRight"
 
 export * from "./listIcons"
@@ -486,14 +491,6 @@ export * from "./icons/AisGoSortOutline"
 export * from "./listIcons"
 
 export * from "./icons/AisGoUp"
-
-export * from "./listIcons"
-
-export * from "./icons/AisGoogle"
-
-export * from "./listIcons"
-
-export * from "./icons/AisGoogleDrive"
 
 export * from "./listIcons"
 
@@ -1037,11 +1034,11 @@ export * from "./icons/AisTableRemoveRowBefore"
 
 export * from "./listIcons"
 
-export * from "./icons/AisTableUnMergeCell"
+export * from "./icons/AisTablet"
 
 export * from "./listIcons"
 
-export * from "./icons/AisTablet"
+export * from "./icons/AisTableUnMergeCell"
 
 export * from "./listIcons"
 
@@ -1089,15 +1086,15 @@ export * from "./icons/AisUnlocked"
 
 export * from "./listIcons"
 
-export * from "./icons/AisUpToTop"
-
-export * from "./listIcons"
-
 export * from "./icons/AisUpload"
 
 export * from "./listIcons"
 
 export * from "./icons/AisUploadCloud"
+
+export * from "./listIcons"
+
+export * from "./icons/AisUpToTop"
 
 export * from "./listIcons"
 
