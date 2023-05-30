@@ -10,7 +10,7 @@ import { transform } from "@svgr/core"
 
 const ROOT_DIR = path.join(process.cwd(), "..", "..")
 const SVG_DIR = path.join(ROOT_DIR, "assets", "icons")
-const ICONS_DIR = path.join(ROOT_DIR, "packages", "icons")
+const ICONS_DIR = path.join(ROOT_DIR, "packages", "rn-icons")
 
 /**
  * Main function for generate icons
@@ -23,6 +23,7 @@ const main = async () => {
 
   // For each icon
   for (const SVGIcon of allSVGIcons) {
+    const basename = path.basename(SVGIcon, ".svg")
     // Optimize SVG
 
     if (SVGIcon !== ".DS_Store") {
@@ -35,36 +36,29 @@ const main = async () => {
           dimensions: false,
           plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
         },
-        { componentName: path.basename(SVGIcon, ".svg") },
+        { componentName: basename },
       )
 
-      // Check exist of export dir
-      if (!existsSync(path.join(__dirname, "..", "export"))) {
-        mkdirSync(path.join(__dirname, "..", "export"))
-      }
-
       writeFileSync(
-        path.join(
-          __dirname,
-          "..",
-          "export",
-          `${path.basename(SVGIcon, ".svg")}.tsx`,
-        ),
+        path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
         jsCode
           .replace(
             '} from "react-native-svg"',
             ', SvgProps } from "react-native-svg"',
           )
-          .replace("= props", "= (props: SvgProps)"),
+          .replace("= props", "= (props: SvgProps)")
+          .replace('xmlns="http://www.w3.org/2000/svg"', ""),
       )
 
-      indexFile.push(templateIndexFile(`./${path.basename(SVGIcon, ".svg")}`))
+      indexFile.push(
+        templateIndexFile(`./icons/${path.basename(SVGIcon, ".svg")}`),
+      )
     }
 
     // Create index file
     // indexFile.push(templateIndexFile(`./listIcons`))
-    // writeFileSync(path.join(ICONS_DIR, "src", `index.ts`), indexFile.join(""))
   }
+  writeFileSync(path.join(ICONS_DIR, "src", `index.ts`), indexFile.join(""))
 }
 
 /**
