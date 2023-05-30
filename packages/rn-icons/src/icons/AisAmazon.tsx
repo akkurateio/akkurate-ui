@@ -5,7 +5,7 @@ import * as ReactSVG from "react-native-svg"
 export const AisAmazon: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
-    <>
+    <ReactSVG.G key={1}>
       <ReactSVG.Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -13,6 +13,6 @@ export const AisAmazon: FunctionComponent<IIconProps> = createIcon({
       />
       <ReactSVG.Path d="M3.707 22.783c4.272 2.604 10.884 6.636 21.423 1.62.454-.19.771.127.322.701C25 25.683 21.382 29 15.302 29c-6.075 0-10.73-4.15-12.15-5.873-.389-.447.06-.649.323-.485l.232.141Z" />
       <ReactSVG.Path d="M25.47 22.407c.922-.113 2.386-.044 2.674.332.219.285-.007 1.57-.379 2.49-.373.916-.93 1.563-1.238 1.813-.311.25-.54.153-.375-.222.172-.375 1.113-2.702.74-3.19-.345-.452-1.912-.289-2.64-.213l-.148.015c-.153.014-.277.028-.378.04-.313.034-.397.043-.444-.053-.12-.338 1.265-.902 2.188-1.012Z" />
-    </>,
+    </ReactSVG.G>,
   ],
 })

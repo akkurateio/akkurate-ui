@@ -5,7 +5,7 @@ import * as ReactSVG from "react-native-svg"
 export const AisTableAddRowAfter: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
-    <>
+    <ReactSVG.G key={1}>
       <ReactSVG.Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -17,6 +17,6 @@ export const AisTableAddRowAfter: FunctionComponent<IIconProps> = createIcon({
         clipRule="evenodd"
         d="M2 15a2 2 0 0 1 2-2h24a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4Zm2 0h24v4H4v-4Z"
       />
-    </>,
+    </ReactSVG.G>,
   ],
 })

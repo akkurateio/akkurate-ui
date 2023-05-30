@@ -5,7 +5,7 @@ import * as ReactSVG from "react-native-svg"
 export const AisFaceLookDown: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
-    <>
+    <ReactSVG.G key={1}>
       <ReactSVG.Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -55,6 +55,6 @@ export const AisFaceLookDown: FunctionComponent<IIconProps> = createIcon({
         stroke="#000"
         stroke-width="2"
       />
-    </>,
+    </ReactSVG.G>,
   ],
 })

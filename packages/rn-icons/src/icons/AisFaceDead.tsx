@@ -5,7 +5,7 @@ import * as ReactSVG from "react-native-svg"
 export const AisFaceDead: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
-    <>
+    <ReactSVG.G key={1}>
       <ReactSVG.Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -55,6 +55,6 @@ export const AisFaceDead: FunctionComponent<IIconProps> = createIcon({
         transform="rotate(135 23.364 11.414)"
         stroke="#000"
       />
-    </>,
+    </ReactSVG.G>,
   ],
 })

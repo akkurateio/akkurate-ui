@@ -5,7 +5,7 @@ import * as ReactSVG from "react-native-svg"
 export const AisSubscriber: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
-    <>
+    <ReactSVG.G key={1}>
       <ReactSVG.Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -17,6 +17,6 @@ export const AisSubscriber: FunctionComponent<IIconProps> = createIcon({
         clipRule="evenodd"
         d="M30 5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h6.904a2 2 0 0 1 1.414.586l2.402 2.402a2 2 0 0 0 2.828 0l2.402-2.402A2 2 0 0 1 21.364 25H28a2 2 0 0 0 2-2V5ZM4 5h24v18h-6.636a4 4 0 0 0-2.828 1.172l-2.402 2.401-2.402-2.401A4 4 0 0 0 10.904 23H4V5Z"
       />
-    </>,
+    </ReactSVG.G>,
   ],
 })
