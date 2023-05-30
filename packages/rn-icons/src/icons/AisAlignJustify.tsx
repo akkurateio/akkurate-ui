@@ -1,12 +1,16 @@
-import * as React from "react"
-import Svg, { Path, SvgProps } from "react-native-svg"
-export const AisAlignJustify = (props: SvgProps) => (
-  <Svg fill="none" viewBox="0 0 32 32" {...props}>
-    <Path
-      fill="#000"
-      fillRule="evenodd"
-      d="M4 5a1 1 0 0 0 0 2h24a1 1 0 1 0 0-2H4Zm0 4a1 1 0 0 0 0 2h24a1 1 0 1 0 0-2H4Zm-1 5a1 1 0 0 1 1-1h24a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2H4Zm-1 5a1 1 0 0 1 1-1h24a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2H4Z"
-      clipRule="evenodd"
-    />
-  </Svg>
-)
+import React from "react"
+import { createIcon } from "native-base"
+import * as ReactSVG from "react-native-svg"
+
+export const AisAlignJustify = createIcon({
+  viewBox: "0 0 32 32",
+  path: [
+    <>
+      <ReactSVG.Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M4 5a1 1 0 0 0 0 2h24a1 1 0 1 0 0-2H4Zm0 4a1 1 0 0 0 0 2h24a1 1 0 1 0 0-2H4Zm-1 5a1 1 0 0 1 1-1h24a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2H4Zm-1 5a1 1 0 0 1 1-1h24a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2H4Z"
+      />
+    </>,
+  ],
+})

@@ -24,7 +24,11 @@
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18",
-    "react-native-svg": ">= 12.1.1"
+    "react-native-svg": ">=12.1.1",
+    "native-base": ">=3.0.0"
+  },
+  "dependencies": {
+    "native-base": "^3.4.28"
   },
   "scripts": {
     "build": "tsup src/index.ts --dts",

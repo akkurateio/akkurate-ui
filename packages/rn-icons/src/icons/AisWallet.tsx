@@ -1,11 +1,13 @@
-import * as React from "react"
-import Svg, { Path, SvgProps } from "react-native-svg"
-export const AisWallet = (props: SvgProps) => (
-  <Svg fill="none" viewBox="0 0 32 32" {...props}>
-    <Path
-      fill="#000"
-      d="M25 8H7c-.352 0-.686.072-1 .184V7a1 1 0 0 1 1-1h18V4H7C5.346 4 4 5.346 4 7v18c0 1.654 1.346 3 3 3h18c1.654 0 3-1.346 3-3V11c0-1.654-1.346-3-3-3Zm1 17a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2h-6c-1.103 0-2 .897-2 2v6c0 1.103.897 2 2 2h6v2Zm0-4-6 .002V15h6v6Z"
-    />
-    <Path fill="#000" d="M23 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
-  </Svg>
-)
+import React from "react"
+import { createIcon } from "native-base"
+import * as ReactSVG from "react-native-svg"
+
+export const AisWallet = createIcon({
+  viewBox: "0 0 32 32",
+  path: [
+    <>
+      <ReactSVG.Path d="M25 8H7c-.352 0-.686.072-1 .184V7a1 1 0 0 1 1-1h18V4H7C5.346 4 4 5.346 4 7v18c0 1.654 1.346 3 3 3h18c1.654 0 3-1.346 3-3V11c0-1.654-1.346-3-3-3Zm1 17a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2h-6c-1.103 0-2 .897-2 2v6c0 1.103.897 2 2 2h6v2Zm0-4-6 .002V15h6v6Z" />
+      <ReactSVG.Path d="M23 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
+    </>,
+  ],
+})

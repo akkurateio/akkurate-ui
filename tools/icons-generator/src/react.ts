@@ -55,14 +55,14 @@ const main = async () => {
       // Add to index file
       indexFile.push(templateIndexFile(`./icons/${basename}`))
     }
-
-    // Create index file
-    indexFile.push(templateIndexFile(`./listIcons`))
-    writeFileSync(path.join(ICONS_DIR, "src", `index.ts`), indexFile.join(""))
-
-    // Create listInfoIcons file
-    generateListInfoIcons(allSVGIcons)
   }
+
+  // Create index file
+  indexFile.push(templateIndexFile(`./listIcons`))
+  writeFileSync(path.join(ICONS_DIR, "src", `index.ts`), indexFile.join(""))
+
+  // Create listInfoIcons file
+  generateListInfoIcons(allSVGIcons)
 }
 
 /**

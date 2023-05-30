@@ -1,12 +1,7 @@
-import {
-  existsSync,
-  mkdirSync,
-  readdirSync,
-  readFileSync,
-  writeFileSync,
-} from "fs"
+import { readdirSync, readFileSync, writeFileSync } from "fs"
 import path from "path"
-import { transform } from "@svgr/core"
+import { optimize, OptimizedSvg } from "svgo"
+import { parseSync, stringify } from "svgson"
 
 const ROOT_DIR = path.join(process.cwd(), "..", "..")
 const SVG_DIR = path.join(ROOT_DIR, "assets", "icons")
@@ -23,44 +18,83 @@ const main = async () => {
 
   // For each icon
   for (const SVGIcon of allSVGIcons) {
-    const basename = path.basename(SVGIcon, ".svg")
     // Optimize SVG
 
     if (SVGIcon !== ".DS_Store") {
-      const jsCode = await transform(
+      const result = optimize(
         readFileSync(path.join(SVG_DIR, SVGIcon), "utf8"),
-        {
-          icon: true,
-          native: true,
-          svgo: true,
-          dimensions: false,
-          plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
-        },
-        { componentName: basename },
-      )
+      ) as OptimizedSvg
 
+      // Make object with SVG data
+      const parsedSVG = parseSync(result.data)
+
+      let newSVGToString = ""
+
+      // Each SVG element and save it to new SVG string
+      for (const child of parsedSVG.children) {
+        child.name =
+          "ReactSVG." + child.name[0].toUpperCase() + child.name.slice(1)
+
+        // Create a recursive function to change the name of the svg elements
+        const recursive = (child: any) => {
+          if (child.children) {
+            child.children.forEach((child: any) => {
+              child.name =
+                "ReactSVG." + child.name[0].toUpperCase() + child.name.slice(1)
+              recursive(child)
+            })
+          }
+        }
+
+        recursive(child)
+
+        newSVGToString += stringify(child)
+      }
+
+      // Create icon base file name
+      const basename = path.basename(SVGIcon, ".svg")
+
+      newSVGToString = newSVGToString
+        .replace(/fill="#000"/g, "")
+        .replace(/fill="black"/g, "")
+        .replace(/fill-rule/g, "fillRule")
+        .replace(/clip-rule/g, "clipRule")
+
+      // Create icon file
       writeFileSync(
         path.join(ICONS_DIR, "src", "icons", `${basename}.tsx`),
-        jsCode
-          .replace(
-            '} from "react-native-svg"',
-            ', SvgProps } from "react-native-svg"',
-          )
-          .replace("= props", "= (props: SvgProps)")
-          .replace('xmlns="http://www.w3.org/2000/svg"', "")
-          .replace("const", "export const")
-          .replace(`export default ${basename};`, ""),
+        templateCreateIcon(newSVGToString, basename),
       )
 
-      indexFile.push(
-        templateIndexFile(`./icons/${path.basename(SVGIcon, ".svg")}`),
-      )
+      // Add to index file
+      indexFile.push(templateIndexFile(`./icons/${basename}`))
     }
-
-    // Create index file
-    // indexFile.push(templateIndexFile(`./listIcons`))
   }
+
+  // Create index file
   writeFileSync(path.join(ICONS_DIR, "src", `index.ts`), indexFile.join(""))
+}
+
+/**
+ * Template for create icon file
+ * @param svg
+ * @param name
+ */
+const templateCreateIcon = (svg: string, name: string) => {
+  return `
+import React from 'react';
+import { createIcon } from 'native-base';
+import * as ReactSVG from 'react-native-svg';
+
+export const ${name} = createIcon({
+  viewBox: "0 0 32 32",
+  path: [
+  <>
+      ${svg}
+  </>
+  ],
+})
+`
 }
 
 /**
@@ -72,6 +106,24 @@ const templateIndexFile = (addToImport: string, whatImport: string = "*") => {
   return `
 export ${whatImport === "*" ? "*" : `{ ${whatImport} }`} from "${addToImport}"
 `
+}
+
+/**
+ * MultiReplace
+ */
+interface IReplacement {
+  pattern: string
+  replacement: string
+}
+
+const allReplace = (string: string, replacements: IReplacement[]) => {
+  let str: string = string
+
+  const treatment = replacements.map((replacement) => {
+    str.replace(new RegExp(replacement.pattern, "g"), replacement.replacement)
+  })
+
+  return treatment
 }
 
 main()
