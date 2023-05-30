@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisLasso = (props: SvgProps) => (
+export const AisLasso = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -8,4 +8,3 @@ const AisLasso = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisLasso

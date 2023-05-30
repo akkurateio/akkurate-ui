@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisZoomOut = (props: SvgProps) => (
+export const AisZoomOut = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -9,4 +9,3 @@ const AisZoomOut = (props: SvgProps) => (
     <Path fill="#000" d="M21 15H11a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2Z" />
   </Svg>
 )
-export default AisZoomOut

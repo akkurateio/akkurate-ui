@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, Rect, SvgProps } from "react-native-svg"
-const AisFaceNeutral = (props: SvgProps) => (
+export const AisFaceNeutral = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -15,4 +15,3 @@ const AisFaceNeutral = (props: SvgProps) => (
     <Rect width={10} height={2} x={11} y={20} fill="#000" rx={1} />
   </Svg>
 )
-export default AisFaceNeutral

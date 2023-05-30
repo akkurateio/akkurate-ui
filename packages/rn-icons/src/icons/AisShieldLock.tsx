@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisShieldLock = (props: SvgProps) => (
+export const AisShieldLock = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -12,4 +12,3 @@ const AisShieldLock = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisShieldLock

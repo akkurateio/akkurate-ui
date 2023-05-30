@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisGoDown = (props: SvgProps) => (
+export const AisGoDown = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 33 32" {...props}>
     <Path
       fill="#000"
@@ -8,4 +8,3 @@ const AisGoDown = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisGoDown

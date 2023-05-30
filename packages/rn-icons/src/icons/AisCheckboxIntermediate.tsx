@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisCheckboxIntermediate = (props: SvgProps) => (
+export const AisCheckboxIntermediate = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -10,4 +10,3 @@ const AisCheckboxIntermediate = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisCheckboxIntermediate

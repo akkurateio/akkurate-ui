@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisNimiscientHosting = (props: SvgProps) => (
+export const AisNimiscientHosting = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path fill="#000" d="M9 3H3v2h6V3ZM3 7h6v2H3V7Z" />
     <Path
@@ -15,4 +15,3 @@ const AisNimiscientHosting = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisNimiscientHosting

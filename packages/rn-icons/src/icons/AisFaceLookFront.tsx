@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, Rect, Circle, SvgProps } from "react-native-svg"
-const AisFaceLookFront = (props: SvgProps) => (
+export const AisFaceLookFront = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -31,4 +31,3 @@ const AisFaceLookFront = (props: SvgProps) => (
     <Circle cx={22} cy={15} r={1} fill="#000" />
   </Svg>
 )
-export default AisFaceLookFront

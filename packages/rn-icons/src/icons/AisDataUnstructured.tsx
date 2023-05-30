@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisDataUnstructured = (props: SvgProps) => (
+export const AisDataUnstructured = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -22,4 +22,3 @@ const AisDataUnstructured = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisDataUnstructured

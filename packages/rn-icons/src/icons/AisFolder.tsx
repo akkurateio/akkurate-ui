@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisFolder = (props: SvgProps) => (
+export const AisFolder = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -8,4 +8,3 @@ const AisFolder = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisFolder

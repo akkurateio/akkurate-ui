@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisNimiscient = (props: SvgProps) => (
+export const AisNimiscient = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path fill="#000" d="m22.53 2-1.6 4.82-8.81 3.15-1.26-3.8L22.53 2Z" />
     <Path
@@ -11,4 +11,3 @@ const AisNimiscient = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisNimiscient

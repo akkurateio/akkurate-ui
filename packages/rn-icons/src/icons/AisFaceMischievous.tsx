@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisFaceMischievous = (props: SvgProps) => (
+export const AisFaceMischievous = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -24,4 +24,3 @@ const AisFaceMischievous = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisFaceMischievous

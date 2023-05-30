@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisShieldChecked = (props: SvgProps) => (
+export const AisShieldChecked = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -12,4 +12,3 @@ const AisShieldChecked = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisShieldChecked

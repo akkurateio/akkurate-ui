@@ -1,6 +1,4 @@
-# @akkurateio/icons
-
-_Dependency of @akkurateio/ui_
+# @akkurateio/rn-icons
 
 This library of icons is developed by Subvitamine.
 
@@ -8,7 +6,7 @@ This library of icons is developed by Subvitamine.
 
 ```bash
 # npm
-npm install @akkurateio/icons
+npm install @akkurateio/rn-icons
 # yarn
-yarn add @akkurateio/icons
+yarn add @akkurateio/rn-icons
 ```

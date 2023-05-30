@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisWallet = (props: SvgProps) => (
+export const AisWallet = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -9,4 +9,3 @@ const AisWallet = (props: SvgProps) => (
     <Path fill="#000" d="M23 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
   </Svg>
 )
-export default AisWallet

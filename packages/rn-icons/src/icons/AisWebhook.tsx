@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisWebhook = (props: SvgProps) => (
+export const AisWebhook = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -16,4 +16,3 @@ const AisWebhook = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisWebhook

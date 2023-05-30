@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisEye = (props: SvgProps) => (
+export const AisEye = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -9,4 +9,3 @@ const AisEye = (props: SvgProps) => (
     <Path fill="#000" d="M16 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
   </Svg>
 )
-export default AisEye

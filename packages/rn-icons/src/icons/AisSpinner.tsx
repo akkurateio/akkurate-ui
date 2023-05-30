@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisSpinner = (props: SvgProps) => (
+export const AisSpinner = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -13,4 +13,3 @@ const AisSpinner = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisSpinner

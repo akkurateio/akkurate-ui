@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisRadioButtonChecked = (props: SvgProps) => (
+export const AisRadioButtonChecked = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path fill="#000" d="M16 22a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" />
     <Path
@@ -11,4 +11,3 @@ const AisRadioButtonChecked = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisRadioButtonChecked

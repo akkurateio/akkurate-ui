@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
-const AisFrequence = (props: SvgProps) => (
+export const AisFrequence = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <Path
       fill="#000"
@@ -10,4 +10,3 @@ const AisFrequence = (props: SvgProps) => (
     />
   </Svg>
 )
-export default AisFrequence

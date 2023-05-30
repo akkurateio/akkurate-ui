@@ -47,7 +47,9 @@ const main = async () => {
             ', SvgProps } from "react-native-svg"',
           )
           .replace("= props", "= (props: SvgProps)")
-          .replace('xmlns="http://www.w3.org/2000/svg"', ""),
+          .replace('xmlns="http://www.w3.org/2000/svg"', "")
+          .replace("const", "export const")
+          .replace(`export default ${basename};`, ""),
       )
 
       indexFile.push(

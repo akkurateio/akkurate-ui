@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { G, Path, Defs, ClipPath, SvgProps } from "react-native-svg"
-const AisInfinite = (props: SvgProps) => (
+export const AisInfinite = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 32 32" {...props}>
     <G clipPath="url(#prefix__a)">
       <Path
@@ -17,4 +17,3 @@ const AisInfinite = (props: SvgProps) => (
     </Defs>
   </Svg>
 )
-export default AisInfinite
