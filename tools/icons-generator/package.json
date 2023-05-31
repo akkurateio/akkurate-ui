@@ -8,7 +8,8 @@
   "license": "proprietary",
   "scripts": {
     "generate": "ts-node ./src/react.ts",
-    "generate-rn": "ts-node ./src/react-native.ts"
+    "generate-rn": "ts-node ./src/react-native.ts",
+    "export-vue": "ts-node ./src/vue-export.ts"
   },
   "devDependencies": {
     "@akkurateio/icons": "^0.0.42",
