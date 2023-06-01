@@ -115,7 +115,13 @@ export * from "./icons/AisConnected"
 
 export * from "./icons/AisCopy"
 
+export * from "./icons/AisCurrencyDollar"
+
 export * from "./icons/AisCurrencyEuro"
+
+export * from "./icons/AisCurrencyPound"
+
+export * from "./icons/AisCurrencyYen"
 
 export * from "./icons/AisDashboard"
 
@@ -210,6 +216,8 @@ export * from "./icons/AisFileXml"
 export * from "./icons/AisFileZip"
 
 export * from "./icons/AisFilter"
+
+export * from "./icons/AisFilterReset"
 
 export * from "./icons/AisFinance"
 
