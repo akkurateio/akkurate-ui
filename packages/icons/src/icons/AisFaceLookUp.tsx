@@ -11,7 +11,7 @@ export const AisFaceLookUp = createIcon({
 	},
   path: (
     <>
-      <path fillRule="evenodd" clipRule="evenodd" d="M30 16c0 7.732-6.268 14-14 14S2 23.732 2 16 8.268 2 16 2s14 6.268 14 14Zm-2 0c0 6.627-5.373 12-12 12S4 22.627 4 16 9.373 4 16 4s12 5.373 12 12Z" /><rect x="13.5" y="22.5" width="5" height="1" rx=".5" stroke="#000"/><rect x="6" y="11" width="8" height="8" rx="4" stroke="#000" stroke-width="2"/><rect x="9" y="12" width="2" height="2" rx="1" stroke="#000" stroke-width="2"/><rect x="21" y="12" width="2" height="2" rx="1" stroke="#000" stroke-width="2"/><rect x="18" y="11" width="8" height="8" rx="4" stroke="#000" stroke-width="2"/>
+      <path d="M13 23a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1Z" /><path fillRule="evenodd" clipRule="evenodd" d="M10 10a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-3 5a3 3 0 1 0 4.985-2.25 2 2 0 1 1-3.969 0A2.993 2.993 0 0 0 7 15ZM17 15a5 5 0 1 1 10 0 5 5 0 0 1-10 0Zm3.015-2.25a2 2 0 1 0 3.969 0 3 3 0 1 1-3.969 0Z" /><path fillRule="evenodd" clipRule="evenodd" d="M16 30c7.732 0 14-6.268 14-14S23.732 2 16 2 2 8.268 2 16s6.268 14 14 14Zm0-2c6.627 0 12-5.373 12-12S22.627 4 16 4 4 9.373 4 16s5.373 12 12 12Z" />
     </>
   ),
 })

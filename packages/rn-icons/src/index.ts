@@ -1,4 +1,7 @@
+
 export * from "./icons/AisAdd"
+
+export * from "./icons/AisAdjust"
 
 export * from "./icons/AisAlignCenter"
 
@@ -116,9 +119,9 @@ export * from "./icons/AisCurrencyEuro"
 
 export * from "./icons/AisDashboard"
 
-export * from "./icons/AisDatabase"
-
 export * from "./icons/AisDataUnstructured"
+
+export * from "./icons/AisDatabase"
 
 export * from "./icons/AisDesktop"
 
@@ -128,11 +131,11 @@ export * from "./icons/AisDislike"
 
 export * from "./icons/AisDot"
 
+export * from "./icons/AisDownToBottom"
+
 export * from "./icons/AisDownload"
 
 export * from "./icons/AisDownloadCloud"
-
-export * from "./icons/AisDownToBottom"
 
 export * from "./icons/AisDrizzly"
 
@@ -151,8 +154,6 @@ export * from "./icons/AisEye"
 export * from "./icons/AisEyeClosed"
 
 export * from "./icons/AisEyeDropper"
-
-export * from "./icons/AisFacebook"
 
 export * from "./icons/AisFaceDazed"
 
@@ -183,6 +184,8 @@ export * from "./icons/AisFaceSorry"
 export * from "./icons/AisFaceSuprized"
 
 export * from "./icons/AisFaceWink"
+
+export * from "./icons/AisFacebook"
 
 export * from "./icons/AisFigma"
 
@@ -218,6 +221,8 @@ export * from "./icons/AisFlagFilled"
 
 export * from "./icons/AisFolder"
 
+export * from "./icons/AisFolderUnknow"
+
 export * from "./icons/AisFolders"
 
 export * from "./icons/AisForward"
@@ -234,10 +239,6 @@ export * from "./icons/AisGoLast"
 
 export * from "./icons/AisGoLeft"
 
-export * from "./icons/AisGoogle"
-
-export * from "./icons/AisGoogleDrive"
-
 export * from "./icons/AisGoRight"
 
 export * from "./icons/AisGoSort"
@@ -246,9 +247,15 @@ export * from "./icons/AisGoSortOutline"
 
 export * from "./icons/AisGoUp"
 
+export * from "./icons/AisGoogle"
+
+export * from "./icons/AisGoogleDrive"
+
 export * from "./icons/AisGraphBar"
 
 export * from "./icons/AisGraphBarAlternative"
+
+export * from "./icons/AisGraphBarBasic"
 
 export * from "./icons/AisGraphDonut"
 
@@ -390,6 +397,8 @@ export * from "./icons/AisNimiscientPerformance"
 
 export * from "./icons/AisNotebook"
 
+export * from "./icons/AisNotepad"
+
 export * from "./icons/AisNotification"
 
 export * from "./icons/AisNotificationDisabled"
@@ -478,6 +487,8 @@ export * from "./icons/AisSubvitamine"
 
 export * from "./icons/AisSubvitamineFilled"
 
+export * from "./icons/AisSuitcase"
+
 export * from "./icons/AisSun"
 
 export * from "./icons/AisSupport"
@@ -516,9 +527,11 @@ export * from "./icons/AisTableRemoveRowAfter"
 
 export * from "./icons/AisTableRemoveRowBefore"
 
+export * from "./icons/AisTableUnMergeCell"
+
 export * from "./icons/AisTablet"
 
-export * from "./icons/AisTableUnMergeCell"
+export * from "./icons/AisTag"
 
 export * from "./icons/AisTerminal"
 
@@ -542,11 +555,11 @@ export * from "./icons/AisUnlink"
 
 export * from "./icons/AisUnlocked"
 
+export * from "./icons/AisUpToTop"
+
 export * from "./icons/AisUpload"
 
 export * from "./icons/AisUploadCloud"
-
-export * from "./icons/AisUpToTop"
 
 export * from "./icons/AisUser"
 
@@ -569,5 +582,3 @@ export * from "./icons/AisYoutube"
 export * from "./icons/AisZoomIn"
 
 export * from "./icons/AisZoomOut"
-
-export * from "./icons/Headset"
