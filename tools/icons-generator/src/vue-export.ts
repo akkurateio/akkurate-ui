@@ -50,8 +50,6 @@ const main = async () => {
       newSVGToString = newSVGToString
         .replace(/fill="#000"/g, "")
         .replace(/fill="black"/g, "")
-        .replace(/fill-rule/g, "fillRule")
-        .replace(/clip-rule/g, "clipRule")
 
       // Create icon file
       writeFileSync(
