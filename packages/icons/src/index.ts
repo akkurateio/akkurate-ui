@@ -13,7 +13,11 @@ export * from "./icons/AisAlignRight"
 
 export * from "./icons/AisAmazon"
 
+export * from "./icons/AisAndroid"
+
 export * from "./icons/AisApple"
+
+export * from "./icons/AisApplication"
 
 export * from "./icons/AisApps"
 
@@ -341,6 +345,8 @@ export * from "./icons/AisLink"
 
 export * from "./icons/AisLinkedin"
 
+export * from "./icons/AisLinux"
+
 export * from "./icons/AisList"
 
 export * from "./icons/AisListCheck"
@@ -372,6 +378,8 @@ export * from "./icons/AisMeta"
 export * from "./icons/AisMicrophone"
 
 export * from "./icons/AisMicrosoft"
+
+export * from "./icons/AisMigration"
 
 export * from "./icons/AisMinimize"
 
@@ -572,6 +580,10 @@ export * from "./icons/AisUploadCloud"
 export * from "./icons/AisUser"
 
 export * from "./icons/AisUserGroup"
+
+export * from "./icons/AisUserVerified"
+
+export * from "./icons/AisVerified"
 
 export * from "./icons/AisVideo"
 
