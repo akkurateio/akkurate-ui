@@ -45,6 +45,12 @@ export * from "./icons/AisArrowToSelection"
 
 export * from "./icons/AisArrowUp"
 
+export * from "./icons/AisAtlassian"
+
+export * from "./icons/AisAtlassianJira"
+
+export * from "./icons/AisAtlassianTrello"
+
 export * from "./icons/AisAttachement"
 
 export * from "./icons/AisBabyCarrier"
@@ -379,6 +385,8 @@ export * from "./icons/AisMicrophone"
 
 export * from "./icons/AisMicrosoft"
 
+export * from "./icons/AisMicrosoftOffice"
+
 export * from "./icons/AisMigration"
 
 export * from "./icons/AisMinimize"
@@ -598,6 +606,8 @@ export * from "./icons/AisWebhook"
 export * from "./icons/AisWind"
 
 export * from "./icons/AisYoutube"
+
+export * from "./icons/AisZendesk"
 
 export * from "./icons/AisZoomIn"
 
