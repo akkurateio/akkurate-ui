@@ -1,9 +1,4 @@
-import {
-  AisChevronLeft,
-  AisChevronRight,
-  AisPageFirst,
-  AisPageLast,
-} from "@akkurateio/icons"
+import { AisGoFirst, AisGoLast, AisGoLeft, AisGoRight } from "@akkurateio/icons"
 import { Flex, HStack, IconButton, Text } from "@chakra-ui/react"
 import React from "react"
 import PageBtn from "./PageBtn"
@@ -36,7 +31,7 @@ export const AcsPaginate: React.FC<IProps> = ({
               aria-label={"Première page"}
               onClick={() => handleChangePage(1)}
             >
-              <AisPageFirst boxSize={"24px"} />
+              <AisGoFirst boxSize={"24px"} />
             </IconButton>
           )}
           <IconButton
@@ -47,7 +42,7 @@ export const AcsPaginate: React.FC<IProps> = ({
             aria-label={"Page précédente"}
             onClick={() => handleChangePage(current - 1)}
           >
-            <AisChevronLeft boxSize={"24px"} />
+            <AisGoLeft boxSize={"24px"} />
           </IconButton>
         </HStack>
         <HStack spacing={1} alignItems={"center"}>
@@ -119,7 +114,7 @@ export const AcsPaginate: React.FC<IProps> = ({
             aria-label={"Page suivante"}
             onClick={() => handleChangePage(current + 1)}
           >
-            <AisChevronRight boxSize={"24px"} />
+            <AisGoRight boxSize={"24px"} />
           </IconButton>
           {max >= 6 && (
             <IconButton
@@ -129,7 +124,7 @@ export const AcsPaginate: React.FC<IProps> = ({
               aria-label={"Dernière page"}
               onClick={() => handleChangePage(max)}
             >
-              <AisPageLast boxSize={"24px"} />
+              <AisGoLast boxSize={"24px"} />
             </IconButton>
           )}
         </HStack>
