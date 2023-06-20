@@ -123,6 +123,8 @@ export * from "./icons/AisComment"
 
 export * from "./icons/AisConnected"
 
+export * from "./icons/AisCookie"
+
 export * from "./icons/AisCopy"
 
 export * from "./icons/AisCurrencyDollar"
@@ -154,6 +156,8 @@ export * from "./icons/AisDownload"
 export * from "./icons/AisDownloadCloud"
 
 export * from "./icons/AisDrizzly"
+
+export * from "./icons/AisElevator"
 
 export * from "./icons/AisEmail"
 
@@ -309,6 +313,8 @@ export * from "./icons/AisHeartFilled"
 
 export * from "./icons/AisHome"
 
+export * from "./icons/AisHotel"
+
 export * from "./icons/AisHr"
 
 export * from "./icons/AisIdea"
@@ -379,9 +385,13 @@ export * from "./icons/AisMarkdown"
 
 export * from "./icons/AisMaximaze"
 
+export * from "./icons/AisMedication"
+
 export * from "./icons/AisMeta"
 
 export * from "./icons/AisMicrophone"
+
+export * from "./icons/AisMicroscope"
 
 export * from "./icons/AisMicrosoft"
 
@@ -460,6 +470,8 @@ export * from "./icons/AisRadioButtonChecked"
 export * from "./icons/AisRainy"
 
 export * from "./icons/AisRefresh"
+
+export * from "./icons/AisSatellite"
 
 export * from "./icons/AisSearch"
 
@@ -565,7 +577,11 @@ export * from "./icons/AisTime"
 
 export * from "./icons/AisTimeline"
 
+export * from "./icons/AisToolKit"
+
 export * from "./icons/AisTranslate"
+
+export * from "./icons/AisTransport"
 
 export * from "./icons/AisTrash"
 
