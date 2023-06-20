@@ -1,3 +1,4 @@
+import { AisChevronSort } from "@akkurateio/icons"
 import {
   Box,
   Flex,
@@ -14,8 +15,8 @@ import { ThemingProps } from "@chakra-ui/system"
 import { chakraComponents, components, Select } from "chakra-react-select"
 import React, { useEffect, useId, useState } from "react"
 import FormControlLayout from "./FormControlLayout"
+
 // @ts-ignore
-import { AisChevronSort } from "@akkurateio/icons"
 import { sizesAll } from "@akkurateio/utils"
 
 type Omitted = "disabled" | "required" | "readOnly" | "size" | "value"
@@ -87,6 +88,10 @@ export const AcsSelect: React.FC<SelectProps> = ({
         setCurrentValue(props.options.find((opt) => opt.value == props.value))
       }
     } else {
+      if (props.value === undefined && props.value != currentValue.value) {
+        setCurrentValue(undefined)
+      }
+
       if (props.value && props.value != currentValue.value) {
         setCurrentValue(props.options.find((opt) => opt.value == props.value))
       }

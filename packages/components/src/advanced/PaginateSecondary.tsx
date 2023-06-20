@@ -1,8 +1,4 @@
-import {
-  AisChevronLeft,
-  AisChevronRight,
-  AisChevronSort,
-} from "@akkurateio/icons"
+import { AisGoLeft, AisGoRight, AisGoSort } from "@akkurateio/icons"
 import {
   Button,
   Divider,
@@ -75,7 +71,7 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
           isDisabled={current === 1}
         >
           <HStack alignItems={"center"} spacing={2}>
-            <AisChevronLeft boxSize={"24px"} />
+            <AisGoLeft boxSize={"24px"} />
             <Text>Précédent</Text>
           </HStack>
         </Button>
@@ -90,7 +86,7 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
             <>
               <PopoverTrigger>
                 <Button p={0} pl={0.5} size={"xs"} variant={"ghost"}>
-                  <AisChevronSort boxSize={"24px"} />
+                  <AisGoSort boxSize={"24px"} />
                 </Button>
               </PopoverTrigger>
               <Portal>
@@ -130,7 +126,7 @@ export const AcsPaginateSecondary: React.FC<IProps> = ({
         >
           <HStack alignItems={"center"} spacing={2}>
             <Text>Suivant</Text>
-            <AisChevronRight boxSize={"24px"} />
+            <AisGoRight boxSize={"24px"} />
           </HStack>
         </Button>
       )}
