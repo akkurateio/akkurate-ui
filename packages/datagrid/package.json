@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/datagrid",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "Theme for Akkurate UI",
   "keywords": [
     "theme"
@@ -32,7 +32,7 @@
     "@types/react-table": "^7.7.14"
   },
   "dependencies": {
-    "@akkurateio/components": "^0.1.29",
+    "@akkurateio/components": "^0.1.30",
     "@akkurateio/icons": "^0.1.29",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
