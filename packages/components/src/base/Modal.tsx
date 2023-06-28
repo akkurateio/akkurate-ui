@@ -89,16 +89,7 @@ export const AcsModal: React.FC<AcsModalProps> = ({
             />
           </HStack>
         )}
-        {header && (
-          <ModalHeader
-            backgroundColor={"blue.400"}
-            p={0}
-            fontWeight={"md"}
-            fontSize={"md"}
-          >
-            {header}
-          </ModalHeader>
-        )}
+        {header && <ModalHeader p={0}>{header}</ModalHeader>}
         {props.isLoading ? (
           <Flex alignItems={"center"} justifyContent={"center"} minH={64}>
             <Spinner
