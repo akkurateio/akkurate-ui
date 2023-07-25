@@ -1,5 +1,5 @@
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools"; // Custom colors
+import { extendTheme, ThemeConfig } from "@chakra-ui/react"
+import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools" // Custom colors
 
 // Custom colors
 const colors = {
@@ -87,7 +87,7 @@ const colors = {
     800: "#262626",
     900: "#171717",
   },
-};
+}
 
 const markdownCss = {
   h2: {
@@ -218,7 +218,7 @@ const markdownCss = {
     padding: "1rem 0",
     overflowX: "auto",
   },
-};
+}
 
 // Custom global styles
 const styles = {
@@ -275,13 +275,13 @@ const styles = {
       zIndex: "41 !important",
     },
   }),
-};
+}
 
 // Config to include color mode
 const config: ThemeConfig = {
   initialColorMode: "light",
   useSystemColorMode: false,
-};
+}
 
 // Custom breakpoints (that will override default breakpoints)
 const breakpoints = {
@@ -293,7 +293,7 @@ const breakpoints = {
   "2xl": "1920px", // 1080p screen (FHD)
   "3xl": "2560px", // 1440p screen (QHD)
   "4xl": "3840px", // 2160p screen (UHD)
-};
+}
 
 // Custom font sizes (to add smaller font sizes)
 const fontSizes = {
@@ -317,7 +317,7 @@ const fontSizes = {
   // '7xl': '5rem',
   // '8xl': '6rem',
   // '9xl': '7rem',
-};
+}
 
 // Custom sizes, this could be used to define standard sizes for padding, margin, etc...
 const sizes = {
@@ -326,12 +326,12 @@ const sizes = {
   p6: "0.6rem",
   p8: "0.8rem",
   p10: "1rem",
-};
+}
 
 const fonts = {
   heading: `'Inter', sans-serif`,
   body: `'Inter', sans-serif`,
-};
+}
 
 // Extend the theme to include every needed part
 const global = {
@@ -342,6 +342,6 @@ const global = {
   fontSizes,
   sizes,
   fonts,
-};
+}
 
-export const theme = extendTheme(global);
+export const theme = extendTheme(global)
