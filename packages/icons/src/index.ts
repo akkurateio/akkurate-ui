@@ -3,6 +3,10 @@ export * from "./icons/AisAdd"
 
 export * from "./icons/AisAdjust"
 
+export * from "./icons/AisAdobe"
+
+export * from "./icons/AisAirbnb"
+
 export * from "./icons/AisAlignCenter"
 
 export * from "./icons/AisAlignJustify"
@@ -53,6 +57,8 @@ export * from "./icons/AisAtlassianTrello"
 
 export * from "./icons/AisAttachement"
 
+export * from "./icons/AisAuchan"
+
 export * from "./icons/AisBabyCarrier"
 
 export * from "./icons/AisBackward"
@@ -79,9 +85,13 @@ export * from "./icons/AisCamera"
 
 export * from "./icons/AisCancel"
 
+export * from "./icons/AisCanva"
+
 export * from "./icons/AisCar"
 
 export * from "./icons/AisCaret"
+
+export * from "./icons/AisCarrefour"
 
 export * from "./icons/AisCart"
 
@@ -107,6 +117,8 @@ export * from "./icons/AisChevronSort"
 
 export * from "./icons/AisChevronUp"
 
+export * from "./icons/AisClickup"
+
 export * from "./icons/AisClose"
 
 export * from "./icons/AisCloud"
@@ -121,11 +133,15 @@ export * from "./icons/AisColorPalette"
 
 export * from "./icons/AisComment"
 
+export * from "./icons/AisCommentAlternative"
+
 export * from "./icons/AisConnected"
 
 export * from "./icons/AisCookie"
 
 export * from "./icons/AisCopy"
+
+export * from "./icons/AisCreditCard"
 
 export * from "./icons/AisCurrencyDollar"
 
@@ -135,11 +151,19 @@ export * from "./icons/AisCurrencyPound"
 
 export * from "./icons/AisCurrencyYen"
 
+export * from "./icons/AisDarty"
+
 export * from "./icons/AisDashboard"
+
+export * from "./icons/AisDashlane"
 
 export * from "./icons/AisDataUnstructured"
 
 export * from "./icons/AisDatabase"
+
+export * from "./icons/AisDeliveroo"
+
+export * from "./icons/AisDell"
 
 export * from "./icons/AisDesktop"
 
@@ -156,6 +180,8 @@ export * from "./icons/AisDownload"
 export * from "./icons/AisDownloadCloud"
 
 export * from "./icons/AisDrizzly"
+
+export * from "./icons/AisDropbox"
 
 export * from "./icons/AisElevator"
 
@@ -241,6 +267,8 @@ export * from "./icons/AisFlag"
 
 export * from "./icons/AisFlagFilled"
 
+export * from "./icons/AisFnac"
+
 export * from "./icons/AisFolder"
 
 export * from "./icons/AisFolderUnknow"
@@ -249,9 +277,13 @@ export * from "./icons/AisFolders"
 
 export * from "./icons/AisForward"
 
+export * from "./icons/AisFranprix"
+
 export * from "./icons/AisFrequence"
 
 export * from "./icons/AisGithub"
+
+export * from "./icons/AisGitlab"
 
 export * from "./icons/AisGoDown"
 
@@ -315,9 +347,15 @@ export * from "./icons/AisHome"
 
 export * from "./icons/AisHotel"
 
+export * from "./icons/AisHp"
+
 export * from "./icons/AisHr"
 
+export * from "./icons/AisHubspot"
+
 export * from "./icons/AisIdea"
+
+export * from "./icons/AisIkea"
 
 export * from "./icons/AisImage"
 
@@ -332,6 +370,8 @@ export * from "./icons/AisInfo"
 export * from "./icons/AisInside"
 
 export * from "./icons/AisInstagram"
+
+export * from "./icons/AisIntercom"
 
 export * from "./icons/AisIntervention"
 
@@ -350,6 +390,10 @@ export * from "./icons/AisLassoPolygon"
 export * from "./icons/AisLaunch"
 
 export * from "./icons/AisLayer"
+
+export * from "./icons/AisLeclerc"
+
+export * from "./icons/AisLeroyMerlin"
 
 export * from "./icons/AisLike"
 
@@ -377,13 +421,19 @@ export * from "./icons/AisLocked"
 
 export * from "./icons/AisLpWan"
 
+export * from "./icons/AisMagasinU"
+
 export * from "./icons/AisMagicHand"
 
 export * from "./icons/AisMagicHandFilled"
 
+export * from "./icons/AisMailchimp"
+
 export * from "./icons/AisMarkdown"
 
 export * from "./icons/AisMaximaze"
+
+export * from "./icons/AisMcDonalds"
 
 export * from "./icons/AisMedication"
 
@@ -437,11 +487,21 @@ export * from "./icons/AisNotification"
 
 export * from "./icons/AisNotificationDisabled"
 
+export * from "./icons/AisNotion"
+
+export * from "./icons/AisOpenAi"
+
+export * from "./icons/AisOvh"
+
 export * from "./icons/AisPageFirst"
 
 export * from "./icons/AisPageLast"
 
 export * from "./icons/AisParagraph"
+
+export * from "./icons/AisPause"
+
+export * from "./icons/AisPaypal"
 
 export * from "./icons/AisPencil"
 
@@ -455,11 +515,15 @@ export * from "./icons/AisPinFilled"
 
 export * from "./icons/AisPinterest"
 
+export * from "./icons/AisPlay"
+
 export * from "./icons/AisPower"
 
 export * from "./icons/AisPrint"
 
 export * from "./icons/AisProcessor"
+
+export * from "./icons/AisProduct"
 
 export * from "./icons/AisQrCode"
 
@@ -471,7 +535,11 @@ export * from "./icons/AisRainy"
 
 export * from "./icons/AisRefresh"
 
+export * from "./icons/AisSalesforce"
+
 export * from "./icons/AisSatellite"
+
+export * from "./icons/AisScaleway"
 
 export * from "./icons/AisSearch"
 
@@ -491,6 +559,8 @@ export * from "./icons/AisShipFrom"
 
 export * from "./icons/AisShipTo"
 
+export * from "./icons/AisShopify"
+
 export * from "./icons/AisSignal"
 
 export * from "./icons/AisSimCard"
@@ -498,6 +568,8 @@ export * from "./icons/AisSimCard"
 export * from "./icons/AisSlack"
 
 export * from "./icons/AisSms"
+
+export * from "./icons/AisSncf"
 
 export * from "./icons/AisSortDown"
 
@@ -514,6 +586,8 @@ export * from "./icons/AisStarFilled"
 export * from "./icons/AisStarHalfFilled"
 
 export * from "./icons/AisStormly"
+
+export * from "./icons/AisStripe"
 
 export * from "./icons/AisSubscriber"
 
@@ -565,11 +639,15 @@ export * from "./icons/AisTableRemoveRowBefore"
 
 export * from "./icons/AisTableUnMergeCell"
 
+export * from "./icons/AisTableau"
+
 export * from "./icons/AisTablet"
 
 export * from "./icons/AisTag"
 
 export * from "./icons/AisTerminal"
+
+export * from "./icons/AisTextScale"
 
 export * from "./icons/AisTicket"
 
@@ -589,6 +667,10 @@ export * from "./icons/AisTruck"
 
 export * from "./icons/AisTwitter"
 
+export * from "./icons/AisUber"
+
+export * from "./icons/AisUberEats"
+
 export * from "./icons/AisUnderline"
 
 export * from "./icons/AisUnlink"
@@ -607,6 +689,8 @@ export * from "./icons/AisUserGroup"
 
 export * from "./icons/AisUserVerified"
 
+export * from "./icons/AisVercel"
+
 export * from "./icons/AisVerified"
 
 export * from "./icons/AisVideo"
@@ -617,11 +701,17 @@ export * from "./icons/AisWarning"
 
 export * from "./icons/AisWatch"
 
+export * from "./icons/AisWebflowr"
+
 export * from "./icons/AisWebhook"
+
+export * from "./icons/AisWetransfer"
 
 export * from "./icons/AisWind"
 
 export * from "./icons/AisYoutube"
+
+export * from "./icons/AisZapier"
 
 export * from "./icons/AisZendesk"
 
