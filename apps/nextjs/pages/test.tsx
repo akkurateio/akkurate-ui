@@ -1,5 +1,5 @@
 import { Heading, Text, VStack } from "@chakra-ui/react"
-import  { AcsSelect }  from "@akkurateio/forms"
+import { AcsSelect } from "@akkurateio/forms"
 import type { NextPage } from "next"
 import { useState } from "react"
 

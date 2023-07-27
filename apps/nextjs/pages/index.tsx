@@ -1,5 +1,8 @@
+// import { AcsDatagrid_v2 } from "@akkurateio/datagrid"
 import { Heading, VStack } from "@chakra-ui/react"
 import { useState } from "react"
+import { AcsDatagrid_v2 } from "@akkurateio/datagrid"
+import { NovelEditor } from "@akkurateio/novel"
 
 function App() {
   const [htmlValue, setHtmlValue] = useState<string>("")
@@ -22,11 +25,13 @@ function App() {
     isCloseOnSelect: true,
   }
 
-  return (
-    <VStack width={"full"} spacing={20} p={10}>
-      <Heading>Hello</Heading>
+  const [column, setColumn] = useState("")
+  const [page, setPage] = useState(1)
 
-      
+  return (
+    <VStack width={"full"} spacing={20} p={10} h={"100vh"} overflow={"hidden"}>
+      <Heading>Hello</Heading>
+      <NovelEditor value={column} setValue={setColumn} />
     </VStack>
   )
 }

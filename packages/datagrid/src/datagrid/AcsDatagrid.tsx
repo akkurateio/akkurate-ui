@@ -153,9 +153,7 @@ export const AcsDatagrid: React.FC<Iprops> = ({
     }
   }
 
-  return isLoading ? (
-    <Spinner alignSelf={"center"} />
-  ) : (
+  return (
     <>
       <Box
         w={"full"}
@@ -205,32 +203,43 @@ export const AcsDatagrid: React.FC<Iprops> = ({
               </Tr>
             ))}
           </Thead>
-          <Tbody
-            width={"full"}
-            overflow={{ base: "auto" }}
-            {...getTableBodyProps()}
-          >
-            {rows.map((row) => {
-              prepareRow(row)
-              return (
-                <Tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <Td
-                        fontSize={columnFontSize}
-                        wordBreak={"break-word"}
-                        whiteSpace={"normal"}
-                        borderWidth={borderColumnWidth}
-                        {...cell.getCellProps()}
-                      >
-                        {cell.render("Cell")}
-                      </Td>
-                    )
-                  })}
-                </Tr>
-              )
-            })}
-          </Tbody>
+          {isLoading ? (
+            <Flex
+              flex={1}
+              w={"full"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <Spinner />
+            </Flex>
+          ) : (
+            <Tbody
+              width={"full"}
+              overflow={{ base: "auto" }}
+              {...getTableBodyProps()}
+            >
+              {rows.map((row) => {
+                prepareRow(row)
+                return (
+                  <Tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => {
+                      return (
+                        <Td
+                          fontSize={columnFontSize}
+                          wordBreak={"break-word"}
+                          whiteSpace={"normal"}
+                          borderWidth={borderColumnWidth}
+                          {...cell.getCellProps()}
+                        >
+                          {cell.render("Cell")}
+                        </Td>
+                      )
+                    })}
+                  </Tr>
+                )
+              })}
+            </Tbody>
+          )}
         </Table>
       </Box>
       {total > 1 && (
