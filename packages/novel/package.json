@@ -2,6 +2,7 @@
   "name": "@akkurateio/novel",
   "version": "0.1.0",
   "description": "Theme for Akkurate UI",
+  "private": true,
   "keywords": [
     "theme"
   ],
