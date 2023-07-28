@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/icons",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "description": "Library for Akkurate UI icons",
   "keywords": [
     "icons"
@@ -48,5 +48,5 @@
     "not dead",
     "not op_mini all"
   ],
-  "gitHead": "00d22724cfbda21ce66ba2a59cceba5cffd82f71"
+  "gitHead": "b398962be944eb6eb51a5a40d5bce45e2930d252"
 }

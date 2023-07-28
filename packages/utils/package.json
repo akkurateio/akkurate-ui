@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/utils",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "description": "Theme for Akkurate UI",
   "keywords": [
     "theme"
@@ -42,5 +42,5 @@
     "typecheck": "tsc --noEmit",
     "build:fast": "JSX=1 tsup src/index.ts"
   },
-  "gitHead": "00d22724cfbda21ce66ba2a59cceba5cffd82f71"
+  "gitHead": "b398962be944eb6eb51a5a40d5bce45e2930d252"
 }
