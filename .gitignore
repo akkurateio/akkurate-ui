@@ -106,4 +106,4 @@ report.*
 .vscode
 
 tools/icons-generator/export
-.nmprc
+.npmrc
