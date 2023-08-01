@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react"
-import { EditorContent, useEditor } from "@tiptap/react"
+import {
+  EditorContent,
+  generateHTML,
+  generateJSON,
+  useEditor,
+} from "@tiptap/react"
 import { TiptapExtensions } from "./extensions"
 import { Box, BoxProps } from "@chakra-ui/react"
 import { handleSetValue, TiptapEditorProps } from "./utils/editor"
 import { EditorBubbleMenu, TableMenu } from "./components"
 import { prosemirror } from "./styles/prosemirror"
 import { Pseudos, pseudoSelectors } from "@chakra-ui/styled-system"
+import { marked } from "marked"
 
 interface IProps extends BoxProps {
   value: string
@@ -25,6 +31,7 @@ interface IProps extends BoxProps {
     | "top-left"
     | "bottom-left"
     | "bottom-right"
+  /** The value return type that this wysiwyg will output */
   mode?: "html" | "json" | "markdown"
 }
 export const NovelEditor: React.FC<IProps> = ({
@@ -63,9 +70,41 @@ export const NovelEditor: React.FC<IProps> = ({
   // Hydrate the editor with the content from localStorage.
   useEffect(() => {
     if (editor && value && !hydrated) {
-      // if (mode === "markdown") editor.commands.setContent(value)
-      editor.commands.setContent(value)
-      // handleSetValue({ editor, setValue, mode, value })
+      if (mode === "html")
+        editor.commands.setContent(
+          generateJSON(
+            value,
+            TiptapExtensions(
+              handleUpload,
+              maxFileSize,
+              mode,
+              acceptedFileTypes,
+              rest?.placeholder,
+              toastPosition,
+            ),
+          ),
+        )
+
+      if (mode === "json") editor.commands.setContent(JSON.parse(value), false)
+
+      if (mode === "markdown") {
+        // markdown to html
+
+        editor.commands.setContent(
+          generateJSON(
+            marked.parse(value),
+            TiptapExtensions(
+              handleUpload,
+              maxFileSize,
+              mode,
+              acceptedFileTypes,
+              rest?.placeholder,
+              toastPosition,
+            ),
+          ),
+        )
+      }
+
       setHydrated(true)
     }
   }, [editor, value, hydrated])

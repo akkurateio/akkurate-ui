@@ -17,7 +17,7 @@ export const handleSetValue = ({ editor, setValue, mode, value }: IProps) => {
   }
 
   if (mode === "json") {
-    setValue(JSON.stringify(value ?? editor.getJSON()))
+    setValue(value ?? JSON.stringify(editor.getJSON()))
   }
 
   if (mode === "markdown") {

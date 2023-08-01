@@ -52,8 +52,13 @@ function App() {
   }
 
   const [value, setValue] = useState(`
-<p>test</p><table class="table-fixed m-0 overflow-hidden w-[98%] mx-auto my-3 border-collapse"><tbody><tr class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1"><th class="bg-stone-100 border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></th><th class="bg-stone-100 border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></th><th class="bg-stone-100 border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></th></tr><tr class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1"><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td></tr><tr class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1"><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td></tr></tbody></table><p>cool</p>
-  `)
+# test
+
+> | test | c |  |
+> | --- | --- | --- |
+> |  |  |  |
+> |  |  |  |
+`)
 
   const [page, setPage] = useState(1)
 
@@ -65,7 +70,7 @@ function App() {
       <NovelEditor
         value={value}
         setValue={setValue}
-        mode={"html"}
+        mode={"markdown"}
         handleUpload={handleUpload}
         toastPosition={"top"}
         maxFileSize={10}

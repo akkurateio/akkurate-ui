@@ -90,8 +90,8 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
         zIndex={700}
       >
         {/*@ts-ignore*/}
-        {props?.mode === "markdown" &&
-          !props.editor.state.selection.$head?.path.some((p: any) => {
+        {props?.mode !== "markdown" ||
+          (!props.editor.state.selection.$head?.path.some((p: any) => {
             return (
               p?.type?.name === "table" ||
               p?.type?.name === "listItem" ||
@@ -107,32 +107,40 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
                 setIsColorHighlightSelectorOpen(false)
               }}
             />
-          )}
+          ))}
 
-        {items.map((item, index) => (
-          <Button
-            key={index}
-            onClick={item.command}
-            p={2}
-            rounded={0}
-            bg={"white"}
-            color={item.isActive() ? "blue.500" : "gray.600"}
-            _hover={{ bg: "#F5F5F4" }}
-          >
-            <item.icon h={4} w={4} _active={{ color: "blue.500" }} />
-          </Button>
-        ))}
+        {items.map((item, index) => {
+          // @ts-ignore
+          if (item.name === "souligner" && props?.mode === "markdown")
+            return null
 
-        <ColorSelector
-          editor={props.editor}
-          isOpen={isColorSelectorOpen}
-          setIsOpen={() => {
-            setIsColorSelectorOpen(!isColorSelectorOpen)
-            setIsNodeSelectorOpen(false)
-            setIsColorHighlightSelectorOpen(false)
-          }}
-        />
+          return (
+            <Button
+              key={index}
+              onClick={item.command}
+              p={2}
+              rounded={0}
+              bg={"white"}
+              color={item.isActive() ? "blue.500" : "gray.600"}
+              _hover={{ bg: "#F5F5F4" }}
+            >
+              <item.icon h={4} w={4} _active={{ color: "blue.500" }} />
+            </Button>
+          )
+        })}
 
+        {/*@ts-ignore*/}
+        {props?.mode !== "markdown" && (
+          <ColorSelector
+            editor={props.editor}
+            isOpen={isColorSelectorOpen}
+            setIsOpen={() => {
+              setIsColorSelectorOpen(!isColorSelectorOpen)
+              setIsNodeSelectorOpen(false)
+              setIsColorHighlightSelectorOpen(false)
+            }}
+          />
+        )}
         {/*<HighlightSelector*/}
         {/*  editor={props.editor}*/}
         {/*  isOpen={isColorHighlightSelectorOpen}*/}
