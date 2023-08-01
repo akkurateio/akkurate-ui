@@ -91,6 +91,7 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
       >
         {/*@ts-ignore*/}
         {props?.mode !== "markdown" ||
+          // @ts-ignore
           (!props.editor.state.selection.$head?.path.some((p: any) => {
             return (
               p?.type?.name === "table" ||
@@ -106,6 +107,8 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
                 setIsColorSelectorOpen(false)
                 setIsColorHighlightSelectorOpen(false)
               }}
+              // @ts-ignore
+              mode={props?.mode}
             />
           ))}
 

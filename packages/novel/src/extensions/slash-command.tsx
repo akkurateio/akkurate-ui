@@ -455,6 +455,7 @@ const renderItems = (mode: "html" | "json" | "markdown") => {
       //@ts-ignore
       if (
         mode === "markdown" &&
+        // @ts-ignore
         props.editor.state.selection.$head?.path.some((p: any) => {
           return (
             p?.type?.name === "table" ||
@@ -525,6 +526,8 @@ const SlashCommand = (
           maxFileSize,
           acceptedFileTypes,
           toastPosition,
+        ).filter(
+          (item) => mode !== "markdown" || item.title !== "Liste de tâches",
         ),
       render: () => renderItems(mode),
     },

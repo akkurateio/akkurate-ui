@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react"
-import {
-  EditorContent,
-  generateHTML,
-  generateJSON,
-  useEditor,
-} from "@tiptap/react"
+import { EditorContent, generateJSON, useEditor } from "@tiptap/react"
 import { TiptapExtensions } from "./extensions"
 import { Box, BoxProps } from "@chakra-ui/react"
 import { handleSetValue, TiptapEditorProps } from "./utils/editor"
@@ -13,7 +8,7 @@ import { prosemirror } from "./styles/prosemirror"
 import { Pseudos, pseudoSelectors } from "@chakra-ui/styled-system"
 import { marked } from "marked"
 
-interface IProps extends BoxProps {
+interface IProps extends Omit<BoxProps, "onChange" | "css" | "fontSize"> {
   value: string
   setValue: (val: string) => void
   /** This must return a Promise containing an object with key url (for the img src) */
@@ -87,9 +82,7 @@ export const NovelEditor: React.FC<IProps> = ({
 
       if (mode === "json") editor.commands.setContent(JSON.parse(value), false)
 
-      if (mode === "markdown") {
-        // markdown to html
-
+      if (mode === "markdown")
         editor.commands.setContent(
           generateJSON(
             marked.parse(value),
@@ -103,7 +96,6 @@ export const NovelEditor: React.FC<IProps> = ({
             ),
           ),
         )
-      }
 
       setHydrated(true)
     }
@@ -118,7 +110,6 @@ export const NovelEditor: React.FC<IProps> = ({
       onClick={() => {
         editor?.chain().focus().run()
       }}
-      minH={"500px"}
       maxWidth={"screen-lg"}
       rounded={"lg"}
       shadow={"lg"}

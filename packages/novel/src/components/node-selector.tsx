@@ -21,12 +21,14 @@ interface NodeSelectorProps {
   editor: Editor
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
+  mode: "html" | "json" | "markdown"
 }
 
 export const NodeSelector: FC<NodeSelectorProps> = ({
   editor,
   isOpen,
   setIsOpen,
+  mode,
 }) => {
   const items: BubbleMenuItem[] = [
     {
@@ -140,39 +142,44 @@ export const NodeSelector: FC<NodeSelectorProps> = ({
           shadow={"xl"}
           animation={"fade-in slide-in-from-top-1"}
         >
-          {items.map((item, index) => (
-            <Button
-              key={index}
-              onClick={() => {
-                item.command()
-                setIsOpen(false)
-              }}
-              display={"flex"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-              rounded={"sm"}
-              gap={1}
-              px={2}
-              py={1}
-              bg={"white"}
-              fontSize={"sm"}
-              fontWeight={"medium"}
-              _hover={{ bg: "gray.100" }}
-            >
-              <Box
+          {items.map((item, index) => {
+            if (mode === "markdown" && item.name === "Liste de tâches")
+              return null
+
+            return (
+              <Button
+                key={index}
+                onClick={() => {
+                  item.command()
+                  setIsOpen(false)
+                }}
                 display={"flex"}
-                flexDirection={"row"}
                 alignItems={"center"}
-                gap={2}
-                color={item.isActive() ? "blue.600" : "gray.600"}
+                justifyContent={"space-between"}
+                rounded={"sm"}
+                gap={1}
+                px={2}
+                py={1}
+                bg={"white"}
+                fontSize={"sm"}
+                fontWeight={"medium"}
+                _hover={{ bg: "gray.100" }}
               >
-                <Box rounded={"sm"} p={1}>
-                  <item.icon className="h-3 w-3" />
+                <Box
+                  display={"flex"}
+                  flexDirection={"row"}
+                  alignItems={"center"}
+                  gap={2}
+                  color={item.isActive() ? "blue.600" : "gray.600"}
+                >
+                  <Box rounded={"sm"} p={1}>
+                    <item.icon className="h-3 w-3" />
+                  </Box>
+                  <span>{item.name}</span>
                 </Box>
-                <span>{item.name}</span>
-              </Box>
-            </Button>
-          ))}
+              </Button>
+            )
+          })}
         </Box>
       )}
     </Box>

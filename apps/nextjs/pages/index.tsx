@@ -62,8 +62,6 @@ function App() {
 
   const [page, setPage] = useState(1)
 
-  console.log("value", value)
-
   return (
     <VStack width={"full"} spacing={20} p={10} h={"100vh"} overflow={"hidden"}>
       <Heading>Hello</Heading>
@@ -74,12 +72,18 @@ function App() {
         handleUpload={handleUpload}
         toastPosition={"top"}
         maxFileSize={10}
-        rounded={"full"}
-        px={500}
-        maxH={"300px"}
+        rounded={"0"}
+        px={150}
+        color={"red"}
+        bg={
+          "linear-gradient(to bottom right, black 33%, darkblue 34%, purple 33%)"
+        }
         border={"1px solid"}
         _hover={{ borderColor: "lightblue" }}
         _active={{ borderColor: "red" }}
+        onClick={(e) => console.log("e", e)}
+        shadow={"2xl"}
+        h={"500px"}
       />
 
       <pre>{value}</pre>
