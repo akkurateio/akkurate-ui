@@ -14,15 +14,34 @@ import Highlight from "@tiptap/extension-highlight"
 import SlashCommand from "./slash-command"
 import { InputRule } from "@tiptap/core"
 import UploadImagesPlugin from "../plugins/UploadImages"
+import Table from "@tiptap/extension-table"
+import TableRow from "@tiptap/extension-table-row"
+import TableCell from "@tiptap/extension-table-cell"
+import TableHeader from "@tiptap/extension-table-header"
+import { EditorProps } from "@tiptap/pm/view"
 
 const CustomImage = TiptapImage.extend({
   addProseMirrorPlugins() {
-    // return [UploadImagesPlugin()]
-    return []
+    return [UploadImagesPlugin()]
   },
 })
 
-export const TiptapExtensions = [
+export const TiptapExtensions = (
+  handleUpload: (file: File) => Promise<{
+    url: string
+  }>,
+  maxFileSize: number,
+  mode: "html" | "json" | "markdown",
+  acceptedFileTypes?: string[],
+  placeholder?: string,
+  toastPosition?:
+    | "top"
+    | "bottom"
+    | "top-right"
+    | "top-left"
+    | "bottom-left"
+    | "bottom-right",
+) => [
   StarterKit.configure({
     bulletList: {
       HTMLAttributes: {
@@ -105,13 +124,45 @@ export const TiptapExtensions = [
   Placeholder.configure({
     placeholder: ({ node }) => {
       if (node.type.name === "heading") {
-        return `Heading ${node.attrs.level}`
+        return `Titre ${node.attrs.level}`
       }
-      return "Press '/' for commands, or '++' for AI autocomplete..."
+      return placeholder ?? "Appuyez sur / pour lancer une commande"
     },
     includeChildren: true,
   }),
-  SlashCommand,
+  Table.configure({
+    HTMLAttributes: {
+      class:
+        "table-fixed m-0 overflow-hidden w-[98%] mx-auto my-3 border-collapse",
+    },
+    allowTableNodeSelection: true,
+    resizable: true,
+  }),
+  TableRow.configure({
+    HTMLAttributes: {
+      class:
+        "border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1",
+    },
+  }),
+  TableCell.configure({
+    HTMLAttributes: {
+      class:
+        "border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1",
+    },
+  }),
+  TableHeader.configure({
+    HTMLAttributes: {
+      class:
+        "bg-stone-100 border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1",
+    },
+  }),
+  SlashCommand(
+    handleUpload,
+    maxFileSize,
+    mode,
+    acceptedFileTypes,
+    toastPosition,
+  ),
   TiptapUnderline,
   TextStyle,
   Color,

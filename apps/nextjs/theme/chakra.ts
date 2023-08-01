@@ -268,11 +268,28 @@ const styles = {
       bg: "inherit",
       ...markdownCss,
     },
-    ".ProseMirror-focused": {
+    ".ProseMirror .selectedCell:after": {
+      zIndex: 2,
+      position: "absolute",
+      content: '""',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      background: "rgba(200, 200, 255, 0.4)",
+      pointerEvents: "none",
+    },
+    ".Pros  eMirror-focused": {
       outlineColor: "primary.500",
+    },
+    ".ProseMirror .is-editor-empty:first-child::before": {
+      content: "attr(data - placeholder)",
     },
     ".chakra-portal-zIndex:has(#chakra-toast-manager-top)": {
       zIndex: "41 !important",
+    },
+    ".resize-cursor": {
+      cursor: "col-resize",
     },
   }),
 }

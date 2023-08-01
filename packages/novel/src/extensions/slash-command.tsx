@@ -10,8 +10,23 @@ import { Editor, Range, Extension } from "@tiptap/core"
 import Suggestion from "@tiptap/suggestion"
 import { ReactRenderer } from "@tiptap/react"
 import tippy from "tippy.js"
-import { AisDownloadCloud, AisMagicHand } from "@akkurateio/icons"
+import {
+  AisBlockquote,
+  AisCode,
+  AisDownloadCloud,
+  AisImage,
+  AisLink,
+  AisList,
+  AisListCheck,
+  AisListOrdered,
+  AisListUnordered,
+  AisMagicHand,
+  AisParagraph,
+  AisPencil,
+  AisTable,
+} from "@akkurateio/icons"
 import { startImageUpload } from "../plugins/UploadImages"
+import { Box, Button, Flex, Text, useToast } from "@chakra-ui/react"
 
 interface CommandItemProps {
   title: string
@@ -54,28 +69,29 @@ const Command = Extension.create({
   },
 })
 
-const getSuggestionItems = ({ query }: { query: string }) => {
+const getSuggestionItems = (
+  {
+    query,
+  }: {
+    query: string
+  },
+  handleUpload: (file: File) => Promise<{ url: string }>,
+  maxFileSize: number,
+  acceptedFileTypes?: string[],
+  toastPosition?:
+    | "top"
+    | "bottom"
+    | "top-right"
+    | "top-left"
+    | "bottom-left"
+    | "bottom-right",
+) => {
   return [
     {
-      title: "Continue writing",
-      description: "Use AI to expand your thoughts.",
-      searchTerms: ["gpt"],
-      icon: <AisMagicHand className="w-7" />,
-    },
-    {
-      title: "Send Feedback",
-      description: "Let us know how we can improve.",
-      icon: <AisMagicHand width={18} />,
-      command: ({ editor, range }: CommandProps) => {
-        editor.chain().focus().deleteRange(range).run()
-        window.open("/feedback", "_blank")
-      },
-    },
-    {
-      title: "Text",
-      description: "Just start typing with plain text.",
-      searchTerms: ["p", "paragraph"],
-      icon: <AisMagicHand width={18} />,
+      title: "Texte",
+      description: "Juste du texte.",
+      searchTerms: ["p", "paragraphe"],
+      icon: <AisParagraph width={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor
           .chain()
@@ -86,18 +102,9 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       },
     },
     {
-      title: "To-do List",
-      description: "Track tasks with a to-do list.",
-      searchTerms: ["todo", "task", "list", "check", "checkbox"],
-      icon: <AisMagicHand width={18} />,
-      command: ({ editor, range }: CommandProps) => {
-        editor.chain().focus().deleteRange(range).toggleTaskList().run()
-      },
-    },
-    {
-      title: "Heading 1",
-      description: "Big section heading.",
-      searchTerms: ["title", "big", "large"],
+      title: "Titre 1",
+      description: "Gros titre de section.",
+      searchTerms: ["titre", "gros", "large"],
       icon: <AisMagicHand width={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor
@@ -109,9 +116,9 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       },
     },
     {
-      title: "Heading 2",
-      description: "Medium section heading.",
-      searchTerms: ["subtitle", "medium"],
+      title: "Titre 2",
+      description: "Sous-titre de section.",
+      searchTerms: ["titre", "moyen"],
       icon: <AisMagicHand width={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor
@@ -123,9 +130,9 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       },
     },
     {
-      title: "Heading 3",
-      description: "Small section heading.",
-      searchTerms: ["subtitle", "small"],
+      title: "Titre 3",
+      description: "Petit sous-titre de section.",
+      searchTerms: ["titre", "petit"],
       icon: <AisMagicHand width={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor
@@ -136,29 +143,58 @@ const getSuggestionItems = ({ query }: { query: string }) => {
           .run()
       },
     },
+    // {
+    //   title: "Lien",
+    //   description: "Ajoute un lien vers un site",
+    //   searchTerms: ["link", "lien"],
+    //   icon: <AisLink width={18} />,
+    //   command: ({ editor, range }: CommandProps) => {
+    //     console.log(editor.state.selection.$from.parent.textContent)
+    //     editor
+    //       .chain()
+    //       .focus()
+    //       .deleteRange(range)
+    //       .setLink({
+    //         href: editor.state.selection.$from.parent.textContent
+    //           .split(" ")
+    //           .find((word: string) => word.includes("http")) as string,
+    //         target: "_blank",
+    //       })
+    //       .run()
+    //   },
+    // },
     {
-      title: "Bullet List",
-      description: "Create a simple bullet list.",
-      searchTerms: ["unordered", "point"],
-      icon: <AisMagicHand width={18} />,
+      title: "Liste à puce",
+      description: "Créer une liste à puces.",
+      searchTerms: ["unordered", "point", "list"],
+      icon: <AisListUnordered width={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).toggleBulletList().run()
       },
     },
     {
-      title: "Numbered List",
-      description: "Create a list with numbering.",
-      searchTerms: ["ordered"],
-      icon: <AisMagicHand width={18} />,
+      title: "Liste numérotée",
+      description: "Créer une liste numérotée.",
+      searchTerms: ["ordered", "list"],
+      icon: <AisListOrdered width={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).toggleOrderedList().run()
       },
     },
     {
-      title: "Quote",
-      description: "Capture a quote.",
-      searchTerms: ["blockquote"],
-      icon: <AisMagicHand width={18} />,
+      title: "Liste de tâches",
+      description: "Traque les tâches à faire !",
+      searchTerms: ["todo", "task", "list", "check", "checkbox"],
+      icon: <AisListCheck width={18} />,
+      command: ({ editor, range }: CommandProps) => {
+        editor.chain().focus().deleteRange(range).toggleTaskList().run()
+      },
+    },
+    {
+      title: "Citation",
+      description: "Citation d'un texte.",
+      searchTerms: ["blockquote", "quote", "guillemet"],
+      icon: <AisBlockquote width={18} />,
       command: ({ editor, range }: CommandProps) =>
         editor
           .chain()
@@ -170,19 +206,29 @@ const getSuggestionItems = ({ query }: { query: string }) => {
     },
     {
       title: "Code",
-      description: "Capture a code snippet.",
+      description: "Ajoute un bloc de code.",
       searchTerms: ["codeblock"],
-      icon: <AisMagicHand width={18} />,
+      icon: <AisCode width={18} />,
       command: ({ editor, range }: CommandProps) =>
         editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
     },
     {
       title: "Image",
-      description: "Upload an image from your computer.",
+      description: "Ajoute une image.",
       searchTerms: ["photo", "picture", "media"],
-      icon: <AisMagicHand width={18} />,
+      icon: <AisImage width={18} />,
       command: ({ editor, range }: CommandProps) => {
-        editor.chain().focus().deleteRange(range).run()
+        editor
+          .chain()
+          .focus()
+          .insertContentAt(range.to, [
+            {
+              type: "paragraph",
+              content: "",
+            },
+          ])
+          .run()
+        editor.chain().focus(range.to).deleteRange(range).run()
         // upload image
         const input = document.createElement("input")
         input.type = "file"
@@ -191,10 +237,46 @@ const getSuggestionItems = ({ query }: { query: string }) => {
           if (input.files?.length) {
             const file = input.files[0]
             const pos = editor.view.state.selection.from
-            startImageUpload(file, editor.view, pos)
+            startImageUpload(
+              file,
+              editor.view,
+              pos,
+              handleUpload,
+              maxFileSize,
+              acceptedFileTypes,
+              toastPosition,
+            )
           }
         }
         input.click()
+      },
+    },
+    {
+      title: "Table",
+      description: "Ajoute une table.",
+      icon: <AisTable />,
+      command: ({ editor, range }: CommandProps) => {
+        editor
+          .chain()
+          .focus()
+          .insertContentAt(range.to, [
+            {
+              type: "paragraph",
+              content: "",
+            },
+          ])
+          .run()
+
+        editor
+          .chain()
+          .focus(range.to)
+          .deleteRange(range)
+          .insertTable({
+            rows: 3,
+            cols: 3,
+            withHeaderRow: true,
+          })
+          .run()
       },
     },
   ].filter((item) => {
@@ -237,11 +319,13 @@ const CommandList = ({
   range: any
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const toast = useToast()
 
   const selectItem = useCallback(
     (index: number) => {
       const item = items[index]
       if (item) {
+        command(item)
       }
     },
     [command, editor, items],
@@ -288,32 +372,76 @@ const CommandList = ({
   }, [selectedIndex])
 
   return items.length > 0 ? (
-    <div
+    <Flex
+      flexDir={"column"}
+      gap={"1px"}
       id="slash-command"
       ref={commandListContainer}
-      className="z-50 h-auto max-h-[330px] w-72 overflow-y-auto rounded-md border border-stone-200 bg-white px-1 py-2 shadow-md transition-all"
+      zIndex={999}
+      h={"auto"}
+      maxH={"330px"}
+      w={"72"}
+      overflowY={"scroll"}
+      overflowX={"hidden"}
+      rounded={"md"}
+      border={"1px"}
+      borderColor={"#E2E8F0"}
+      bg={"white"}
+      p={2}
+      // shadow={"0px 4px 4px rgba(0, 0, 0, 0.05)"}
+      scrollBehavior={"smooth"}
     >
       {items.map((item: CommandItemProps, index: number) => {
         return (
-          <button
-            className={`flex w-full items-center space-x-2 rounded-md px-2 py-1 text-left text-sm text-stone-900 hover:bg-stone-100 ${
-              index === selectedIndex ? "bg-stone-100 text-stone-900" : ""
-            }`}
+          <Button
+            pos={"relative"}
+            display={"flex"}
+            w={"full"}
+            textAlign={"left"}
+            alignItems={"center"}
+            justifyContent={"flex-start"}
+            rounded={"md"}
+            p={1}
+            fontSize={"sm"}
+            color={"#1C1917"}
+            gap={2}
+            _hover={{
+              bg: "#F5F5F4",
+            }}
+            _focus={{
+              zIndex: 1,
+            }}
+            bg={index === selectedIndex ? "#F5F5F4" : "white"}
             key={index}
             onClick={() => selectItem(index)}
           >
-            <div>
-              <p className="font-medium">{item.title}</p>
-              <p className="text-xs text-stone-500">{item.description}</p>
-            </div>
-          </button>
+            <Box
+              display={"flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              rounded={"md"}
+              border={"1px"}
+              borderColor={"#E2E8F0"}
+              bg={"white"}
+              p={1}
+              boxSize={8}
+            >
+              {item.icon}
+            </Box>
+            <Flex flex={1} flexDirection={"column"}>
+              <Text fontSize={"xs"}>{item.title}</Text>
+              <Text fontSize={"2xs"} fontWeight={"normal"} opacity={0.5}>
+                {item.description}
+              </Text>
+            </Flex>
+          </Button>
         )
       })}
-    </div>
+    </Flex>
   ) : null
 }
 
-const renderItems = () => {
+const renderItems = (mode: "html" | "json" | "markdown") => {
   let component: ReactRenderer | null = null
   let popup: any | null = null
 
@@ -323,6 +451,19 @@ const renderItems = () => {
         props,
         editor: props.editor,
       })
+
+      //@ts-ignore
+      if (
+        mode === "markdown" &&
+        props.editor.state.selection.$head?.path.some((p: any) => {
+          return (
+            p?.type?.name === "table" ||
+            p?.type?.name === "listItem" ||
+            p?.type?.name === "taskItem"
+          )
+        })
+      )
+        return
 
       // @ts-ignore
       popup = tippy("body", {
@@ -337,6 +478,8 @@ const renderItems = () => {
     },
     onUpdate: (props: { editor: Editor; clientRect: DOMRect }) => {
       component?.updateProps(props)
+
+      console.log("editor", props.editor)
 
       popup &&
         popup[0].setProps({
@@ -360,11 +503,31 @@ const renderItems = () => {
   }
 }
 
-const SlashCommand = Command.configure({
-  suggestion: {
-    items: getSuggestionItems,
-    render: renderItems,
-  },
-})
+const SlashCommand = (
+  handleUpload: (file: File) => Promise<{ url: string }>,
+  maxFileSize: number,
+  mode: "html" | "json" | "markdown",
+  acceptedFileTypes?: string[],
+  toastPosition?:
+    | "top"
+    | "bottom"
+    | "top-right"
+    | "top-left"
+    | "bottom-left"
+    | "bottom-right",
+) =>
+  Command.configure({
+    suggestion: {
+      items: (query: any) =>
+        getSuggestionItems(
+          query,
+          handleUpload,
+          maxFileSize,
+          acceptedFileTypes,
+          toastPosition,
+        ),
+      render: () => renderItems(mode),
+    },
+  })
 
 export default SlashCommand

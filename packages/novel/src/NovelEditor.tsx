@@ -1,47 +1,71 @@
 import React, { useEffect, useState } from "react"
 import { EditorContent, useEditor } from "@tiptap/react"
 import { TiptapExtensions } from "./extensions"
-import { useDebouncedCallback } from "use-debounce"
-import { Box } from "@chakra-ui/react"
-import { getPrevText, TiptapEditorProps } from "./utils/editor"
+import { Box, BoxProps } from "@chakra-ui/react"
+import { handleSetValue, TiptapEditorProps } from "./utils/editor"
+import { EditorBubbleMenu, TableMenu } from "./components"
+import { prosemirror } from "./styles/prosemirror"
+import { Pseudos, pseudoSelectors } from "@chakra-ui/styled-system"
 
-interface IProps {
+interface IProps extends BoxProps {
   value: string
   setValue: (val: string) => void
+  /** This must return a Promise containing an object with key url (for the img src) */
+  handleUpload: (file: File) => Promise<{
+    url: string
+  }>
+  /** The max filesize allowed for upload in mo, default at 10mo */
+  maxFileSize?: number
+  /** By default accept all images, can be fulfilled with partial mime (ex: ['image/']) */
+  acceptedFileTypes?: string[]
+  toastPosition?:
+    | "top"
+    | "bottom"
+    | "top-right"
+    | "top-left"
+    | "bottom-left"
+    | "bottom-right"
+  mode?: "html" | "json" | "markdown"
 }
-
-export const NovelEditor: React.FC<IProps> = ({ value, setValue }) => {
-  const [saveStatus, setSaveStatus] = useState("Saved")
-
+export const NovelEditor: React.FC<IProps> = ({
+  value,
+  setValue,
+  handleUpload,
+  maxFileSize = 10,
+  acceptedFileTypes = ["image", "pdf"],
+  toastPosition = "bottom",
+  mode = "html",
+  ...rest
+}) => {
   const [hydrated, setHydrated] = useState(false)
 
-  const debouncedUpdates = useDebouncedCallback(async ({ editor }) => {
-    const json = editor.getJSON()
-    setSaveStatus("Saving...")
-    setValue(json)
-    // Simulate a delay in saving.
-    setTimeout(() => {
-      setSaveStatus("Saved")
-    }, 500)
-  }, 750)
-
   const editor = useEditor({
-    extensions: TiptapExtensions,
-    editorProps: TiptapEditorProps,
-    onUpdate: (e) => {
-      setSaveStatus("Unsaved")
-      const selection = e.editor.state.selection
-      const lastTwo = getPrevText(e.editor, {
-        chars: 2,
-      })
-    },
+    extensions: TiptapExtensions(
+      handleUpload,
+      maxFileSize,
+      mode,
+      acceptedFileTypes,
+      rest?.placeholder,
+      toastPosition,
+    ),
+    editorProps: TiptapEditorProps(
+      handleUpload,
+      maxFileSize,
+      acceptedFileTypes,
+      toastPosition,
+    ),
     autofocus: "end",
+    onUpdate: ({ editor }) => {
+      handleSetValue({ editor, setValue, mode })
+    },
   })
 
   // Hydrate the editor with the content from localStorage.
   useEffect(() => {
     if (editor && value && !hydrated) {
+      // if (mode === "markdown") editor.commands.setContent(value)
       editor.commands.setContent(value)
+      // handleSetValue({ editor, setValue, mode, value })
       setHydrated(true)
     }
   }, [editor, value, hydrated])
@@ -49,32 +73,23 @@ export const NovelEditor: React.FC<IProps> = ({ value, setValue }) => {
   return (
     <Box
       position={"relative"}
-      width="full"
-      height="full"
+      w="full"
       bg={"white"}
-      padding={12}
-      paddingX={8}
-      // onClick={() => {
-      //   editor?.chain().focus().run()
-      // }}
-      // className="relative min-h-[500px] w-full max-w-screen-lg border-stone-200 bg-white p-12 px-8 sm:mb-[calc(20vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg"
+      p={8}
+      onClick={() => {
+        editor?.chain().focus().run()
+      }}
+      minH={"500px"}
+      maxWidth={"screen-lg"}
+      rounded={"lg"}
+      shadow={"lg"}
+      css={prosemirror}
+      {...rest}
     >
-      <Box
-        position={"absolute"}
-        right={5}
-        top={5}
-        marginBottom={5}
-        rounded={"lg"}
-        bg={"gray.100"}
-        paddingX={2}
-        paddingY={1}
-        fontSize={"sm"}
-        color={"gray.400"}
-      >
-        {saveStatus}
-      </Box>
-      {/*{editor && <EditorBubbleMenu editor={editor} />}*/}
-      <EditorContent editor={editor} />
+      {/*@ts-ignore*/}
+      {editor && <EditorBubbleMenu editor={editor} mode={mode} />}
+      {editor?.isActive("table") && <TableMenu editor={editor} />}
+      <EditorContent style={{ height: "100%" }} editor={editor} />
     </Box>
   )
 }
