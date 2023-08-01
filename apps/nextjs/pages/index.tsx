@@ -52,15 +52,8 @@ function App() {
   }
 
   const [value, setValue] = useState(`
-# test
-
-> | test | c |  |
-> | --- | --- | --- |
-> |  |  |  |
-> |  |  |  |
+<table class="table-fixed m-0 overflow-hidden w-[98%] mx-auto my-3 border-collapse"><tbody><tr class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1"><th class="bg-stone-100 border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><ol class="list-decimal list-outside leading-3 -mt-2 tight" data-tight="true"><li class="leading-normal -mb-2"><p>un</p></li><li class="leading-normal -mb-2"><p>deux</p></li><li class="leading-normal -mb-2"><p>pas trois</p></li></ol></th><th class="bg-stone-100 border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></th><th class="bg-stone-100 border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></th></tr><tr class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1"><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td></tr><tr class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1"><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td><td class="border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1" colspan="1" rowspan="1"><p></p></td></tr></tbody></table><p></p>
 `)
-
-  const [page, setPage] = useState(1)
 
   return (
     <VStack width={"full"} spacing={20} p={10} h={"100vh"} overflow={"hidden"}>
@@ -73,10 +66,10 @@ function App() {
         toastPosition={"top"}
         maxFileSize={10}
         rounded={"0"}
-        px={150}
+        px={{ base: 0, sm: 50, md: 150 }}
         color={"red"}
         bg={
-          "linear-gradient(to bottom right, black 33%, darkblue 34%, purple 33%)"
+          "linear-gradient(to bottom right, black 33%, darkblue 34%, purple 34%, purple 66%, darkblue 66%, black 67%, black 100%)"
         }
         border={"1px solid"}
         _hover={{ borderColor: "lightblue" }}

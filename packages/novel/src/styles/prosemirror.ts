@@ -93,11 +93,15 @@ export const prosemirror = css`
 
   .ProseMirror ul[data-type="taskList"] {
     list-style: none;
+    justify-content: center;
   }
   .ProseMirror ul[data-type="taskList"] li {
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: center;
+  }
+  .ProseMirror ul[data-type="taskList"] li > label {
+    height: 24px;
   }
 
   .ProseMirror table * p {

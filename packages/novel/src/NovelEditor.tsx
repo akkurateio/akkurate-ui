@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { EditorContent, generateJSON, useEditor } from "@tiptap/react"
 import { TiptapExtensions } from "./extensions"
-import { Box, BoxProps } from "@chakra-ui/react"
+import { Box, BoxProps, useToast } from "@chakra-ui/react"
 import { handleSetValue, TiptapEditorProps } from "./utils/editor"
 import { EditorBubbleMenu, TableMenu } from "./components"
 import { prosemirror } from "./styles/prosemirror"
@@ -61,6 +61,7 @@ export const NovelEditor: React.FC<IProps> = ({
       handleSetValue({ editor, setValue, mode })
     },
   })
+  const toast = useToast()
 
   // Hydrate the editor with the content from localStorage.
   useEffect(() => {
@@ -80,7 +81,20 @@ export const NovelEditor: React.FC<IProps> = ({
           ),
         )
 
-      if (mode === "json") editor.commands.setContent(JSON.parse(value), false)
+      if (mode === "json") {
+        try {
+          editor.commands.setContent(JSON.parse(value), false)
+        } catch (e) {
+          toast({
+            title: "Erreur",
+            description: "L'éditeur a été initialisé avec un contenue invalide",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+            position: toastPosition,
+          })
+        }
+      }
 
       if (mode === "markdown")
         editor.commands.setContent(
