@@ -99,7 +99,7 @@ export const NovelEditor: React.FC<IProps> = ({
       if (mode === "markdown")
         editor.commands.setContent(
           generateJSON(
-            marked.parse(value),
+            marked(value),
             TiptapExtensions(
               handleUpload,
               maxFileSize,

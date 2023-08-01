@@ -3,7 +3,7 @@ import { useState } from "react"
 // @ts-ignore
 import { NovelEditor } from "@akkurateio/novel"
 import axios from "axios"
-import { css } from "@emotion/react"
+import { AcsWysiwyg } from "@akkurateio/wysiwyg"
 
 export const handleUpload = async (
   file: File | undefined | null,
@@ -58,10 +58,11 @@ function App() {
   return (
     <VStack width={"full"} spacing={20} p={10} h={"100vh"} overflow={"hidden"}>
       <Heading>Hello</Heading>
+
       <NovelEditor
         value={value}
         setValue={setValue}
-        mode={"markdown"}
+        mode={"html"}
         handleUpload={handleUpload}
         toastPosition={"top"}
         maxFileSize={10}
