@@ -60,10 +60,13 @@ export const TableMenu = ({ editor }: { editor: any }) => {
       const selection: any = window.getSelection()
       const range = selection.getRangeAt(0)
       const tableNode = range.startContainer?.closest?.("table")
+
       if (tableNode) {
         const activeTable = tableNode.getBoundingClientRect() // get the currently active table position
         setTableTop(activeTable.top)
+
         const scrollOffset = window.scrollY // calculating the current height of the site
+
         const tablePosition = activeTable.top + scrollOffset
         tableLocation !== tablePosition && setTableLocation(tablePosition)
       }
@@ -92,7 +95,7 @@ export const TableMenu = ({ editor }: { editor: any }) => {
       zIndex={800}
       left={"50%"}
       style={{
-        top: `${tableLocation - tableTop}px`,
+        top: `${tableLocation - tableTop - 10}px`,
       }}
     >
       {items.map((item, index) => (
