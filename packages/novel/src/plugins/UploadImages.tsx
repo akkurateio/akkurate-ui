@@ -48,13 +48,15 @@ const UploadImagesPlugin = () =>
 
 export default UploadImagesPlugin
 
-export function startImageUpload(
+export async function startImageUpload(
   file: File,
   view: EditorView,
   pos: number,
-  handleUpload: (file: File) => Promise<{
-    url: string
-  }>,
+  handleUpload: (file: File) =>
+    | {
+        url: string
+      }
+    | Promise<{ url: string }>,
   maxFileSize: number,
   acceptedFileTypes?: string[],
   toastPosition?:
@@ -104,23 +106,27 @@ export function startImageUpload(
   const tr = view.state.tr
   if (!tr.selection.empty) tr.deleteSelection()
 
-  handleUpload(file).then((src) => {
-    if (!file.type.includes("image/")) {
-      toast({
-        title: "Image uploader avec succès",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: toastPosition ?? "top",
-      })
-      return
-    }
+  let src = handleUpload(file)
 
-    const { schema } = view.state
+  if (src instanceof Promise<any>) {
+    src = await src
+  }
 
-    const transaction = view.state.tr
-      .insert(pos, schema.nodes.image.create({ src: src.url }))
-      .setMeta(uploadKey, { remove: { id } })
-    view.dispatch(transaction)
-  })
+  if (!file.type.includes("image/")) {
+    toast({
+      title: "Image uploader avec succès",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+      position: toastPosition ?? "top",
+    })
+    return
+  }
+
+  const { schema } = view.state
+
+  const transaction = view.state.tr
+    .insert(pos, schema.nodes.image.create({ src: src.url }))
+    .setMeta(uploadKey, { remove: { id } })
+  view.dispatch(transaction)
 }

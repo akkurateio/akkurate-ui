@@ -12,9 +12,11 @@ interface IProps extends Omit<BoxProps, "onChange" | "css" | "fontSize"> {
   value: string
   setValue: (val: string) => void
   /** This must return a Promise containing an object with key url (for the img src) */
-  handleUpload: (file: File) => Promise<{
-    url: string
-  }>
+  handleUpload: (file: File) =>
+    | {
+        url: string
+      }
+    | Promise<{ url: string }>
   /** The max filesize allowed for upload in mo, default at 10mo */
   maxFileSize?: number
   /** By default accept all images, can be fulfilled with partial mime (ex: ['image/']) */
@@ -118,7 +120,7 @@ export const NovelEditor: React.FC<IProps> = ({
   return (
     <Box
       position={"relative"}
-      w="full"
+      w={"full"}
       bg={"white"}
       p={8}
       onClick={() => {

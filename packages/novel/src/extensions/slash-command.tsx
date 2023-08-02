@@ -75,7 +75,11 @@ const getSuggestionItems = (
   }: {
     query: string
   },
-  handleUpload: (file: File) => Promise<{ url: string }>,
+  handleUpload: (file: File) =>
+    | {
+        url: string
+      }
+    | Promise<{ url: string }>,
   maxFileSize: number,
   acceptedFileTypes?: string[],
   toastPosition?:
@@ -505,7 +509,11 @@ const renderItems = (mode: "html" | "json" | "markdown") => {
 }
 
 const SlashCommand = (
-  handleUpload: (file: File) => Promise<{ url: string }>,
+  handleUpload: (file: File) =>
+    | {
+        url: string
+      }
+    | Promise<{ url: string }>,
   maxFileSize: number,
   mode: "html" | "json" | "markdown",
   acceptedFileTypes?: string[],

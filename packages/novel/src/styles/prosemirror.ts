@@ -123,4 +123,21 @@ export const prosemirror = css`
   .ProseMirror a {
     cursor: pointer;
   }
+
+  .image-resizer {
+    display: inline-flex;
+    position: relative;
+    flex-grow: 0;
+  }
+  .image-resizer .resize-trigger {
+    position: absolute;
+    right: -6px;
+    bottom: -9px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #3259a5;
+  }
+  .image-resizer:hover .resize-trigger {
+    opacity: 1;
+  }
 `

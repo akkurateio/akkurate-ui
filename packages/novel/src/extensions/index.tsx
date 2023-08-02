@@ -18,6 +18,7 @@ import Table from "@tiptap/extension-table"
 import TableRow from "@tiptap/extension-table-row"
 import TableCell from "@tiptap/extension-table-cell"
 import TableHeader from "@tiptap/extension-table-header"
+import React from "react"
 
 const CustomImage = TiptapImage.extend({
   addProseMirrorPlugins() {
@@ -26,9 +27,11 @@ const CustomImage = TiptapImage.extend({
 })
 
 export const TiptapExtensions = (
-  handleUpload: (file: File) => Promise<{
-    url: string
-  }>,
+  handleUpload: (file: File) =>
+    | {
+        url: string
+      }
+    | Promise<{ url: string }>,
   maxFileSize: number,
   mode: "html" | "json" | "markdown",
   acceptedFileTypes?: string[],

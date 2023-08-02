@@ -36,9 +36,11 @@ export const handleSetValue = ({ editor, setValue, mode, value }: IProps) => {
 }
 
 export const TiptapEditorProps = (
-  handleUpload: (file: File) => Promise<{
-    url: string
-  }>,
+  handleUpload: (file: File) =>
+    | {
+        url: string
+      }
+    | Promise<{ url: string }>,
   maxFileSize: number,
   acceptedFileTypes: string[],
   toastPosition?:
