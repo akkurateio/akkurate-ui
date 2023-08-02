@@ -75,12 +75,12 @@ const getSuggestionItems = (
   }: {
     query: string
   },
-  handleUpload: (file: File) =>
+  maxFileSize: number,
+  handleUpload?: (file: File) =>
     | {
         url: string
       }
     | Promise<{ url: string }>,
-  maxFileSize: number,
   acceptedFileTypes?: string[],
   toastPosition?:
     | "top"
@@ -245,8 +245,8 @@ const getSuggestionItems = (
               file,
               editor.view,
               pos,
-              handleUpload,
               maxFileSize,
+              handleUpload,
               acceptedFileTypes,
               toastPosition,
             )
@@ -509,13 +509,13 @@ const renderItems = (mode: "html" | "json" | "markdown") => {
 }
 
 const SlashCommand = (
-  handleUpload: (file: File) =>
+  maxFileSize: number,
+  mode: "html" | "json" | "markdown",
+  handleUpload?: (file: File) =>
     | {
         url: string
       }
     | Promise<{ url: string }>,
-  maxFileSize: number,
-  mode: "html" | "json" | "markdown",
   acceptedFileTypes?: string[],
   toastPosition?:
     | "top"
@@ -530,13 +530,15 @@ const SlashCommand = (
       items: (query: any) =>
         getSuggestionItems(
           query,
-          handleUpload,
           maxFileSize,
+          handleUpload,
           acceptedFileTypes,
           toastPosition,
-        ).filter(
-          (item) => mode !== "markdown" || item.title !== "Liste de tâches",
-        ),
+        )
+          .filter(
+            (item) => mode !== "markdown" || item.title !== "Liste de tâches",
+          )
+          .filter((item) => !(item.title === "Image" && !handleUpload)),
       render: () => renderItems(mode),
     },
   })

@@ -27,13 +27,13 @@ const CustomImage = TiptapImage.extend({
 })
 
 export const TiptapExtensions = (
-  handleUpload: (file: File) =>
+  maxFileSize: number,
+  mode: "html" | "json" | "markdown",
+  handleUpload?: (file: File) =>
     | {
         url: string
       }
     | Promise<{ url: string }>,
-  maxFileSize: number,
-  mode: "html" | "json" | "markdown",
   acceptedFileTypes?: string[],
   placeholder?: string,
   toastPosition?:
@@ -158,9 +158,9 @@ export const TiptapExtensions = (
     },
   }),
   SlashCommand(
-    handleUpload,
     maxFileSize,
     mode,
+    handleUpload,
     acceptedFileTypes,
     toastPosition,
   ),

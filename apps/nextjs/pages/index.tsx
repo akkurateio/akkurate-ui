@@ -111,7 +111,7 @@ function App() {
         value={value}
         setValue={setValue}
         mode={"html"}
-        handleUpload={handleFileUpload}
+        // handleUpload={handleFileUpload}
         toastPosition={"top"}
         maxFileSize={10}
         rounded={"0"}
@@ -123,8 +123,8 @@ function App() {
         border={"1px solid"}
         _hover={{ borderColor: "lightblue" }}
         _active={{ borderColor: "red" }}
-        onClick={(e) => console.log("e", e)}
-        shadow={"2xl"}
+        // shadow={"2xl"}
+        shadow={"darkred 0px 22px 70px 4px;"}
         h={"500px"}
       />
 

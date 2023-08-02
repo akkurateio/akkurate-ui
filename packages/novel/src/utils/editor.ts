@@ -4,6 +4,7 @@ import { startImageUpload } from "../plugins/UploadImages"
 import TurndownService from "turndown"
 // @ts-ignore
 import { tables, gfm } from "turndown-plugin-gfm"
+import { createStandaloneToast } from "@chakra-ui/react"
 
 interface IProps {
   editor: Editor
@@ -36,13 +37,13 @@ export const handleSetValue = ({ editor, setValue, mode, value }: IProps) => {
 }
 
 export const TiptapEditorProps = (
-  handleUpload: (file: File) =>
+  maxFileSize: number,
+  acceptedFileTypes: string[],
+  handleUpload?: (file: File) =>
     | {
         url: string
       }
     | Promise<{ url: string }>,
-  maxFileSize: number,
-  acceptedFileTypes: string[],
   toastPosition?:
     | "top"
     | "bottom"
@@ -76,14 +77,26 @@ export const TiptapEditorProps = (
         event.preventDefault()
         const pos = view.state.selection.from
 
+        const { toast } = createStandaloneToast()
+        if (!handleUpload) {
+          toast({
+            title: `Ce n'est pas possible d'uploader des images ici`,
+            status: "error",
+            duration: 10000,
+            isClosable: true,
+            position: toastPosition ?? "top",
+          })
+          return false
+        }
+
         for (let i = 0; i < event.clipboardData.files.length; i++) {
           const file = event.clipboardData.files[i]
           startImageUpload(
             file,
             view,
             pos,
-            handleUpload,
             maxFileSize,
+            handleUpload,
             acceptedFileTypes,
             toastPosition,
           )
@@ -112,14 +125,25 @@ export const TiptapEditorProps = (
           top: event.clientY,
         })
 
+        const { toast } = createStandaloneToast()
+        if (!handleUpload) {
+          toast({
+            title: `Ce n'est pas possible d'uploader des images ici`,
+            status: "error",
+            duration: 10000,
+            isClosable: true,
+            position: toastPosition ?? "top",
+          })
+          return false
+        }
         for (let i = 0; i < event.dataTransfer.files.length; i++) {
           const file = event.dataTransfer.files[i]
           startImageUpload(
             file,
             view,
             coordinates!.pos,
-            handleUpload,
             maxFileSize,
+            handleUpload,
             acceptedFileTypes,
             toastPosition,
           )

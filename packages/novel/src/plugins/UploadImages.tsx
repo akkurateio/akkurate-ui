@@ -52,12 +52,12 @@ export async function startImageUpload(
   file: File,
   view: EditorView,
   pos: number,
-  handleUpload: (file: File) =>
+  maxFileSize: number,
+  handleUpload?: (file: File) =>
     | {
         url: string
       }
     | Promise<{ url: string }>,
-  maxFileSize: number,
   acceptedFileTypes?: string[],
   toastPosition?:
     | "top"
@@ -68,7 +68,14 @@ export async function startImageUpload(
     | "bottom-right",
 ) {
   const { toast } = createStandaloneToast()
-  if (!acceptedFileTypes?.some((type) => !file.type.includes(type))) {
+
+  console.log(
+    "startImageUpload",
+    file,
+    acceptedFileTypes,
+    acceptedFileTypes?.some((type) => !file.type.includes(type)),
+  )
+  if (acceptedFileTypes?.some((type) => !file.type.includes(type))) {
     toast({
       title: `Ce type de fichier n'est pas supporté, nous acceptons les ${acceptedFileTypes?.join(
         ", ",
@@ -106,6 +113,7 @@ export async function startImageUpload(
   const tr = view.state.tr
   if (!tr.selection.empty) tr.deleteSelection()
 
+  //@ts-ignore  -  error is handled before in the editor
   let src = handleUpload(file)
 
   if (src instanceof Promise<any>) {
@@ -114,7 +122,7 @@ export async function startImageUpload(
 
   if (!file.type.includes("image/")) {
     toast({
-      title: "Image uploader avec succès",
+      title: "Fichier uploadé avec succès",
       status: "success",
       duration: 5000,
       isClosable: true,

@@ -11,8 +11,8 @@ import { marked } from "marked"
 interface IProps extends Omit<BoxProps, "onChange" | "css" | "fontSize"> {
   value: string
   setValue: (val: string) => void
-  /** This must return a Promise containing an object with key url (for the img src) */
-  handleUpload: (file: File) =>
+  /** This must return an objet with key url (for the img src), if function is not provided it will diplay a toast message error */
+  handleUpload?: (file: File) =>
     | {
         url: string
       }
@@ -45,17 +45,17 @@ export const NovelEditor: React.FC<IProps> = ({
 
   const editor = useEditor({
     extensions: TiptapExtensions(
-      handleUpload,
       maxFileSize,
       mode,
+      handleUpload,
       acceptedFileTypes,
       rest?.placeholder,
       toastPosition,
     ),
     editorProps: TiptapEditorProps(
-      handleUpload,
       maxFileSize,
       acceptedFileTypes,
+      handleUpload,
       toastPosition,
     ),
     autofocus: "end",
@@ -73,19 +73,25 @@ export const NovelEditor: React.FC<IProps> = ({
           generateJSON(
             value,
             TiptapExtensions(
-              handleUpload,
               maxFileSize,
               mode,
+              handleUpload,
               acceptedFileTypes,
               rest?.placeholder,
               toastPosition,
             ),
           ),
+          false,
+          {
+            preserveWhitespace: true,
+          },
         )
 
       if (mode === "json") {
         try {
-          editor.commands.setContent(JSON.parse(value), false)
+          editor.commands.setContent(JSON.parse(value), false, {
+            preserveWhitespace: true,
+          })
         } catch (e) {
           toast({
             title: "Erreur",
@@ -103,14 +109,18 @@ export const NovelEditor: React.FC<IProps> = ({
           generateJSON(
             marked(value),
             TiptapExtensions(
-              handleUpload,
               maxFileSize,
               mode,
+              handleUpload,
               acceptedFileTypes,
               rest?.placeholder,
               toastPosition,
             ),
           ),
+          false,
+          {
+            preserveWhitespace: true,
+          },
         )
 
       setHydrated(true)
