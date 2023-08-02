@@ -18,6 +18,8 @@ interface TableMenuItem {
 
 export const TableMenu = ({ editor }: { editor: any }) => {
   const [tableLocation, setTableLocation] = useState(0)
+  const [tableTop, setTableTop] = useState(0)
+
   const items: TableMenuItem[] = [
     // {
     //   name: "Fusionner des cellules",
@@ -56,18 +58,14 @@ export const TableMenu = ({ editor }: { editor: any }) => {
   useEffect(() => {
     const handleWindowClick = () => {
       const selection: any = window.getSelection()
-      console.log("selection", selection)
       const range = selection.getRangeAt(0)
-      console.log("range", range)
       const tableNode = range.startContainer?.closest?.("table")
-      console.log("tableNode", tableNode)
       if (tableNode) {
         const activeTable = tableNode.getBoundingClientRect() // get the currently active table position
-        console.log("activeTable", activeTable)
+        setTableTop(activeTable.top)
         const scrollOffset = window.scrollY // calculating the current height of the site
-        console.log("scrollOffset", scrollOffset)
-        const tableTop = activeTable.top + scrollOffset
-        tableLocation !== tableTop && setTableLocation(tableTop)
+        const tablePosition = activeTable.top + scrollOffset
+        tableLocation !== tablePosition && setTableLocation(tablePosition)
       }
     }
 
@@ -94,7 +92,7 @@ export const TableMenu = ({ editor }: { editor: any }) => {
       zIndex={800}
       left={"50%"}
       style={{
-        top: `${tableLocation - 220}px`,
+        top: `${tableLocation - tableTop}px`,
       }}
     >
       {items.map((item, index) => (

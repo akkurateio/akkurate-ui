@@ -484,8 +484,6 @@ const renderItems = (mode: "html" | "json" | "markdown") => {
     onUpdate: (props: { editor: Editor; clientRect: DOMRect }) => {
       component?.updateProps(props)
 
-      console.log("editor", props.editor)
-
       popup &&
         popup[0].setProps({
           getReferenceClientRect: props.clientRect,
