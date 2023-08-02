@@ -18,7 +18,7 @@ interface TableMenuItem {
 
 export const TableMenu = ({ editor }: { editor: any }) => {
   const [tableLocation, setTableLocation] = useState(0)
-  const [tableTop, setTableTop] = useState(0)
+  // const [tableTop, setTableTop] = useState(0)
 
   const items: TableMenuItem[] = [
     // {
@@ -54,24 +54,21 @@ export const TableMenu = ({ editor }: { editor: any }) => {
       icon: AisTrash,
     },
   ]
+  const handleWindowClick = () => {
+    const selection: any = window.getSelection()
+    const range = selection.getRangeAt(0)
+    const tableNode = range.startContainer?.closest?.("table")
+    if (tableNode) {
+      const activeTable = tableNode.getBoundingClientRect() // get the currently active table position
+
+      const scrollOffset = window.scrollY // calculating the current height of the site
+
+      const menuPosition = activeTable.top + scrollOffset
+      tableLocation !== menuPosition && setTableLocation(menuPosition)
+    }
+  }
 
   useEffect(() => {
-    const handleWindowClick = () => {
-      const selection: any = window.getSelection()
-      const range = selection.getRangeAt(0)
-      const tableNode = range.startContainer?.closest?.("table")
-
-      if (tableNode) {
-        const activeTable = tableNode.getBoundingClientRect() // get the currently active table position
-        setTableTop(activeTable.top)
-
-        const scrollOffset = window.scrollY // calculating the current height of the site
-
-        const tablePosition = activeTable.top + scrollOffset
-        tableLocation !== tablePosition && setTableLocation(tablePosition)
-      }
-    }
-
     // Call the function if user click on the table
     window.addEventListener("click", handleWindowClick)
 
@@ -80,6 +77,10 @@ export const TableMenu = ({ editor }: { editor: any }) => {
       window.removeEventListener("click", handleWindowClick)
     }
   }, [tableLocation])
+
+  useEffect(() => {
+    handleWindowClick()
+  }, [])
 
   return (
     <Box
@@ -92,10 +93,10 @@ export const TableMenu = ({ editor }: { editor: any }) => {
       bg={"white"}
       transform={"translate(-50%,0)"}
       shadow={"xl"}
-      zIndex={800}
       left={"50%"}
+      zIndex={880}
       style={{
-        top: `${tableLocation - tableTop - 10}px`,
+        top: `${tableLocation - 48}px`, // 47 is the height of the toolbar +5px
       }}
     >
       {items.map((item, index) => (

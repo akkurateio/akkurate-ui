@@ -3,6 +3,7 @@ import { useState } from "react"
 // @ts-ignore
 import { NovelEditor } from "@akkurateio/novel"
 import axios from "axios"
+import DrawerAddTicket from "../app/components/DrawerAddTicket"
 
 export const handleUpload = async (
   file: File | undefined | null,
@@ -102,6 +103,7 @@ function App() {
 
   const [value, setValue] = useState(`
 `)
+  const [isOpen, setIsOpen] = useState(true)
 
   return (
     <VStack width={"full"} spacing={20} p={10} h={"100vh"} overflow={"hidden"}>
@@ -127,6 +129,8 @@ function App() {
         shadow={"darkred 0px 22px 70px 4px;"}
         h={"500px"}
       />
+
+      <DrawerAddTicket isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
       <pre>{value}</pre>
     </VStack>
