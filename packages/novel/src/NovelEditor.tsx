@@ -129,7 +129,7 @@ export const NovelEditor: React.FC<IProps> = ({
 
   return (
     <Box
-      // position={"relative"}
+      position={"relative"}
       w={"full"}
       bg={"white"}
       p={8}

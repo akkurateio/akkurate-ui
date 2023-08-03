@@ -4,6 +4,7 @@ import { useState } from "react"
 import { NovelEditor } from "@akkurateio/novel"
 import axios from "axios"
 import DrawerAddTicket from "../app/components/DrawerAddTicket"
+import TicketAnswerDescription from "../app/components/TicketAnswerDescription"
 
 export const handleUpload = async (
   file: File | undefined | null,
@@ -106,32 +107,33 @@ function App() {
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <VStack width={"full"} spacing={20} p={10} h={"100vh"} overflow={"hidden"}>
+    <VStack width={"full"} spacing={20} p={10} h={"full"} overflow={"hidden"}>
       <Heading>Hello</Heading>
 
-      <NovelEditor
-        value={value}
-        setValue={setValue}
-        mode={"html"}
-        // handleUpload={handleFileUpload}
-        toastPosition={"top"}
-        maxFileSize={10}
-        rounded={"0"}
-        px={{ base: 0, sm: 50, md: 150 }}
-        color={"red"}
-        bg={
-          "linear-gradient(to bottom right, black 33%, darkblue 34%, purple 34%, purple 66%, darkblue 66%, black 67%, black 100%)"
-        }
-        border={"1px solid"}
-        _hover={{ borderColor: "lightblue" }}
-        _active={{ borderColor: "red" }}
-        // shadow={"2xl"}
-        shadow={"darkred 0px 22px 70px 4px;"}
-        h={"500px"}
-      />
+      {/*<NovelEditor*/}
+      {/*  value={value}*/}
+      {/*  setValue={setValue}*/}
+      {/*  mode={"html"}*/}
+      {/*  // handleUpload={handleFileUpload}*/}
+      {/*  toastPosition={"top"}*/}
+      {/*  maxFileSize={10}*/}
+      {/*  rounded={"0"}*/}
+      {/*  // px={{ base: 0, sm: 50, md: 150 }}*/}
+      {/*  color={"red"}*/}
+      {/*  bg={*/}
+      {/*    "linear-gradient(to bottom right, black 33%, darkblue 34%, purple 34%, purple 66%, darkblue 66%, black 67%, black 100%)"*/}
+      {/*  }*/}
+      {/*  border={"1px solid"}*/}
+      {/*  _hover={{ borderColor: "lightblue" }}*/}
+      {/*  _active={{ borderColor: "red" }}*/}
+      {/*  // shadow={"2xl"}*/}
+      {/*  shadow={"darkred 0px 22px 70px 4px;"}*/}
+      {/*  h={"500px"}*/}
+      {/*/>*/}
 
       <DrawerAddTicket isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
+      <TicketAnswerDescription />
       <pre>{value}</pre>
     </VStack>
   )

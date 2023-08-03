@@ -96,7 +96,7 @@ export const TableMenu = ({ editor }: { editor: any }) => {
       left={"50%"}
       zIndex={880}
       style={{
-        top: `${tableLocation - 48}px`, // 47 is the height of the toolbar +5px
+        top: `${tableLocation - 247}px`, // 47 is the height of the toolbar +5px
       }}
     >
       {items.map((item, index) => (
