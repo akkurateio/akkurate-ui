@@ -68,8 +68,11 @@ export async function startImageUpload(
     | "bottom-right",
 ) {
   const { toast } = createStandaloneToast()
-
-  if (acceptedFileTypes?.some((type) => !file.type.includes(type))) {
+  console.log(
+    "startImageUpload",
+    !acceptedFileTypes?.some((type) => file.type.includes(type)),
+  )
+  if (!acceptedFileTypes?.some((type) => file.type.includes(type))) {
     toast({
       title: `Ce type de fichier n'est pas supporté, nous acceptons les ${acceptedFileTypes?.join(
         ", ",
