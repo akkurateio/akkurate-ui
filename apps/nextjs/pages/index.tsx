@@ -116,7 +116,7 @@ function App() {
         setValue={setValue}
         mode={"html"}
         handleUpload={handleFileUpload}
-        toastPosition={"top"}
+        errorToastPosition={"top"}
         maxFileSize={10}
         rounded={"0"}
         // color={"red"}
