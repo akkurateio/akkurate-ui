@@ -21,7 +21,7 @@ interface IProps extends Omit<BoxProps, "onChange" | "css" | "fontSize"> {
   maxFileSize?: number
   /** By default accept all images, can be fulfilled with partial mime (ex: ['image/']) */
   acceptedFileTypes?: string[]
-  toastPosition?:
+  errorToastPosition?:
     | "top"
     | "bottom"
     | "top-right"
@@ -37,7 +37,7 @@ export const NovelEditor: React.FC<IProps> = ({
   handleUpload,
   maxFileSize = 10,
   acceptedFileTypes = ["image", "pdf"],
-  toastPosition = "bottom",
+  errorToastPosition = "bottom",
   mode = "html",
   ...rest
 }) => {
@@ -50,13 +50,13 @@ export const NovelEditor: React.FC<IProps> = ({
       handleUpload,
       acceptedFileTypes,
       rest?.placeholder,
-      toastPosition,
+      errorToastPosition,
     ),
     editorProps: TiptapEditorProps(
       maxFileSize,
       acceptedFileTypes,
       handleUpload,
-      toastPosition,
+      errorToastPosition,
     ),
     autofocus: "end",
     onUpdate: ({ editor }) => {
@@ -78,7 +78,7 @@ export const NovelEditor: React.FC<IProps> = ({
               handleUpload,
               acceptedFileTypes,
               rest?.placeholder,
-              toastPosition,
+              errorToastPosition,
             ),
           ),
           false,
@@ -99,7 +99,7 @@ export const NovelEditor: React.FC<IProps> = ({
             status: "error",
             duration: 9000,
             isClosable: true,
-            position: toastPosition,
+            position: errorToastPosition,
           })
         }
       }
@@ -114,7 +114,7 @@ export const NovelEditor: React.FC<IProps> = ({
               handleUpload,
               acceptedFileTypes,
               rest?.placeholder,
-              toastPosition,
+              errorToastPosition,
             ),
           ),
           false,
