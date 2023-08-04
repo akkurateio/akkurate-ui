@@ -1,7 +1,11 @@
 import { Editor } from "@tiptap/core"
 import cx from "classnames"
-import { Dispatch, FC, SetStateAction } from "react"
-import { AisCheckbox, AisChevronDown } from "@akkurateio/icons"
+import { Dispatch, FC, SetStateAction, useState } from "react"
+import {
+  AisCheckbox,
+  AisCheckboxChecked,
+  AisChevronDown,
+} from "@akkurateio/icons"
 import React from "react"
 import { Box, Button } from "@chakra-ui/react"
 
@@ -21,10 +25,11 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
   isOpen,
   setIsOpen,
 }) => {
+  const [isBlack, setIsBlack] = useState(true)
   const items: BubbleColorMenuItem[] = [
     {
       name: "Noir",
-      color: "#000000",
+      color: "#1f1f1f",
     },
     {
       name: "Violet",
@@ -52,7 +57,7 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
     },
     {
       name: "Gris",
-      color: "#A8A29E",
+      color: "#8a8887",
     },
   ]
 
@@ -77,7 +82,7 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
         _active={{ bg: "gray.200" }}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span style={{ color: activeItem?.color || "#000000" }}>A</span>
+        <span style={{ color: activeItem?.color || "#1f1f1f" }}>A</span>
 
         <AisChevronDown boxSize={4} />
       </Button>
@@ -116,27 +121,18 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
               py={1}
               bg={"white"}
               fontSize={"sm"}
-              color={
-                editor.isActive("textStyle", { color })
-                  ? "blue.600"
-                  : "gray.600"
-              }
+              color={"gray.600"}
             >
               <Box display={"flex"} alignItems={"center"} gap={2}>
-                <Box
-                  rounded={"sm"}
-                  // border={"1px"}
-                  // borderColor={"gray.200"}
-                  px={1}
-                  fontSize={"md"}
-                  style={{ color }}
-                >
+                <Box rounded={"sm"} px={1} fontSize={"md"} style={{ color }}>
                   A
                 </Box>
                 <span>{name}</span>
               </Box>
-              {editor.isActive("textStyle", { color }) && (
-                <AisCheckbox className="h-4 w-4" />
+
+              {(editor.isActive("textStyle", { color }) ||
+                (!activeItem && name === "Noir")) && (
+                <AisCheckboxChecked className="h-4 w-4" />
               )}
             </Button>
           ))}

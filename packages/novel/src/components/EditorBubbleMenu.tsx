@@ -49,7 +49,8 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
     {
       name: "code",
       isActive: () => props.editor.isActive("code"),
-      command: () => props.editor.chain().focus().toggleCode().run(),
+      command: () => props.editor.chain().focus().toggleCodeBlock().run(),
+
       icon: AisCode,
     },
   ]
@@ -90,27 +91,27 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
         zIndex={700}
       >
         {/*@ts-ignore*/}
-        {props?.mode !== "markdown" ||
+        {(props?.mode !== "markdown" ||
           // @ts-ignore
-          (!props.editor.state.selection.$head?.path.some((p: any) => {
+          !props.editor.state.selection.$head?.path.some((p: any) => {
             return (
               p?.type?.name === "table" ||
               p?.type?.name === "listItem" ||
               p?.type?.name === "taskItem"
             )
-          }) && (
-            <NodeSelector
-              editor={props.editor}
-              isOpen={isNodeSelectorOpen}
-              setIsOpen={() => {
-                setIsNodeSelectorOpen(!isNodeSelectorOpen)
-                setIsColorSelectorOpen(false)
-                setIsColorHighlightSelectorOpen(false)
-              }}
-              // @ts-ignore
-              mode={props?.mode}
-            />
-          ))}
+          })) && (
+          <NodeSelector
+            editor={props.editor}
+            isOpen={isNodeSelectorOpen}
+            setIsOpen={() => {
+              setIsNodeSelectorOpen(!isNodeSelectorOpen)
+              setIsColorSelectorOpen(false)
+              setIsColorHighlightSelectorOpen(false)
+            }}
+            // @ts-ignore
+            mode={props?.mode}
+          />
+        )}
 
         {items.map((item, index) => {
           // @ts-ignore

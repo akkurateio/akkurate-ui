@@ -124,6 +124,7 @@ export const NovelEditor: React.FC<IProps> = ({
         )
 
       setHydrated(true)
+      editor.chain().focus(1).run()
     }
   }, [editor, value, hydrated])
 
