@@ -1,4 +1,3 @@
-
 export * from "./icons/AisAdd"
 
 export * from "./icons/AisAdjust"
@@ -95,6 +94,8 @@ export * from "./icons/AisCarrefour"
 
 export * from "./icons/AisCart"
 
+export * from "./icons/AisCashRegister"
+
 export * from "./icons/AisChangeLog"
 
 export * from "./icons/AisCheckbox"
@@ -104,6 +105,8 @@ export * from "./icons/AisCheckboxChecked"
 export * from "./icons/AisCheckboxIntermediate"
 
 export * from "./icons/AisCheckmark"
+
+export * from "./icons/AisCheckmarkEndorsed"
 
 export * from "./icons/AisCheckmarkFilled"
 
@@ -191,6 +194,8 @@ export * from "./icons/AisEnterprise"
 
 export * from "./icons/AisError"
 
+export * from "./icons/AisErrorFilled"
+
 export * from "./icons/AisEventBadge"
 
 export * from "./icons/AisExport"
@@ -237,6 +242,8 @@ export * from "./icons/AisFigma"
 
 export * from "./icons/AisFile"
 
+export * from "./icons/AisFileAgreement"
+
 export * from "./icons/AisFileDoc"
 
 export * from "./icons/AisFileJson"
@@ -280,6 +287,8 @@ export * from "./icons/AisForward"
 export * from "./icons/AisFranprix"
 
 export * from "./icons/AisFrequence"
+
+export * from "./icons/AisFunction"
 
 export * from "./icons/AisGithub"
 
@@ -337,11 +346,25 @@ export * from "./icons/AisHashtag"
 
 export * from "./icons/AisHeadline"
 
+export * from "./icons/AisHeadline1"
+
+export * from "./icons/AisHeadline2"
+
+export * from "./icons/AisHeadline3"
+
+export * from "./icons/AisHeadline4"
+
+export * from "./icons/AisHeadline5"
+
+export * from "./icons/AisHeadline6"
+
 export * from "./icons/AisHeadset"
 
 export * from "./icons/AisHeart"
 
 export * from "./icons/AisHeartFilled"
+
+export * from "./icons/AisHistory"
 
 export * from "./icons/AisHome"
 
@@ -367,17 +390,27 @@ export * from "./icons/AisInfinite"
 
 export * from "./icons/AisInfo"
 
+export * from "./icons/AisInfoFilled"
+
 export * from "./icons/AisInside"
 
 export * from "./icons/AisInstagram"
 
 export * from "./icons/AisIntercom"
 
+export * from "./icons/AisIntersection"
+
 export * from "./icons/AisIntervention"
+
+export * from "./icons/AisInventory"
 
 export * from "./icons/AisIssues"
 
 export * from "./icons/AisItalic"
+
+export * from "./icons/AisJoinLeft"
+
+export * from "./icons/AisJoinRight"
 
 export * from "./icons/AisJustice"
 
@@ -423,9 +456,13 @@ export * from "./icons/AisLpWan"
 
 export * from "./icons/AisMagasinU"
 
+export * from "./icons/AisMagic"
+
 export * from "./icons/AisMagicHand"
 
 export * from "./icons/AisMagicHandFilled"
+
+export * from "./icons/AisMagicStick"
 
 export * from "./icons/AisMailchimp"
 
@@ -436,6 +473,8 @@ export * from "./icons/AisMaximaze"
 export * from "./icons/AisMcDonalds"
 
 export * from "./icons/AisMedication"
+
+export * from "./icons/AisMergin"
 
 export * from "./icons/AisMeta"
 
@@ -497,6 +536,14 @@ export * from "./icons/AisPageFirst"
 
 export * from "./icons/AisPageLast"
 
+export * from "./icons/AisPanelLeftFilled"
+
+export * from "./icons/AisPanelLeftLine"
+
+export * from "./icons/AisPanelRightFilled"
+
+export * from "./icons/AisPanelRightLine"
+
 export * from "./icons/AisParagraph"
 
 export * from "./icons/AisPause"
@@ -525,6 +572,8 @@ export * from "./icons/AisProcessor"
 
 export * from "./icons/AisProduct"
 
+export * from "./icons/AisProjects"
+
 export * from "./icons/AisQrCode"
 
 export * from "./icons/AisRadioButton"
@@ -542,6 +591,8 @@ export * from "./icons/AisSatellite"
 export * from "./icons/AisScaleway"
 
 export * from "./icons/AisSearch"
+
+export * from "./icons/AisSection"
 
 export * from "./icons/AisSend"
 
@@ -645,6 +696,8 @@ export * from "./icons/AisTablet"
 
 export * from "./icons/AisTag"
 
+export * from "./icons/AisTagFilled"
+
 export * from "./icons/AisTerminal"
 
 export * from "./icons/AisTextScale"
@@ -654,6 +707,8 @@ export * from "./icons/AisTicket"
 export * from "./icons/AisTime"
 
 export * from "./icons/AisTimeline"
+
+export * from "./icons/AisTimelineFilled"
 
 export * from "./icons/AisToolKit"
 
@@ -687,7 +742,11 @@ export * from "./icons/AisUser"
 
 export * from "./icons/AisUserGroup"
 
+export * from "./icons/AisUserVariable"
+
 export * from "./icons/AisUserVerified"
+
+export * from "./icons/AisVariable"
 
 export * from "./icons/AisVercel"
 
@@ -695,9 +754,13 @@ export * from "./icons/AisVerified"
 
 export * from "./icons/AisVideo"
 
+export * from "./icons/AisVideoFilled"
+
 export * from "./icons/AisWallet"
 
 export * from "./icons/AisWarning"
+
+export * from "./icons/AisWarningFilled"
 
 export * from "./icons/AisWatch"
 
