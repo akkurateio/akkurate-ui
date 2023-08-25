@@ -14,8 +14,6 @@ const PopContent = ({ date, setDate, zIndex }: IProps) => {
   return (
     <Portal>
       <PopoverContent
-        // style={{ zIndex: zIndex }}
-        // zIndex={"portal"}
         width={"auto"}
         // hack because the popover content would take his space on the right of the input when never opened
         rootProps={{ style: { transform: "scale(0)", zIndex: zIndex } }}
