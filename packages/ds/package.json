@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/ds",
-  "version": "0.1.46",
+  "version": "0.1.47",
   "description": "Library for all Akkurate UI",
   "keywords": [
     "icons"
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@akkurateio/components": "^0.1.33",
-    "@akkurateio/forms": "^0.1.46",
+    "@akkurateio/forms": "^0.1.47",
     "@akkurateio/icons": "^0.1.46",
     "@akkurateio/utils": "^0.1.33",
     "@chakra-ui/react": ">=2.0.0",
