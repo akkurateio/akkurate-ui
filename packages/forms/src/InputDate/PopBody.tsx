@@ -7,9 +7,10 @@ import DayItem from "./DayItem"
 interface IProps {
   date: DateObject
   setDate: (e: DateObject) => void
+  zIndex?: number
 }
 
-const PopBody = ({ date, setDate }: IProps) => {
+const PopBody = ({ date, setDate, zIndex }: IProps) => {
   const shortDaysArray = [
     "Lun.",
     "Mar.",
@@ -74,7 +75,7 @@ const PopBody = ({ date, setDate }: IProps) => {
   }, [date.currentDate])
 
   return (
-    <PopoverBody p={2}>
+    <PopoverBody p={2} zIndex={zIndex}>
       <SimpleGrid columns={7} spacing={1}>
         {shortDaysArray.map((day, index) => (
           <Box key={index}>

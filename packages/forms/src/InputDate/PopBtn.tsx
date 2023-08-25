@@ -19,9 +19,10 @@ interface IProps {
   setDate: (e: DateObject) => void
   focus?: boolean
   sizeInput?: string
+  zIndex?: number
 }
 
-export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
+export const PopBtn = ({ date, setDate, focus, sizeInput, zIndex }: IProps) => {
   const { onOpen, onClose, isOpen } = useDisclosure()
 
   useEffect(() => {
@@ -41,6 +42,7 @@ export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
       right={0}
       bottom={0}
       w={10}
+      zIndex={zIndex}
       alignItems={"center"}
       justifyItems={"center"}
     >
@@ -64,16 +66,21 @@ export const PopBtn = ({ date, setDate, focus, sizeInput }: IProps) => {
             w={"full"}
             h={"full"}
             bg={"white"}
-            zIndex={1}
+            zIndex={zIndex ? zIndex + 1 : 1}
             onClick={isOpen ? onClose : onOpen}
           >
             <AisCalendar
+              zIndex={zIndex ? zIndex + 1 : 1}
               color={focus ? "primary.500" : "neutral.500"}
               boxSize={sizeInput}
             />
           </Button>
         </PopoverTrigger>
-        <PopContent date={date} setDate={setDate} />
+        <PopContent
+          date={date}
+          setDate={setDate}
+          zIndex={zIndex ? zIndex + 1 : 1}
+        />
       </Popover>
     </Flex>
   )

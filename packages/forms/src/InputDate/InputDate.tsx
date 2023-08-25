@@ -229,6 +229,7 @@ export const AcsInputDate: React.FC<InputProps> = ({
           date={date}
           setDate={setDate}
           sizeInput={sizeInput?.boxSize}
+          zIndex={props.zIndex as number}
         />
       </InputGroupWithShadow>
     </FormControlLayout>
