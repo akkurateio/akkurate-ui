@@ -20,7 +20,7 @@ export const AisCashRegister = createIcon({
         height="10"
         rx="1"
         stroke="#000"
-        stroke-width="4"
+        strokeWidth="4"
         mask="url(#a)"
       />
       <mask id="b" fill="#fff">
@@ -33,7 +33,7 @@ export const AisCashRegister = createIcon({
         height="6"
         rx="1"
         stroke="#000"
-        stroke-width="4"
+        strokeWidth="4"
         mask="url(#b)"
       />
       <rect x="25.5" y="13.5" width="1" height="6" rx=".5" stroke="#000" />
@@ -56,7 +56,7 @@ export const AisCashRegister = createIcon({
         height="6"
         rx="1"
         stroke="#000"
-        stroke-width="4"
+        strokeWidth="4"
         mask="url(#c)"
       />
       <mask id="d" fill="#fff">
@@ -69,7 +69,7 @@ export const AisCashRegister = createIcon({
         height="12"
         rx="1"
         stroke="#000"
-        stroke-width="4"
+        strokeWidth="4"
         mask="url(#d)"
       />
     </>

@@ -45,6 +45,7 @@ const main = async () => {
         .replace(/fill="black"/g, "")
         .replace(/fill-rule/g, "fillRule")
         .replace(/clip-rule/g, "clipRule")
+        .replace(/stroke-width/g, "strokeWidth")
 
       // Create icon file
       writeFileSync(

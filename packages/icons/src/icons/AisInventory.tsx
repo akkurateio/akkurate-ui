@@ -21,7 +21,7 @@ export const AisInventory = createIcon({
         height="8"
         rx="1"
         stroke="#000"
-        stroke-width="4"
+        strokeWidth="4"
         mask="url(#a)"
       />
       <mask id="b" fill="#fff">
@@ -34,7 +34,7 @@ export const AisInventory = createIcon({
         height="8"
         rx="1"
         stroke="#000"
-        stroke-width="4"
+        strokeWidth="4"
         mask="url(#b)"
       />
       <mask id="c" fill="#fff">
@@ -47,7 +47,7 @@ export const AisInventory = createIcon({
         height="8"
         rx="1"
         stroke="#000"
-        stroke-width="4"
+        strokeWidth="4"
         mask="url(#c)"
       />
     </>
