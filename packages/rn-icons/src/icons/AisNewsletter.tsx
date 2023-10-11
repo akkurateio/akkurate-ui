@@ -6,53 +6,11 @@ export const AisNewsletter: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
     <ReactSVG.G key={1}>
+      <ReactSVG.Path d="M10 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM15 6a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2h-8ZM14 11a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2h-8a1 1 0 0 1-1-1ZM13 14a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Z" />
       <ReactSVG.Path
-        d="M5 14V5a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v9"
-        stroke="#000"
-        stroke-width="2"
-      />
-      <ReactSVG.Rect
-        x="14.5"
-        y="6.5"
-        width="9"
-        height="1"
-        rx=".5"
-        stroke="#000"
-      />
-      <ReactSVG.Rect
-        x="9"
-        y="7"
-        width="2"
-        height="2"
-        rx="1"
-        stroke="#000"
-        stroke-width="2"
-      />
-      <ReactSVG.Rect
-        x="14.5"
-        y="10.5"
-        width="9"
-        height="1"
-        rx=".5"
-        stroke="#000"
-      />
-      <ReactSVG.Rect
-        x="12.5"
-        y="14.5"
-        width="7"
-        height="1"
-        rx=".5"
-        stroke="#000"
-      />
-      <ReactSVG.Path
-        d="m18 20 9.412-6.845a1 1 0 0 1 1.588.809V27a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V13.964a1 1 0 0 1 1.588-.809L14 20"
-        stroke="#000"
-        stroke-width="2"
-      />
-      <ReactSVG.Path
-        d="m4 28 10.8-8.1a2 2 0 0 1 2.4 0L28 28"
-        stroke="#000"
-        stroke-width="2"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7 2a3 3 0 0 0-3 3v6.96c-1.034.004-2 .824-2 2.004V27a3 3 0 0 0 3 3h22a3 3 0 0 0 3-3V13.964c0-1.18-.966-2-2-2.004V5a3 3 0 0 0-3-3H7Zm19 10.945-8.333 6.06a3 3 0 0 0-3.334 0L6 12.946V5a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v7.945Zm2 13.805-8.655-6.491L27.95 14H28v12.75ZM16.6 20.7l9.733 7.3H5.667l9.733-7.3a1 1 0 0 1 1.2 0Zm-3.945-.441L4 26.75V14h.05l8.605 6.259Z"
       />
     </ReactSVG.G>,
   ],
