@@ -6,74 +6,10 @@ export const AisCashRegister: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
     <ReactSVG.G key={1}>
-      <ReactSVG.Mask id="a" fill="#fff">
-        <ReactSVG.Rect x="2" y="18" width="28" height="10" rx="1" />
-      </ReactSVG.Mask>
-      <ReactSVG.Rect
-        x="2"
-        y="18"
-        width="28"
-        height="10"
-        rx="1"
-        stroke="#000"
-        stroke-width="4"
-        mask="url(#a)"
-      />
-      <ReactSVG.Mask id="b" fill="#fff">
-        <ReactSVG.Rect x="7" y="14" width="8" height="6" rx="1" />
-      </ReactSVG.Mask>
-      <ReactSVG.Rect
-        x="7"
-        y="14"
-        width="8"
-        height="6"
-        rx="1"
-        stroke="#000"
-        stroke-width="4"
-        mask="url(#b)"
-      />
-      <ReactSVG.Rect
-        x="25.5"
-        y="13.5"
-        width="1"
-        height="6"
-        rx=".5"
-        stroke="#000"
-      />
-      <ReactSVG.Rect
-        x="2.5"
-        y="23.5"
-        width="1"
-        height="6"
-        rx=".5"
-        transform="rotate(-90 2.5 23.5)"
-        stroke="#000"
-      />
-      <ReactSVG.Mask id="c" fill="#fff">
-        <ReactSVG.Rect x="22" y="8" width="8" height="6" rx="1" />
-      </ReactSVG.Mask>
-      <ReactSVG.Rect
-        x="22"
-        y="8"
-        width="8"
-        height="6"
-        rx="1"
-        stroke="#000"
-        stroke-width="4"
-        mask="url(#c)"
-      />
-      <ReactSVG.Mask id="d" fill="#fff">
-        <ReactSVG.Rect x="4" y="4" width="14" height="12" rx="1" />
-      </ReactSVG.Mask>
-      <ReactSVG.Rect
-        x="4"
-        y="4"
-        width="14"
-        height="12"
-        rx="1"
-        stroke="#000"
-        stroke-width="4"
-        mask="url(#d)"
+      <ReactSVG.Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-2v2h10v-4h-2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-2v4h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h4v-2Zm-1-2V6h10v8H6Zm3 2v2h4v-2H9Zm15-6v2h4v-2h-4ZM4 26v-2h4a1 1 0 1 0 0-2H4v-2h24v6H4Z"
       />
     </ReactSVG.G>,
   ],

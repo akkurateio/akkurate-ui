@@ -64,6 +64,14 @@ export * from "./icons/AisBackward"
 
 export * from "./icons/AisBag"
 
+export * from "./icons/AisBagAlternative"
+
+export * from "./icons/AisBankCheck"
+
+export * from "./icons/AisBankTransferIn"
+
+export * from "./icons/AisBankTransferOut"
+
 export * from "./icons/AisBlockquote"
 
 export * from "./icons/AisBold"
@@ -290,6 +298,8 @@ export * from "./icons/AisFrequence"
 
 export * from "./icons/AisFunction"
 
+export * from "./icons/AisGift"
+
 export * from "./icons/AisGithub"
 
 export * from "./icons/AisGitlab"
@@ -416,6 +426,8 @@ export * from "./icons/AisJustice"
 
 export * from "./icons/AisKey"
 
+export * from "./icons/AisLaPoste"
+
 export * from "./icons/AisLasso"
 
 export * from "./icons/AisLassoPolygon"
@@ -502,6 +514,8 @@ export * from "./icons/AisMoreVertical"
 
 export * from "./icons/AisNeutral"
 
+export * from "./icons/AisNewsletter"
+
 export * from "./icons/AisNimiscient"
 
 export * from "./icons/AisNimiscientBI"
@@ -584,6 +598,8 @@ export * from "./icons/AisRainy"
 
 export * from "./icons/AisRefresh"
 
+export * from "./icons/AisSales"
+
 export * from "./icons/AisSalesforce"
 
 export * from "./icons/AisSatellite"
@@ -647,6 +663,8 @@ export * from "./icons/AisSubstract"
 export * from "./icons/AisSubvitamine"
 
 export * from "./icons/AisSubvitamineFilled"
+
+export * from "./icons/AisSuccess"
 
 export * from "./icons/AisSuitcase"
 
@@ -721,6 +739,8 @@ export * from "./icons/AisTrash"
 export * from "./icons/AisTruck"
 
 export * from "./icons/AisTwitter"
+
+export * from "./icons/AisTwitterOld"
 
 export * from "./icons/AisUber"
 
