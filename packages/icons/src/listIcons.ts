@@ -714,6 +714,7 @@ export const listInfoIcons: IInfoIcons[] = [
   { name: "AisLinux", category: [], tags: [] },
   { name: "AisListCheck", category: [], tags: [] },
   { name: "AisListTask", category: [], tags: [] },
+  { name: "AisLocker", category: [], tags: [] },
   { name: "AisMagasinU", category: [], tags: [] },
   { name: "AisMagic", category: [], tags: [] },
   { name: "AisMagicStick", category: [], tags: [] },

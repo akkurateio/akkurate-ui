@@ -464,6 +464,8 @@ export * from "./icons/AisLocationFilled"
 
 export * from "./icons/AisLocked"
 
+export * from "./icons/AisLocker"
+
 export * from "./icons/AisLpWan"
 
 export * from "./icons/AisMagasinU"
