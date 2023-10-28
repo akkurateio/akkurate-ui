@@ -1,17 +1,16 @@
-
-import React from 'react';
+import React from "react"
 import { createIcon } from "@chakra-ui/icon"
 
 export const AisFacebook = createIcon({
   displayName: "AisFacebook",
   viewBox: "0 0 32 32",
   defaultProps: {
-		fill: "currentColor",
+    fill: "currentColor",
     boxSize: "24px",
-	},
+  },
   path: (
     <>
-      <path d="M26.67 4H5.33A1.34 1.34 0 0 0 4 5.33v21.34A1.34 1.34 0 0 0 5.33 28h11.49v-9.28H13.7v-3.63h3.12v-2.67c0-3.1 1.89-4.79 4.67-4.79.93 0 1.86 0 2.79.14V11h-1.91c-1.51 0-1.8.72-1.8 1.77v2.31h3.6l-.47 3.63h-3.13V28h6.1A1.34 1.34 0 0 0 28 26.67V5.33A1.34 1.34 0 0 0 26.67 4Z" />
+      <path d="M29.337 1H2.663A1.675 1.675 0 0 0 1 2.663v26.674A1.675 1.675 0 0 0 2.663 31h14.362V19.4h-3.9v-4.537h3.9v-3.338c0-3.875 2.363-5.988 5.838-5.988 1.162 0 2.325 0 3.487.176V9.75h-2.388c-1.887 0-2.25.9-2.25 2.213v2.887h4.5l-.587 4.537h-3.913V31h7.625A1.675 1.675 0 0 0 31 29.337V2.663A1.675 1.675 0 0 0 29.337 1Z" />
     </>
   ),
 })

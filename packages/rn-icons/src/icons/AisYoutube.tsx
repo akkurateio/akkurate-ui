@@ -1,13 +1,12 @@
-
-import React, { FunctionComponent } from 'react';
-import { IIconProps, createIcon } from 'native-base';
-import * as ReactSVG from 'react-native-svg';
+import React, { FunctionComponent } from "react"
+import { IIconProps, createIcon } from "native-base"
+import * as ReactSVG from "react-native-svg"
 
 export const AisYoutube: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
-  <ReactSVG.G key={1}>
-      <ReactSVG.Path d="M29.41 9.26a3.5 3.5 0 0 0-2.47-2.47C24.76 6.2 16 6.2 16 6.2s-8.76 0-10.94.59a3.5 3.5 0 0 0-2.47 2.47A36.13 36.13 0 0 0 2 16a36.13 36.13 0 0 0 .59 6.74 3.5 3.5 0 0 0 2.47 2.47c2.18.59 10.94.59 10.94.59s8.76 0 10.94-.59a3.5 3.5 0 0 0 2.47-2.47c.407-2.223.605-4.48.59-6.74a36.125 36.125 0 0 0-.59-6.74ZM13.2 20.2v-8.4l7.27 4.2-7.27 4.2Z" />
-  </ReactSVG.G>
+    <ReactSVG.G key={1}>
+      <ReactSVG.Path d="M30.367 9.278a3.75 3.75 0 0 0-2.646-2.646C25.385 6 16 6 16 6s-9.385 0-11.72.632a3.75 3.75 0 0 0-2.647 2.646A38.708 38.708 0 0 0 1 16.5a38.71 38.71 0 0 0 .632 7.222 3.75 3.75 0 0 0 2.646 2.646c2.336.632 11.721.632 11.721.632s9.385 0 11.72-.632a3.75 3.75 0 0 0 2.647-2.646c.436-2.383.648-4.8.632-7.222a38.71 38.71 0 0 0-.632-7.22ZM13 21v-9l7.789 4.5L13 21Z" />
+    </ReactSVG.G>,
   ],
 })

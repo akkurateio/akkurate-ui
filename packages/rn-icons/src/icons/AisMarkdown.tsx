@@ -1,13 +1,17 @@
-
-import React, { FunctionComponent } from 'react';
-import { IIconProps, createIcon } from 'native-base';
-import * as ReactSVG from 'react-native-svg';
+import React, { FunctionComponent } from "react"
+import { IIconProps, createIcon } from "native-base"
+import * as ReactSVG from "react-native-svg"
 
 export const AisMarkdown: FunctionComponent<IIconProps> = createIcon({
   viewBox: "0 0 32 32",
   path: [
-  <ReactSVG.G key={1}>
-      <ReactSVG.Path d="M6 11v10h2.71v-5.735l2.71 3.676 2.709-3.676V21h2.71V11h-2.71l-2.71 3.677L8.71 11H6ZM18.871 16.147 22.936 21 27 16.147h-2.71V11h-2.71v5.147h-2.709Z" /><ReactSVG.Path fillRule="evenodd" clipRule="evenodd" d="M4.313 7C3.006 7 2 8.085 2 9.356v13.288C2 23.914 3.006 25 4.313 25h23.374C28.994 25 30 23.915 30 22.644V9.356C30 8.086 28.994 7 27.687 7H4.313ZM4 9.356C4 9.129 4.17 9 4.313 9h23.374c.143 0 .313.129.313.356v13.288c0 .227-.17.356-.313.356H4.313C4.17 23 4 22.871 4 22.644V9.356Z" />
-  </ReactSVG.G>
+    <ReactSVG.G key={1}>
+      <ReactSVG.Path d="M5.286 10.286V21h2.903v-6.145l2.903 3.94 2.903-3.94V21H16.9V10.286h-2.904l-2.903 3.939-2.903-3.94H5.286ZM19.076 15.8l4.355 5.2 4.355-5.2h-2.904v-5.514H21.98V15.8h-2.903Z" />
+      <ReactSVG.Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M3.478 6C2.078 6 1 7.163 1 8.524v14.238c0 1.36 1.077 2.524 2.478 2.524h25.044c1.4 0 2.478-1.163 2.478-2.524V8.524C31 7.163 29.922 6 28.522 6H3.478Zm-.335 2.524c0-.243.182-.381.335-.381h25.044c.153 0 .335.138.335.381v14.238c0 .243-.182.38-.335.38H3.478c-.153 0-.335-.137-.335-.38V8.524Z"
+      />
+    </ReactSVG.G>,
   ],
 })

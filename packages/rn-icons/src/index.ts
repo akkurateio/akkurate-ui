@@ -182,6 +182,14 @@ export * from "./icons/AisDisconnected"
 
 export * from "./icons/AisDislike"
 
+export * from "./icons/AisDocExcel"
+
+export * from "./icons/AisDocMarkdown"
+
+export * from "./icons/AisDocPdf"
+
+export * from "./icons/AisDocWord"
+
 export * from "./icons/AisDot"
 
 export * from "./icons/AisDownToBottom"
@@ -285,6 +293,10 @@ export * from "./icons/AisFlagFilled"
 export * from "./icons/AisFnac"
 
 export * from "./icons/AisFolder"
+
+export * from "./icons/AisFolderClosed"
+
+export * from "./icons/AisFolderOpened"
 
 export * from "./icons/AisFolderUnknow"
 
@@ -617,6 +629,8 @@ export * from "./icons/AisSend"
 export * from "./icons/AisSettings"
 
 export * from "./icons/AisShare"
+
+export * from "./icons/AisSharepointl"
 
 export * from "./icons/AisShield"
 
