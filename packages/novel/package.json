@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/novel",
-  "version": "0.1.51",
+  "version": "0.1.52",
   "description": "Theme for Akkurate UI",
   "keywords": [
     "theme"
@@ -32,7 +32,7 @@
     "@types/turndown": "^5.0.1"
   },
   "dependencies": {
-    "@akkurateio/ds": "^0.1.51",
+    "@akkurateio/ds": "^0.1.52",
     "@chakra-ui/react": ">=2.0.0",
     "@emotion/react": ">=11.0.0",
     "@emotion/styled": ">=11.0.0",
