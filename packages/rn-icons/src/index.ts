@@ -188,6 +188,8 @@ export * from "./icons/AisDocMarkdown"
 
 export * from "./icons/AisDocPdf"
 
+export * from "./icons/AisDocPowerpoint"
+
 export * from "./icons/AisDocWord"
 
 export * from "./icons/AisDot"
@@ -602,6 +604,10 @@ export * from "./icons/AisProduct"
 
 export * from "./icons/AisProjects"
 
+export * from "./icons/AisPutInBack"
+
+export * from "./icons/AisPutInFront"
+
 export * from "./icons/AisQrCode"
 
 export * from "./icons/AisRadioButton"
@@ -628,9 +634,11 @@ export * from "./icons/AisSend"
 
 export * from "./icons/AisSettings"
 
+export * from "./icons/AisShape"
+
 export * from "./icons/AisShare"
 
-export * from "./icons/AisSharepointl"
+export * from "./icons/AisSharepoint"
 
 export * from "./icons/AisShield"
 
