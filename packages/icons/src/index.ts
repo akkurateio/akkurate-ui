@@ -182,6 +182,8 @@ export * from "./icons/AisDisconnected"
 
 export * from "./icons/AisDislike"
 
+export * from "./icons/AisDocEpub"
+
 export * from "./icons/AisDocExcel"
 
 export * from "./icons/AisDocMarkdown"
@@ -387,6 +389,10 @@ export * from "./icons/AisHeadset"
 export * from "./icons/AisHeart"
 
 export * from "./icons/AisHeartFilled"
+
+export * from "./icons/AisHelp"
+
+export * from "./icons/AisHelpFilled"
 
 export * from "./icons/AisHistory"
 
@@ -662,7 +668,15 @@ export * from "./icons/AisSms"
 
 export * from "./icons/AisSncf"
 
+export * from "./icons/AisSortAlphaDown"
+
+export * from "./icons/AisSortAlphaUp"
+
 export * from "./icons/AisSortDown"
+
+export * from "./icons/AisSortNumericDown"
+
+export * from "./icons/AisSortNumericUp"
 
 export * from "./icons/AisSortUp"
 
@@ -675,6 +689,10 @@ export * from "./icons/AisStar"
 export * from "./icons/AisStarFilled"
 
 export * from "./icons/AisStarHalfFilled"
+
+export * from "./icons/AisStepHorizontal"
+
+export * from "./icons/AisStepVertical"
 
 export * from "./icons/AisStormly"
 
