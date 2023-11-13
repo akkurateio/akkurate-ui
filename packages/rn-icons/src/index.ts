@@ -44,6 +44,8 @@ export * from "./icons/AisArrowRightDown"
 
 export * from "./icons/AisArrowRightUp"
 
+export * from "./icons/AisArrowSwitch"
+
 export * from "./icons/AisArrowToSelection"
 
 export * from "./icons/AisArrowUp"
@@ -65,6 +67,12 @@ export * from "./icons/AisBackward"
 export * from "./icons/AisBag"
 
 export * from "./icons/AisBagAlternative"
+
+export * from "./icons/AisBalance"
+
+export * from "./icons/AisBalanceLost"
+
+export * from "./icons/AisBalanceWin"
 
 export * from "./icons/AisBankCheck"
 
@@ -146,6 +154,10 @@ export * from "./icons/AisComment"
 
 export * from "./icons/AisCommentAlternative"
 
+export * from "./icons/AisComponents"
+
+export * from "./icons/AisComponentsFilled"
+
 export * from "./icons/AisConnected"
 
 export * from "./icons/AisCookie"
@@ -211,6 +223,8 @@ export * from "./icons/AisElevator"
 export * from "./icons/AisEmail"
 
 export * from "./icons/AisEnterprise"
+
+export * from "./icons/AisEqualizer"
 
 export * from "./icons/AisError"
 
@@ -414,6 +428,14 @@ export * from "./icons/AisImage"
 
 export * from "./icons/AisImport"
 
+export * from "./icons/AisInWait"
+
+export * from "./icons/AisInWaitEnded"
+
+export * from "./icons/AisInWaitFilled"
+
+export * from "./icons/AisInWaitHalf"
+
 export * from "./icons/AisIndustry"
 
 export * from "./icons/AisInfinite"
@@ -429,6 +451,10 @@ export * from "./icons/AisInstagram"
 export * from "./icons/AisIntercom"
 
 export * from "./icons/AisIntersection"
+
+export * from "./icons/AisInterval"
+
+export * from "./icons/AisIntervalSplit"
 
 export * from "./icons/AisIntervention"
 
@@ -506,6 +532,8 @@ export * from "./icons/AisMaximaze"
 
 export * from "./icons/AisMcDonalds"
 
+export * from "./icons/AisMediaLibrary"
+
 export * from "./icons/AisMedication"
 
 export * from "./icons/AisMergin"
@@ -572,6 +600,10 @@ export * from "./icons/AisPageFirst"
 
 export * from "./icons/AisPageLast"
 
+export * from "./icons/AisPanelBottomFilled"
+
+export * from "./icons/AisPanelBottomLine"
+
 export * from "./icons/AisPanelLeftFilled"
 
 export * from "./icons/AisPanelLeftLine"
@@ -579,6 +611,10 @@ export * from "./icons/AisPanelLeftLine"
 export * from "./icons/AisPanelRightFilled"
 
 export * from "./icons/AisPanelRightLine"
+
+export * from "./icons/AisPanelTopFilled"
+
+export * from "./icons/AisPanelTopLine"
 
 export * from "./icons/AisParagraph"
 
@@ -599,6 +635,8 @@ export * from "./icons/AisPinFilled"
 export * from "./icons/AisPinterest"
 
 export * from "./icons/AisPlay"
+
+export * from "./icons/AisPlaylist"
 
 export * from "./icons/AisPower"
 
@@ -639,6 +677,8 @@ export * from "./icons/AisSection"
 export * from "./icons/AisSend"
 
 export * from "./icons/AisSettings"
+
+export * from "./icons/AisSettingsFilled"
 
 export * from "./icons/AisShape"
 
@@ -770,6 +810,8 @@ export * from "./icons/AisTimeline"
 
 export * from "./icons/AisTimelineFilled"
 
+export * from "./icons/AisToolDrill"
+
 export * from "./icons/AisToolKit"
 
 export * from "./icons/AisTranslate"
@@ -842,4 +884,8 @@ export * from "./icons/AisZendesk"
 
 export * from "./icons/AisZoomIn"
 
+export * from "./icons/AisZoomInFilled"
+
 export * from "./icons/AisZoomOut"
+
+export * from "./icons/AisZoomOutFilled"
