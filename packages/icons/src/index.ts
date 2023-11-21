@@ -320,6 +320,8 @@ export * from "./icons/AisFolderUnknow"
 
 export * from "./icons/AisFolders"
 
+export * from "./icons/AisFont"
+
 export * from "./icons/AisForward"
 
 export * from "./icons/AisFranprix"
@@ -333,6 +335,8 @@ export * from "./icons/AisGift"
 export * from "./icons/AisGithub"
 
 export * from "./icons/AisGitlab"
+
+export * from "./icons/AisGlobe"
 
 export * from "./icons/AisGoDown"
 
@@ -436,6 +440,8 @@ export * from "./icons/AisInWaitFilled"
 
 export * from "./icons/AisInWaitHalf"
 
+export * from "./icons/AisInWaitMouvment"
+
 export * from "./icons/AisIndustry"
 
 export * from "./icons/AisInfinite"
@@ -488,6 +494,8 @@ export * from "./icons/AisLeroyMerlin"
 
 export * from "./icons/AisLike"
 
+export * from "./icons/AisLineHeight"
+
 export * from "./icons/AisLink"
 
 export * from "./icons/AisLinkedin"
@@ -525,6 +533,10 @@ export * from "./icons/AisMagicHandFilled"
 export * from "./icons/AisMagicStick"
 
 export * from "./icons/AisMailchimp"
+
+export * from "./icons/AisMarginX"
+
+export * from "./icons/AisMarginY"
 
 export * from "./icons/AisMarkdown"
 
@@ -801,6 +813,8 @@ export * from "./icons/AisTagFilled"
 export * from "./icons/AisTerminal"
 
 export * from "./icons/AisTextScale"
+
+export * from "./icons/AisTicToc"
 
 export * from "./icons/AisTicket"
 
