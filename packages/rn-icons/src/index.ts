@@ -646,6 +646,8 @@ export * from "./icons/AisPinFilled"
 
 export * from "./icons/AisPinterest"
 
+export * from "./icons/AisPlan"
+
 export * from "./icons/AisPlay"
 
 export * from "./icons/AisPlaylist"

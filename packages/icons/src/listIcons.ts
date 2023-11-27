@@ -775,6 +775,7 @@ export const listInfoIcons: IInfoIcons[] = [
   { name: "AisPhoneFilled", category: [], tags: [] },
   { name: "AisPin", category: [], tags: [] },
   { name: "AisPinFilled", category: [], tags: [] },
+  { name: "AisPlan", category: [], tags: [] },
   { name: "AisPlay", category: [], tags: [] },
   { name: "AisPlaylist", category: [], tags: [] },
   { name: "AisProduct", category: [], tags: [] },
