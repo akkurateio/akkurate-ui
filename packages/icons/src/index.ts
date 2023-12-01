@@ -184,6 +184,8 @@ export * from "./icons/AisDataUnstructured"
 
 export * from "./icons/AisDatabase"
 
+export * from "./icons/AisDatewarehouse"
+
 export * from "./icons/AisDeliveroo"
 
 export * from "./icons/AisDell"
@@ -214,13 +216,21 @@ export * from "./icons/AisDownload"
 
 export * from "./icons/AisDownloadCloud"
 
+export * from "./icons/AisDownstair"
+
 export * from "./icons/AisDrizzly"
 
 export * from "./icons/AisDropbox"
 
 export * from "./icons/AisElevator"
 
+export * from "./icons/AisElevatorDown"
+
+export * from "./icons/AisElevatorUp"
+
 export * from "./icons/AisEmail"
+
+export * from "./icons/AisEncryption"
 
 export * from "./icons/AisEnterprise"
 
@@ -319,6 +329,8 @@ export * from "./icons/AisFolderOpened"
 export * from "./icons/AisFolderUnknow"
 
 export * from "./icons/AisFolders"
+
+export * from "./icons/AisFolger"
 
 export * from "./icons/AisFont"
 
@@ -706,6 +718,8 @@ export * from "./icons/AisShieldChecked"
 
 export * from "./icons/AisShieldLock"
 
+export * from "./icons/AisShieldUser"
+
 export * from "./icons/AisShipFrom"
 
 export * from "./icons/AisShipTo"
@@ -858,6 +872,8 @@ export * from "./icons/AisUpload"
 
 export * from "./icons/AisUploadCloud"
 
+export * from "./icons/AisUpstair"
+
 export * from "./icons/AisUser"
 
 export * from "./icons/AisUserGroup"
@@ -883,6 +899,8 @@ export * from "./icons/AisWarning"
 export * from "./icons/AisWarningFilled"
 
 export * from "./icons/AisWatch"
+
+export * from "./icons/AisWatchAlternative"
 
 export * from "./icons/AisWebflowr"
 
