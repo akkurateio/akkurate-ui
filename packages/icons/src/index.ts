@@ -26,6 +26,8 @@ export * from "./icons/AisApps"
 
 export * from "./icons/AisArchive"
 
+export * from "./icons/AisArmchair"
+
 export * from "./icons/AisArrowBackward"
 
 export * from "./icons/AisArrowDown"
@@ -112,6 +114,10 @@ export * from "./icons/AisCart"
 
 export * from "./icons/AisCashRegister"
 
+export * from "./icons/AisChair"
+
+export * from "./icons/AisChairAlternative"
+
 export * from "./icons/AisChangeLog"
 
 export * from "./icons/AisCheckbox"
@@ -174,6 +180,10 @@ export * from "./icons/AisCurrencyPound"
 
 export * from "./icons/AisCurrencyYen"
 
+export * from "./icons/AisCursor"
+
+export * from "./icons/AisCursorFilled"
+
 export * from "./icons/AisDarty"
 
 export * from "./icons/AisDashboard"
@@ -229,6 +239,8 @@ export * from "./icons/AisElevatorDown"
 export * from "./icons/AisElevatorUp"
 
 export * from "./icons/AisEmail"
+
+export * from "./icons/AisEmailNew"
 
 export * from "./icons/AisEncryption"
 
@@ -313,6 +325,8 @@ export * from "./icons/AisFilterReset"
 export * from "./icons/AisFinance"
 
 export * from "./icons/AisFingerPrint"
+
+export * from "./icons/AisFirewall"
 
 export * from "./icons/AisFlag"
 
@@ -614,6 +628,14 @@ export * from "./icons/AisNotification"
 
 export * from "./icons/AisNotificationDisabled"
 
+export * from "./icons/AisNotificationDisabledFilled"
+
+export * from "./icons/AisNotificationDot"
+
+export * from "./icons/AisNotificationDotFilled"
+
+export * from "./icons/AisNotificationFilled"
+
 export * from "./icons/AisNotion"
 
 export * from "./icons/AisOpenAi"
@@ -901,6 +923,8 @@ export * from "./icons/AisWarningFilled"
 export * from "./icons/AisWatch"
 
 export * from "./icons/AisWatchAlternative"
+
+export * from "./icons/AisWc"
 
 export * from "./icons/AisWebflowr"
 
