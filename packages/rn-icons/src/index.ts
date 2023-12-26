@@ -18,6 +18,8 @@ export * from "./icons/AisAmazon"
 
 export * from "./icons/AisAndroid"
 
+export * from "./icons/AisAppWindow"
+
 export * from "./icons/AisApple"
 
 export * from "./icons/AisApplication"
@@ -27,6 +29,8 @@ export * from "./icons/AisApps"
 export * from "./icons/AisArchive"
 
 export * from "./icons/AisArmchair"
+
+export * from "./icons/AisArmchairAlternative"
 
 export * from "./icons/AisArrowBackward"
 
@@ -47,6 +51,8 @@ export * from "./icons/AisArrowRightDown"
 export * from "./icons/AisArrowRightUp"
 
 export * from "./icons/AisArrowSwitch"
+
+export * from "./icons/AisArrowSwitchVertical"
 
 export * from "./icons/AisArrowToSelection"
 
@@ -81,6 +87,8 @@ export * from "./icons/AisBankCheck"
 export * from "./icons/AisBankTransferIn"
 
 export * from "./icons/AisBankTransferOut"
+
+export * from "./icons/AisBathroom"
 
 export * from "./icons/AisBlockquote"
 
@@ -142,6 +150,8 @@ export * from "./icons/AisChevronSort"
 
 export * from "./icons/AisChevronUp"
 
+export * from "./icons/AisClassRoom"
+
 export * from "./icons/AisClickup"
 
 export * from "./icons/AisClose"
@@ -167,6 +177,8 @@ export * from "./icons/AisComponentsFilled"
 export * from "./icons/AisConnected"
 
 export * from "./icons/AisCookie"
+
+export * from "./icons/AisCookingPot"
 
 export * from "./icons/AisCopy"
 
@@ -203,6 +215,8 @@ export * from "./icons/AisDell"
 export * from "./icons/AisDesktop"
 
 export * from "./icons/AisDisconnected"
+
+export * from "./icons/AisDiscount"
 
 export * from "./icons/AisDislike"
 
@@ -246,6 +260,8 @@ export * from "./icons/AisEncryption"
 
 export * from "./icons/AisEnterprise"
 
+export * from "./icons/AisEnterpriseAlternative"
+
 export * from "./icons/AisEqualizer"
 
 export * from "./icons/AisError"
@@ -265,6 +281,8 @@ export * from "./icons/AisEyeDropper"
 export * from "./icons/AisFaceDazed"
 
 export * from "./icons/AisFaceDead"
+
+export * from "./icons/AisFaceGhost"
 
 export * from "./icons/AisFaceGlasses"
 
@@ -319,6 +337,8 @@ export * from "./icons/AisFileXml"
 export * from "./icons/AisFileZip"
 
 export * from "./icons/AisFilter"
+
+export * from "./icons/AisFilterMagic"
 
 export * from "./icons/AisFilterReset"
 
@@ -470,6 +490,8 @@ export * from "./icons/AisInWaitMouvment"
 
 export * from "./icons/AisIndustry"
 
+export * from "./icons/AisIndustryAlternative"
+
 export * from "./icons/AisInfinite"
 
 export * from "./icons/AisInfo"
@@ -517,6 +539,10 @@ export * from "./icons/AisLayer"
 export * from "./icons/AisLeclerc"
 
 export * from "./icons/AisLeroyMerlin"
+
+export * from "./icons/AisLightning"
+
+export * from "./icons/AisLightningFilled"
 
 export * from "./icons/AisLike"
 
@@ -574,6 +600,10 @@ export * from "./icons/AisMediaLibrary"
 
 export * from "./icons/AisMedication"
 
+export * from "./icons/AisMergeHorizontal"
+
+export * from "./icons/AisMergeVertical"
+
 export * from "./icons/AisMergin"
 
 export * from "./icons/AisMeta"
@@ -593,6 +623,10 @@ export * from "./icons/AisMinimize"
 export * from "./icons/AisMobile"
 
 export * from "./icons/AisMoney"
+
+export * from "./icons/AisMonument"
+
+export * from "./icons/AisMonumentAlternative"
 
 export * from "./icons/AisMoon"
 
@@ -730,6 +764,18 @@ export * from "./icons/AisSettingsFilled"
 
 export * from "./icons/AisShape"
 
+export * from "./icons/AisShapeAlignBottom"
+
+export * from "./icons/AisShapeAlignCenterHorizontal"
+
+export * from "./icons/AisShapeAlignCenterVertical"
+
+export * from "./icons/AisShapeAlignLeft"
+
+export * from "./icons/AisShapeAlignRight"
+
+export * from "./icons/AisShapeAlignTop"
+
 export * from "./icons/AisShare"
 
 export * from "./icons/AisSharepoint"
@@ -774,6 +820,10 @@ export * from "./icons/AisSpinner"
 
 export * from "./icons/AisSpinnerAlternative"
 
+export * from "./icons/AisSplitHorizontal"
+
+export * from "./icons/AisSplitVertical"
+
 export * from "./icons/AisStar"
 
 export * from "./icons/AisStarFilled"
@@ -799,6 +849,10 @@ export * from "./icons/AisSubvitamineFilled"
 export * from "./icons/AisSuccess"
 
 export * from "./icons/AisSuitcase"
+
+export * from "./icons/AisSuitcaseBusiness"
+
+export * from "./icons/AisSuitcaseRolling"
 
 export * from "./icons/AisSun"
 
@@ -851,6 +905,8 @@ export * from "./icons/AisTagFilled"
 export * from "./icons/AisTerminal"
 
 export * from "./icons/AisTextScale"
+
+export * from "./icons/AisThreads"
 
 export * from "./icons/AisTicToc"
 
