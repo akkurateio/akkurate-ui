@@ -590,6 +590,14 @@ export * from "./icons/AisMagicStick"
 
 export * from "./icons/AisMailchimp"
 
+export * from "./icons/AisMarginBottom"
+
+export * from "./icons/AisMarginLeft"
+
+export * from "./icons/AisMarginRight"
+
+export * from "./icons/AisMarginTop"
+
 export * from "./icons/AisMarginX"
 
 export * from "./icons/AisMarginY"

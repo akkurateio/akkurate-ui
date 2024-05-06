@@ -1,7 +1,7 @@
 {
   "name": "@akkurateio/icons",
-  "version": "0.1.60",
-  "description": "Library for Akkurate UI icons (React only)",
+  "version": "0.1.61",
+  "description": "Library for Akkurate UI icons",
   "keywords": [
     "icons"
   ],
