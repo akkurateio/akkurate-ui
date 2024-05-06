@@ -1,4 +1,4 @@
-import { AisTime } from "@akkurateio/icons"
+import { AisTime } from "@akkurateio/chakra-icons"
 import {
   Box,
   Button,

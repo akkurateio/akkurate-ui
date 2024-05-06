@@ -14,7 +14,7 @@ import {
   AisListUnordered,
   AisMagicHand,
   AisParagraph,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import { Box, Button } from "@chakra-ui/react"
 
 interface NodeSelectorProps {

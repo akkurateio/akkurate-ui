@@ -1,4 +1,4 @@
-import { AisClose } from "@akkurateio/icons"
+import { AisClose } from "@akkurateio/chakra-icons"
 import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react"
 import React from "react"
 // @ts-ignore

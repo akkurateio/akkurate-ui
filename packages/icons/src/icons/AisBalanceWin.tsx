@@ -1,15 +1,24 @@
-import React from "react"
-import { createIcon } from "@chakra-ui/icon"
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-export const AisBalanceWin = createIcon({
-  displayName: "AisBalanceWin",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-    fill: "currentColor",
-    boxSize: "24px",
-  },
-  path: (
-    <>
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
+
+export const AisBalanceWin: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
       <path
         d="m5.974 3.366 5.196 3 2.732-.732 5.196 3 .732 2.732 5.196 3"
         stroke="#000"
@@ -25,6 +34,6 @@ export const AisBalanceWin = createIcon({
         stroke="#000"
         strokeWidth="2"
       />
-    </>
-  ),
-})
+    </svg>
+  )
+}

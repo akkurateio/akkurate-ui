@@ -3,7 +3,7 @@ import {
   AisChevronRight,
   AisClose,
   AisDot,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import { Box, Button, Flex, PopoverHeader, Text } from "@chakra-ui/react"
 import dayjs from "dayjs"
 import { DateObject } from "../../types"

@@ -184,6 +184,10 @@ export * from "./icons/AisCopy"
 
 export * from "./icons/AisCreditCard"
 
+export * from "./icons/AisCrown"
+
+export * from "./icons/AisCrownFilled"
+
 export * from "./icons/AisCurrencyDollar"
 
 export * from "./icons/AisCurrencyEuro"

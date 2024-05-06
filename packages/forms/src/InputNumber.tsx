@@ -1,4 +1,4 @@
-import { AisAdd, AisSubstract } from "@akkurateio/icons"
+import { AisAdd, AisSubstract } from "@akkurateio/chakra-icons"
 import {
   Button,
   FormControlOptions,

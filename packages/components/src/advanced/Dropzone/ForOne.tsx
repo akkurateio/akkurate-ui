@@ -1,4 +1,4 @@
-import { AisTrash } from "@akkurateio/icons"
+import { AisTrash } from "@akkurateio/chakra-icons"
 import { Box, HStack, IconButton, Image, Text } from "@chakra-ui/react"
 import React from "react"
 import { defaultStyles, FileIcon } from "react-file-icon"

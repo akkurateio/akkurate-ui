@@ -7,9 +7,10 @@
   "author": "Subvitamine",
   "license": "proprietary",
   "scripts": {
-    "generate": "ts-node ./src/react.ts",
-    "generate-rn": "ts-node ./src/react-native.ts",
-    "export-vue": "ts-node ./src/vue-export.ts"
+    "generate-react-basic": "ts-node src/react-basic.ts",
+    "generate-react-chakra": "ts-node src/react-chakra.ts",
+    "generate-react-native": "ts-node ./src/react-native.ts",
+    "export-vue": "ts-node ./src/vue.ts"
   },
   "devDependencies": {
     "@akkurateio/icons": "^0.0.42",

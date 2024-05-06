@@ -1,4 +1,4 @@
-import { AisRadioButton, AisRadioButtonChecked } from "@akkurateio/icons"
+import { AisRadioButton, AisRadioButtonChecked } from "@akkurateio/chakra-icons"
 import {
   Box,
   FormControlOptions,

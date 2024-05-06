@@ -5,7 +5,7 @@ import {
   AisChevronSort,
   AisChevronUp,
   AisClose,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import {
   Box,
   Flex,

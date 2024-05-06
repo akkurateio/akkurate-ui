@@ -1,4 +1,4 @@
-import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/icons"
+import { AisCheckbox, AisCheckboxChecked } from "@akkurateio/chakra-icons"
 import {
   Box,
   FormControlOptions,

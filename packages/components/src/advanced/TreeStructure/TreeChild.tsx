@@ -1,4 +1,8 @@
-import { AisChevronDown, AisChevronRight, AisDot } from "@akkurateio/icons"
+import {
+  AisChevronDown,
+  AisChevronRight,
+  AisDot,
+} from "@akkurateio/chakra-icons"
 import { Box, Flex, HStack, IconButton, Text } from "@chakra-ui/react"
 import React, { useState } from "react"
 import { InterfaceTree } from "./InterfaceTree"

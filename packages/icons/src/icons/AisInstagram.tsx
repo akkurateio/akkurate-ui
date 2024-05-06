@@ -1,15 +1,24 @@
-import React from "react"
-import { createIcon } from "@chakra-ui/icon"
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-export const AisInstagram = createIcon({
-  displayName: "AisInstagram",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-    fill: "currentColor",
-    boxSize: "24px",
-  },
-  path: (
-    <>
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
+
+export const AisInstagram: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
       <path d="M24.008 9.793a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Z" />
       <path
         fillRule="evenodd"
@@ -21,6 +30,6 @@ export const AisInstagram = createIcon({
         clipRule="evenodd"
         d="M9.816 1.09C11.415 1.017 11.925 1 16 1s4.585.017 6.184.09a11.01 11.01 0 0 1 3.641.698 7.67 7.67 0 0 1 4.387 4.387c.437 1.165.673 2.396.698 3.64.073 1.6.09 2.111.09 6.185s-.017 4.585-.09 6.184a11.008 11.008 0 0 1-.697 3.641 7.67 7.67 0 0 1-4.387 4.387 11.007 11.007 0 0 1-3.642.698c-1.6.073-2.11.09-6.184.09s-4.585-.017-6.184-.09a11.008 11.008 0 0 1-3.641-.697 7.67 7.67 0 0 1-4.387-4.387 11.009 11.009 0 0 1-.698-3.642C1.017 20.584 1 20.075 1 16s.017-4.585.09-6.184c.025-1.244.26-2.475.698-3.641a7.67 7.67 0 0 1 4.387-4.387 11.009 11.009 0 0 1 3.64-.698Zm12.245 2.7c-1.581-.072-2.056-.087-6.061-.087s-4.48.015-6.061.087a8.302 8.302 0 0 0-2.786.517 4.969 4.969 0 0 0-2.846 2.846A8.302 8.302 0 0 0 3.79 9.94c-.072 1.582-.087 2.056-.087 6.061s.015 4.48.087 6.061c.011.952.186 1.894.517 2.786a4.97 4.97 0 0 0 2.846 2.846 8.3 8.3 0 0 0 2.786.517c1.581.072 2.056.087 6.061.087 4.006 0 4.48-.015 6.061-.087a8.3 8.3 0 0 0 2.786-.517 4.968 4.968 0 0 0 2.846-2.846c.33-.892.506-1.834.517-2.786.072-1.581.087-2.056.087-6.06 0-4.006-.015-4.48-.087-6.062a8.303 8.303 0 0 0-.517-2.785 4.97 4.97 0 0 0-2.846-2.847 8.302 8.302 0 0 0-2.786-.517Z"
       />
-    </>
-  ),
-})
+    </svg>
+  )
+}

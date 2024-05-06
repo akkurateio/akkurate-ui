@@ -5,7 +5,7 @@ import {
   AisCheckbox,
   AisCheckboxChecked,
   AisChevronDown,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import React from "react"
 import { Box, Button } from "@chakra-ui/react"
 

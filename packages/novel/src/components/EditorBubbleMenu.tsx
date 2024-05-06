@@ -5,7 +5,12 @@ import React from "react"
 
 import { NodeSelector } from "./node-selector"
 import { ColorSelector } from "./color-selector"
-import { AisBold, AisCode, AisItalic, AisUnderline } from "@akkurateio/icons"
+import {
+  AisBold,
+  AisCode,
+  AisItalic,
+  AisUnderline,
+} from "@akkurateio/chakra-icons"
 import { Box, Button, Flex } from "@chakra-ui/react"
 import Highlight from "@tiptap/extension-highlight"
 import { HighlightSelector } from "./highlight-selector"

@@ -1,16 +1,25 @@
-import React from "react"
-import { createIcon } from "@chakra-ui/icon"
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-export const AisMicrosoftOffice = createIcon({
-  displayName: "AisMicrosoftOffice",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-    fill: "currentColor",
-    boxSize: "24px",
-  },
-  path: (
-    <>
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
+
+export const AisMicrosoftOffice: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
       <path d="M27.913 6.383v19.203c0 .673-.197 1.27-.59 1.792a2.9 2.9 0 0 1-1.567 1.062l-8.61 2.467a3.043 3.043 0 0 1-.729.093c-.33 0-.63-.044-.9-.131a4.794 4.794 0 0 1-.82-.365l-5.63-3.18a1.313 1.313 0 0 1-.49-.458 1.195 1.195 0 0 1-.178-.643c0-.362.126-.67.38-.923.253-.254.561-.381.923-.381h7.29V7.205l-5.476 1.954c-.444.156-.8.43-1.07.822a2.238 2.238 0 0 0-.402 1.288v10.097A2.203 2.203 0 0 1 8.88 23.32l-2.59 1.413a1.542 1.542 0 0 1-.714.184c-.414 0-.766-.144-1.055-.433-.29-.29-.435-.641-.435-1.055V9.204c0-.517.138-1.013.413-1.488A2.895 2.895 0 0 1 5.59 6.615l9.246-5.259c.207-.113.43-.2.668-.262a2.79 2.79 0 0 1 1.187-.055c.139.026.29.064.456.116l8.61 2.374c.32.091.611.228.875.411a2.928 2.928 0 0 1 1.28 2.443Zm-1.986 19.203V6.383a.943.943 0 0 0-.2-.598 1.028 1.028 0 0 0-.528-.35l-4.235-1.162c-.331-.093-.662-.189-.993-.288-.33-.097-.661-.188-.992-.27v24.6l6.22-1.784c.216-.061.392-.178.527-.35a.934.934 0 0 0 .201-.596v.001Z" />
-    </>
-  ),
-})
+    </svg>
+  )
+}

@@ -1,15 +1,24 @@
-import React from "react"
-import { createIcon } from "@chakra-ui/icon"
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-export const AisSales = createIcon({
-  displayName: "AisSales",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-    fill: "currentColor",
-    boxSize: "24px",
-  },
-  path: (
-    <>
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
+
+export const AisSales: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
       <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
       <path
         fillRule="evenodd"
@@ -22,6 +31,6 @@ export const AisSales = createIcon({
         clipRule="evenodd"
         d="M2 5a3 3 0 0 1 3-3h10.172a3 3 0 0 1 2.12.879l12 12a3 3 0 0 1 0 4.242l-10.17 10.172a3 3 0 0 1-4.243 0l-12-12A3 3 0 0 1 2 15.172V5Zm3-1a1 1 0 0 0-1 1v10.172a1 1 0 0 0 .293.707l12 12a1 1 0 0 0 1.414 0L27.88 17.707a1 1 0 0 0 0-1.414l-12-12A1 1 0 0 0 15.172 4H5Z"
       />
-    </>
-  ),
-})
+    </svg>
+  )
+}

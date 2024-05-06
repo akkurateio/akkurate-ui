@@ -1,4 +1,9 @@
-import { AisGoFirst, AisGoLast, AisGoLeft, AisGoRight } from "@akkurateio/icons"
+import {
+  AisGoFirst,
+  AisGoLast,
+  AisGoLeft,
+  AisGoRight,
+} from "@akkurateio/chakra-icons"
 import { Flex, HStack, IconButton, Text } from "@chakra-ui/react"
 import React from "react"
 import PageBtn from "./PageBtn"

@@ -7,7 +7,7 @@ import { IInfoIcons, listInfoIcons } from "@akkurateio/icons"
 
 const ROOT_DIR = path.join(process.cwd(), "..", "..")
 const SVG_DIR = path.join(ROOT_DIR, "assets", "icons")
-const ICONS_DIR = path.join(ROOT_DIR, "packages", "icons")
+const ICONS_DIR = path.join(ROOT_DIR, "packages", "chakra-icons")
 
 /**
  * Main function for generate icons

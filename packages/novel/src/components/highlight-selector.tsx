@@ -1,7 +1,11 @@
 import { Editor } from "@tiptap/core"
 import cx from "classnames"
 import { Dispatch, FC, SetStateAction } from "react"
-import { AisCheckbox, AisChevronDown, AisColorPalette } from "@akkurateio/icons"
+import {
+  AisCheckbox,
+  AisChevronDown,
+  AisColorPalette,
+} from "@akkurateio/chakra-icons"
 import React from "react"
 import { Box, Button } from "@chakra-ui/react"
 

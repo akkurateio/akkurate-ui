@@ -13,7 +13,7 @@ import {
   AisFileZip,
   AisImage,
   AisTrash,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import {
   Box,
   Divider,

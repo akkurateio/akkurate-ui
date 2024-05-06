@@ -1,0 +1,52 @@
+{
+  "name": "@akkurateio/chakra-icons",
+  "version": "0.1.60",
+  "description": "Library for Akkurate UI icons (Chakra UI)",
+  "keywords": [
+    "icons"
+  ],
+  "author": "Subvitamine",
+  "license": "proprietary",
+  "main": "dist/index.cjs.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akkurateio/akkurate-ui.git",
+    "directory": "packages/chakra-icons"
+  },
+  "peerDependencies": {
+    "@chakra-ui/react": ">=2.0.0",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.1",
+    "@types/react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@chakra-ui/react": ">=2.0.0",
+    "@emotion/react": ">=11.0.0",
+    "@emotion/styled": ">=11.0.0",
+    "framer-motion": ">=7.0.0"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --dts",
+    "dev": "yarn build -- --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "JSX=1 tsup src/index.ts"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "gitHead": "b398962be944eb6eb51a5a40d5bce45e2930d252"
+}

@@ -19,7 +19,7 @@ import {
   AisTableRemoveColumn,
   AisTableRemoveRow,
   AisUnlink,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import {
   Box,
   Button,

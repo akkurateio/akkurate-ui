@@ -3,7 +3,7 @@ import {
   AisChevronRight,
   AisClose,
   AisDot,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import {
   Box,
   Button,
@@ -68,10 +68,7 @@ const PopHeader = ({ date, setDate }: IProps) => {
           </Box>
         </Flex>
 
-        <Flex
-          alignItems={"center"}
-          color={date.arrowColor ?? "primary.500"}
-        >
+        <Flex alignItems={"center"} color={date.arrowColor ?? "primary.500"}>
           <HStack flex={1} alignItems={"center"} spacing={1}>
             <Button
               variant={"unstyled"}

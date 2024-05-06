@@ -7,7 +7,7 @@ import {
   AisTableRemoveColumn,
   AisTableRemoveRow,
   AisTrash,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import React from "react"
 import { Box, Button } from "@chakra-ui/react"
 interface TableMenuItem {

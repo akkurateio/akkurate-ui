@@ -16,7 +16,11 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react"
-import { AisChevronLeft, AisChevronRight, AisClose } from "@akkurateio/icons"
+import {
+  AisChevronLeft,
+  AisChevronRight,
+  AisClose,
+} from "@akkurateio/chakra-icons"
 import FormControlLayout from "../FormControlLayout"
 import React from "react"
 import GridDateRange from "./GridDateRange"

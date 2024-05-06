@@ -1,17 +1,35 @@
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-import React from 'react';
-import { createIcon } from "@chakra-ui/icon"
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
 
-export const AisFileSlide = createIcon({
-  displayName: "AisFileSlide",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-		fill: "currentColor",
-    boxSize: "24px",
-	},
-  path: (
-    <>
-      <path d="m15 19 2-2-2-2v4Z" /><path fillRule="evenodd" clipRule="evenodd" d="M22 14a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6Zm-10 0h8v6h-8v-6Z" /><path fillRule="evenodd" clipRule="evenodd" d="M8 2h12.414L26 7.586V28c0 1.103-.897 2-2 2H8c-1.103 0-2-.897-2-2V4c0-1.103.897-2 2-2Zm15.586 6L20 4.414V8h3.586ZM8 4v24h16V10h-6V4H8Z" />
-    </>
-  ),
-})
+export const AisFileSlide: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
+      <path d="m15 19 2-2-2-2v4Z" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M22 14a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6Zm-10 0h8v6h-8v-6Z"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8 2a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8.828a2 2 0 0 0-.586-1.414l-4.828-4.828A2 2 0 0 0 19.172 2H8Zm10 2H8v24h16V10h-5a1 1 0 0 1-1-1V4Zm2 .828V8h3.172L20 4.828Z"
+      />
+    </svg>
+  )
+}

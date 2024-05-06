@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useState } from "react"
 
-import { AisColorPalette } from "@akkurateio/icons"
+import { AisColorPalette } from "@akkurateio/chakra-icons"
 import {
   Box,
   FormControlOptions,

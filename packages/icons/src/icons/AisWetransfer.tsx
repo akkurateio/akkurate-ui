@@ -1,16 +1,25 @@
-import React from "react"
-import { createIcon } from "@chakra-ui/icon"
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-export const AisWetransfer = createIcon({
-  displayName: "AisWetransfer",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-    fill: "currentColor",
-    boxSize: "24px",
-  },
-  path: (
-    <>
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
+
+export const AisWetransfer: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
       <path d="M18.319 15.818c0-4.228 3-6.75 6.887-6.75 3.475 0 5.794 1.773 5.794 4.227 0 2.319-1.977 3.819-4.16 3.819-1.227 0-2.113-.205-2.727-.683-.204-.205-.34-.136-.34.069 0 .886.34 1.567.886 2.181.477.478 1.362.819 2.181.819.887 0 1.637-.205 2.319-.546.681-.34 1.227-.204 1.567.341.41.612-.136 1.431-.612 1.977-.888.954-2.591 1.637-4.774 1.637-4.431-.138-7.021-3.138-7.021-7.091ZM9.25 18.614c.409 0 .681.203.954.681l1.227 1.977c.478.75.887 1.296 1.773 1.296.887 0 1.364-.342 1.772-1.363a26.388 26.388 0 0 0 1.638-4.841c.613-2.319.886-3.683.886-4.841 0-1.16-.341-1.842-1.637-2.047C14.16 9.136 11.774 9 9.25 9c-2.523 0-4.91.136-6.613.409C1.34 9.68 1 10.364 1 11.52c0 1.16.274 2.524.819 4.843.43 1.65.977 3.267 1.637 4.84.477 1.022.885 1.363 1.772 1.363S6.524 22.023 7 21.273l1.226-1.978c.342-.409.614-.681 1.024-.681Z" />
-    </>
-  ),
-})
+    </svg>
+  )
+}

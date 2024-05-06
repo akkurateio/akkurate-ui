@@ -1,4 +1,4 @@
-import { AisClose } from "@akkurateio/icons"
+import { AisClose } from "@akkurateio/chakra-icons"
 import {
   Box,
   Drawer,

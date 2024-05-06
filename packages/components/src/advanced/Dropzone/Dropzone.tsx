@@ -1,4 +1,4 @@
-import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/icons"
+import { AisDownload, AisError, AisUploadCloud } from "@akkurateio/chakra-icons"
 import {
   background,
   Box,

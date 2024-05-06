@@ -1,4 +1,4 @@
-import { AisGoLeft, AisGoRight, AisGoSort } from "@akkurateio/icons"
+import { AisGoLeft, AisGoRight, AisGoSort } from "@akkurateio/chakra-icons"
 import {
   Button,
   Divider,

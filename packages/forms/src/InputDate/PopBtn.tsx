@@ -1,4 +1,4 @@
-import { AisCalendar } from "@akkurateio/icons"
+import { AisCalendar } from "@akkurateio/chakra-icons"
 import {
   Button,
   Flex,

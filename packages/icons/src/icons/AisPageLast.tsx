@@ -1,17 +1,25 @@
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-import React from 'react';
-import { createIcon } from "@chakra-ui/icon"
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
 
-export const AisPageLast = createIcon({
-  displayName: "AisPageLast",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-		fill: "currentColor",
-    boxSize: "24px",
-	},
-  path: (
-    <>
+export const AisPageLast: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
       <path d="M9.707 8.293a.999.999 0 1 0-1.414 1.414L14.586 16l-6.293 6.293a.999.999 0 1 0 1.414 1.414l7-7a.999.999 0 0 0 0-1.414l-7-7ZM24 4a1 1 0 0 0-1 1v22a1 1 0 1 0 2 0V5a1 1 0 0 0-1-1Z" />
-    </>
-  ),
-})
+    </svg>
+  )
+}

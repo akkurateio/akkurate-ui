@@ -24,7 +24,7 @@ import {
   AisParagraph,
   AisPencil,
   AisTable,
-} from "@akkurateio/icons"
+} from "@akkurateio/chakra-icons"
 import { startImageUpload } from "../plugins/UploadImages"
 import { Box, Button, Flex, Text, useToast } from "@chakra-ui/react"
 

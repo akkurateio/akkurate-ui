@@ -1,4 +1,4 @@
-import { AisChevronSort, AisClose } from "@akkurateio/icons"
+import { AisChevronSort, AisClose } from "@akkurateio/chakra-icons"
 import {
   Box,
   Flex,

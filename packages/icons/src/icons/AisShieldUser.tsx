@@ -1,15 +1,24 @@
-import React from "react"
-import { createIcon } from "@chakra-ui/icon"
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-export const AisShieldUser = createIcon({
-  displayName: "AisShieldUser",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-    fill: "currentColor",
-    boxSize: "24px",
-  },
-  path: (
-    <>
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
+
+export const AisShieldUser: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -20,6 +29,6 @@ export const AisShieldUser = createIcon({
         clipRule="evenodd"
         d="M16 30a.996.996 0 0 1-.483-.125C15.088 29.639 5 23.972 5 15.565V4.13a1 1 0 0 1 .888-.994l10-1.131c.074-.008.15-.008.225 0l10 1.131a1 1 0 0 1 .888.994v11.435c0 8.406-10.087 14.073-10.517 14.31-.15.083-.318.125-.484.125ZM7 5.024v10.541c0 2.73 1.336 5.181 3.005 7.177a6 6 0 0 1 11.99-.007C23.663 20.738 25 18.29 25 15.565V5.024l-9-1.018-9 1.018Zm13 19.783a27.876 27.876 0 0 1-4 3.029 27.769 27.769 0 0 1-4-3.024V23a4 4 0 0 1 8 0v1.807Z"
       />
-    </>
-  ),
-})
+    </svg>
+  )
+}

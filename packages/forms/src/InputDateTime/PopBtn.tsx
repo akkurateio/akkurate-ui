@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { AisCalendar, AisMobile } from "@akkurateio/icons"
+import { AisCalendar, AisMobile } from "@akkurateio/chakra-icons"
 import { Button, Flex, Popover, PopoverTrigger } from "@chakra-ui/react"
 import dayjs from "dayjs"
 import "dayjs/locale/fr"

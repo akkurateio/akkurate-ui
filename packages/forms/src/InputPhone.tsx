@@ -1,4 +1,4 @@
-import { AisChevronDown } from "@akkurateio/icons"
+import { AisChevronDown } from "@akkurateio/chakra-icons"
 import {
   Box,
   Button,

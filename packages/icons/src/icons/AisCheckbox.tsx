@@ -1,17 +1,29 @@
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-import React from 'react';
-import { createIcon } from "@chakra-ui/icon"
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
 
-export const AisCheckbox = createIcon({
-  displayName: "AisCheckbox",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-		fill: "currentColor",
-    boxSize: "24px",
-	},
-  path: (
-    <>
-      <path fillRule="evenodd" clipRule="evenodd" d="M24 6H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2ZM8 4h16a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Z" />
-    </>
-  ),
-})
+export const AisCheckbox: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M24 6H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2ZM8 4h16a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Z"
+      />
+    </svg>
+  )
+}

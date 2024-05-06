@@ -1,16 +1,25 @@
-import React from "react"
-import { createIcon } from "@chakra-ui/icon"
+import React, { FunctionComponent } from "react"
+import { IconSize, TIconSize } from "../iconSizes"
 
-export const AisTwitterOld = createIcon({
-  displayName: "AisTwitterOld",
-  viewBox: "0 0 32 32",
-  defaultProps: {
-    fill: "currentColor",
-    boxSize: "24px",
-  },
-  path: (
-    <>
+interface IProps {
+  size?: TIconSize
+  className?: string
+}
+
+export const AisTwitterOld: FunctionComponent<IProps> = ({
+  size = IconSize.md,
+  className = "",
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={"0 0 32 32"}
+      fill={"currentColor"}
+      className={className}
+      xmlns={"http://www.w3.org/2000/svg"}
+    >
       <path d="M10.436 28a17.641 17.641 0 0 0 6.718-1.283 17.423 17.423 0 0 0 5.695-3.734 17.115 17.115 0 0 0 3.793-5.608 16.902 16.902 0 0 0 1.303-6.613V9.97A12.71 12.71 0 0 0 31 6.842a12.852 12.852 0 0 1-3.532.953 6.14 6.14 0 0 0 2.727-3.356 12.238 12.238 0 0 1-3.9 1.477 6.194 6.194 0 0 0-3.491-1.835 6.248 6.248 0 0 0-3.905.634 6.108 6.108 0 0 0-2.709 2.841 5.981 5.981 0 0 0-.395 3.877A17.657 17.657 0 0 1 8.77 9.601 17.393 17.393 0 0 1 3.114 5.11a5.973 5.973 0 0 0-.66 4.398 6.055 6.055 0 0 0 2.569 3.657 6.167 6.167 0 0 1-2.728-.752v.067a6.022 6.022 0 0 0 1.349 3.83 6.191 6.191 0 0 0 3.492 2.145 6.273 6.273 0 0 1-2.727.107 6.06 6.06 0 0 0 2.182 2.964 6.213 6.213 0 0 0 3.518 1.184 12.462 12.462 0 0 1-7.65 2.685A13.52 13.52 0 0 1 1 25.275a17.616 17.616 0 0 0 9.436 2.684" />
-    </>
-  ),
-})
+    </svg>
+  )
+}

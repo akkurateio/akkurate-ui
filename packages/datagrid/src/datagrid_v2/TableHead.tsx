@@ -1,4 +1,8 @@
-import { AisChevronDown, AisChevronSort, AisChevronUp } from "@akkurateio/icons"
+import {
+  AisChevronDown,
+  AisChevronSort,
+  AisChevronUp,
+} from "@akkurateio/chakra-icons"
 import {
   Flex,
   IconButton,

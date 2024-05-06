@@ -1,4 +1,4 @@
-import { AisEye, AisEyeClosed } from "@akkurateio/icons"
+import { AisEye, AisEyeClosed } from "@akkurateio/chakra-icons"
 import {
   FormControlOptions,
   HTMLChakraProps,

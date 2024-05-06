@@ -1,4 +1,4 @@
-import { AisChevronLeft, AisChevronRight } from "@akkurateio/icons"
+import { AisChevronLeft, AisChevronRight } from "@akkurateio/chakra-icons"
 import { Flex, IconButton, PopoverHeader, Text } from "@chakra-ui/react"
 import dayjs from "dayjs"
 import React from "react"

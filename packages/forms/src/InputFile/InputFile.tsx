@@ -1,4 +1,4 @@
-import { AisClose, AisFile } from "@akkurateio/icons"
+import { AisClose, AisFile } from "@akkurateio/chakra-icons"
 import {
   FormControlOptions,
   HTMLChakraProps,
