@@ -1,6 +1,6 @@
 {
   "name": "@akkurateio/icons",
-  "version": "0.1.61",
+  "version": "0.1.62",
   "description": "Library for Akkurate UI icons",
   "keywords": [
     "icons"
@@ -29,7 +29,6 @@
     "@types/react": "^18.0.1",
     "@types/react-dom": ">=18.0.0"
   },
-  "dependencies": {},
   "scripts": {
     "build": "tsup src/index.ts --dts",
     "dev": "yarn build -- --watch",
