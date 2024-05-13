@@ -96,6 +96,8 @@ export * from "./icons/AisBold"
 
 export * from "./icons/AisBook"
 
+export * from "./icons/AisBuffet"
+
 export * from "./icons/AisBug"
 
 export * from "./icons/AisBurger"
@@ -430,6 +432,8 @@ export * from "./icons/AisGrid"
 
 export * from "./icons/AisGroupPresentation"
 
+export * from "./icons/AisGrowth"
+
 export * from "./icons/AisHandleHorizontal"
 
 export * from "./icons/AisHandleVertical"
@@ -527,6 +531,8 @@ export * from "./icons/AisJoinLeft"
 export * from "./icons/AisJoinRight"
 
 export * from "./icons/AisJustice"
+
+export * from "./icons/AisKelkun"
 
 export * from "./icons/AisKey"
 
@@ -710,6 +716,14 @@ export * from "./icons/AisPanelTopLine"
 
 export * from "./icons/AisParagraph"
 
+export * from "./icons/AisPassword"
+
+export * from "./icons/AisPasswordAlternative"
+
+export * from "./icons/AisPasswordCode"
+
+export * from "./icons/AisPasswordRefresh"
+
 export * from "./icons/AisPause"
 
 export * from "./icons/AisPaypal"
@@ -797,6 +811,8 @@ export * from "./icons/AisShield"
 export * from "./icons/AisShieldChecked"
 
 export * from "./icons/AisShieldLock"
+
+export * from "./icons/AisShieldRenforced"
 
 export * from "./icons/AisShieldUser"
 
@@ -965,6 +981,8 @@ export * from "./icons/AisUploadCloud"
 export * from "./icons/AisUpstair"
 
 export * from "./icons/AisUser"
+
+export * from "./icons/AisUserCapture"
 
 export * from "./icons/AisUserGroup"
 

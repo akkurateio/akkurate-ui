@@ -6,7 +6,7 @@ interface IProps {
   className?: string
 }
 
-export const AisMarginTop: FunctionComponent<IProps> = ({
+export const AisPasswordAlternative: FunctionComponent<IProps> = ({
   size = IconSize.md,
   className = "",
 }) => {
@@ -19,13 +19,12 @@ export const AisMarginTop: FunctionComponent<IProps> = ({
       className={className}
       xmlns={"http://www.w3.org/2000/svg"}
     >
-      <path d="M3 4a1 1 0 0 0 0 2h26a1 1 0 1 0 0-2H3Z" />
+      <path d="M7 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM15 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M7 12a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-8Zm2 0h14v8H9v-8Z"
+        d="M22 4a1 1 0 1 0 0 2h1v4H3a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h20v4h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4h4a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-4V6h1a1 1 0 1 0 0-2h-4ZM3 12h20v8H3v-8Zm22 0h4v8h-4v-8Z"
       />
-      <path d="M4 28a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM29 27a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM22 28a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM17 27a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM10 28a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
     </svg>
   )
 }

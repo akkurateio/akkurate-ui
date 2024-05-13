@@ -6,7 +6,7 @@ interface IProps {
   className?: string
 }
 
-export const AisMarginTop: FunctionComponent<IProps> = ({
+export const AisKelkun: FunctionComponent<IProps> = ({
   size = IconSize.md,
   className = "",
 }) => {
@@ -19,13 +19,11 @@ export const AisMarginTop: FunctionComponent<IProps> = ({
       className={className}
       xmlns={"http://www.w3.org/2000/svg"}
     >
-      <path d="M3 4a1 1 0 0 0 0 2h26a1 1 0 1 0 0-2H3Z" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M7 12a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-8Zm2 0h14v8H9v-8Z"
+        d="M16 31c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15C7.716 1 1 7.716 1 16c0 8.284 6.716 15 15 15ZM12 7H7v18h5V7Zm1.736 6.267 4.35-5.52c.372-.472.933-.747 1.53-.747h5.19l-6.172 7.367a1.482 1.482 0 0 0-.059 1.822L25 25h-5.072a1.95 1.95 0 0 1-1.602-.84l-4.71-6.787a3.46 3.46 0 0 1 .122-4.106h-.002Z"
       />
-      <path d="M4 28a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM29 27a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM22 28a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM17 27a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM10 28a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
     </svg>
   )
 }
