@@ -318,6 +318,8 @@ export * from "./icons/AisFaceWink"
 
 export * from "./icons/AisFacebook"
 
+export * from "./icons/AisFacebookMessenger"
+
 export * from "./icons/AisFigma"
 
 export * from "./icons/AisFile"
@@ -381,6 +383,8 @@ export * from "./icons/AisFranprix"
 export * from "./icons/AisFrequence"
 
 export * from "./icons/AisFunction"
+
+export * from "./icons/AisGeoLocation"
 
 export * from "./icons/AisGift"
 
@@ -469,6 +473,8 @@ export * from "./icons/AisHelpFilled"
 export * from "./icons/AisHistory"
 
 export * from "./icons/AisHome"
+
+export * from "./icons/AisHomeAlternative"
 
 export * from "./icons/AisHotel"
 
@@ -946,6 +952,8 @@ export * from "./icons/AisTimeline"
 
 export * from "./icons/AisTimelineFilled"
 
+export * from "./icons/AisToolBox"
+
 export * from "./icons/AisToolDrill"
 
 export * from "./icons/AisToolKit"
@@ -1017,6 +1025,8 @@ export * from "./icons/AisWebflowr"
 export * from "./icons/AisWebhook"
 
 export * from "./icons/AisWetransfer"
+
+export * from "./icons/AisWhatsapp"
 
 export * from "./icons/AisWind"
 
