@@ -1,6 +1,6 @@
 {
   "name": "test-nextjs",
-  "version": "0.1.63",
+  "version": "0.1.64",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@akkurateio/datagrid": "^0.1.63",
-    "@akkurateio/novel": "^0.1.63",
+    "@akkurateio/datagrid": "^0.1.64",
+    "@akkurateio/novel": "^0.1.64",
     "aws-sdk": "^2.1423.0",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
